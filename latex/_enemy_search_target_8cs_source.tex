@@ -1,0 +1,154 @@
+\doxysection{Enemy\+Search\+Target.\+cs}
+\hypertarget{_enemy_search_target_8cs_source}{}\label{_enemy_search_target_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/EnemySearchTarget.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/EnemySearchTarget.cs}}
+\mbox{\hyperlink{_enemy_search_target_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor_1_1_behaviour_tree}{Arbor.BehaviourTree}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.AI;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00007}00007\ [\mbox{\hyperlink{namespace_arbor}{Arbor}}.Internal.Documentable]}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00008}00008\ [System.Flags]}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00009}\mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311ba636da1d35e805b00eae0fcd8333f9234}{Player}}\ =\ 1\ <<\ 0,}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311ba8c6d21187fb58b7a079d70030686b33e}{Enemy}}\ =\ 1\ <<\ 1,}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00013}00013\ \ \ \ \ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311ba9021776f3e573d9150e25a09c2eff473}{FoodItem}}\ =\ 1\ <<\ 2,}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00014}00014\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00015}00015\ \textcolor{comment}{//\ プレイヤーと罠ごはんの中が範囲内に1つでもがあればTrue（伊波）}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00016}00016\ \textcolor{comment}{//\ スポーン地点から離れていれば無視}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00018}00018\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00019}\mbox{\hyperlink{class_enemy_search_target}{00019}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_enemy_search_target}{EnemySearchTarget}}\ :\ Decorator}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00021}\mbox{\hyperlink{class_enemy_search_target_acba0c55638cbb9f33cdd5fd906fffa63}{00021}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_flexible_search_type}{FlexibleSearchType}}\ \mbox{\hyperlink{class_enemy_search_target_acba0c55638cbb9f33cdd5fd906fffa63}{m\_searchFlags}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00022}\mbox{\hyperlink{class_enemy_search_target_ab372c01025432e17584ff84d04ffd346}{00022}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ FlexibleTransform\ \mbox{\hyperlink{class_enemy_search_target_ab372c01025432e17584ff84d04ffd346}{m\_targetParameter}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00023}\mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{00023}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_flexible_chase_parameters}{FlexibleChaseParameters}}\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00025}\mbox{\hyperlink{class_enemy_search_target_a8c60f39fc21941228165ddf3561d513e}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ Collider\ \mbox{\hyperlink{class_enemy_search_target_a8c60f39fc21941228165ddf3561d513e}{m\_myCollider}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00026}\mbox{\hyperlink{class_enemy_search_target_af503b59197e1bba722ec9a72b303acc5}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_enemy_search_target_af503b59197e1bba722ec9a72b303acc5}{m\_startPos}};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00028}\mbox{\hyperlink{class_enemy_search_target_ae7a1408f16e1f01bf166c46f9acda894}{00028}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_search_target_ae7a1408f16e1f01bf166c46f9acda894}{OnAwake}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ transform.root.TryGetComponent(out\ \mbox{\hyperlink{class_enemy_search_target_a8c60f39fc21941228165ddf3561d513e}{m\_myCollider}});}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(transform.root.TryGetComponent(out\ AgentController\ agent))}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_search_target_af503b59197e1bba722ec9a72b303acc5}{m\_startPos}}\ =\ agent.StartPosition;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00037}\mbox{\hyperlink{class_enemy_search_target_a0252dd3cb915b9112f3617202e61a2a3}{00037}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_search_target_a0252dd3cb915b9112f3617202e61a2a3}{OnStart}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00041}\mbox{\hyperlink{class_enemy_search_target_a356d179661f285bdaf4dd7598679e73a}{00041}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_search_target_a356d179661f285bdaf4dd7598679e73a}{OnConditionCheck}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Distance(transform.position,\ \mbox{\hyperlink{class_enemy_search_target_af503b59197e1bba722ec9a72b303acc5}{m\_startPos}})\ >=\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.DistAwayFromSpawnPos)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00044}00044\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ nearestDist\ =\ \textcolor{keywordtype}{float}.MaxValue;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isFind\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ プレイヤーが範囲内にいるか調べる}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ chara\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CharacterCore>}}.Instance.\mbox{\hyperlink{interface_i_meta_a_i_a5538533e130a7a180b806f1937f65447}{ObjectList}})}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{class_enemy_search_target_acba0c55638cbb9f33cdd5fd906fffa63}{m\_searchFlags}}.value.searchTargets\ \&\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}.Player)\ ==\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}.Player)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.GroupNo\ ==\ \mbox{\hyperlink{_i_damageable_8cs_ae72376123e0488a173f6626e9fc0ba47}{CharacterGroupNumber}}.player)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_enemy_search_target_a8741c050167195d14055297c03a507bd}{SearchTarget}}(chara.gameObject,\ ref\ nearestDist,\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.SearchCharacterDist))}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_search_target_ab372c01025432e17584ff84d04ffd346}{m\_targetParameter}}.parameter.SetTransform(chara.transform);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isFind\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{class_enemy_search_target_acba0c55638cbb9f33cdd5fd906fffa63}{m\_searchFlags}}.value.searchTargets\ \&\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}.Enemy)\ ==\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}.Enemy)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.GroupNo\ ==\ \mbox{\hyperlink{_i_damageable_8cs_ae72376123e0488a173f6626e9fc0ba47}{CharacterGroupNumber}}.enemy)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_enemy_search_target_a8741c050167195d14055297c03a507bd}{SearchTarget}}(chara.gameObject,\ ref\ nearestDist,\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.SearchCharacterDist))}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_search_target_ab372c01025432e17584ff84d04ffd346}{m\_targetParameter}}.parameter.SetTransform(chara.transform);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isFind\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 罠ごはんが範囲内にあるか調べる　より正面にあればそちらを優先で使用}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((\mbox{\hyperlink{class_enemy_search_target_acba0c55638cbb9f33cdd5fd906fffa63}{m\_searchFlags}}.value.searchTargets\ \&\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}.FoodItem)\ ==\ \mbox{\hyperlink{_enemy_search_target_8cs_a8d7ae986e1bb8a74af43cb23e7b4311b}{SearchTargets}}.FoodItem)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ item\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<AssignItemID>}}.Instance.\mbox{\hyperlink{interface_i_meta_a_i_a5538533e130a7a180b806f1937f65447}{ObjectList}})}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.ItemTypeID\ !=\ \mbox{\hyperlink{namespace_item_info}{ItemInfo}}.ItemTypeID.Food)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_enemy_search_target_a8741c050167195d14055297c03a507bd}{SearchTarget}}(item.gameObject,\ ref\ nearestDist,\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.SearchDishDist))}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_search_target_ab372c01025432e17584ff84d04ffd346}{m\_targetParameter}}.parameter.SetTransform(item.transform);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isFind\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isFind)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00099}00099\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00100}\mbox{\hyperlink{class_enemy_search_target_a94163576be85e06bbaff052fe4674059}{00100}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_search_target_a94163576be85e06bbaff052fe4674059}{OnEnd}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00101}00101\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00105}\mbox{\hyperlink{class_enemy_search_target_a8741c050167195d14055297c03a507bd}{00105}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_search_target_a8741c050167195d14055297c03a507bd}{SearchTarget}}(GameObject\ \_target,\ ref\ \textcolor{keywordtype}{float}\ \_nearestDist,\ \textcolor{keywordtype}{float}\ \_searchDist)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (transform.root.name\ ==\ \_target.name)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Distance(\_target.transform.position,\ \mbox{\hyperlink{class_enemy_search_target_af503b59197e1bba722ec9a72b303acc5}{m\_startPos}})\ >=\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.DistAwayFromSpawnPos)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(transform.position,\ \_target.transform.position);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ <=\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.NoticeDist)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >\ \_searchDist)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00120}00120\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ angle\ =\ Vector3.Angle(transform.forward,\ \_target.transform.position\ -\/\ transform.position);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ \mbox{\hyperlink{class_enemy_search_target_a89234527c142f6151c5d166a6e4b41ba}{m\_chaseParameters}}.value.ViewAngle\ *\ 0.5f)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >=\ \_nearestDist)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ Collider\ targetCollider;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_target.TryGetComponent(out\ targetCollider))}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetCollider.bounds.center\ -\/\ \mbox{\hyperlink{class_enemy_search_target_a8c60f39fc21941228165ddf3561d513e}{m\_myCollider}}.bounds.center;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(targetCollider.bounds.center,\ \mbox{\hyperlink{class_enemy_search_target_a8c60f39fc21941228165ddf3561d513e}{m\_myCollider}}.bounds.center);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ Ray\ ray\ =\ \textcolor{keyword}{new}\ Ray(\mbox{\hyperlink{class_enemy_search_target_a8c60f39fc21941228165ddf3561d513e}{m\_myCollider}}.bounds.center,\ dir);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ RaycastHit\ hit;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ Debug.DrawRay(ray.origin,\ ray.direction\ *\ dist,\ Color.red);}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ hit,\ dist))}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.collider.gameObject.name\ ==\ targetCollider.gameObject.name)}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_search_target_8cs_source_l00148}00148\ \}}
+
+\end{DoxyCode}

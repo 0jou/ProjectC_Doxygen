@@ -1,0 +1,85 @@
+\doxysection{Check\+Is\+Carry\+Staff.\+cs}
+\hypertarget{_check_is_carry_staff_8cs_source}{}\label{_check_is_carry_staff_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Staff/Scripts/Arbor3/State/CheckIsCarryStaff.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Staff/Scripts/Arbor3/State/CheckIsCarryStaff.cs}}
+\mbox{\hyperlink{_check_is_carry_staff_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_customer_state_info}{CustomerStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00008}00008\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Staff/CheckAngryStaff"{}})]}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00009}00009\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00010}\mbox{\hyperlink{class_check_is_carry_staff}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_is_carry_staff}{CheckIsCarryStaff}}\ :\ \mbox{\hyperlink{class_base_staff_state_behaviour}{BaseStaffStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 料理を届けることができるのか確認する}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ ステート}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00020}\mbox{\hyperlink{class_check_is_carry_staff_ae93d96fb4ea75597f482089366b1e5aa}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_check_is_carry_staff_ae93d96fb4ea75597f482089366b1e5aa}{m\_failLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00026}\mbox{\hyperlink{class_check_is_carry_staff_afb72fbd00d1d39ef25bd64fa95864bd4}{00026}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_afb72fbd00d1d39ef25bd64fa95864bd4}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ 運ぶことができるか確認}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00032}\mbox{\hyperlink{class_check_is_carry_staff_a535b8f729271244d77c1637d13188241}{00032}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_a535b8f729271244d77c1637d13188241}{IsCarry}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スタッフデータ}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_staff_state_behaviour_aecf7aba8c57332905715f924eacef811}{GetStaffData}}();}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データ}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ var\ targetFood\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 運ぶ料理が存在しなければ}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFood\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_staff_state_behaviour_ab86a9e1a899188639edd84c2d58ddc2e}{SetTransition}}(\mbox{\hyperlink{class_check_is_carry_staff_ae93d96fb4ea75597f482089366b1e5aa}{m\_failLink}});}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00054}\mbox{\hyperlink{class_check_is_carry_staff_a648891d5cbd1538df0fbdac1ad8c7b6d}{00054}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_a648891d5cbd1538df0fbdac1ad8c7b6d}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00059}\mbox{\hyperlink{class_check_is_carry_staff_a398481965406b8890e037af2f92d0c80}{00059}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_a398481965406b8890e037af2f92d0c80}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00064}\mbox{\hyperlink{class_check_is_carry_staff_a57b10f83ddd27f506cf9553c74527f96}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_a57b10f83ddd27f506cf9553c74527f96}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00069}\mbox{\hyperlink{class_check_is_carry_staff_abc43c562a94cee9455c67acd3da53644}{00069}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_abc43c562a94cee9455c67acd3da53644}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 常に確認する}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_is_carry_staff_a535b8f729271244d77c1637d13188241}{IsCarry}}();}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00076}\mbox{\hyperlink{class_check_is_carry_staff_a301c882fb5d66da0fd75231ac35fcd91}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_carry_staff_a301c882fb5d66da0fd75231ac35fcd91}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_carry_staff_8cs_source_l00079}00079\ \}}
+
+\end{DoxyCode}

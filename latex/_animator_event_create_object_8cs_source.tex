@@ -1,0 +1,37 @@
+\doxysection{Animator\+Event\+Create\+Object.\+cs}
+\hypertarget{_animator_event_create_object_8cs_source}{}\label{_animator_event_create_object_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/001\_Common/Scripts/AnimatorEventCreateObject.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/001\_Common/Scripts/AnimatorEventCreateObject.cs}}
+\mbox{\hyperlink{_animator_event_create_object_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00005}00005\ \textcolor{comment}{//\ アニメーターのインスペクターからイベントから、オブジェクトを出す(倉田)}}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00006}00006\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00007}\mbox{\hyperlink{class_animator_event_create_object}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_animator_event_create_object}{AnimatorEventCreateObject}}\ :\ AnimatorEvents.EventNodeBase}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00010}00010\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}ステート切り替え時に削除するか"{}})]}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00011}\mbox{\hyperlink{class_animator_event_create_object_a0ba14c3071754dc4e3fb78474271dab8}{00011}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_animator_event_create_object_a0ba14c3071754dc4e3fb78474271dab8}{m\_doDeleteOnExitState}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}発生させるプレハブ"{}})]}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00013}\mbox{\hyperlink{class_animator_event_create_object_a72f481a684244458875e85115fb6c24b}{00013}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_animator_event_create_object_a72f481a684244458875e85115fb6c24b}{m\_object}};}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00015}\mbox{\hyperlink{class_animator_event_create_object_aa91ce1426bee8dcdbebbe25458da2174}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_animator_event_create_object_aa91ce1426bee8dcdbebbe25458da2174}{m\_createdInstance}};}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ 時間が来たときに実行}}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00018}\mbox{\hyperlink{class_animator_event_create_object_a856d4b8a9e0cb6ce28c3a89e3d5f696a}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_event_create_object_a856d4b8a9e0cb6ce28c3a89e3d5f696a}{OnEvent}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_event_create_object_aa91ce1426bee8dcdbebbe25458da2174}{m\_createdInstance}}\ =\ GameObject.Instantiate(\mbox{\hyperlink{class_animator_event_create_object_a72f481a684244458875e85115fb6c24b}{m\_object}},\ animator.transform);}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00021}00021\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00022}\mbox{\hyperlink{class_animator_event_create_object_a11347dd0c124af99df71ed2bde9843a9}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_event_create_object_a11347dd0c124af99df71ed2bde9843a9}{OnExit}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ base.OnExit(animator);}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_animator_event_create_object_a0ba14c3071754dc4e3fb78474271dab8}{m\_doDeleteOnExitState}})}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_animator_event_create_object_aa91ce1426bee8dcdbebbe25458da2174}{m\_createdInstance}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject.Destroy(\mbox{\hyperlink{class_animator_event_create_object_aa91ce1426bee8dcdbebbe25458da2174}{m\_createdInstance}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_create_object_8cs_source_l00031}00031\ \}}
+
+\end{DoxyCode}

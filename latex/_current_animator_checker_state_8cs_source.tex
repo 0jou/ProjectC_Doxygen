@@ -1,0 +1,104 @@
+\doxysection{Current\+Animator\+Checker\+State.\+cs}
+\hypertarget{_current_animator_checker_state_8cs_source}{}\label{_current_animator_checker_state_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Base/CurrentAnimatorCheckerState.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Base/CurrentAnimatorCheckerState.cs}}
+\mbox{\hyperlink{_current_animator_checker_state_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00006}00006\ [AddComponentMenu(\textcolor{stringliteral}{"{}Animator/CurrentAnimatorCheckerState"{}})]}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00007}\mbox{\hyperlink{class_current_animator_checker_state}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_current_animator_checker_state}{CurrentAnimatorCheckerState}}\ :\ StateBehaviour}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 現在のアニメーターを確認する}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}アニメーター"{}})]}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00014}00014\ \ \ \ \ [SerializeField,\ SlotType(typeof(Animator))]}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00015}\mbox{\hyperlink{class_current_animator_checker_state_a95046dc1e65d6e76148babb68855bdff}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ FlexibleComponent\ \mbox{\hyperlink{class_current_animator_checker_state_a95046dc1e65d6e76148babb68855bdff}{m\_animator}}\ =\ \textcolor{keyword}{new}\ FlexibleComponent(FlexibleHierarchyType.Self);}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00017}\mbox{\hyperlink{class_current_animator_checker_state_a2a8d82f00cb8a5f6a7c19f2d220c22ab}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ Animator\ \mbox{\hyperlink{class_current_animator_checker_state_a2a8d82f00cb8a5f6a7c19f2d220c22ab}{m\_currentAnimator}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00020}\mbox{\hyperlink{class_current_animator_checker_state_a70973e3aaaee7a6e76b5ee9a59659ce2}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_current_animator_checker_state_a70973e3aaaee7a6e76b5ee9a59659ce2}{m\_animationName}}\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00023}\mbox{\hyperlink{class_current_animator_checker_state_ad24c316c028e7d8a42b56d29692ebd69}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_current_animator_checker_state_ad24c316c028e7d8a42b56d29692ebd69}{m\_successLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00025}\mbox{\hyperlink{class_current_animator_checker_state_a63e94e7fd05c9139749aa7e3a7f807ee}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_a63e94e7fd05c9139749aa7e3a7f807ee}{SetAnimator}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_current_animator_checker_state_a95046dc1e65d6e76148babb68855bdff}{m\_animator}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_current_animator_checker_state_a95046dc1e65d6e76148babb68855bdff}{m\_animator}}.value\ is\ Animator)}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_current_animator_checker_state_a2a8d82f00cb8a5f6a7c19f2d220c22ab}{m\_currentAnimator}}\ =\ m\_animator.value\ as\ Animator;}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00036}\mbox{\hyperlink{class_current_animator_checker_state_af797ff35c08cf66e4c1607917c1cd08c}{00036}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_af797ff35c08cf66e4c1607917c1cd08c}{Check}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_current_animator_checker_state_a2a8d82f00cb8a5f6a7c19f2d220c22ab}{m\_currentAnimator}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ AnimatorStateInfo\ stateInfo\ =\ \mbox{\hyperlink{class_current_animator_checker_state_a2a8d82f00cb8a5f6a7c19f2d220c22ab}{m\_currentAnimator}}.GetCurrentAnimatorStateInfo(0);}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.IsName(\mbox{\hyperlink{class_current_animator_checker_state_a70973e3aaaee7a6e76b5ee9a59659ce2}{m\_animationName}}))}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_current_animator_checker_state_af1a7ed7b4eae74cafaeadb05e3ad746a}{SetTransition}}();}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00052}\mbox{\hyperlink{class_current_animator_checker_state_af1a7ed7b4eae74cafaeadb05e3ad746a}{00052}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_af1a7ed7b4eae74cafaeadb05e3ad746a}{SetTransition}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_current_animator_checker_state_ad24c316c028e7d8a42b56d29692ebd69}{m\_successLink}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}リンク先が存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ Transition(\mbox{\hyperlink{class_current_animator_checker_state_ad24c316c028e7d8a42b56d29692ebd69}{m\_successLink}});}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00066}\mbox{\hyperlink{class_current_animator_checker_state_a8aa9b3a603d1312120f04744e5b2014d}{00066}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_a8aa9b3a603d1312120f04744e5b2014d}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00072}\mbox{\hyperlink{class_current_animator_checker_state_a59da96a8e195e0d41531e370cf2a6517}{00072}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_a59da96a8e195e0d41531e370cf2a6517}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00077}\mbox{\hyperlink{class_current_animator_checker_state_ab098755eb1b74acb29c628083a59f0c8}{00077}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_ab098755eb1b74acb29c628083a59f0c8}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_current_animator_checker_state_a63e94e7fd05c9139749aa7e3a7f807ee}{SetAnimator}}();}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00084}\mbox{\hyperlink{class_current_animator_checker_state_a88749b5a0acebca351a5c1ad911741fc}{00084}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_a88749b5a0acebca351a5c1ad911741fc}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00089}\mbox{\hyperlink{class_current_animator_checker_state_a250264fc7a95a103fee0634798f39e0f}{00089}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_a250264fc7a95a103fee0634798f39e0f}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_current_animator_checker_state_af797ff35c08cf66e4c1607917c1cd08c}{Check}}();}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00094}00094\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00095}\mbox{\hyperlink{class_current_animator_checker_state_a74104932f16151680990d3fca9b30fc0}{00095}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_current_animator_checker_state_a74104932f16151680990d3fca9b30fc0}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_current_animator_checker_state_8cs_source_l00098}00098\ \}}
+
+\end{DoxyCode}

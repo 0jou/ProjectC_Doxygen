@@ -1,0 +1,98 @@
+\doxysection{Check\+Target\+Order\+Food\+State\+Staff.\+cs}
+\hypertarget{_check_target_order_food_state_staff_8cs_source}{}\label{_check_target_order_food_state_staff_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Staff/Scripts/Arbor3/State/TargetOrderFood/CheckTargetOrderFoodStateStaff.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Staff/Scripts/Arbor3/State/TargetOrderFood/CheckTargetOrderFoodStateStaff.cs}}
+\mbox{\hyperlink{_check_target_order_food_state_staff_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_order_food_info}{OrderFoodInfo}};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00007}00007\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00008}\mbox{\hyperlink{class_check_target_order_food_state_staff}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_target_order_food_state_staff}{CheckTargetOrderFoodStateStaff}}\ :\ \mbox{\hyperlink{class_base_staff_state_behaviour}{BaseStaffStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ ターゲットの料理の状態で進むステートリンクを変更する}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ ステートリンク}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00018}\mbox{\hyperlink{class_check_target_order_food_state_staff_a3d1b8969550594bf3cac8c0047710d94}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_check_target_order_food_state_staff_a3d1b8969550594bf3cac8c0047710d94}{m\_waitCounterLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00019}00019\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00020}00020\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00021}\mbox{\hyperlink{class_check_target_order_food_state_staff_aa579f081c7f8651f7d5416b9127adc42}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_check_target_order_food_state_staff_aa579f081c7f8651f7d5416b9127adc42}{m\_carryLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00023}00023\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00024}\mbox{\hyperlink{class_check_target_order_food_state_staff_a47150f4700138aaade4d9bb7108b31f9}{00024}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_check_target_order_food_state_staff_a47150f4700138aaade4d9bb7108b31f9}{m\_setLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00026}\mbox{\hyperlink{class_check_target_order_food_state_staff_abcb1364d65c0b5b03f7dca053a961cca}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_abcb1364d65c0b5b03f7dca053a961cca}{Check}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_staff_state_behaviour_aecf7aba8c57332905715f924eacef811}{GetStaffData}}();}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ var\ targetFood\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFood\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (targetFood.CurrentOrderFoodState)}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カウンターで待機していれば}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.WaitCounter:}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_staff_state_behaviour_ab86a9e1a899188639edd84c2d58ddc2e}{SetTransition}}(\mbox{\hyperlink{class_check_target_order_food_state_staff_a3d1b8969550594bf3cac8c0047710d94}{m\_waitCounterLink}});}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 運ばれていれば}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.Carry:}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_staff_state_behaviour_ab86a9e1a899188639edd84c2d58ddc2e}{SetTransition}}(\mbox{\hyperlink{class_check_target_order_food_state_staff_aa579f081c7f8651f7d5416b9127adc42}{m\_carryLink}});}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セットされていれば}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.Set:}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_staff_state_behaviour_ab86a9e1a899188639edd84c2d58ddc2e}{SetTransition}}(\mbox{\hyperlink{class_check_target_order_food_state_staff_a47150f4700138aaade4d9bb7108b31f9}{m\_setLink}});}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00062}\mbox{\hyperlink{class_check_target_order_food_state_staff_a8735abf2db04c3330a9d81ceca455df4}{00062}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_a8735abf2db04c3330a9d81ceca455df4}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00068}\mbox{\hyperlink{class_check_target_order_food_state_staff_ab53276c2752694aeadbfdf3e3a5e8283}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_ab53276c2752694aeadbfdf3e3a5e8283}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00073}\mbox{\hyperlink{class_check_target_order_food_state_staff_ac1c356c6370bf5d03de05e1fdbaf2fbd}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_ac1c356c6370bf5d03de05e1fdbaf2fbd}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00074}00074\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_target_order_food_state_staff_abcb1364d65c0b5b03f7dca053a961cca}{Check}}();}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00079}\mbox{\hyperlink{class_check_target_order_food_state_staff_af7c1a7c78b2d725b07c2132f9bfdca0d}{00079}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_af7c1a7c78b2d725b07c2132f9bfdca0d}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00083}00083\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00084}\mbox{\hyperlink{class_check_target_order_food_state_staff_a4e92c625f36fcbeb8820cc2917967cdf}{00084}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_a4e92c625f36fcbeb8820cc2917967cdf}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00085}00085\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00086}00086\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00089}\mbox{\hyperlink{class_check_target_order_food_state_staff_aebdb8cda7d1b8e167c05c8d01a1f487b}{00089}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_target_order_food_state_staff_aebdb8cda7d1b8e167c05c8d01a1f487b}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_target_order_food_state_staff_8cs_source_l00092}00092\ \}}
+
+\end{DoxyCode}

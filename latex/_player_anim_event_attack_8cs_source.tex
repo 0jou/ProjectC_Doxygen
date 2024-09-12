@@ -1,0 +1,70 @@
+\doxysection{Player\+Anim\+Event\+Attack.\+cs}
+\hypertarget{_player_anim_event_attack_8cs_source}{}\label{_player_anim_event_attack_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Player/Scripts/PlayerAnimEventAttack.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Player/Scripts/PlayerAnimEventAttack.cs}}
+\mbox{\hyperlink{_player_anim_event_attack_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00006}00006\ \textcolor{comment}{//\ アニメーターのインスペクターからイベントから、攻撃判定を出す(倉田)}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00007}00007\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00008}\mbox{\hyperlink{class_anim_event_attack}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_anim_event_attack}{AnimEventAttack}}\ :\ AnimatorEvents.EventNodeBase}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00011}00011\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}ステート切り替え時に削除するか"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00012}\mbox{\hyperlink{class_anim_event_attack_a6ae09a1d7e1b386d2ff5ec7c7f34016c}{00012}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_anim_event_attack_a6ae09a1d7e1b386d2ff5ec7c7f34016c}{m\_doDeleteOnExitState}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}発生させるプレハブ"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00014}\mbox{\hyperlink{class_anim_event_attack_a65ff4010a7638b56546814f5fb5a95ce}{00014}}\ \ \ \ \ [SerializeField]\ GameObject\ \mbox{\hyperlink{class_anim_event_attack_a65ff4010a7638b56546814f5fb5a95ce}{m\_assetAttack}};}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00015}00015\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}親オブジェクト(空ならAnimator直下)"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00016}\mbox{\hyperlink{class_anim_event_attack_ad1cbb4b2bde86710c7a39f88b482f615}{00016}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_anim_event_attack_ad1cbb4b2bde86710c7a39f88b482f615}{m\_parent}};}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00018}\mbox{\hyperlink{class_anim_event_attack_a96cfcc5627489ee5df7a211d072776c6}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_anim_event_attack_a96cfcc5627489ee5df7a211d072776c6}{m\_createdInstance}};}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//\ 時間が来たときに実行}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00021}\mbox{\hyperlink{class_anim_event_attack_afedf9357c27db74489370b2ce3712e51}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_anim_event_attack_afedf9357c27db74489370b2ce3712e51}{OnEvent}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ var\ charaCore\ =\ animator.transform.GetComponentInParent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_anim_event_attack_a96cfcc5627489ee5df7a211d072776c6}{m\_createdInstance}}\ =\ \mbox{\hyperlink{class_anim_event_attack_a185bf0d4b6354d338a57e4840c6afcdd}{CreateObject}}(animator);}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成者情報を記憶}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ var\ ownerInfo\ =\ \mbox{\hyperlink{class_anim_event_attack_a96cfcc5627489ee5df7a211d072776c6}{m\_createdInstance}}.AddComponent<\mbox{\hyperlink{class_owner_info_tag}{OwnerInfoTag}}>();}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ ownerInfo.GroupNo\ =\ charaCore.\mbox{\hyperlink{class_owner_info_tag_a56a9ad5e93c0d771bd43700982edfd06}{GroupNo}};}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ ownerInfo.Characore\ =\ charaCore;}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00033}\mbox{\hyperlink{class_anim_event_attack_a9d78bb52c5dcd574f005ba9c1b2f81f0}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_anim_event_attack_a9d78bb52c5dcd574f005ba9c1b2f81f0}{OnExit}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ base.OnExit(animator);}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_anim_event_attack_a6ae09a1d7e1b386d2ff5ec7c7f34016c}{m\_doDeleteOnExitState}})}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_anim_event_attack_a96cfcc5627489ee5df7a211d072776c6}{m\_createdInstance}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject.Destroy(\mbox{\hyperlink{class_anim_event_attack_a96cfcc5627489ee5df7a211d072776c6}{m\_createdInstance}});}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00042}\mbox{\hyperlink{class_anim_event_attack_a185bf0d4b6354d338a57e4840c6afcdd}{00042}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_anim_event_attack_a185bf0d4b6354d338a57e4840c6afcdd}{CreateObject}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_anim_event_attack_ad1cbb4b2bde86710c7a39f88b482f615}{m\_parent}}.Length\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator.transform.root.TryGetComponent(out\ \mbox{\hyperlink{class_share_nodes}{ShareNodes}}\ nodes))}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodes.Nodes.TryGetValue(\mbox{\hyperlink{class_anim_event_attack_ad1cbb4b2bde86710c7a39f88b482f615}{m\_parent}},\ out\ Transform\ parent))}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a71bf6aeca5886488a7fdccd5890df00e}{Start3DPlayback}}(\textcolor{stringliteral}{"{}Swing"{}},\ parent.transform.position);}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GameObject.Instantiate(\mbox{\hyperlink{class_anim_event_attack_a65ff4010a7638b56546814f5fb5a95ce}{m\_assetAttack}},\ parent);}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}攻撃当たり判定の親オブジェクトが見つかりませんでした。"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}登録名が間違っているか、ShareNodeに追加されていません。"{}});}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ Debug.LogError(\textcolor{stringliteral}{"{}ShareNodesコンポーネントが見つかりませんでした"{}});}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a71bf6aeca5886488a7fdccd5890df00e}{Start3DPlayback}}(\textcolor{stringliteral}{"{}Swing"{}},\ animator.transform.position);}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GameObject.Instantiate(\mbox{\hyperlink{class_anim_event_attack_a65ff4010a7638b56546814f5fb5a95ce}{m\_assetAttack}},\ animator.transform);}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_anim_event_attack_8cs_source_l00064}00064\ \}}
+
+\end{DoxyCode}

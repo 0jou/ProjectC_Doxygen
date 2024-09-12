@@ -1,0 +1,93 @@
+\doxysection{Recipe\+Item\+Slot\+Data.\+cs}
+\hypertarget{_recipe_item_slot_data_8cs_source}{}\label{_recipe_item_slot_data_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/003\_Item/Window/RecipeWindow/Prefab/Slot/RecipeItemSlotData.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/003\_Item/Window/RecipeWindow/Prefab/Slot/RecipeItemSlotData.cs}}
+\mbox{\hyperlink{_recipe_item_slot_data_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_food_info}{FoodInfo}};}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_pocket_item_data_info}{PocketItemDataInfo}};}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00009}\mbox{\hyperlink{class_recipe_item_slot_data}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_recipe_item_slot_data}{RecipeItemSlotData}}\ :\ \mbox{\hyperlink{class_item_slot_data}{ItemSlotData}}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 料理が作成可能か確認などを行う}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 作成者　田内}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//===========================================================}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}作成可能である場合の色情報"{}})]}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00018}\mbox{\hyperlink{class_recipe_item_slot_data_a75faecc45eaf196c36d2fb8753f8aacc}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ Color\ \mbox{\hyperlink{class_recipe_item_slot_data_a75faecc45eaf196c36d2fb8753f8aacc}{m\_validSlotColor}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}作成可能でない場合の色情報"{}})]}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00023}\mbox{\hyperlink{class_recipe_item_slot_data_a47b4081035d6cba4c958c360c1663df5}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ Color\ \mbox{\hyperlink{class_recipe_item_slot_data_a47b4081035d6cba4c958c360c1663df5}{m\_invalidSlotColor}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//===========================================================}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ 確認用スクリプト}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00028}\mbox{\hyperlink{class_recipe_item_slot_data_a227af797e55ead50a983504ac75c9981}{00028}}\ \ \ \ \ \mbox{\hyperlink{class_create_food_data}{CreateFoodData}}\ \mbox{\hyperlink{class_recipe_item_slot_data_a227af797e55ead50a983504ac75c9981}{m\_createFoodObject}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//===========================================================}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ 作成可能かどうか}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00033}\mbox{\hyperlink{class_recipe_item_slot_data_a075f74a68bfa52ae84e2fa8aa4a8fecf}{00033}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_recipe_item_slot_data_a075f74a68bfa52ae84e2fa8aa4a8fecf}{m\_isCreate}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00035}\mbox{\hyperlink{class_recipe_item_slot_data_ae81fab4c5ab04a337c4534b72c24402c}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_recipe_item_slot_data_ae81fab4c5ab04a337c4534b72c24402c}{IsCreate}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_recipe_item_slot_data_a075f74a68bfa52ae84e2fa8aa4a8fecf}{m\_isCreate}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//====================================================================================}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ スロットのデータをセットする}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00041}\mbox{\hyperlink{class_recipe_item_slot_data_ae7e2162f8df9d9788047a957924bf568}{00041}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_recipe_item_slot_data_ae7e2162f8df9d9788047a957924bf568}{SetItemSlotData}}(\mbox{\hyperlink{class_base_item_data}{BaseItemData}}\ \_itemData,\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}\ \_pocketType)}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ base.SetItemSlotData(\_itemData,\_pocketType);}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能か確認}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_item_slot_data_ac58cf30a9a738e7cf0c940a79df73482}{CheckCreate}}();}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ 作成可能か確認}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00051}\mbox{\hyperlink{class_recipe_item_slot_data_ac58cf30a9a738e7cf0c940a79df73482}{00051}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_recipe_item_slot_data_ac58cf30a9a738e7cf0c940a79df73482}{CheckCreate}}()}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_recipe_item_slot_data_a227af797e55ead50a983504ac75c9981}{m\_createFoodObject}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CreateFoodObjectが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能かを確認}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_item_slot_data_a075f74a68bfa52ae84e2fa8aa4a8fecf}{m\_isCreate}}\ =\ \mbox{\hyperlink{class_recipe_item_slot_data_a227af797e55ead50a983504ac75c9981}{m\_createFoodObject}}.\mbox{\hyperlink{class_create_food_data_a72498edcb65528eae15c707aa9b7a76b}{IsCreate}}((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})\mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}});}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 色をセット}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_recipe_item_slot_data_a513dac709142065cba9d18fde3034398}{SetSlotColor}}();}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00068}\mbox{\hyperlink{class_recipe_item_slot_data_a513dac709142065cba9d18fde3034398}{00068}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_recipe_item_slot_data_a513dac709142065cba9d18fde3034398}{SetSlotColor}}()}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00069}00069\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ var\ images\ =\ gameObject.GetComponentsInChildren<Image>();}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(var\ image\ \textcolor{keywordflow}{in}\ images)}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_recipe_item_slot_data_a075f74a68bfa52ae84e2fa8aa4a8fecf}{m\_isCreate}})}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image.color\ =\ \mbox{\hyperlink{class_recipe_item_slot_data_a75faecc45eaf196c36d2fb8753f8aacc}{m\_validSlotColor}};}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ image.color\ =\ \mbox{\hyperlink{class_recipe_item_slot_data_a47b4081035d6cba4c958c360c1663df5}{m\_invalidSlotColor}};}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00085}00085\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_recipe_item_slot_data_8cs_source_l00087}00087\ \}}
+
+\end{DoxyCode}

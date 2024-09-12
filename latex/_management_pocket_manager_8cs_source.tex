@@ -1,0 +1,126 @@
+\doxysection{Management\+Pocket\+Manager.\+cs}
+\hypertarget{_management_pocket_manager_8cs_source}{}\label{_management_pocket_manager_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/101\_Management\_Common/Manager/ManagementPocket/ManagementPocketManager.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/101\_Management\_Common/Manager/ManagementPocket/ManagementPocketManager.cs}}
+\mbox{\hyperlink{_management_pocket_manager_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_food_info}{FoodInfo}};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00004}\mbox{\hyperlink{class_management_pocket_manager}{00004}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_management_pocket_manager}{ManagementPocketManager}}\ :\ \mbox{\hyperlink{class_base_pocket_item_data_controller}{BasePocketItemDataController}}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00005}00005\ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ 注文中のアイテムを管理するマネージャー}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//============================================================================================}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00013}00013\ \textcolor{preprocessor}{\ \ \ \ \#region\ シングルトン}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00014}\mbox{\hyperlink{class_management_pocket_manager_a1610962bb363eeea5ae8ea70f8522c83}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_management_pocket_manager}{ManagementPocketManager}}\ \mbox{\hyperlink{class_management_pocket_manager_a1610962bb363eeea5ae8ea70f8522c83}{instance}};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00016}\mbox{\hyperlink{class_management_pocket_manager_a6dfa2a37db3e411864d131e45c53689b}{00016}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_management_pocket_manager_a6dfa2a37db3e411864d131e45c53689b}{Awake}}()}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00017}00017\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスがなければ作成}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_pocket_manager_a1610962bb363eeea5ae8ea70f8522c83}{instance}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_pocket_manager_a1610962bb363eeea5ae8ea70f8522c83}{instance}}\ =\ (\mbox{\hyperlink{class_management_pocket_manager}{ManagementPocketManager}})FindObjectOfType(typeof(\mbox{\hyperlink{class_management_pocket_manager}{ManagementPocketManager}}));}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ あれば作成しない}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00031}00031\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ 料理データに変換する}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00034}\mbox{\hyperlink{class_management_pocket_manager_afe307a433b749dc6dff38e25a2a8bca2}{00034}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_management_pocket_manager_afe307a433b749dc6dff38e25a2a8bca2}{ConversionFood}}()}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isCreate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データベースリストを取得}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ var\ foodDataBaseList\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemList<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 限界まで作る}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ foodDataBaseList.Count;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データ}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ foodDataBaseList[i];}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null}\ \&\&\ \mbox{\hyperlink{class_management_pocket_manager_a385c10a615bfd72c4f9fa0cbb6b179de}{IsCreate}}(data))}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isCreate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 可能であれば作成する}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_pocket_manager_ae97fa1ae7ed85c3d1ebd20368e3a742d}{CreateFood}}((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})data.ItemID);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要数分食材を減算する}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_pocket_manager_a47f62903f463de77c32ece67dc51ce80}{RemoveNeedIngredient}}(data);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ まだ作ることができれば}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isCreate)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_pocket_manager_afe307a433b749dc6dff38e25a2a8bca2}{ConversionFood}}();}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ 料理を作成する}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00069}\mbox{\hyperlink{class_management_pocket_manager_ae97fa1ae7ed85c3d1ebd20368e3a742d}{00069}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_management_pocket_manager_ae97fa1ae7ed85c3d1ebd20368e3a742d}{CreateFood}}(\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}\ \_foodID)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 倉庫に料理を追加}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_pocket_item_data_controller_abd39ac87c09a44451c2bb01c0eecfa09}{AddItem}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ 必要数分食材を減算する}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00077}\mbox{\hyperlink{class_management_pocket_manager_a47f62903f463de77c32ece67dc51ce80}{00077}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_management_pocket_manager_a47f62903f463de77c32ece67dc51ce80}{RemoveNeedIngredient}}(\mbox{\hyperlink{class_food_data}{FoodData}}\ \_data)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要なリスト分}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ \_data.NeedIngredientObjectList)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要数分取り除く}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ data.Num;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_pocket_item_data_controller_ae2288f88afd8a41455c69514c8cdd594}{RemoveItem}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)data.IngredientID);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ 作成可能かどうか確認}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00094}\mbox{\hyperlink{class_management_pocket_manager_a385c10a615bfd72c4f9fa0cbb6b179de}{00094}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_management_pocket_manager_a385c10a615bfd72c4f9fa0cbb6b179de}{IsCreate}}(\mbox{\hyperlink{class_food_data}{FoodData}}\ \_data)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00095}00095\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持しているか確認}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ \_data.NeedIngredientObjectList)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ データを取得}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ var\ item\ =\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a2d7d18decebd0d5d1bf86272558d113e}{GetItemData}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)data.IngredientID);}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持していなければ||必要数所持していなければ}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item\ ==\ \textcolor{keyword}{null}\ ||\ item.Num\ <\ data.Num)}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能であれば}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00116}00116\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_management_pocket_manager_8cs_source_l00120}00120\ \}}
+
+\end{DoxyCode}

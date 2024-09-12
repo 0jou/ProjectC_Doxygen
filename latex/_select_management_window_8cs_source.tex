@@ -1,0 +1,102 @@
+\doxysection{Select\+Management\+Window.\+cs}
+\hypertarget{_select_management_window_8cs_source}{}\label{_select_management_window_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/202\_Lobby\_UI/Window/SelectManagement/SelectManagementWindow.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/202\_Lobby\_UI/Window/SelectManagement/SelectManagementWindow.cs}}
+\mbox{\hyperlink{_select_management_window_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00007}\mbox{\hyperlink{class_select_management_window}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_select_management_window}{SelectManagementWindow}}\ :\ \mbox{\hyperlink{class_base_window}{BaseWindow}}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 経営シーンを操作する、移動するウィンドウ}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}スロットコントローラー"{}})]}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00014}\mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{00014}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_select_u_i_controller}{SelectUIController}}\ \mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00016}00016\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}シーン変更"{}})]}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00017}00017\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00018}\mbox{\hyperlink{class_select_management_window_a60c4664b2166b41772bbab753ac62a12}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_scene_transition_manager}{SceneTransitionManager}}\ \mbox{\hyperlink{class_select_management_window_a60c4664b2166b41772bbab753ac62a12}{m\_sceneTransitionManager}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00021}\mbox{\hyperlink{class_select_management_window_ae457e5af9acbde27df5134abed497327}{00021}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_select_management_window_ae457e5af9acbde27df5134abed497327}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00022}00022\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の更新}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シーン遷移}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_management_window_a9c54dcafd914f2ce2aaad0a9b83911b0}{Transion}}())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択UIの後処理}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_u_i_manager}{InputUIManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionTrigger(\textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE追加（山本）}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ シーン遷移を行う}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00065}00065\ \ \ \ \ \textcolor{comment}{//\ 遷移できればtrueを返す}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00066}\mbox{\hyperlink{class_select_management_window_a9c54dcafd914f2ce2aaad0a9b83911b0}{00066}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_select_management_window_a9c54dcafd914f2ce2aaad0a9b83911b0}{Transion}}()}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_management_window_a60c4664b2166b41772bbab753ac62a12}{m\_sceneTransitionManager}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}シーン変更クラスがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}UI選択コントローラーがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択したボタンがスタートなら}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_ada35550ac0a4899a09d5f563cde41891}{IsPressButton}}()\ ==\ \mbox{\hyperlink{namespace_button_info}{ButtonInfo}}.ButtonID.Start)}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =\ \mbox{\hyperlink{class_select_management_window_a60c4664b2166b41772bbab753ac62a12}{m\_sceneTransitionManager}}.\mbox{\hyperlink{class_scene_transition_manager_a57a46b1860572b2f20db95dc3ca6f2ec}{SceneChange}}();}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_select_management_window_8cs_source_l00096}00096\ \}}
+
+\end{DoxyCode}

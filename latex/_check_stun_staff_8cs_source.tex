@@ -1,0 +1,68 @@
+\doxysection{Check\+Stun\+Staff.\+cs}
+\hypertarget{_check_stun_staff_8cs_source}{}\label{_check_stun_staff_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Staff/Scripts/Arbor3/State/Stun/CheckStunStaff.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Staff/Scripts/Arbor3/State/Stun/CheckStunStaff.cs}}
+\mbox{\hyperlink{_check_stun_staff_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_staff_state_info}{StaffStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00007}00007\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00008}\mbox{\hyperlink{class_check_stun_staff}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_stun_staff}{CheckStunStaff}}\ :\ \mbox{\hyperlink{class_base_staff_state_behaviour}{BaseStaffStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ スタン状態か確認する}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//=======================================}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ ステートリンク}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00017}\mbox{\hyperlink{class_check_stun_staff_aa179839252a1b5efc8ad75cc143d0f67}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_check_stun_staff_aa179839252a1b5efc8ad75cc143d0f67}{m\_stateLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//=======================================}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ スタン状態か確認}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00023}\mbox{\hyperlink{class_check_stun_staff_a226e7674f27cbd029ac5f2a5acbbf7e2}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_a226e7674f27cbd029ac5f2a5acbbf7e2}{Check}}()}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_staff_state_behaviour_aecf7aba8c57332905715f924eacef811}{GetStaffData}}();}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data.CurrentStaffState==\mbox{\hyperlink{namespace_staff_state_info_a34842cd7518eebc5e45880b7ca6d1336}{StaffState}}.Stun)}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_staff_state_behaviour_ab86a9e1a899188639edd84c2d58ddc2e}{SetTransition}}(\mbox{\hyperlink{class_check_stun_staff_aa179839252a1b5efc8ad75cc143d0f67}{m\_stateLink}});}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00037}\mbox{\hyperlink{class_check_stun_staff_a8c86e3656eee8a19add28266c75b9348}{00037}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_a8c86e3656eee8a19add28266c75b9348}{Start}}\ ()\ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00038}00038\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00042}\mbox{\hyperlink{class_check_stun_staff_a7d0f720aefa87369f951524cd312b464}{00042}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_a7d0f720aefa87369f951524cd312b464}{OnStateAwake}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00046}\mbox{\hyperlink{class_check_stun_staff_a2857cd3886b7906f2f172ae15e408403}{00046}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_a2857cd3886b7906f2f172ae15e408403}{OnStateBegin}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00050}\mbox{\hyperlink{class_check_stun_staff_ad708b08b9cc585189cbedbe99a4e413f}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_ad708b08b9cc585189cbedbe99a4e413f}{OnStateEnd}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00052}00052\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00054}\mbox{\hyperlink{class_check_stun_staff_ad702e347fb468e9d9a76df1eca90f2ca}{00054}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_ad702e347fb468e9d9a76df1eca90f2ca}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_stun_staff_a226e7674f27cbd029ac5f2a5acbbf7e2}{Check}}();}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00060}\mbox{\hyperlink{class_check_stun_staff_adf972790c96fac670d38397b53452c15}{00060}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_stun_staff_adf972790c96fac670d38397b53452c15}{OnStateLateUpdate}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_stun_staff_8cs_source_l00062}00062\ \}}
+
+\end{DoxyCode}

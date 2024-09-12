@@ -1,0 +1,98 @@
+\doxysection{Cut\+Scene\+Manager.\+cs}
+\hypertarget{_cut_scene_manager_8cs_source}{}\label{_cut_scene_manager_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/013\_CutScene/Script/CutSceneManager.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/013\_CutScene/Script/CutSceneManager.cs}}
+\mbox{\hyperlink{_cut_scene_manager_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.Playables;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.Timeline;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00007}\mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31f}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31f}{CutSceneNumber}}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00009}00009\ \ \ \ \ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31fa334c4a4c42fdb79d7ebc3e73b517e6f8}{none}},}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00010}00010\ \ \ \ \ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31fa143adfc42cce28d078f58066b05b639d}{gameOver}},}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00011}00011\ \ \ \ \ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31fac39492080aa592d894d08c667a6e749a}{reStart}},}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00012}00012\ \ \ \ \ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31fa2ffe4e77325d9a7152f7086ea7aa5114}{max}}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00013}00013\ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00015}\mbox{\hyperlink{class_cut_scene_manager}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_cut_scene_manager}{CutSceneManager}}\ :\ \mbox{\hyperlink{class_base_manager}{BaseManager}}<CutSceneManager>}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//カットシーンにアクセスするためのマネージャークラス（山本）}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00018}\mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{00018}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ PlayableDirector\ \mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{m\_playableDirector}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00019}\mbox{\hyperlink{class_cut_scene_manager_aa3841f7affc00e8637f193c91ac8ed84}{00019}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_serializable_dictionary}{SerializableDictionary<CutSceneNumber,\ TimelineAsset>}}\ \mbox{\hyperlink{class_cut_scene_manager_aa3841f7affc00e8637f193c91ac8ed84}{m\_dictionaryTimeline}};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00022}\mbox{\hyperlink{class_cut_scene_manager_ac9543139e5c0651c9264ac173a6ecadb}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cut_scene_manager_ac9543139e5c0651c9264ac173a6ecadb}{PlayCutScene}}(\mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31f}{CutSceneNumber}}\ \_cutSceneNumber)}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{m\_playableDirector}})}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}PlayableDirectorが登録されてない"{}});}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_cutSceneNumber)}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31f}{CutSceneNumber}}.gameOver:}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_cut_scene_manager_aa3841f7affc00e8637f193c91ac8ed84}{m\_dictionaryTimeline}}.TryGetValue(\_cutSceneNumber,\ out\ TimelineAsset\ asset))}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{m\_playableDirector}}.Play(asset);}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//WrapModeをHoldに変更}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_playableDirector.extrapolationMode\ =\ DirectorWrapMode.Hold;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}タイムラインアセットが登録されてない"{}});}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31f}{CutSceneNumber}}.reStart:}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_cut_scene_manager_aa3841f7affc00e8637f193c91ac8ed84}{m\_dictionaryTimeline}}.TryGetValue(\_cutSceneNumber,\ out\ TimelineAsset\ asset))}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{m\_playableDirector}}.Play(asset);}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//WrapModeをNoneに変更}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_playableDirector.extrapolationMode\ =\ DirectorWrapMode.None;}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}タイムラインアセットが登録されてない"{}});}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00074}\mbox{\hyperlink{class_cut_scene_manager_aa9eb00f990605111d99ce2ee92725a4e}{00074}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_cut_scene_manager_aa9eb00f990605111d99ce2ee92725a4e}{IsCutScenePlay}}()}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{m\_playableDirector}})}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}PlayableDirectorがセットされてないです。"{}});}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//シーンマネージャーにセットされたディレクターが再生中ならTrue}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_cut_scene_manager_acce5dedca6ef117a49c15343c5c3e6ed}{m\_playableDirector}}.state\ ==\ PlayState.Playing)}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_cut_scene_manager_8cs_source_l00092}00092\ \}}
+
+\end{DoxyCode}

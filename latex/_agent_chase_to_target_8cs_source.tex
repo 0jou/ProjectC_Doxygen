@@ -1,0 +1,159 @@
+\doxysection{Agent\+Chase\+To\+Target.\+cs}
+\hypertarget{_agent_chase_to_target_8cs_source}{}\label{_agent_chase_to_target_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/AgentChaseToTarget.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/AgentChaseToTarget.cs}}
+\mbox{\hyperlink{_agent_chase_to_target_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00005}00005\ \textcolor{comment}{//\ 敵のチェイス処理用クラス（伊波）}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00007}\mbox{\hyperlink{namespace_arbor}{00007}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_arbor_1_1_behaviour_tree_1_1_actions}{Arbor.BehaviourTree.Actions}}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00009}00009\ \ \ \ \ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00010}00010\ \ \ \ \ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Agent/AgentChaseToTransform"{}})]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00011}00011\ \ \ \ \ [BuiltInBehaviour]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00012}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform}{00012}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{sealed}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform}{AgentChaseToTransform}}\ :\ AgentMoveBase}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00014}00014\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ Serialize\ fields}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00017}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{00017}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ FlexibleTransform\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}\ =\ \textcolor{keyword}{new}\ FlexibleTransform();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00019}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa32d43e57ea74916d2157496cf0b5dc7}{00019}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ FlexibleFloat\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa32d43e57ea74916d2157496cf0b5dc7}{m\_stoppingDistance}}\ =\ \textcolor{keyword}{new}\ FlexibleFloat();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00022}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abf80a586d51af935dbbf62a560c28061}{00022}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_flexible_chase_parameters}{FlexibleChaseParameters}}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abf80a586d51af935dbbf62a560c28061}{m\_chaseParameters}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_flexible_chase_parameters}{FlexibleChaseParameters}}();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00025}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a837463143e2c04c9edd2dc86dc929768}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ FlexibleFloat\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a837463143e2c04c9edd2dc86dc929768}{m\_maxSearchInterval}}\ =\ \textcolor{keyword}{new}\ FlexibleFloat(0.5f);}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00028}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1232fe9306738c8588306fdeb43547a5}{00028}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ OutputSlotBool\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1232fe9306738c8588306fdeb43547a5}{m\_outIsWatch}};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00030}00030\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00032}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{00032}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Transform\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00033}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a4e299e5bf3cdbcba3b4f11d88c096f93}{00033}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a4e299e5bf3cdbcba3b4f11d88c096f93}{m\_targetPos}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00034}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a6c9826bb553f261f238a52dad890992f}{00034}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a6c9826bb553f261f238a52dad890992f}{m\_chaseTime}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00035}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a355b4f188d69aecf579a61569b89ef70}{00035}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a355b4f188d69aecf579a61569b89ef70}{m\_isWatch}};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00036}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{00036}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00038}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a0700629d187aeff7509e50c653b7049a}{00038}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a0700629d187aeff7509e50c653b7049a}{OnAwake}}()}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnAwake();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}}\ =\ transform.root.transform;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00044}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a8425904d1900091d26868cb58069dfd8}{00044}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a8425904d1900091d26868cb58069dfd8}{OnStart}}()}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnStart();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ad14b938b0dae683b9aca03d66c34d669}{WatchTarget}}();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}}\ =\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a837463143e2c04c9edd2dc86dc929768}{m\_maxSearchInterval}}.value;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00051}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abed142914d4c1ee166977f669f203cf6}{00051}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abed142914d4c1ee166977f669f203cf6}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnFixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}}\ -\/=\ Time.fixedDeltaTime;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a6c9826bb553f261f238a52dad890992f}{m\_chaseTime}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}}\ <=\ 0f)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a34f004df77bc39e87499d4baad16f333}{SearchTarget}}())}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ad14b938b0dae683b9aca03d66c34d669}{WatchTarget}}();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a97562d1eaaa02470d3ee5f61e8c12a28}{LostSightTarget}}();}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HACK:直値修正}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 遠くにいるなら低頻度で座標更新}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Distance(\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}}.position,\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value.position)\ <=\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abf80a586d51af935dbbf62a560c28061}{m\_chaseParameters}}.value.SearchCharacterDist)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}}\ =\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a837463143e2c04c9edd2dc86dc929768}{m\_maxSearchInterval}}.value;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}}\ =\ m\_maxSearchInterval.value\ *\ 2f;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a6c9826bb553f261f238a52dad890992f}{m\_chaseTime}}\ -\/=\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa197be853d59d506b2aa85f0aa337602}{m\_searchInterval}};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00083}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a06c98cecd4fbf5c57c23761f91a89723}{00083}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a06c98cecd4fbf5c57c23761f91a89723}{OnIntervalUpdate}}(AgentController\ agentController)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1232fe9306738c8588306fdeb43547a5}{m\_outIsWatch}}.SetValue(\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a355b4f188d69aecf579a61569b89ef70}{m\_isWatch}});}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ agentController.MoveTo(\_Speed.value,\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_aa32d43e57ea74916d2157496cf0b5dc7}{m\_stoppingDistance}}.value,\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a4e299e5bf3cdbcba3b4f11d88c096f93}{m\_targetPos}});}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00090}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ad14b938b0dae683b9aca03d66c34d669}{00090}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ad14b938b0dae683b9aca03d66c34d669}{WatchTarget}}()}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a355b4f188d69aecf579a61569b89ef70}{m\_isWatch}})}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a355b4f188d69aecf579a61569b89ef70}{m\_isWatch}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a6c9826bb553f261f238a52dad890992f}{m\_chaseTime}}\ =\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abf80a586d51af935dbbf62a560c28061}{m\_chaseParameters}}.value.MaxChaseTime;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a4e299e5bf3cdbcba3b4f11d88c096f93}{m\_targetPos}}\ =\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value.position;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00101}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a97562d1eaaa02470d3ee5f61e8c12a28}{00101}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a97562d1eaaa02470d3ee5f61e8c12a28}{LostSightTarget}}()}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a355b4f188d69aecf579a61569b89ef70}{m\_isWatch}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a6c9826bb553f261f238a52dad890992f}{m\_chaseTime}}\ >\ 0f)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a4e299e5bf3cdbcba3b4f11d88c096f93}{m\_targetPos}}\ =\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value.position;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00111}\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a34f004df77bc39e87499d4baad16f333}{00111}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a34f004df77bc39e87499d4baad16f333}{SearchTarget}}()}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 近すぎるなら強制で気付く}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Distance(\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}}.position,\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value.position)\ <=\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abf80a586d51af935dbbf62a560c28061}{m\_chaseParameters}}.value.NoticeDist)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 視野角内か確認}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ angle\ =\ Vector3.Angle(\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}}.forward,\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value.position\ -\/\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}}.position);}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ \mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_abf80a586d51af935dbbf62a560c28061}{m\_chaseParameters}}.value.ViewAngle\ *\ 0.5f)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レイ判定用コンポーネント取得}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_a1a3e5663975e42d87464ccf6808346de}{m\_targetTransform}}.value.gameObject.TryGetComponent(out\ Collider\ targetCollider))}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform_ae1578055bf87985c852bc7fd8e2155c7}{m\_myTransform}}.gameObject.TryGetComponent(out\ Collider\ myCollider))}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00136}00136\ }
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レイ判定}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetCollider.bounds.center\ -\/\ myCollider.bounds.center;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist\ =\ Vector3.Distance(targetCollider.bounds.center,\ myCollider.bounds.center);}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ Ray\ ray\ =\ \textcolor{keyword}{new}\ Ray(myCollider.bounds.center,\ dir);}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ RaycastHit\ hit;}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.DrawRay(ray.origin,\ ray.direction\ *\ dist,\ Color.red);}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ hit,\ dist))}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.collider.gameObject.name\ ==\ targetCollider.gameObject.name)}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_agent_chase_to_target_8cs_source_l00153}00153\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,94 @@
+\doxysection{Attack\+Staff\+Gangster.\+cs}
+\hypertarget{_attack_staff_gangster_8cs_source}{}\label{_attack_staff_gangster_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Gangster/Scripts/Arbor3/State/AttackStaffGangster.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Gangster/Scripts/Arbor3/State/AttackStaffGangster.cs}}
+\mbox{\hyperlink{_attack_staff_gangster_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_staff_state_info}{StaffStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00008}00008\ [AddComponentMenu(\textcolor{stringliteral}{"{}Gangster/AttackStaffGangster"{}})]}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00009}\mbox{\hyperlink{class_attack_staff_gangster}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_attack_staff_gangster}{AttackStaffGangster}}\ :\ \mbox{\hyperlink{class_base_gangster_state_behaviour}{BaseGangsterStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ ターゲットのスタッフを攻撃する}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00015}\mbox{\hyperlink{class_attack_staff_gangster_a5a2feb577d37a483aa7ec8ca2e2c8a0c}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_a5a2feb577d37a483aa7ec8ca2e2c8a0c}{SetStaffState}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}();}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ data.TargetStaffData.CurrentStaffState\ =\ \mbox{\hyperlink{namespace_staff_state_info_a34842cd7518eebc5e45880b7ca6d1336}{StaffState}}.Stun;}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00022}00022\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00024}\mbox{\hyperlink{class_attack_staff_gangster_a93b1f8ce16e78e95c04848ddd68228b3}{00024}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_a93b1f8ce16e78e95c04848ddd68228b3}{ReturnStaffState}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}();}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ data.TargetStaffData.CurrentStaffState\ =\ \mbox{\hyperlink{namespace_staff_state_info_a34842cd7518eebc5e45880b7ca6d1336}{StaffState}}.Default;}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00034}\mbox{\hyperlink{class_attack_staff_gangster_ae50773da0ca87a5e28bcf4b9ef7ef576}{00034}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_ae50773da0ca87a5e28bcf4b9ef7ef576}{Attack}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO\ ここで攻撃}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(Keyboard.current.oKey.wasPressedThisFrame)}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_staff_gangster_a93b1f8ce16e78e95c04848ddd68228b3}{ReturnStaffState}}();}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ m\_targetStaffData;}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00053}\mbox{\hyperlink{class_attack_staff_gangster_add3b874fd685562c9ea5d97dc9c74ec4}{00053}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_add3b874fd685562c9ea5d97dc9c74ec4}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00059}\mbox{\hyperlink{class_attack_staff_gangster_ac16bfb88898d08e0e66ecb98e1fbd54c}{00059}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_ac16bfb88898d08e0e66ecb98e1fbd54c}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00064}\mbox{\hyperlink{class_attack_staff_gangster_aa4a30190edb6ad146a41cef2b2593cc2}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_aa4a30190edb6ad146a41cef2b2593cc2}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_staff_gangster_a5a2feb577d37a483aa7ec8ca2e2c8a0c}{SetStaffState}}();}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00072}\mbox{\hyperlink{class_attack_staff_gangster_a5512ae00fdd221c0606b4c68417c7d37}{00072}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_a5512ae00fdd221c0606b4c68417c7d37}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00073}00073\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_staff_gangster_a93b1f8ce16e78e95c04848ddd68228b3}{ReturnStaffState}}();}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00078}\mbox{\hyperlink{class_attack_staff_gangster_a74e8e73064bcca0b36f646e892686a32}{00078}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_a74e8e73064bcca0b36f646e892686a32}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00079}00079\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 攻撃}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_staff_gangster_ae50773da0ca87a5e28bcf4b9ef7ef576}{Attack}}();}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00085}\mbox{\hyperlink{class_attack_staff_gangster_a190609230367d3b78ae847e2cdb8b0b9}{00085}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_attack_staff_gangster_a190609230367d3b78ae847e2cdb8b0b9}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00087}00087\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_attack_staff_gangster_8cs_source_l00088}00088\ \}}
+
+\end{DoxyCode}

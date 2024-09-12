@@ -1,0 +1,205 @@
+\doxysection{Proximity\+Create\+UI.\+cs}
+\hypertarget{_proximity_create_u_i_8cs_source}{}\label{_proximity_create_u_i_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/ProximityCreateUI/ProximityCreateUI.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/ProximityCreateUI/ProximityCreateUI.cs}}
+\mbox{\hyperlink{_proximity_create_u_i_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00009}\mbox{\hyperlink{class_proximity_create_u_i}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }\mbox{\hyperlink{class_proximity_create_u_i}{ProximityCreateUI}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ m\_tagのオブジェクトと当たり判定を行い、UIを作成する}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 作成用BoxCollider等の当たり判定が必要}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00015}\mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582}{ProximityCreateUIDestroyType}}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582a39e1450275f6b9c731ff9faafab3f44c}{Collider}},\ \ \ \ \ \textcolor{comment}{//\ 共通当たり判定で削除}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582af5879a4f2d5c232f4657ba8927c704a5}{EndCollider}},\ \ \textcolor{comment}{//\ 削除用当たり判定で削除}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582aa76d4ef5f3f6a672bbfab2865563e530}{Time}},\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 時間経過で削除}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//=============================================================}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00026}00026\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}当たり判定を行うTag"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00027}00027\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00028}00028\ \ \ \ \ [Tag]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00029}\mbox{\hyperlink{class_proximity_create_u_i_ab0e8da25af09f15b5c1173425a694804}{00029}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_proximity_create_u_i_ab0e8da25af09f15b5c1173425a694804}{m\_tag}}\ =\ \textcolor{stringliteral}{"{}Player"{}};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//=============================================================}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00033}00033\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}再度作成する"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00034}00034\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00035}\mbox{\hyperlink{class_proximity_create_u_i_aba3e4f4e9b317115287727838915152f}{00035}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_proximity_create_u_i_aba3e4f4e9b317115287727838915152f}{m\_showAgainFlg}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00039}00039\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}作成するチュートリアルUIプレハブ"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00040}00040\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00041}\mbox{\hyperlink{class_proximity_create_u_i_a4b60d237c8d55dabf19ce9a5a98c8a44}{00041}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_proximity_create_u_i_a4b60d237c8d55dabf19ce9a5a98c8a44}{m\_uiPrefab}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//\ 作成したウィンドウ保持}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00044}\mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{00044}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00047}00047\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}Fade間隔"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00048}00048\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00049}00049\ \ \ \ \ [Range(0.01f,\ 10.0f)]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00050}\mbox{\hyperlink{class_proximity_create_u_i_ad3410d83a2e8d0aa76fc2f57130ccb52}{00050}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_proximity_create_u_i_ad3410d83a2e8d0aa76fc2f57130ccb52}{m\_doDuration}}\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//============================================================}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00054}00054\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}削除判定の種類"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00055}00055\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00056}\mbox{\hyperlink{class_proximity_create_u_i_a4ef7160dab2196d38a68758427d0f443}{00056}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582}{ProximityCreateUIDestroyType}}\ \mbox{\hyperlink{class_proximity_create_u_i_a4ef7160dab2196d38a68758427d0f443}{m\_type}}\ =\ \mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582}{ProximityCreateUIDestroyType}}.Collider;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00060}00060\ \ \ \ \ \textcolor{comment}{//\ 作成可能状態か}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00062}\mbox{\hyperlink{class_proximity_create_u_i_a70741365aec73cd6935654114f39c819}{00062}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_proximity_create_u_i_a70741365aec73cd6935654114f39c819}{m\_isCreate}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//====================================================================-\/}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ 当たり判定でウィンドウを作成可能状態にする}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00067}\mbox{\hyperlink{class_proximity_create_u_i_a9c8c4120f3a5ec476fac08264e413c24}{00067}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_a9c8c4120f3a5ec476fac08264e413c24}{OnTriggerEnter}}(\mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582a39e1450275f6b9c731ff9faafab3f44c}{Collider}}\ other)}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00068}00068\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(\mbox{\hyperlink{class_proximity_create_u_i_ab0e8da25af09f15b5c1173425a694804}{m\_tag}}))}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能状態}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_a70741365aec73cd6935654114f39c819}{m\_isCreate}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00077}\mbox{\hyperlink{class_proximity_create_u_i_ab2d713e0a857b7adb192a3caca24d2d0}{00077}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_ab2d713e0a857b7adb192a3caca24d2d0}{OnTriggerExit}}(\mbox{\hyperlink{class_proximity_create_u_i_adca7629a8f3cd30a7ade22cab46e2582a39e1450275f6b9c731ff9faafab3f44c}{Collider}}\ other)}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_a0e36f8ca3f15949be72ec1a77b7c6197}{OnTriggerExitCollider}}(other);}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00083}\mbox{\hyperlink{class_proximity_create_u_i_a1e98017784385967fc02b4d6e7e05bf3}{00083}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_a1e98017784385967fc02b4d6e7e05bf3}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00084}00084\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_aa523fc211716bca565e7fda39e8041c1}{CreateUI}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_a845934f2bcb130a003b3fe9e53a773a1}{UpdateCollider}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_a86705692db7ae2314c6f81a60c65cab6}{UpdateEndCollider}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_aa23b0ba468bdfebaa2ed830e953173fd}{UpdateTime}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00093}\mbox{\hyperlink{class_proximity_create_u_i_aa523fc211716bca565e7fda39e8041c1}{00093}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_aa523fc211716bca565e7fda39e8041c1}{CreateUI}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成できないor作成済み}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_proximity_create_u_i_a70741365aec73cd6935654114f39c819}{m\_isCreate}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}}\ !=\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_create_u_i_a4b60d237c8d55dabf19ce9a5a98c8a44}{m\_uiPrefab}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成するUIプレハブがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウを作成}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}}\ =\ Instantiate(\mbox{\hyperlink{class_proximity_create_u_i_a4b60d237c8d55dabf19ce9a5a98c8a44}{m\_uiPrefab}});}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_a6dea07d813b4a0de38f57a1b13d1e533}{ShowUI}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00111}00111\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00113}00113\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00114}\mbox{\hyperlink{class_proximity_create_u_i_aeb7d22c728fb9426478755e611d437a5}{00114}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_aeb7d22c728fb9426478755e611d437a5}{DestroyUI}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00115}00115\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成したウィンドウを削除する}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}});}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 再度作成可能でなければ}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_create_u_i_aba3e4f4e9b317115287727838915152f}{m\_showAgainFlg}}\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00128}00128\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00129}00129\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00131}00131\ \ \ \ \ \textcolor{comment}{//\ 作成したUIからキャンバスグループを取得する}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00132}\mbox{\hyperlink{class_proximity_create_u_i_a030872b737624be348255ebf5d7b48ec}{00132}}\ \ \ \ \ \textcolor{keyword}{private}\ CanvasGroup\ \mbox{\hyperlink{class_proximity_create_u_i_a030872b737624be348255ebf5d7b48ec}{GetCanvasGroup}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00133}00133\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_proximity_create_u_i_a918c1d180c316a0ee13dc61440ff4772}{m\_createUI}}.GetComponent<CanvasGroup>();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00139}\mbox{\hyperlink{class_proximity_create_u_i_a6dea07d813b4a0de38f57a1b13d1e533}{00139}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_a6dea07d813b4a0de38f57a1b13d1e533}{ShowUI}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00140}00140\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ var\ canvasGroup\ =\ \mbox{\hyperlink{class_proximity_create_u_i_a030872b737624be348255ebf5d7b48ec}{GetCanvasGroup}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canvasGroup\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度透明度を0にする}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ canvasGroup.alpha\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ フェードイン}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ canvasGroup.DOFade(endValue:\ 1.0f,\ duration:\ \mbox{\hyperlink{class_proximity_create_u_i_ad3410d83a2e8d0aa76fc2f57130ccb52}{m\_doDuration}}).}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ SetLink(gameObject);}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00150}00150\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00151}00151\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00153}\mbox{\hyperlink{class_proximity_create_u_i_adbae3b8eddb2497a34eb0f01b74b7b72}{00153}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_create_u_i_adbae3b8eddb2497a34eb0f01b74b7b72}{HideUI}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00154}00154\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ var\ canvasGroup\ =\ \mbox{\hyperlink{class_proximity_create_u_i_a030872b737624be348255ebf5d7b48ec}{GetCanvasGroup}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (canvasGroup\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_aeb7d22c728fb9426478755e611d437a5}{DestroyUI}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00161}00161\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ フェードアウト}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ canvasGroup.DOFade(endValue:\ 0.0f,\ duration:\ \mbox{\hyperlink{class_proximity_create_u_i_ad3410d83a2e8d0aa76fc2f57130ccb52}{m\_doDuration}}).}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \ SetLink(gameObject).OnComplete(()\ =>}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_create_u_i_aeb7d22c728fb9426478755e611d437a5}{DestroyUI}}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00172}00172\ \ \ \ \ \textcolor{comment}{//\ キャンバスグループリストを取得する}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00173}\mbox{\hyperlink{class_proximity_create_u_i_a428712f52c0a1f9256129ba0a3154d35}{00173}}\ \ \ \ \ \textcolor{keyword}{private}\ List<CanvasGroup>\ \mbox{\hyperlink{class_proximity_create_u_i_a428712f52c0a1f9256129ba0a3154d35}{GetCanvasGroupList}}()}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00174}00174\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ List<CanvasGroup>\ canvasGroups\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (GameObject\ obj\ \textcolor{keywordflow}{in}\ FindObjectsOfType(typeof(GameObject)))}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シーン上に存在するオブジェクトならば処理.}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj.activeInHierarchy)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj.layer\ !=\ LayerMask.NameToLayer(\textcolor{stringliteral}{"{}UI"{}}))\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj.TryGetComponent<CanvasGroup>(out\ CanvasGroup\ canvasGroup))}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvasGroups.Add(canvasGroup);}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ canvasGroups;}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00191}00191\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00197}00197\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_proximity_create_u_i_8cs_source_l00199}00199\ \}}
+
+\end{DoxyCode}

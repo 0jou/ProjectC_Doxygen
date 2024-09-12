@@ -1,0 +1,118 @@
+\doxysection{Appear\+Management\+Character.\+cs}
+\hypertarget{_appear_management_character_8cs_source}{}\label{_appear_management_character_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Customer/Scripts/AppearManagementCharacter.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Customer/Scripts/AppearManagementCharacter.cs}}
+\mbox{\hyperlink{_appear_management_character_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UniRx;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UniRx.Triggers;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00009}\mbox{\hyperlink{class_appear_management_character}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_appear_management_character}{AppearManagementCharacter}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ characterを出現させる}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00014}00014\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}出現するキャラクターのリスト"{}})]}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00016}\mbox{\hyperlink{class_appear_management_character_a736ae02ac3f58f945805659193303078}{00016}}\ \ \ \ \ \textcolor{keyword}{private}\ List<GameObject>\ \mbox{\hyperlink{class_appear_management_character_a736ae02ac3f58f945805659193303078}{m\_characterPrefabList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//============================================================}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00020}00020\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}キャラクターを出現させる待機時間"{}})]}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00021}00021\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00022}\mbox{\hyperlink{class_appear_management_character_a2c07e7455b4c09b9f9f3d8c9eda7e8ce}{00022}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_appear_management_character_a2c07e7455b4c09b9f9f3d8c9eda7e8ce}{m\_appearDelay}}\ =\ 10.0f;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00024}00024\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}最大を出現させる数"{}})]}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00025}00025\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00026}\mbox{\hyperlink{class_appear_management_character_a4fffd19f2a69c68f0b0e5e9e8a3abe28}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_appear_management_character_a4fffd19f2a69c68f0b0e5e9e8a3abe28}{m\_maxSize}}\ =\ 5;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//============================================================}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\ キャラクターリスト}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00031}\mbox{\hyperlink{class_appear_management_character_a462a67120c60fba599432676daa617f7}{00031}}\ \ \ \ \ \textcolor{keyword}{private}\ List<GameObject>\ \mbox{\hyperlink{class_appear_management_character_a462a67120c60fba599432676daa617f7}{m\_characterList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00034}\mbox{\hyperlink{class_appear_management_character_a7f3d55b1c36ef945c260aecec24820d1}{00034}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_appear_management_character_a7f3d55b1c36ef945c260aecec24820d1}{m\_appearDelayCount}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00037}\mbox{\hyperlink{class_appear_management_character_a3f0723a5e3ba9f0f45b4a7ea2db7b13f}{00037}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_management_character_a3f0723a5e3ba9f0f45b4a7ea2db7b13f}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_management_character_a7d94658cf144632e5ef990c016033a4c}{Appear}}();}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00042}\mbox{\hyperlink{class_appear_management_character_a7d94658cf144632e5ef990c016033a4c}{00042}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_management_character_a7d94658cf144632e5ef990c016033a4c}{Appear}}()}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成最大数を越えるのであれば}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appear_management_character_a4fffd19f2a69c68f0b0e5e9e8a3abe28}{m\_maxSize}}\ <=\ \mbox{\hyperlink{class_appear_management_character_a462a67120c60fba599432676daa617f7}{m\_characterList}}.Count)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を提供できなければ}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsOrder())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 待ち列に客が入れなければ}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_queue_manager}{QueueManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInQueue())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_management_character_a7f3d55b1c36ef945c260aecec24820d1}{m\_appearDelayCount}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appear_management_character_a2c07e7455b4c09b9f9f3d8c9eda7e8ce}{m\_appearDelay}}\ <\ \mbox{\hyperlink{class_appear_management_character_a7f3d55b1c36ef945c260aecec24820d1}{m\_appearDelayCount}})}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期値に戻す}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_management_character_a7f3d55b1c36ef945c260aecec24820d1}{m\_appearDelayCount}}\ -\/=\ \mbox{\hyperlink{class_appear_management_character_a2c07e7455b4c09b9f9f3d8c9eda7e8ce}{m\_appearDelay}};}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 客を作成}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_management_character_ae2e489feb509b79c5d724ea3523e270d}{CreateObject}}();}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00070}\mbox{\hyperlink{class_appear_management_character_ae2e489feb509b79c5d724ea3523e270d}{00070}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_management_character_ae2e489feb509b79c5d724ea3523e270d}{CreateObject}}()}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ランダムで値を取得}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rand\ =\ Random.Range(0,\ \mbox{\hyperlink{class_appear_management_character_a736ae02ac3f58f945805659193303078}{m\_characterPrefabList}}.Count);}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ var\ prefab\ =\ \mbox{\hyperlink{class_appear_management_character_a736ae02ac3f58f945805659193303078}{m\_characterPrefabList}}[rand];}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prefab\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}シリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ var\ pos\ =\ transform.position;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ var\ rot\ =\ transform.rotation;}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスを作成}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ var\ obj\ =\ Instantiate(\mbox{\hyperlink{class_appear_management_character_a736ae02ac3f58f945805659193303078}{m\_characterPrefabList}}[rand],\ pos,\ rot);}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ リストで保持}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_management_character_a462a67120c60fba599432676daa617f7}{m\_characterList}}.Add(obj);}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ obj.OnDestroyAsObservable()}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Subscribe(\_\ =>}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_management_character_a462a67120c60fba599432676daa617f7}{m\_characterList}}.Remove(obj);}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターモーターを更新する}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ var\ core\ =\ obj.GetComponent<\mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}>();}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (core\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}キャラクターコントローラーが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーターの座標を更新}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ core.\mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{SetPositionMotor}}(pos);}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_appear_management_character_8cs_source_l00112}00112\ \}}
+
+\end{DoxyCode}

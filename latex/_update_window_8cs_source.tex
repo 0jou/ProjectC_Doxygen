@@ -1,0 +1,53 @@
+\doxysection{Update\+Window.\+cs}
+\hypertarget{_update_window_8cs_source}{}\label{_update_window_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/Window/UpdateWindow.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/Window/UpdateWindow.cs}}
+\mbox{\hyperlink{_update_window_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00007}\mbox{\hyperlink{class_update_window}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_update_window}{UpdateWindow}}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 作成したウィンドウの処理をまとめたクラス}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 処理を行う}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 引数のGameObjectにはWindowControllerコンポーネントが必要}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00014}\mbox{\hyperlink{class_update_window_aeae7b0b67ac0a33499fb63445efcb15e}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_update_window_aeae7b0b67ac0a33499fb63445efcb15e}{Update<WindowType>}}(GameObject\ \_window,\ System.Func<WindowType,\ UniTask>\ onBeforeInitialize\ =\ \textcolor{keyword}{null})\ where\ WindowType\ :\ \mbox{\hyperlink{class_base_window}{BaseWindow}}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ \_window.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_window\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}引数のWindowControllerがnullです"{}});}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ コントローラーを取得}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ var\ windowController\ =\ \_window.GetComponent<\mbox{\hyperlink{class_window_controller}{WindowController}}>();}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (windowController\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerコンポーネントが登録されていません"{}});}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成したウィンドウのアップデート}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ await\ windowController.CreateWindow<WindowType>(\textcolor{keyword}{false},\ onBeforeInitialize);}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}(System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_update_window_8cs_source_l00047}00047\ \}}
+
+\end{DoxyCode}

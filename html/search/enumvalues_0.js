@@ -11,5 +11,5 @@ var searchData=
   ['always_8',['Always',['../class_find_chair_customer.html#a114ad35b8d3249a4ebeee47be9b309a7a68eec46437c384d8dad18d5464ebc35c',1,'FindChairCustomer']]],
   ['angry_9',['Angry',['../namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987acc3b72d79006b9b02571c1974f08244d',1,'CustomerStateInfo']]],
   ['appearance_10',['Appearance',['../class_show_speech_bubble.html#a4eed3e331243ed5f9853ead825b7cdf4aa1c58e94227389415de133efdf78ea6e',1,'ShowSpeechBubble']]],
-  ['attack_11',['Attack',['../class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708adcfafcb4323b102c7e204555d313ba0a',1,'ActionUIController']]]
+  ['attack_11',['Attack',['../class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708adcfafcb4323b102c7e204555d313ba0a',1,'ActionUIController.Attack'],['../namespace_gangster_state_info.html#a959a40699db7e774ca1c8b9a5b77d42eadcfafcb4323b102c7e204555d313ba0a',1,'GangsterStateInfo.Attack']]]
 ];

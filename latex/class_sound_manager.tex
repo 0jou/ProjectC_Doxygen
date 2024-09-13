@@ -2,7 +2,7 @@
 \hypertarget{class_sound_manager}{}\label{class_sound_manager}\index{SoundManager@{SoundManager}}
 
 
-\doxylink{class_sound_manager}{Sound\+Manager} クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する 3D再生のみ Cri\+Atom\+Ex\+Playerを必須とする 2D再生では同一音源の同時再生が現在不可能だが、3\+D再生では可能  
+\doxylink{class_sound_manager}{Sound\+Manager} クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ Cri\+Atom\+Sourceを必須とする(マネージャー側で追加する) 2D再生では同一音源の同時再生が現在不可能だが、3\+D再生では可能  
 
 
 Sound\+Manager の継承関係図\begin{figure}[H]
@@ -15,44 +15,39 @@ Sound\+Manager の継承関係図\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 Cri\+Atom\+Ex\+Playback \mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{Start\+Playback}} (string cue\+Name, float vol=1.\+0f, float pitch=0)
-\item 
+\begin{DoxyCompactList}\small\item\em 2Dでのサウンド再生 \end{DoxyCompactList}\item 
 Cri\+Atom\+Ex\+Playback \mbox{\hyperlink{class_sound_manager_a71bf6aeca5886488a7fdccd5890df00e}{Start3\+DPlayback}} (string cue\+Name, Unity\+Engine.\+Vector3 pos, float vol=1.\+0f, float pitch=0)
-\begin{DoxyCompactList}\small\item\em 座標のみ指定での3\+D再生 指定された座標にオブジェクトを作成し\+Cri\+Atom\+Ex\+Playerを紐づけ再生 再生終了時自動でオブジェクトが破棄される \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em 座標のみ指定での3\+D再生 指定された座標にオブジェクトを作成し\+Cri\+Atom\+Ex\+Player,Instant3\+DSound\+Playerを紐づけ再生 再生終了時自動でオブジェクトが破棄される \end{DoxyCompactList}\item 
 Cri\+Atom\+Ex\+Playback \mbox{\hyperlink{class_sound_manager_a17584a1ca5681031c0b6273c2c20a848}{Start3\+DPlayback}} (string cue\+Name, Game\+Object obj, float vol=1.\+0f, float pitch=0)
-\item 
+\begin{DoxyCompactList}\small\item\em 3D再生 指定されたオブジェクトに音源を設定し再生 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a3af4898d444a764a272a2cb0050b2459}{Start\+BGM}} (string cue\+Name, float vol=1.\+0f, float pitch=0)
-\item 
+\begin{DoxyCompactList}\small\item\em BGM再生 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a330ace02b66a87c140a389e63fa8f7ff}{Stop\+BGM}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em BGM再生停止 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_a9436221ac54eb9f54622702515dd1d1b}{Pause\+BGM}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em BGM一時停止 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_abd4b95524a734a50aee80ae2f672e255}{Resume\+BGM}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em BGM再開 \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_ac3edddb38382d04bd1d1a25da335fd11}{Set\+BGMVolume\+And\+Pitch}} (float vol, float pitch)
-\item 
-bool \mbox{\hyperlink{class_sound_manager_ae7948b960ab5563fb0b831730af73b39}{Is\+BGMPlaying}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em BGMの音量とピッチを設定 \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_sound_manager_afa0595406547ee4ce868022ff1852773}{Is\+BGMPaused}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em BGM再生中かどうか \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_sound_manager_ab6390ead95d57d4f8b68a18d37a2ec8a}{Dispose}} ()
-\end{DoxyCompactItemize}
-\doxysubsubsection*{限定公開メンバ関数}
-\begin{DoxyCompactItemize}
-\item 
-virtual void \mbox{\hyperlink{class_sound_manager_adcb739b7c36be988129618a69faac2ff}{Dispose}} (bool disposing)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 破棄処理 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{プロパティ}
 \begin{DoxyCompactItemize}
 \item 
-Cri\+Atom\+Ex\+Player \mbox{\hyperlink{class_sound_manager_a3b830db702a83ee46a365f3e0655f6cf}{BGMPlayer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\item 
 static \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}} \mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}} = new \mbox{\hyperlink{class_sound_manager}{Sound\+Manager}}()\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
+\item 
+Cri\+Atom\+Ex\+Player \mbox{\hyperlink{class_sound_manager_a3b830db702a83ee46a365f3e0655f6cf}{BGMPlayer}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \end{DoxyCompactItemize}
 \doxysubsubsection*{非公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_sound_manager_ad8f22d4dec2d1fdfc00d0043e57e6d4b}{Sound\+Manager}} ()
 \item 
+void \mbox{\hyperlink{class_sound_manager_a1f98b15f2532140dacc1edaed819df3e}{Dispose}} (bool disposing)
+\begin{DoxyCompactList}\small\item\em 破棄処理 \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_sound_manager_a32629a7f0b9e01292e2df977758c37fe}{\texorpdfstring{$\sim$}{\string~}\+Sound\+Manager}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
@@ -67,9 +62,9 @@ bool \mbox{\hyperlink{class_sound_manager_a16d0253cb04d227a796341850afd2421}{m\+
 
 
 \doxysubsection{詳解}
-\doxylink{class_sound_manager}{Sound\+Manager} クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する 3D再生のみ Cri\+Atom\+Ex\+Playerを必須とする 2D再生では同一音源の同時再生が現在不可能だが、3\+D再生では可能 
+\doxylink{class_sound_manager}{Sound\+Manager} クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ Cri\+Atom\+Sourceを必須とする(マネージャー側で追加する) 2D再生では同一音源の同時再生が現在不可能だが、3\+D再生では可能 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00018}{18}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00023}{23}} 行目に定義があります。
 
 
 
@@ -82,7 +77,7 @@ Sound\+Manager.\+Sound\+Manager (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00123}{123}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00148}{148}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a32629a7f0b9e01292e2df977758c37fe}\index{SoundManager@{SoundManager}!````~SoundManager@{\texorpdfstring{$\sim$}{\string~}SoundManager}}
 \index{````~SoundManager@{\texorpdfstring{$\sim$}{\string~}SoundManager}!SoundManager@{SoundManager}}
@@ -92,7 +87,7 @@ Sound\+Manager.\texorpdfstring{$\sim$}{\string~}\+Sound\+Manager (\begin{DoxyPar
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00138}{138}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00164}{164}} 行目に定義があります。
 
 
 
@@ -105,17 +100,25 @@ void Sound\+Manager.\+Dispose (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00143}{143}} 行目に定義があります。
+破棄処理 
 
-\Hypertarget{class_sound_manager_adcb739b7c36be988129618a69faac2ff}\index{SoundManager@{SoundManager}!Dispose@{Dispose}}
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00170}{170}} 行目に定義があります。
+
+\Hypertarget{class_sound_manager_a1f98b15f2532140dacc1edaed819df3e}\index{SoundManager@{SoundManager}!Dispose@{Dispose}}
 \index{Dispose@{Dispose}!SoundManager@{SoundManager}}
 \doxysubsubsection{\texorpdfstring{Dispose()}{Dispose()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_sound_manager_adcb739b7c36be988129618a69faac2ff} 
-virtual void Sound\+Manager.\+Dispose (\begin{DoxyParamCaption}\item[{bool}]{disposing}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+{\footnotesize\ttfamily \label{class_sound_manager_a1f98b15f2532140dacc1edaed819df3e} 
+void Sound\+Manager.\+Dispose (\begin{DoxyParamCaption}\item[{bool}]{disposing}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00128}{128}} 行目に定義があります。
+破棄処理 
+
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00154}{154}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_afa0595406547ee4ce868022ff1852773}\index{SoundManager@{SoundManager}!IsBGMPaused@{IsBGMPaused}}
 \index{IsBGMPaused@{IsBGMPaused}!SoundManager@{SoundManager}}
@@ -125,17 +128,11 @@ bool Sound\+Manager.\+Is\+BGMPaused (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00118}{118}} 行目に定義があります。
-
-\Hypertarget{class_sound_manager_ae7948b960ab5563fb0b831730af73b39}\index{SoundManager@{SoundManager}!IsBGMPlaying@{IsBGMPlaying}}
-\index{IsBGMPlaying@{IsBGMPlaying}!SoundManager@{SoundManager}}
-\doxysubsubsection{\texorpdfstring{IsBGMPlaying()}{IsBGMPlaying()}}
-{\footnotesize\ttfamily \label{class_sound_manager_ae7948b960ab5563fb0b831730af73b39} 
-bool Sound\+Manager.\+Is\+BGMPlaying (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+BGM再生中かどうか 
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00112}{112}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00143}{143}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a9436221ac54eb9f54622702515dd1d1b}\index{SoundManager@{SoundManager}!PauseBGM@{PauseBGM}}
 \index{PauseBGM@{PauseBGM}!SoundManager@{SoundManager}}
@@ -145,7 +142,11 @@ void Sound\+Manager.\+Pause\+BGM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00096}{96}} 行目に定義があります。
+BGM一時停止 
+
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00120}{120}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_abd4b95524a734a50aee80ae2f672e255}\index{SoundManager@{SoundManager}!ResumeBGM@{ResumeBGM}}
 \index{ResumeBGM@{ResumeBGM}!SoundManager@{SoundManager}}
@@ -155,7 +156,11 @@ void Sound\+Manager.\+Resume\+BGM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00101}{101}} 行目に定義があります。
+BGM再開 
+
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00126}{126}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_ac3edddb38382d04bd1d1a25da335fd11}\index{SoundManager@{SoundManager}!SetBGMVolumeAndPitch@{SetBGMVolumeAndPitch}}
 \index{SetBGMVolumeAndPitch@{SetBGMVolumeAndPitch}!SoundManager@{SoundManager}}
@@ -165,7 +170,18 @@ void Sound\+Manager.\+Set\+BGMVolume\+And\+Pitch (\begin{DoxyParamCaption}\item[
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00106}{106}} 行目に定義があります。
+BGMの音量とピッチを設定 
+
+
+\begin{DoxyParams}{引数}
+{\em vol} & 音量設定(0\texorpdfstring{$\sim$}{\string~}1)\\
+\hline
+{\em pitch} & 音程設定(-\/2400\texorpdfstring{$\sim$}{\string~}2400) 1200で1オクターブ変わる\\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00136}{136}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a17584a1ca5681031c0b6273c2c20a848}\index{SoundManager@{SoundManager}!Start3DPlayback@{Start3DPlayback}}
 \index{Start3DPlayback@{Start3DPlayback}!SoundManager@{SoundManager}}
@@ -175,7 +191,25 @@ Cri\+Atom\+Ex\+Playback Sound\+Manager.\+Start3\+DPlayback (\begin{DoxyParamCapt
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00065}{65}} 行目に定義があります。
+3D再生 指定されたオブジェクトに音源を設定し再生 
+
+
+\begin{DoxyParams}{引数}
+{\em cue\+Name} & サウンドの識別名称\\
+\hline
+{\em obj} & オブジェクト\\
+\hline
+{\em vol} & 音量設定(0\texorpdfstring{$\sim$}{\string~}1)\\
+\hline
+{\em pitch} & 音程設定(-\/2400\texorpdfstring{$\sim$}{\string~}2400) 1200で1オクターブ変わる\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+Cri\+Atom\+Ex\+Playback
+\end{DoxyReturn}
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00087}{87}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a71bf6aeca5886488a7fdccd5890df00e}\index{SoundManager@{SoundManager}!Start3DPlayback@{Start3DPlayback}}
 \index{Start3DPlayback@{Start3DPlayback}!SoundManager@{SoundManager}}
@@ -185,25 +219,25 @@ Cri\+Atom\+Ex\+Playback Sound\+Manager.\+Start3\+DPlayback (\begin{DoxyParamCapt
 
 
 
-座標のみ指定での3\+D再生 指定された座標にオブジェクトを作成し\+Cri\+Atom\+Ex\+Playerを紐づけ再生 再生終了時自動でオブジェクトが破棄される 
+座標のみ指定での3\+D再生 指定された座標にオブジェクトを作成し\+Cri\+Atom\+Ex\+Player,Instant3\+DSound\+Playerを紐づけ再生 再生終了時自動でオブジェクトが破棄される 
 
 
 \begin{DoxyParams}{引数}
-{\em cue\+Name} & \\
+{\em cue\+Name} & サウンドの識別名称\\
 \hline
-{\em pos} & \\
+{\em pos} & 座標\\
 \hline
-{\em vol} & \\
+{\em vol} & 音量設定(0\texorpdfstring{$\sim$}{\string~}1)\\
 \hline
-{\em pitch} & \\
+{\em pitch} & 音程設定(-\/2400\texorpdfstring{$\sim$}{\string~}2400) 1200で1オクターブ変わる\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{戻り値}
-
+Cri\+Atom\+Ex\+Playback
 \end{DoxyReturn}
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00047}{47}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00061}{61}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a3af4898d444a764a272a2cb0050b2459}\index{SoundManager@{SoundManager}!StartBGM@{StartBGM}}
 \index{StartBGM@{StartBGM}!SoundManager@{SoundManager}}
@@ -213,7 +247,20 @@ void Sound\+Manager.\+Start\+BGM (\begin{DoxyParamCaption}\item[{string}]{cue\+N
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00082}{82}} 行目に定義があります。
+BGM再生 
+
+
+\begin{DoxyParams}{引数}
+{\em cue\+Name} & サウンドの識別名称\\
+\hline
+{\em vol} & 音量設定(0\texorpdfstring{$\sim$}{\string~}1)\\
+\hline
+{\em pitch} & 音程設定(-\/2400\texorpdfstring{$\sim$}{\string~}2400) 1200で1オクターブ変わる\\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00104}{104}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}\index{SoundManager@{SoundManager}!StartPlayback@{StartPlayback}}
 \index{StartPlayback@{StartPlayback}!SoundManager@{SoundManager}}
@@ -223,7 +270,23 @@ Cri\+Atom\+Ex\+Playback Sound\+Manager.\+Start\+Playback (\begin{DoxyParamCaptio
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00027}{27}} 行目に定義があります。
+2Dでのサウンド再生 
+
+
+\begin{DoxyParams}{引数}
+{\em cue\+Name} & サウンドの識別名称\\
+\hline
+{\em vol} & 音量設定(0\texorpdfstring{$\sim$}{\string~}1)\\
+\hline
+{\em pitch} & 音程設定(-\/2400\texorpdfstring{$\sim$}{\string~}2400) 1200で1オクターブ変わる\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{戻り値}
+Cri\+Atom\+Ex\+Playback
+\end{DoxyReturn}
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00041}{41}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a330ace02b66a87c140a389e63fa8f7ff}\index{SoundManager@{SoundManager}!StopBGM@{StopBGM}}
 \index{StopBGM@{StopBGM}!SoundManager@{SoundManager}}
@@ -233,7 +296,11 @@ void Sound\+Manager.\+Stop\+BGM (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00091}{91}} 行目に定義があります。
+BGM再生停止 
+
+
+
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00114}{114}} 行目に定義があります。
 
 
 
@@ -246,7 +313,7 @@ Cri\+Atom\+Ex\+Player Sound\+Manager.\+m\+\_\+bgm\+Player\hspace{0.3cm}{\ttfamil
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00021}{21}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00027}{27}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a11b09d717066e577af7fb5bb336ce864}\index{SoundManager@{SoundManager}!m\_currentBGM@{m\_currentBGM}}
 \index{m\_currentBGM@{m\_currentBGM}!SoundManager@{SoundManager}}
@@ -256,7 +323,7 @@ Cri\+Atom\+Ex\+Playback Sound\+Manager.\+m\+\_\+current\+BGM\hspace{0.3cm}{\ttfa
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00022}{22}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00030}{30}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a16d0253cb04d227a796341850afd2421}\index{SoundManager@{SoundManager}!m\_disposedValue@{m\_disposedValue}}
 \index{m\_disposedValue@{m\_disposedValue}!SoundManager@{SoundManager}}
@@ -266,7 +333,7 @@ bool Sound\+Manager.\+m\+\_\+disposed\+Value\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00026}{26}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00032}{32}} 行目に定義があります。
 
 
 
@@ -279,7 +346,7 @@ Cri\+Atom\+Ex\+Player Sound\+Manager.\+BGMPlayer\hspace{0.3cm}{\ttfamily [get]}}
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00023}{23}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00028}{28}} 行目に定義があります。
 
 \Hypertarget{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}\index{SoundManager@{SoundManager}!Instance@{Instance}}
 \index{Instance@{Instance}!SoundManager@{SoundManager}}
@@ -289,7 +356,7 @@ Cri\+Atom\+Ex\+Player Sound\+Manager.\+BGMPlayer\hspace{0.3cm}{\ttfamily [get]}}
 
 
 
- \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00024}{24}} 行目に定義があります。
+ \mbox{\hyperlink{_sound_manager_8cs_source}{Sound\+Manager.\+cs}} の \mbox{\hyperlink{_sound_manager_8cs_source_l00025}{25}} 行目に定義があります。
 
 
 

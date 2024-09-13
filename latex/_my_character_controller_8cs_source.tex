@@ -137,134 +137,135 @@
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00142}00142\ }
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーション}}
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ currentRotation\ =\ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}}\ *\ currentRotation;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00145}00145\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00146}00146\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00152}\mbox{\hyperlink{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11}{00152}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11}{UpdateVelocity}}(ref\ Vector3\ currentVelocity,\ \textcolor{keywordtype}{float}\ deltaTime)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00153}00153\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.IsStableOnGround)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reorient\ source\ velocity\ on\ current\ ground\ slope\ (this\ is\ because\ we\ don't\ want\ our\ smoothing\ to\ cause\ any\ velocity\ losses\ in\ slope\ changes)}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//currentVelocity\ =\ Motor.GetDirectionTangentToSurface(currentVelocity,\ Motor.GroundingStatus.GroundNormal)\ *\ currentVelocity.magnitude;}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00158}00158\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ target\ velocity}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector3\ inputRight\ =\ Vector3.Cross(\_moveInputVector,\ Motor.CharacterUp);}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector3\ reorientedInput\ =\ Vector3.Cross(Motor.GroundingStatus.GroundNormal,\ inputRight).normalized\ *\ \_moveInputVector.magnitude;}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00162}00162\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}})}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetMovementVelocity;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}.magnitude\ ==\ 0.0f)\ targetMovementVelocity\ =\ Motor.CharacterForward\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ targetMovementVelocity\ =\ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00168}00168\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Smooth\ movement\ Velocity}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ =\ Vector3.Lerp(currentVelocity,\ targetMovementVelocity,\ 1\ -\/\ Mathf.Exp(-\/\mbox{\hyperlink{class_my_character_controller_af959b5778bd6582b2b4721330c23dbba}{StableMovementSharpness}}\ *\ deltaTime));}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーションの移動}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (deltaTime\ >\ 0)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ final\ velocity\ is\ the\ velocity\ from\ root\ motion\ reoriented\ on\ the\ ground\ plane}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Velocity\ =\ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ /\ deltaTime;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ =\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GetDirectionTangentToSurface(Velocity,\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.GroundNormal)\ *\ Velocity.magnitude;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//currentVelocity\ *=\ 3.0f;}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ >\ 0f)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ want\ to\ move,\ add\ an\ acceleration\ to\ the\ velocity}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetMovementVelocity\ =\ Motor.CharacterForward\ *\ \mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ velocityDiff\ =\ Vector3.ProjectOnPlane(targetMovementVelocity\ -\/\ currentVelocity,\ \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}});}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ velocityDiff\ *\ deltaTime;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00190}00190\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gravity}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}}\ *\ deltaTime;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00194}00194\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}.sqrMagnitude\ >\ 0f)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}\ =\ Vector3.zero;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00200}00200\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ =\ Vector3.zero;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}}\ =\ 1.0f;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00203}00203\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00204}00204\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00209}\mbox{\hyperlink{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f}{00209}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f}{AfterCharacterUpdate}}(\textcolor{keywordtype}{float}\ deltaTime)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00210}00210\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーション関連\ Updateでためたルートモーションの移動量をリセット}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ =\ Vector3.zero;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}}\ =\ Quaternion.identity;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00214}00214\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00215}00215\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00216}\mbox{\hyperlink{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea}{00216}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea}{IsColliderValidForCollisions}}(Collider\ coll)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00217}00217\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00218}00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tag\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\_tagList}})}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coll.CompareTag(tag))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}}\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00146}00146\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00147}00147\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00153}\mbox{\hyperlink{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11}{00153}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11}{UpdateVelocity}}(ref\ Vector3\ currentVelocity,\ \textcolor{keywordtype}{float}\ deltaTime)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00154}00154\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.IsStableOnGround)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reorient\ source\ velocity\ on\ current\ ground\ slope\ (this\ is\ because\ we\ don't\ want\ our\ smoothing\ to\ cause\ any\ velocity\ losses\ in\ slope\ changes)}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//currentVelocity\ =\ Motor.GetDirectionTangentToSurface(currentVelocity,\ Motor.GroundingStatus.GroundNormal)\ *\ currentVelocity.magnitude;}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00159}00159\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ target\ velocity}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector3\ inputRight\ =\ Vector3.Cross(\_moveInputVector,\ Motor.CharacterUp);}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector3\ reorientedInput\ =\ Vector3.Cross(Motor.GroundingStatus.GroundNormal,\ inputRight).normalized\ *\ \_moveInputVector.magnitude;}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}})}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetMovementVelocity;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}.magnitude\ ==\ 0.0f)\ targetMovementVelocity\ =\ Motor.CharacterForward\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ targetMovementVelocity\ =\ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Smooth\ movement\ Velocity}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ =\ Vector3.Lerp(currentVelocity,\ targetMovementVelocity,\ 1\ -\/\ Mathf.Exp(-\/\mbox{\hyperlink{class_my_character_controller_af959b5778bd6582b2b4721330c23dbba}{StableMovementSharpness}}\ *\ deltaTime));}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーションの移動}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (deltaTime\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ final\ velocity\ is\ the\ velocity\ from\ root\ motion\ reoriented\ on\ the\ ground\ plane}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Velocity\ =\ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ /\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ =\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GetDirectionTangentToSurface(Velocity,\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.GroundNormal)\ *\ Velocity.magnitude;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//currentVelocity\ *=\ 3.0f;}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ >\ 0f)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ want\ to\ move,\ add\ an\ acceleration\ to\ the\ velocity}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetMovementVelocity\ =\ Motor.CharacterForward\ *\ \mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ velocityDiff\ =\ Vector3.ProjectOnPlane(targetMovementVelocity\ -\/\ currentVelocity,\ \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}});}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ velocityDiff\ *\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gravity}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}}\ *\ deltaTime;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}.sqrMagnitude\ >\ 0f)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00201}00201\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}}\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00210}\mbox{\hyperlink{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f}{00210}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f}{AfterCharacterUpdate}}(\textcolor{keywordtype}{float}\ deltaTime)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00211}00211\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーション関連\ Updateでためたルートモーションの移動量をリセット}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}}\ =\ Quaternion.identity;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00217}\mbox{\hyperlink{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea}{00217}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea}{IsColliderValidForCollisions}}(Collider\ coll)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00218}00218\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tag\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\_tagList}})}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coll.CompareTag(tag))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00223}00223\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00225}00225\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00226}00226\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00227}\mbox{\hyperlink{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66}{00227}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66}{OnGroundHit}}(Collider\ hitCollider,\ Vector3\ hitNormal,\ Vector3\ hitPoint,\ ref\ HitStabilityReport\ hitStabilityReport)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00228}00228\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00229}00229\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00230}00230\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00231}\mbox{\hyperlink{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f}{00231}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f}{OnMovementHit}}(Collider\ hitCollider,\ Vector3\ hitNormal,\ Vector3\ hitPoint,\ ref\ HitStabilityReport\ hitStabilityReport)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00232}00232\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00233}00233\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00234}00234\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00235}\mbox{\hyperlink{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec}{00235}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec}{PostGroundingUpdate}}(\textcolor{keywordtype}{float}\ deltaTime)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00236}00236\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00237}00237\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00238}00238\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00239}\mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{00239}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{AddVelocity}}(Vector3\ velocity)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00240}00240\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}\ +=\ velocity;}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00242}00242\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00243}00243\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00244}\mbox{\hyperlink{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032}{00244}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032}{ProcessHitStabilityReport}}(Collider\ hitCollider,\ Vector3\ hitNormal,\ Vector3\ hitPoint,\ Vector3\ atCharacterPosition,\ Quaternion\ atCharacterRotation,\ ref\ HitStabilityReport\ hitStabilityReport)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00245}00245\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00246}00246\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00247}00247\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00248}\mbox{\hyperlink{class_my_character_controller_a426432b115fc711b9b708ae576e8e137}{00248}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a426432b115fc711b9b708ae576e8e137}{OnDiscreteCollisionDetected}}(Collider\ hitCollider)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00249}00249\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00250}00250\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00251}00251\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00224}00224\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00226}00226\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00228}\mbox{\hyperlink{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66}{00228}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66}{OnGroundHit}}(Collider\ hitCollider,\ Vector3\ hitNormal,\ Vector3\ hitPoint,\ ref\ HitStabilityReport\ hitStabilityReport)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00229}00229\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00230}00230\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00231}00231\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00232}\mbox{\hyperlink{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f}{00232}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f}{OnMovementHit}}(Collider\ hitCollider,\ Vector3\ hitNormal,\ Vector3\ hitPoint,\ ref\ HitStabilityReport\ hitStabilityReport)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00233}00233\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00234}00234\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00236}\mbox{\hyperlink{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec}{00236}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec}{PostGroundingUpdate}}(\textcolor{keywordtype}{float}\ deltaTime)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00237}00237\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00238}00238\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00240}\mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{00240}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{AddVelocity}}(Vector3\ velocity)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00241}00241\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}\ +=\ velocity;}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00243}00243\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00245}\mbox{\hyperlink{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032}{00245}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032}{ProcessHitStabilityReport}}(Collider\ hitCollider,\ Vector3\ hitNormal,\ Vector3\ hitPoint,\ Vector3\ atCharacterPosition,\ Quaternion\ atCharacterRotation,\ ref\ HitStabilityReport\ hitStabilityReport)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00246}00246\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00247}00247\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00249}\mbox{\hyperlink{class_my_character_controller_a426432b115fc711b9b708ae576e8e137}{00249}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a426432b115fc711b9b708ae576e8e137}{OnDiscreteCollisionDetected}}(Collider\ hitCollider)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00250}00250\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00251}00251\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00252}00252\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00253}\mbox{\hyperlink{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3}{00253}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3}{Jump}}(\textcolor{keywordtype}{float}\ \_jumpPower)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00254}00254\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.ForceUnground(0.1f);}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{AddVelocity}}(\textcolor{keyword}{new}\ Vector3(0f,\ \_jumpPower,\ 0f));}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00257}00257\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00258}00258\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00253}00253\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00254}\mbox{\hyperlink{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3}{00254}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3}{Jump}}(\textcolor{keywordtype}{float}\ \_jumpPower)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00255}00255\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.ForceUnground(0.1f);}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{AddVelocity}}(\textcolor{keyword}{new}\ Vector3(0f,\ \_jumpPower,\ 0f));}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00258}00258\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00259}00259\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00260}\mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{00260}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{SetPositionMotor}}(Vector3\ \_pos,\ \textcolor{keywordtype}{bool}\ \_bypassInterpolation\ =\ \textcolor{keyword}{true})}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00261}00261\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}モーターがシリアライズされていません"{}});}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00267}00267\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00268}00268\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.SetPosition(\_pos,\ \_bypassInterpolation);}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00269}00269\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00270}00270\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00271}\mbox{\hyperlink{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d}{00271}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d}{AddNoHitTag}}(\textcolor{keywordtype}{string}\ \_tagName)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00272}00272\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_tagName.Length==0)}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00277}00277\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\_tagList}}.Add(\_tagName);}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00279}00279\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00280}00280\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00261}\mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{00261}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{SetPositionMotor}}(Vector3\ \_pos,\ \textcolor{keywordtype}{bool}\ \_bypassInterpolation\ =\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00262}00262\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00263}00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}モーターがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.SetPosition(\_pos,\ \_bypassInterpolation);}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00270}00270\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00271}00271\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00272}\mbox{\hyperlink{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d}{00272}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d}{AddNoHitTag}}(\textcolor{keywordtype}{string}\ \_tagName)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00273}00273\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_tagName.Length==0)}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00275}00275\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00278}00278\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\_tagList}}.Add(\_tagName);}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00280}00280\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00281}00281\ }
-\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00282}00282\ \}}
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{_my_character_controller_8cs_source_l00283}00283\ \}}
 
 \end{DoxyCode}

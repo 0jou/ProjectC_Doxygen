@@ -364,76 +364,70 @@ $(function(){ initResizable(false); });
 <div class="foldopen" id="foldopen00242" data-start="{" data-end="};">
 <div class="line"><a id="l00242" name="l00242"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_discover.html">  242</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_character_core_1_1_action_state___enemy_discover.html">ActionState_EnemyDiscover</a> : <a class="code hl_class" href="class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
 <div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    {</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_discover.html#a7eef2d149ec0182f99ba43b5a95c7a78">  244</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="class_character_core_1_1_action_state___enemy_discover.html#a7eef2d149ec0182f99ba43b5a95c7a78">m_iconShowTime</a> = 2f;</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
-<div class="foldopen" id="foldopen00246" data-start="{" data-end="}">
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">  246</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">OnFixedUpdate</a>()</div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>            base.OnFixedUpdate();</div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            Core.SetRotateToTarget(Core.m_inputProvider.Destination - Core.transform.position);</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            Core.Move(0.0f);</div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        }</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <span class="comment">// 以下の処理はEnemyIconElementに移行（伊波）</span></div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <span class="comment">//[SerializeField] private float m_iconShowTime = 2f;</span></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
+<div class="foldopen" id="foldopen00247" data-start="{" data-end="}">
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">  247</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        {</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>            base.OnFixedUpdate();</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            Core.SetRotateToTarget(Core.m_inputProvider.Destination - Core.transform.position);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            Core.Move(0.0f);</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        }</div>
 </div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span> </div>
-<div class="foldopen" id="foldopen00253" data-start="{" data-end="}">
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_discover.html#a3ed83ffb9b4cadba0c57c6e8ba7b8119">  253</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> async <span class="keywordtype">void</span> <a class="code hl_function" href="class_character_core_1_1_action_state___enemy_discover.html#a3ed83ffb9b4cadba0c57c6e8ba7b8119">OnEnter</a>()</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        {</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>            base.OnEnter();</div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            Transform canvas = Core.transform.Find(<span class="stringliteral">&quot;EnemyCanvas&quot;</span>);</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            <span class="keywordflow">if</span> (!canvas) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            <span class="keywordflow">if</span> (!canvas.TryGetComponent(out <a class="code hl_class" href="class_enemy_icon_controller.html">EnemyIconController</a> iconController)) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>            iconController.ShowIcon(<a class="code hl_class" href="class_enemy_icon_controller.html">EnemyIconController</a>.<a class="code hl_enumeration" href="class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510">EnemyIconType</a>.DiscoverIcon);</div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>            await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>            <span class="keywordflow">if</span> (iconController)</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>            {</div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>                iconController.HideIcon(<a class="code hl_class" href="class_enemy_icon_controller.html">EnemyIconController</a>.<a class="code hl_enumeration" href="class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510">EnemyIconType</a>.DiscoverIcon);</div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>            }</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        }</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span> </div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="comment">//public override async void OnEnter()</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="comment">//{</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="comment">//    base.OnEnter();</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="comment">//    Transform canvas = Core.transform.Find(&quot;EnemyCanvas&quot;);</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="comment">//    if (!canvas) return;</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>        <span class="comment">//    if (!canvas.TryGetComponent(out EnemyIconController iconController)) return;</span></div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        <span class="comment">//    iconController.ShowIcon(EnemyIconController.EnemyIconType.DiscoverIcon);</span></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        <span class="comment">//    await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</span></div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        <span class="comment">//    if (iconController)</span></div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        <span class="comment">//    {</span></div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        <span class="comment">//        iconController.HideIcon(EnemyIconController.EnemyIconType.DiscoverIcon);</span></div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>        <span class="comment">//    }</span></div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>        <span class="comment">//}</span></div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>    }</div>
 </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span>    }</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span> </div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    [Serializable]</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/LostSight&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00271" data-start="{" data-end="};">
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_lost_sight.html">  271</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_character_core_1_1_action_state___enemy_lost_sight.html">ActionState_EnemyLostSight</a> : <a class="code hl_class" href="class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    {</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="comment">// 以下の処理はEnemyIconElementに移行（伊波）</span></div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        <span class="comment">//[SerializeField] private float m_iconShowTime = 5f;</span></div>
+<div class="foldopen" id="foldopen00275" data-start="{" data-end="}">
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">  275</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        {</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>            base.OnFixedUpdate();</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            Core.Move(0.0f);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        }</div>
 </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span> </div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    [Serializable]</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/LostSight&quot;</span>)]</div>
-<div class="foldopen" id="foldopen00270" data-start="{" data-end="};">
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_lost_sight.html">  270</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_character_core_1_1_action_state___enemy_lost_sight.html">ActionState_EnemyLostSight</a> : <a class="code hl_class" href="class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    {</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_lost_sight.html#a4656b95695bacd1c594b9930315c6d83">  272</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="class_character_core_1_1_action_state___enemy_lost_sight.html#a4656b95695bacd1c594b9930315c6d83">m_iconShowTime</a> = 5f;</div>
-<div class="foldopen" id="foldopen00273" data-start="{" data-end="}">
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">  273</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">OnFixedUpdate</a>()</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>        {</div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            base.OnFixedUpdate();</div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>            Core.Move(0.0f);</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        }</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span> </div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="comment">//public override async void OnEnter()</span></div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        <span class="comment">//{</span></div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        <span class="comment">//    base.OnEnter();</span></div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        <span class="comment">//    Transform canvas = Core.transform.Find(&quot;EnemyCanvas&quot;);</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        <span class="comment">//    if (!canvas) return;</span></div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <span class="comment">//    if (!canvas.TryGetComponent(out EnemyIconController iconController)) return;</span></div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>        <span class="comment">//    iconController.ShowIcon(EnemyIconController.EnemyIconType.LostSightIcon);</span></div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        <span class="comment">//    await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</span></div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="comment">//    if (iconController)</span></div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>        <span class="comment">//    {</span></div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="comment">//        iconController.HideIcon(EnemyIconController.EnemyIconType.LostSightIcon);</span></div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>        <span class="comment">//    }</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>        <span class="comment">//}</span></div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>    }</div>
 </div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="foldopen" id="foldopen00279" data-start="{" data-end="}">
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno"><a class="line" href="class_character_core_1_1_action_state___enemy_lost_sight.html#af78645f47ded5dcc0081bbae54a881fb">  279</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> async <span class="keywordtype">void</span> <a class="code hl_function" href="class_character_core_1_1_action_state___enemy_lost_sight.html#af78645f47ded5dcc0081bbae54a881fb">OnEnter</a>()</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        {</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>            base.OnEnter();</div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            Transform canvas = Core.transform.Find(<span class="stringliteral">&quot;EnemyCanvas&quot;</span>);</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            <span class="keywordflow">if</span> (!canvas) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>            <span class="keywordflow">if</span> (!canvas.TryGetComponent(out <a class="code hl_class" href="class_enemy_icon_controller.html">EnemyIconController</a> iconController)) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>            iconController.ShowIcon(<a class="code hl_class" href="class_enemy_icon_controller.html">EnemyIconController</a>.<a class="code hl_enumeration" href="class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510">EnemyIconType</a>.LostSightIcon);</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>            await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            <span class="keywordflow">if</span> (iconController)</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>            {</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>                iconController.HideIcon(<a class="code hl_class" href="class_enemy_icon_controller.html">EnemyIconController</a>.<a class="code hl_enumeration" href="class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510">EnemyIconType</a>.LostSightIcon);</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            }</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        }</div>
-</div>
-<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    }</div>
-</div>
-<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>}</div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___base_html"><div class="ttname"><a href="class_character_core_1_1_action_state___base.html">CharacterCore.ActionState_Base</a></div><div class="ttdef"><b>Definition</b> <a href="_character_core_8cs_source.html#l00384">CharacterCore.cs:385</a></div></div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>}</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___base_html"><div class="ttname"><a href="class_character_core_1_1_action_state___base.html">CharacterCore.ActionState_Base</a></div><div class="ttdef"><b>Definition</b> <a href="_character_core_8cs_source.html#l00385">CharacterCore.cs:386</a></div></div>
 <div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_discover.html">CharacterCore.ActionState_EnemyDiscover</a></div><div class="ttdef"><b>Definition</b> <a href="#l00242">EnemyState.cs:243</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html_a06184708bd9eaff7ffde573bb3d2c292"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">CharacterCore.ActionState_EnemyDiscover.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00246">EnemyState.cs:246</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html_a3ed83ffb9b4cadba0c57c6e8ba7b8119"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_discover.html#a3ed83ffb9b4cadba0c57c6e8ba7b8119">CharacterCore.ActionState_EnemyDiscover.OnEnter</a></div><div class="ttdeci">override async void OnEnter()</div><div class="ttdef"><b>Definition</b> <a href="#l00253">EnemyState.cs:253</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html_a7eef2d149ec0182f99ba43b5a95c7a78"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_discover.html#a7eef2d149ec0182f99ba43b5a95c7a78">CharacterCore.ActionState_EnemyDiscover.m_iconShowTime</a></div><div class="ttdeci">float m_iconShowTime</div><div class="ttdef"><b>Definition</b> <a href="#l00244">EnemyState.cs:244</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_lost_sight.html">CharacterCore.ActionState_EnemyLostSight</a></div><div class="ttdef"><b>Definition</b> <a href="#l00270">EnemyState.cs:271</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html_a4656b95695bacd1c594b9930315c6d83"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_lost_sight.html#a4656b95695bacd1c594b9930315c6d83">CharacterCore.ActionState_EnemyLostSight.m_iconShowTime</a></div><div class="ttdeci">float m_iconShowTime</div><div class="ttdef"><b>Definition</b> <a href="#l00272">EnemyState.cs:272</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html_ae5914c027881b35583c1414f66820417"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">CharacterCore.ActionState_EnemyLostSight.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00273">EnemyState.cs:273</a></div></div>
-<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html_af78645f47ded5dcc0081bbae54a881fb"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_lost_sight.html#af78645f47ded5dcc0081bbae54a881fb">CharacterCore.ActionState_EnemyLostSight.OnEnter</a></div><div class="ttdeci">override async void OnEnter()</div><div class="ttdef"><b>Definition</b> <a href="#l00279">EnemyState.cs:279</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html_a06184708bd9eaff7ffde573bb3d2c292"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">CharacterCore.ActionState_EnemyDiscover.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00247">EnemyState.cs:247</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_lost_sight.html">CharacterCore.ActionState_EnemyLostSight</a></div><div class="ttdef"><b>Definition</b> <a href="#l00271">EnemyState.cs:272</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html_ae5914c027881b35583c1414f66820417"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">CharacterCore.ActionState_EnemyLostSight.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00275">EnemyState.cs:275</a></div></div>
 <div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_ready_attack.html">CharacterCore.ActionState_EnemyReadyAttack</a></div><div class="ttdef"><b>Definition</b> <a href="#l00022">EnemyState.cs:23</a></div></div>
 <div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html_a17f5f7857045b3fb82fe497d99af8202"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_ready_attack.html#a17f5f7857045b3fb82fe497d99af8202">CharacterCore.ActionState_EnemyReadyAttack.m_isNotKnockBack</a></div><div class="ttdeci">bool m_isNotKnockBack</div><div class="ttdef"><b>Definition</b> <a href="#l00024">EnemyState.cs:24</a></div></div>
 <div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html_adc8bb673c7ddf806e617a928d8f9d3fb"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_ready_attack.html#adc8bb673c7ddf806e617a928d8f9d3fb">CharacterCore.ActionState_EnemyReadyAttack.OnEnter</a></div><div class="ttdeci">override void OnEnter()</div><div class="ttdef"><b>Definition</b> <a href="#l00026">EnemyState.cs:26</a></div></div>
@@ -465,8 +459,6 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclass_character_core_1_1_action_state___enemy_use_item_html_af70a253a1ade9de249fa7a92762a833a"><div class="ttname"><a href="class_character_core_1_1_action_state___enemy_use_item.html#af70a253a1ade9de249fa7a92762a833a">CharacterCore.ActionState_EnemyUseItem.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00065">EnemyState.cs:65</a></div></div>
 <div class="ttc" id="aclass_character_core_html"><div class="ttname"><a href="class_character_core.html">CharacterCore</a></div><div class="ttdef"><b>Definition</b> <a href="_character_core_8cs_source.html#l00012">CharacterCore.cs:13</a></div></div>
 <div class="ttc" id="aclass_character_core_html_a0f609cfe0b0230c0210e67a38c01dcd7"><div class="ttname"><a href="class_character_core.html#a0f609cfe0b0230c0210e67a38c01dcd7">CharacterCore.m_rushAttackEffect</a></div><div class="ttdeci">GameObject m_rushAttackEffect</div><div class="ttdef"><b>Definition</b> <a href="#l00018">EnemyState.cs:18</a></div></div>
-<div class="ttc" id="aclass_enemy_icon_controller_html"><div class="ttname"><a href="class_enemy_icon_controller.html">EnemyIconController</a></div><div class="ttdef"><b>Definition</b> <a href="_enemy_icon_controller_8cs_source.html#l00005">EnemyIconController.cs:6</a></div></div>
-<div class="ttc" id="aclass_enemy_icon_controller_html_a73069d8ddb38df86d279d521a0d10510"><div class="ttname"><a href="class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510">EnemyIconController.EnemyIconType</a></div><div class="ttdeci">EnemyIconType</div><div class="ttdef"><b>Definition</b> <a href="_enemy_icon_controller_8cs_source.html#l00008">EnemyIconController.cs:9</a></div></div>
 <div class="ttc" id="aclass_share_nodes_html"><div class="ttname"><a href="class_share_nodes.html">ShareNodes</a></div><div class="ttdef"><b>Definition</b> <a href="_share_nodes_8cs_source.html#l00005">ShareNodes.cs:6</a></div></div>
 <div class="ttc" id="ainterface_i_damageable_html"><div class="ttname"><a href="interface_i_damageable.html">IDamageable</a></div><div class="ttdef"><b>Definition</b> <a href="_i_damageable_8cs_source.html#l00018">IDamageable.cs:19</a></div></div>
 <div class="ttc" id="anamespace_arbor_html"><div class="ttname"><a href="namespace_arbor.html">Arbor</a></div><div class="ttdef"><b>Definition</b> <a href="_agent_chase_to_target_8cs_source.html#l00007">AgentChaseToTarget.cs:8</a></div></div>

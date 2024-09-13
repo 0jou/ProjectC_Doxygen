@@ -21,5 +21,7 @@ var searchData=
   ['watchtarget_18',['WatchTarget',['../class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform.html#ad14b938b0dae683b9aca03d66c34d669',1,'Arbor::BehaviourTree::Actions::AgentChaseToTransform']]],
   ['width_19',['Width',['../class_sin_curve_move_object.html#a656dbff5acec0041eb1874711bfde91ba32954654ac8fe66a1d09be19001de2d4',1,'SinCurveMoveObject']]],
   ['windowcontroller_20',['WindowController',['../class_window_controller.html',1,'']]],
-  ['windowcontroller_2ecs_21',['WindowController.cs',['../_window_controller_8cs.html',1,'']]]
+  ['windowcontroller_2ecs_21',['WindowController.cs',['../_window_controller_8cs.html',1,'']]],
+  ['windowuicontroller_22',['WindowUIController',['../class_window_u_i_controller.html',1,'']]],
+  ['windowuicontroller_2ecs_23',['WindowUIController.cs',['../_window_u_i_controller_8cs.html',1,'']]]
 ];

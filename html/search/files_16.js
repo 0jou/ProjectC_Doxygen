@@ -7,5 +7,6 @@ var searchData=
   ['waitfoodcustomer_2ecs_4',['WaitFoodCustomer.cs',['../_wait_food_customer_8cs.html',1,'']]],
   ['waitqueuecustomer_2ecs_5',['WaitQueueCustomer.cs',['../_wait_queue_customer_8cs.html',1,'']]],
   ['warpplayerbehind_2ecs_6',['WarpPlayerBehind.cs',['../_warp_player_behind_8cs.html',1,'']]],
-  ['windowcontroller_2ecs_7',['WindowController.cs',['../_window_controller_8cs.html',1,'']]]
+  ['windowcontroller_2ecs_7',['WindowController.cs',['../_window_controller_8cs.html',1,'']]],
+  ['windowuicontroller_2ecs_8',['WindowUIController.cs',['../_window_u_i_controller_8cs.html',1,'']]]
 ];

@@ -1,0 +1,80 @@
+\doxysection{Select\+Provide\+Food\+Menu\+UI.\+cs}
+\hypertarget{_select_provide_food_menu_u_i_8cs_source}{}\label{_select_provide_food_menu_u_i_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/202\_Lobby\_UI/Window/SelectProvideWindow/Prefab/UI/SelectProvideFoodMenu/SelectProvideFoodMenuUI.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/202\_Lobby\_UI/Window/SelectProvideWindow/Prefab/UI/SelectProvideFoodMenu/SelectProvideFoodMenuUI.cs}}
+\mbox{\hyperlink{_select_provide_food_menu_u_i_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00007}\mbox{\hyperlink{class_select_provide_food_menu_u_i}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_select_provide_food_menu_u_i}{SelectProvideFoodMenuUI}}\ :\ \mbox{\hyperlink{class_base_provide_food_u_i}{BaseProvideFoodUI}}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 提供する料理の提供数を選択するUI}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}スロット作成"{}})]}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00015}\mbox{\hyperlink{class_select_provide_food_menu_u_i_a0fde6e3c65e40c9e60e3f4db19f90d05}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_create_provide_food_slot_list}{CreateProvideFoodSlotList}}\ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a0fde6e3c65e40c9e60e3f4db19f90d05}{m\_createProvideFoodSlotList}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}スクロール"{}})]}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00019}\mbox{\hyperlink{class_select_provide_food_menu_u_i_a598a420f0d15afccf2b9e68357138fb4}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_change_scroll_view_position}{ChangeScrollViewPosition}}\ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a598a420f0d15afccf2b9e68357138fb4}{m\_changeScrollViewPosition}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00022}\mbox{\hyperlink{class_select_provide_food_menu_u_i_adb348cb5cdebcad98b0e8892537469df}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_select_provide_food_menu_u_i_adb348cb5cdebcad98b0e8892537469df}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成する}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a6c0416bb72508af4b27fd5e315b45d14}{CreateSlot}}();}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00031}\mbox{\hyperlink{class_select_provide_food_menu_u_i_a136a38a1930ed2b71e82140cde765264}{00031}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a136a38a1930ed2b71e82140cde765264}{OnSelectUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00033}00033\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_provide_food_u_i_a0f94afb58162d7c97b6675f80507a8aa}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}選択コントローラーがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_menu_u_i_a598a420f0d15afccf2b9e68357138fb4}{m\_changeScrollViewPosition}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeScrollViewPosコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00045}00045\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_provide_food_u_i_a0f94afb58162d7c97b6675f80507a8aa}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクロールビューの更新}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a598a420f0d15afccf2b9e68357138fb4}{m\_changeScrollViewPosition}}.\mbox{\hyperlink{class_change_scroll_view_position_a36e8c8f86b5fe4b10dd548227fb09961}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_provide_food_u_i_a0f94afb58162d7c97b6675f80507a8aa}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00063}\mbox{\hyperlink{class_select_provide_food_menu_u_i_a6c0416bb72508af4b27fd5e315b45d14}{00063}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a6c0416bb72508af4b27fd5e315b45d14}{CreateSlot}}()}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 変更が加えられていなければ}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_provide_food_manager}{ProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsChange\ ==\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スロットを作成する}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_menu_u_i_a0fde6e3c65e40c9e60e3f4db19f90d05}{m\_createProvideFoodSlotList}}.\mbox{\hyperlink{class_create_provide_food_slot_list_a16592a5a5306b45bc19d0786da844e93}{CreateSlot}}();}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_select_provide_food_menu_u_i_8cs_source_l00074}00074\ \}}
+
+\end{DoxyCode}

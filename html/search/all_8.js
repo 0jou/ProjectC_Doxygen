@@ -9,7 +9,7 @@ var searchData=
   ['headpoint_6',['HeadPoint',['../class_queue_manager.html#a5d69c8648917ce4efd1fb7d72502d75a',1,'QueueManager']]],
   ['healingvalue_7',['HealingValue',['../class_base_edible_item.html#a4e46222b5d71072053e3175357846e06',1,'BaseEdibleItem']]],
   ['height_8',['Height',['../class_sin_curve_move_object.html#a656dbff5acec0041eb1874711bfde91baeec6c4bdbd339edf8cbea68becb85244',1,'SinCurveMoveObject']]],
-  ['hide_9',['Hide',['../class_hide_alpha_dither_area_object.html#a1cac678289c0c5e8e4cf042031942429',1,'HideAlphaDitherAreaObject']]],
+  ['hide_9',['Hide',['../class_enemy_icon_element.html#a1c3c9282e688a53a1f96f06d1904fc22',1,'EnemyIconElement.Hide()'],['../class_hide_alpha_dither_area_object.html#a1cac678289c0c5e8e4cf042031942429',1,'HideAlphaDitherAreaObject.Hide()']]],
   ['hidealphaditherareaobject_10',['HideAlphaDitherAreaObject',['../class_hide_alpha_dither_area_object.html',1,'']]],
   ['hidealphaditherareaobject_2ecs_11',['HideAlphaDitherAreaObject.cs',['../_hide_alpha_dither_area_object_8cs.html',1,'']]],
   ['hidealphaditherobject_12',['HideAlphaDitherObject',['../class_hide_alpha_dither_object.html',1,'']]],

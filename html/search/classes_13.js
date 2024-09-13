@@ -19,6 +19,8 @@ var searchData=
   ['titlemainmenucontroller_16',['TitleMainMenuController',['../class_title_main_menu_controller.html',1,'']]],
   ['titlescreenmanager_17',['TitleScreenManager',['../class_title_screen_manager.html',1,'']]],
   ['transitionpreviousstate_18',['TransitionPreviousState',['../class_transition_previous_state.html',1,'']]],
-  ['trialsessionwindow_19',['TrialSessionWindow',['../class_trial_session_window.html',1,'']]],
-  ['typewriteeffecttext_20',['TypeWriteEffectText',['../class_type_write_effect_text.html',1,'']]]
+  ['transitiontargetorderfood_19',['TransitionTargetOrderFood',['../class_transition_target_order_food_state_customer_1_1_transition_target_order_food.html',1,'TransitionTargetOrderFoodStateCustomer']]],
+  ['transitiontargetorderfoodstatecustomer_20',['TransitionTargetOrderFoodStateCustomer',['../class_transition_target_order_food_state_customer.html',1,'']]],
+  ['trialsessionwindow_21',['TrialSessionWindow',['../class_trial_session_window.html',1,'']]],
+  ['typewriteeffecttext_22',['TypeWriteEffectText',['../class_type_write_effect_text.html',1,'']]]
 ];

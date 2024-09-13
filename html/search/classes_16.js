@@ -7,5 +7,6 @@ var searchData=
   ['waitfoodcustomer_4',['WaitFoodCustomer',['../class_wait_food_customer.html',1,'']]],
   ['waitqueuecustomer_5',['WaitQueueCustomer',['../class_wait_queue_customer.html',1,'']]],
   ['warpplayerbehind_6',['WarpPlayerBehind',['../class_warp_player_behind.html',1,'']]],
-  ['windowcontroller_7',['WindowController',['../class_window_controller.html',1,'']]]
+  ['windowcontroller_7',['WindowController',['../class_window_controller.html',1,'']]],
+  ['windowuicontroller_8',['WindowUIController',['../class_window_u_i_controller.html',1,'']]]
 ];

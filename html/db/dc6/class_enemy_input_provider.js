@@ -23,5 +23,6 @@ var class_enemy_input_provider =
     [ "ThrowAim", "db/dc6/class_enemy_input_provider.html#a6c6cb468d81add5ce0ce2848965cf2ea", null ],
     [ "ThrowItem", "db/dc6/class_enemy_input_provider.html#a85c4c42671b8de455092f90eeb33c063", null ],
     [ "UseItem", "db/dc6/class_enemy_input_provider.html#ab31617e541e88e1c605932cf25aa1c1b", null ],
-    [ "UseStorySkill_1", "db/dc6/class_enemy_input_provider.html#a8b6dbde8ea43e98794473b5b94f71a59", null ]
+    [ "UseStorySkill_1", "db/dc6/class_enemy_input_provider.html#a8b6dbde8ea43e98794473b5b94f71a59", null ],
+    [ "UseStorySkill_2", "db/dc6/class_enemy_input_provider.html#a483f843ad3206755acefd18281ef1fdb", null ]
 ];

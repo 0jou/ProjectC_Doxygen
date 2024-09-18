@@ -8,5 +8,6 @@ var searchData=
   ['slotlisttype_5',['SlotListType',['../d2/d98/class_create_item_slot_list.html#adee988b0dc689c8b93d90bc54e21e0fe',1,'CreateItemSlotList']]],
   ['speechbubbletype_6',['SpeechBubbleType',['../d8/d1c/class_show_speech_bubble.html#a4eed3e331243ed5f9853ead825b7cdf4',1,'ShowSpeechBubble']]],
   ['staffstate_7',['StaffState',['../de/da1/namespace_staff_state_info.html#a34842cd7518eebc5e45880b7ca6d1336',1,'StaffStateInfo']]],
-  ['stageid_8',['StageID',['../de/d3c/namespace_stage_info.html#a906febf9f62fea8d348f34323f7ba321',1,'StageInfo']]]
+  ['stageid_8',['StageID',['../de/d3c/namespace_stage_info.html#a906febf9f62fea8d348f34323f7ba321',1,'StageInfo']]],
+  ['storyskill_5fid_9',['StorySkill_ID',['../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa',1,'StorySkillInfo']]]
 ];

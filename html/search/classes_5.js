@@ -18,5 +18,6 @@ var searchData=
   ['flexiblepasserbydatavariable_15',['FlexiblePasserbyDataVariable',['../dd/d2c/class_flexible_passerby_data_variable.html',1,'']]],
   ['flexiblesearchtype_16',['FlexibleSearchType',['../d5/dad/class_flexible_search_type.html',1,'']]],
   ['flexiblestaffdatavariable_17',['FlexibleStaffDataVariable',['../d8/d1e/class_flexible_staff_data_variable.html',1,'']]],
-  ['fooddata_18',['FoodData',['../df/d05/class_food_data.html',1,'']]]
+  ['fooddata_18',['FoodData',['../df/d05/class_food_data.html',1,'']]],
+  ['foodslotdata_19',['FoodSlotData',['../d3/db8/class_food_slot_data.html',1,'']]]
 ];

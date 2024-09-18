@@ -19,5 +19,6 @@ var interface_i_input_provider =
     [ "ThrowAim", "d8/d5c/interface_i_input_provider.html#ac169693bb81631e0735912e56d46b35c", null ],
     [ "ThrowItem", "d8/d5c/interface_i_input_provider.html#aac635ca151c17c91b43fcbda1bc11235", null ],
     [ "UseItem", "d8/d5c/interface_i_input_provider.html#aa65c8cd4cdfdc3fd73ae4436284ed289", null ],
-    [ "UseStorySkill_1", "d8/d5c/interface_i_input_provider.html#aa6228b4e9a99493cad454b83a9188c25", null ]
+    [ "UseStorySkill_1", "d8/d5c/interface_i_input_provider.html#aa6228b4e9a99493cad454b83a9188c25", null ],
+    [ "UseStorySkill_2", "d8/d5c/interface_i_input_provider.html#a894a6800d9a706de5a9bed2baaa37c71", null ]
 ];

@@ -13,5 +13,7 @@ var searchData=
   ['throwitem_10',['ThrowItem',['../db/dc6/class_enemy_input_provider.html#a85c4c42671b8de455092f90eeb33c063',1,'EnemyInputProvider.ThrowItem'],['../d8/d5c/interface_i_input_provider.html#aac635ca151c17c91b43fcbda1bc11235',1,'IInputProvider.ThrowItem'],['../dd/d7f/class_null_character_i_p.html#ac05bc4a4a9de7b7be41fa1d1a1f29833',1,'NullCharacterIP.ThrowItem'],['../d3/d3e/class_player_input_provider.html#a37f244d1a88f011b0b445dfadede7829',1,'PlayerInputProvider.ThrowItem']]],
   ['throwpower_11',['ThrowPower',['../da/d09/class_draw_throw_item_arc.html#a4be544aa0757cfe4774ba9dafc271b7a',1,'DrawThrowItemArc.ThrowPower'],['../dd/db8/class_throw_item_instance.html#afc8f630ef531287ba4cecff54fc9c6a5',1,'ThrowItemInstance.ThrowPower']]],
   ['throwrange_12',['ThrowRange',['../df/d05/class_food_data.html#a08228a2e9d33794b3b19f04a9927fd98',1,'FoodData']]],
-  ['traileffect_13',['TrailEffect',['../d5/dca/class_using_effect_by_l_r_r_h.html#a0309a8156fceba900268315790277f84',1,'UsingEffectByLRRH']]]
+  ['traileffect_13',['TrailEffect',['../d5/dca/class_using_effect_by_l_r_r_h.html#a0309a8156fceba900268315790277f84',1,'UsingEffectByLRRH']]],
+  ['triggerstoryskill_5f1_14',['TriggerStorySkill_1',['../d1/d07/class_player_parameters.html#a28194b1b97be049e1fb0edfb17242b33',1,'PlayerParameters']]],
+  ['triggerstoryskill_5f2_15',['TriggerStorySkill_2',['../d1/d07/class_player_parameters.html#afeabb57b741d4cf963a438b3d417d1af',1,'PlayerParameters']]]
 ];

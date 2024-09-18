@@ -12,6 +12,7 @@ var searchData=
   ['destroyontime_2ecs_9',['DestroyOnTime.cs',['../d2/d45/_destroy_on_time_8cs.html',1,'']]],
   ['destroyskillatackcollider_2ecs_10',['DestroySkillAtackCollider.cs',['../d6/da1/_destroy_skill_atack_collider_8cs.html',1,'']]],
   ['destroytargetcounterfoodcustomer_2ecs_11',['DestroyTargetCounterFoodCustomer.cs',['../d4/dbf/_destroy_target_counter_food_customer_8cs.html',1,'']]],
-  ['dochase_2ecs_12',['DoChase.cs',['../da/d60/_do_chase_8cs.html',1,'']]],
-  ['drawthrowitemarc_2ecs_13',['DrawThrowItemArc.cs',['../de/d1e/_draw_throw_item_arc_8cs.html',1,'']]]
+  ['detailui_2ecs_12',['DetailUI.cs',['../de/d20/_detail_u_i_8cs.html',1,'']]],
+  ['dochase_2ecs_13',['DoChase.cs',['../da/d60/_do_chase_8cs.html',1,'']]],
+  ['drawthrowitemarc_2ecs_14',['DrawThrowItemArc.cs',['../de/d1e/_draw_throw_item_arc_8cs.html',1,'']]]
 ];

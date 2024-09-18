@@ -17,7 +17,6 @@ var dir_8708dcd2340b994a60d8791f325fc26e =
     [ "DestroyOnTime.cs", "d2/d45/_destroy_on_time_8cs.html", "d2/d45/_destroy_on_time_8cs" ],
     [ "IDamageable.cs", "d1/dee/_i_damageable_8cs.html", "d1/dee/_i_damageable_8cs" ],
     [ "NullParentObject.cs", "d6/d19/_null_parent_object_8cs.html", "d6/d19/_null_parent_object_8cs" ],
-    [ "SerializedDictionary.cs", "dc/da8/_serialized_dictionary_8cs.html", "dc/da8/_serialized_dictionary_8cs" ],
-    [ "SerializedDictionary2.cs", "d4/d83/_serialized_dictionary2_8cs.html", "d4/d83/_serialized_dictionary2_8cs" ],
+    [ "SerializableDictionary.cs", "d4/daf/_serializable_dictionary_8cs.html", "d4/daf/_serializable_dictionary_8cs" ],
     [ "SetOwnerTag.cs", "de/d13/_set_owner_tag_8cs.html", "de/d13/_set_owner_tag_8cs" ]
 ];

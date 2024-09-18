@@ -26,7 +26,7 @@ var searchData=
   ['testnotingentrypoint_23',['TestNotingEntryPoint',['../d1/d49/class_test_noting_entry_point.html',1,'']]],
   ['testnotingentrypoint_2ecs_24',['TestNotingEntryPoint.cs',['../da/dfc/_test_noting_entry_point_8cs.html',1,'']]],
   ['throw_25',['Throw',['../dd/db8/class_throw_item_instance.html#acae4faaa5d8550a8dfe10753c1ff633b',1,'ThrowItemInstance']]],
-  ['throwaim_26',['ThrowAim',['../db/dc6/class_enemy_input_provider.html#a6c6cb468d81add5ce0ce2848965cf2ea',1,'EnemyInputProvider.ThrowAim'],['../d8/d5c/interface_i_input_provider.html#ac169693bb81631e0735912e56d46b35c',1,'IInputProvider.ThrowAim'],['../dd/d7f/class_null_character_i_p.html#a94a482bdd16c48474e76e2bdf86624da',1,'NullCharacterIP.ThrowAim'],['../d3/d3e/class_player_input_provider.html#afd23d6d0bdb73db8b820ffd23bbd15e1',1,'PlayerInputProvider.ThrowAim']]],
+  ['throwaim_26',['ThrowAim',['../db/dc6/class_enemy_input_provider.html#a6c6cb468d81add5ce0ce2848965cf2ea',1,'EnemyInputProvider.ThrowAim'],['../d8/d5c/interface_i_input_provider.html#ac169693bb81631e0735912e56d46b35c',1,'IInputProvider.ThrowAim'],['../dd/d7f/class_null_character_i_p.html#a94a482bdd16c48474e76e2bdf86624da',1,'NullCharacterIP.ThrowAim'],['../d3/d3e/class_player_input_provider.html#afd23d6d0bdb73db8b820ffd23bbd15e1',1,'PlayerInputProvider.ThrowAim'],['../d5/dea/class_play_press_key_effect.html#abd7e09c5b8d414b2f0de7aef613d8fdca03ccaa9591bc04273774f7fda68a15e3',1,'PlayPressKeyEffect.ThrowAim']]],
   ['throwconditionprefab_27',['ThrowConditionPrefab',['../dd/d95/class_condition_data.html#a7dd5cd9d7b928fc03f0279d9475630f0',1,'ConditionData']]],
   ['throwfire_28',['ThrowFire',['../de/d72/class_throw_fire.html',1,'']]],
   ['throwfire_2ecs_29',['ThrowFire.cs',['../df/de0/_throw_fire_8cs.html',1,'']]],
@@ -69,7 +69,9 @@ var searchData=
   ['trialsession_66',['TrialSession',['../d1/de1/namespace_management_progress_info.html#aec8964ce9a46f658df01ec6bf1458948a192a85a3b3d0c3d34dba305a2dd6317f',1,'ManagementProgressInfo']]],
   ['trialsessionwindow_67',['TrialSessionWindow',['../d9/d22/class_trial_session_window.html',1,'']]],
   ['trialsessionwindow_2ecs_68',['TrialSessionWindow.cs',['../d3/d1e/_trial_session_window_8cs.html',1,'']]],
-  ['turnaxissharpness_69',['TurnAxisSharpness',['../d3/d0a/class_my_character_controller.html#a918c2f607dc21348092cb538dba8020f',1,'MyCharacterController']]],
-  ['typewriteeffecttext_70',['TypeWriteEffectText',['../d4/d71/class_type_write_effect_text.html',1,'']]],
-  ['typewriteeffecttext_2ecs_71',['TypeWriteEffectText.cs',['../d9/dcd/_type_write_effect_text_8cs.html',1,'']]]
+  ['triggerstoryskill_5f1_69',['TriggerStorySkill_1',['../d1/d07/class_player_parameters.html#a28194b1b97be049e1fb0edfb17242b33',1,'PlayerParameters']]],
+  ['triggerstoryskill_5f2_70',['TriggerStorySkill_2',['../d1/d07/class_player_parameters.html#afeabb57b741d4cf963a438b3d417d1af',1,'PlayerParameters']]],
+  ['turnaxissharpness_71',['TurnAxisSharpness',['../d3/d0a/class_my_character_controller.html#a918c2f607dc21348092cb538dba8020f',1,'MyCharacterController']]],
+  ['typewriteeffecttext_72',['TypeWriteEffectText',['../d4/d71/class_type_write_effect_text.html',1,'']]],
+  ['typewriteeffecttext_2ecs_73',['TypeWriteEffectText.cs',['../d9/dcd/_type_write_effect_text_8cs.html',1,'']]]
 ];

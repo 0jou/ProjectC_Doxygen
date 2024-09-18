@@ -9,6 +9,5 @@ var class_create_item_slot_list =
     [ "GetPocketItemList", "d2/d98/class_create_item_slot_list.html#a3f73d51fcec8e5509ba1a0dfac87d18f", null ],
     [ "GetSlotSize", "d2/d98/class_create_item_slot_list.html#a462a786399da7f2c771902e271953c0a", null ],
     [ "m_itemTypeID", "d2/d98/class_create_item_slot_list.html#ac5090ce583829bdcef6f139053f6ee29", null ],
-    [ "m_pocketType", "d2/d98/class_create_item_slot_list.html#a52811933c1927d9a95a39957b85b5072", null ],
     [ "m_slotListType", "d2/d98/class_create_item_slot_list.html#a2b6b9c51eda89b61c37d248ef3dd613b", null ]
 ];

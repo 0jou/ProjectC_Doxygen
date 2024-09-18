@@ -14,6 +14,7 @@ var class_base_create_slot_list =
     [ "RemoveNullSlotList", "d0/d4c/class_base_create_slot_list.html#a693cdbf1d249c8dd8319c2c080098cd0", null ],
     [ "SetSlotControllerData", "d0/d4c/class_base_create_slot_list.html#a3bfb22d0750245b5080d7ceac45082f2", null ],
     [ "m_createSlotType", "d0/d4c/class_base_create_slot_list.html#afb1380e3f25c5b60d00046e4cdc14b9c", null ],
+    [ "m_pocketType", "d0/d4c/class_base_create_slot_list.html#a8248278a160350cf6f4b340a272e848b", null ],
     [ "m_selectUIController", "d0/d4c/class_base_create_slot_list.html#ab0df6d61f4b8365fd7f366c9d4532722", null ],
     [ "m_slot", "d0/d4c/class_base_create_slot_list.html#af559b5d46e663ae96a37a9cb380b33fe", null ],
     [ "m_slotList", "d0/d4c/class_base_create_slot_list.html#aaa435dcf5db0b0dd045bc4890efe4e88", null ],

@@ -20,5 +20,6 @@ var class_null_character_i_p =
     [ "ThrowAim", "dd/d7f/class_null_character_i_p.html#a94a482bdd16c48474e76e2bdf86624da", null ],
     [ "ThrowItem", "dd/d7f/class_null_character_i_p.html#ac05bc4a4a9de7b7be41fa1d1a1f29833", null ],
     [ "UseItem", "dd/d7f/class_null_character_i_p.html#a30451d313c280e111d3628f385a36648", null ],
-    [ "UseStorySkill_1", "dd/d7f/class_null_character_i_p.html#a588a1ef957d7ead5371b14d47678a46e", null ]
+    [ "UseStorySkill_1", "dd/d7f/class_null_character_i_p.html#a588a1ef957d7ead5371b14d47678a46e", null ],
+    [ "UseStorySkill_2", "dd/d7f/class_null_character_i_p.html#a562da70efe6ff019f179bd4db0505c31", null ]
 ];

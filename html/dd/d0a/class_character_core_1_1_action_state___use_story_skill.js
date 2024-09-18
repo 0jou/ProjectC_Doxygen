@@ -8,5 +8,6 @@ var class_character_core_1_1_action_state___use_story_skill =
     [ "m_gameObject", "dd/d0a/class_character_core_1_1_action_state___use_story_skill.html#add13bfb9215847e8f2dafbe4b4a0b420", null ],
     [ "m_isCanserFlg", "dd/d0a/class_character_core_1_1_action_state___use_story_skill.html#a2a3e497ae7a08c9280950015fa3e1012", null ],
     [ "m_playerDist", "dd/d0a/class_character_core_1_1_action_state___use_story_skill.html#a86e5be406d3e499092ece8ebbde1c910", null ],
-    [ "m_rayStartHeisght", "dd/d0a/class_character_core_1_1_action_state___use_story_skill.html#afc2bb7ba37f4af8a0e1d06ca287d0b3f", null ]
+    [ "m_rayStartHeisght", "dd/d0a/class_character_core_1_1_action_state___use_story_skill.html#afc2bb7ba37f4af8a0e1d06ca287d0b3f", null ],
+    [ "m_storySkillData", "dd/d0a/class_character_core_1_1_action_state___use_story_skill.html#a187de2fccdc66bd7e8f57f2fe9257613", null ]
 ];

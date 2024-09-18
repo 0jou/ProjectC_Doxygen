@@ -15,5 +15,6 @@ var searchData=
   ['steak_12',['Steak',['../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6ae6a0ec03e2438e4b0d269f90a2d43e8b',1,'FoodInfo']]],
   ['storehouse_13',['Storehouse',['../d9/dbf/namespace_pocket_item_data_info.html#a762bc5e4b59a392a8f292b8b1de9e3c4a9ac14919f65fcff18716fda0e4d9ea42',1,'PocketItemDataInfo']]],
   ['storyskill_14',['storyskill',['../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a3a71c8a040502318b7029bb590b7b9aa',1,'IDamageable.cs']]],
-  ['stun_15',['Stun',['../de/da1/namespace_staff_state_info.html#a34842cd7518eebc5e45880b7ca6d1336a27e9c0d7972e999a5bbe094c4cede584',1,'StaffStateInfo']]]
+  ['storyskilltypenum_15',['StorySkillTypeNum',['../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aaafe7199362b3fdf8f4de47942c19faec2',1,'StorySkillInfo']]],
+  ['stun_16',['Stun',['../de/da1/namespace_staff_state_info.html#a34842cd7518eebc5e45880b7ca6d1336a27e9c0d7972e999a5bbe094c4cede584',1,'StaffStateInfo']]]
 ];

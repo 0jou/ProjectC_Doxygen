@@ -20,5 +20,6 @@ var class_player_input_provider =
     [ "ThrowAim", "d3/d3e/class_player_input_provider.html#afd23d6d0bdb73db8b820ffd23bbd15e1", null ],
     [ "ThrowItem", "d3/d3e/class_player_input_provider.html#a37f244d1a88f011b0b445dfadede7829", null ],
     [ "UseItem", "d3/d3e/class_player_input_provider.html#a7a90e4ed8e9e8a2df3fc3d700b928040", null ],
-    [ "UseStorySkill_1", "d3/d3e/class_player_input_provider.html#a452ad0497b4d32d8fa761258793b015d", null ]
+    [ "UseStorySkill_1", "d3/d3e/class_player_input_provider.html#a452ad0497b4d32d8fa761258793b015d", null ],
+    [ "UseStorySkill_2", "d3/d3e/class_player_input_provider.html#a3804c25d427cdf9d932b4a12bf5f3483", null ]
 ];

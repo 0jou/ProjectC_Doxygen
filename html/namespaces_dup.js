@@ -130,5 +130,13 @@ var namespaces_dup =
         [ "Stage01", "de/d3c/namespace_stage_info.html#a906febf9f62fea8d348f34323f7ba321a989a3c8dfdf61417970213092c363bfe", null ],
         [ "Max", "de/d3c/namespace_stage_info.html#a906febf9f62fea8d348f34323f7ba321a6a061313d22e51e0f25b7cd4dc065233", null ]
       ] ]
+    ] ],
+    [ "StorySkillInfo", "dc/d47/namespace_story_skill_info.html", [
+      [ "StorySkill_ID", "dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa", [
+        [ "None", "dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aaa6adf97f83acf6453d4a6a4b1070f3754", null ],
+        [ "Akazukin", "dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aaa44da72f5de2ae039750892b630c15260", null ],
+        [ "Bremen", "dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aaa92c1f80a07ad537ddb7e00137d6a25f9", null ],
+        [ "StorySkillTypeNum", "dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aaafe7199362b3fdf8f4de47942c19faec2", null ]
+      ] ]
     ] ]
 ];

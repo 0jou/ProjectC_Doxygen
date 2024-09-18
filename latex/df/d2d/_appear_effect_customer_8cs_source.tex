@@ -1,0 +1,100 @@
+\doxysection{Appear\+Effect\+Customer.\+cs}
+\hypertarget{_appear_effect_customer_8cs_source}{}\label{_appear_effect_customer_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/AppearEffectCustomer.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/AppearEffectCustomer.cs}}
+\mbox{\hyperlink{_appear_effect_customer_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.AddressableAssets;}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.ResourceManagement.AsyncOperations;}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00008}00008\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00009}00009\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Customer/AppearEffect"{}})]}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00010}\mbox{\hyperlink{class_appear_effect_customer}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_appear_effect_customer}{AppearEffectCustomer}}\ :\ \mbox{\hyperlink{class_base_customer_state_behaviour}{BaseCustomerStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}出現するエフェクト"{}})]}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00013}\mbox{\hyperlink{class_appear_effect_customer_afa082d22704a80433011c3c520690b8e}{00013}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ AssetReferenceGameObject\ \mbox{\hyperlink{class_appear_effect_customer_afa082d22704a80433011c3c520690b8e}{m\_appearEffectAssetRef}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00015}\mbox{\hyperlink{class_appear_effect_customer_ab6b6695897c31e84e985b69846f86727}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_appear_effect_customer_ab6b6695897c31e84e985b69846f86727}{m\_appearEffect}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00018}\mbox{\hyperlink{class_appear_effect_customer_abfd6c76a075e3c6096f7b00739bb71e3}{00018}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_abfd6c76a075e3c6096f7b00739bb71e3}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//シリアライズのアセットがセットされていないなら処理はいらないようにする}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appear_effect_customer_afa082d22704a80433011c3c520690b8e}{m\_appearEffectAssetRef}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameObject)}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ Addressables.LoadAssetAsync<GameObject>(\mbox{\hyperlink{class_appear_effect_customer_afa082d22704a80433011c3c520690b8e}{m\_appearEffectAssetRef}})}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Completed\ +=\ \mbox{\hyperlink{class_appear_effect_customer_a1019c1c5859adf3870defc07fd62d6aa}{OnLoadVisualEffect}};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00035}\mbox{\hyperlink{class_appear_effect_customer_a1019c1c5859adf3870defc07fd62d6aa}{00035}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_a1019c1c5859adf3870defc07fd62d6aa}{OnLoadVisualEffect}}(AsyncOperationHandle<GameObject>\ \_handle)}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameObject\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_handle.Status\ ==\ AsyncOperationStatus.Succeeded)}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18108bb8f3da8eb9ceaae}{GetRootGameObject}}();}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//取得できたエフェクトの作成}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_effect_customer_ab6b6695897c31e84e985b69846f86727}{m\_appearEffect}}\ =\ Instantiate(\_handle.Result,\ data.transform);}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//エフェクト監視コンポーネントををルートオブジェクトに追加}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ var\ observ\ =\ data.AddComponent<\mbox{\hyperlink{class_effect_observation}{EffectObservation}}>();}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(observ)}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ observ.SetObservationEffect(\mbox{\hyperlink{class_appear_effect_customer_ab6b6695897c31e84e985b69846f86727}{m\_appearEffect}});}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Addressableでの取得に失敗}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}エフェクトの取得失敗。"{}});}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00069}\mbox{\hyperlink{class_appear_effect_customer_a11cf5b56216baebfba9175452a5ad58a}{00069}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_a11cf5b56216baebfba9175452a5ad58a}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00074}\mbox{\hyperlink{class_appear_effect_customer_a3732e811aa114842ec6718e3be035a13}{00074}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_a3732e811aa114842ec6718e3be035a13}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00080}00080\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00081}\mbox{\hyperlink{class_appear_effect_customer_aacba021426869a4cef382577b07c3f54}{00081}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_aacba021426869a4cef382577b07c3f54}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00082}00082\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00086}\mbox{\hyperlink{class_appear_effect_customer_ae46d9dbe2bc437eca98a4ec45fa1d3f0}{00086}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_ae46d9dbe2bc437eca98a4ec45fa1d3f0}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00087}00087\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00090}00090\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00091}\mbox{\hyperlink{class_appear_effect_customer_a0cc333bc41d018c69e2241551d2c0589}{00091}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_effect_customer_a0cc333bc41d018c69e2241551d2c0589}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_effect_customer_8cs_source_l00094}00094\ \}}
+
+\end{DoxyCode}

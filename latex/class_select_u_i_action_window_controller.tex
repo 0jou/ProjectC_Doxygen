@@ -1,11 +1,13 @@
 \doxysection{Select\+UIAction\+Window\+Controller クラス}
 \hypertarget{class_select_u_i_action_window_controller}{}\label{class_select_u_i_action_window_controller}\index{SelectUIActionWindowController@{SelectUIActionWindowController}}
-Select\+UIAction\+Window\+Controller の継承関係図\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[height=2.772277cm]{class_select_u_i_action_window_controller}
-\end{center}
-\end{figure}
+
+
+Select\+UIAction\+Window\+Controller の継承関係図
+% FIG 0
+
+
+Select\+UIAction\+Window\+Controller 連携図
+% FIG 1
 \doxysubsubsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +34,8 @@ void \mbox{\hyperlink{class_select_u_i_controller_a184fef57f010ec540df0384faaba8
 \item 
 void \mbox{\hyperlink{class_select_u_i_controller_a9617b52116948b9c348e1a53299f5c3b}{Set\+UIAction\+Window\+Game\+Object}} ()
 \item 
+void \mbox{\hyperlink{class_select_u_i_controller_a80169d05bdc0964bd78900892f8dfd31}{Check\+Always\+Create}} ()
+\begin{DoxyCompactList}\small\item\em nullの\+UIを取り除き、現在選択中の\+UIが配列外でないか確認する \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_select_u_i_controller_ad4f5d189eb636219aff09999a1855764}{On\+Update\+Action\+Window}} ()
 \item 
 void \mbox{\hyperlink{class_select_u_i_controller_a47f0812a742e3398f84078b6cb6e0818}{On\+Late\+Update\+Action\+Window}} ()
@@ -93,13 +97,15 @@ float \mbox{\hyperlink{class_select_u_i_action_window_controller_ab0232bd9b1bfcb
 enum \mbox{\hyperlink{class_select_u_i_controller_ade2b78cc1b6c7671b668c55fdcd522da}{Select\+UIInterpolation}} \{ \mbox{\hyperlink{class_select_u_i_controller_ade2b78cc1b6c7671b668c55fdcd522daaeaeae515cec9766577d4368492444ae7}{Exceed}}
 , \mbox{\hyperlink{class_select_u_i_controller_ade2b78cc1b6c7671b668c55fdcd522daa5afb09395c3c62b5316b22f09ff3b1d1}{Interpolation}}
  \}
+\item 
+enum \mbox{\hyperlink{class_select_u_i_controller_abe16f06ff23cac8cc64d764a08c03bbf}{Always\+Create\+Type}} \{ \mbox{\hyperlink{class_select_u_i_controller_abe16f06ff23cac8cc64d764a08c03bbfabcfaccebf745acfd5e75351095a5394a}{Disable}}
+, \mbox{\hyperlink{class_select_u_i_controller_abe16f06ff23cac8cc64d764a08c03bbfa2faec1f9f8cc7f8f40d521c4dd574f49}{Enable}}
+ \}
 \end{DoxyCompactItemize}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} に属する継承限定公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{class_select_u_i_controller_a9d96febb93c4c042533aeb9b5c63ae46}{Add\+Mouse\+Select\+UIComponent}} ()
-\item 
-void \mbox{\hyperlink{class_select_u_i_controller_a3ec960bef09a4f50755e01990ca1cee9}{Add\+Mouse\+Select\+UIComponent}} (Game\+Object \+\_\+obj)
+void \mbox{\hyperlink{class_select_u_i_controller_a249c887f3d648141e94af9e723ea9b8e}{Set\+Current\+Select\+UI}} ()
 \item 
 bool \mbox{\hyperlink{class_select_u_i_controller_a8daa0f381d30e9890e6f9158e6769a86}{Left}} ()
 \item 
@@ -113,6 +119,8 @@ List$<$ \mbox{\hyperlink{class_select_u_i_controller_1_1_u_i_game_object}{UIGame
 bool \mbox{\hyperlink{class_select_u_i_controller_ab5c751d6e6d566507bd165b13355ddc9}{m\+\_\+is\+Loop}} = true
 \item 
 \mbox{\hyperlink{class_select_u_i_controller_ade2b78cc1b6c7671b668c55fdcd522da}{Select\+UIInterpolation}} \mbox{\hyperlink{class_select_u_i_controller_afe213a88bd9dda8fe081daf7e3403210}{m\+\_\+interpolation\+Type}} = Select\+UIInterpolation.\+Exceed
+\item 
+\mbox{\hyperlink{class_select_u_i_controller_abe16f06ff23cac8cc64d764a08c03bbf}{Always\+Create\+Type}} \mbox{\hyperlink{class_select_u_i_controller_a7a503a392b11418195bff331df89e162}{m\+\_\+always\+Create\+Type}} = Always\+Create\+Type.\+Disable
 \item 
 Game\+Object \mbox{\hyperlink{class_select_u_i_controller_aa068755d7172ea56a7b20c87d1778336}{m\+\_\+current\+Select\+UI}} = null
 \item 
@@ -151,7 +159,7 @@ override void Select\+UIAction\+Window\+Controller.\+Add\+UI (\begin{DoxyParamCa
 スロットリストに引数リストを追加する 
 
 \DoxyHorRuler{0}
- \hypertarget{class_select_u_i_controller_autotoc_md69}{}\doxysubsubsection{\texorpdfstring{}{}}\label{class_select_u_i_controller_autotoc_md69}
+ \hypertarget{class_select_u_i_controller_autotoc_md63}{}\doxysubsubsection{\texorpdfstring{}{}}\label{class_select_u_i_controller_autotoc_md63}
 
 
 \mbox{\hyperlink{class_select_u_i_controller_a674903ff70dfe677e3a27d9ebabe2fdd}{Select\+UIController}}を再実装しています。
@@ -160,6 +168,8 @@ override void Select\+UIAction\+Window\+Controller.\+Add\+UI (\begin{DoxyParamCa
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00187}{187}} 行目に定義があります。
 
+呼び出し関係図\+:
+% FIG 2
 \Hypertarget{class_select_u_i_action_window_controller_acc79e17c9a67be573bec06b6425d7f3b}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!CheckWithChange@{CheckWithChange}}
 \index{CheckWithChange@{CheckWithChange}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{CheckWithChange()}{CheckWithChange()}}
@@ -170,6 +180,8 @@ void Select\+UIAction\+Window\+Controller.\+Check\+With\+Change (\begin{DoxyPara
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00062}{62}} 行目に定義があります。
 
+被呼び出し関係図\+:
+% FIG 3
 \Hypertarget{class_select_u_i_action_window_controller_a07046281d0addf06deff844689634198}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!OnLateUpdate@{OnLateUpdate}}
 \index{OnLateUpdate@{OnLateUpdate}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{OnLateUpdate()}{OnLateUpdate()}}
@@ -184,6 +196,8 @@ override void Select\+UIAction\+Window\+Controller.\+On\+Late\+Update (\begin{Do
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00053}{53}} 行目に定義があります。
 
+被呼び出し関係図\+:
+% FIG 4
 \Hypertarget{class_select_u_i_action_window_controller_a4e42fde39acc088524d3abdc12690c99}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!OnPut@{OnPut}}
 \index{OnPut@{OnPut}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{OnPut()}{OnPut()}}
@@ -194,6 +208,8 @@ void Select\+UIAction\+Window\+Controller.\+On\+Put (\begin{DoxyParamCaption}{}{
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00114}{114}} 行目に定義があります。
 
+被呼び出し関係図\+:
+% FIG 5
 \Hypertarget{class_select_u_i_action_window_controller_a8ed7653111ca01b5e8b8116a086cda0f}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!OnThrow@{OnThrow}}
 \index{OnThrow@{OnThrow}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{OnThrow()}{OnThrow()}}
@@ -204,6 +220,8 @@ void Select\+UIAction\+Window\+Controller.\+On\+Throw (\begin{DoxyParamCaption}{
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00150}{150}} 行目に定義があります。
 
+被呼び出し関係図\+:
+% FIG 6
 \Hypertarget{class_select_u_i_action_window_controller_a9c761bbf204d0273a0be302937a67e7b}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
@@ -218,6 +236,10 @@ override void Select\+UIAction\+Window\+Controller.\+On\+Update (\begin{DoxyPara
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00042}{42}} 行目に定義があります。
 
+呼び出し関係図\+:
+% FIG 7
+被呼び出し関係図\+:
+% FIG 8
 \Hypertarget{class_select_u_i_action_window_controller_a715f7935518892814889768e7d8509f5}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!OnUse@{OnUse}}
 \index{OnUse@{OnUse}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{OnUse()}{OnUse()}}
@@ -228,6 +250,8 @@ void Select\+UIAction\+Window\+Controller.\+On\+Use (\begin{DoxyParamCaption}{}{
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00129}{129}} 行目に定義があります。
 
+被呼び出し関係図\+:
+% FIG 9
 \Hypertarget{class_select_u_i_action_window_controller_a147da3a4f9877fe1659987c8660342b7}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!SelectWindowUI@{SelectWindowUI}}
 \index{SelectWindowUI@{SelectWindowUI}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{SelectWindowUI()}{SelectWindowUI()}}
@@ -238,6 +262,10 @@ void Select\+UIAction\+Window\+Controller.\+Select\+Window\+UI (\begin{DoxyParam
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00076}{76}} 行目に定義があります。
 
+呼び出し関係図\+:
+% FIG 10
+被呼び出し関係図\+:
+% FIG 11
 \Hypertarget{class_select_u_i_action_window_controller_a2f3cd1d3164909c62777e6c33c6455a8}\index{SelectUIActionWindowController@{SelectUIActionWindowController}!SetSelectUIScale@{SetSelectUIScale}}
 \index{SetSelectUIScale@{SetSelectUIScale}!SelectUIActionWindowController@{SelectUIActionWindowController}}
 \doxysubsubsection{\texorpdfstring{SetSelectUIScale()}{SetSelectUIScale()}}
@@ -248,6 +276,8 @@ void Select\+UIAction\+Window\+Controller.\+Set\+Select\+UIScale (\begin{DoxyPar
 
  \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source}{Select\+UIAction\+Window\+Controller.\+cs}} の \mbox{\hyperlink{_select_u_i_action_window_controller_8cs_source_l00167}{167}} 行目に定義があります。
 
+被呼び出し関係図\+:
+% FIG 12
 
 
 \doxysubsection{メンバ詳解}

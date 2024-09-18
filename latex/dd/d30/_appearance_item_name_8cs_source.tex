@@ -1,0 +1,92 @@
+\doxysection{Appearance\+Item\+Name.\+cs}
+\hypertarget{_appearance_item_name_8cs_source}{}\label{_appearance_item_name_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/003\_Item/Item/BaseItem/ItemAttachScript/UI/AppearanceItemName.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/003\_Item/Item/BaseItem/ItemAttachScript/UI/AppearanceItemName.cs}}
+\mbox{\hyperlink{_appearance_item_name_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00007}\mbox{\hyperlink{class_appearance_item_name}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_appearance_item_name}{AppearanceItemName}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00010}00010\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}変更するTextMeshPro"{}})]}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00011}00011\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00012}\mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{00012}}\ \ \ \ \ \textcolor{keyword}{private}\ TextMeshProUGUI\ \mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ 以下の変数はGetItemObjectで同様の処理を行っているため、}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ このスクリプトの変数はシリアライズフィールドしない（吉田）}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//[Header("{}DOスピード"{})]}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//[SerializeField]}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00019}00019\ \ \ \ \ [Range(0.0f,\ 1.0f)]}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00020}\mbox{\hyperlink{class_appearance_item_name_abca99ac1a73d18565aeea230d2432471}{00020}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_appearance_item_name_abca99ac1a73d18565aeea230d2432471}{m\_doSpead}}\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//[SerializeField]}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00023}\mbox{\hyperlink{class_appearance_item_name_ae35e9493a72f18ffad777f9a3e8fcd79}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_get_item_object}{GetItemObject}}\ \mbox{\hyperlink{class_appearance_item_name_ae35e9493a72f18ffad777f9a3e8fcd79}{m\_getItemObject}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00026}\mbox{\hyperlink{class_appearance_item_name_aa1e662418a8d696652ed35460e2e82ba}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appearance_item_name_aa1e662418a8d696652ed35460e2e82ba}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}テキストが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00033}00033\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ m\_textMeshPro.alpha\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00038}\mbox{\hyperlink{class_appearance_item_name_a424484a7a677209270e1158d26a05e07}{00038}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appearance_item_name_a424484a7a677209270e1158d26a05e07}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ GetItemObjectで同様の処理を行っているため、ここでの処理は不要（吉田）}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fade();}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00046}\mbox{\hyperlink{class_appearance_item_name_afb78f16657c52ecf18339fd9e1e59f61}{00046}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appearance_item_name_afb78f16657c52ecf18339fd9e1e59f61}{Fade}}()}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appearance_item_name_ae35e9493a72f18ffad777f9a3e8fcd79}{m\_getItemObject}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}GetItemObjectコンポーネントが登録されていません"{}});}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appearance_item_name_ae35e9493a72f18ffad777f9a3e8fcd79}{m\_getItemObject}}.\mbox{\hyperlink{class_get_item_object_a5937bdc5f33e2b178e351a04b047d74c}{IsGet}})}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}.alpha\ <\ 1.0f)}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}.DOFade(endValue:\ 1.0f,\ duration:\ \mbox{\hyperlink{class_appearance_item_name_abca99ac1a73d18565aeea230d2432471}{m\_doSpead}});}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}.alpha\ >\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}.DOFade(endValue:\ 0.0f,\ duration:\ \mbox{\hyperlink{class_appearance_item_name_abca99ac1a73d18565aeea230d2432471}{m\_doSpead}});}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00075}\mbox{\hyperlink{class_appearance_item_name_a7682ffb9f1a83f4bddb3155aac6de098}{00075}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appearance_item_name_a7682ffb9f1a83f4bddb3155aac6de098}{OnShow}}(\textcolor{keywordtype}{float}\ \_duration)}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}.DOFade(endValue:\ 1.0f,\ duration:\ \_duration);}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00080}\mbox{\hyperlink{class_appearance_item_name_adc5d8b21038af62c749c434fbe414fed}{00080}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appearance_item_name_adc5d8b21038af62c749c434fbe414fed}{OnHide}}(\textcolor{keywordtype}{float}\ \_duration)}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appearance_item_name_a2390aa04a0a03a018e7d0f484d60a524}{m\_textMeshPro}}.DOFade(endValue:\ 0.0f,\ duration:\ \_duration);}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_appearance_item_name_8cs_source_l00086}00086\ \}}
+
+\end{DoxyCode}

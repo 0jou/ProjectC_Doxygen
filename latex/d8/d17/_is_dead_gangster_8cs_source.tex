@@ -1,0 +1,91 @@
+\doxysection{Is\+Dead\+Gangster.\+cs}
+\hypertarget{_is_dead_gangster_8cs_source}{}\label{_is_dead_gangster_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Gangster/Scripts/Arbor3/State/IsDeadGangster.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Gangster/Scripts/Arbor3/State/IsDeadGangster.cs}}
+\mbox{\hyperlink{_is_dead_gangster_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00006}00006\ [AddComponentMenu(\textcolor{stringliteral}{"{}Gangseter/IsDestroyGangster"{}})]}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00007}\mbox{\hyperlink{class_is_dead_gangster}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_is_dead_gangster}{IsDeadGangster}}\ :\ \mbox{\hyperlink{class_base_gangster_state_behaviour}{BaseGangsterStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ ヤンキーを削除するかどうか}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//=============================}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 監視するキャラクターコア}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00015}\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ \mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//=============================}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ ステートリンク}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00020}00020\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00021}\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//==========================================================}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00026}\mbox{\hyperlink{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}{SetCharacterCore}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00027}00027\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}();}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ =\ data.GetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}{SetTransition}}(\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}});}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00041}\mbox{\hyperlink{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971}{00041}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971}{IsDead}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HPが0を下回っていれば}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a1e09217558dc93616afb4661d2242309}{m\_hp}}.Value\ <=\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}{SetTransition}}(\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}});}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00053}\mbox{\hyperlink{class_is_dead_gangster_a0cb1e8ccd093ccbebf792654702914c4}{00053}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_a0cb1e8ccd093ccbebf792654702914c4}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00059}\mbox{\hyperlink{class_is_dead_gangster_a0e06f60ab010c82150f9cc6c6a94cbce}{00059}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_a0e06f60ab010c82150f9cc6c6a94cbce}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00064}\mbox{\hyperlink{class_is_dead_gangster_a46844774f2741eeec54261c585535cac}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_a46844774f2741eeec54261c585535cac}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セットする}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}{SetCharacterCore}}();}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00071}\mbox{\hyperlink{class_is_dead_gangster_a575ba29e6b4b993291ce1780b8b66c31}{00071}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_a575ba29e6b4b993291ce1780b8b66c31}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00076}\mbox{\hyperlink{class_is_dead_gangster_a3ce24698115cb282a97cf51894576ec3}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_a3ce24698115cb282a97cf51894576ec3}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971}{IsDead}}();}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00082}\mbox{\hyperlink{class_is_dead_gangster_ac443c470b18bccee9d46e6dee36254ad}{00082}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_is_dead_gangster_ac443c470b18bccee9d46e6dee36254ad}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_is_dead_gangster_8cs_source_l00085}00085\ \}}
+
+\end{DoxyCode}

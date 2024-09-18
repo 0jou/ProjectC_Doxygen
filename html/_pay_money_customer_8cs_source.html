@@ -105,87 +105,51 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">// 頼んだ料理の金額を払う</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// 制作者　田内</span></div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">//===================================================================================================================</span></div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">   16</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">Pay</a>()</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        var data = <a class="code hl_function" href="class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">GetCustomerData</a>();</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        var targetFood = data.TargetOrderFoodData;</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        <span class="keywordflow">if</span> (targetFood == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        var foodData = <a class="code hl_class" href="class_item_data_base_manager.html">ItemDataBaseManager</a>.<a class="code hl_variable" href="class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetItemData&lt;<a class="code hl_class" href="class_food_data.html">FoodData</a>&gt;(<a class="code hl_namespace" href="namespace_item_info.html">ItemInfo</a>.ItemTypeID.Food, (uint)targetFood.FoodID);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">if</span> (foodData == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="comment">// お金を払う</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <a class="code hl_class" href="class_management_manager.html">ManagementManager</a>.<a class="code hl_variable" href="class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.AddMoney(foodData.Price);</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    }</div>
-</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">//================================================</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>   </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">//===================================================================================================================</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="}">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">   17</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">Pay</a>()</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        var data = <a class="code hl_function" href="class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">GetCustomerData</a>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        var targetFood = data.TargetOrderFoodData;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">if</span> (targetFood == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        var foodData = <a class="code hl_class" href="class_item_data_base_manager.html">ItemDataBaseManager</a>.<a class="code hl_variable" href="class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetItemData&lt;<a class="code hl_class" href="class_food_data.html">FoodData</a>&gt;(<a class="code hl_namespace" href="namespace_item_info.html">ItemInfo</a>.ItemTypeID.Food, (uint)targetFood.FoodID);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keywordflow">if</span> (foodData == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">// お金を払う</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_class" href="class_management_manager.html">ManagementManager</a>.<a class="code hl_variable" href="class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.AddMoney(foodData.Price);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        <span class="comment">// 提供した数を足す</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <a class="code hl_class" href="class_management_provide_food_manager.html">ManagementProvideFoodManager</a>.<a class="code hl_variable" href="class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.SoldFood(targetFood.FoodID);</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// Use this for initialization</span></div>
-<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a4648eb6c8d22061a03da49061b2b847a">   35</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a4648eb6c8d22061a03da49061b2b847a">Start</a>()</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    }</div>
+</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    }</div>
+<div class="foldopen" id="foldopen00038" data-start="{" data-end="}">
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#ab7d2e89ce8dfb5bc891a9ee63ee467e0">   38</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#ab7d2e89ce8dfb5bc891a9ee63ee467e0">OnStateBegin</a>()</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    {</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <a class="code hl_function" href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">Pay</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
 </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Use this for awake state</span></div>
-<div class="foldopen" id="foldopen00041" data-start="{" data-end="}">
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a5730471426cdffe5f47ac3a39477b2a3">   41</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a5730471426cdffe5f47ac3a39477b2a3">OnStateAwake</a>()</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
-</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// Use this for enter state</span></div>
-<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#ab7d2e89ce8dfb5bc891a9ee63ee467e0">   46</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#ab7d2e89ce8dfb5bc891a9ee63ee467e0">OnStateBegin</a>()</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_function" href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">Pay</a>();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
-</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="comment">// Use this for exit state</span></div>
-<div class="foldopen" id="foldopen00052" data-start="{" data-end="}">
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a6f240e1d39ce47428840047d17857955">   52</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a6f240e1d39ce47428840047d17857955">OnStateEnd</a>()</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    {</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    }</div>
-</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">// OnStateUpdate is called once per frame</span></div>
-<div class="foldopen" id="foldopen00057" data-start="{" data-end="}">
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a05c2a17eeb7d295abda87db582ed3831">   57</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a05c2a17eeb7d295abda87db582ed3831">OnStateUpdate</a>()</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
-</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// OnStateLateUpdate is called once per frame, after Update has finished.</span></div>
-<div class="foldopen" id="foldopen00062" data-start="{" data-end="}">
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_pay_money_customer.html#a8792c593e547b1b7590f3a7b91c126d2">   62</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pay_money_customer.html#a8792c593e547b1b7590f3a7b91c126d2">OnStateLateUpdate</a>()</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    {</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    }</div>
-</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>}</div>
 </div>
 <div class="ttc" id="aclass_base_customer_state_behaviour_html"><div class="ttname"><a href="class_base_customer_state_behaviour.html">BaseCustomerStateBehaviour</a></div><div class="ttdef"><b>Definition</b> <a href="_base_customer_state_behaviour_8cs_source.html#l00007">BaseCustomerStateBehaviour.cs:8</a></div></div>
 <div class="ttc" id="aclass_base_customer_state_behaviour_html_a32567768b2bf7e9e2901117de1ec359c"><div class="ttname"><a href="class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">BaseCustomerStateBehaviour.GetCustomerData</a></div><div class="ttdeci">CustomerData GetCustomerData()</div><div class="ttdoc">客情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> <a href="_base_customer_state_behaviour_8cs_source.html#l00027">BaseCustomerStateBehaviour.cs:27</a></div></div>
 <div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> <a href="_base_manager_8cs_source.html#l00006">BaseManager.cs:6</a></div></div>
-<div class="ttc" id="aclass_food_data_html"><div class="ttname"><a href="class_food_data.html">FoodData</a></div><div class="ttdef"><b>Definition</b> <a href="_food_data_8cs_source.html#l00012">FoodData.cs:13</a></div></div>
+<div class="ttc" id="aclass_food_data_html"><div class="ttname"><a href="class_food_data.html">FoodData</a></div><div class="ttdef"><b>Definition</b> <a href="_food_data_8cs_source.html#l00011">FoodData.cs:12</a></div></div>
 <div class="ttc" id="aclass_item_data_base_manager_html"><div class="ttname"><a href="class_item_data_base_manager.html">ItemDataBaseManager</a></div><div class="ttdef"><b>Definition</b> <a href="_item_data_base_manager_8cs_source.html#l00009">ItemDataBaseManager.cs:10</a></div></div>
 <div class="ttc" id="aclass_management_manager_html"><div class="ttname"><a href="class_management_manager.html">ManagementManager</a></div><div class="ttdef"><b>Definition</b> <a href="_management_manager_8cs_source.html#l00005">ManagementManager.cs:6</a></div></div>
+<div class="ttc" id="aclass_management_provide_food_manager_html"><div class="ttname"><a href="class_management_provide_food_manager.html">ManagementProvideFoodManager</a></div><div class="ttdef"><b>Definition</b> <a href="_management_provide_food_manager_8cs_source.html#l00032">ManagementProvideFoodManager.cs:33</a></div></div>
 <div class="ttc" id="aclass_pay_money_customer_html"><div class="ttname"><a href="class_pay_money_customer.html">PayMoneyCustomer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00008">PayMoneyCustomer.cs:9</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_a05c2a17eeb7d295abda87db582ed3831"><div class="ttname"><a href="class_pay_money_customer.html#a05c2a17eeb7d295abda87db582ed3831">PayMoneyCustomer.OnStateUpdate</a></div><div class="ttdeci">override void OnStateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00057">PayMoneyCustomer.cs:57</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_a4648eb6c8d22061a03da49061b2b847a"><div class="ttname"><a href="class_pay_money_customer.html#a4648eb6c8d22061a03da49061b2b847a">PayMoneyCustomer.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00035">PayMoneyCustomer.cs:35</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_a5730471426cdffe5f47ac3a39477b2a3"><div class="ttname"><a href="class_pay_money_customer.html#a5730471426cdffe5f47ac3a39477b2a3">PayMoneyCustomer.OnStateAwake</a></div><div class="ttdeci">override void OnStateAwake()</div><div class="ttdef"><b>Definition</b> <a href="#l00041">PayMoneyCustomer.cs:41</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_a6f240e1d39ce47428840047d17857955"><div class="ttname"><a href="class_pay_money_customer.html#a6f240e1d39ce47428840047d17857955">PayMoneyCustomer.OnStateEnd</a></div><div class="ttdeci">override void OnStateEnd()</div><div class="ttdef"><b>Definition</b> <a href="#l00052">PayMoneyCustomer.cs:52</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_a7edf6a18544def5f13fa92cda85519d6"><div class="ttname"><a href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">PayMoneyCustomer.Pay</a></div><div class="ttdeci">void Pay()</div><div class="ttdef"><b>Definition</b> <a href="#l00016">PayMoneyCustomer.cs:16</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_a8792c593e547b1b7590f3a7b91c126d2"><div class="ttname"><a href="class_pay_money_customer.html#a8792c593e547b1b7590f3a7b91c126d2">PayMoneyCustomer.OnStateLateUpdate</a></div><div class="ttdeci">override void OnStateLateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00062">PayMoneyCustomer.cs:62</a></div></div>
-<div class="ttc" id="aclass_pay_money_customer_html_ab7d2e89ce8dfb5bc891a9ee63ee467e0"><div class="ttname"><a href="class_pay_money_customer.html#ab7d2e89ce8dfb5bc891a9ee63ee467e0">PayMoneyCustomer.OnStateBegin</a></div><div class="ttdeci">override void OnStateBegin()</div><div class="ttdef"><b>Definition</b> <a href="#l00046">PayMoneyCustomer.cs:46</a></div></div>
+<div class="ttc" id="aclass_pay_money_customer_html_a7edf6a18544def5f13fa92cda85519d6"><div class="ttname"><a href="class_pay_money_customer.html#a7edf6a18544def5f13fa92cda85519d6">PayMoneyCustomer.Pay</a></div><div class="ttdeci">void Pay()</div><div class="ttdef"><b>Definition</b> <a href="#l00017">PayMoneyCustomer.cs:17</a></div></div>
+<div class="ttc" id="aclass_pay_money_customer_html_ab7d2e89ce8dfb5bc891a9ee63ee467e0"><div class="ttname"><a href="class_pay_money_customer.html#ab7d2e89ce8dfb5bc891a9ee63ee467e0">PayMoneyCustomer.OnStateBegin</a></div><div class="ttdeci">override void OnStateBegin()</div><div class="ttdef"><b>Definition</b> <a href="#l00038">PayMoneyCustomer.cs:38</a></div></div>
 <div class="ttc" id="anamespace_arbor_html"><div class="ttname"><a href="namespace_arbor.html">Arbor</a></div><div class="ttdef"><b>Definition</b> <a href="_agent_chase_to_target_8cs_source.html#l00007">AgentChaseToTarget.cs:8</a></div></div>
 <div class="ttc" id="anamespace_item_info_html"><div class="ttname"><a href="namespace_item_info.html">ItemInfo</a></div><div class="ttdef"><b>Definition</b> <a href="_item_type_i_d_8cs_source.html#l00002">ItemTypeID.cs:3</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

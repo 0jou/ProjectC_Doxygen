@@ -1,0 +1,6 @@
+var dir_490389c2fda9e7efff3d1acb3d59d19b =
+[
+    [ "Base", "dir_1ca9e807df09636283faf4a61473339c.html", "dir_1ca9e807df09636283faf4a61473339c" ],
+    [ "Food", "dir_e23571d20017296401c113c281039d96.html", "dir_e23571d20017296401c113c281039d96" ],
+    [ "Ingredient", "dir_825fd2104da94c8848516d2cb9952149.html", "dir_825fd2104da94c8848516d2cb9952149" ]
+];

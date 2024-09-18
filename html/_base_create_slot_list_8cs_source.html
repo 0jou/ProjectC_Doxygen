@@ -256,38 +256,39 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
 <div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
 <div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="class_base_create_slot_list.html#af4cfc071eb90b0a7738a35af4b6039b0">  147</a></span>    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_base_create_slot_list.html#af4cfc071eb90b0a7738a35af4b6039b0">DestroySlotList</a>()</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    {</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_base_create_slot_list.html#afb1380e3f25c5b60d00046e4cdc14b9c">m_createSlotType</a> != <a class="code hl_enumeration" href="class_base_create_slot_list.html#a8c5fe4381648d701d997e063126f4020">CreateSlotType</a>.NotAddSelectUIController) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">foreach</span> (var list <span class="keywordflow">in</span> <a class="code hl_variable" href="class_base_create_slot_list.html#aaa435dcf5db0b0dd045bc4890efe4e88">m_slotList</a>)</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="comment">// 削除する</span></div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            Destroy(list);</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        }</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        <span class="comment">// 初期化</span></div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <a class="code hl_variable" href="class_base_create_slot_list.html#aaa435dcf5db0b0dd045bc4890efe4e88">m_slotList</a>.Clear();</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    {<span class="comment">// スロットが削除されないところで終わってるよ</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="keywordflow">foreach</span> (var list <span class="keywordflow">in</span> <a class="code hl_variable" href="class_base_create_slot_list.html#aaa435dcf5db0b0dd045bc4890efe4e88">m_slotList</a>)</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        {</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            <span class="keywordflow">if</span> (list == <span class="keyword">null</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <span class="comment">// 削除する</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>            Destroy(list.gameObject);</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        }</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span> </div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="comment">// 初期化</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <a class="code hl_variable" href="class_base_create_slot_list.html#aaa435dcf5db0b0dd045bc4890efe4e88">m_slotList</a>.Clear();</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span> </div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
 </div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="comment">// スロットのinstanceを作成する</span></div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">// 派生クラスはこのメソッドをoverrideしてください</span></div>
-<div class="foldopen" id="foldopen00164" data-start="{" data-end="}">
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno"><a class="line" href="class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41">  164</a></span>    <span class="keyword">virtual</span> <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41">CreateSlotInstance</a>()</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    {</div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        Debug.LogError(<span class="stringliteral">&quot;オーバーライドしてください&quot;</span>);</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="comment">// スロットのinstanceを作成する</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="comment">// 派生クラスはこのメソッドをoverrideしてください</span></div>
+<div class="foldopen" id="foldopen00165" data-start="{" data-end="}">
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno"><a class="line" href="class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41">  165</a></span>    <span class="keyword">virtual</span> <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41">CreateSlotInstance</a>()</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        Debug.LogError(<span class="stringliteral">&quot;オーバーライドしてください&quot;</span>);</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
 </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>}</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>}</div>
 </div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span> </div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
 <div class="ttc" id="aclass_base_create_slot_list_html"><div class="ttname"><a href="class_base_create_slot_list.html">BaseCreateSlotList</a></div><div class="ttdef"><b>Definition</b> <a href="#l00011">BaseCreateSlotList.cs:12</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_a1050fa09f7705d5e74fa66f14594368b"><div class="ttname"><a href="class_base_create_slot_list.html#a1050fa09f7705d5e74fa66f14594368b">BaseCreateSlotList.CreateSlot</a></div><div class="ttdeci">virtual void CreateSlot()</div><div class="ttdef"><b>Definition</b> <a href="#l00064">BaseCreateSlotList.cs:64</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_a3bfb22d0750245b5080d7ceac45082f2"><div class="ttname"><a href="class_base_create_slot_list.html#a3bfb22d0750245b5080d7ceac45082f2">BaseCreateSlotList.SetSlotControllerData</a></div><div class="ttdeci">virtual void SetSlotControllerData()</div><div class="ttdef"><b>Definition</b> <a href="#l00109">BaseCreateSlotList.cs:109</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_a4f8954e3b5cae6ecdb8ec35a4a350bf2"><div class="ttname"><a href="class_base_create_slot_list.html#a4f8954e3b5cae6ecdb8ec35a4a350bf2">BaseCreateSlotList.SlotList</a></div><div class="ttdeci">List&lt; ItemSlotData &gt; SlotList</div><div class="ttdef"><b>Definition</b> <a href="#l00046">BaseCreateSlotList.cs:46</a></div></div>
-<div class="ttc" id="aclass_base_create_slot_list_html_a51b06cac02cad5cb1ecba94d423d7f41"><div class="ttname"><a href="class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41">BaseCreateSlotList.CreateSlotInstance</a></div><div class="ttdeci">virtual void CreateSlotInstance()</div><div class="ttdef"><b>Definition</b> <a href="#l00164">BaseCreateSlotList.cs:164</a></div></div>
+<div class="ttc" id="aclass_base_create_slot_list_html_a51b06cac02cad5cb1ecba94d423d7f41"><div class="ttname"><a href="class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41">BaseCreateSlotList.CreateSlotInstance</a></div><div class="ttdeci">virtual void CreateSlotInstance()</div><div class="ttdef"><b>Definition</b> <a href="#l00165">BaseCreateSlotList.cs:165</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_a6059aef6a5971425788c7080bca5a4b6"><div class="ttname"><a href="class_base_create_slot_list.html#a6059aef6a5971425788c7080bca5a4b6">BaseCreateSlotList.OnInitialize</a></div><div class="ttdeci">virtual void OnInitialize()</div><div class="ttdef"><b>Definition</b> <a href="#l00053">BaseCreateSlotList.cs:53</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_a693cdbf1d249c8dd8319c2c080098cd0"><div class="ttname"><a href="class_base_create_slot_list.html#a693cdbf1d249c8dd8319c2c080098cd0">BaseCreateSlotList.RemoveNullSlotList</a></div><div class="ttdeci">virtual void RemoveNullSlotList()</div><div class="ttdef"><b>Definition</b> <a href="#l00102">BaseCreateSlotList.cs:102</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_a8c5fe4381648d701d997e063126f4020"><div class="ttname"><a href="class_base_create_slot_list.html#a8c5fe4381648d701d997e063126f4020">BaseCreateSlotList.CreateSlotType</a></div><div class="ttdeci">CreateSlotType</div><div class="ttdef"><b>Definition</b> <a href="#l00018">BaseCreateSlotList.cs:19</a></div></div>
@@ -300,10 +301,10 @@ $(function(){ initResizable(false); });
 <div class="ttc" id="aclass_base_create_slot_list_html_af4cfc071eb90b0a7738a35af4b6039b0"><div class="ttname"><a href="class_base_create_slot_list.html#af4cfc071eb90b0a7738a35af4b6039b0">BaseCreateSlotList.DestroySlotList</a></div><div class="ttdeci">void DestroySlotList()</div><div class="ttdef"><b>Definition</b> <a href="#l00147">BaseCreateSlotList.cs:147</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_af559b5d46e663ae96a37a9cb380b33fe"><div class="ttname"><a href="class_base_create_slot_list.html#af559b5d46e663ae96a37a9cb380b33fe">BaseCreateSlotList.m_slot</a></div><div class="ttdeci">GameObject m_slot</div><div class="ttdef"><b>Definition</b> <a href="#l00038">BaseCreateSlotList.cs:38</a></div></div>
 <div class="ttc" id="aclass_base_create_slot_list_html_afb1380e3f25c5b60d00046e4cdc14b9c"><div class="ttname"><a href="class_base_create_slot_list.html#afb1380e3f25c5b60d00046e4cdc14b9c">BaseCreateSlotList.m_createSlotType</a></div><div class="ttdeci">CreateSlotType m_createSlotType</div><div class="ttdef"><b>Definition</b> <a href="#l00026">BaseCreateSlotList.cs:26</a></div></div>
-<div class="ttc" id="aclass_item_slot_data_html"><div class="ttname"><a href="class_item_slot_data.html">ItemSlotData</a></div><div class="ttdef"><b>Definition</b> <a href="_item_slot_data_8cs_source.html#l00010">ItemSlotData.cs:11</a></div></div>
+<div class="ttc" id="aclass_item_slot_data_html"><div class="ttname"><a href="class_item_slot_data.html">ItemSlotData</a></div><div class="ttdef"><b>Definition</b> <a href="_item_slot_data_8cs_source.html#l00011">ItemSlotData.cs:12</a></div></div>
 <div class="ttc" id="aclass_select_u_i_controller_html"><div class="ttname"><a href="class_select_u_i_controller.html">SelectUIController</a></div><div class="ttdef"><b>Definition</b> <a href="_select_u_i_controller_8cs_source.html#l00011">SelectUIController.cs:12</a></div></div>
-<div class="ttc" id="aclass_select_u_i_controller_html_a119c0124ff3ba0634e2566ecd2eedf40"><div class="ttname"><a href="class_select_u_i_controller.html#a119c0124ff3ba0634e2566ecd2eedf40">SelectUIController.SetConstraintCount</a></div><div class="ttdeci">void SetConstraintCount(int _constraintCount)</div><div class="ttdef"><b>Definition</b> <a href="_select_u_i_controller_8cs_source.html#l00183">SelectUIController.cs:183</a></div></div>
-<div class="ttc" id="aclass_select_u_i_controller_html_af7ff95f16260b0d5d1bc1d6a7d310bdc"><div class="ttname"><a href="class_select_u_i_controller.html#af7ff95f16260b0d5d1bc1d6a7d310bdc">SelectUIController.AddUIList</a></div><div class="ttdeci">void AddUIList(List&lt; GameObject &gt; _uiList)</div><div class="ttdoc">作成したスロットリストに追加する</div><div class="ttdef"><b>Definition</b> <a href="_select_u_i_controller_8cs_source.html#l00225">SelectUIController.cs:225</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a119c0124ff3ba0634e2566ecd2eedf40"><div class="ttname"><a href="class_select_u_i_controller.html#a119c0124ff3ba0634e2566ecd2eedf40">SelectUIController.SetConstraintCount</a></div><div class="ttdeci">void SetConstraintCount(int _constraintCount)</div><div class="ttdef"><b>Definition</b> <a href="_select_u_i_controller_8cs_source.html#l00198">SelectUIController.cs:198</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_af7ff95f16260b0d5d1bc1d6a7d310bdc"><div class="ttname"><a href="class_select_u_i_controller.html#af7ff95f16260b0d5d1bc1d6a7d310bdc">SelectUIController.AddUIList</a></div><div class="ttdeci">void AddUIList(List&lt; GameObject &gt; _uiList)</div><div class="ttdoc">作成したスロットリストに追加する</div><div class="ttdef"><b>Definition</b> <a href="_select_u_i_controller_8cs_source.html#l00240">SelectUIController.cs:240</a></div></div>
 <div class="ttc" id="anamespace_pocket_item_data_info_html"><div class="ttname"><a href="namespace_pocket_item_data_info.html">PocketItemDataInfo</a></div><div class="ttdef"><b>Definition</b> <a href="_pocket_item_data_controller_8cs_source.html#l00007">PocketItemDataController.cs:8</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

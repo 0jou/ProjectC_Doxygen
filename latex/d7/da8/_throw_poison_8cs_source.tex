@@ -1,0 +1,73 @@
+\doxysection{Throw\+Poison.\+cs}
+\hypertarget{_throw_poison_8cs_source}{}\label{_throw_poison_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/006\_Condition/Scripts/ThrowPoison.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/006\_Condition/Scripts/ThrowPoison.cs}}
+\mbox{\hyperlink{_throw_poison_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UniRx;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00008}00008\ \textcolor{comment}{//\ 投げた時の毒の処理（伊波）}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00010}\mbox{\hyperlink{class_throw_poison}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_throw_poison}{ThrowPoison}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}効果時間"{}})]}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00013}\mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{00013}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{m\_time}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00015}00015\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}速度低下率"{}})]}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00016}\mbox{\hyperlink{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28}{00016}}\ \ \ \ \ [SerializeField,\ Range(0.0f,\ 1.0f)]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28}{m\_rateSpeed}}\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00018}00018\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}毒を付与するまでの時間"{}})]}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00019}\mbox{\hyperlink{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5}{00019}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5}{m\_poisonedTime}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}付与用の弱毒プレハブ"{}})]}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00022}\mbox{\hyperlink{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5}{00022}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5}{m\_poisonPrefab}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00024}\mbox{\hyperlink{class_throw_poison_1_1_hit_data}{00024}}\ \ \ \ \ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_throw_poison_1_1_hit_data}{HitData}}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00026}\mbox{\hyperlink{class_throw_poison_1_1_hit_data_a728874e3b59ea43fde5eaf4dfcc9d54e}{00026}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_condition_manager}{ConditionManager}}\ \mbox{\hyperlink{class_throw_poison_1_1_hit_data_a728874e3b59ea43fde5eaf4dfcc9d54e}{m\_conditionManager}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00027}\mbox{\hyperlink{class_throw_poison_1_1_hit_data_ab9ede2490e54f850182ac5f365ee9a70}{00027}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}\ \mbox{\hyperlink{class_throw_poison_1_1_hit_data_ab9ede2490e54f850182ac5f365ee9a70}{m\_characterController}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00028}\mbox{\hyperlink{class_throw_poison_1_1_hit_data_a7ee6d8bbde50e0d45f8a2c6d57e542d1}{00028}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_throw_poison_1_1_hit_data_a7ee6d8bbde50e0d45f8a2c6d57e542d1}{m\_hitTime}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00030}\mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{00030}}\ \ \ \ \ \textcolor{keyword}{private}\ List<HitData>\ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}\ =\ \textcolor{keyword}{new}\ List<HitData>();}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00032}\mbox{\hyperlink{class_throw_poison_ad885d335d967c20aef12c8940cfa959d}{00032}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_throw_poison_ad885d335d967c20aef12c8940cfa959d}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{m\_time}}\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{m\_time}}\ <=\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00041}\mbox{\hyperlink{class_throw_poison_aee68b3358de27f885757e176eb7a7340}{00041}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_throw_poison_aee68b3358de27f885757e176eb7a7340}{OnTriggerStay}}(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}.Count;\ ++i)}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_conditionManager.transform.root\ ==\ other.transform.root)}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_characterController.SpeedRate\ =\ \mbox{\hyperlink{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28}{m\_rateSpeed}};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_hitTime\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_hitTime\ >\ \mbox{\hyperlink{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5}{m\_poisonedTime}})}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_conditionManager.AddCondition(\mbox{\hyperlink{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5}{m\_poisonPrefab}});}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_condition_manager}{ConditionManager}}\ conditionmanager\ =\ other.GetComponentInChildren<\mbox{\hyperlink{class_condition_manager}{ConditionManager}}>();}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conditionmanager\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}\ controller\ =\ other.GetComponentInChildren<\mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}>();}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (controller\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_1_1_hit_data}{HitData}}\ hitData\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_throw_poison_1_1_hit_data}{HitData}}();}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ hitData.m\_conditionManager\ =\ conditionmanager;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ hitData.m\_characterController\ =\ controller;}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}.Add(hitData);}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00066}00066\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_throw_poison_8cs_source_l00067}00067\ \}}
+
+\end{DoxyCode}

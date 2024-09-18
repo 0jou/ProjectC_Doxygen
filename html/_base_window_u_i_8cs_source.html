@@ -97,60 +97,97 @@ $(function(){ initResizable(false); });
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>Cysharp.Threading.Tasks;</div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="};">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html">    7</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_base_window_u_i.html">BaseWindowUI</a> : MonoBehaviour</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="comment">// 制作者 田内</span></div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="comment">// 同ウィンドウで操作を分けたいUIの基底クラス</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a251f0048a9d78e7e59a80ab0c135d937">   15</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a251f0048a9d78e7e59a80ab0c135d937">OnInitialize</a>()</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        await UniTask.CompletedTask;</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    }</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>[RequireComponent(typeof(CanvasGroup))]</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html">   10</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_base_window_u_i.html">BaseWindowUI</a> : MonoBehaviour</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// 制作者 田内</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// 同ウィンドウで操作を分けたいUIの基底クラス</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a11a553b3df4baae307fc8a6d24254e27">   15</a></span>    <span class="keyword">private</span> <a class="code hl_property" href="class_base_window_u_i.html#a62d7a85d4395a3f60b8da42faac22143">CanvasGroup</a> <a class="code hl_variable" href="class_base_window_u_i.html#a11a553b3df4baae307fc8a6d24254e27">m_canvasGroup</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00017" data-start="{" data-end="};">
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a62d7a85d4395a3f60b8da42faac22143">   17</a></span>    <span class="keyword">public</span> <a class="code hl_property" href="class_base_window_u_i.html#a62d7a85d4395a3f60b8da42faac22143">CanvasGroup</a> <a class="code hl_property" href="class_base_window_u_i.html#a62d7a85d4395a3f60b8da42faac22143">CanvasGroup</a></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keyword">get</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_base_window_u_i.html#a11a553b3df4baae307fc8a6d24254e27">m_canvasGroup</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                <a class="code hl_variable" href="class_base_window_u_i.html#a11a553b3df4baae307fc8a6d24254e27">m_canvasGroup</a> = gameObject.GetComponent&lt;<a class="code hl_property" href="class_base_window_u_i.html#a62d7a85d4395a3f60b8da42faac22143">CanvasGroup</a>&gt;();</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            <span class="keywordflow">return</span> <a class="code hl_variable" href="class_base_window_u_i.html#a11a553b3df4baae307fc8a6d24254e27">m_canvasGroup</a>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
 </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="foldopen" id="foldopen00023" data-start="{" data-end="}">
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a13a6166a9c57d5cdefc6330e1ba7f82c">   23</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a13a6166a9c57d5cdefc6330e1ba7f82c">OnUpdate</a>()</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        await UniTask.CompletedTask;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="comment">//====================================================================</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// 選択されていなくても実行される処理</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">//====================================================================</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a251f0048a9d78e7e59a80ab0c135d937">   39</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a251f0048a9d78e7e59a80ab0c135d937">OnInitialize</a>()</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        await UniTask.CompletedTask;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    }</div>
 </div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">//====================================================================</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// 選択されている場合ににのみ行われる処理</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">//====================================================================</span></div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="foldopen" id="foldopen00036" data-start="{" data-end="}">
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#ac560873fe6a8724838c9bfaaf0d35b0f">   36</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#ac560873fe6a8724838c9bfaaf0d35b0f">OnSelectInitialize</a>()</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        await UniTask.CompletedTask;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="foldopen" id="foldopen00047" data-start="{" data-end="}">
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a13a6166a9c57d5cdefc6330e1ba7f82c">   47</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a13a6166a9c57d5cdefc6330e1ba7f82c">OnUpdate</a>()</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    {</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        await UniTask.CompletedTask;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
 </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="foldopen" id="foldopen00045" data-start="{" data-end="}">
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a85f33d9bbcbe1ad75e1ea81b88083913">   45</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a85f33d9bbcbe1ad75e1ea81b88083913">OnSelectUpdate</a>()</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        await UniTask.CompletedTask;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a9186651bb0ee1b392d916efb4ff2d7cb">   55</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a9186651bb0ee1b392d916efb4ff2d7cb">OnLateUpdate</a>()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        await UniTask.CompletedTask;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
 </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a853dcb23f481627b661a6085d83f6d46">   53</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a853dcb23f481627b661a6085d83f6d46">OnSelectExit</a>()</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        await UniTask.CompletedTask;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">//====================================================================</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="comment">// 選択されている場合ににのみ実行される処理</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">//====================================================================</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#ac560873fe6a8724838c9bfaaf0d35b0f">   69</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#ac560873fe6a8724838c9bfaaf0d35b0f">OnSelectInitialize</a>()</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        await UniTask.CompletedTask;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
 </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a85f33d9bbcbe1ad75e1ea81b88083913">   78</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a85f33d9bbcbe1ad75e1ea81b88083913">OnSelectUpdate</a>()</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        await UniTask.CompletedTask;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
 </div>
-<div class="ttc" id="aclass_base_window_u_i_html"><div class="ttname"><a href="class_base_window_u_i.html">BaseWindowUI</a></div><div class="ttdef"><b>Definition</b> <a href="#l00007">BaseWindowUI.cs:8</a></div></div>
-<div class="ttc" id="aclass_base_window_u_i_html_a13a6166a9c57d5cdefc6330e1ba7f82c"><div class="ttname"><a href="class_base_window_u_i.html#a13a6166a9c57d5cdefc6330e1ba7f82c">BaseWindowUI.OnUpdate</a></div><div class="ttdeci">virtual async UniTask OnUpdate()</div><div class="ttdoc">常に動作</div><div class="ttdef"><b>Definition</b> <a href="#l00023">BaseWindowUI.cs:23</a></div></div>
-<div class="ttc" id="aclass_base_window_u_i_html_a251f0048a9d78e7e59a80ab0c135d937"><div class="ttname"><a href="class_base_window_u_i.html#a251f0048a9d78e7e59a80ab0c135d937">BaseWindowUI.OnInitialize</a></div><div class="ttdeci">virtual async UniTask OnInitialize()</div><div class="ttdoc">最初に一度初期化</div><div class="ttdef"><b>Definition</b> <a href="#l00015">BaseWindowUI.cs:15</a></div></div>
-<div class="ttc" id="aclass_base_window_u_i_html_a853dcb23f481627b661a6085d83f6d46"><div class="ttname"><a href="class_base_window_u_i.html#a853dcb23f481627b661a6085d83f6d46">BaseWindowUI.OnSelectExit</a></div><div class="ttdeci">virtual async UniTask OnSelectExit()</div><div class="ttdoc">選択終了時に終了処理</div><div class="ttdef"><b>Definition</b> <a href="#l00053">BaseWindowUI.cs:53</a></div></div>
-<div class="ttc" id="aclass_base_window_u_i_html_a85f33d9bbcbe1ad75e1ea81b88083913"><div class="ttname"><a href="class_base_window_u_i.html#a85f33d9bbcbe1ad75e1ea81b88083913">BaseWindowUI.OnSelectUpdate</a></div><div class="ttdeci">virtual async UniTask OnSelectUpdate()</div><div class="ttdoc">選択中の場合に動作(OnUpdateより先に行われる)</div><div class="ttdef"><b>Definition</b> <a href="#l00045">BaseWindowUI.cs:45</a></div></div>
-<div class="ttc" id="aclass_base_window_u_i_html_ac560873fe6a8724838c9bfaaf0d35b0f"><div class="ttname"><a href="class_base_window_u_i.html#ac560873fe6a8724838c9bfaaf0d35b0f">BaseWindowUI.OnSelectInitialize</a></div><div class="ttdeci">virtual async UniTask OnSelectInitialize()</div><div class="ttdoc">選択されたときに一度初期化</div><div class="ttdef"><b>Definition</b> <a href="#l00036">BaseWindowUI.cs:36</a></div></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00086" data-start="{" data-end="}">
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="class_base_window_u_i.html#a853dcb23f481627b661a6085d83f6d46">   86</a></span>    <span class="keyword">virtual</span> <span class="keyword">public</span> async UniTask <a class="code hl_function" href="class_base_window_u_i.html#a853dcb23f481627b661a6085d83f6d46">OnSelectExit</a>()</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        await UniTask.CompletedTask;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    }</div>
+</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+</div>
+<div class="ttc" id="aclass_base_window_u_i_html"><div class="ttname"><a href="class_base_window_u_i.html">BaseWindowUI</a></div><div class="ttdef"><b>Definition</b> <a href="#l00010">BaseWindowUI.cs:11</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a11a553b3df4baae307fc8a6d24254e27"><div class="ttname"><a href="class_base_window_u_i.html#a11a553b3df4baae307fc8a6d24254e27">BaseWindowUI.m_canvasGroup</a></div><div class="ttdeci">CanvasGroup m_canvasGroup</div><div class="ttdef"><b>Definition</b> <a href="#l00015">BaseWindowUI.cs:15</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a13a6166a9c57d5cdefc6330e1ba7f82c"><div class="ttname"><a href="class_base_window_u_i.html#a13a6166a9c57d5cdefc6330e1ba7f82c">BaseWindowUI.OnUpdate</a></div><div class="ttdeci">virtual async UniTask OnUpdate()</div><div class="ttdoc">常に動作</div><div class="ttdef"><b>Definition</b> <a href="#l00047">BaseWindowUI.cs:47</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a251f0048a9d78e7e59a80ab0c135d937"><div class="ttname"><a href="class_base_window_u_i.html#a251f0048a9d78e7e59a80ab0c135d937">BaseWindowUI.OnInitialize</a></div><div class="ttdeci">virtual async UniTask OnInitialize()</div><div class="ttdoc">最初に一度初期化</div><div class="ttdef"><b>Definition</b> <a href="#l00039">BaseWindowUI.cs:39</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a62d7a85d4395a3f60b8da42faac22143"><div class="ttname"><a href="class_base_window_u_i.html#a62d7a85d4395a3f60b8da42faac22143">BaseWindowUI.CanvasGroup</a></div><div class="ttdeci">CanvasGroup CanvasGroup</div><div class="ttdef"><b>Definition</b> <a href="#l00017">BaseWindowUI.cs:18</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a853dcb23f481627b661a6085d83f6d46"><div class="ttname"><a href="class_base_window_u_i.html#a853dcb23f481627b661a6085d83f6d46">BaseWindowUI.OnSelectExit</a></div><div class="ttdeci">virtual async UniTask OnSelectExit()</div><div class="ttdoc">選択終了時に終了処理</div><div class="ttdef"><b>Definition</b> <a href="#l00086">BaseWindowUI.cs:86</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a85f33d9bbcbe1ad75e1ea81b88083913"><div class="ttname"><a href="class_base_window_u_i.html#a85f33d9bbcbe1ad75e1ea81b88083913">BaseWindowUI.OnSelectUpdate</a></div><div class="ttdeci">virtual async UniTask OnSelectUpdate()</div><div class="ttdoc">選択中の場合に動作(OnUpdateより先に行われる)</div><div class="ttdef"><b>Definition</b> <a href="#l00078">BaseWindowUI.cs:78</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_a9186651bb0ee1b392d916efb4ff2d7cb"><div class="ttname"><a href="class_base_window_u_i.html#a9186651bb0ee1b392d916efb4ff2d7cb">BaseWindowUI.OnLateUpdate</a></div><div class="ttdeci">virtual async UniTask OnLateUpdate()</div><div class="ttdoc">常に動作、OnUpdateの後処理</div><div class="ttdef"><b>Definition</b> <a href="#l00055">BaseWindowUI.cs:55</a></div></div>
+<div class="ttc" id="aclass_base_window_u_i_html_ac560873fe6a8724838c9bfaaf0d35b0f"><div class="ttname"><a href="class_base_window_u_i.html#ac560873fe6a8724838c9bfaaf0d35b0f">BaseWindowUI.OnSelectInitialize</a></div><div class="ttdeci">virtual async UniTask OnSelectInitialize()</div><div class="ttdoc">選択されたときに一度初期化</div><div class="ttdef"><b>Definition</b> <a href="#l00069">BaseWindowUI.cs:69</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

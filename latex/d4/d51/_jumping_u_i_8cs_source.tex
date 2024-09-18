@@ -1,0 +1,95 @@
+\doxysection{Jumping\+UI.\+cs}
+\hypertarget{_jumping_u_i_8cs_source}{}\label{_jumping_u_i_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/001\_Common/Scripts/TitleScene/JumpingUI.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/001\_Common/Scripts/TitleScene/JumpingUI.cs}}
+\mbox{\hyperlink{_jumping_u_i_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00006}\mbox{\hyperlink{class_jumping_u_i}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_jumping_u_i}{JumpingUI}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ 画像のRectTransform}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00009}\mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{00009}}\ \ \ \ \ \textcolor{keyword}{private}\ RectTransform\ \mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{m\_rectTransform}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ ジャンプの高さと時間（インスペクターで変更可能）}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00012}\mbox{\hyperlink{class_jumping_u_i_aeefc22137842d1532f5472500d186bcd}{00012}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_jumping_u_i_aeefc22137842d1532f5472500d186bcd}{m\_jumpHeight}}\ =\ 100f;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00013}\mbox{\hyperlink{class_jumping_u_i_a23513c77250264afbaf22f8f5653906a}{00013}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_jumping_u_i_a23513c77250264afbaf22f8f5653906a}{m\_jumpDuration}}\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00015}\mbox{\hyperlink{class_jumping_u_i_a5b197ea299cc1fc3f1a67344265a9c8c}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector2\ \mbox{\hyperlink{class_jumping_u_i_a5b197ea299cc1fc3f1a67344265a9c8c}{m\_originalPosition}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ 現在のジャンプTween}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00019}\mbox{\hyperlink{class_jumping_u_i_ab120c755dece033e41939c134d6490f0}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ Tween\ \mbox{\hyperlink{class_jumping_u_i_ab120c755dece033e41939c134d6490f0}{m\_jumpTween}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00021}\mbox{\hyperlink{class_jumping_u_i_a900a32b636686e8e67a416da3c3a84a6}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_jumping_u_i_a900a32b636686e8e67a416da3c3a84a6}{isTweenInitialized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00023}\mbox{\hyperlink{class_jumping_u_i_a5ebf56877a07c1b44aabac182ea973da}{00023}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_a5ebf56877a07c1b44aabac182ea973da}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_jumping_u_i_a900a32b636686e8e67a416da3c3a84a6}{isTweenInitialized}})}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ DOTween.Init();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_a900a32b636686e8e67a416da3c3a84a6}{isTweenInitialized}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{m\_rectTransform}}\ =\ GetComponent<RectTransform>();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 画像をジャンプさせるアニメーションを開始}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_ac52207c6a2e55d7171e952ce9867b433}{StartJumpAnimation}}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00036}\mbox{\hyperlink{class_jumping_u_i_ac52207c6a2e55d7171e952ce9867b433}{00036}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_ac52207c6a2e55d7171e952ce9867b433}{StartJumpAnimation}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在のTweenがある場合は停止}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_a879316e21e124350175f8b10cfda3bc1}{StopAnimation}}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 元の位置を保存}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_a5b197ea299cc1fc3f1a67344265a9c8c}{m\_originalPosition}}\ =\ \mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{m\_rectTransform}}.anchoredPosition;}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 画像をジャンプさせるアニメーション}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_ab120c755dece033e41939c134d6490f0}{m\_jumpTween}}\ =\ \mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{m\_rectTransform}}.DOAnchorPosY(\mbox{\hyperlink{class_jumping_u_i_a5b197ea299cc1fc3f1a67344265a9c8c}{m\_originalPosition}}.y\ +\ \mbox{\hyperlink{class_jumping_u_i_aeefc22137842d1532f5472500d186bcd}{m\_jumpHeight}},\ \mbox{\hyperlink{class_jumping_u_i_a23513c77250264afbaf22f8f5653906a}{m\_jumpDuration}})}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ .SetLoops(-\/1,\ LoopType.Yoyo);}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00054}\mbox{\hyperlink{class_jumping_u_i_abbb0bf6d5c17334eb46567b218048845}{00054}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_abbb0bf6d5c17334eb46567b218048845}{OnValidate}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスペクターで値が変更されたときにジャンプアニメーションを更新}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Application.isPlaying\ \&\&\ \mbox{\hyperlink{class_jumping_u_i_a59ad1bb77195e796c079aacfa35b40bb}{m\_rectTransform}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ m\_rectTransform.anchoredPosition\ =\ \mbox{\hyperlink{class_jumping_u_i_a5b197ea299cc1fc3f1a67344265a9c8c}{m\_originalPosition}};}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_ac52207c6a2e55d7171e952ce9867b433}{StartJumpAnimation}}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00066}\mbox{\hyperlink{class_jumping_u_i_a1559b99ef46084a68e206f605587dcab}{00066}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_a1559b99ef46084a68e206f605587dcab}{OnDestroy}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトが破棄されるときにTweenを破棄}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_a879316e21e124350175f8b10cfda3bc1}{StopAnimation}}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00071}\mbox{\hyperlink{class_jumping_u_i_a5539ea735b0fea070e2545ac6bcbcfa8}{00071}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_a5539ea735b0fea070e2545ac6bcbcfa8}{OnDisable}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトが非アクティブになるときにTweenを破棄}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_a879316e21e124350175f8b10cfda3bc1}{StopAnimation}}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00076}\mbox{\hyperlink{class_jumping_u_i_aaa825369dff4d6f7f87cfdb83f1e735b}{00076}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_aaa825369dff4d6f7f87cfdb83f1e735b}{OnEnable}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトがアクティブになるときにジャンプアニメーションを再開}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_ac52207c6a2e55d7171e952ce9867b433}{StartJumpAnimation}}();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00082}\mbox{\hyperlink{class_jumping_u_i_a879316e21e124350175f8b10cfda3bc1}{00082}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_jumping_u_i_a879316e21e124350175f8b10cfda3bc1}{StopAnimation}}()}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_jumping_u_i_ab120c755dece033e41939c134d6490f0}{m\_jumpTween}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_jumping_u_i_ab120c755dece033e41939c134d6490f0}{m\_jumpTween}}.Kill();}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_jumping_u_i_8cs_source_l00089}00089\ \}}
+
+\end{DoxyCode}

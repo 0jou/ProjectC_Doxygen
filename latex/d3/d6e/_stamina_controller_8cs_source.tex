@@ -1,0 +1,126 @@
+\doxysection{Stamina\+Controller.\+cs}
+\hypertarget{_stamina_controller_8cs_source}{}\label{_stamina_controller_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/Script/View/Stamina/StaminaController.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/Script/View/Stamina/StaminaController.cs}}
+\mbox{\hyperlink{_stamina_controller_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks.Triggers;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00008}\mbox{\hyperlink{class_stamina_controller}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_stamina_controller}{StaminaController}}\ :\ MonoBehaviour,\ ISerializationCallbackReceiver}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00010}00010\ \ \ \ \ [Tooltip(\textcolor{stringliteral}{"{}値変えると長さ変わる"{}})]}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00011}00011\ \ \ \ \ [Range(0.0f,\ 1.0f)]}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00012}\mbox{\hyperlink{class_stamina_controller_a1c6818087db0250da63a5fe9baf7d949}{00012}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stamina_controller_a1c6818087db0250da63a5fe9baf7d949}{m\_value}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00014}00014\ \ \ \ \ [Tooltip(\textcolor{stringliteral}{"{}色の変化の設定"{}})]}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00015}\mbox{\hyperlink{class_stamina_controller_ad8288f2582d229891c82486f52d4207b}{00015}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<HPBarColor>\ \mbox{\hyperlink{class_stamina_controller_ad8288f2582d229891c82486f52d4207b}{m\_barColorList}}\ =\ \textcolor{keyword}{new}\ List<HPBarColor>();}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00017}00017\ \ \ \ \ [Tooltip(\textcolor{stringliteral}{"{}色や長さ変更するImageを設定"{}})]}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00018}\mbox{\hyperlink{class_stamina_controller_a5cab1659fd24a7feca86b7cca7184e25}{00018}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \mbox{\hyperlink{class_stamina_controller_a5cab1659fd24a7feca86b7cca7184e25}{m\_image}};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00020}\mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{m\_isView}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00022}\mbox{\hyperlink{class_stamina_controller_a08855f35277727812e9ad0541938a9a8}{00022}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stamina_controller_a08855f35277727812e9ad0541938a9a8}{m\_showDuration}}\ =\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00023}\mbox{\hyperlink{class_stamina_controller_a43a566343771d1b112dd9eabf5ea611f}{00023}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stamina_controller_a43a566343771d1b112dd9eabf5ea611f}{m\_hideDuration}}\ =\ 1.3f;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00025}\mbox{\hyperlink{class_stamina_controller_a5201cf9d5b5546afe87671a93096870c}{00025}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<Image>\ \mbox{\hyperlink{class_stamina_controller_a5201cf9d5b5546afe87671a93096870c}{m\_viewImageList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00028}\mbox{\hyperlink{class_stamina_controller_a86741955502403775c024bb66617bfe3}{00028}}\ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stamina_controller_a86741955502403775c024bb66617bfe3}{m\_max}}\ =\ 50.0f;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00029}\mbox{\hyperlink{class_stamina_controller_acf3a6697ab717a45b56e0aa40de3f4d5}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_stamina_controller_acf3a6697ab717a45b56e0aa40de3f4d5}{Max}}\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_stamina_controller_a86741955502403775c024bb66617bfe3}{m\_max}}\ =\ value;\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ Start\ is\ called\ before\ the\ first\ frame\ update}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00032}\mbox{\hyperlink{class_stamina_controller_afad84cd95fdc0f14ba727d97b7b4f97f}{00032}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamina_controller_afad84cd95fdc0f14ba727d97b7b4f97f}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_stamina_controller_a5cab1659fd24a7feca86b7cca7184e25}{m\_image}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}StaminaController\ Imageが設定されていません"{}});}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ image\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_stamina_controller_a5201cf9d5b5546afe87671a93096870c}{m\_viewImageList}})}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ image.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{m\_isView}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00049}\mbox{\hyperlink{class_stamina_controller_a8c4eb3dc0e107e7248b83a485671e90d}{00049}}\ \ \ \ \ \textcolor{keywordtype}{void}\ ISerializationCallbackReceiver.OnBeforeSerialize()}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_a5e889f42481f97209b08f8b8ab6c6219}{UpdateFillAmount}}();}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00057}\mbox{\hyperlink{class_stamina_controller_abdf22c657231cd8423cfa9a389c8e748}{00057}}\ \ \ \ \ \textcolor{keywordtype}{void}\ ISerializationCallbackReceiver.OnAfterDeserialize()}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00058}00058\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00061}\mbox{\hyperlink{class_stamina_controller_a5e889f42481f97209b08f8b8ab6c6219}{00061}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamina_controller_a5e889f42481f97209b08f8b8ab6c6219}{UpdateFillAmount}}()}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_stamina_controller_a5cab1659fd24a7feca86b7cca7184e25}{m\_image}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 値→長さ}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ m\_image.fillAmount\ =\ \mbox{\hyperlink{class_stamina_controller_a1c6818087db0250da63a5fe9baf7d949}{m\_value}};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 値→色}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_stamina_controller_ad8288f2582d229891c82486f52d4207b}{m\_barColorList}}.Count;\ i++)}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_stamina_controller_a1c6818087db0250da63a5fe9baf7d949}{m\_value}}\ >\ \mbox{\hyperlink{class_stamina_controller_ad8288f2582d229891c82486f52d4207b}{m\_barColorList}}[i].\mbox{\hyperlink{class_stamina_controller_a1c6818087db0250da63a5fe9baf7d949}{m\_value}})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ m\_image.color\ =\ \mbox{\hyperlink{class_stamina_controller_ad8288f2582d229891c82486f52d4207b}{m\_barColorList}}[i].m\_color;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//\ 現在、最大値のセット}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00079}\mbox{\hyperlink{class_stamina_controller_ae59e930767300ac195aa8611519dd2ed}{00079}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamina_controller_ae59e930767300ac195aa8611519dd2ed}{SetValue}}(\textcolor{keywordtype}{float}\ \_current,\ \textcolor{keywordtype}{float}\ \_max)}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_a86741955502403775c024bb66617bfe3}{m\_max}}\ =\ \_max;}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_ae59e930767300ac195aa8611519dd2ed}{SetValue}}(\_current);}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//\ 現在のHPをセット}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00085}\mbox{\hyperlink{class_stamina_controller_a6fd08186f7c700f073ce7691067557cc}{00085}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamina_controller_a6fd08186f7c700f073ce7691067557cc}{SetValue}}(\textcolor{keywordtype}{float}\ \_current)}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00086}00086\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_a1c6818087db0250da63a5fe9baf7d949}{m\_value}}\ =\ \_current\ /\ \mbox{\hyperlink{class_stamina_controller_a86741955502403775c024bb66617bfe3}{m\_max}};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HPバーの更新}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_a5e889f42481f97209b08f8b8ab6c6219}{UpdateFillAmount}}();}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00092}00092\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00095}\mbox{\hyperlink{class_stamina_controller_a59ab848dc987c956dd83cdafc724e424}{00095}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamina_controller_a59ab848dc987c956dd83cdafc724e424}{OnShow}}()}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00096}00096\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{m\_isView}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ image\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_stamina_controller_a5201cf9d5b5546afe87671a93096870c}{m\_viewImageList}})}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ image.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ image.DOKill();\ \textcolor{comment}{//\ すでにアニメーションが再生されていたらキル}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ image.DOFade(endValue:\ 1f,\ duration:\ \mbox{\hyperlink{class_stamina_controller_a08855f35277727812e9ad0541938a9a8}{m\_showDuration}})}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{true});\ \ \ \textcolor{comment}{//TimeScaleを無視する;}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{m\_isView}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00111}\mbox{\hyperlink{class_stamina_controller_a8c532ec32769f8f72833798518024c87}{00111}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_stamina_controller_a8c532ec32769f8f72833798518024c87}{OnHide}}()}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00112}00112\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{m\_isView}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ image\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_stamina_controller_a5201cf9d5b5546afe87671a93096870c}{m\_viewImageList}})}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ image.DOKill();\ \textcolor{comment}{//\ すでにアニメーションが再生されていたらキル}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ image.DOFade(endValue:\ 0f,\ duration:\ \mbox{\hyperlink{class_stamina_controller_a43a566343771d1b112dd9eabf5ea611f}{m\_hideDuration}})}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .OnComplete(()\ =>\ image.gameObject.SetActive(\textcolor{keyword}{false}))}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stamina_controller_adfb42cc751abb4f507f4c15b2373c8ec}{m\_isView}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00124}00124\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_stamina_controller_8cs_source_l00126}00126\ \}}
+
+\end{DoxyCode}

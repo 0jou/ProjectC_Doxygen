@@ -1,0 +1,121 @@
+\doxysection{Select\+Stage\+Controller.\+cs}
+\hypertarget{_select_stage_controller_8cs_source}{}\label{_select_stage_controller_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/202\_Lobby\_UI/Window/SelectStageWindow/SelectStageController.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/202\_Lobby\_UI/Window/SelectStageWindow/SelectStageController.cs}}
+\mbox{\hyperlink{_select_stage_controller_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_stage_info}{StageInfo}};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00008}\mbox{\hyperlink{class_select_stage_controller}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_select_stage_controller}{SelectStageController}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ 選択中のステージID}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00016}\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{00016}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}\ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}\ =\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Stage01;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00018}\mbox{\hyperlink{class_select_stage_controller_afb41775098eddfdc09aa7afa6e4b5925}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}\ \mbox{\hyperlink{class_select_stage_controller_afb41775098eddfdc09aa7afa6e4b5925}{CurrentSelectStageID}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ 選択しているステージが変更されたかどうか}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00023}\mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{00023}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00025}00025\ \textcolor{preprocessor}{\ \ \ \ \#region\ プロパティ説明}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00036}00036\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00037}\mbox{\hyperlink{class_select_stage_controller_af372aabdda255eead7f95d9dd13b7051}{00037}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_select_stage_controller_af372aabdda255eead7f95d9dd13b7051}{IsSelectChangeFlg}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//========================================================}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00040}00040\ \ \ \ \ \textcolor{comment}{//\ 選択したか}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00042}\mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{00042}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00044}\mbox{\hyperlink{class_select_stage_controller_a78861f087ab4af66010a9929bee13075}{00044}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_select_stage_controller_a78861f087ab4af66010a9929bee13075}{IsPress}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}};\ \}\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}}\ =\ value;\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//===============================================================================}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00048}\mbox{\hyperlink{class_select_stage_controller_a65700719303fb5efa3e0bfd7d10b2da4}{00048}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_select_stage_controller_a65700719303fb5efa3e0bfd7d10b2da4}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00049}00049\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}{Select}}();}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539}{OnPress}}();}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00055}\mbox{\hyperlink{class_select_stage_controller_ac58bfcab9d0d3a633aeec76230c0f71b}{00055}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_stage_data}{StageData}}\ \mbox{\hyperlink{class_select_stage_controller_ac58bfcab9d0d3a633aeec76230c0f71b}{GetCurrentSelectStageData}}()}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stage_data}{StageData}}\ stageData\ =\ \mbox{\hyperlink{class_stage_data_base_manager}{StageDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetStageData(\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}});}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ stageData;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00062}\mbox{\hyperlink{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}{00062}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}{Select}}()}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Keyboard.current?.anyKey.wasPressedThisFrame\ ==\ \textcolor{keyword}{false}\ \&\&}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ Gamepad.current?.wasUpdatedThisFrame\ ==\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 左に進む}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_u_i_manager}{InputUIManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionTrigger(\textcolor{stringliteral}{"{}Left"{}}))}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}\ >\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Min\ +\ 1)}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}++;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 右に進む}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_u_i_manager}{InputUIManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionTrigger(\textcolor{stringliteral}{"{}Left"{}}))}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}\ <\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Max\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}++;}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00093}00093\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flg)}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE音追加（山本）}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Select"{}});}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00105}00105\ \ \ \ \ \textcolor{comment}{//\ 選択した場合}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00106}\mbox{\hyperlink{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539}{00106}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539}{OnPress}}()}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00107}00107\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_u_i_manager}{InputUIManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}?.GetInputAction(\textcolor{stringliteral}{"{}Select"{}})\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}InputActionが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_u_i_manager}{InputUIManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetInputAction(\textcolor{stringliteral}{"{}Select"{}}).triggered\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Decide"{}});}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_select_stage_controller_8cs_source_l00125}00125\ \}}
+
+\end{DoxyCode}

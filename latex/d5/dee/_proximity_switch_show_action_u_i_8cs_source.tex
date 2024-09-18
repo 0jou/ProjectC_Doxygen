@@ -1,0 +1,84 @@
+\doxysection{Proximity\+Switch\+Show\+Action\+UI.\+cs}
+\hypertarget{_proximity_switch_show_action_u_i_8cs_source}{}\label{_proximity_switch_show_action_u_i_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/Script/Model/ProximitySwitchShowActionUI.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/002\_UI/Script/Model/ProximitySwitchShowActionUI.cs}}
+\mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00008}00008\ [RequireComponent(typeof(BoxCollider))]}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00009}\mbox{\hyperlink{class_proximity_switch_show_action_u_i}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_proximity_switch_show_action_u_i}{ProximitySwitchShowActionUI}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 元：ProximityCreateWindow.cs}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 近くにタグがある場合ActionUIを表示}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ BoxColliderが必要です}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ 制作者　吉田}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}どこの表示非表示を切り替えるか"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00019}\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIController.ActionUIState}}\ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}}\ =\ \mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.AbleToCooking;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}タグ"{}})]}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00023}\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{m\_tag}}\ =\ \textcolor{stringliteral}{"{}Player"{}};}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00025}\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00027}\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a5d1f6394608ea1760ca1d2071dae4467}{00027}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a5d1f6394608ea1760ca1d2071dae4467}{OnTriggerEnter}}(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.transform.CompareTag(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{m\_tag}}))}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターコアからActionUIを表示する}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.TryGetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>(out\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ characterCore))}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ =\ characterCore;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが見つかりませんでした"{}});}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}.\mbox{\hyperlink{class_player_parameters_a86c2e8d47ffe1441f094c6ce6a1510f0}{AddActionUIState}}(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}});}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00053}\mbox{\hyperlink{class_proximity_switch_show_action_u_i_ae4b38854ffa06ddd1749b098c62edb02}{00053}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_ae4b38854ffa06ddd1749b098c62edb02}{OnTriggerExit}}(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.transform.CompareTag(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{m\_tag}}))}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターコアからActionUIを表示する}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.TryGetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>(out\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ characterCore))}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ =\ characterCore;}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが見つかりませんでした"{}});}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}.\mbox{\hyperlink{class_player_parameters_a9e7696b4818f8fb9289b153463b44f97}{RemoveActionUIState}}(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}});}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00076}00076\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_proximity_switch_show_action_u_i_8cs_source_l00078}00078\ \}}
+
+\end{DoxyCode}

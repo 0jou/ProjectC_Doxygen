@@ -15,13 +15,14 @@ var searchData=
   ['waitqueue_12',['WaitQueue',['../d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a1077133704641a4d88aee56a50431b70',1,'CustomerStateInfo']]],
   ['waitqueuecustomer_13',['WaitQueueCustomer',['../de/dd7/class_wait_queue_customer.html',1,'']]],
   ['waitqueuecustomer_2ecs_14',['WaitQueueCustomer.cs',['../d6/d20/_wait_queue_customer_8cs.html',1,'']]],
-  ['walkdist_15',['WalkDist',['../df/d52/class_player_skills_parameters.html#ad8a176f9a028f007bc53c015be173391',1,'PlayerSkillsParameters']]],
-  ['warpplayerbehind_16',['WarpPlayerBehind',['../d9/d60/class_warp_player_behind.html',1,'']]],
-  ['warpplayerbehind_2ecs_17',['WarpPlayerBehind.cs',['../d4/d40/_warp_player_behind_8cs.html',1,'']]],
-  ['watchtarget_18',['WatchTarget',['../d2/d42/class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform.html#ad14b938b0dae683b9aca03d66c34d669',1,'Arbor::BehaviourTree::Actions::AgentChaseToTransform']]],
-  ['width_19',['Width',['../d5/dc8/class_sin_curve_move_object.html#a656dbff5acec0041eb1874711bfde91ba32954654ac8fe66a1d09be19001de2d4',1,'SinCurveMoveObject']]],
-  ['windowcontroller_20',['WindowController',['../d7/d6f/class_window_controller.html',1,'']]],
-  ['windowcontroller_2ecs_21',['WindowController.cs',['../dc/da2/_window_controller_8cs.html',1,'']]],
-  ['windowuicontroller_22',['WindowUIController',['../d1/d60/class_window_u_i_controller.html',1,'']]],
-  ['windowuicontroller_2ecs_23',['WindowUIController.cs',['../d0/d79/_window_u_i_controller_8cs.html',1,'']]]
+  ['waittime_15',['WaitTime',['../d5/d43/class_stop_effect.html#a1db9372c4d3c37a53d6c5ba9679cea51',1,'StopEffect']]],
+  ['walkdist_16',['WalkDist',['../df/d52/class_player_skills_parameters.html#ad8a176f9a028f007bc53c015be173391',1,'PlayerSkillsParameters']]],
+  ['warpplayerbehind_17',['WarpPlayerBehind',['../d9/d60/class_warp_player_behind.html',1,'']]],
+  ['warpplayerbehind_2ecs_18',['WarpPlayerBehind.cs',['../d4/d40/_warp_player_behind_8cs.html',1,'']]],
+  ['watchtarget_19',['WatchTarget',['../d2/d42/class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform.html#ad14b938b0dae683b9aca03d66c34d669',1,'Arbor::BehaviourTree::Actions::AgentChaseToTransform']]],
+  ['width_20',['Width',['../d5/dc8/class_sin_curve_move_object.html#a656dbff5acec0041eb1874711bfde91ba32954654ac8fe66a1d09be19001de2d4',1,'SinCurveMoveObject']]],
+  ['windowcontroller_21',['WindowController',['../d7/d6f/class_window_controller.html',1,'']]],
+  ['windowcontroller_2ecs_22',['WindowController.cs',['../dc/da2/_window_controller_8cs.html',1,'']]],
+  ['windowuicontroller_23',['WindowUIController',['../d1/d60/class_window_u_i_controller.html',1,'']]],
+  ['windowuicontroller_2ecs_24',['WindowUIController.cs',['../d0/d79/_window_u_i_controller_8cs.html',1,'']]]
 ];

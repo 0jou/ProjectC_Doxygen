@@ -19,59 +19,25 @@
 \DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00015}\mbox{\hyperlink{class_wait_eat_customer_a69271ec9cfc2ae0bc2d6dac3e885bd66}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_wait_eat_customer_a69271ec9cfc2ae0bc2d6dac3e885bd66}{m\_nextState}}\ =\ \textcolor{keyword}{null};}
 \DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00016}00016\ }
 \DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00017}00017\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//==================================}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ 経過時間}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00020}00020\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00021}\mbox{\hyperlink{class_wait_eat_customer_a62c97f31b91a64a1a5c69daa97196d98}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_wait_eat_customer_a62c97f31b91a64a1a5c69daa97196d98}{m\_remainingTime}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00018}\mbox{\hyperlink{class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71}{Wait}}()}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00022}00022\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00023}\mbox{\hyperlink{class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71}{Wait}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00024}00024\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_wait_eat_customer_a62c97f31b91a64a1a5c69daa97196d98}{m\_remainingTime}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 怒ったら}}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CountAngry())}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_wait_eat_customer_a69271ec9cfc2ae0bc2d6dac3e885bd66}{m\_nextState}});}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00028}00028\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.EatTime\ <\ \mbox{\hyperlink{class_wait_eat_customer_a62c97f31b91a64a1a5c69daa97196d98}{m\_remainingTime}})}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_wait_eat_customer_a69271ec9cfc2ae0bc2d6dac3e885bd66}{m\_nextState}});}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00034}00034\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00032}\mbox{\hyperlink{class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71}{Wait}}();}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00035}00035\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00036}00036\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00037}00037\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00039}\mbox{\hyperlink{class_wait_eat_customer_a989f2420a6548c6c48ae442c01f3eea7}{00039}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a989f2420a6548c6c48ae442c01f3eea7}{Start}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00040}00040\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00041}00041\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00042}00042\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00045}\mbox{\hyperlink{class_wait_eat_customer_a174c00c79dbe40923298428dc1455497}{00045}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a174c00c79dbe40923298428dc1455497}{OnStateAwake}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00046}00046\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00047}00047\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00048}00048\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00050}\mbox{\hyperlink{class_wait_eat_customer_a6ed5b2a97a1c5ea72b4b17e6e04df830}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a6ed5b2a97a1c5ea72b4b17e6e04df830}{OnStateBegin}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00051}00051\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 通る度の初期化}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_wait_eat_customer_a62c97f31b91a64a1a5c69daa97196d98}{m\_remainingTime}}\ =\ 0.0f;}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00054}00054\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00055}00055\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00057}\mbox{\hyperlink{class_wait_eat_customer_acaf7408e2c680d85abac22d7546d898b}{00057}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_acaf7408e2c680d85abac22d7546d898b}{OnStateEnd}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00058}00058\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00059}00059\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00060}00060\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00062}\mbox{\hyperlink{class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad}{00062}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad}{OnStateUpdate}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00063}00063\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71}{Wait}}();}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00065}00065\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00066}00066\ }
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00068}\mbox{\hyperlink{class_wait_eat_customer_a7499d28f936437907cc675d0f6285409}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_wait_eat_customer_a7499d28f936437907cc675d0f6285409}{OnStateLateUpdate}}()}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00069}00069\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00070}00070\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{_wait_eat_customer_8cs_source_l00037}00037\ \}}
 
 \end{DoxyCode}

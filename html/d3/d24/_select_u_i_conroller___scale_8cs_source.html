@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ProjectC_Doxygen: C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/Base/SelectUIController/SelectUIConroller_Scale.cs ソースファイル</title>
+<title>ProjectC_Doxygen: C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/SelectUIController/SelectUIConroller_Scale.cs ソースファイル</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -110,31 +110,70 @@ $(function(){initNavTree('d3/d24/_select_u_i_conroller___scale_8cs_source.html',
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="comment">// 制作者 田内</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <span class="comment">// 選択したUIの大きさを調整する</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
-<div class="foldopen" id="foldopen00011" data-start="{" data-end="}">
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d5/de6/class_select_u_i_controller.html#a10022e44164eabeffdf351b0c40d612e">   11</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a10022e44164eabeffdf351b0c40d612e">DoScale</a>(GameObject _ui)</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        <span class="keywordflow">if</span> (_ui == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keywordflow">if</span> (_ui.TryGetComponent&lt;RectTransform&gt;(out var rect) == <span class="keyword">false</span>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="comment">// 大きさ調整</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        rect.DOPunchScale(</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            punch: Vector3.one * 0.1f,</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            duration: 0.2f,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            vibrato: 1</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        ).SetEase(Ease.OutExpo).SetUpdate(<span class="keyword">true</span>).SetLink(_ui);</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d5/de6/class_select_u_i_controller.html#a87b463991c3d3373a85a6cd5443e29e3">   11</a></span>    <span class="keyword">private</span> Tweener <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a87b463991c3d3373a85a6cd5443e29e3">m_tweener</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d5/de6/class_select_u_i_controller.html#a19c6ed41afc8a3bf2bc86d4ea44a9b83">   12</a></span>    <span class="keyword">private</span> RectTransform <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a19c6ed41afc8a3bf2bc86d4ea44a9b83">m_scaleRect</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d5/de6/class_select_u_i_controller.html#aafc0f698a85ebed6909e0b5fca80dc54">   13</a></span>    <span class="keyword">private</span> Vector3 <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#aafc0f698a85ebed6909e0b5fca80dc54">m_defaultScale</a> = Vector3.one;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="}">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../d5/de6/class_select_u_i_controller.html#a002205878f22ca385e8b41b5b1148c5f">   15</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a002205878f22ca385e8b41b5b1148c5f">OnDestroy</a>()</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    {</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="keywordflow">if</span> (m_tweener != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            m_tweener.Kill();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            m_tweener = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        }</div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    }</div>
 </div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>}</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="}">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d5/de6/class_select_u_i_controller.html#a10022e44164eabeffdf351b0c40d612e">   25</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a10022e44164eabeffdf351b0c40d612e">DoScale</a>(GameObject _ui)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">if</span> (m_tweener != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            m_tweener.Kill();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            m_tweener = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>        }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// デフォルトの大きさに変更</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keywordflow">if</span> (m_scaleRect != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            m_scaleRect.localScale = m_defaultScale;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            m_scaleRect = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (_ui == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">if</span> (_ui.TryGetComponent&lt;RectTransform&gt;(out var rect) == <span class="keyword">false</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        m_scaleRect = rect;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        m_defaultScale = rect.localScale;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// 大きさ調整</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        m_tweener = rect.DOPunchScale(</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            punch: Vector3.one * 0.1f,</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            duration: 0.2f,</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            vibrato: 1</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        ).SetEase(Ease.OutExpo).SetUpdate(<span class="keyword">true</span>).SetLink(_ui);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>}</div>
 </div>
 <div class="ttc" id="aclass_select_u_i_controller_html"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html">SelectUIController</a></div><div class="ttdef"><b>Definition</b> <a href="#l00006">SelectUIConroller_Scale.cs:7</a></div></div>
-<div class="ttc" id="aclass_select_u_i_controller_html_a10022e44164eabeffdf351b0c40d612e"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a10022e44164eabeffdf351b0c40d612e">SelectUIController.DoScale</a></div><div class="ttdeci">void DoScale(GameObject _ui)</div><div class="ttdef"><b>Definition</b> <a href="#l00011">SelectUIConroller_Scale.cs:11</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a002205878f22ca385e8b41b5b1148c5f"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a002205878f22ca385e8b41b5b1148c5f">SelectUIController.OnDestroy</a></div><div class="ttdeci">void OnDestroy()</div><div class="ttdef"><b>Definition</b> <a href="#l00015">SelectUIConroller_Scale.cs:15</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a10022e44164eabeffdf351b0c40d612e"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a10022e44164eabeffdf351b0c40d612e">SelectUIController.DoScale</a></div><div class="ttdeci">void DoScale(GameObject _ui)</div><div class="ttdef"><b>Definition</b> <a href="#l00025">SelectUIConroller_Scale.cs:25</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a19c6ed41afc8a3bf2bc86d4ea44a9b83"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a19c6ed41afc8a3bf2bc86d4ea44a9b83">SelectUIController.m_scaleRect</a></div><div class="ttdeci">RectTransform m_scaleRect</div><div class="ttdef"><b>Definition</b> <a href="#l00012">SelectUIConroller_Scale.cs:12</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a87b463991c3d3373a85a6cd5443e29e3"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a87b463991c3d3373a85a6cd5443e29e3">SelectUIController.m_tweener</a></div><div class="ttdeci">Tweener m_tweener</div><div class="ttdef"><b>Definition</b> <a href="#l00011">SelectUIConroller_Scale.cs:11</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_aafc0f698a85ebed6909e0b5fca80dc54"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#aafc0f698a85ebed6909e0b5fca80dc54">SelectUIController.m_defaultScale</a></div><div class="ttdeci">Vector3 m_defaultScale</div><div class="ttdef"><b>Definition</b> <a href="#l00013">SelectUIConroller_Scale.cs:13</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_a1654b9c2f0c1453edf9a37d7e840ad4.html">_ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_8b52b89de1dfe200da6cbf06c2dcd77f.html">Assets</a></li><li class="navelem"><a class="el" href="../../dir_b81ef1b6690caa420aae6d696fbbf389.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_c80d5f816a2c5dd03e6de7cf82427930.html">003_Item</a></li><li class="navelem"><a class="el" href="../../dir_5061cc3f701ebde8c2bff0a93ff2d6b2.html">Window</a></li><li class="navelem"><a class="el" href="../../dir_d574643bd84262910edaca7594090863.html">Base</a></li><li class="navelem"><a class="el" href="../../dir_9206c9c8662c8db9697a49cfaaf9e6df.html">SelectUIController</a></li><li class="navelem"><a class="el" href="../../d3/d24/_select_u_i_conroller___scale_8cs.html">SelectUIConroller_Scale.cs</a></li>
+    <li class="navelem"><a class="el" href="../../dir_a1654b9c2f0c1453edf9a37d7e840ad4.html">_ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_8b52b89de1dfe200da6cbf06c2dcd77f.html">Assets</a></li><li class="navelem"><a class="el" href="../../dir_b81ef1b6690caa420aae6d696fbbf389.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_2a30841dd4ca18c82fcf9a1ebe571bf5.html">002_UI</a></li><li class="navelem"><a class="el" href="../../dir_07c28d2a5b5cc6153ac2311575d75b74.html">SelectUIController</a></li><li class="navelem"><a class="el" href="../../d3/d24/_select_u_i_conroller___scale_8cs.html">SelectUIConroller_Scale.cs</a></li>
     <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>

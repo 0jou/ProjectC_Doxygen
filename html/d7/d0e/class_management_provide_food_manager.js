@@ -7,6 +7,8 @@ var class_management_provide_food_manager =
     [ "IsAddList", "d7/d0e/class_management_provide_food_manager.html#af3d0c07f9ff68b59f2794849a4a893bb", null ],
     [ "IsCreate", "d7/d0e/class_management_provide_food_manager.html#a6c9389f53cfe94ca622bd7c3108fa065", null ],
     [ "LateUpdate", "d7/d0e/class_management_provide_food_manager.html#a07ea8272c6a61abdd0ac68d5e82c2834", null ],
+    [ "PublishSoldOutEvent", "d7/d0e/class_management_provide_food_manager.html#a4d80ce1f8d609319138cefdbe854868d", null ],
+    [ "RemoveProvideFood", "d7/d0e/class_management_provide_food_manager.html#ad3435eb3155d8eda67d4bf017a65de04", null ],
     [ "RemoveProvideFoodList", "d7/d0e/class_management_provide_food_manager.html#aa8f8e857e86fd9777f622c947447cc48", null ],
     [ "SoldFood", "d7/d0e/class_management_provide_food_manager.html#a3b9b70c3124c85ba51e699efe04730e1", null ],
     [ "m_isListChange", "d7/d0e/class_management_provide_food_manager.html#aa9b90b4dbb658dbcbcfe189aac73838b", null ],

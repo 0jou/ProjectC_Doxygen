@@ -1,0 +1,101 @@
+\doxysection{Base\+Assign\+Event\+Object.\+cs}
+\hypertarget{_base_assign_event_object_8cs_source}{}\label{_base_assign_event_object_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/108\_Management\_Event/BaseAssignEventObject.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/108\_Management\_Event/BaseAssignEventObject.cs}}
+\mbox{\hyperlink{_base_assign_event_object_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ BaseAssignEventObject}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00003}00003\ \textcolor{comment}{\ *\ @brief\ ImetaAIを用いてイベントオブジェクト群として管理するための基底クラス}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00004}00004\ \textcolor{comment}{\ *\ Colliderに接触、接触終了した際のイベントと外部アクセス時のイベントを定義}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00005}00005\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00015}\mbox{\hyperlink{class_base_assign_event_object}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_base_assign_event_object}{BaseAssignEventObject}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00018}00018\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}アニメーショントリガー名"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00019}\mbox{\hyperlink{class_base_assign_event_object_a8848cfc5cc08e00bb634839f5bfe8abc}{00019}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_base_assign_event_object_a8848cfc5cc08e00bb634839f5bfe8abc}{m\_animatorTriggerName}};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00022}00022\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}接触イベントを発生させるためのタグリスト"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00023}00023\ \ \ \ \ [Tag]}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00024}\mbox{\hyperlink{class_base_assign_event_object_a8ec273eeefbcde4807241fb07e9d8771}{00024}}\ \ \ \ \ [SerializeField]\ List<string>\ \mbox{\hyperlink{class_base_assign_event_object_a8ec273eeefbcde4807241fb07e9d8771}{m\_tagList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00027}\mbox{\hyperlink{class_base_assign_event_object_ae5e16c6e2f4d1477aacb7c8b81728b2f}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_base_assign_event_object_ae5e16c6e2f4d1477aacb7c8b81728b2f}{AnimatorTriggerName}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_assign_event_object_a8848cfc5cc08e00bb634839f5bfe8abc}{m\_animatorTriggerName}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00030}\mbox{\hyperlink{class_base_assign_event_object_a28293c3f8ba65e34c84b158cda41eed5}{00030}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_assign_event_object_a28293c3f8ba65e34c84b158cda41eed5}{m\_isCollided}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00033}\mbox{\hyperlink{class_base_assign_event_object_a44b658fc3b708c7d649b322f4798367b}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_assign_event_object_a44b658fc3b708c7d649b322f4798367b}{Collided}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_assign_event_object_a28293c3f8ba65e34c84b158cda41eed5}{m\_isCollided}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//====================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ virtual関数\ 要定義}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//====================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00043}\mbox{\hyperlink{class_base_assign_event_object_a521ef17fcf6aa8a021de8a8279eff826}{00043}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_assign_event_object_a521ef17fcf6aa8a021de8a8279eff826}{OnCollisionTriggerEvent}}()}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}BaseAssignEventObjectのOnCollisionTriggerEventが呼ばれました"{}});}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00051}\mbox{\hyperlink{class_base_assign_event_object_a7c9491825a0b8b3f466d5f2e750a1b23}{00051}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_assign_event_object_a7c9491825a0b8b3f466d5f2e750a1b23}{OnCollisionTriggerExitEvent}}()}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}BaseAssignEventObjectのOnCollisionExitEventが呼ばれました"{}});}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00060}\mbox{\hyperlink{class_base_assign_event_object_a6dd22b15080f16e29d91af3012592643}{00060}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_assign_event_object_a6dd22b15080f16e29d91af3012592643}{OnCollisionAccesesEvent}}()}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}BaseAssignEventObjectのOnCollisionAccesesEventが呼ばれました"{}});}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00071}\mbox{\hyperlink{class_base_assign_event_object_a3467edd296ee0076c21c94d3a477fc14}{00071}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_assign_event_object_a3467edd296ee0076c21c94d3a477fc14}{IsAccessed}}(ref\ \mbox{\hyperlink{interface_i_input_provider}{IInputProvider}}\ input)}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}BaseAssignEventObjectのIsAccessedが呼ばれました"{}});}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00075}00075\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00078}00078\ \ \ \ \ \textcolor{comment}{//====================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00080}\mbox{\hyperlink{class_base_assign_event_object_a1b6ff85cb8b676b30933da474adb801a}{00080}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_assign_event_object_a1b6ff85cb8b676b30933da474adb801a}{OnTriggerEnter}}(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00081}00081\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tagCheck\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tag\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_assign_event_object_a8ec273eeefbcde4807241fb07e9d8771}{m\_tagList}})}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(tag))}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tagCheck\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tagCheck)}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_assign_event_object_a28293c3f8ba65e34c84b158cda41eed5}{m\_isCollided}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_assign_event_object_a521ef17fcf6aa8a021de8a8279eff826}{OnCollisionTriggerEvent}}();}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00098}\mbox{\hyperlink{class_base_assign_event_object_a0f016fb4795e25515f45f5c999cea0e9}{00098}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_assign_event_object_a0f016fb4795e25515f45f5c999cea0e9}{OnTriggerExit}}(Collider\ other)}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ tagCheck\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tag\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_assign_event_object_a8ec273eeefbcde4807241fb07e9d8771}{m\_tagList}})}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.CompareTag(tag))}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tagCheck\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (tagCheck)}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_assign_event_object_a28293c3f8ba65e34c84b158cda41eed5}{m\_isCollided}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_assign_event_object_a7c9491825a0b8b3f466d5f2e750a1b23}{OnCollisionTriggerExitEvent}}();}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00116}\mbox{\hyperlink{class_base_assign_event_object_a953ac80b2572cff4cb3175f504b7cd63}{00116}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_assign_event_object_a953ac80b2572cff4cb3175f504b7cd63}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00117}00117\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MetaAIに登録}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<BaseAssignEventObject>}}.\mbox{\hyperlink{interface_i_meta_a_i_a81091acf9bf85e074a370e77b8bb3e16}{Instance}}.RegisterObject(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00120}00120\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_assign_event_object_8cs_source_l00121}00121\ \}}
+
+\end{DoxyCode}

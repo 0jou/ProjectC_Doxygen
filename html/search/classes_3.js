@@ -15,7 +15,10 @@ var searchData=
   ['destroyskillatackcollider_12',['DestroySkillAtackCollider',['../d1/dfe/class_destroy_skill_atack_collider.html',1,'']]],
   ['destroytargetcounterfoodcustomer_13',['DestroyTargetCounterFoodCustomer',['../d3/d81/class_destroy_target_counter_food_customer.html',1,'']]],
   ['detailui_14',['DetailUI',['../d0/d1a/class_detail_u_i.html',1,'']]],
-  ['dochase_15',['DoChase',['../dd/de5/class_do_chase.html',1,'']]],
-  ['drawthrowitemarc_16',['DrawThrowItemArc',['../da/d09/class_draw_throw_item_arc.html',1,'']]],
-  ['dropiteminfo_17',['DropItemInfo',['../d9/ddd/struct_enemy_parameters_1_1_drop_item_info.html',1,'EnemyParameters']]]
+  ['doalphacanvasgroup_15',['DoAlphaCanvasGroup',['../dc/d5d/class_do_alpha_canvas_group.html',1,'']]],
+  ['doanchorposui_16',['DOAnchorPosUI',['../d7/d61/class_d_o_anchor_pos_u_i.html',1,'']]],
+  ['dochase_17',['DoChase',['../dd/de5/class_do_chase.html',1,'']]],
+  ['doscaleui_18',['DoScaleUI',['../d6/d9c/class_do_scale_u_i.html',1,'']]],
+  ['drawthrowitemarc_19',['DrawThrowItemArc',['../da/d09/class_draw_throw_item_arc.html',1,'']]],
+  ['dropiteminfo_20',['DropItemInfo',['../d9/ddd/struct_enemy_parameters_1_1_drop_item_info.html',1,'EnemyParameters']]]
 ];

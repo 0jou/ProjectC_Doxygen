@@ -1,0 +1,69 @@
+\doxysection{Animator\+Event\+Story\+Skill\+Attack\+In\+Parent.\+cs}
+\hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source}{}\label{_animator_event_story_skill_attack_in_parent_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/SkillCharacters/00\_Common/Script/AnimationEvent/AnimatorEventStorySkillAttackInParent.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/SkillCharacters/00\_Common/Script/AnimationEvent/AnimatorEventStorySkillAttackInParent.cs}}
+\mbox{\hyperlink{_animator_event_story_skill_attack_in_parent_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00005}00005\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00006}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent}{AnimatorEventStorySkillAttackInParent}}\ :\ AnimatorEvents.EventNodeBase}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//親クラスに攻撃用コライダーを生成する（童話スキル用）}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//山本}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00010}00010\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}ステート切り替え時に削除するか"{}})]}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00011}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a7734881ca270c51918a97e8dcdcdc90e}{00011}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a7734881ca270c51918a97e8dcdcdc90e}{m\_doDeleteOnExitState}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}発生させるプレハブ"{}})]}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00013}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_ae265fc1bb3fab8b3cf59527b1fade30e}{00013}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_ae265fc1bb3fab8b3cf59527b1fade30e}{m\_assetAttack}};}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00014}00014\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}親オブジェクト(空ならAnimator直下)"{}})]}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00015}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a0f7cdeda6c4bbc563d240d1a03734099}{00015}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a0f7cdeda6c4bbc563d240d1a03734099}{m\_parent}};}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00017}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a572baf43123d62805e2740fbffe86eaf}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a572baf43123d62805e2740fbffe86eaf}{m\_createdInstance}};}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00020}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a3cd9e4927634622f99623ac54a20dad3}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a3cd9e4927634622f99623ac54a20dad3}{OnEvent}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ var\ charaCore\ =\ animator.transform.GetComponentInParent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a572baf43123d62805e2740fbffe86eaf}{m\_createdInstance}}\ =\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_aeaf478b07f71716a8b1a0ed11b3f4a3e}{CreateObject}}(animator);}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成者情報を記憶}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ var\ ownerInfo\ =\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a572baf43123d62805e2740fbffe86eaf}{m\_createdInstance}}.AddComponent<\mbox{\hyperlink{class_owner_info_tag}{OwnerInfoTag}}>();}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ ownerInfo.GroupNo\ =\ charaCore.\mbox{\hyperlink{class_owner_info_tag_a56a9ad5e93c0d771bd43700982edfd06}{GroupNo}};}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ ownerInfo.Characore\ =\ charaCore;}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00032}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_aead9bf5e21157978aab55075c158c7f0}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_aead9bf5e21157978aab55075c158c7f0}{OnExit}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ base.OnExit(animator);}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a7734881ca270c51918a97e8dcdcdc90e}{m\_doDeleteOnExitState}})}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a572baf43123d62805e2740fbffe86eaf}{m\_createdInstance}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject.Destroy(\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a572baf43123d62805e2740fbffe86eaf}{m\_createdInstance}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00043}\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_aeaf478b07f71716a8b1a0ed11b3f4a3e}{00043}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_aeaf478b07f71716a8b1a0ed11b3f4a3e}{CreateObject}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a0f7cdeda6c4bbc563d240d1a03734099}{m\_parent}}.Length\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator.transform.root.TryGetComponent(out\ \mbox{\hyperlink{class_share_nodes}{ShareNodes}}\ nodes))}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nodes.Nodes.TryGetValue(\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_a0f7cdeda6c4bbc563d240d1a03734099}{m\_parent}},\ out\ Transform\ parent))}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GameObject.Instantiate(\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_ae265fc1bb3fab8b3cf59527b1fade30e}{m\_assetAttack}},\ parent);}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}攻撃当たり判定の親オブジェクトが見つかりませんでした。"{}}\ +}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}登録名が間違っているか、ShareNodeに追加されていません。"{}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ Debug.LogError(\textcolor{stringliteral}{"{}ShareNodesコンポーネントが見つかりませんでした"{}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ GameObject.Instantiate(\mbox{\hyperlink{class_animator_event_story_skill_attack_in_parent_ae265fc1bb3fab8b3cf59527b1fade30e}{m\_assetAttack}},\ animator.transform);}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_story_skill_attack_in_parent_8cs_source_l00063}00063\ \}}
+
+\end{DoxyCode}

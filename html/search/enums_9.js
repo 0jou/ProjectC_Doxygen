@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['lobbyprogressstate_0',['LobbyProgressState',['../d1/de1/namespace_management_progress_info.html#aec8964ce9a46f658df01ec6bf1458948',1,'ManagementProgressInfo']]]
+  ['lobbystate_0',['LobbyState',['../db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431',1,'LobbyStateInfo']]]
 ];

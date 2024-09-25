@@ -25,6 +25,9 @@ var hierarchy =
         [ "CharacterCore.ActionState_ReadyToThrow", "db/dfd/class_character_core_1_1_action_state___ready_to_throw.html", null ],
         [ "CharacterCore.ActionState_Rolling", "dc/d10/class_character_core_1_1_action_state___rolling.html", null ],
         [ "CharacterCore.ActionState_SheathWeapon", "d2/dcf/class_character_core_1_1_action_state___sheath_weapon.html", null ],
+        [ "CharacterCore.ActionState_SkillBremen_Attack_Wait", "dc/dd4/class_character_core_1_1_action_state___skill_bremen___attack___wait.html", null ],
+        [ "CharacterCore.ActionState_SkillBremen_Disappear", "d7/d75/class_character_core_1_1_action_state___skill_bremen___disappear.html", null ],
+        [ "CharacterCore.ActionState_SkillBremen_WaitAppear", "d7/dfb/class_character_core_1_1_action_state___skill_bremen___wait_appear.html", null ],
         [ "CharacterCore.ActionState_SkillLRR_Appear", "d1/d1a/class_character_core_1_1_action_state___skill_l_r_r___appear.html", null ],
         [ "CharacterCore.ActionState_SkillLRR_Attack", "d7/df7/class_character_core_1_1_action_state___skill_l_r_r___attack.html", null ],
         [ "CharacterCore.ActionState_SkillLRR_End", "d9/daf/class_character_core_1_1_action_state___skill_l_r_r___end.html", null ],
@@ -47,11 +50,15 @@ var hierarchy =
       [ "Arbor.BehaviourTree.Actions.AgentChaseToTransform", "d2/d42/class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform.html", null ],
       [ "Arbor.StateMachine.StateBehaviours.KeepDistance", "d3/dfd/class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_keep_distance.html", null ]
     ] ],
+    [ "AnyActionUIController.AnyActionInfo", "d7/d99/struct_any_action_u_i_controller_1_1_any_action_info.html", null ],
     [ "BaseManager< ConditionDataBaseManager >", "d8/dc6/class_base_manager.html", [
       [ "ConditionDataBaseManager", "d7/dd5/class_condition_data_base_manager.html", null ]
     ] ],
     [ "BaseManager< CounterManager >", "d8/dc6/class_base_manager.html", [
       [ "CounterManager", "dc/db5/class_counter_manager.html", null ]
+    ] ],
+    [ "BaseManager< CustomerManager >", "d8/dc6/class_base_manager.html", [
+      [ "CustomerManager", "da/de3/class_customer_manager.html", null ]
     ] ],
     [ "BaseManager< CutSceneManager >", "d8/dc6/class_base_manager.html", [
       [ "CutSceneManager", "df/dce/class_cut_scene_manager.html", null ]
@@ -64,12 +71,6 @@ var hierarchy =
     ] ],
     [ "BaseManager< ItemTypeDataBaseManager >", "d8/dc6/class_base_manager.html", [
       [ "ItemTypeDataBaseManager", "db/d91/class_item_type_data_base_manager.html", null ]
-    ] ],
-    [ "BaseManager< LobbyProgressManager >", "d8/dc6/class_base_manager.html", [
-      [ "LobbyProgressManager", "d4/d1a/class_lobby_progress_manager.html", null ],
-      [ "LobbyProgressManager", "d4/d1a/class_lobby_progress_manager.html", null ],
-      [ "LobbyProgressManager", "d4/d1a/class_lobby_progress_manager.html", null ],
-      [ "LobbyProgressManager", "d4/d1a/class_lobby_progress_manager.html", null ]
     ] ],
     [ "BaseManager< ManagementEventManager >", "d8/dc6/class_base_manager.html", [
       [ "ManagementEventManager", "d8/dac/class_management_event_manager.html", null ]
@@ -85,6 +86,9 @@ var hierarchy =
     ] ],
     [ "BaseManager< SceneNameManager >", "d8/dc6/class_base_manager.html", [
       [ "SceneNameManager", "d6/dec/class_scene_name_manager.html", null ]
+    ] ],
+    [ "BaseManager< StaffManager >", "d8/dc6/class_base_manager.html", [
+      [ "StaffManager", "de/d62/class_staff_manager.html", null ]
     ] ],
     [ "BaseManager< StageDataBaseManager >", "d8/dc6/class_base_manager.html", [
       [ "StageDataBaseManager", "d2/dc4/class_stage_data_base_manager.html", null ]
@@ -147,7 +151,10 @@ var hierarchy =
       [ "AnimEventSpeedStop", "d7/d0f/class_anim_event_speed_stop.html", null ],
       [ "AnimatorEventBoolTrue", "d7/d75/class_animator_event_bool_true.html", null ],
       [ "AnimatorEventCreateObject", "d8/da6/class_animator_event_create_object.html", null ],
-      [ "AnimatorEventCreateObjectInParent", "dc/d89/class_animator_event_create_object_in_parent.html", null ],
+      [ "AnimatorEventCreateObjectInParent", "dc/d89/class_animator_event_create_object_in_parent.html", [
+        [ "AnimatorEventCreateStorySkillEffect", "d6/da8/class_animator_event_create_story_skill_effect.html", null ]
+      ] ],
+      [ "AnimatorEventStorySkillAttackInParent", "d0/d14/class_animator_event_story_skill_attack_in_parent.html", null ],
       [ "AnimatorEventTimeLine", "d7/d9a/class_animator_event_time_line.html", null ],
       [ "AnimatorEventTrigger", "d7/da0/class_animator_event_trigger.html", null ],
       [ "AnimatorEventWeapon", "da/db3/class_animator_event_weapon.html", null ],
@@ -173,6 +180,7 @@ var hierarchy =
       [ "FlexibleListStaffDataVariable", "dd/db3/class_flexible_list_staff_data_variable.html", null ]
     ] ],
     [ "GangsterDataVariable", "da/df1/class_gangster_data_variable.html", null ],
+    [ "GlobalSoldOutEvent", "d5/d63/class_global_sold_out_event.html", null ],
     [ "HideAlphaDitherAreaObject.HideAreaObjctData", "dc/df0/class_hide_alpha_dither_area_object_1_1_hide_area_objct_data.html", null ],
     [ "ThrowFire.HitData", "dd/dc6/class_throw_fire_1_1_hit_data.html", null ],
     [ "ThrowParalysis.HitData", "df/d22/class_throw_paralysis_1_1_hit_data.html", null ],
@@ -200,6 +208,7 @@ var hierarchy =
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
+      [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ]
     ] ],
     [ "IDisposable", null, [
@@ -214,17 +223,14 @@ var hierarchy =
     [ "IMetaAI< AssignItemID >", "df/d5b/interface_i_meta_a_i.html", [
       [ "PutItemMeta", "de/def/class_put_item_meta.html", null ]
     ] ],
+    [ "IMetaAI< BaseAssignEventObject >", "df/d5b/interface_i_meta_a_i.html", [
+      [ "AssignEventObjectMeta", "d8/d31/class_assign_event_object_meta.html", null ]
+    ] ],
     [ "IMetaAI< CharacterCore >", "df/d5b/interface_i_meta_a_i.html", [
       [ "CharacterMeta", "df/dc7/class_character_meta.html", null ]
     ] ],
-    [ "IMetaAI< CustomerData >", "df/d5b/interface_i_meta_a_i.html", [
-      [ "CustomerMeta", "dc/dee/class_customer_meta.html", null ]
-    ] ],
     [ "IMetaAI< ProximityCreateWindow >", "df/d5b/interface_i_meta_a_i.html", [
       [ "ProximityCreateWindowMeta", "db/d9a/class_proximity_create_window_meta.html", null ]
-    ] ],
-    [ "IMetaAI< StaffData >", "df/d5b/interface_i_meta_a_i.html", [
-      [ "StaffMeta", "dc/d8f/class_staff_meta.html", null ]
     ] ],
     [ "InputSlot", null, [
       [ "InputSlotChaseParameters", "db/d79/class_input_slot_chase_parameters.html", null ],
@@ -269,39 +275,68 @@ var hierarchy =
       [ "ActionUIController", "db/d24/class_action_u_i_controller.html", null ],
       [ "AimCameraController", "d1/d44/class_aim_camera_controller.html", null ],
       [ "AnimatorStateMachine", "d3/d41/class_animator_state_machine.html", null ],
+      [ "AnyActionUIController", "d7/d11/class_any_action_u_i_controller.html", null ],
       [ "AnyKeyPushInSceneChange", "db/d96/class_any_key_push_in_scene_change.html", null ],
       [ "AppearManagementCharacter", "da/d6f/class_appear_management_character.html", null ],
       [ "AppearPasserby", "dd/dfc/class_appear_passerby.html", null ],
       [ "AppearanceItemName", "df/df1/class_appearance_item_name.html", null ],
       [ "AppearanceItemOutline", "da/d81/class_appearance_item_outline.html", null ],
       [ "AssignButtonID", "d1/db8/class_assign_button_i_d.html", null ],
+      [ "AssignEventObjectMeta", "d8/d31/class_assign_event_object_meta.html", null ],
       [ "AssignItemID", "d0/d6e/class_assign_item_i_d.html", null ],
       [ "AttackApplicant", "d8/d64/class_attack_applicant.html", null ],
       [ "AttackColliderMove", "d2/d67/class_attack_collider_move.html", null ],
       [ "AudioPlayVolumeTest", "d5/de8/class_audio_play_volume_test.html", null ],
       [ "BPBarPresenter", "d7/da1/class_b_p_bar_presenter.html", null ],
+      [ "BPSkill_1Presenter", "d7/d3d/class_b_p_skill__1_presenter.html", null ],
+      [ "BPSkill_2Presenter", "d9/dff/class_b_p_skill__2_presenter.html", null ],
       [ "BackgroundWidthController", "da/d05/class_background_width_controller.html", null ],
+      [ "BaseAssignEventObject", "dc/d5b/class_base_assign_event_object.html", [
+        [ "CleaningAssignEvent", "dc/ddb/class_cleaning_assign_event.html", null ]
+      ] ],
       [ "BaseChangeText", "dd/dfa/class_base_change_text.html", [
-        [ "ChangeMoneyText", "d4/d3f/class_change_money_text.html", null ]
+        [ "SetMoneyText", "d8/d91/class_set_money_text.html", null ]
       ] ],
       [ "BaseCreateSlotList", "d0/d4c/class_base_create_slot_list.html", [
         [ "CreateActionItemSlotList", "d8/df8/class_create_action_item_slot_list.html", null ],
         [ "CreateItemSlotList", "d2/d98/class_create_item_slot_list.html", null ],
+        [ "CreateManagementProvideFoodSlotList", "d7/dcf/class_create_management_provide_food_slot_list.html", null ],
         [ "CreateNeedIngredientSlot", "dd/d4c/class_create_need_ingredient_slot.html", [
           [ "ProvideFoodCreateNeedIngredientSlotList", "d0/d99/class_provide_food_create_need_ingredient_slot_list.html", null ]
         ] ],
-        [ "CreateOrderFoodSlotList", "d6/d80/class_create_order_food_slot_list.html", null ],
         [ "CreateProvideFoodSlotList", "d0/d0b/class_create_provide_food_slot_list.html", null ],
         [ "CreateRecipeSlotList", "d2/dec/class_create_recipe_slot_list.html", [
           [ "CreateProvideFoodRecipeSlotList", "d5/d92/class_create_provide_food_recipe_slot_list.html", null ]
         ] ]
       ] ],
+      [ "BaseDoTweenUI", "d9/dc9/class_base_do_tween_u_i.html", [
+        [ "DOAnchorPosUI", "d7/d61/class_d_o_anchor_pos_u_i.html", null ],
+        [ "DoAlphaCanvasGroup", "dc/d5d/class_do_alpha_canvas_group.html", null ],
+        [ "DoScaleUI", "d6/d9c/class_do_scale_u_i.html", null ]
+      ] ],
       [ "BaseEffectText", "d4/da3/class_base_effect_text.html", [
         [ "TypeWriteEffectText", "d4/d71/class_type_write_effect_text.html", null ]
       ] ],
+      [ "BaseGameStateUpdate", "d6/d9e/class_base_game_state_update.html", [
+        [ "BaseLobbyStateUpdate", "de/dbe/class_base_lobby_state_update.html", [
+          [ "LobbyStateUpdate_Normal", "d0/d91/class_lobby_state_update___normal.html", null ],
+          [ "LobbyStateUpdate_ReturnAction", "dc/dc9/class_lobby_state_update___return_action.html", null ],
+          [ "LobbyStateUpdate_TrialSession", "d1/de4/class_lobby_state_update___trial_session.html", null ]
+        ] ],
+        [ "BaseManagementStateUpdate", "df/d18/class_base_management_state_update.html", [
+          [ "ManagementStateUpdate_End", "d7/de8/class_management_state_update___end.html", null ],
+          [ "ManagementStateUpdate_Result", "da/de9/class_management_state_update___result.html", null ],
+          [ "ManagementStateUpdate_Start", "db/d43/class_management_state_update___start.html", null ],
+          [ "ManagementStateUpdate_Update", "dd/d9f/class_management_state_update___update.html", null ]
+        ] ]
+      ] ],
+      [ "BaseGameStateUpdateController", "d2/db4/class_base_game_state_update_controller.html", [
+        [ "LobbyStateUpdateManager", "da/d83/class_lobby_state_update_manager.html", null ],
+        [ "ManagementStateUpdateManager", "d4/d89/class_management_state_update_manager.html", null ]
+      ] ],
       [ "BaseManagementEvent", "d3/d76/class_base_management_event.html", [
         [ "AppearGangsterEvent", "dd/d28/class_appear_gangster_event.html", null ],
-        [ "CleaningEvent", "d8/d28/class_cleaning_event.html", null ]
+        [ "GenerateCleaningEvent", "dd/d31/class_generate_cleaning_event.html", null ]
       ] ],
       [ "BaseManager< T >", "d8/dc6/class_base_manager.html", null ],
       [ "BasePocketItemDataController", "d3/da8/class_base_pocket_item_data_controller.html", [
@@ -328,7 +363,7 @@ var hierarchy =
           [ "NoTimeWindow", "d4/d41/class_no_time_window.html", null ],
           [ "ReturnHomeWindow", "d9/d07/class_return_home_window.html", null ]
         ] ],
-        [ "MangementWindow", "d4/dcd/class_mangement_window.html", null ],
+        [ "ManagementResultWindow", "db/d8f/class_management_result_window.html", null ],
         [ "NewItemWindow", "d6/d9e/class_new_item_window.html", null ],
         [ "PopUpWindow", "d9/d8f/class_pop_up_window.html", null ],
         [ "RecipeWindow", "d4/dfd/class_recipe_window.html", null ],
@@ -376,6 +411,7 @@ var hierarchy =
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
       [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
+      [ "CharacterCore", "d7/d2e/class_character_core.html", null ],
       [ "CharacterMeta", "df/dc7/class_character_meta.html", null ],
       [ "CheckChildrenNum", "d0/deb/class_check_children_num.html", null ],
       [ "ChefData", "df/da3/class_chef_data.html", null ],
@@ -394,7 +430,7 @@ var hierarchy =
       [ "CursorLock", "d1/df9/class_cursor_lock.html", null ],
       [ "CustomMaskableGraphic", "dd/de9/class_custom_maskable_graphic.html", null ],
       [ "CustomerData", "d4/d6b/class_customer_data.html", null ],
-      [ "CustomerMeta", "dc/dee/class_customer_meta.html", null ],
+      [ "CustomerUI", "dd/dcf/class_customer_u_i.html", null ],
       [ "DebugManagementProvideFoodManager", "dc/db4/class_debug_management_provide_food_manager.html", null ],
       [ "DestroyItemPrefab", "d3/db5/class_destroy_item_prefab.html", null ],
       [ "DestroyOnTime", "dd/d8e/class_destroy_on_time.html", null ],
@@ -408,6 +444,7 @@ var hierarchy =
       [ "EffectObservation", "d5/d13/class_effect_observation.html", null ],
       [ "Effect_RotateY", "da/d93/class_effect___rotate_y.html", null ],
       [ "EmotionBase", "d0/d74/class_emotion_base.html", null ],
+      [ "EndToDestroyDoTweenUI", "da/d37/class_end_to_destroy_do_tween_u_i.html", null ],
       [ "EnemyIconController", "da/d6f/class_enemy_icon_controller.html", null ],
       [ "EnemyIconElement", "d5/d55/class_enemy_icon_element.html", null ],
       [ "EnemyInputProvider", "db/dc6/class_enemy_input_provider.html", null ],
@@ -427,11 +464,11 @@ var hierarchy =
       [ "ItemEffectController", "d7/d0a/class_item_effect_controller.html", null ],
       [ "ItemSlotData", "dd/d23/class_item_slot_data.html", [
         [ "FoodSlotData", "d3/db8/class_food_slot_data.html", [
+          [ "ManagementProvideFoodSlotData", "d7/da0/class_management_provide_food_slot_data.html", null ],
           [ "ProvideFoodSlotData", "d4/dc1/class_provide_food_slot_data.html", null ],
           [ "SelectProvideFoodSlotData", "d2/de3/class_select_provide_food_slot_data.html", null ]
         ] ],
         [ "NeedIngredientSlotData", "dc/d16/class_need_ingredient_slot_data.html", null ],
-        [ "OrderFoodSlotData", "d8/dec/class_order_food_slot_data.html", null ],
         [ "RecipeItemSlotData", "d0/d04/class_recipe_item_slot_data.html", [
           [ "ProvideFoodRecipeSlotData", "dd/da9/class_provide_food_recipe_slot_data.html", null ]
         ] ]
@@ -442,6 +479,8 @@ var hierarchy =
       [ "LabelTransController", "d9/d42/class_label_trans_controller.html", null ],
       [ "LeftHandMatcher", "d1/d87/class_left_hand_matcher.html", null ],
       [ "LocalizeTipsController", "d4/d1f/class_localize_tips_controller.html", null ],
+      [ "ManagementResultDescription", "df/d76/class_management_result_description.html", null ],
+      [ "ManagementUI", "d2/de0/class_management_u_i.html", null ],
       [ "ManagemntSceneBGM", "d1/dfd/class_managemnt_scene_b_g_m.html", null ],
       [ "MyCharacterController", "d3/d0a/class_my_character_controller.html", null ],
       [ "NavMeshControl", "d2/dcf/class_nav_mesh_control.html", null ],
@@ -493,9 +532,13 @@ var hierarchy =
       [ "SetBP", "de/dc1/class_set_b_p.html", null ],
       [ "SetEffect", "d6/dd6/class_set_effect.html", null ],
       [ "SetOwnerTag", "d1/dd4/class_set_owner_tag.html", null ],
+      [ "SetPositionCharacterController", "d8/d93/class_set_position_character_controller.html", null ],
+      [ "SetRemainingTimeText", "d6/d5a/class_set_remaining_time_text.html", null ],
       [ "SetRigInfo", "d7/dc2/class_set_rig_info.html", null ],
       [ "SetSiblingTop", "d7/d71/class_set_sibling_top.html", null ],
       [ "SetSkillStartPos", "d5/dba/class_set_skill_start_pos.html", null ],
+      [ "SetTimeLineSpeed", "dc/d99/class_set_time_line_speed.html", null ],
+      [ "SetTriggerInAnimatorList", "db/d10/class_set_trigger_in_animator_list.html", null ],
       [ "Shader_Global_TimeSpeed", "dc/d1e/class_shader___global___time_speed.html", null ],
       [ "ShareNodes", "de/d33/class_share_nodes.html", null ],
       [ "ShareOnTrigger", "d4/d44/class_share_on_trigger.html", null ],
@@ -504,10 +547,10 @@ var hierarchy =
       [ "SinCurveMoveObject", "d5/dc8/class_sin_curve_move_object.html", null ],
       [ "Sleeping", "d3/d57/class_sleeping.html", null ],
       [ "StaffData", "dc/d56/class_staff_data.html", null ],
-      [ "StaffMeta", "dc/d8f/class_staff_meta.html", null ],
       [ "StaminaController", "d1/da5/class_stamina_controller.html", null ],
       [ "StaminaPresenter", "dd/daa/class_stamina_presenter.html", null ],
       [ "StartBGM", "d7/dd1/class_start_b_g_m.html", null ],
+      [ "StopEffect", "d5/d43/class_stop_effect.html", null ],
       [ "StorySkillUIChangeColor", "d3/d32/class_story_skill_u_i_change_color.html", null ],
       [ "StorySkillUIController", "dd/de1/class_story_skill_u_i_controller.html", null ],
       [ "TableSetData", "d4/d6a/class_table_set_data.html", null ],
@@ -596,6 +639,7 @@ var hierarchy =
       [ "StorySkillDataBase", "d5/dba/class_story_skill_data_base.html", null ]
     ] ],
     [ "SearchType", "d5/deb/class_search_type.html", null ],
+    [ "SerializableDictionary< ActionUIState, AnyActionUIController.AnyActionInfo >", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< CutSceneNumber, TimelineAsset >", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< PlayerAction, PressKeyEffectController >", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< string, GameObject[]>", "dd/d60/class_serializable_dictionary.html", null ],
@@ -604,7 +648,9 @@ var hierarchy =
     [ "StaffDataVariable", "d8/d1c/class_staff_data_variable.html", null ],
     [ "CheckStateStaff.StaffStateLink", "da/d4a/class_check_state_staff_1_1_staff_state_link.html", null ],
     [ "StateBehaviour", null, [
-      [ "AddProbabilityEvent", "db/d6c/class_add_probability_event.html", null ],
+      [ "AddProbabilityEvent", "db/d6c/class_add_probability_event.html", [
+        [ "AddCleaningProbabilityEvent", "dd/d69/class_add_cleaning_probability_event.html", null ]
+      ] ],
       [ "Arbor.StateMachine.StateBehaviours.WaitAnimation", "d3/d22/class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation.html", null ],
       [ "BaseCustomerStateBehaviour", "d5/d11/class_base_customer_state_behaviour.html", [
         [ "AddPopUpEffcetCustomer", "dc/db9/class_add_pop_up_effcet_customer.html", null ],

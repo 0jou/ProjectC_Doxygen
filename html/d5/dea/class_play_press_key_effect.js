@@ -1,6 +1,7 @@
 var class_play_press_key_effect =
 [
     [ "PlayerAction", "d5/dea/class_play_press_key_effect.html#abd7e09c5b8d414b2f0de7aef613d8fdc", [
+      [ "None", "d5/dea/class_play_press_key_effect.html#abd7e09c5b8d414b2f0de7aef613d8fdca6adf97f83acf6453d4a6a4b1070f3754", null ],
       [ "Attack", "d5/dea/class_play_press_key_effect.html#abd7e09c5b8d414b2f0de7aef613d8fdcadcfafcb4323b102c7e204555d313ba0a", null ],
       [ "Dush", "d5/dea/class_play_press_key_effect.html#abd7e09c5b8d414b2f0de7aef613d8fdca6ec22f45c486cbac053855e0231090f9", null ],
       [ "Rolling", "d5/dea/class_play_press_key_effect.html#abd7e09c5b8d414b2f0de7aef613d8fdcaf4920797afb92022a9c6608efcd86317", null ],

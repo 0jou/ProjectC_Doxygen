@@ -7,5 +7,6 @@ var class_image_u_v_scroll =
     [ "m_ease", "dd/daf/class_image_u_v_scroll.html#a266eabc83385fead33b986e86b934f45", null ],
     [ "m_image", "dd/daf/class_image_u_v_scroll.html#a2131280ac9e402e14316dedec22b29af", null ],
     [ "m_instanceMaterial", "dd/daf/class_image_u_v_scroll.html#adf54de81f508a1608ef5caf610535556", null ],
+    [ "m_loopType", "dd/daf/class_image_u_v_scroll.html#a653c9fa70006161362c22f534a6ff89e", null ],
     [ "m_step", "dd/daf/class_image_u_v_scroll.html#aa23bfb0af3784bc0fbc5fd48a4b126d2", null ]
 ];

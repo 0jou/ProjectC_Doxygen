@@ -24,6 +24,7 @@
 */
 var menudata={children:[
 {text:"総合概要",url:"index.html"},
+{text:"諸情報",url:"pages.html"},
 {text:"パッケージ",url:"namespaces.html",children:[
 {text:"Package List",url:"namespaces.html"},
 {text:"パッケージ内のメンバ",url:"namespacemembers.html",children:[
@@ -59,7 +60,8 @@ var menudata={children:[
 {text:"u",url:"functions_u.html#index_u"},
 {text:"v",url:"functions_v.html#index_v"},
 {text:"w",url:"functions_w.html#index_w"},
-{text:"~",url:"functions_~.html#index__7E"}]},
+{text:"~",url:"functions_~.html#index__7E"},
+{text:"ｍ",url:"functions_0xefbd8d.html#index_a0xefbd8d"}]},
 {text:"関数",url:"functions_func.html",children:[
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func_b.html#index_b"},
@@ -71,6 +73,7 @@ var menudata={children:[
 {text:"h",url:"functions_func_h.html#index_h"},
 {text:"i",url:"functions_func_i.html#index_i"},
 {text:"j",url:"functions_func_j.html#index_j"},
+{text:"k",url:"functions_func_k.html#index_k"},
 {text:"l",url:"functions_func_l.html#index_l"},
 {text:"m",url:"functions_func_m.html#index_m"},
 {text:"n",url:"functions_func_n.html#index_n"},
@@ -102,7 +105,8 @@ var menudata={children:[
 {text:"r",url:"functions_vars_r.html#index_r"},
 {text:"s",url:"functions_vars_s.html#index_s"},
 {text:"t",url:"functions_vars_t.html#index_t"},
-{text:"v",url:"functions_vars_v.html#index_v"}]},
+{text:"v",url:"functions_vars_v.html#index_v"},
+{text:"ｍ",url:"functions_vars_0xefbd8d.html#index_a0xefbd8d"}]},
 {text:"列挙型",url:"functions_enum.html"},
 {text:"プロパティ",url:"functions_prop.html",children:[
 {text:"a",url:"functions_prop.html#index_a"},

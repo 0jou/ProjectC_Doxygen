@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['managementprogressinfo_0',['ManagementProgressInfo',['../d1/de1/namespace_management_progress_info.html',1,'']]]
+  ['lobbystateinfo_0',['LobbyStateInfo',['../db/dec/namespace_lobby_state_info.html',1,'']]]
 ];

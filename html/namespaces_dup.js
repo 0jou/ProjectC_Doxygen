@@ -31,7 +31,7 @@ var namespaces_dup =
         [ "Normal", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a960b44c579bc2f6818d2daaf9e4c16f0", null ],
         [ "MoveChair", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a2b4046bad2a8609d42a484aa7fef6a30", null ],
         [ "WaitFood", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a1f89759f4bf86fa44a695fcc03d27171", null ],
-        [ "Angry", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987acc3b72d79006b9b02571c1974f08244d", null ],
+        [ "AngryExit", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a2ef72c33a6c49b6c15461a60b7313d5d", null ],
         [ "Eat", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987abd26b44bdadb13511edfa8e95455a43f", null ],
         [ "Exit", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987afef46e5063ce3dc78b8ae64fa474241d", null ],
         [ "WaitQueue", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a1077133704641a4d88aee56a50431b70", null ]
@@ -81,11 +81,19 @@ var namespaces_dup =
         [ "ALL", "d6/db8/namespace_item_info.html#af2c688442820f00ad8dcf540fc75fecba5fb1f955b45e38e31789286a1790398d", null ]
       ] ]
     ] ],
-    [ "ManagementProgressInfo", "d1/de1/namespace_management_progress_info.html", [
-      [ "LobbyProgressState", "d1/de1/namespace_management_progress_info.html#aec8964ce9a46f658df01ec6bf1458948", [
-        [ "Normal", "d1/de1/namespace_management_progress_info.html#aec8964ce9a46f658df01ec6bf1458948a960b44c579bc2f6818d2daaf9e4c16f0", null ],
-        [ "ReturnAction", "d1/de1/namespace_management_progress_info.html#aec8964ce9a46f658df01ec6bf1458948a9cdc53f7babaf3f6b0609ace4dcb1f7a", null ],
-        [ "TrialSession", "d1/de1/namespace_management_progress_info.html#aec8964ce9a46f658df01ec6bf1458948a192a85a3b3d0c3d34dba305a2dd6317f", null ]
+    [ "LobbyStateInfo", "db/dec/namespace_lobby_state_info.html", [
+      [ "LobbyState", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431", [
+        [ "Normal", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a960b44c579bc2f6818d2daaf9e4c16f0", null ],
+        [ "ReturnAction", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a9cdc53f7babaf3f6b0609ace4dcb1f7a", null ],
+        [ "TrialSession", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a192a85a3b3d0c3d34dba305a2dd6317f", null ]
+      ] ]
+    ] ],
+    [ "ManagementStateUpdateInfo", "d7/dd9/namespace_management_state_update_info.html", [
+      [ "ManagementState", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ff", [
+        [ "Start", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffaa6122a65eaa676f700ae68d393054a37", null ],
+        [ "Update", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa06933067aafd48425d67bcb01bba5cb6", null ],
+        [ "End", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa87557f11575c0ad78e4e28abedc13b6e", null ],
+        [ "Result", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa8eea62084ca7e541d918e823422bd82e", null ]
       ] ]
     ] ],
     [ "OrderFoodInfo", "d4/d3b/namespace_order_food_info.html", [

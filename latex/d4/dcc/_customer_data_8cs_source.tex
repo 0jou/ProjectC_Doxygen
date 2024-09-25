@@ -17,7 +17,7 @@
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987a960b44c579bc2f6818d2daaf9e4c16f0}{Normal}},}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987a2b4046bad2a8609d42a484aa7fef6a30}{MoveChair}},\ \ \ \textcolor{comment}{//\ 椅子まで移動する}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987a1f89759f4bf86fa44a695fcc03d27171}{WaitFood}},\ \ \ \ \textcolor{comment}{//\ 料理を待つ状態}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987acc3b72d79006b9b02571c1974f08244d}{Angry}},\ \ \ \ \ \ \ \textcolor{comment}{//\ 怒った状態}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987a2ef72c33a6c49b6c15461a60b7313d5d}{AngryExit}},\ \ \ \ \ \ \ \textcolor{comment}{//\ 怒った状態}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987abd26b44bdadb13511edfa8e95455a43f}{Eat}},\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を食べている状態}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987afef46e5063ce3dc78b8ae64fa474241d}{Exit}},\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 帰る状態}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987a1077133704641a4d88aee56a50431b70}{WaitQueue}},\ \ \ \textcolor{comment}{//\ 待ち列を待つ状態}}
@@ -42,95 +42,118 @@
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\_angryTime}};\ \}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00039}00039\ \ \ \ \ \}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00040}00040\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//=========================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ 食べる時間}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ 経過時間}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00042}\mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{00042}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}}\ =\ 0.0f;}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00043}00043\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00044}00044\ \ \ \ \ [SerializeField]}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00045}\mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{00045}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}}\ =\ 10.0f;}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00046}00046\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00047}\mbox{\hyperlink{class_customer_data_afe20201faf49a1fedb98bc6a388eeee4}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_customer_data_afe20201faf49a1fedb98bc6a388eeee4}{EatTime}}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00048}00048\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}};\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00044}\mbox{\hyperlink{class_customer_data_a83bb8ec48584efbfa05c1264a95d798a}{00044}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_customer_data_a83bb8ec48584efbfa05c1264a95d798a}{AngryCount}}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00049}00049\ \ \ \ \ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ 食べる時間}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00051}00051\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00052}00052\ \ \ \ \ \textcolor{comment}{//=========================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ 客のステート}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00052}00052\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00053}\mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{00053}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}}\ =\ 10.0f;}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00054}00054\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00055}\mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{00055}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}}\ =\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Normal;}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00056}00056\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00057}\mbox{\hyperlink{class_customer_data_a68f778850194d56a9c0e8b4e1b743f1a}{00057}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}\ \mbox{\hyperlink{class_customer_data_a68f778850194d56a9c0e8b4e1b743f1a}{CurrentCustomerState}}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00058}00058\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}};\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}}\ =\ value;\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00061}00061\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00062}00062\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//=========================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ 要求している料理}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00055}\mbox{\hyperlink{class_customer_data_afe20201faf49a1fedb98bc6a388eeee4}{00055}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_customer_data_afe20201faf49a1fedb98bc6a388eeee4}{EatTime}}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00058}00058\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ 客のステート}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00064}\mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{00064}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}}\ =\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Normal;}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00065}00065\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00066}\mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{00066}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_order_food_data}{OrderFoodData}}\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}}\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00067}00067\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00068}\mbox{\hyperlink{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}{00068}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order_food_data}{OrderFoodData}}\ \mbox{\hyperlink{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}{TargetOrderFoodData}}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00069}00069\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}};\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}}\ =\ value;\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00072}00072\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00066}\mbox{\hyperlink{class_customer_data_a68f778850194d56a9c0e8b4e1b743f1a}{00066}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}\ \mbox{\hyperlink{class_customer_data_a68f778850194d56a9c0e8b4e1b743f1a}{CurrentCustomerState}}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00073}00073\ \ \ \ \ \textcolor{comment}{//\ 要求している料理}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00074}00074\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//=====================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00076}00076\ \ \ \ \ \textcolor{comment}{//\ 出現座標}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00077}00077\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00078}00078\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00079}\mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{00079}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}}\ =\ \textcolor{keyword}{new}();}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00080}00080\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00081}\mbox{\hyperlink{class_customer_data_adfb215ef738089e435a71a5dce09711e}{00081}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_customer_data_adfb215ef738089e435a71a5dce09711e}{AppearPos}}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00082}00082\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}};\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00084}00084\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00075}\mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{00075}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_order_food_data}{OrderFoodData}}\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00077}\mbox{\hyperlink{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}{00077}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_order_food_data}{OrderFoodData}}\ \mbox{\hyperlink{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}{TargetOrderFoodData}}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00078}00078\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00084}00084\ \ \ \ \ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//\ 出現座標}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00086}00086\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//======================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//\ ターゲットのテーブル}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00088}\mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{00088}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}}\ =\ \textcolor{keyword}{new}();}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00089}00089\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00090}00090\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00091}\mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{00091}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_table_set_data}{TableSetData}}\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}}\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00092}00092\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00093}\mbox{\hyperlink{class_customer_data_aeba91a021970c8b8add88f5edbf70d7a}{00093}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_table_set_data}{TableSetData}}\ \mbox{\hyperlink{class_customer_data_aeba91a021970c8b8add88f5edbf70d7a}{TargetTableSetData}}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00094}00094\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}};\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}}\ =\ value;\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00097}00097\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00090}\mbox{\hyperlink{class_customer_data_adfb215ef738089e435a71a5dce09711e}{00090}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_customer_data_adfb215ef738089e435a71a5dce09711e}{AppearPos}}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00091}00091\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//======================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00097}00097\ \ \ \ \ \textcolor{comment}{//\ ターゲットのテーブル}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00098}00098\ }
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00099}00099\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00100}00100\ \ \ \ \ \textcolor{comment}{//=======================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00101}00101\ \ \ \ \ \textcolor{comment}{//\ 待ち列のデータ}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00102}00102\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00103}\mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{00103}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_queue_data}{QueueData}}\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}}\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00104}00104\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00105}\mbox{\hyperlink{class_customer_data_a767f6cc4f920630b37a5b5ca956ac0ac}{00105}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_queue_data}{QueueData}}\ \mbox{\hyperlink{class_queue_data}{QueueData}}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00106}00106\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}};\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}}\ =\ value;\ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00109}00109\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00110}00110\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00111}00111\ \ \ \ \ \textcolor{comment}{//====================================================================================}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00100}\mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{00100}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_table_set_data}{TableSetData}}\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00102}\mbox{\hyperlink{class_customer_data_aeba91a021970c8b8add88f5edbf70d7a}{00102}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_table_set_data}{TableSetData}}\ \mbox{\hyperlink{class_customer_data_aeba91a021970c8b8add88f5edbf70d7a}{TargetTableSetData}}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00103}00103\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00106}00106\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//=======================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00110}00110\ \ \ \ \ \textcolor{comment}{//\ 待ち列のデータ}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00112}\mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{00112}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_queue_data}{QueueData}}\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}}\ =\ \textcolor{keyword}{null};}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00113}00113\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00114}\mbox{\hyperlink{class_customer_data_a5738c63cc8a017d28664d68f47cd1cfa}{00114}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_data_a5738c63cc8a017d28664d68f47cd1cfa}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00114}\mbox{\hyperlink{class_customer_data_a767f6cc4f920630b37a5b5ca956ac0ac}{00114}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_queue_data}{QueueData}}\ \mbox{\hyperlink{class_queue_data}{QueueData}}}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00115}00115\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MetaAIに登録}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CustomerData>}}.\mbox{\hyperlink{interface_i_meta_a_i_a81091acf9bf85e074a370e77b8bb3e16}{Instance}}.RegisterObject(\textcolor{keyword}{this});}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00118}00118\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{Initialize}}();}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00120}00120\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00121}00121\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00122}00122\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ 初期値をセット}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00124}\mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{00124}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{Initialize}}()}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00118}00118\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00120}00120\ \ \ \ \ \textcolor{comment}{//===========================================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00121}00121\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00122}00122\ \ \ \ \ \textcolor{comment}{//===========================================================}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00124}\mbox{\hyperlink{class_customer_data_a5738c63cc8a017d28664d68f47cd1cfa}{00124}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_data_a5738c63cc8a017d28664d68f47cd1cfa}{Start}}()}
 \DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00125}00125\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 出現した位置}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}}\ =\ transform.position;}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00128}00128\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00129}00129\ }
-\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00130}00130\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ マネージャーに登録}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{comment}{//CustomerManager.instance.AddCustomerData(this);}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{Initialize}}();}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00130}00130\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00133}00133\ \ \ \ \ \textcolor{comment}{//\ 初期値をセット}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00134}\mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{00134}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{Initialize}}()}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00135}00135\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 出現した位置}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}}\ =\ transform.position;}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00138}00138\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00145}\mbox{\hyperlink{class_customer_data_a1b387f36b7b36fffc4c81f5457ff7821}{00145}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_customer_data_a1b387f36b7b36fffc4c81f5457ff7821}{CountAngry}}()}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00146}00146\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\_angryTime}}\ <\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}})}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00153}00153\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00155}00155\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{_customer_data_8cs_source_l00157}00157\ \}}
 
 \end{DoxyCode}

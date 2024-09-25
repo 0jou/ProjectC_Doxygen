@@ -1,7 +1,9 @@
 var class_customer_data =
 [
+    [ "CountAngry", "d4/d6b/class_customer_data.html#a1b387f36b7b36fffc4c81f5457ff7821", null ],
     [ "Initialize", "d4/d6b/class_customer_data.html#ad734a223a81e3c06c5087337aa098926", null ],
     [ "Start", "d4/d6b/class_customer_data.html#a5738c63cc8a017d28664d68f47cd1cfa", null ],
+    [ "m_angryCount", "d4/d6b/class_customer_data.html#a7c3ea1d9f3ca55b03622189be234ea1f", null ],
     [ "m_angryTime", "d4/d6b/class_customer_data.html#a798c7e858a288bc3c3d16183c6958681", null ],
     [ "m_appearPos", "d4/d6b/class_customer_data.html#adebd975225716130ddc4dc71df7db011", null ],
     [ "m_currentCustomerState", "d4/d6b/class_customer_data.html#ac658895d03cb5a4c55fc4a5afc472757", null ],
@@ -9,6 +11,7 @@ var class_customer_data =
     [ "m_queueData", "d4/d6b/class_customer_data.html#a06641e38f3c183a5f9f77bfa060f2cb8", null ],
     [ "m_targetOrderFoodData", "d4/d6b/class_customer_data.html#a340c220405fac507df2b93854514b212", null ],
     [ "m_targetTableSetData", "d4/d6b/class_customer_data.html#a7335d9ebd66721392214d2c8a5153ac5", null ],
+    [ "AngryCount", "d4/d6b/class_customer_data.html#a83bb8ec48584efbfa05c1264a95d798a", null ],
     [ "AngryTime", "d4/d6b/class_customer_data.html#ad328190fa3e103f4fa0d851619dea745", null ],
     [ "AppearPos", "d4/d6b/class_customer_data.html#adfb215ef738089e435a71a5dce09711e", null ],
     [ "CurrentCustomerState", "d4/d6b/class_customer_data.html#a68f778850194d56a9c0e8b4e1b743f1a", null ],

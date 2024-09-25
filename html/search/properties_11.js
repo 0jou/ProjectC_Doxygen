@@ -2,8 +2,8 @@ var searchData=
 [
   ['tablepoint_0',['TablePoint',['../d4/d6a/class_table_set_data.html#a69d1bb1e21bcdea82280b98cc252f98f',1,'TableSetData']]],
   ['target_1',['Target',['../de/d72/class_target_indicator.html#ab094c89219de160045e210bcfd0b5db0',1,'TargetIndicator']]],
-  ['targetcustomerdata_2',['TargetCustomerData',['../dd/d94/class_gangster_data.html#a200e858dca1007db6de6e663a2b73433',1,'GangsterData']]],
-  ['targetorderfooddata_3',['TargetOrderFoodData',['../d8/dec/class_order_food_slot_data.html#a19eefd62992ddff7fefa7e0d59174f58',1,'OrderFoodSlotData.TargetOrderFoodData'],['../d4/d6b/class_customer_data.html#aed894844f46ebbdab4889c47225c1cdd',1,'CustomerData.TargetOrderFoodData'],['../dc/d56/class_staff_data.html#a481dfa196944118466a1d3cf2d2454fe',1,'StaffData.TargetOrderFoodData']]],
+  ['targetcustomerdata_2',['TargetCustomerData',['../dd/dcf/class_customer_u_i.html#a8971319579dda2ebd19517ebe6f7c301',1,'CustomerUI.TargetCustomerData'],['../dd/d94/class_gangster_data.html#a200e858dca1007db6de6e663a2b73433',1,'GangsterData.TargetCustomerData']]],
+  ['targetorderfooddata_3',['TargetOrderFoodData',['../d4/d6b/class_customer_data.html#aed894844f46ebbdab4889c47225c1cdd',1,'CustomerData.TargetOrderFoodData'],['../dc/d56/class_staff_data.html#a481dfa196944118466a1d3cf2d2454fe',1,'StaffData.TargetOrderFoodData']]],
   ['targetposition_4',['TargetPosition',['../df/d52/class_player_skills_parameters.html#a4429bd876150ff521ce4244c5d9041c3',1,'PlayerSkillsParameters.TargetPosition'],['../dd/d0e/class_target_enemy_info.html#a753b2f66509b8c0ad8655552c1e8659e',1,'TargetEnemyInfo.TargetPosition']]],
   ['targetstaffdata_5',['TargetStaffData',['../dd/d94/class_gangster_data.html#a9ecc3ba4932d1ab97c19e01f8f5dcb01',1,'GangsterData']]],
   ['targettablesetdata_6',['TargetTableSetData',['../d4/d6b/class_customer_data.html#aeba91a021970c8b8add88f5edbf70d7a',1,'CustomerData.TargetTableSetData'],['../d2/d11/class_order_food_data.html#ab4dcb1882750d41d96475113dfd2e006',1,'OrderFoodData.TargetTableSetData']]],
@@ -13,7 +13,8 @@ var searchData=
   ['throwitem_10',['ThrowItem',['../db/dc6/class_enemy_input_provider.html#a85c4c42671b8de455092f90eeb33c063',1,'EnemyInputProvider.ThrowItem'],['../d8/d5c/interface_i_input_provider.html#aac635ca151c17c91b43fcbda1bc11235',1,'IInputProvider.ThrowItem'],['../dd/d7f/class_null_character_i_p.html#ac05bc4a4a9de7b7be41fa1d1a1f29833',1,'NullCharacterIP.ThrowItem'],['../d3/d3e/class_player_input_provider.html#a37f244d1a88f011b0b445dfadede7829',1,'PlayerInputProvider.ThrowItem']]],
   ['throwpower_11',['ThrowPower',['../da/d09/class_draw_throw_item_arc.html#a4be544aa0757cfe4774ba9dafc271b7a',1,'DrawThrowItemArc.ThrowPower'],['../dd/db8/class_throw_item_instance.html#afc8f630ef531287ba4cecff54fc9c6a5',1,'ThrowItemInstance.ThrowPower']]],
   ['throwrange_12',['ThrowRange',['../df/d05/class_food_data.html#a08228a2e9d33794b3b19f04a9927fd98',1,'FoodData']]],
-  ['traileffect_13',['TrailEffect',['../d5/dca/class_using_effect_by_l_r_r_h.html#a0309a8156fceba900268315790277f84',1,'UsingEffectByLRRH']]],
-  ['triggerstoryskill_5f1_14',['TriggerStorySkill_1',['../d1/d07/class_player_parameters.html#a28194b1b97be049e1fb0edfb17242b33',1,'PlayerParameters']]],
-  ['triggerstoryskill_5f2_15',['TriggerStorySkill_2',['../d1/d07/class_player_parameters.html#afeabb57b741d4cf963a438b3d417d1af',1,'PlayerParameters']]]
+  ['timelimit_13',['TimeLimit',['../d0/dcf/class_management_manager.html#abe5aecbfe8a73bb6eb8e8637074bed0c',1,'ManagementManager']]],
+  ['traileffect_14',['TrailEffect',['../d5/dca/class_using_effect_by_l_r_r_h.html#a0309a8156fceba900268315790277f84',1,'UsingEffectByLRRH']]],
+  ['triggerstoryskill_5f1_15',['TriggerStorySkill_1',['../d1/d07/class_player_parameters.html#a28194b1b97be049e1fb0edfb17242b33',1,'PlayerParameters']]],
+  ['triggerstoryskill_5f2_16',['TriggerStorySkill_2',['../d1/d07/class_player_parameters.html#afeabb57b741d4cf963a438b3d417d1af',1,'PlayerParameters']]]
 ];

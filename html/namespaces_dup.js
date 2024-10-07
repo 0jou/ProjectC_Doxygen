@@ -9,6 +9,18 @@ var namespaces_dup =
         [ "ProvideFood", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273ea0f8a5859b7f3f81e6fb5d3e48260f9a8", null ]
       ] ]
     ] ],
+    [ "CameCustomerInfo", "d2/d7a/namespace_came_customer_info.html", [
+      [ "CameCustomerID", "d2/d7a/namespace_came_customer_info.html#a6aced3e5325e1b3529b441af5bd3862d", [
+        [ "Normal", "d2/d7a/namespace_came_customer_info.html#a6aced3e5325e1b3529b441af5bd3862da960b44c579bc2f6818d2daaf9e4c16f0", null ],
+        [ "Angry", "d2/d7a/namespace_came_customer_info.html#a6aced3e5325e1b3529b441af5bd3862dacc3b72d79006b9b02571c1974f08244d", null ]
+      ] ]
+    ] ],
+    [ "ChefStateInfo", "db/d53/namespace_chef_state_info.html", [
+      [ "ChefState", "db/d53/namespace_chef_state_info.html#aa93d8fd7d37a3d4f38644f5e758837b0", [
+        [ "Default", "db/d53/namespace_chef_state_info.html#aa93d8fd7d37a3d4f38644f5e758837b0a7a1920d61156abc05a60135aefe8bc67", null ],
+        [ "Cooking", "db/d53/namespace_chef_state_info.html#aa93d8fd7d37a3d4f38644f5e758837b0a3b962574887f124e78bfd9b4685f3b39", null ]
+      ] ]
+    ] ],
     [ "ConditionInfo", "d9/dd8/namespace_condition_info.html", [
       [ "ConditionID", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482", [
         [ "Normal", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a960b44c579bc2f6818d2daaf9e4c16f0", null ],
@@ -17,6 +29,7 @@ var namespaces_dup =
         [ "Sleep", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a243924bfd56a682be235638b53961e09", null ],
         [ "Fire", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482abd2b7e5f85a6ea65065c4ebc6d7c95bb", null ],
         [ "Confusion", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a54894e44b2caf1104cfb21288a0e449e", null ],
+        [ "Stun", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a27e9c0d7972e999a5bbe094c4cede584", null ],
         [ "ConditionTypeNum", "d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482af1bddc6d99b2fe69116d582c4d4d2f70", null ]
       ] ],
       [ "ResistanceID", "d9/dd8/namespace_condition_info.html#a369ee4cbf7a2389bdaf531b0f94387a4", [
@@ -93,7 +106,8 @@ var namespaces_dup =
         [ "Start", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffaa6122a65eaa676f700ae68d393054a37", null ],
         [ "Update", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa06933067aafd48425d67bcb01bba5cb6", null ],
         [ "End", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa87557f11575c0ad78e4e28abedc13b6e", null ],
-        [ "Result", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa8eea62084ca7e541d918e823422bd82e", null ]
+        [ "Result", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa8eea62084ca7e541d918e823422bd82e", null ],
+        [ "None", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa6adf97f83acf6453d4a6a4b1070f3754", null ]
       ] ]
     ] ],
     [ "OrderFoodInfo", "d4/d3b/namespace_order_food_info.html", [

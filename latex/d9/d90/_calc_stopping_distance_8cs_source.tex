@@ -2,51 +2,46 @@
 \hypertarget{_calc_stopping_distance_8cs_source}{}\label{_calc_stopping_distance_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/Calculate/CalcStoppingDistance.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/Calculate/CalcStoppingDistance.cs}}
 \mbox{\hyperlink{_calc_stopping_distance_8cs}{\mbox{[}詳解\mbox{]}}}
 \begin{DoxyCode}{0}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }static\ UnityEngine.Rendering.DebugUI;}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor_1_1_behaviour_tree_1_1_actions}{Arbor.BehaviourTree.Actions}};}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
 \DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine.AI;}
 \DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00009}00009\ \textcolor{comment}{//\ Agentとターゲットの大きさに基づいて停止距離をだす（伊波）}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00010}00010\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00011}00011\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00012}00012\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Float/CalcStoppingDistance"{}})]}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00013}00013\ [BehaviourTitle(\textcolor{stringliteral}{"{}CalcStoppingDistance"{}})]}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00014}\mbox{\hyperlink{class_calc_stopping_distance}{00014}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_calc_stopping_distance}{CalcStoppingDistance}}\ :\ Calculator}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00015}00015\ \{}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00017}00017\ \ \ \ \ [SlotType(typeof(NavMeshAgent))]}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00018}\mbox{\hyperlink{class_calc_stopping_distance_ab488622c793d7874afb4d83cde3cb6f4}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ FlexibleComponent\ \mbox{\hyperlink{class_calc_stopping_distance_ab488622c793d7874afb4d83cde3cb6f4}{m\_rootObject}}\ =\ \textcolor{keyword}{new}\ FlexibleComponent(FlexibleHierarchyType.RootGraph);}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00020}\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{00020}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ FlexibleTransform\ \mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}};}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00021}00021\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00022}\mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{00022}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ OutputSlotFloat\ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}\ =\ \textcolor{keyword}{new}\ OutputSlotFloat();}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00023}00023\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ calculate}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00026}\mbox{\hyperlink{class_calc_stopping_distance_aa7306c7dd6e2ae4347a22f00c804b418}{00026}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_calc_stopping_distance_aa7306c7dd6e2ae4347a22f00c804b418}{OnCalculate}}()}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00027}00027\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ NavMeshAgent\ controller\ =\ m\_rootObject.value\ as\ NavMeshAgent;}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}}.value\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(controller.radius);}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00034}00034\ }
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}}.value.gameObject.TryGetComponent(out\ Collider\ m\_targetCollider))}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ transform.root.localScale.x\ *\ controller.radius;}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ REVIEW:敵同士で殴り合うようにしたい場合や、細長いコライダーに対応出来ないコードなので修正が必要}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(m\_targetCollider.bounds.extents.x\ *\ (\textcolor{keywordtype}{float})System.Math.Sqrt(2f)\ +\ radius);}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(controller.radius);}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00045}00045\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00046}00046\ \}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00010}00010\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00011}00011\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Float/CalcStoppingDistance"{}})]}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00012}00012\ [BehaviourTitle(\textcolor{stringliteral}{"{}CalcStoppingDistance"{}})]}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00017}\mbox{\hyperlink{class_calc_stopping_distance}{00017}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_calc_stopping_distance}{CalcStoppingDistance}}\ :\ Calculator}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00020}00020\ \ \ \ \ [SlotType(typeof(NavMeshAgent))]}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00021}\mbox{\hyperlink{class_calc_stopping_distance_ab488622c793d7874afb4d83cde3cb6f4}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ FlexibleComponent\ \mbox{\hyperlink{class_calc_stopping_distance_ab488622c793d7874afb4d83cde3cb6f4}{m\_rootObject}}\ =\ \textcolor{keyword}{new}\ (FlexibleHierarchyType.RootGraph);}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00023}\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{00023}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ FlexibleTransform\ \mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}};}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00025}\mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{00025}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ OutputSlotFloat\ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}\ =\ \textcolor{keyword}{new}\ ();}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00028}\mbox{\hyperlink{class_calc_stopping_distance_aa7306c7dd6e2ae4347a22f00c804b418}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_calc_stopping_distance_aa7306c7dd6e2ae4347a22f00c804b418}{OnCalculate}}()}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ NavMeshAgent\ controller\ =\ m\_rootObject.value\ as\ NavMeshAgent;}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}}.value\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(controller.radius);}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}}.value.gameObject.TryGetComponent(out\ CapsuleCollider\ m\_targetCollider))}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ transform.root.localScale.x\ *\ controller.radius;}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ REVIEW:敵同士で殴り合うようにしたい場合や、細長いコライダーに対応出来ないコードなので修正が必要}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(m\_targetCollider.radius\ *\ (\textcolor{keywordtype}{float})System.Math.Sqrt(2f)\ +\ radius);}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(controller.radius);}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_stopping_distance_8cs_source_l00048}00048\ \}}
 
 \end{DoxyCode}

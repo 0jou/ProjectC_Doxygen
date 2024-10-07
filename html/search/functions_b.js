@@ -7,5 +7,6 @@ var searchData=
   ['loadvolume_4',['LoadVolume',['../d2/df3/class_volume_save_loader.html#a3c2804d71524bca16c3c064179b2042c',1,'VolumeSaveLoader']]],
   ['lookatenemy_5',['LookAtEnemy',['../d7/dab/class_character_core_1_1_action_state___attack.html#a5a77681ca1d2311c8377b96e3c964ba2',1,'CharacterCore::ActionState_Attack']]],
   ['lostsighttarget_6',['LostSightTarget',['../d2/d42/class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform.html#a97562d1eaaa02470d3ee5f61e8c12a28',1,'Arbor::BehaviourTree::Actions::AgentChaseToTransform']]],
-  ['lotterytocreateevent_7',['LotteryToCreateEvent',['../d8/dac/class_management_event_manager.html#a3700e9d3f69bec7c9e66dc9d20f68aac',1,'ManagementEventManager']]]
+  ['lotteryattack_7',['LotteryAttack',['../da/d3a/class_lottery_table.html#abb6d20b6185d50f0a52fa240b01360a8',1,'LotteryTable']]],
+  ['lotterytocreateevent_8',['LotteryToCreateEvent',['../d8/dac/class_management_event_manager.html#a3700e9d3f69bec7c9e66dc9d20f68aac',1,'ManagementEventManager']]]
 ];

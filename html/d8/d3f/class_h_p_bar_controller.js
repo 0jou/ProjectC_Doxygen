@@ -12,9 +12,11 @@ var class_h_p_bar_controller =
     [ "m_arborFSM", "d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417", null ],
     [ "m_barColorList", "d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563", null ],
     [ "m_image", "d8/d3f/class_h_p_bar_controller.html#ad702eecb89c0be8a40b79693dd97b50e", null ],
+    [ "m_isCalc", "d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e", null ],
     [ "m_isShow", "d8/d3f/class_h_p_bar_controller.html#a739b8bce056e6fd4a3b3b487e197bf72", null ],
     [ "m_maxHealth", "d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0", null ],
     [ "m_text", "d8/d3f/class_h_p_bar_controller.html#a98ca2ef4f0f44201de0bf9cde0ddc1d4", null ],
     [ "m_value", "d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8", null ],
+    [ "IsCalc", "d8/d3f/class_h_p_bar_controller.html#ae8e283ae027e4324c9599139bd7b623a", null ],
     [ "IsSetHealthValue", "d8/d3f/class_h_p_bar_controller.html#aaedf8ff8630c1693dc196cde8de258cf", null ]
 ];

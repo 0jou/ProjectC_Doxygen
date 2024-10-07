@@ -4,7 +4,7 @@ var class_base_create_slot_list =
       [ "AddSelectUIController", "d0/d4c/class_base_create_slot_list.html#a8c5fe4381648d701d997e063126f4020ac6e335ce028bec34898c4d1ef483b47f", null ],
       [ "NotAddSelectUIController", "d0/d4c/class_base_create_slot_list.html#a8c5fe4381648d701d997e063126f4020abf12004f729ce9f6cd09088f587956e2", null ]
     ] ],
-    [ "AddSelectUIController", "d0/d4c/class_base_create_slot_list.html#af0e4277f7a78c8cd9e63f9c98d5dd527", null ],
+    [ "AddSelectUIControler", "d0/d4c/class_base_create_slot_list.html#a6d53b2ee37d87dd253e3743208052040", null ],
     [ "CreateSlot", "d0/d4c/class_base_create_slot_list.html#a1050fa09f7705d5e74fa66f14594368b", null ],
     [ "CreateSlotInstance", "d0/d4c/class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41", null ],
     [ "DestroyItemSlotData", "d0/d4c/class_base_create_slot_list.html#adb08ef44172885503a261a94f7c0fa9c", null ],

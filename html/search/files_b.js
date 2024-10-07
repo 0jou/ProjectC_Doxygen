@@ -8,8 +8,6 @@ var searchData=
   ['lobbystateupdate_5ftrialsession_2ecs_5',['LobbyStateUpdate_TrialSession.cs',['../db/ddc/_lobby_state_update___trial_session_8cs.html',1,'']]],
   ['lobbystateupdatemanager_2ecs_6',['LobbyStateUpdateManager.cs',['../d7/de8/_lobby_state_update_manager_8cs.html',1,'']]],
   ['localizetipscontroller_2ecs_7',['LocalizeTipsController.cs',['../db/d21/_localize_tips_controller_8cs.html',1,'']]],
-  ['lotterydatalistvariable_2ecs_8',['LotteryDataListVariable.cs',['../d5/d04/_lottery_data_list_variable_8cs.html',1,'']]],
-  ['lotterydatavariable_2ecs_9',['LotteryDataVariable.cs',['../d0/d69/_lottery_data_variable_8cs.html',1,'']]],
-  ['lotterytable_2ecs_10',['LotteryTable.cs',['../d2/d44/_lottery_table_8cs.html',1,'']]],
-  ['lrrhskillstate_2ecs_11',['LRRHSkillState.cs',['../d3/d96/_l_r_r_h_skill_state_8cs.html',1,'']]]
+  ['lotterytable_2ecs_8',['LotteryTable.cs',['../d2/d44/_lottery_table_8cs.html',1,'']]],
+  ['lrrhskillstate_2ecs_9',['LRRHSkillState.cs',['../d3/d96/_l_r_r_h_skill_state_8cs.html',1,'']]]
 ];

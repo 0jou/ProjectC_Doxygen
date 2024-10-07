@@ -6,6 +6,7 @@ var class_counter_manager =
     [ "CreateOrderFood", "dc/db5/class_counter_manager.html#a9948b79dd6b95ddeb00ec92d1083f5ff", null ],
     [ "GetCounterFoodData", "dc/db5/class_counter_manager.html#a1615f4935537842c27d37df8319f7e63", null ],
     [ "GetRandomPoint", "dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03", null ],
+    [ "IsCooking", "dc/db5/class_counter_manager.html#af83fd7b67ac4a8977ea40bcc8a1b1ebd", null ],
     [ "IsOrder", "dc/db5/class_counter_manager.html#a5a5c0d0ce7a11d5494fd846c94a0e026", null ],
     [ "IsOrdering", "dc/db5/class_counter_manager.html#a268903d7c35648dc3d58bb73fc7049c4", null ],
     [ "OrderFood", "dc/db5/class_counter_manager.html#aa9e7cde1b6c43f2ee7139b394dc7133b", null ],

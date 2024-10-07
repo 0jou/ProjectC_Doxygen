@@ -8,5 +8,6 @@ var searchData=
   ['collider_5',['Collider',['../d2/d90/class_proximity_create_u_i.html#adca7629a8f3cd30a7ade22cab46e2582a39e1450275f6b9c731ff9faafab3f44c',1,'ProximityCreateUI']]],
   ['conditiontypenum_6',['ConditionTypeNum',['../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482af1bddc6d99b2fe69116d582c4d4d2f70',1,'ConditionInfo']]],
   ['confusion_7',['Confusion',['../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a54894e44b2caf1104cfb21288a0e449e',1,'ConditionInfo']]],
-  ['customer_8',['customer',['../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a91ec1f9324753048c0096d036a694f86',1,'IDamageable.cs']]]
+  ['cooking_8',['Cooking',['../db/d53/namespace_chef_state_info.html#aa93d8fd7d37a3d4f38644f5e758837b0a3b962574887f124e78bfd9b4685f3b39',1,'ChefStateInfo']]],
+  ['customer_9',['customer',['../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a91ec1f9324753048c0096d036a694f86',1,'IDamageable.cs']]]
 ];

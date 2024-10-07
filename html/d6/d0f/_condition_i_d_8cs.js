@@ -7,6 +7,7 @@ var _condition_i_d_8cs =
       [ "Sleep", "d6/d0f/_condition_i_d_8cs.html#a15935a815783d67be27a154f45f16482a243924bfd56a682be235638b53961e09", null ],
       [ "Fire", "d6/d0f/_condition_i_d_8cs.html#a15935a815783d67be27a154f45f16482abd2b7e5f85a6ea65065c4ebc6d7c95bb", null ],
       [ "Confusion", "d6/d0f/_condition_i_d_8cs.html#a15935a815783d67be27a154f45f16482a54894e44b2caf1104cfb21288a0e449e", null ],
+      [ "Stun", "d6/d0f/_condition_i_d_8cs.html#a15935a815783d67be27a154f45f16482a27e9c0d7972e999a5bbe094c4cede584", null ],
       [ "ConditionTypeNum", "d6/d0f/_condition_i_d_8cs.html#a15935a815783d67be27a154f45f16482af1bddc6d99b2fe69116d582c4d4d2f70", null ]
     ] ],
     [ "ResistanceID", "d6/d0f/_condition_i_d_8cs.html#a369ee4cbf7a2389bdaf531b0f94387a4", [

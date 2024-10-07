@@ -1,0 +1,49 @@
+\doxysection{Calc\+Attack\+Data.\+cs}
+\hypertarget{_calc_attack_data_8cs_source}{}\label{_calc_attack_data_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonState/FSMScripts/Calculator/CalcAttackData.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/004\_Character/Enemy/CommonState/FSMScripts/Calculator/CalcAttackData.cs}}
+\mbox{\hyperlink{_calc_attack_data_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00010}00010\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00011}00011\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Float/CalcAttackDist"{}})]}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00012}00012\ [BehaviourTitle(\textcolor{stringliteral}{"{}CalcAttackDist"{}})]}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00017}\mbox{\hyperlink{class_calc_attack_data}{00017}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_calc_attack_data}{CalcAttackData}}\ :\ Calculator}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00019}\mbox{\hyperlink{class_calc_attack_data_a3b63c50859468293db91de7a786a39fe}{00019}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ FlexibleInt\ \mbox{\hyperlink{class_calc_attack_data_a3b63c50859468293db91de7a786a39fe}{m\_attackType}};}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00020}\mbox{\hyperlink{class_calc_attack_data_aa1e86a2a3f11c52c4402fd9ed3face8a}{00020}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_flexible_attack_data}{FlexibleAttackData}}\ \mbox{\hyperlink{class_calc_attack_data_aa1e86a2a3f11c52c4402fd9ed3face8a}{m\_attackData}};}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00022}\mbox{\hyperlink{class_calc_attack_data_a51377cce5e56f390574285da6f70669a}{00022}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ OutputSlotFloat\ \mbox{\hyperlink{class_calc_attack_data_a51377cce5e56f390574285da6f70669a}{m\_outputAttackDist}};}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00023}\mbox{\hyperlink{class_calc_attack_data_aad67d35bcd74498c0c7900833e9afe00}{00023}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ OutputSlotFloat\ \mbox{\hyperlink{class_calc_attack_data_aad67d35bcd74498c0c7900833e9afe00}{m\_outputMaxApproachTime}};}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00025}\mbox{\hyperlink{class_calc_attack_data_a44ab1f885f6b823a7f5c119482c5a9ab}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_calc_attack_data_a44ab1f885f6b823a7f5c119482c5a9ab}{OnCalculate}}()}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_attack_data_a3b63c50859468293db91de7a786a39fe}{m\_attackType}}.value\ <=\ \mbox{\hyperlink{class_calc_attack_data_aa1e86a2a3f11c52c4402fd9ed3face8a}{m\_attackData}}.value.LotteryData.value.Count)}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 接近必須攻撃かどうか}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_attack_data_aa1e86a2a3f11c52c4402fd9ed3face8a}{m\_attackData}}.value.LotteryData.value[\mbox{\hyperlink{class_calc_attack_data_a3b63c50859468293db91de7a786a39fe}{m\_attackType}}.value\ -\/\ 1].m\_isApproachBeforeAttack.value)}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 指定距離or指定秒数追いかける}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_attack_data_a51377cce5e56f390574285da6f70669a}{m\_outputAttackDist}}.SetValue(\mbox{\hyperlink{class_calc_attack_data_aa1e86a2a3f11c52c4402fd9ed3face8a}{m\_attackData}}.value.LotteryData.value[\mbox{\hyperlink{class_calc_attack_data_a3b63c50859468293db91de7a786a39fe}{m\_attackType}}.value\ -\/\ 1].m\_bestAttackDist.value);}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_attack_data_aad67d35bcd74498c0c7900833e9afe00}{m\_outputMaxApproachTime}}.SetValue(\mbox{\hyperlink{class_calc_attack_data_aa1e86a2a3f11c52c4402fd9ed3face8a}{m\_attackData}}.value.MaxApproachTime.value);}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 即攻撃}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_attack_data_a51377cce5e56f390574285da6f70669a}{m\_outputAttackDist}}.SetValue(\textcolor{keywordtype}{float}.MaxValue);}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_attack_data_aad67d35bcd74498c0c7900833e9afe00}{m\_outputMaxApproachTime}}.SetValue(0.0f);}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ なるべく追いかける}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_attack_data_a51377cce5e56f390574285da6f70669a}{m\_outputAttackDist}}.SetValue(0.0f);}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_attack_data_aad67d35bcd74498c0c7900833e9afe00}{m\_outputMaxApproachTime}}.SetValue(\textcolor{keywordtype}{float}.MaxValue);}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_calc_attack_data_8cs_source_l00050}00050\ \}}
+
+\end{DoxyCode}

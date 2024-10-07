@@ -9,7 +9,7 @@ var searchData=
   ['headpoint_6',['HeadPoint',['../dc/df7/class_queue_manager.html#a5d69c8648917ce4efd1fb7d72502d75a',1,'QueueManager']]],
   ['healingvalue_7',['HealingValue',['../d5/dc0/class_base_edible_item.html#a4e46222b5d71072053e3175357846e06',1,'BaseEdibleItem']]],
   ['height_8',['Height',['../d5/dc8/class_sin_curve_move_object.html#a656dbff5acec0041eb1874711bfde91baeec6c4bdbd339edf8cbea68becb85244',1,'SinCurveMoveObject']]],
-  ['hide_9',['Hide',['../d5/d55/class_enemy_icon_element.html#a1c3c9282e688a53a1f96f06d1904fc22',1,'EnemyIconElement.Hide()'],['../d2/d32/class_hide_alpha_dither_area_object.html#a1cac678289c0c5e8e4cf042031942429',1,'HideAlphaDitherAreaObject.Hide()']]],
+  ['hide_9',['Hide',['../d5/d55/class_enemy_icon_element.html#a1c3c9282e688a53a1f96f06d1904fc22',1,'EnemyIconElement.Hide()'],['../dd/d1a/class_show_and_hide_for_canvas_group.html#a816e1ebe412a34a70a1f47406619ae62',1,'ShowAndHideForCanvasGroup.Hide()'],['../da/d9a/class_show_and_hide_for_game_object.html#a02ed0f7f6f0ab921737f782e29224dc8',1,'ShowAndHideForGameObject.Hide()'],['../d2/d32/class_hide_alpha_dither_area_object.html#a1cac678289c0c5e8e4cf042031942429',1,'HideAlphaDitherAreaObject.Hide()']]],
   ['hidealphaditherareaobject_10',['HideAlphaDitherAreaObject',['../d2/d32/class_hide_alpha_dither_area_object.html',1,'']]],
   ['hidealphaditherareaobject_2ecs_11',['HideAlphaDitherAreaObject.cs',['../df/dc1/_hide_alpha_dither_area_object_8cs.html',1,'']]],
   ['hidealphaditherobject_12',['HideAlphaDitherObject',['../d2/d15/class_hide_alpha_dither_object.html',1,'']]],

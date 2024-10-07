@@ -1,13 +1,17 @@
 var class_management_provide_food_manager =
 [
     [ "AddProvideFoodList", "d7/d0e/class_management_provide_food_manager.html#aa13dcf22f052309916406ae958f9ac37", null ],
+    [ "GetProvideFood", "d7/d0e/class_management_provide_food_manager.html#aa9b6d9cce78f3691277237bddff6756a", null ],
+    [ "GetProvidePossibleNum", "d7/d0e/class_management_provide_food_manager.html#a215732660c1efa851ccddb2830693e40", null ],
     [ "GetRandomFoodData", "d7/d0e/class_management_provide_food_manager.html#a1ee4da1f32deea8d2f1e862fe668839e", null ],
     [ "Initialize", "d7/d0e/class_management_provide_food_manager.html#a76fa0d77e5c57371df9ca50f0260154d", null ],
     [ "IsAddedProvideFood", "d7/d0e/class_management_provide_food_manager.html#ab48c1e8488a313ad241d0feaaf0d406b", null ],
     [ "IsAddList", "d7/d0e/class_management_provide_food_manager.html#af3d0c07f9ff68b59f2794849a4a893bb", null ],
     [ "IsCreate", "d7/d0e/class_management_provide_food_manager.html#a6c9389f53cfe94ca622bd7c3108fa065", null ],
     [ "LateUpdate", "d7/d0e/class_management_provide_food_manager.html#a07ea8272c6a61abdd0ac68d5e82c2834", null ],
-    [ "PublishSoldOutEvent", "d7/d0e/class_management_provide_food_manager.html#a4d80ce1f8d609319138cefdbe854868d", null ],
+    [ "PublishAddListEvent", "d7/d0e/class_management_provide_food_manager.html#a10c4dba299bd94236226ca29d9c64bb5", null ],
+    [ "PublishChangeProvideFoodEvent", "d7/d0e/class_management_provide_food_manager.html#a2615563cb40312f08c4afc7612d68102", null ],
+    [ "PublishSoldOutProvideFoodEvent", "d7/d0e/class_management_provide_food_manager.html#a3b3055ecffcd3d4e162acd1804e7c03a", null ],
     [ "RemoveProvideFood", "d7/d0e/class_management_provide_food_manager.html#ad3435eb3155d8eda67d4bf017a65de04", null ],
     [ "RemoveProvideFoodList", "d7/d0e/class_management_provide_food_manager.html#aa8f8e857e86fd9777f622c947447cc48", null ],
     [ "SoldFood", "d7/d0e/class_management_provide_food_manager.html#a3b9b70c3124c85ba51e699efe04730e1", null ],

@@ -18,7 +18,8 @@ var searchData=
   ['doalphacanvasgroup_15',['DoAlphaCanvasGroup',['../dc/d5d/class_do_alpha_canvas_group.html',1,'']]],
   ['doanchorposui_16',['DOAnchorPosUI',['../d7/d61/class_d_o_anchor_pos_u_i.html',1,'']]],
   ['dochase_17',['DoChase',['../dd/de5/class_do_chase.html',1,'']]],
-  ['doscaleui_18',['DoScaleUI',['../d6/d9c/class_do_scale_u_i.html',1,'']]],
-  ['drawthrowitemarc_19',['DrawThrowItemArc',['../da/d09/class_draw_throw_item_arc.html',1,'']]],
-  ['dropiteminfo_20',['DropItemInfo',['../d9/ddd/struct_enemy_parameters_1_1_drop_item_info.html',1,'EnemyParameters']]]
+  ['docolorimageui_18',['DoColorImageUI',['../da/dcf/class_do_color_image_u_i.html',1,'']]],
+  ['doscaleui_19',['DoScaleUI',['../d6/d9c/class_do_scale_u_i.html',1,'']]],
+  ['drawthrowitemarc_20',['DrawThrowItemArc',['../da/d09/class_draw_throw_item_arc.html',1,'']]],
+  ['dropiteminfo_21',['DropItemInfo',['../d9/ddd/struct_enemy_parameters_1_1_drop_item_info.html',1,'EnemyParameters']]]
 ];

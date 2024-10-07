@@ -8,8 +8,5 @@ var searchData=
   ['lobbystateupdate_5ftrialsession_5',['LobbyStateUpdate_TrialSession',['../d1/de4/class_lobby_state_update___trial_session.html',1,'']]],
   ['lobbystateupdatemanager_6',['LobbyStateUpdateManager',['../da/d83/class_lobby_state_update_manager.html',1,'']]],
   ['localizetipscontroller_7',['LocalizeTipsController',['../d4/d1f/class_localize_tips_controller.html',1,'']]],
-  ['lotterydata_8',['LotteryData',['../dc/de5/class_lottery_data.html',1,'']]],
-  ['lotterydatalistvariable_9',['LotteryDataListVariable',['../d5/d1a/class_lottery_data_list_variable.html',1,'']]],
-  ['lotterydatavariable_10',['LotteryDataVariable',['../d7/d39/class_lottery_data_variable.html',1,'']]],
-  ['lotterytable_11',['LotteryTable',['../da/d3a/class_lottery_table.html',1,'']]]
+  ['lotterytable_8',['LotteryTable',['../da/d3a/class_lottery_table.html',1,'']]]
 ];

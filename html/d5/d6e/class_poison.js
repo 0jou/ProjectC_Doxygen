@@ -1,6 +1,5 @@
 var class_poison =
 [
-    [ "Awake", "d5/d6e/class_poison.html#a33309a1c1bbbc291a27cf4037554591b", null ],
     [ "DamageMulti", "d5/d6e/class_poison.html#a716a4d575951258f165bcf8bfeeba9c8", null ],
     [ "IsEffective", "d5/d6e/class_poison.html#afdce4fb174a5be3dd948a4065af9a647", null ],
     [ "OnDestroy", "d5/d6e/class_poison.html#a68cb72cdb0aef52974ede483d2895f01", null ],

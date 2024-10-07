@@ -7,5 +7,6 @@ var searchData=
   ['nextpagetransitionbehaviour_2ecs_4',['NextPageTransitionBehaviour.cs',['../d1/d00/_next_page_transition_behaviour_8cs.html',1,'']]],
   ['notimewindow_2ecs_5',['NoTimeWindow.cs',['../d2/d68/_no_time_window_8cs.html',1,'']]],
   ['nullcheck_2ecs_6',['NullCheck.cs',['../d3/d7a/_null_check_8cs.html',1,'']]],
-  ['nullparentobject_2ecs_7',['NullParentObject.cs',['../d6/d19/_null_parent_object_8cs.html',1,'']]]
+  ['nullparentobject_2ecs_7',['NullParentObject.cs',['../d6/d19/_null_parent_object_8cs.html',1,'']]],
+  ['numberincrementeffecttext_2ecs_8',['NumberIncrementEffectText.cs',['../d2/da6/_number_increment_effect_text_8cs.html',1,'']]]
 ];

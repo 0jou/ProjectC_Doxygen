@@ -99,41 +99,53 @@ $(function(){initNavTree('dd/d2a/_judge_stun_8cs_source.html','../../'); initRes
   <div class="headertitle"><div class="title">JudgeStun.cs</div></div>
 </div><!--header-->
 <div class="contents">
-<a href="../../dd/d2a/_judge_stun_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Collections;</div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections.Generic;</div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>UnityEngine;</div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>UniRx;</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>UniRx.Triggers;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
-<div class="foldopen" id="foldopen00008" data-start="{" data-end="};">
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="../../d1/d7b/class_judge_stun.html">    8</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d1/d7b/class_judge_stun.html">JudgeStun</a> : MonoBehaviour</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>{</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">   10</a></span>    <span class="keyword">private</span> <a class="code hl_class" href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a> <a class="code hl_variable" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">m_ownerInfoTag</a>;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d1/d7b/class_judge_stun.html#a86e8eacf4e16cb2012229c991751de9c">   12</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d7b/class_judge_stun.html#a86e8eacf4e16cb2012229c991751de9c">Start</a>()</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        TryGetComponent(out <a class="code hl_variable" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">m_ownerInfoTag</a>);</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        this.OnTriggerEnterAsObservable()</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>         .Where(_ =&gt; enabled &amp;&amp; _.gameObject.isStatic)</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>         .Subscribe(collider =&gt;</div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>         {</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>             <a class="code hl_variable" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_variable" href="../../d7/d2e/class_character_core.html#aea0d3d04bd56a93f0429403de01d9cdf">m_animator</a>.SetBool(<span class="stringliteral">&quot;IsStun&quot;</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>             Destroy(gameObject);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>         }</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>         ).AddTo(<span class="keyword">this</span>);</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+<a href="../../dd/d2a/_judge_stun_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>UniRx;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>UniRx.Triggers;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d9/dd8/namespace_condition_info.html">ConditionInfo</a>;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d1/d7b/class_judge_stun.html">   14</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d1/d7b/class_judge_stun.html">JudgeStun</a> : MonoBehaviour</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">   16</a></span>    <span class="keyword">private</span> <a class="code hl_class" href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a> <a class="code hl_variable" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">m_ownerInfoTag</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="foldopen" id="foldopen00018" data-start="{" data-end="}">
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d1/d7b/class_judge_stun.html#a86e8eacf4e16cb2012229c991751de9c">   18</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d1/d7b/class_judge_stun.html#a86e8eacf4e16cb2012229c991751de9c">Start</a>()</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        TryGetComponent(out <a class="code hl_variable" href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">m_ownerInfoTag</a>);</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        this.OnTriggerEnterAsObservable()</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>         .Where(_ =&gt; enabled &amp;&amp; _.gameObject.isStatic)</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>         .Subscribe(collider =&gt;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>         {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>             var conditionData = <a class="code hl_class" href="../../d7/dd5/class_condition_data_base_manager.html">ConditionDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetConditionData(<a class="code hl_enumeration" href="../../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482">ConditionID</a>.Stun);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>             <span class="keywordflow">if</span> (conditionData == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>             <span class="keywordflow">if</span> (conditionData.ConditionPrefab == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>             Transform managerObj = transform.root.Find(<span class="stringliteral">&quot;ConditionManager&quot;</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>             <span class="keywordflow">if</span> (!managerObj.TryGetComponent(out <a class="code hl_class" href="../../d4/dfe/class_condition_manager.html">ConditionManager</a> manager)) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>             manager.AddCondition(conditionData.ConditionPrefab);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>             Destroy(gameObject);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>             <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>         }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>         ).AddTo(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
 </div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>}</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
 </div>
-<div class="ttc" id="aclass_character_core_html_aea0d3d04bd56a93f0429403de01d9cdf"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#aea0d3d04bd56a93f0429403de01d9cdf">CharacterCore.m_animator</a></div><div class="ttdeci">Animator m_animator</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d21/_character_core_8cs_source.html#l00023">CharacterCore.cs:23</a></div></div>
-<div class="ttc" id="aclass_judge_stun_html"><div class="ttname"><a href="../../d1/d7b/class_judge_stun.html">JudgeStun</a></div><div class="ttdef"><b>Definition</b> <a href="#l00008">JudgeStun.cs:9</a></div></div>
-<div class="ttc" id="aclass_judge_stun_html_a05262f087731935abcd25c1250fa6c5c"><div class="ttname"><a href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">JudgeStun.m_ownerInfoTag</a></div><div class="ttdeci">OwnerInfoTag m_ownerInfoTag</div><div class="ttdef"><b>Definition</b> <a href="#l00010">JudgeStun.cs:10</a></div></div>
-<div class="ttc" id="aclass_judge_stun_html_a86e8eacf4e16cb2012229c991751de9c"><div class="ttname"><a href="../../d1/d7b/class_judge_stun.html#a86e8eacf4e16cb2012229c991751de9c">JudgeStun.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00012">JudgeStun.cs:12</a></div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d5a/_base_manager_8cs_source.html#l00006">BaseManager.cs:6</a></div></div>
+<div class="ttc" id="aclass_condition_data_base_manager_html"><div class="ttname"><a href="../../d7/dd5/class_condition_data_base_manager.html">ConditionDataBaseManager</a></div><div class="ttdef"><b>Definition</b> <a href="../../da/d40/_condition_data_base_manager_8cs_source.html#l00006">ConditionDataBaseManager.cs:7</a></div></div>
+<div class="ttc" id="aclass_condition_manager_html"><div class="ttname"><a href="../../d4/dfe/class_condition_manager.html">ConditionManager</a></div><div class="ttdef"><b>Definition</b> <a href="../../db/d6c/_condition_manager_8cs_source.html#l00009">ConditionManager.cs:10</a></div></div>
+<div class="ttc" id="aclass_judge_stun_html"><div class="ttname"><a href="../../d1/d7b/class_judge_stun.html">JudgeStun</a></div><div class="ttdoc">当たり判定に基づくスタン判定　伊波</div><div class="ttdef"><b>Definition</b> <a href="#l00014">JudgeStun.cs:15</a></div></div>
+<div class="ttc" id="aclass_judge_stun_html_a05262f087731935abcd25c1250fa6c5c"><div class="ttname"><a href="../../d1/d7b/class_judge_stun.html#a05262f087731935abcd25c1250fa6c5c">JudgeStun.m_ownerInfoTag</a></div><div class="ttdeci">OwnerInfoTag m_ownerInfoTag</div><div class="ttdef"><b>Definition</b> <a href="#l00016">JudgeStun.cs:16</a></div></div>
+<div class="ttc" id="aclass_judge_stun_html_a86e8eacf4e16cb2012229c991751de9c"><div class="ttname"><a href="../../d1/d7b/class_judge_stun.html#a86e8eacf4e16cb2012229c991751de9c">JudgeStun.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00018">JudgeStun.cs:18</a></div></div>
 <div class="ttc" id="aclass_owner_info_tag_html"><div class="ttname"><a href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/d84/_owner_info_tag_8cs_source.html#l00007">OwnerInfoTag.cs:8</a></div></div>
-<div class="ttc" id="aclass_owner_info_tag_html_a0e59a7e3de951dbe6f33c351e5a31607"><div class="ttname"><a href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">OwnerInfoTag.Characore</a></div><div class="ttdeci">CharacterCore Characore</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d84/_owner_info_tag_8cs_source.html#l00011">OwnerInfoTag.cs:11</a></div></div>
+<div class="ttc" id="anamespace_condition_info_html"><div class="ttname"><a href="../../d9/dd8/namespace_condition_info.html">ConditionInfo</a></div><div class="ttdef"><b>Definition</b> <a href="../../d6/d0f/_condition_i_d_8cs_source.html#l00006">ConditionID.cs:7</a></div></div>
+<div class="ttc" id="anamespace_condition_info_html_a15935a815783d67be27a154f45f16482"><div class="ttname"><a href="../../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482">ConditionInfo.ConditionID</a></div><div class="ttdeci">ConditionID</div><div class="ttdef"><b>Definition</b> <a href="../../d6/d0f/_condition_i_d_8cs_source.html#l00009">ConditionID.cs:10</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

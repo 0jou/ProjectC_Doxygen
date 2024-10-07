@@ -28,16 +28,13 @@ var searchData=
   ['lookatenemy_25',['LookAtEnemy',['../d7/dab/class_character_core_1_1_action_state___attack.html#a5a77681ca1d2311c8377b96e3c964ba2',1,'CharacterCore::ActionState_Attack']]],
   ['lookvector_26',['LookVector',['../db/dc6/class_enemy_input_provider.html#ad6b49d54538d5627a51bd7ec83c49ae7',1,'EnemyInputProvider.LookVector'],['../d8/d5c/interface_i_input_provider.html#a1d266581deb5c1629e8e4c0ae38f51c9',1,'IInputProvider.LookVector'],['../dd/d7f/class_null_character_i_p.html#a5a7850e742417012719720206a4e3776',1,'NullCharacterIP.LookVector'],['../d3/d3e/class_player_input_provider.html#a45367ddd15c774ae718464cf96b6a0a1',1,'PlayerInputProvider.LookVector'],['../d3/d0a/class_my_character_controller.html#a8464a261f4390f326ca62ee7a025060a',1,'MyCharacterController.LookVector']]],
   ['loose_27',['Loose',['../d7/d2e/class_character_core.html#ab43bd5339211050050669ab48cd5f4f9a08d78f099561104c2015d19ea7d9d41e',1,'CharacterCore']]],
-  ['losecount_28',['LoseCount',['../dc/de5/class_lottery_data.html#a44ef06033e4609df658f471de941e9c8',1,'LotteryData']]],
+  ['losecount_28',['LoseCount',['../d4/d7c/class_attack_lottery_data.html#adb0c1548560c32ad95061ff556e56a73',1,'AttackLotteryData']]],
   ['lostsighticon_29',['LostSightIcon',['../da/d6f/class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510ad7974cf69825bdb7d1e29288af6339e9',1,'EnemyIconController']]],
   ['lostsighttarget_30',['LostSightTarget',['../d2/d42/class_arbor_1_1_behaviour_tree_1_1_actions_1_1_agent_chase_to_transform.html#a97562d1eaaa02470d3ee5f61e8c12a28',1,'Arbor::BehaviourTree::Actions::AgentChaseToTransform']]],
-  ['lotterydata_31',['LotteryData',['../dc/de5/class_lottery_data.html',1,'']]],
-  ['lotterydatalistvariable_32',['LotteryDataListVariable',['../d5/d1a/class_lottery_data_list_variable.html',1,'']]],
-  ['lotterydatalistvariable_2ecs_33',['LotteryDataListVariable.cs',['../d5/d04/_lottery_data_list_variable_8cs.html',1,'']]],
-  ['lotterydatavariable_34',['LotteryDataVariable',['../d7/d39/class_lottery_data_variable.html',1,'']]],
-  ['lotterydatavariable_2ecs_35',['LotteryDataVariable.cs',['../d0/d69/_lottery_data_variable_8cs.html',1,'']]],
-  ['lotterytable_36',['LotteryTable',['../da/d3a/class_lottery_table.html',1,'']]],
-  ['lotterytable_2ecs_37',['LotteryTable.cs',['../d2/d44/_lottery_table_8cs.html',1,'']]],
-  ['lotterytocreateevent_38',['LotteryToCreateEvent',['../d8/dac/class_management_event_manager.html#a3700e9d3f69bec7c9e66dc9d20f68aac',1,'ManagementEventManager']]],
-  ['lrrhskillstate_2ecs_39',['LRRHSkillState.cs',['../d3/d96/_l_r_r_h_skill_state_8cs.html',1,'']]]
+  ['lotteryattack_31',['LotteryAttack',['../da/d3a/class_lottery_table.html#abb6d20b6185d50f0a52fa240b01360a8',1,'LotteryTable']]],
+  ['lotterydata_32',['LotteryData',['../d9/de0/class_attack_data.html#a5ae59218ae49a94a2751916a2d213b94',1,'AttackData']]],
+  ['lotterytable_33',['LotteryTable',['../da/d3a/class_lottery_table.html',1,'']]],
+  ['lotterytable_2ecs_34',['LotteryTable.cs',['../d2/d44/_lottery_table_8cs.html',1,'']]],
+  ['lotterytocreateevent_35',['LotteryToCreateEvent',['../d8/dac/class_management_event_manager.html#a3700e9d3f69bec7c9e66dc9d20f68aac',1,'ManagementEventManager']]],
+  ['lrrhskillstate_2ecs_36',['LRRHSkillState.cs',['../d3/d96/_l_r_r_h_skill_state_8cs.html',1,'']]]
 ];

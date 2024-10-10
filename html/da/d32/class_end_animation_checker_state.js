@@ -11,5 +11,7 @@ var class_end_animation_checker_state =
     [ "Start", "da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5", null ],
     [ "m_animationName", "da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5", null ],
     [ "m_animator", "da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307", null ],
+    [ "m_backAnimationHash", "da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6", null ],
+    [ "m_successAnimationHash", "da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028", null ],
     [ "m_successLink", "da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535", null ]
 ];

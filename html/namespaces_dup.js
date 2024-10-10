@@ -6,7 +6,13 @@ var namespaces_dup =
         [ "None", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273ea6adf97f83acf6453d4a6a4b1070f3754", null ],
         [ "Start", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273eaa6122a65eaa676f700ae68d393054a37", null ],
         [ "Cancel", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273eaea4788705e6873b424c65e91c2846b19", null ],
-        [ "ProvideFood", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273ea0f8a5859b7f3f81e6fb5d3e48260f9a8", null ]
+        [ "ProvideFood", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273ea0f8a5859b7f3f81e6fb5d3e48260f9a8", null ],
+        [ "ManagementStorage", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273ead2fcece34856d4157fcf23ffeef9e3bf", null ],
+        [ "ManagementStart", "d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273ea3b1c6a8e1ff9d022003dd7e53267314e", null ]
+      ] ],
+      [ "IsUseButtonID", "d5/d7a/namespace_button_info.html#a72d17ee229105befdaf5e6586cec283b", [
+        [ "Disable", "d5/d7a/namespace_button_info.html#a72d17ee229105befdaf5e6586cec283babcfaccebf745acfd5e75351095a5394a", null ],
+        [ "Enable", "d5/d7a/namespace_button_info.html#a72d17ee229105befdaf5e6586cec283ba2faec1f9f8cc7f8f40d521c4dd574f49", null ]
       ] ]
     ] ],
     [ "CameCustomerInfo", "d2/d7a/namespace_came_customer_info.html", [
@@ -98,7 +104,9 @@ var namespaces_dup =
       [ "LobbyState", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431", [
         [ "Normal", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a960b44c579bc2f6818d2daaf9e4c16f0", null ],
         [ "ReturnAction", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a9cdc53f7babaf3f6b0609ace4dcb1f7a", null ],
-        [ "TrialSession", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a192a85a3b3d0c3d34dba305a2dd6317f", null ]
+        [ "TrialSession", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a192a85a3b3d0c3d34dba305a2dd6317f", null ],
+        [ "GoToActionTutorial", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431aee7e5b27c6c46a325a920f97bc1b9f24", null ],
+        [ "GoToManagementTutorial", "db/dec/namespace_lobby_state_info.html#a321e7223422827a42165274a86b7c431a14eadc93f7c532b30e2bfeb325b242d8", null ]
       ] ]
     ] ],
     [ "ManagementStateUpdateInfo", "d7/dd9/namespace_management_state_update_info.html", [
@@ -107,6 +115,7 @@ var namespaces_dup =
         [ "Update", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa06933067aafd48425d67bcb01bba5cb6", null ],
         [ "End", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa87557f11575c0ad78e4e28abedc13b6e", null ],
         [ "Result", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa8eea62084ca7e541d918e823422bd82e", null ],
+        [ "Standby", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa2dbec34a65724db94f81e8533ee18192", null ],
         [ "None", "d7/dd9/namespace_management_state_update_info.html#a1571eca22d8d22cc4fc653e865a6c2ffa6adf97f83acf6453d4a6a4b1070f3754", null ]
       ] ]
     ] ],
@@ -124,6 +133,12 @@ var namespaces_dup =
       ] ]
     ] ],
     [ "PocketItemDataInfo", "d9/dbf/namespace_pocket_item_data_info.html", "d9/dbf/namespace_pocket_item_data_info" ],
+    [ "SelectUIInfo", "d3/d55/namespace_select_u_i_info.html", [
+      [ "SelectUIType", "d3/d55/namespace_select_u_i_info.html#a78ccac10f67d2bdf057b08c8961710ff", [
+        [ "Press", "d3/d55/namespace_select_u_i_info.html#a78ccac10f67d2bdf057b08c8961710ffa0610123bdd4ffc191a3ea05a847e1307", null ],
+        [ "Hold", "d3/d55/namespace_select_u_i_info.html#a78ccac10f67d2bdf057b08c8961710ffabcd8db575b47c838e5d551e3973db4ac", null ]
+      ] ]
+    ] ],
     [ "SelectUseItemInfo", "dc/d65/namespace_select_use_item_info.html", [
       [ "SelectUseItemID", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2d", [
         [ "Put", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2dad0bf1810982e9728fcf3ac444a015373", null ],

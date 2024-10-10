@@ -23,5 +23,8 @@ var searchData=
   ['transitiontargetorderfood_20',['TransitionTargetOrderFood',['../dc/db1/class_transition_target_order_food_state_customer_1_1_transition_target_order_food.html',1,'TransitionTargetOrderFoodStateCustomer']]],
   ['transitiontargetorderfoodstatecustomer_21',['TransitionTargetOrderFoodStateCustomer',['../d9/d7c/class_transition_target_order_food_state_customer.html',1,'']]],
   ['trialsessionwindow_22',['TrialSessionWindow',['../d9/d22/class_trial_session_window.html',1,'']]],
-  ['typewriteeffecttext_23',['TypeWriteEffectText',['../d4/d71/class_type_write_effect_text.html',1,'']]]
+  ['tutorialdata_23',['TutorialData',['../d5/df3/class_tutorial_data.html',1,'']]],
+  ['tutorialinputactiombutton_24',['TutorialInputActiomButton',['../da/dca/class_tutorial_input_actiom_button.html',1,'']]],
+  ['tutorialwindow_25',['TutorialWindow',['../d6/d19/class_tutorial_window.html',1,'']]],
+  ['typewriteeffecttext_26',['TypeWriteEffectText',['../d4/d71/class_type_write_effect_text.html',1,'']]]
 ];

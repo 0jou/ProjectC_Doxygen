@@ -11,5 +11,6 @@ var class_attack_applicant =
     [ "m_hittedColliders", "d8/d64/class_attack_applicant.html#aec7c80c1f1e3ad326ee819c260345b7a", null ],
     [ "m_knockBackMultiplier", "d8/d64/class_attack_applicant.html#a2687d74ac9b7ce423ea6ff594a7aeee4", null ],
     [ "m_ownerInfoTag", "d8/d64/class_attack_applicant.html#aec172d6168b33de504b5b6b421e39f8c", null ],
-    [ "m_recoverBPMagni", "d8/d64/class_attack_applicant.html#ad8649ce881fd5aabbc3beccac2e26f08", null ]
+    [ "m_recoverBPMagni", "d8/d64/class_attack_applicant.html#ad8649ce881fd5aabbc3beccac2e26f08", null ],
+    [ "m_soundData", "d8/d64/class_attack_applicant.html#a9b9dcd1a006befd61201c4554c8a501f", null ]
 ];

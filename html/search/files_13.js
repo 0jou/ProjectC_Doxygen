@@ -23,5 +23,7 @@ var searchData=
   ['transitionpreviousstate_2ecs_20',['TransitionPreviousState.cs',['../d5/da7/_transition_previous_state_8cs.html',1,'']]],
   ['transitiontargetorderfoodstatecustomer_2ecs_21',['TransitionTargetOrderFoodStateCustomer.cs',['../d3/de7/_transition_target_order_food_state_customer_8cs.html',1,'']]],
   ['trialsessionwindow_2ecs_22',['TrialSessionWindow.cs',['../d3/d1e/_trial_session_window_8cs.html',1,'']]],
-  ['typewriteeffecttext_2ecs_23',['TypeWriteEffectText.cs',['../d9/dcd/_type_write_effect_text_8cs.html',1,'']]]
+  ['tutorialinputactiombutton_2ecs_23',['TutorialInputActiomButton.cs',['../db/d4c/_tutorial_input_actiom_button_8cs.html',1,'']]],
+  ['tutorialwindow_2ecs_24',['TutorialWindow.cs',['../dd/d7b/_tutorial_window_8cs.html',1,'']]],
+  ['typewriteeffecttext_2ecs_25',['TypeWriteEffectText.cs',['../d9/dcd/_type_write_effect_text_8cs.html',1,'']]]
 ];

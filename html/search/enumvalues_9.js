@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['loose_0',['Loose',['../d7/d2e/class_character_core.html#ab43bd5339211050050669ab48cd5f4f9a08d78f099561104c2015d19ea7d9d41e',1,'CharacterCore']]],
-  ['lostsighticon_1',['LostSightIcon',['../da/d6f/class_enemy_icon_controller.html#a73069d8ddb38df86d279d521a0d10510ad7974cf69825bdb7d1e29288af6339e9',1,'EnemyIconController']]]
+  ['keyboardmouse_0',['KeyboardMouse',['../dd/d48/_player_input_manager___data_base_8cs.html#a752212911cc626e988329bafd9ce389eab3b583aff7298f371f1d209b94d8ed59',1,'PlayerInputManager_DataBase.cs']]]
 ];

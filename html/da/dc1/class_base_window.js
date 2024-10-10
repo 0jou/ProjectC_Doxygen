@@ -30,7 +30,6 @@ var class_base_window =
     [ "SetGlobalVolume", "da/dc1/class_base_window.html#a649dc092245213ebfb46e9db28dfa5fd", null ],
     [ "SetTimeScale", "da/dc1/class_base_window.html#a785cd5968c10a476229d1df761ccd3ae", null ],
     [ "ShowOtherUI", "da/dc1/class_base_window.html#acd2499f1b2e9d267a5e6e143ebc89dc5", null ],
-    [ "Transion", "da/dc1/class_base_window.html#a60d094970773313db3738c8d053ff136", null ],
     [ "Update< WindowType >", "da/dc1/class_base_window.html#ae3e50355658e7b4d4152bf3fc6167cff", null ],
     [ "m_canvasGroup", "da/dc1/class_base_window.html#a00c3f2a4a997a424462bbbc5c2b7f9d3", null ],
     [ "m_depthOfFieldType", "da/dc1/class_base_window.html#ad7aaf43e0a9db6a1082e88d8ce70e09d", null ],

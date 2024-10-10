@@ -1,0 +1,102 @@
+\doxysection{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}
+\hypertarget{_lobby_state_update___go_action_tutorial_8cs_source}{}\label{_lobby_state_update___go_action_tutorial_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/201\_Lobby\_Common/Manager/LobbyState/StateUpdate/GoActionTutorial/LobbyStateUpdate\_GoActionTutorial.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/201\_Lobby\_Common/Manager/LobbyState/StateUpdate/GoActionTutorial/LobbyStateUpdate\_GoActionTutorial.cs}}
+\mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00007}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial}{LobbyStateUpdate\_GoActionTutorial}}\ :\ \mbox{\hyperlink{class_base_lobby_state_update}{BaseLobbyStateUpdate}}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ アクションに行くチュートリアル}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}ウィンドウコントローラー"{}})]}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00015}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_window_controller}{WindowController}}\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ 作成したウィンドウ}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00019}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_window_controller}{WindowController}}\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//====================================================}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//====================================================}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00025}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a8e50f4cf1b414fcbf28adbe09bad9361}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a8e50f4cf1b414fcbf28adbe09bad9361}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウを作成/処理}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa7ca08c6779c21bbb91ce8e44db1ad73}{CreateWindow}}();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00046}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a0046a886cb3e5b9a1d6a52adcd8807c5}{00046}}\ \ \ \ \ \textcolor{keyword}{override}\ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a0046a886cb3e5b9a1d6a52adcd8807c5}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウを削除}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{DestoryWindow}}();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00055}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa7ca08c6779c21bbb91ce8e44db1ad73}{00055}}\ \ \ \ \ \textcolor{keyword}{private}\ async\ UniTask\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa7ca08c6779c21bbb91ce8e44db1ad73}{CreateWindow}}()}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}\ =\ Instantiate(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}});}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 処理を行う}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_base_window}{BaseWindow}}.Update<\mbox{\hyperlink{class_base_window}{BaseWindow}}>(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}});}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{DestoryWindow}}();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 終了}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_af32b8da037e8dafd960482722bb50cb0}{SetEnd}}();}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ ウィンドウを削除する}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00087}\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{00087}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{DestoryWindow}}()}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00088}00088\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}});}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00094}00094\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_lobby_state_update___go_action_tutorial_8cs_source_l00096}00096\ \}}
+
+\end{DoxyCode}

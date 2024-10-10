@@ -29,13 +29,13 @@ var searchData=
   ['basemanager_3c_20countermanager_20_3e_26',['BaseManager&lt; CounterManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
   ['basemanager_3c_20customermanager_20_3e_27',['BaseManager&lt; CustomerManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
   ['basemanager_3c_20cutscenemanager_20_3e_28',['BaseManager&lt; CutSceneManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20inputuimanager_20_3e_29',['BaseManager&lt; InputUIManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20itemdatabasemanager_20_3e_30',['BaseManager&lt; ItemDataBaseManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20itemtypedatabasemanager_20_3e_31',['BaseManager&lt; ItemTypeDataBaseManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20managementdatamanager_20_3e_32',['BaseManager&lt; ManagementDataManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20managementeventmanager_20_3e_33',['BaseManager&lt; ManagementEventManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20managementgamemanager_20_3e_34',['BaseManager&lt; ManagementGameManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
-  ['basemanager_3c_20managementprovidefoodmanager_20_3e_35',['BaseManager&lt; ManagementProvideFoodManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20itemdatabasemanager_20_3e_29',['BaseManager&lt; ItemDataBaseManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20itemtypedatabasemanager_20_3e_30',['BaseManager&lt; ItemTypeDataBaseManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20managementdatamanager_20_3e_31',['BaseManager&lt; ManagementDataManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20managementeventmanager_20_3e_32',['BaseManager&lt; ManagementEventManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20managementgamemanager_20_3e_33',['BaseManager&lt; ManagementGameManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20managementprovidefoodmanager_20_3e_34',['BaseManager&lt; ManagementProvideFoodManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
+  ['basemanager_3c_20playerinputmanager_20_3e_35',['BaseManager&lt; PlayerInputManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
   ['basemanager_3c_20queuemanager_20_3e_36',['BaseManager&lt; QueueManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
   ['basemanager_3c_20scenenamemanager_20_3e_37',['BaseManager&lt; SceneNameManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
   ['basemanager_3c_20staffmanager_20_3e_38',['BaseManager&lt; StaffManager &gt;',['../d8/dc6/class_base_manager.html',1,'']]],
@@ -64,5 +64,6 @@ var searchData=
   ['blinkingselectedbutton_61',['BlinkingSelectedButton',['../d7/d83/class_blinking_selected_button.html',1,'']]],
   ['bpbarpresenter_62',['BPBarPresenter',['../d7/da1/class_b_p_bar_presenter.html',1,'']]],
   ['bpskill_5f1presenter_63',['BPSkill_1Presenter',['../d7/d3d/class_b_p_skill__1_presenter.html',1,'']]],
-  ['bpskill_5f2presenter_64',['BPSkill_2Presenter',['../d9/dff/class_b_p_skill__2_presenter.html',1,'']]]
+  ['bpskill_5f2presenter_64',['BPSkill_2Presenter',['../d9/dff/class_b_p_skill__2_presenter.html',1,'']]],
+  ['buttondata_65',['ButtonData',['../d1/dfe/class_button_data.html',1,'']]]
 ];

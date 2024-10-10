@@ -5,12 +5,12 @@ var class_change_scroll_view_position =
       [ "Edge", "df/dfe/class_change_scroll_view_position.html#aa2892555fbd3d6f99a2613ef0bc02b59ae4a297a0f76119a442c2595ac040673e", null ]
     ] ],
     [ "Center", "df/dfe/class_change_scroll_view_position.html#abff9fc0a3edf0b2c0b786560b7390d4b", null ],
-    [ "ChangePos", "df/dfe/class_change_scroll_view_position.html#a2f4f3fb6f7a579f48e2ba4c1681076ed", null ],
     [ "ChangePosEdge", "df/dfe/class_change_scroll_view_position.html#a5d8c68c524bce1998daa5d6b1e71eb5f", null ],
     [ "DoMove", "df/dfe/class_change_scroll_view_position.html#ade48cf2c0a7b9cb71bebf8f9dac0ef9d", null ],
     [ "Edge", "df/dfe/class_change_scroll_view_position.html#addb3e0b4e1e085bc0fc1b7cbb6a9183b", null ],
     [ "OnUpdate", "df/dfe/class_change_scroll_view_position.html#a36e8c8f86b5fe4b10dd548227fb09961", null ],
     [ "OnUpdateEveryTime", "df/dfe/class_change_scroll_view_position.html#a3df0ec912df4d96a7066caa4b18a920d", null ],
+    [ "Scroll", "df/dfe/class_change_scroll_view_position.html#a47fcce8f967408e1baa22490516e41b0", null ],
     [ "m_gridLayoutGroup", "df/dfe/class_change_scroll_view_position.html#af267b585b99f6201f036a67c2ed3ae6f", null ],
     [ "m_isHorizontal", "df/dfe/class_change_scroll_view_position.html#a7e8ef6125214b6be217c3afd2266d848", null ],
     [ "m_isStop", "df/dfe/class_change_scroll_view_position.html#a7794bce3c1bd094540821be99bdbb7b6", null ],

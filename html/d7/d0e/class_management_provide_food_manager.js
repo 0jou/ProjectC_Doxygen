@@ -8,6 +8,7 @@ var class_management_provide_food_manager =
     [ "IsAddedProvideFood", "d7/d0e/class_management_provide_food_manager.html#ab48c1e8488a313ad241d0feaaf0d406b", null ],
     [ "IsAddList", "d7/d0e/class_management_provide_food_manager.html#af3d0c07f9ff68b59f2794849a4a893bb", null ],
     [ "IsCreate", "d7/d0e/class_management_provide_food_manager.html#a6c9389f53cfe94ca622bd7c3108fa065", null ],
+    [ "IsSetProvideFood", "d7/d0e/class_management_provide_food_manager.html#add5c2228b701bc373c9c97152b6dfd26", null ],
     [ "LateUpdate", "d7/d0e/class_management_provide_food_manager.html#a07ea8272c6a61abdd0ac68d5e82c2834", null ],
     [ "PublishAddListEvent", "d7/d0e/class_management_provide_food_manager.html#a10c4dba299bd94236226ca29d9c64bb5", null ],
     [ "PublishChangeProvideFoodEvent", "d7/d0e/class_management_provide_food_manager.html#a2615563cb40312f08c4afc7612d68102", null ],

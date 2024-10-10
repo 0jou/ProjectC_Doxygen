@@ -1,0 +1,47 @@
+\doxysection{Appear\+Customer.\+cs}
+\hypertarget{_appear_customer_8cs_source}{}\label{_appear_customer_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Appear/AppearCustomer.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/103\_Management\_Character/Appear/AppearCustomer.cs}}
+\mbox{\hyperlink{_appear_customer_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00005}\mbox{\hyperlink{class_appear_customer}{00005}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_appear_customer}{AppearCustomer}}\ :\ \mbox{\hyperlink{class_appear_object}{AppearObject}}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00006}00006\ \{}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00007}00007\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//\ 客を出現させる}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//================================}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//================================}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00015}\mbox{\hyperlink{class_appear_customer_a83113fc72e0cd1cf7350817e82e7dd5b}{00015}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_appear_customer_a83113fc72e0cd1cf7350817e82e7dd5b}{UpdateCreate}}()}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を提供できなければ}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsOrder())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 待ち列に客が入れなければ}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_queue_manager}{QueueManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInQueue())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクト作成}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ var\ obj\ =\ \mbox{\hyperlink{class_appear_object_a5279c72f315702d6eb9d78dfd7e373c7}{CreateObject}}();}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターモーターを更新する}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ var\ core\ =\ obj.GetComponent<\mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}>();}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (core\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}キャラクターコントローラーが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーターの座標を更新}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ core.\mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{SetPositionMotor}}(transform.position);}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_appear_customer_8cs_source_l00041}00041\ \}}
+
+\end{DoxyCode}

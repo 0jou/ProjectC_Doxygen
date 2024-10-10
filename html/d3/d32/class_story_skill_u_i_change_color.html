@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -204,10 +204,114 @@ StorySkillUIChangeColor 連携図</div>
 <tr class="memitem:a5a062f055ad71ef79464b5f1d7a2e6df" id="r_a5a062f055ad71ef79464b5f1d7a2e6df"><td class="memItemLeft" align="right" valign="top">Color&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5a062f055ad71ef79464b5f1d7a2e6df">m_dontUseSkillColor</a> = Color.gray</td></tr>
 <tr class="separator:a5a062f055ad71ef79464b5f1d7a2e6df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
+<a id="a81c307796a24e27412a4920a6b9f6598" name="a81c307796a24e27412a4920a6b9f6598"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c307796a24e27412a4920a6b9f6598">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StorySkillUIChangeColor.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   19</span>    {</div>
+<div class="line"><span class="lineno">   20</span>        <span class="comment">// ここでm_playerCharacterCore探してたんですが、</span></div>
+<div class="line"><span class="lineno">   21</span>        <span class="comment">// CharacterCoreへの登録ができていないので、Updateで探すように変更しました（吉田）</span></div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>        <span class="comment">// 色情報はシリアライズされている物を使うように修正しました（吉田）</span></div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">foreach</span> (var imag <span class="keywordflow">in</span> <a class="code hl_variable" href="#a4a4b2a10a44d2d2131aa8aedfec9d334">m_imagesList</a>)</div>
+<div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            <a class="code hl_variable" href="#aec326644111d304bd8a9bc774b754972">m_originColor</a> = imag.color;</div>
+<div class="line"><span class="lineno">   27</span>            m_originColor.a = 0.0f;</div>
+<div class="line"><span class="lineno">   28</span>        }</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="ttc" id="aclass_story_skill_u_i_change_color_html_a4a4b2a10a44d2d2131aa8aedfec9d334"><div class="ttname"><a href="#a4a4b2a10a44d2d2131aa8aedfec9d334">StorySkillUIChangeColor.m_imagesList</a></div><div class="ttdeci">Image[] m_imagesList</div><div class="ttdef"><b>Definition</b> StorySkillUIChangeColor.cs:10</div></div>
+<div class="ttc" id="aclass_story_skill_u_i_change_color_html_aec326644111d304bd8a9bc774b754972"><div class="ttname"><a href="#aec326644111d304bd8a9bc774b754972">StorySkillUIChangeColor.m_originColor</a></div><div class="ttdeci">Color m_originColor</div><div class="ttdef"><b>Definition</b> StorySkillUIChangeColor.cs:13</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ac28e561b1aea441175b09f4b8227da23" name="ac28e561b1aea441175b09f4b8227da23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac28e561b1aea441175b09f4b8227da23">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StorySkillUIChangeColor.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>        <span class="comment">/* スキルが使えるかどうかで色を変える処理はBPが回復した時に処理するようにしました（吉田）</span></div>
+<div class="line"><span class="lineno">   35</span><span class="comment">         * 実際の処理は BPSkill_1Presenter.cs と BPSkill_2Presenter.cs に移動しました</span></div>
+<div class="line"><span class="lineno">   36</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   37</span><span class="comment">        // TODO：Startで探したい。</span></div>
+<div class="line"><span class="lineno">   38</span><span class="comment">        if (m_playerCharacterCore == null)</span></div>
+<div class="line"><span class="lineno">   39</span><span class="comment">        {</span></div>
+<div class="line"><span class="lineno">   40</span><span class="comment">            foreach (var chara in IMetaAI&lt;CharacterCore&gt;.Instance.ObjectList)</span></div>
+<div class="line"><span class="lineno">   41</span><span class="comment">            {</span></div>
+<div class="line"><span class="lineno">   42</span><span class="comment">                if (chara.InputType == CharacterCore.InputTypes.Player)</span></div>
+<div class="line"><span class="lineno">   43</span><span class="comment">                {</span></div>
+<div class="line"><span class="lineno">   44</span><span class="comment">                    m_playerCharacterCore = chara;</span></div>
+<div class="line"><span class="lineno">   45</span><span class="comment">                }</span></div>
+<div class="line"><span class="lineno">   46</span><span class="comment">            }</span></div>
+<div class="line"><span class="lineno">   47</span><span class="comment">            if (m_playerCharacterCore == null)// nullチェック入れました（吉田）</span></div>
+<div class="line"><span class="lineno">   48</span><span class="comment">            {</span></div>
+<div class="line"><span class="lineno">   49</span><span class="comment">                Debug.LogError(&quot;プレイヤーが見つかりませんでした&quot;);</span></div>
+<div class="line"><span class="lineno">   50</span><span class="comment">                return;</span></div>
+<div class="line"><span class="lineno">   51</span><span class="comment">            }</span></div>
+<div class="line"><span class="lineno">   52</span><span class="comment">        }</span></div>
+<div class="line"><span class="lineno">   53</span><span class="comment">        var parameter = m_playerCharacterCore.PlayerParameters;</span></div>
+<div class="line"><span class="lineno">   54</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   55</span><span class="comment">        if (parameter)</span></div>
+<div class="line"><span class="lineno">   56</span><span class="comment">        {</span></div>
+<div class="line"><span class="lineno">   57</span><span class="comment">            if (parameter.UseSkill1Flg)</span></div>
+<div class="line"><span class="lineno">   58</span><span class="comment">            {</span></div>
+<div class="line"><span class="lineno">   59</span><span class="comment">                foreach (var imag in m_imagesList)</span></div>
+<div class="line"><span class="lineno">   60</span><span class="comment">                {</span></div>
+<div class="line"><span class="lineno">   61</span><span class="comment">                    imag.color = m_originColor;</span></div>
+<div class="line"><span class="lineno">   62</span><span class="comment">                }</span></div>
+<div class="line"><span class="lineno">   63</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   64</span><span class="comment">            }</span></div>
+<div class="line"><span class="lineno">   65</span><span class="comment">            else</span></div>
+<div class="line"><span class="lineno">   66</span><span class="comment">            {</span></div>
+<div class="line"><span class="lineno">   67</span><span class="comment">                foreach (var imag in m_imagesList)</span></div>
+<div class="line"><span class="lineno">   68</span><span class="comment">                {</span></div>
+<div class="line"><span class="lineno">   69</span><span class="comment">                    imag.color = m_dontUseSkillColor;</span></div>
+<div class="line"><span class="lineno">   70</span><span class="comment">                }</span></div>
+<div class="line"><span class="lineno">   71</span><span class="comment">            }</span></div>
+<div class="line"><span class="lineno">   72</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   73</span><span class="comment">        }</span></div>
+<div class="line"><span class="lineno">   74</span><span class="comment"></span> </div>
+<div class="line"><span class="lineno">   75</span><span class="comment">        */</span></div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a686b9556db3c59829ccb0db7d631eede" name="a686b9556db3c59829ccb0db7d631eede"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a686b9556db3c59829ccb0db7d631eede">&#9670;&#160;</a></span>ChangeNoUseColor()</h2>
 
@@ -222,9 +326,14 @@ StorySkillUIChangeColor 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00080">80</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   81</span>    {</div>
+<div class="line"><span class="lineno">   82</span>        <span class="keywordflow">foreach</span> (var imag <span class="keywordflow">in</span> <a class="code hl_variable" href="#a4a4b2a10a44d2d2131aa8aedfec9d334">m_imagesList</a>)</div>
+<div class="line"><span class="lineno">   83</span>        {</div>
+<div class="line"><span class="lineno">   84</span>            imag.color = <a class="code hl_variable" href="#a5a062f055ad71ef79464b5f1d7a2e6df">m_dontUseSkillColor</a>;</div>
+<div class="line"><span class="lineno">   85</span>        }</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+<div class="ttc" id="aclass_story_skill_u_i_change_color_html_a5a062f055ad71ef79464b5f1d7a2e6df"><div class="ttname"><a href="#a5a062f055ad71ef79464b5f1d7a2e6df">StorySkillUIChangeColor.m_dontUseSkillColor</a></div><div class="ttdeci">Color m_dontUseSkillColor</div><div class="ttdef"><b>Definition</b> StorySkillUIChangeColor.cs:16</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d32/class_story_skill_u_i_change_color_a686b9556db3c59829ccb0db7d631eede_icgraph.png" border="0" usemap="#ad3/d32/class_story_skill_u_i_change_color_a686b9556db3c59829ccb0db7d631eede_icgraph" alt=""/></div>
@@ -257,9 +366,13 @@ StorySkillUIChangeColor 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00090">90</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   91</span>    {</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">foreach</span> (var imag <span class="keywordflow">in</span> <a class="code hl_variable" href="#a4a4b2a10a44d2d2131aa8aedfec9d334">m_imagesList</a>)</div>
+<div class="line"><span class="lineno">   93</span>        {</div>
+<div class="line"><span class="lineno">   94</span>            imag.color = <a class="code hl_variable" href="#aec326644111d304bd8a9bc774b754972">m_originColor</a>;</div>
+<div class="line"><span class="lineno">   95</span>        }</div>
+<div class="line"><span class="lineno">   96</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d32/class_story_skill_u_i_change_color_a4e314f5d39819fcddd55b297314aeb3d_icgraph.png" border="0" usemap="#ad3/d32/class_story_skill_u_i_change_color_a4e314f5d39819fcddd55b297314aeb3d_icgraph" alt=""/></div>
@@ -284,85 +397,7 @@ StorySkillUIChangeColor 連携図</div>
 
 </div>
 </div>
-<a id="a81c307796a24e27412a4920a6b9f6598" name="a81c307796a24e27412a4920a6b9f6598"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81c307796a24e27412a4920a6b9f6598">&#9670;&#160;</a></span>Start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void StorySkillUIChangeColor.Start </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ac28e561b1aea441175b09f4b8227da23" name="ac28e561b1aea441175b09f4b8227da23"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac28e561b1aea441175b09f4b8227da23">&#9670;&#160;</a></span>Update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void StorySkillUIChangeColor.Update </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00032">32</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a5a062f055ad71ef79464b5f1d7a2e6df" name="a5a062f055ad71ef79464b5f1d7a2e6df"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a062f055ad71ef79464b5f1d7a2e6df">&#9670;&#160;</a></span>m_dontUseSkillColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Color StorySkillUIChangeColor.m_dontUseSkillColor = Color.gray</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="a4a4b2a10a44d2d2131aa8aedfec9d334" name="a4a4b2a10a44d2d2131aa8aedfec9d334"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a4b2a10a44d2d2131aa8aedfec9d334">&#9670;&#160;</a></span>m_imagesList</h2>
 
@@ -382,32 +417,6 @@ StorySkillUIChangeColor 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aec326644111d304bd8a9bc774b754972" name="aec326644111d304bd8a9bc774b754972"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec326644111d304bd8a9bc774b754972">&#9670;&#160;</a></span>m_originColor</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Color StorySkillUIChangeColor.m_originColor = Color.clear</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -431,12 +440,54 @@ StorySkillUIChangeColor 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a> の <a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="aec326644111d304bd8a9bc774b754972" name="aec326644111d304bd8a9bc774b754972"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec326644111d304bd8a9bc774b754972">&#9670;&#160;</a></span>m_originColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color StorySkillUIChangeColor.m_originColor = Color.clear</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5a062f055ad71ef79464b5f1d7a2e6df" name="a5a062f055ad71ef79464b5f1d7a2e6df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a062f055ad71ef79464b5f1d7a2e6df">&#9670;&#160;</a></span>m_dontUseSkillColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Color StorySkillUIChangeColor.m_dontUseSkillColor = Color.gray</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Script/View/Action/Background/<a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs_source.html">StorySkillUIChangeColor.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Script/View/Action/Background/<a class="el" href="../../d8/df8/_story_skill_u_i_change_color_8cs.html">StorySkillUIChangeColor.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

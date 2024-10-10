@@ -2,12 +2,13 @@
 \hypertarget{class_state_recursion_with_probability}{}\label{class_state_recursion_with_probability}\index{StateRecursionWithProbability@{StateRecursionWithProbability}}
 
 
-確率で特定のステートに遷移する 確率は0\texorpdfstring{$\sim$}{\string~}100の間(int)で設定する  
+確率で特定のステートに遷移する 確率は0\texorpdfstring{$\sim$}{\string~}100の間(int)で設定する 抽選の実行タイミングは\+On\+State\+Beginと\+On\+State\+Update  
 
 
 
 
-State\+Recursion\+With\+Probability の継承関係図\nopagebreak
+State\+Recursion\+With\+Probability の継承関係図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ State\+Recursion\+With\+Probability の継承関係図\nopagebreak
 \end{figure}
 
 
-State\+Recursion\+With\+Probability 連携図\nopagebreak
+State\+Recursion\+With\+Probability 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -25,6 +27,8 @@ State\+Recursion\+With\+Probability 連携図\nopagebreak
 \end{figure}
 \doxysubsubsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_state_recursion_with_probability_ad66f1916e3fa4c2f3a530bffd7986a26}{On\+State\+Begin}} ()
 \item 
 override void \mbox{\hyperlink{class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9}{On\+State\+Update}} ()
 \end{DoxyCompactItemize}
@@ -60,11 +64,7 @@ Game\+Object \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18
 
 
 \doxysubsection{詳解}
-確率で特定のステートに遷移する 確率は0\texorpdfstring{$\sim$}{\string~}100の間(int)で設定する 
-
- \mbox{\hyperlink{_state_recursion_with_probability_8cs_source}{State\+Recursion\+With\+Probability.\+cs}} の \mbox{\hyperlink{_state_recursion_with_probability_8cs_source_l00015}{15}} 行目に定義があります。
-
-
+確率で特定のステートに遷移する 確率は0\texorpdfstring{$\sim$}{\string~}100の間(int)で設定する 抽選の実行タイミングは\+On\+State\+Beginと\+On\+State\+Update 
 
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_state_recursion_with_probability_a85a20ee81b409f14dd514cebc17eeb45}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!IsSuccess@{IsSuccess}}
@@ -78,31 +78,18 @@ bool State\+Recursion\+With\+Probability.\+Is\+Success (\begin{DoxyParamCaption}
 確率判定 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Random.Range(0,\ 100)\ <\ \mbox{\hyperlink{class_state_recursion_with_probability_aaa7d2b008a6e14d13998238b4ad6b596}{m\_probability}};}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_state_recursion_with_probability_8cs_source}{State\+Recursion\+With\+Probability.\+cs}} の \mbox{\hyperlink{_state_recursion_with_probability_8cs_source_l00027}{27}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d8a/class_state_recursion_with_probability_a85a20ee81b409f14dd514cebc17eeb45_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!OnStateUpdate@{OnStateUpdate}}
-\index{OnStateUpdate@{OnStateUpdate}!StateRecursionWithProbability@{StateRecursionWithProbability}}
-\doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
-{\footnotesize\ttfamily \label{class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9} 
-override void State\+Recursion\+With\+Probability.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_state_recursion_with_probability_8cs_source}{State\+Recursion\+With\+Probability.\+cs}} の \mbox{\hyperlink{_state_recursion_with_probability_8cs_source_l00046}{46}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{da/d8a/class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_state_recursion_with_probability_a7311c3f9150a64136a157185651b9117}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!RecursionwithProbability@{RecursionwithProbability}}
@@ -116,9 +103,17 @@ void State\+Recursion\+With\+Probability.\+Recursionwith\+Probability (\begin{Do
 確率で遷移を実行する 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_state_recursion_with_probability_a85a20ee81b409f14dd514cebc17eeb45}{IsSuccess}}())}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_state_recursion_with_probability_a3365e7a5318f635c0a2cfe66a32be06e}{m\_successLink}});}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_state_recursion_with_probability_8cs_source}{State\+Recursion\+With\+Probability.\+cs}} の \mbox{\hyperlink{_state_recursion_with_probability_8cs_source_l00034}{34}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -126,30 +121,58 @@ void State\+Recursion\+With\+Probability.\+Recursionwith\+Probability (\begin{Do
 \includegraphics[width=350pt]{da/d8a/class_state_recursion_with_probability_a7311c3f9150a64136a157185651b9117_cgraph}
 \end{center}
 \end{figure}
-被呼び出し関係図\+:\nopagebreak
+被呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d8a/class_state_recursion_with_probability_a7311c3f9150a64136a157185651b9117_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_state_recursion_with_probability_ad66f1916e3fa4c2f3a530bffd7986a26}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!OnStateBegin@{OnStateBegin}}
+\index{OnStateBegin@{OnStateBegin}!StateRecursionWithProbability@{StateRecursionWithProbability}}
+\doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
+{\footnotesize\ttfamily \label{class_state_recursion_with_probability_ad66f1916e3fa4c2f3a530bffd7986a26} 
+override void State\+Recursion\+With\+Probability.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00046\ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_recursion_with_probability_a7311c3f9150a64136a157185651b9117}{RecursionwithProbability}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d8a/class_state_recursion_with_probability_ad66f1916e3fa4c2f3a530bffd7986a26_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!OnStateUpdate@{OnStateUpdate}}
+\index{OnStateUpdate@{OnStateUpdate}!StateRecursionWithProbability@{StateRecursionWithProbability}}
+\doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
+{\footnotesize\ttfamily \label{class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9} 
+override void State\+Recursion\+With\+Probability.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_state_recursion_with_probability_a7311c3f9150a64136a157185651b9117}{RecursionwithProbability}}();}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d8a/class_state_recursion_with_probability_a31181914668870bcccdddd21880dbfd9_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_state_recursion_with_probability_aaa7d2b008a6e14d13998238b4ad6b596}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!m\_probability@{m\_probability}}
-\index{m\_probability@{m\_probability}!StateRecursionWithProbability@{StateRecursionWithProbability}}
-\doxysubsubsection{\texorpdfstring{m\_probability}{m\_probability}}
-{\footnotesize\ttfamily \label{class_state_recursion_with_probability_aaa7d2b008a6e14d13998238b4ad6b596} 
-int State\+Recursion\+With\+Probability.\+m\+\_\+probability = 50\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-遷移確率 
-
-
-
- \mbox{\hyperlink{_state_recursion_with_probability_8cs_source}{State\+Recursion\+With\+Probability.\+cs}} の \mbox{\hyperlink{_state_recursion_with_probability_8cs_source_l00024}{24}} 行目に定義があります。
-
 \Hypertarget{class_state_recursion_with_probability_a3365e7a5318f635c0a2cfe66a32be06e}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!m\_successLink@{m\_successLink}}
 \index{m\_successLink@{m\_successLink}!StateRecursionWithProbability@{StateRecursionWithProbability}}
 \doxysubsubsection{\texorpdfstring{m\_successLink}{m\_successLink}}
@@ -160,9 +183,15 @@ State\+Link State\+Recursion\+With\+Probability.\+m\+\_\+success\+Link = null\hs
 
 遷移先リンク 
 
+\Hypertarget{class_state_recursion_with_probability_aaa7d2b008a6e14d13998238b4ad6b596}\index{StateRecursionWithProbability@{StateRecursionWithProbability}!m\_probability@{m\_probability}}
+\index{m\_probability@{m\_probability}!StateRecursionWithProbability@{StateRecursionWithProbability}}
+\doxysubsubsection{\texorpdfstring{m\_probability}{m\_probability}}
+{\footnotesize\ttfamily \label{class_state_recursion_with_probability_aaa7d2b008a6e14d13998238b4ad6b596} 
+int State\+Recursion\+With\+Probability.\+m\+\_\+probability = 50\hspace{0.3cm}{\ttfamily [private]}}
 
 
- \mbox{\hyperlink{_state_recursion_with_probability_8cs_source}{State\+Recursion\+With\+Probability.\+cs}} の \mbox{\hyperlink{_state_recursion_with_probability_8cs_source_l00019}{19}} 行目に定義があります。
+
+遷移確率 
 
 
 

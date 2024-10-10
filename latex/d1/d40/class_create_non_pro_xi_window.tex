@@ -41,13 +41,6 @@ Game\+Object \mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f19
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00010}{10}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_create_non_pro_xi_window_ad11682ef63614970321158553e4bb6e5}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!CreateWindow@{CreateWindow}}
 \index{CreateWindow@{CreateWindow}!CreateNonProXiWindow@{CreateNonProXiWindow}}
@@ -60,9 +53,57 @@ async Uni\+Task Create\+Non\+Pro\+Xi\+Window.\+Create\+Window (\begin{DoxyParamC
 ウィンドウを作成 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}作成済みです"{}});}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_non_pro_xi_window_ae04f380a4f2eaa12b85149b8d3583563}{m\_windowController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}windowContorollerがシリアライズされていません"{}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}}\ =\ Instantiate(\mbox{\hyperlink{class_create_non_pro_xi_window_ae04f380a4f2eaa12b85149b8d3583563}{m\_windowController}});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ var\ controller\ =\ \mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}}.GetComponent<\mbox{\hyperlink{class_window_controller}{WindowController}}>();}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (controller\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除する}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの非表示（吉田）}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_create_non_pro_xi_window_a5b0c8ede7930b4f5c616044222566288}{HideOtherUI}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE音追加（山本）}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}SceneChange"{}});}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ await\ controller.CreateWindow<\mbox{\hyperlink{class_base_window}{BaseWindow}}>();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示（吉田）}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_create_non_pro_xi_window_a403d04eebaa648a6711af78cd31aca82}{ShowOtherUI}}();}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除する}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}{m\_createWindow}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00022}{22}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -77,9 +118,28 @@ async Uni\+Task Create\+Non\+Pro\+Xi\+Window.\+Create\+Window (\begin{DoxyParamC
 async Uni\+Task Create\+Non\+Pro\+Xi\+Window.\+Hide\+Other\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの集まり}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ List<CanvasGroup>\ canvasGroups\ =\ \mbox{\hyperlink{class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b}{ListCanvasGroup}}();}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ List<TweenerCore<float,\ float,\ FloatOptions>>\ tweens\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ canvas\ \textcolor{keywordflow}{in}\ canvasGroups)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ var\ fade\ =\ canvas.DOFade(0.0f,\ 0.1f)}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetEase(Ease.Linear)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{false})}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetLink(gameObject);}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ tweens.Add(fade);}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tween\ \textcolor{keywordflow}{in}\ tweens)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ await\ tween.AsyncWaitForCompletion();\ ;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00072}{72}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -94,23 +154,6 @@ async Uni\+Task Create\+Non\+Pro\+Xi\+Window.\+Hide\+Other\+UI (\begin{DoxyParam
 \includegraphics[width=350pt]{d1/d40/class_create_non_pro_xi_window_a5b0c8ede7930b4f5c616044222566288_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!ListCanvasGroup@{ListCanvasGroup}}
-\index{ListCanvasGroup@{ListCanvasGroup}!CreateNonProXiWindow@{CreateNonProXiWindow}}
-\doxysubsubsection{\texorpdfstring{ListCanvasGroup()}{ListCanvasGroup()}}
-{\footnotesize\ttfamily \label{class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b} 
-List$<$ Canvas\+Group $>$ Create\+Non\+Pro\+Xi\+Window.\+List\+Canvas\+Group (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00117}{117}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d1/d40/class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_create_non_pro_xi_window_a403d04eebaa648a6711af78cd31aca82}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!ShowOtherUI@{ShowOtherUI}}
 \index{ShowOtherUI@{ShowOtherUI}!CreateNonProXiWindow@{CreateNonProXiWindow}}
 \doxysubsubsection{\texorpdfstring{ShowOtherUI()}{ShowOtherUI()}}
@@ -118,9 +161,28 @@ List$<$ Canvas\+Group $>$ Create\+Non\+Pro\+Xi\+Window.\+List\+Canvas\+Group (\b
 async Uni\+Task Create\+Non\+Pro\+Xi\+Window.\+Show\+Other\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00095\ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの集まり}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ List<CanvasGroup>\ canvasGroups\ =\ \mbox{\hyperlink{class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b}{ListCanvasGroup}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ List<TweenerCore<float,\ float,\ FloatOptions>>\ tweens\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ canvas\ \textcolor{keywordflow}{in}\ canvasGroups)}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ var\ fade\ =\ canvas.DOFade(1.0f,\ 0.1f)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetEase(Ease.Linear)}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{false})}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .SetLink(gameObject);}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ tweens.Add(fade);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tween\ \textcolor{keywordflow}{in}\ tweens)}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ await\ tween.AsyncWaitForCompletion();\ ;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00094}{94}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -135,28 +197,56 @@ async Uni\+Task Create\+Non\+Pro\+Xi\+Window.\+Show\+Other\+UI (\begin{DoxyParam
 \includegraphics[width=350pt]{d1/d40/class_create_non_pro_xi_window_a403d04eebaa648a6711af78cd31aca82_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!ListCanvasGroup@{ListCanvasGroup}}
+\index{ListCanvasGroup@{ListCanvasGroup}!CreateNonProXiWindow@{CreateNonProXiWindow}}
+\doxysubsubsection{\texorpdfstring{ListCanvasGroup()}{ListCanvasGroup()}}
+{\footnotesize\ttfamily \label{class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b} 
+List$<$ Canvas\+Group $>$ Create\+Non\+Pro\+Xi\+Window.\+List\+Canvas\+Group (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ List<CanvasGroup>\ canvasGroups\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ typeで指定した型の全てのオブジェクトを配列で取得し,その要素数分繰り返す.}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (GameObject\ obj\ \textcolor{keywordflow}{in}\ FindObjectsOfType(typeof(GameObject)))}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シーン上に存在するオブジェクトならば処理.}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!obj.activeInHierarchy)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj.layer\ !=\ LayerMask.NameToLayer(\textcolor{stringliteral}{"{}UI"{}}))\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj.TryGetComponent<CanvasGroup>(out\ CanvasGroup\ canvasGroup))}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ canvasGroups.Add(canvasGroup);}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ canvasGroups;}
+\DoxyCodeLine{00136\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d40/class_create_non_pro_xi_window_af8f92c9ae0df1bb1c9070f78e3ae171b_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!m\_createWindow@{m\_createWindow}}
-\index{m\_createWindow@{m\_createWindow}!CreateNonProXiWindow@{CreateNonProXiWindow}}
-\doxysubsubsection{\texorpdfstring{m\_createWindow}{m\_createWindow}}
-{\footnotesize\ttfamily \label{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa} 
-Game\+Object Create\+Non\+Pro\+Xi\+Window.\+m\+\_\+create\+Window = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00019}{19}} 行目に定義があります。
-
 \Hypertarget{class_create_non_pro_xi_window_ae04f380a4f2eaa12b85149b8d3583563}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!m\_windowController@{m\_windowController}}
 \index{m\_windowController@{m\_windowController}!CreateNonProXiWindow@{CreateNonProXiWindow}}
 \doxysubsubsection{\texorpdfstring{m\_windowController}{m\_windowController}}
 {\footnotesize\ttfamily \label{class_create_non_pro_xi_window_ae04f380a4f2eaa12b85149b8d3583563} 
 Game\+Object Create\+Non\+Pro\+Xi\+Window.\+m\+\_\+window\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source}{Create\+Non\+Pro\+Xi\+Window.\+cs}} の \mbox{\hyperlink{_create_non_pro_xi_window_8cs_source_l00016}{16}} 行目に定義があります。
+\Hypertarget{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa}\index{CreateNonProXiWindow@{CreateNonProXiWindow}!m\_createWindow@{m\_createWindow}}
+\index{m\_createWindow@{m\_createWindow}!CreateNonProXiWindow@{CreateNonProXiWindow}}
+\doxysubsubsection{\texorpdfstring{m\_createWindow}{m\_createWindow}}
+{\footnotesize\ttfamily \label{class_create_non_pro_xi_window_a322ada0f134c4b5f195a44329b8367fa} 
+Game\+Object Create\+Non\+Pro\+Xi\+Window.\+m\+\_\+create\+Window = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

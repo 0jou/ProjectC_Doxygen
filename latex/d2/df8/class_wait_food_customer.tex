@@ -62,39 +62,7 @@ Game\+Object \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18
 \doxysubsection{詳解}
 料理が運ばれる/怒るまで待つステート 
 
- \mbox{\hyperlink{_wait_food_customer_8cs_source}{Wait\+Food\+Customer.\+cs}} の \mbox{\hyperlink{_wait_food_customer_8cs_source_l00021}{21}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b}\index{WaitFoodCustomer@{WaitFoodCustomer}!CheckCurry@{CheckCurry}}
-\index{CheckCurry@{CheckCurry}!WaitFoodCustomer@{WaitFoodCustomer}}
-\doxysubsubsection{\texorpdfstring{CheckCurry()}{CheckCurry()}}
-{\footnotesize\ttfamily \label{class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b} 
-void Wait\+Food\+Customer.\+Check\+Curry (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-料理が運ばれたか確認/遷移 m\+\_\+success\+Linkに遷移する 
-
-
-
- \mbox{\hyperlink{_wait_food_customer_8cs_source}{Wait\+Food\+Customer.\+cs}} の \mbox{\hyperlink{_wait_food_customer_8cs_source_l00060}{60}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d2/df8/class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b_cgraph}
-\end{center}
-\end{figure}
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d2/df8/class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_wait_food_customer_a68ea906586a17778a798b56ca46797b2}\index{WaitFoodCustomer@{WaitFoodCustomer}!Count@{Count}}
 \index{Count@{Count}!WaitFoodCustomer@{WaitFoodCustomer}}
 \doxysubsubsection{\texorpdfstring{Count()}{Count()}}
@@ -106,9 +74,22 @@ void Wait\+Food\+Customer.\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 怒りカウント/遷移 m\+\_\+fail\+Linkに遷移する 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 怒ったら}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CountAngry())}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 怒る状態}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_wait_food_customer_a6773299dca9723d001c33cfe8d5cdd12}{m\_failLink}});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_wait_food_customer_8cs_source}{Wait\+Food\+Customer.\+cs}} の \mbox{\hyperlink{_wait_food_customer_8cs_source_l00041}{41}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -123,6 +104,52 @@ void Wait\+Food\+Customer.\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 \includegraphics[width=350pt]{d2/df8/class_wait_food_customer_a68ea906586a17778a798b56ca46797b2_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b}\index{WaitFoodCustomer@{WaitFoodCustomer}!CheckCurry@{CheckCurry}}
+\index{CheckCurry@{CheckCurry}!WaitFoodCustomer@{WaitFoodCustomer}}
+\doxysubsubsection{\texorpdfstring{CheckCurry()}{CheckCurry()}}
+{\footnotesize\ttfamily \label{class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b} 
+void Wait\+Food\+Customer.\+Check\+Curry (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+料理が運ばれたか確認/遷移 m\+\_\+success\+Linkに遷移する 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 客データ}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データ}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ var\ targetFood\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFood\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ターゲットの料理がセットされれば}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFood.CurrentOrderFoodState\ ==\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.Set)}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ data.AngryCount\ =\ 0;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_wait_food_customer_aa1aa0af563be2977ee3117408bddea98}{m\_successLink}});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df8/class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df8/class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_wait_food_customer_a51110806acb351737f2edce9736a328f}\index{WaitFoodCustomer@{WaitFoodCustomer}!OnStateUpdate@{OnStateUpdate}}
 \index{OnStateUpdate@{OnStateUpdate}!WaitFoodCustomer@{WaitFoodCustomer}}
 \doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
@@ -130,9 +157,14 @@ void Wait\+Food\+Customer.\+Count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 override void Wait\+Food\+Customer.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_wait_food_customer_a68ea906586a17778a798b56ca46797b2}{Count}}();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_wait_food_customer_a33db824742d8f0b173c33b14d8f30c9b}{CheckCurry}}();}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_wait_food_customer_8cs_source}{Wait\+Food\+Customer.\+cs}} の \mbox{\hyperlink{_wait_food_customer_8cs_source_l00082}{82}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -143,20 +175,6 @@ override void Wait\+Food\+Customer.\+On\+State\+Update (\begin{DoxyParamCaption}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_wait_food_customer_a6773299dca9723d001c33cfe8d5cdd12}\index{WaitFoodCustomer@{WaitFoodCustomer}!m\_failLink@{m\_failLink}}
-\index{m\_failLink@{m\_failLink}!WaitFoodCustomer@{WaitFoodCustomer}}
-\doxysubsubsection{\texorpdfstring{m\_failLink}{m\_failLink}}
-{\footnotesize\ttfamily \label{class_wait_food_customer_a6773299dca9723d001c33cfe8d5cdd12} 
-State\+Link Wait\+Food\+Customer.\+m\+\_\+fail\+Link = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-失敗時のステートリンク 
-
-
-
- \mbox{\hyperlink{_wait_food_customer_8cs_source}{Wait\+Food\+Customer.\+cs}} の \mbox{\hyperlink{_wait_food_customer_8cs_source_l00033}{33}} 行目に定義があります。
-
 \Hypertarget{class_wait_food_customer_aa1aa0af563be2977ee3117408bddea98}\index{WaitFoodCustomer@{WaitFoodCustomer}!m\_successLink@{m\_successLink}}
 \index{m\_successLink@{m\_successLink}!WaitFoodCustomer@{WaitFoodCustomer}}
 \doxysubsubsection{\texorpdfstring{m\_successLink}{m\_successLink}}
@@ -167,9 +185,15 @@ State\+Link Wait\+Food\+Customer.\+m\+\_\+success\+Link = null\hspace{0.3cm}{\tt
 
 成功時のステートリンク 
 
+\Hypertarget{class_wait_food_customer_a6773299dca9723d001c33cfe8d5cdd12}\index{WaitFoodCustomer@{WaitFoodCustomer}!m\_failLink@{m\_failLink}}
+\index{m\_failLink@{m\_failLink}!WaitFoodCustomer@{WaitFoodCustomer}}
+\doxysubsubsection{\texorpdfstring{m\_failLink}{m\_failLink}}
+{\footnotesize\ttfamily \label{class_wait_food_customer_a6773299dca9723d001c33cfe8d5cdd12} 
+State\+Link Wait\+Food\+Customer.\+m\+\_\+fail\+Link = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
- \mbox{\hyperlink{_wait_food_customer_8cs_source}{Wait\+Food\+Customer.\+cs}} の \mbox{\hyperlink{_wait_food_customer_8cs_source_l00029}{29}} 行目に定義があります。
+
+失敗時のステートリンク 
 
 
 

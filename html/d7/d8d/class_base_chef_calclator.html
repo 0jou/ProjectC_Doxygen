@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -144,10 +144,7 @@ BaseChefCalclator 連携図</div>
 <tr class="memitem:a2834473ed800d514955bb5a38a3c65e4" id="r_a2834473ed800d514955bb5a38a3c65e4"><td class="memItemLeft" align="right" valign="top">OutputSlotVector3&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2834473ed800d514955bb5a38a3c65e4">m_outputPos</a> = new()</td></tr>
 <tr class="separator:a2834473ed800d514955bb5a38a3c65e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html">BaseChefCalclator.cs</a> の <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a6c3dee1152d402afc0cf86b5caab9459" name="a6c3dee1152d402afc0cf86b5caab9459"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c3dee1152d402afc0cf86b5caab9459">&#9670;&#160;</a></span>GetChefData()</h2>
 
@@ -172,9 +169,27 @@ BaseChefCalclator 連携図</div>
 </div><div class="memdoc">
 
 <p>シェフ情報が存在するかのチェック </p>
-
-<p class="definition"> <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html">BaseChefCalclator.cs</a> の <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html#l00030">30</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>        <span class="comment">// シェフ情報が存在するか確認</span></div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a03f9ed929b46109461b9bbdc3b099fb3">m_flexibleChefDataVariable</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   35</span>        {</div>
+<div class="line"><span class="lineno">   36</span>            Debug.LogError(this.name + <span class="stringliteral">&quot;シェフ情報がシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   38</span>        }</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a03f9ed929b46109461b9bbdc3b099fb3">m_flexibleChefDataVariable</a>.value.ChefData == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   41</span>        {</div>
+<div class="line"><span class="lineno">   42</span>            Debug.LogError(this.name + <span class="stringliteral">&quot;客情報が存在しません&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   44</span>        }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">// 存在する</span></div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#a03f9ed929b46109461b9bbdc3b099fb3">m_flexibleChefDataVariable</a>.value.ChefData;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="ttc" id="aclass_base_chef_calclator_html_a03f9ed929b46109461b9bbdc3b099fb3"><div class="ttname"><a href="#a03f9ed929b46109461b9bbdc3b099fb3">BaseChefCalclator.m_flexibleChefDataVariable</a></div><div class="ttdeci">FlexibleChefDataVariable m_flexibleChefDataVariable</div><div class="ttdef"><b>Definition</b> BaseChefCalclator.cs:16</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a61052933e1c662d48c761861d8ed12e6" name="a61052933e1c662d48c761861d8ed12e6"></a>
@@ -199,9 +214,18 @@ BaseChefCalclator 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html">BaseChefCalclator.cs</a> の <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html#l00053">53</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   54</span>    {</div>
+<div class="line"><span class="lineno">   55</span>        Transform currentTransform = transform;</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>        <span class="comment">// ルートオブジェクトに到達するまで親を辿る</span></div>
+<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">while</span> (currentTransform.parent != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   59</span>        {</div>
+<div class="line"><span class="lineno">   60</span>            currentTransform = currentTransform.parent;</div>
+<div class="line"><span class="lineno">   61</span>        }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> currentTransform.gameObject;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d8d/class_base_chef_calclator_a61052933e1c662d48c761861d8ed12e6_icgraph.png" border="0" usemap="#ad7/d8d/class_base_chef_calclator_a61052933e1c662d48c761861d8ed12e6_icgraph" alt=""/></div>
@@ -235,8 +259,6 @@ BaseChefCalclator 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html">BaseChefCalclator.cs</a> の <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a2834473ed800d514955bb5a38a3c65e4" name="a2834473ed800d514955bb5a38a3c65e4"></a>
@@ -259,12 +281,10 @@ BaseChefCalclator 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html">BaseChefCalclator.cs</a> の <a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Chef/Scripts/Arbor3/Calculator/<a class="el" href="../../dc/dc8/_base_chef_calclator_8cs_source.html">BaseChefCalclator.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Chef/Scripts/Arbor3/Calculator/<a class="el" href="../../dc/dc8/_base_chef_calclator_8cs.html">BaseChefCalclator.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

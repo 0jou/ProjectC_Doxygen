@@ -50,13 +50,6 @@ virtual void \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_bremen_skill_state_8cs_source}{Bremen\+Skill\+State.\+cs}} の \mbox{\hyperlink{_bremen_skill_state_8cs_source_l00079}{79}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_character_core_1_1_action_state___skill_bremen___attack___wait_ae6b4f7edfc1f12a76d4b5a8db2d660fa}\index{CharacterCore.ActionState\_SkillBremen\_Attack\_Wait@{CharacterCore.ActionState\_SkillBremen\_Attack\_Wait}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!CharacterCore.ActionState\_SkillBremen\_Attack\_Wait@{CharacterCore.ActionState\_SkillBremen\_Attack\_Wait}}
@@ -69,9 +62,23 @@ override void Character\+Core.\+Action\+State\+\_\+\+Skill\+Bremen\+\_\+\+Attack
 \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnUpdate();}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerSkillsParameters.MinusStayStorySkillTime())}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}Finish"{}});}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SetTriggerAnimatorListコンポーネントにアクセスし、その他のAnimatorにトリガーを送る}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.transform.TryGetComponent(out\ \mbox{\hyperlink{class_set_trigger_in_animator_list}{SetTriggerInAnimatorList}}\ \textcolor{keyword}{set}))}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}.SetTriggerAnimatorInList(\textcolor{stringliteral}{"{}Finish"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_bremen_skill_state_8cs_source}{Bremen\+Skill\+State.\+cs}} の \mbox{\hyperlink{_bremen_skill_state_8cs_source_l00081}{81}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

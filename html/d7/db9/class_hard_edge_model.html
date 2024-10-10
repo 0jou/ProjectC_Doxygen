@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -139,8 +139,6 @@ HardEdgeModel 連携図</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>ハードエッジモデルの頂点カラーにソフトエッジ情報を埋め込む（吉田） 以下のサイトを参考に作成 <a href="https://blog.syn-sophia.co.jp/articles/2022/10/17/outline_rendering_01">https://blog.syn-sophia.co.jp/articles/2022/10/17/outline_rendering_01</a> </p>
-
-<p class="definition"> <a class="el" href="../../d1/df8/_soft_edge_8cs_source.html">SoftEdge.cs</a> の <a class="el" href="../../d1/df8/_soft_edge_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
 </div><h2 class="groupheader">メソッド詳解</h2>
 <a id="ade275be2a3590063e2a07d6484f840ab" name="ade275be2a3590063e2a07d6484f840ab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ade275be2a3590063e2a07d6484f840ab">&#9670;&#160;</a></span>Awake()</h2>
@@ -164,9 +162,11 @@ HardEdgeModel 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/df8/_soft_edge_8cs_source.html">SoftEdge.cs</a> の <a class="el" href="../../d1/df8/_soft_edge_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   11</span>    {</div>
+<div class="line"><span class="lineno">   12</span>        <a class="code hl_function" href="#a23604efd5eb320ebda09ecb95b7789d5">EmbedSoftEdgeToVertexColor</a>(gameObject);</div>
+<div class="line"><span class="lineno">   13</span>    }</div>
+<div class="ttc" id="aclass_hard_edge_model_html_a23604efd5eb320ebda09ecb95b7789d5"><div class="ttname"><a href="#a23604efd5eb320ebda09ecb95b7789d5">HardEdgeModel.EmbedSoftEdgeToVertexColor</a></div><div class="ttdeci">static void EmbedSoftEdgeToVertexColor(GameObject obj)</div><div class="ttdoc">ソフトエッジ情報を頂点カラーに埋め込む</div><div class="ttdef"><b>Definition</b> SoftEdge.cs:19</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/db9/class_hard_edge_model_ade275be2a3590063e2a07d6484f840ab_cgraph.png" border="0" usemap="#ad7/db9/class_hard_edge_model_ade275be2a3590063e2a07d6484f840ab_cgraph" alt=""/></div>
@@ -209,9 +209,38 @@ HardEdgeModel 連携図</div>
   </table>
   </dd>
 </dl>
-
-<p class="definition"> <a class="el" href="../../d1/df8/_soft_edge_8cs_source.html">SoftEdge.cs</a> の <a class="el" href="../../d1/df8/_soft_edge_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        var meshFilters = obj.GetComponentsInChildren&lt;MeshFilter&gt;();</div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">foreach</span> (var meshFilter <span class="keywordflow">in</span> meshFilters)</div>
+<div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            var mesh = meshFilter.sharedMesh;</div>
+<div class="line"><span class="lineno">   25</span>            var normals = mesh.normals;</div>
+<div class="line"><span class="lineno">   26</span>            var vertices = mesh.vertices;</div>
+<div class="line"><span class="lineno">   27</span>            var vertexCount = mesh.vertexCount;</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>            <span class="comment">// ソフトエッジ法線情報の生成</span></div>
+<div class="line"><span class="lineno">   30</span>            var softEdges = <span class="keyword">new</span> Color[normals.Length];</div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">for</span> (var i = 0; i &lt; vertexCount; i++)</div>
+<div class="line"><span class="lineno">   32</span>            {</div>
+<div class="line"><span class="lineno">   33</span>                <span class="comment">// 同じ位置の頂点の法線座標の平均を設定する</span></div>
+<div class="line"><span class="lineno">   34</span>                var softEdge = Vector3.zero;</div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">for</span> (var j = 0; j &lt; vertexCount; j++)</div>
+<div class="line"><span class="lineno">   36</span>                {</div>
+<div class="line"><span class="lineno">   37</span>                    var v = vertices[i] - vertices[j];</div>
+<div class="line"><span class="lineno">   38</span>                    <span class="keywordflow">if</span> (v.sqrMagnitude &lt; 1e-8f)</div>
+<div class="line"><span class="lineno">   39</span>                    {</div>
+<div class="line"><span class="lineno">   40</span>                        softEdge += normals[j];</div>
+<div class="line"><span class="lineno">   41</span>                    }</div>
+<div class="line"><span class="lineno">   42</span>                }</div>
+<div class="line"><span class="lineno">   43</span>                softEdge.Normalize();</div>
+<div class="line"><span class="lineno">   44</span>                softEdges[i] = <span class="keyword">new</span> Color(softEdge.x, softEdge.y, softEdge.z, 0);</div>
+<div class="line"><span class="lineno">   45</span>            }</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>            <span class="comment">// 頂点カラーに埋め込む</span></div>
+<div class="line"><span class="lineno">   48</span>            mesh.colors = softEdges;</div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/db9/class_hard_edge_model_a23604efd5eb320ebda09ecb95b7789d5_icgraph.png" border="0" usemap="#ad7/db9/class_hard_edge_model_a23604efd5eb320ebda09ecb95b7789d5_icgraph" alt=""/></div>
@@ -225,7 +254,7 @@ HardEdgeModel 連携図</div>
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Item/Shader/Outline/<a class="el" href="../../d1/df8/_soft_edge_8cs_source.html">SoftEdge.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Item/Shader/Outline/<a class="el" href="../../d1/df8/_soft_edge_8cs.html">SoftEdge.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

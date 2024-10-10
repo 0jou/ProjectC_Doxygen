@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -249,10 +249,7 @@ NoTimeWindow 連携図</div>
 <tr class="memitem:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window" id="r_aca92cddf024d4e19bdd003441678c3d6"><td class="memItemLeft" align="right" valign="top">PlayerInput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc1/class_base_window.html#aca92cddf024d4e19bdd003441678c3d6">Input</a><code> [get, set]</code></td></tr>
 <tr class="separator:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d2/d68/_no_time_window_8cs_source.html">NoTimeWindow.cs</a> の <a class="el" href="../../d2/d68/_no_time_window_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a52beadda51e7c97db6c709ae89c23562" name="a52beadda51e7c97db6c709ae89c23562"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a52beadda51e7c97db6c709ae89c23562">&#9670;&#160;</a></span>UpdateJudge()</h2>
 
@@ -277,9 +274,43 @@ NoTimeWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d4/d13/class_judge_window.html#a7a8a9d25c4f624ad61377dbfbff35d79">JudgeWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d2/d68/_no_time_window_8cs_source.html">NoTimeWindow.cs</a> の <a class="el" href="../../d2/d68/_no_time_window_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   12</span>    {</div>
+<div class="line"><span class="lineno">   13</span>        </div>
+<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/d13/class_judge_window.html#a83f04f9e66f07c10c049176bc32f24ad">m_judgeFlg</a>)</div>
+<div class="line"><span class="lineno">   15</span>        {</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span>            <span class="comment">//元の世界に帰る</span></div>
+<div class="line"><span class="lineno">   18</span>           _= <a class="code hl_variable" href="#ad4990f1e452f8c571bd4b3bbd5873087">m_sceneTransitionManager</a>.<a class="code hl_function" href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneChange</a>();</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>        }</div>
+<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   22</span>        {</div>
+<div class="line"><span class="lineno">   23</span>            <span class="comment">// TODO:敵リセット処理　伊波</span></div>
+<div class="line"><span class="lineno">   24</span>            <span class="comment">// 展示会終了後削除</span></div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>            <a class="code hl_class" href="../../df/dc7/class_character_meta.html">CharacterMeta</a> meta = <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">Instance</a> as <a class="code hl_class" href="../../df/dc7/class_character_meta.html">CharacterMeta</a>;</div>
+<div class="line"><span class="lineno">   27</span>            <span class="keywordflow">if</span> (!meta) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">foreach</span> (<a class="code hl_class" href="../../d7/d2e/class_character_core.html">CharacterCore</a> chara <span class="keywordflow">in</span> meta.<a class="code hl_property" href="../../df/dc7/class_character_meta.html#a45d15bcd0165639dc2f31fac30514af0">ObjectList</a>)</div>
+<div class="line"><span class="lineno">   29</span>            {</div>
+<div class="line"><span class="lineno">   30</span>                chara.<a class="code hl_function" href="../../d7/d2e/class_character_core.html#a5bff22685cf00b290c30aa5a0e637011">EnemyResetPos</a>();</div>
+<div class="line"><span class="lineno">   31</span>            }</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        }</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>        await UniTask.CompletedTask;</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="ttc" id="aclass_character_core_html"><div class="ttname"><a href="../../d7/d2e/class_character_core.html">CharacterCore</a></div><div class="ttdef"><b>Definition</b> CharacterCore.cs:13</div></div>
+<div class="ttc" id="aclass_character_core_html_a5bff22685cf00b290c30aa5a0e637011"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#a5bff22685cf00b290c30aa5a0e637011">CharacterCore.EnemyResetPos</a></div><div class="ttdeci">void EnemyResetPos()</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:141</div></div>
+<div class="ttc" id="aclass_character_meta_html"><div class="ttname"><a href="../../df/dc7/class_character_meta.html">CharacterMeta</a></div><div class="ttdef"><b>Definition</b> CharacterMeta.cs:11</div></div>
+<div class="ttc" id="aclass_character_meta_html_a45d15bcd0165639dc2f31fac30514af0"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#a45d15bcd0165639dc2f31fac30514af0">CharacterMeta.ObjectList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; ObjectList</div><div class="ttdef"><b>Definition</b> CharacterMeta.cs:28</div></div>
+<div class="ttc" id="aclass_judge_window_html_a83f04f9e66f07c10c049176bc32f24ad"><div class="ttname"><a href="../../d4/d13/class_judge_window.html#a83f04f9e66f07c10c049176bc32f24ad">JudgeWindow.m_judgeFlg</a></div><div class="ttdeci">bool m_judgeFlg</div><div class="ttdef"><b>Definition</b> JudgeWindow.cs:29</div></div>
+<div class="ttc" id="aclass_no_time_window_html_ad4990f1e452f8c571bd4b3bbd5873087"><div class="ttname"><a href="#ad4990f1e452f8c571bd4b3bbd5873087">NoTimeWindow.m_sceneTransitionManager</a></div><div class="ttdeci">SceneTransitionManager m_sceneTransitionManager</div><div class="ttdef"><b>Definition</b> NoTimeWindow.cs:9</div></div>
+<div class="ttc" id="aclass_scene_transition_manager_html_a57a46b1860572b2f20db95dc3ca6f2ec"><div class="ttname"><a href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneTransitionManager.SceneChange</a></div><div class="ttdeci">async UniTask SceneChange()</div><div class="ttdef"><b>Definition</b> SceneTransitionManager.cs:20</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> MetaAI.cs:12</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a81091acf9bf85e074a370e77b8bb3e16"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">IMetaAI.Instance</a></div><div class="ttdeci">static IMetaAI&lt; T &gt; Instance</div><div class="ttdef"><b>Definition</b> MetaAI.cs:13</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d41/class_no_time_window_a52beadda51e7c97db6c709ae89c23562_cgraph.png" border="0" usemap="#ad4/d41/class_no_time_window_a52beadda51e7c97db6c709ae89c23562_cgraph" alt=""/></div>
@@ -318,12 +349,10 @@ NoTimeWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d2/d68/_no_time_window_8cs_source.html">NoTimeWindow.cs</a> の <a class="el" href="../../d2/d68/_no_time_window_8cs_source.html#l00009">9</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/NoTimeWindow/Script/<a class="el" href="../../d2/d68/_no_time_window_8cs_source.html">NoTimeWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/NoTimeWindow/Script/<a class="el" href="../../d2/d68/_no_time_window_8cs.html">NoTimeWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

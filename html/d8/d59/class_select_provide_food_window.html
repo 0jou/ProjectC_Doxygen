@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -262,10 +262,7 @@ SelectProvideFoodWindow 連携図</div>
 <tr class="memitem:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window" id="r_aca92cddf024d4e19bdd003441678c3d6"><td class="memItemLeft" align="right" valign="top">PlayerInput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc1/class_base_window.html#aca92cddf024d4e19bdd003441678c3d6">Input</a><code> [get, set]</code></td></tr>
 <tr class="separator:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a1ca4574113131af3f16a316703cfd5b4" name="a1ca4574113131af3f16a316703cfd5b4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ca4574113131af3f16a316703cfd5b4">&#9670;&#160;</a></span>OnInitialize()</h2>
 
@@ -290,9 +287,49 @@ SelectProvideFoodWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a20cbaa0d7aa0d1224e85a0c07b88d6cf">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00038">38</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   39</span>    {</div>
+<div class="line"><span class="lineno">   40</span><span class="preprocessor">        #region nullチェック</span></div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a8e88b976f9b17f4d1db0349045167002">m_windowUIController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   43</span>        {</div>
+<div class="line"><span class="lineno">   44</span>            Debug.LogError(<span class="stringliteral">&quot;WindowUIコントローラーがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a71e5e82c16f3950c99f9d01441d1025f">m_selectFoodDetail</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   49</span>        {</div>
+<div class="line"><span class="lineno">   50</span>            Debug.LogError(<span class="stringliteral">&quot;SelectFoodDetailUIがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span><span class="preprocessor">        #endregion</span></div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   59</span>        {</div>
+<div class="line"><span class="lineno">   60</span>            await base.OnInitialize();</div>
+<div class="line"><span class="lineno">   61</span>            cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>            <span class="comment">// 初期化</span></div>
+<div class="line"><span class="lineno">   64</span>            await <a class="code hl_variable" href="#a8e88b976f9b17f4d1db0349045167002">m_windowUIController</a>.<a class="code hl_function" href="../../d1/d60/class_window_u_i_controller.html#a74c822fe466c483d97399d4df75d5fd6">OnInitialize</a>();</div>
+<div class="line"><span class="lineno">   65</span>            cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>            <span class="comment">// 詳細UI処理</span></div>
+<div class="line"><span class="lineno">   68</span>            await <a class="code hl_variable" href="#a71e5e82c16f3950c99f9d01441d1025f">m_selectFoodDetail</a>.<a class="code hl_function" href="../../d4/d6a/class_select_food_detail_u_i.html#adaf860021fbe862068d01401dac1af30">OnInitialize</a>();</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>        }</div>
+<div class="line"><span class="lineno">   71</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   72</span>        {</div>
+<div class="line"><span class="lineno">   73</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   74</span>        }</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="ttc" id="aclass_select_food_detail_u_i_html_adaf860021fbe862068d01401dac1af30"><div class="ttname"><a href="../../d4/d6a/class_select_food_detail_u_i.html#adaf860021fbe862068d01401dac1af30">SelectFoodDetailUI.OnInitialize</a></div><div class="ttdeci">override async UniTask OnInitialize()</div><div class="ttdoc">初期化処理</div><div class="ttdef"><b>Definition</b> SelectFoodDetailUI.cs:29</div></div>
+<div class="ttc" id="aclass_select_provide_food_window_html_a71e5e82c16f3950c99f9d01441d1025f"><div class="ttname"><a href="#a71e5e82c16f3950c99f9d01441d1025f">SelectProvideFoodWindow.m_selectFoodDetail</a></div><div class="ttdeci">SelectFoodDetailUI m_selectFoodDetail</div><div class="ttdef"><b>Definition</b> SelectProvideFoodWindow.cs:20</div></div>
+<div class="ttc" id="aclass_select_provide_food_window_html_a8e88b976f9b17f4d1db0349045167002"><div class="ttname"><a href="#a8e88b976f9b17f4d1db0349045167002">SelectProvideFoodWindow.m_windowUIController</a></div><div class="ttdeci">WindowUIController m_windowUIController</div><div class="ttdef"><b>Definition</b> SelectProvideFoodWindow.cs:16</div></div>
+<div class="ttc" id="aclass_window_u_i_controller_html_a74c822fe466c483d97399d4df75d5fd6"><div class="ttname"><a href="../../d1/d60/class_window_u_i_controller.html#a74c822fe466c483d97399d4df75d5fd6">WindowUIController.OnInitialize</a></div><div class="ttdeci">async UniTask OnInitialize()</div><div class="ttdoc">初期化処理</div><div class="ttdef"><b>Definition</b> WindowUIController.cs:39</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d59/class_select_provide_food_window_a1ca4574113131af3f16a316703cfd5b4_cgraph.png" border="0" usemap="#ad8/d59/class_select_provide_food_window_a1ca4574113131af3f16a316703cfd5b4_cgraph" alt=""/></div>
@@ -349,9 +386,78 @@ SelectProvideFoodWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a7dbb4bd0d8326442b7ad896895fd2995">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00079">79</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   80</span>    {</div>
+<div class="line"><span class="lineno">   81</span><span class="preprocessor">        #region nullチェック</span></div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a8e88b976f9b17f4d1db0349045167002">m_windowUIController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   84</span>        {</div>
+<div class="line"><span class="lineno">   85</span>            Debug.LogError(<span class="stringliteral">&quot;WindowUIコントローラーがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   87</span>        }</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a71e5e82c16f3950c99f9d01441d1025f">m_selectFoodDetail</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   90</span>        {</div>
+<div class="line"><span class="lineno">   91</span>            Debug.LogError(<span class="stringliteral">&quot;SelectFoodDetailUIがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   93</span>        }</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span><span class="preprocessor">        #endregion</span></div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">  100</span>        {</div>
+<div class="line"><span class="lineno">  101</span>            <span class="comment">// ボタンを押すまで</span></div>
+<div class="line"><span class="lineno">  102</span>            <span class="keywordflow">while</span> (cancelToken.IsCancellationRequested == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">  103</span>            {</div>
+<div class="line"><span class="lineno">  104</span>                await base.OnUpdate();</div>
+<div class="line"><span class="lineno">  105</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span> </div>
+<div class="line"><span class="lineno">  108</span>                <span class="comment">// ウィンドウUI処理</span></div>
+<div class="line"><span class="lineno">  109</span>                await <a class="code hl_variable" href="#a8e88b976f9b17f4d1db0349045167002">m_windowUIController</a>.<a class="code hl_function" href="../../d1/d60/class_window_u_i_controller.html#a883d549975cad2ed0e98c77dc39b0a5f">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">  110</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">  111</span> </div>
+<div class="line"><span class="lineno">  112</span>                <span class="comment">// 詳細UI処理</span></div>
+<div class="line"><span class="lineno">  113</span>                await <a class="code hl_variable" href="#a71e5e82c16f3950c99f9d01441d1025f">m_selectFoodDetail</a>.<a class="code hl_function" href="../../d4/d6a/class_select_food_detail_u_i.html#ab6fa9b8cd74acf396806d555afb6424f">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>                <span class="comment">// ウィンドウUI後処理</span></div>
+<div class="line"><span class="lineno">  116</span>                await <a class="code hl_variable" href="#a8e88b976f9b17f4d1db0349045167002">m_windowUIController</a>.<a class="code hl_function" href="../../d1/d60/class_window_u_i_controller.html#a91a324323a9923b5fc18c32519c36663">OnLateUpdate</a>();</div>
+<div class="line"><span class="lineno">  117</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span> </div>
+<div class="line"><span class="lineno">  120</span>                <span class="comment">// キャンセル</span></div>
+<div class="line"><span class="lineno">  121</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;Cancel&quot;</span>))</div>
+<div class="line"><span class="lineno">  122</span>                {</div>
+<div class="line"><span class="lineno">  123</span>                    <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;Cancel&quot;</span>);</div>
+<div class="line"><span class="lineno">  124</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  125</span>                }</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>                <span class="comment">// シーン切り替え</span></div>
+<div class="line"><span class="lineno">  128</span>                <a class="code hl_function" href="#a482631d45065a2eb55b5f3b9507a8d2d">Transition</a>();</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>                await UniTask.DelayFrame(1);</div>
+<div class="line"><span class="lineno">  131</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span>            }</div>
+<div class="line"><span class="lineno">  134</span>        }</div>
+<div class="line"><span class="lineno">  135</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">  136</span>        {</div>
+<div class="line"><span class="lineno">  137</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">  138</span>        }</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>    }</div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43ac"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a></div><div class="ttdeci">InputActionMapTypes</div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:7</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_player_input_manager_html"><div class="ttname"><a href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a></div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:15</div></div>
+<div class="ttc" id="aclass_select_food_detail_u_i_html_ab6fa9b8cd74acf396806d555afb6424f"><div class="ttname"><a href="../../d4/d6a/class_select_food_detail_u_i.html#ab6fa9b8cd74acf396806d555afb6424f">SelectFoodDetailUI.OnUpdate</a></div><div class="ttdeci">override async UniTask OnUpdate()</div><div class="ttdoc">実行処理</div><div class="ttdef"><b>Definition</b> SelectFoodDetailUI.cs:39</div></div>
+<div class="ttc" id="aclass_select_provide_food_window_html_a482631d45065a2eb55b5f3b9507a8d2d"><div class="ttname"><a href="#a482631d45065a2eb55b5f3b9507a8d2d">SelectProvideFoodWindow.Transition</a></div><div class="ttdeci">void Transition()</div><div class="ttdef"><b>Definition</b> SelectProvideFoodWindow.cs:143</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> SoundManager.cs:44</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+<div class="ttc" id="aclass_window_u_i_controller_html_a883d549975cad2ed0e98c77dc39b0a5f"><div class="ttname"><a href="../../d1/d60/class_window_u_i_controller.html#a883d549975cad2ed0e98c77dc39b0a5f">WindowUIController.OnUpdate</a></div><div class="ttdeci">async UniTask OnUpdate()</div><div class="ttdoc">実行処理</div><div class="ttdef"><b>Definition</b> WindowUIController.cs:77</div></div>
+<div class="ttc" id="aclass_window_u_i_controller_html_a91a324323a9923b5fc18c32519c36663"><div class="ttname"><a href="../../d1/d60/class_window_u_i_controller.html#a91a324323a9923b5fc18c32519c36663">WindowUIController.OnLateUpdate</a></div><div class="ttdeci">async UniTask OnLateUpdate()</div><div class="ttdoc">後実行処理</div><div class="ttdef"><b>Definition</b> WindowUIController.cs:115</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d59/class_select_provide_food_window_a9994b3692d49bf950d236f8505bfaeb5_cgraph.png" border="0" usemap="#ad8/d59/class_select_provide_food_window_a9994b3692d49bf950d236f8505bfaeb5_cgraph" alt=""/></div>
@@ -428,9 +534,31 @@ SelectProvideFoodWindow 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00143">143</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  144</span>    {</div>
+<div class="line"><span class="lineno">  145</span><span class="preprocessor">        #region nullチェック</span></div>
+<div class="line"><span class="lineno">  146</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#abbc45f3d2e42cd6c95ee223c96e5dc4f">m_inputActionButton</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  147</span>        {</div>
+<div class="line"><span class="lineno">  148</span>            Debug.LogError(<span class="stringliteral">&quot;InputAActionButtonがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">  149</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  150</span>        }</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a9d0b4285fb3403536574d8f1ae62437d">m_sceneTransitionManager</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  152</span>        {</div>
+<div class="line"><span class="lineno">  153</span>            Debug.LogError(<span class="stringliteral">&quot;SceneTransitionManagerがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">  154</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  155</span>        }</div>
+<div class="line"><span class="lineno">  156</span><span class="preprocessor">        #endregion</span></div>
+<div class="line"><span class="lineno">  157</span> </div>
+<div class="line"><span class="lineno">  158</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#abbc45f3d2e42cd6c95ee223c96e5dc4f">m_inputActionButton</a>.<a class="code hl_function" href="../../d5/dd8/class_input_action_button.html#a847c561b8a3deeea260be80e698bd342">IsInputActionTrriger</a>())</div>
+<div class="line"><span class="lineno">  159</span>        {</div>
+<div class="line"><span class="lineno">  160</span>            _ = <a class="code hl_variable" href="#a9d0b4285fb3403536574d8f1ae62437d">m_sceneTransitionManager</a>.<a class="code hl_function" href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneChange</a>();</div>
+<div class="line"><span class="lineno">  161</span>        }</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+<div class="ttc" id="aclass_input_action_button_html_a847c561b8a3deeea260be80e698bd342"><div class="ttname"><a href="../../d5/dd8/class_input_action_button.html#a847c561b8a3deeea260be80e698bd342">InputActionButton.IsInputActionTrriger</a></div><div class="ttdeci">bool IsInputActionTrriger()</div><div class="ttdoc">ボタンを選択したかどうか</div><div class="ttdef"><b>Definition</b> InputActionButton.cs:99</div></div>
+<div class="ttc" id="aclass_scene_transition_manager_html_a57a46b1860572b2f20db95dc3ca6f2ec"><div class="ttname"><a href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneTransitionManager.SceneChange</a></div><div class="ttdeci">async UniTask SceneChange()</div><div class="ttdef"><b>Definition</b> SceneTransitionManager.cs:20</div></div>
+<div class="ttc" id="aclass_select_provide_food_window_html_a9d0b4285fb3403536574d8f1ae62437d"><div class="ttname"><a href="#a9d0b4285fb3403536574d8f1ae62437d">SelectProvideFoodWindow.m_sceneTransitionManager</a></div><div class="ttdeci">SceneTransitionManager m_sceneTransitionManager</div><div class="ttdef"><b>Definition</b> SelectProvideFoodWindow.cs:27</div></div>
+<div class="ttc" id="aclass_select_provide_food_window_html_abbc45f3d2e42cd6c95ee223c96e5dc4f"><div class="ttname"><a href="#abbc45f3d2e42cd6c95ee223c96e5dc4f">SelectProvideFoodWindow.m_inputActionButton</a></div><div class="ttdeci">InputActionButton m_inputActionButton</div><div class="ttdef"><b>Definition</b> SelectProvideFoodWindow.cs:32</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d59/class_select_provide_food_window_a482631d45065a2eb55b5f3b9507a8d2d_cgraph.png" border="0" usemap="#ad8/d59/class_select_provide_food_window_a482631d45065a2eb55b5f3b9507a8d2d_cgraph" alt=""/></div>
@@ -459,8 +587,8 @@ SelectProvideFoodWindow 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="abbc45f3d2e42cd6c95ee223c96e5dc4f" name="abbc45f3d2e42cd6c95ee223c96e5dc4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abbc45f3d2e42cd6c95ee223c96e5dc4f">&#9670;&#160;</a></span>m_inputActionButton</h2>
+<a id="a8e88b976f9b17f4d1db0349045167002" name="a8e88b976f9b17f4d1db0349045167002"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e88b976f9b17f4d1db0349045167002">&#9670;&#160;</a></span>m_windowUIController</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +597,7 @@ SelectProvideFoodWindow 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d5/dd8/class_input_action_button.html">InputActionButton</a> SelectProvideFoodWindow.m_inputActionButton = null</td>
+          <td class="memname"><a class="el" href="../../d1/d60/class_window_u_i_controller.html">WindowUIController</a> SelectProvideFoodWindow.m_windowUIController = null</td>
         </tr>
       </table>
   </td>
@@ -478,32 +606,6 @@ SelectProvideFoodWindow 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00032">32</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a9d0b4285fb3403536574d8f1ae62437d" name="a9d0b4285fb3403536574d8f1ae62437d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d0b4285fb3403536574d8f1ae62437d">&#9670;&#160;</a></span>m_sceneTransitionManager</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d4/d9a/class_scene_transition_manager.html">SceneTransitionManager</a> SelectProvideFoodWindow.m_sceneTransitionManager = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00027">27</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -527,12 +629,10 @@ SelectProvideFoodWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00020">20</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<a id="a8e88b976f9b17f4d1db0349045167002" name="a8e88b976f9b17f4d1db0349045167002"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e88b976f9b17f4d1db0349045167002">&#9670;&#160;</a></span>m_windowUIController</h2>
+<a id="a9d0b4285fb3403536574d8f1ae62437d" name="a9d0b4285fb3403536574d8f1ae62437d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d0b4285fb3403536574d8f1ae62437d">&#9670;&#160;</a></span>m_sceneTransitionManager</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -541,7 +641,7 @@ SelectProvideFoodWindow 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d60/class_window_u_i_controller.html">WindowUIController</a> SelectProvideFoodWindow.m_windowUIController = null</td>
+          <td class="memname"><a class="el" href="../../d4/d9a/class_scene_transition_manager.html">SceneTransitionManager</a> SelectProvideFoodWindow.m_sceneTransitionManager = null</td>
         </tr>
       </table>
   </td>
@@ -551,12 +651,32 @@ SelectProvideFoodWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a> の <a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="abbc45f3d2e42cd6c95ee223c96e5dc4f" name="abbc45f3d2e42cd6c95ee223c96e5dc4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abbc45f3d2e42cd6c95ee223c96e5dc4f">&#9670;&#160;</a></span>m_inputActionButton</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d5/dd8/class_input_action_button.html">InputActionButton</a> SelectProvideFoodWindow.m_inputActionButton = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/202_Lobby_UI/Window/SelectProvideWindow/<a class="el" href="../../df/d98/_select_provide_food_window_8cs_source.html">SelectProvideFoodWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/202_Lobby_UI/Window/SelectProvideWindow/<a class="el" href="../../df/d98/_select_provide_food_window_8cs.html">SelectProvideFoodWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

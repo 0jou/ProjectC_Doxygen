@@ -43,13 +43,6 @@ bool \mbox{\hyperlink{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf262
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_battle_part_scene_change_af2b4af6346fe48a121a3223f19d7019c}\index{BattlePartSceneChange@{BattlePartSceneChange}!Start@{Start}}
 \index{Start@{Start}!BattlePartSceneChange@{BattlePartSceneChange}}
@@ -58,9 +51,23 @@ bool \mbox{\hyperlink{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf262
 void Battle\+Part\+Scene\+Change.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_battle_part_scene_change_ad8ebbcab58de33a78b1d0e9dd193d9bc}{m\_input}})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_battle_part_scene_change_aaec6f7c3c670558d6744ddeb115e7766}{m\_inputActionMap}}\ =\ \mbox{\hyperlink{class_battle_part_scene_change_ad8ebbcab58de33a78b1d0e9dd193d9bc}{m\_input}}.actions.FindActionMap(\textcolor{stringliteral}{"{}Debug"{}});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_battle_part_scene_change_aaec6f7c3c670558d6744ddeb115e7766}{m\_inputActionMap}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}アクションマップにDebugが存在しません。"{}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf2626aeea5}{m\_sceneChangeFlg}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_battle_part_scene_change_a6342e481a160c0323804474fda86b35a}\index{BattlePartSceneChange@{BattlePartSceneChange}!Update@{Update}}
 \index{Update@{Update}!BattlePartSceneChange@{BattlePartSceneChange}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
@@ -68,9 +75,19 @@ void Battle\+Part\+Scene\+Change.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyP
 void Battle\+Part\+Scene\+Change.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_battle_part_scene_change_aaec6f7c3c670558d6744ddeb115e7766}{m\_inputActionMap}}.FindAction(\textcolor{stringliteral}{"{}SceneChange"{}}).triggered\ ||\ \mbox{\hyperlink{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf2626aeea5}{m\_sceneChangeFlg}})}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_battle_part_scene_change_a4ebdf432b3ec366a46c6f0b5ad274cb1}{m\_sceneTransitionManager}}?.\mbox{\hyperlink{class_scene_transition_manager_a57a46b1860572b2f20db95dc3ca6f2ec}{SceneChange}}();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SceneManager.LoadScene("{}Management"{});}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00035}{35}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -81,15 +98,17 @@ void Battle\+Part\+Scene\+Change.\+Update (\begin{DoxyParamCaption}{}{}\end{Doxy
 
 
 \doxysubsection{フィールド詳解}
+\Hypertarget{class_battle_part_scene_change_a4ebdf432b3ec366a46c6f0b5ad274cb1}\index{BattlePartSceneChange@{BattlePartSceneChange}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
+\index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!BattlePartSceneChange@{BattlePartSceneChange}}
+\doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
+{\footnotesize\ttfamily \label{class_battle_part_scene_change_a4ebdf432b3ec366a46c6f0b5ad274cb1} 
+\mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Battle\+Part\+Scene\+Change.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{class_battle_part_scene_change_ad8ebbcab58de33a78b1d0e9dd193d9bc}\index{BattlePartSceneChange@{BattlePartSceneChange}!m\_input@{m\_input}}
 \index{m\_input@{m\_input}!BattlePartSceneChange@{BattlePartSceneChange}}
 \doxysubsubsection{\texorpdfstring{m\_input}{m\_input}}
 {\footnotesize\ttfamily \label{class_battle_part_scene_change_ad8ebbcab58de33a78b1d0e9dd193d9bc} 
 Player\+Input Battle\+Part\+Scene\+Change.\+m\+\_\+input = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00011}{11}} 行目に定義があります。
 
 \Hypertarget{class_battle_part_scene_change_aaec6f7c3c670558d6744ddeb115e7766}\index{BattlePartSceneChange@{BattlePartSceneChange}!m\_inputActionMap@{m\_inputActionMap}}
 \index{m\_inputActionMap@{m\_inputActionMap}!BattlePartSceneChange@{BattlePartSceneChange}}
@@ -97,29 +116,11 @@ Player\+Input Battle\+Part\+Scene\+Change.\+m\+\_\+input = null\hspace{0.3cm}{\t
 {\footnotesize\ttfamily \label{class_battle_part_scene_change_aaec6f7c3c670558d6744ddeb115e7766} 
 Input\+Action\+Map Battle\+Part\+Scene\+Change.\+m\+\_\+input\+Action\+Map\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00013}{13}} 行目に定義があります。
-
 \Hypertarget{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf2626aeea5}\index{BattlePartSceneChange@{BattlePartSceneChange}!m\_sceneChangeFlg@{m\_sceneChangeFlg}}
 \index{m\_sceneChangeFlg@{m\_sceneChangeFlg}!BattlePartSceneChange@{BattlePartSceneChange}}
 \doxysubsubsection{\texorpdfstring{m\_sceneChangeFlg}{m\_sceneChangeFlg}}
 {\footnotesize\ttfamily \label{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf2626aeea5} 
 bool Battle\+Part\+Scene\+Change.\+m\+\_\+scene\+Change\+Flg = false\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00015}{15}} 行目に定義があります。
-
-\Hypertarget{class_battle_part_scene_change_a4ebdf432b3ec366a46c6f0b5ad274cb1}\index{BattlePartSceneChange@{BattlePartSceneChange}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
-\index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!BattlePartSceneChange@{BattlePartSceneChange}}
-\doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
-{\footnotesize\ttfamily \label{class_battle_part_scene_change_a4ebdf432b3ec366a46c6f0b5ad274cb1} 
-\mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Battle\+Part\+Scene\+Change.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00010}{10}} 行目に定義があります。
 
 
 
@@ -131,9 +132,10 @@ bool Battle\+Part\+Scene\+Change.\+m\+\_\+scene\+Change\+Flg = false\hspace{0.3c
 bool Battle\+Part\+Scene\+Change.\+Scene\+Change\+Flg\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf2626aeea5}{m\_sceneChangeFlg}};\ \}\textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_battle_part_scene_change_abc228b7f93a8dd05d2f9aaf2626aeea5}{m\_sceneChangeFlg}}\ =\ value;\ \}\ \}}
 
- \mbox{\hyperlink{_battle_part_scene_change_8cs_source}{Battle\+Part\+Scene\+Change.\+cs}} の \mbox{\hyperlink{_battle_part_scene_change_8cs_source_l00017}{17}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

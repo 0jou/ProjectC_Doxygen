@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -139,10 +139,7 @@ OnWatchTarget 連携図</div>
 <tr class="memitem:ab4ef9b386f9ecb5bdc03d6f3b9966874" id="r_ab4ef9b386f9ecb5bdc03d6f3b9966874"><td class="memItemLeft" align="right" valign="top">FlexibleInt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab4ef9b386f9ecb5bdc03d6f3b9966874">m_viewAngle</a></td></tr>
 <tr class="separator:ab4ef9b386f9ecb5bdc03d6f3b9966874"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a> の <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ac634f53d7ea15cbcae6fc32acc9c70c8" name="ac634f53d7ea15cbcae6fc32acc9c70c8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac634f53d7ea15cbcae6fc32acc9c70c8">&#9670;&#160;</a></span>OnConditionCheck()</h2>
 
@@ -165,9 +162,43 @@ OnWatchTarget 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a> の <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   17</span>    {</div>
+<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (Vector3.Distance(transform.position, <a class="code hl_variable" href="#ae7511380088bdd312fdd7ca0619b4d6b">m_targetTransform</a>.value.position) &lt;= <a class="code hl_variable" href="#a1ca71b952458f44a3640c320fa4a9498">m_stoppingDistance</a>.value)</div>
+<div class="line"><span class="lineno">   19</span>        {</div>
+<div class="line"><span class="lineno">   20</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   21</span>        }</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordtype">float</span> angle;</div>
+<div class="line"><span class="lineno">   24</span>        angle = Vector3.Angle(transform.forward, <a class="code hl_variable" href="#ae7511380088bdd312fdd7ca0619b4d6b">m_targetTransform</a>.value.position - transform.position);</div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span> (angle &gt; <a class="code hl_variable" href="#ab4ef9b386f9ecb5bdc03d6f3b9966874">m_viewAngle</a>.value * 0.5f) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (!transform.root.gameObject.TryGetComponent(out Collider myCollider))</div>
+<div class="line"><span class="lineno">   28</span>        {</div>
+<div class="line"><span class="lineno">   29</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   30</span>        }</div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#ae7511380088bdd312fdd7ca0619b4d6b">m_targetTransform</a>.value.gameObject.TryGetComponent(out Collider targetCollider))</div>
+<div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   34</span>        }</div>
+<div class="line"><span class="lineno">   35</span>        Vector3 dir = targetCollider.bounds.center - myCollider.bounds.center;</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordtype">float</span> dist = Vector3.Distance(targetCollider.bounds.center, myCollider.bounds.center);</div>
+<div class="line"><span class="lineno">   37</span>        Ray ray = <span class="keyword">new</span> Ray(myCollider.bounds.center, dir);</div>
+<div class="line"><span class="lineno">   38</span>        RaycastHit hit;</div>
+<div class="line"><span class="lineno">   39</span>        Debug.DrawRay(ray.origin, ray.direction * dist, Color.red);</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (Physics.Raycast(ray, out hit, dist))</div>
+<div class="line"><span class="lineno">   41</span>        {</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (hit.collider.gameObject.name == targetCollider.gameObject.name)</div>
+<div class="line"><span class="lineno">   43</span>            {</div>
+<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   45</span>            }</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   49</span>    }</div>
+<div class="ttc" id="aclass_on_watch_target_html_a1ca71b952458f44a3640c320fa4a9498"><div class="ttname"><a href="#a1ca71b952458f44a3640c320fa4a9498">OnWatchTarget.m_stoppingDistance</a></div><div class="ttdeci">FlexibleFloat m_stoppingDistance</div><div class="ttdef"><b>Definition</b> OnWatchTarget.cs:12</div></div>
+<div class="ttc" id="aclass_on_watch_target_html_ab4ef9b386f9ecb5bdc03d6f3b9966874"><div class="ttname"><a href="#ab4ef9b386f9ecb5bdc03d6f3b9966874">OnWatchTarget.m_viewAngle</a></div><div class="ttdeci">FlexibleInt m_viewAngle</div><div class="ttdef"><b>Definition</b> OnWatchTarget.cs:13</div></div>
+<div class="ttc" id="aclass_on_watch_target_html_ae7511380088bdd312fdd7ca0619b4d6b"><div class="ttname"><a href="#ae7511380088bdd312fdd7ca0619b4d6b">OnWatchTarget.m_targetTransform</a></div><div class="ttdeci">FlexibleTransform m_targetTransform</div><div class="ttdef"><b>Definition</b> OnWatchTarget.cs:11</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aa5c0430d51b6bab0d13bd9a28d145daf" name="aa5c0430d51b6bab0d13bd9a28d145daf"></a>
@@ -192,36 +223,12 @@ OnWatchTarget 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a> の <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html#l00051">51</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   51</span>                                    {</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a1ca71b952458f44a3640c320fa4a9498" name="a1ca71b952458f44a3640c320fa4a9498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1ca71b952458f44a3640c320fa4a9498">&#9670;&#160;</a></span>m_stoppingDistance</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">FlexibleFloat OnWatchTarget.m_stoppingDistance</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a> の <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="ae7511380088bdd312fdd7ca0619b4d6b" name="ae7511380088bdd312fdd7ca0619b4d6b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7511380088bdd312fdd7ca0619b4d6b">&#9670;&#160;</a></span>m_targetTransform</h2>
 
@@ -242,7 +249,27 @@ OnWatchTarget 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a> の <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a1ca71b952458f44a3640c320fa4a9498" name="a1ca71b952458f44a3640c320fa4a9498"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ca71b952458f44a3640c320fa4a9498">&#9670;&#160;</a></span>m_stoppingDistance</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">FlexibleFloat OnWatchTarget.m_stoppingDistance</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -266,12 +293,10 @@ OnWatchTarget 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a> の <a class="el" href="../../da/df2/_on_watch_target_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/CommonBehaviorTree/BehaviourScripts/<a class="el" href="../../da/df2/_on_watch_target_8cs_source.html">OnWatchTarget.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/CommonBehaviorTree/BehaviourScripts/<a class="el" href="../../da/df2/_on_watch_target_8cs.html">OnWatchTarget.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

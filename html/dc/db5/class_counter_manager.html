@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -182,10 +182,501 @@ CounterManager 連携図</div>
 <tr class="memitem:a032625833cb6a4924ac0dd620932892d inherit pro_methods_class_base_manager" id="r_a032625833cb6a4924ac0dd620932892d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc6/class_base_manager.html#a032625833cb6a4924ac0dd620932892d">Awake</a> ()</td></tr>
 <tr class="separator:a032625833cb6a4924ac0dd620932892d inherit pro_methods_class_base_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00044">44</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
+<a id="aa9e7cde1b6c43f2ee7139b394dc7133b" name="aa9e7cde1b6c43f2ee7139b394dc7133b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9e7cde1b6c43f2ee7139b394dc7133b">&#9670;&#160;</a></span>OrderFood()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> CounterManager.OrderFood </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d4/d6b/class_customer_data.html">CustomerData</a></td>          <td class="paramname"><span class="paramname"><em>_customerData</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>注文料理を受け取る </p>
+<div class="fragment"><div class="line"><span class="lineno">   75</span>    {</div>
+<div class="line"><span class="lineno">   76</span>        <span class="comment">// オーダーできなければ</span></div>
+<div class="line"><span class="lineno">   77</span>        <span class="keywordflow">if</span> (!<a class="code hl_function" href="#a5a5c0d0ce7a11d5494fd846c94a0e026">IsOrder</a>()) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (_customerData == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   80</span>        {</div>
+<div class="line"><span class="lineno">   81</span>            Debug.LogError(<span class="stringliteral">&quot;引数客情報がnullです&quot;</span>);</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   83</span>        }</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>        <span class="comment">// 作成する料理をランダムで取得(作成できなければnullが帰ってくる)</span></div>
+<div class="line"><span class="lineno">   86</span>        var orderData = <a class="code hl_class" href="../../d7/d0e/class_management_provide_food_manager.html">ManagementProvideFoodManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetRandomFoodData();</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">if</span> (orderData == <span class="keyword">null</span>) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>        <span class="comment">// 料理のインスタンスを作成する</span></div>
+<div class="line"><span class="lineno">   91</span>        var foodData = <a class="code hl_function" href="#a9948b79dd6b95ddeb00ec92d1083f5ff">CreateOrderFood</a>((<a class="code hl_enumeration" href="../../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6">FoodID</a>)orderData.ItemID, _customerData);</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>        <span class="comment">// 取り除く</span></div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (foodData != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   95</span>        {</div>
+<div class="line"><span class="lineno">   96</span>            <a class="code hl_class" href="../../d7/d0e/class_management_provide_food_manager.html">ManagementProvideFoodManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.RemoveProvideFood((<a class="code hl_enumeration" href="../../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6">FoodID</a>)orderData.ItemID);</div>
+<div class="line"><span class="lineno">   97</span>        }</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">return</span> foodData;</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>    }</div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_counter_manager_html_a5a5c0d0ce7a11d5494fd846c94a0e026"><div class="ttname"><a href="#a5a5c0d0ce7a11d5494fd846c94a0e026">CounterManager.IsOrder</a></div><div class="ttdeci">bool IsOrder()</div><div class="ttdoc">料理を注文できるかどうか</div><div class="ttdef"><b>Definition</b> CounterManager.cs:106</div></div>
+<div class="ttc" id="aclass_counter_manager_html_a9948b79dd6b95ddeb00ec92d1083f5ff"><div class="ttname"><a href="#a9948b79dd6b95ddeb00ec92d1083f5ff">CounterManager.CreateOrderFood</a></div><div class="ttdeci">OrderFoodData CreateOrderFood(FoodID _foodID, CustomerData _customerData)</div><div class="ttdef"><b>Definition</b> CounterManager.cs:188</div></div>
+<div class="ttc" id="aclass_management_provide_food_manager_html"><div class="ttname"><a href="../../d7/d0e/class_management_provide_food_manager.html">ManagementProvideFoodManager</a></div><div class="ttdef"><b>Definition</b> ManagementProvideFoodManager.cs:70</div></div>
+<div class="ttc" id="anamespace_food_info_html_ac75bdaf2cc1a2865f0bca69c391487c6"><div class="ttname"><a href="../../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6">FoodInfo.FoodID</a></div><div class="ttdeci">FoodID</div><div class="ttdoc">料理のIDを示す列挙型</div><div class="ttdef"><b>Definition</b> FoodID.cs:18</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph" id="adc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph">
+<area shape="rect" title="注文料理を受け取る" alt="" coords="5,39,188,65"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a9948b79dd6b95ddeb00ec92d1083f5ff" title=" " alt="" coords="236,13,457,40"/>
+<area shape="poly" title=" " alt="" coords="188,40,220,37,220,42,188,45"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a5a5c0d0ce7a11d5494fd846c94a0e026" title="料理を注文できるかどうか" alt="" coords="264,64,428,91"/>
+<area shape="poly" title=" " alt="" coords="188,59,249,65,248,70,188,64"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0a598ac1d3db87d162c5a2a2c00f736" title=" " alt="" coords="505,5,710,48"/>
+<area shape="poly" title=" " alt="" coords="457,24,490,24,490,29,457,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a5a5c0d0ce7a11d5494fd846c94a0e026" name="a5a5c0d0ce7a11d5494fd846c94a0e026"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a5c0d0ce7a11d5494fd846c94a0e026">&#9670;&#160;</a></span>IsOrder()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CounterManager.IsOrder </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>料理を注文できるかどうか </p>
+<div class="fragment"><div class="line"><span class="lineno">  107</span>    {</div>
+<div class="line"><span class="lineno">  108</span>        <span class="comment">// 提供できる料理があるかを確認する</span></div>
+<div class="line"><span class="lineno">  109</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../d7/d0e/class_management_provide_food_manager.html">ManagementProvideFoodManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsCreate())</div>
+<div class="line"><span class="lineno">  110</span>        {</div>
+<div class="line"><span class="lineno">  111</span>            <span class="comment">// order可能</span></div>
+<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  113</span>        }</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>        <span class="comment">// order不可能</span></div>
+<div class="line"><span class="lineno">  116</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  117</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph" id="adc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph">
+<area shape="rect" title="料理を注文できるかどうか" alt="" coords="236,5,400,32"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#aa9e7cde1b6c43f2ee7139b394dc7133b" title="注文料理を受け取る" alt="" coords="5,5,188,32"/>
+<area shape="poly" title=" " alt="" coords="220,21,188,21,188,16,220,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a268903d7c35648dc3d58bb73fc7049c4" name="a268903d7c35648dc3d58bb73fc7049c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a268903d7c35648dc3d58bb73fc7049c4">&#9670;&#160;</a></span>IsOrdering()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CounterManager.IsOrdering </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  122</span>    {</div>
+<div class="line"><span class="lineno">  123</span> </div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>.Count &lt;= 0)</div>
+<div class="line"><span class="lineno">  125</span>        {</div>
+<div class="line"><span class="lineno">  126</span>            <span class="comment">// 注文されている状態でなければ</span></div>
+<div class="line"><span class="lineno">  127</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  128</span>        }</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>        <span class="comment">// 注文されている状態であれば</span></div>
+<div class="line"><span class="lineno">  131</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  132</span>    }</div>
+<div class="ttc" id="aclass_counter_manager_html_a82248a6804f3f08865b489bbde8e0b77"><div class="ttname"><a href="#a82248a6804f3f08865b489bbde8e0b77">CounterManager.m_orderFoodDataList</a></div><div class="ttdeci">List&lt; OrderFoodData &gt; m_orderFoodDataList</div><div class="ttdef"><b>Definition</b> CounterManager.cs:60</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af83fd7b67ac4a8977ea40bcc8a1b1ebd" name="af83fd7b67ac4a8977ea40bcc8a1b1ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af83fd7b67ac4a8977ea40bcc8a1b1ebd">&#9670;&#160;</a></span>IsCooking()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CounterManager.IsCooking </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>調理中(作成中)の料理があるかどうか </p>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>    {</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">foreach</span> (var data <span class="keywordflow">in</span> <a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>)</div>
+<div class="line"><span class="lineno">  140</span>        {</div>
+<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">if</span> (data.gameObject.activeSelf == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">  144</span>            {</div>
+<div class="line"><span class="lineno">  145</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  146</span>            }</div>
+<div class="line"><span class="lineno">  147</span>        }</div>
+<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a1615f4935537842c27d37df8319f7e63" name="a1615f4935537842c27d37df8319f7e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1615f4935537842c27d37df8319f7e63">&#9670;&#160;</a></span>GetCounterFoodData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> CounterManager.GetCounterFoodData </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  156</span>    {</div>
+<div class="line"><span class="lineno">  157</span>        <a class="code hl_class" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> data = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>        <span class="keywordflow">foreach</span> (var foodData <span class="keywordflow">in</span> <a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>)</div>
+<div class="line"><span class="lineno">  160</span>        {</div>
+<div class="line"><span class="lineno">  161</span>            <span class="keywordflow">if</span> (foodData == <span class="keyword">null</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>            <span class="comment">// まだ受け取り手がいなければ</span></div>
+<div class="line"><span class="lineno">  164</span>            <span class="keywordflow">if</span> (foodData.IsFindStaff())</div>
+<div class="line"><span class="lineno">  165</span>            {</div>
+<div class="line"><span class="lineno">  166</span>                data = foodData;</div>
+<div class="line"><span class="lineno">  167</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  168</span>            }</div>
+<div class="line"><span class="lineno">  169</span>        }</div>
+<div class="line"><span class="lineno">  170</span> </div>
+<div class="line"><span class="lineno">  171</span>        <span class="keywordflow">return</span> data;</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>    }</div>
+<div class="ttc" id="aclass_order_food_data_html"><div class="ttname"><a href="../../d2/d11/class_order_food_data.html">OrderFoodData</a></div><div class="ttdef"><b>Definition</b> OrderFoodData.cs:22</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="af262aa074867c091d3a8708106246c07" name="af262aa074867c091d3a8708106246c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af262aa074867c091d3a8708106246c07">&#9670;&#160;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CounterManager.Update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  178</span>    {</div>
+<div class="line"><span class="lineno">  179</span>        <span class="comment">// 作成カウント</span></div>
+<div class="line"><span class="lineno">  180</span>        <a class="code hl_function" href="#a41b086e340bf5ac5684974cad9905e68">CreatCount</a>();</div>
+<div class="line"><span class="lineno">  181</span> </div>
+<div class="line"><span class="lineno">  182</span>        <span class="comment">// 取り除き判定</span></div>
+<div class="line"><span class="lineno">  183</span>        <a class="code hl_function" href="#aa122668db8d0410f8a157eff9b79b4df">CheckRemoveOrderFoodDataList</a>();</div>
+<div class="line"><span class="lineno">  184</span>    }</div>
+<div class="ttc" id="aclass_counter_manager_html_a41b086e340bf5ac5684974cad9905e68"><div class="ttname"><a href="#a41b086e340bf5ac5684974cad9905e68">CounterManager.CreatCount</a></div><div class="ttdeci">void CreatCount()</div><div class="ttdef"><b>Definition</b> CounterManager.cs:236</div></div>
+<div class="ttc" id="aclass_counter_manager_html_aa122668db8d0410f8a157eff9b79b4df"><div class="ttname"><a href="#aa122668db8d0410f8a157eff9b79b4df">CounterManager.CheckRemoveOrderFoodDataList</a></div><div class="ttdeci">void CheckRemoveOrderFoodDataList()</div><div class="ttdef"><b>Definition</b> CounterManager.cs:292</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph" id="adc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph">
+<area shape="rect" title=" " alt="" coords="5,43,169,69"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#aa122668db8d0410f8a157eff9b79b4df" title=" " alt="" coords="217,5,425,48"/>
+<area shape="poly" title=" " alt="" coords="169,43,201,39,202,44,170,48"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a41b086e340bf5ac5684974cad9905e68" title=" " alt="" coords="227,72,415,99"/>
+<area shape="poly" title=" " alt="" coords="170,64,211,69,211,74,169,69"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0bcf66ad18be218e9ae25269b5ec6a5" title=" " alt="" coords="473,64,660,107"/>
+<area shape="poly" title=" " alt="" coords="415,83,458,83,458,88,415,88"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03" title=" " alt="" coords="718,35,910,77"/>
+<area shape="poly" title=" " alt="" coords="661,72,702,67,703,72,661,77"/>
+<area shape="rect" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e" title="座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される" alt="" coords="708,101,920,128"/>
+<area shape="poly" title=" " alt="" coords="661,94,693,98,693,103,661,99"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9948b79dd6b95ddeb00ec92d1083f5ff" name="a9948b79dd6b95ddeb00ec92d1083f5ff"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9948b79dd6b95ddeb00ec92d1083f5ff">&#9670;&#160;</a></span>CreateOrderFood()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> CounterManager.CreateOrderFood </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6">FoodID</a></td>          <td class="paramname"><span class="paramname"><em>_foodID</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d4/d6b/class_customer_data.html">CustomerData</a></td>          <td class="paramname"><span class="paramname"><em>_customerData</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  189</span>    {</div>
+<div class="line"><span class="lineno">  190</span>        <span class="comment">// 料理データを取得</span></div>
+<div class="line"><span class="lineno">  191</span>        var foodData = <a class="code hl_class" href="../../d2/d53/class_item_data_base_manager.html">ItemDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetItemData&lt;<a class="code hl_class" href="../../df/d05/class_food_data.html">FoodData</a>&gt;(<a class="code hl_enumeration" href="../../d6/db8/namespace_item_info.html#af2c688442820f00ad8dcf540fc75fecb">ItemTypeID</a>.Food, (uint)_foodID);</div>
+<div class="line"><span class="lineno">  192</span>        <span class="keywordflow">if</span> (foodData == <span class="keyword">null</span>) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  193</span> </div>
+<div class="line"><span class="lineno">  194</span>        <span class="comment">// プレハブ</span></div>
+<div class="line"><span class="lineno">  195</span>        var prefab = foodData.<a class="code hl_property" href="../../df/d05/class_food_data.html#a07d442799ad31c94e70aa5c3022d8bb3">ManagementFoodPrefab</a>;</div>
+<div class="line"><span class="lineno">  196</span>        <span class="keywordflow">if</span> (prefab == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  197</span>        {</div>
+<div class="line"><span class="lineno">  198</span>            Debug.LogError(<span class="stringliteral">&quot;プレハブが存在しないため作成できませんでした&quot;</span>);</div>
+<div class="line"><span class="lineno">  199</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  200</span>        }</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span>        <span class="comment">//====================</span></div>
+<div class="line"><span class="lineno">  203</span>        <span class="comment">// インスタンスを作成</span></div>
+<div class="line"><span class="lineno">  204</span> </div>
+<div class="line"><span class="lineno">  205</span>        var obj = Instantiate(prefab);</div>
+<div class="line"><span class="lineno">  206</span>        obj.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>        <span class="comment">//  注文料理データ</span></div>
+<div class="line"><span class="lineno">  209</span>        var orderFoodData = obj.GetComponentInChildren&lt;<a class="code hl_class" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a>&gt;();</div>
+<div class="line"><span class="lineno">  210</span>        <span class="keywordflow">if</span> (orderFoodData == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  211</span>        {</div>
+<div class="line"><span class="lineno">  212</span>            Debug.LogError(<span class="stringliteral">&quot;OrderFoodDataがアタッチされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">  213</span>            Destroy(obj);</div>
+<div class="line"><span class="lineno">  214</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  215</span>        }</div>
+<div class="line"><span class="lineno">  216</span>        <span class="comment">// 料理IDをセット</span></div>
+<div class="line"><span class="lineno">  217</span>        orderFoodData.FoodID = _foodID;</div>
+<div class="line"><span class="lineno">  218</span> </div>
+<div class="line"><span class="lineno">  219</span>        <span class="comment">// 目的地座標をセット</span></div>
+<div class="line"><span class="lineno">  220</span>        <span class="keywordflow">if</span> (_customerData)</div>
+<div class="line"><span class="lineno">  221</span>        {</div>
+<div class="line"><span class="lineno">  222</span>            orderFoodData.TargetTableSetData = _customerData.<a class="code hl_property" href="../../d4/d6b/class_customer_data.html#aeba91a021970c8b8add88f5edbf70d7a">TargetTableSetData</a>;</div>
+<div class="line"><span class="lineno">  223</span>        }</div>
+<div class="line"><span class="lineno">  224</span> </div>
+<div class="line"><span class="lineno">  225</span>        <span class="comment">// リストに追加</span></div>
+<div class="line"><span class="lineno">  226</span>        <a class="code hl_function" href="#ae0a598ac1d3db87d162c5a2a2c00f736">AddOrderFoodDataList</a>(orderFoodData);</div>
+<div class="line"><span class="lineno">  227</span> </div>
+<div class="line"><span class="lineno">  228</span> </div>
+<div class="line"><span class="lineno">  229</span>        <span class="keywordflow">return</span> orderFoodData;</div>
+<div class="line"><span class="lineno">  230</span> </div>
+<div class="line"><span class="lineno">  231</span>    }</div>
+<div class="ttc" id="aclass_counter_manager_html_ae0a598ac1d3db87d162c5a2a2c00f736"><div class="ttname"><a href="#ae0a598ac1d3db87d162c5a2a2c00f736">CounterManager.AddOrderFoodDataList</a></div><div class="ttdeci">void AddOrderFoodDataList(OrderFoodData _data)</div><div class="ttdef"><b>Definition</b> CounterManager.cs:283</div></div>
+<div class="ttc" id="aclass_customer_data_html_aeba91a021970c8b8add88f5edbf70d7a"><div class="ttname"><a href="../../d4/d6b/class_customer_data.html#aeba91a021970c8b8add88f5edbf70d7a">CustomerData.TargetTableSetData</a></div><div class="ttdeci">TableSetData TargetTableSetData</div><div class="ttdef"><b>Definition</b> CustomerData.cs:122</div></div>
+<div class="ttc" id="aclass_food_data_html"><div class="ttname"><a href="../../df/d05/class_food_data.html">FoodData</a></div><div class="ttdef"><b>Definition</b> FoodData.cs:12</div></div>
+<div class="ttc" id="aclass_food_data_html_a07d442799ad31c94e70aa5c3022d8bb3"><div class="ttname"><a href="../../df/d05/class_food_data.html#a07d442799ad31c94e70aa5c3022d8bb3">FoodData.ManagementFoodPrefab</a></div><div class="ttdeci">GameObject ManagementFoodPrefab</div><div class="ttdef"><b>Definition</b> FoodData.cs:41</div></div>
+<div class="ttc" id="aclass_item_data_base_manager_html"><div class="ttname"><a href="../../d2/d53/class_item_data_base_manager.html">ItemDataBaseManager</a></div><div class="ttdef"><b>Definition</b> ItemDataBaseManager.cs:10</div></div>
+<div class="ttc" id="anamespace_item_info_html_af2c688442820f00ad8dcf540fc75fecb"><div class="ttname"><a href="../../d6/db8/namespace_item_info.html#af2c688442820f00ad8dcf540fc75fecb">ItemInfo.ItemTypeID</a></div><div class="ttdeci">ItemTypeID</div><div class="ttdef"><b>Definition</b> ItemTypeID.cs:5</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph" id="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,227,40"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0a598ac1d3db87d162c5a2a2c00f736" title=" " alt="" coords="275,5,480,48"/>
+<area shape="poly" title=" " alt="" coords="227,24,259,24,259,29,227,29"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph" id="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph">
+<area shape="rect" title=" " alt="" coords="236,5,457,32"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#aa9e7cde1b6c43f2ee7139b394dc7133b" title="注文料理を受け取る" alt="" coords="5,5,188,32"/>
+<area shape="poly" title=" " alt="" coords="220,21,188,21,188,16,220,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a41b086e340bf5ac5684974cad9905e68" name="a41b086e340bf5ac5684974cad9905e68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41b086e340bf5ac5684974cad9905e68">&#9670;&#160;</a></span>CreatCount()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CounterManager.CreatCount </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  237</span>    {</div>
+<div class="line"><span class="lineno">  238</span>        <span class="comment">// 作成中の料理をカウント</span></div>
+<div class="line"><span class="lineno">  239</span>        <span class="comment">// アクティブがfalseの時のみ</span></div>
+<div class="line"><span class="lineno">  240</span>        <span class="keywordflow">foreach</span> (var food <span class="keywordflow">in</span> <a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>)</div>
+<div class="line"><span class="lineno">  241</span>        {</div>
+<div class="line"><span class="lineno">  242</span>            <span class="keywordflow">if</span> (food == <span class="keyword">null</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  243</span> </div>
+<div class="line"><span class="lineno">  244</span>            <span class="keywordflow">if</span> (food.CreatCount())</div>
+<div class="line"><span class="lineno">  245</span>            {</div>
+<div class="line"><span class="lineno">  246</span>                <span class="comment">// ポイントをセットする</span></div>
+<div class="line"><span class="lineno">  247</span>                <a class="code hl_function" href="#ae0bcf66ad18be218e9ae25269b5ec6a5">SetCounterPoint</a>(food);</div>
+<div class="line"><span class="lineno">  248</span>            }</div>
+<div class="line"><span class="lineno">  249</span>        }</div>
+<div class="line"><span class="lineno">  250</span>    }</div>
+<div class="ttc" id="aclass_counter_manager_html_ae0bcf66ad18be218e9ae25269b5ec6a5"><div class="ttname"><a href="#ae0bcf66ad18be218e9ae25269b5ec6a5">CounterManager.SetCounterPoint</a></div><div class="ttdeci">void SetCounterPoint(OrderFoodData _data)</div><div class="ttdef"><b>Definition</b> CounterManager.cs:254</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph" id="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph">
+<area shape="rect" title=" " alt="" coords="5,43,194,69"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0bcf66ad18be218e9ae25269b5ec6a5" title=" " alt="" coords="242,35,429,77"/>
+<area shape="poly" title=" " alt="" coords="194,53,226,53,226,59,194,59"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03" title=" " alt="" coords="487,5,678,48"/>
+<area shape="poly" title=" " alt="" coords="429,42,471,37,472,42,430,48"/>
+<area shape="rect" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e" title="座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される" alt="" coords="477,72,688,99"/>
+<area shape="poly" title=" " alt="" coords="430,64,462,68,461,74,429,70"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph" id="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph">
+<area shape="rect" title=" " alt="" coords="217,5,405,32"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#af262aa074867c091d3a8708106246c07" title=" " alt="" coords="5,5,169,32"/>
+<area shape="poly" title=" " alt="" coords="201,21,169,21,169,16,201,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ae0bcf66ad18be218e9ae25269b5ec6a5" name="ae0bcf66ad18be218e9ae25269b5ec6a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0bcf66ad18be218e9ae25269b5ec6a5">&#9670;&#160;</a></span>SetCounterPoint()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CounterManager.SetCounterPoint </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a></td>          <td class="paramname"><span class="paramname"><em>_data</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  255</span>    {</div>
+<div class="line"><span class="lineno">  256</span>        <span class="keywordflow">if</span> (_data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  257</span> </div>
+<div class="line"><span class="lineno">  258</span>        <span class="comment">// 既にポイントがあれば操作しない</span></div>
+<div class="line"><span class="lineno">  259</span>        <span class="keywordflow">if</span> (_data.<a class="code hl_property" href="../../d2/d11/class_order_food_data.html#a8b5b78b7b9cae5ac934bf41edef3181f">CounterPoint</a> != <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  260</span> </div>
+<div class="line"><span class="lineno">  261</span>        <a class="code hl_class" href="../../d4/da6/class_counter_point.html">CounterPoint</a> point = <a class="code hl_function" href="#a59e6b2e08db60ac403c73c4ef1780c03">GetRandomPoint</a>();</div>
+<div class="line"><span class="lineno">  262</span>        <span class="keywordflow">if</span> (point == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  263</span>        {</div>
+<div class="line"><span class="lineno">  264</span>            <span class="comment">// カウンターポイントが空くまで動かさない</span></div>
+<div class="line"><span class="lineno">  265</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  266</span>        }</div>
+<div class="line"><span class="lineno">  267</span> </div>
+<div class="line"><span class="lineno">  268</span>        <span class="comment">// ポイントをセット</span></div>
+<div class="line"><span class="lineno">  269</span>        _data.CounterPoint = point;</div>
+<div class="line"><span class="lineno">  270</span> </div>
+<div class="line"><span class="lineno">  271</span>        <span class="comment">// 動作開始</span></div>
+<div class="line"><span class="lineno">  272</span>        _data.gameObject.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  273</span> </div>
+<div class="line"><span class="lineno">  274</span>        <span class="comment">//料理生成時の音を追加（山本）</span></div>
+<div class="line"><span class="lineno">  275</span>        <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">Start3DPlayback</a>(<span class="stringliteral">&quot;DoneCook&quot;</span>, point.<a class="code hl_property" href="../../d4/da6/class_counter_point.html#a3052c9ef129996bc8532ee2b57af30b6">SetPoint</a>.position);</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>    }</div>
+<div class="ttc" id="aclass_counter_manager_html_a59e6b2e08db60ac403c73c4ef1780c03"><div class="ttname"><a href="#a59e6b2e08db60ac403c73c4ef1780c03">CounterManager.GetRandomPoint</a></div><div class="ttdeci">CounterPoint GetRandomPoint()</div><div class="ttdef"><b>Definition</b> CounterManager.cs:315</div></div>
+<div class="ttc" id="aclass_counter_point_html"><div class="ttname"><a href="../../d4/da6/class_counter_point.html">CounterPoint</a></div><div class="ttdef"><b>Definition</b> CounterManager.cs:13</div></div>
+<div class="ttc" id="aclass_counter_point_html_a3052c9ef129996bc8532ee2b57af30b6"><div class="ttname"><a href="../../d4/da6/class_counter_point.html#a3052c9ef129996bc8532ee2b57af30b6">CounterPoint.SetPoint</a></div><div class="ttdeci">Transform SetPoint</div><div class="ttdef"><b>Definition</b> CounterManager.cs:19</div></div>
+<div class="ttc" id="aclass_order_food_data_html_a8b5b78b7b9cae5ac934bf41edef3181f"><div class="ttname"><a href="../../d2/d11/class_order_food_data.html#a8b5b78b7b9cae5ac934bf41edef3181f">OrderFoodData.CounterPoint</a></div><div class="ttdeci">CounterPoint CounterPoint</div><div class="ttdef"><b>Definition</b> OrderFoodData.cs:71</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a71bf6aeca5886488a7fdccd5890df00e"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">SoundManager.Start3DPlayback</a></div><div class="ttdeci">CriAtomExPlayback Start3DPlayback(string cueName, UnityEngine.Vector3 pos, float vol=1.0f, float pitch=0)</div><div class="ttdoc">座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される</div><div class="ttdef"><b>Definition</b> SoundManager.cs:74</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph" id="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph">
+<area shape="rect" title=" " alt="" coords="5,35,193,77"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03" title=" " alt="" coords="251,5,442,48"/>
+<area shape="poly" title=" " alt="" coords="193,42,235,37,235,42,193,48"/>
+<area shape="rect" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e" title="座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される" alt="" coords="241,72,452,99"/>
+<area shape="poly" title=" " alt="" coords="193,64,226,68,225,74,193,70"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph" alt=""/></div>
+<map name="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph" id="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph">
+<area shape="rect" title=" " alt="" coords="453,5,640,48"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#a41b086e340bf5ac5684974cad9905e68" title=" " alt="" coords="217,13,405,40"/>
+<area shape="poly" title=" " alt="" coords="437,29,405,29,405,24,437,24"/>
+<area shape="rect" href="../../dc/db5/class_counter_manager.html#af262aa074867c091d3a8708106246c07" title=" " alt="" coords="5,13,169,40"/>
+<area shape="poly" title=" " alt="" coords="201,29,169,29,169,24,201,24"/>
+</map>
+</div>
+
+</div>
+</div>
 <a id="ae0a598ac1d3db87d162c5a2a2c00f736" name="ae0a598ac1d3db87d162c5a2a2c00f736"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae0a598ac1d3db87d162c5a2a2c00f736">&#9670;&#160;</a></span>AddOrderFoodDataList()</h2>
 
@@ -208,9 +699,11 @@ CounterManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00283">283</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  284</span>    {</div>
+<div class="line"><span class="lineno">  285</span>        <span class="keywordflow">if</span> (_data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  286</span>        <a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>.Add(_data);</div>
+<div class="line"><span class="lineno">  287</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/db5/class_counter_manager_ae0a598ac1d3db87d162c5a2a2c00f736_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_ae0a598ac1d3db87d162c5a2a2c00f736_icgraph" alt=""/></div>
@@ -247,9 +740,27 @@ CounterManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00292">292</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  293</span>    {</div>
+<div class="line"><span class="lineno">  294</span>        <a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>.RemoveAll(data =&gt;</div>
+<div class="line"><span class="lineno">  295</span>        {</div>
+<div class="line"><span class="lineno">  296</span>            <span class="comment">// 存在しなければ</span></div>
+<div class="line"><span class="lineno">  297</span>            <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  298</span> </div>
+<div class="line"><span class="lineno">  299</span>            <span class="keywordflow">if</span> (!(data.CurrentOrderFoodState == <a class="code hl_enumeration" href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodState</a>.FindStaff ||</div>
+<div class="line"><span class="lineno">  300</span>            data.CurrentOrderFoodState == <a class="code hl_enumeration" href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodState</a>.WaitCounter))</div>
+<div class="line"><span class="lineno">  301</span>            {</div>
+<div class="line"><span class="lineno">  302</span>                <span class="comment">// ポイントを解放</span></div>
+<div class="line"><span class="lineno">  303</span>                data.CounterPoint = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  304</span> </div>
+<div class="line"><span class="lineno">  305</span>                <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  306</span>            }</div>
+<div class="line"><span class="lineno">  307</span> </div>
+<div class="line"><span class="lineno">  308</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  309</span>        }</div>
+<div class="line"><span class="lineno">  310</span>       );</div>
+<div class="line"><span class="lineno">  311</span>    }</div>
+<div class="ttc" id="anamespace_order_food_info_html_a09ddb2386d4c25716e924f4a3a6e31fa"><div class="ttname"><a href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodInfo.OrderFoodState</a></div><div class="ttdeci">OrderFoodState</div><div class="ttdef"><b>Definition</b> OrderFoodData.cs:13</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/db5/class_counter_manager_aa122668db8d0410f8a157eff9b79b4df_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_aa122668db8d0410f8a157eff9b79b4df_icgraph" alt=""/></div>
@@ -259,127 +770,6 @@ CounterManager 連携図</div>
 <area shape="poly" title=" " alt="" coords="201,29,169,29,169,24,201,24"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a41b086e340bf5ac5684974cad9905e68" name="a41b086e340bf5ac5684974cad9905e68"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a41b086e340bf5ac5684974cad9905e68">&#9670;&#160;</a></span>CreatCount()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CounterManager.CreatCount </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00236">236</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph" id="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_cgraph">
-<area shape="rect" title=" " alt="" coords="5,43,194,69"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0bcf66ad18be218e9ae25269b5ec6a5" title=" " alt="" coords="242,35,429,77"/>
-<area shape="poly" title=" " alt="" coords="194,53,226,53,226,59,194,59"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03" title=" " alt="" coords="487,5,678,48"/>
-<area shape="poly" title=" " alt="" coords="429,42,471,37,472,42,430,48"/>
-<area shape="rect" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e" title="座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される" alt="" coords="477,72,688,99"/>
-<area shape="poly" title=" " alt="" coords="430,64,462,68,461,74,429,70"/>
-</map>
-</div>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph" id="adc/db5/class_counter_manager_a41b086e340bf5ac5684974cad9905e68_icgraph">
-<area shape="rect" title=" " alt="" coords="217,5,405,32"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#af262aa074867c091d3a8708106246c07" title=" " alt="" coords="5,5,169,32"/>
-<area shape="poly" title=" " alt="" coords="201,21,169,21,169,16,201,16"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a9948b79dd6b95ddeb00ec92d1083f5ff" name="a9948b79dd6b95ddeb00ec92d1083f5ff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9948b79dd6b95ddeb00ec92d1083f5ff">&#9670;&#160;</a></span>CreateOrderFood()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> CounterManager.CreateOrderFood </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6">FoodID</a></td>          <td class="paramname"><span class="paramname"><em>_foodID</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../d4/d6b/class_customer_data.html">CustomerData</a></td>          <td class="paramname"><span class="paramname"><em>_customerData</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00188">188</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph" id="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,227,40"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0a598ac1d3db87d162c5a2a2c00f736" title=" " alt="" coords="275,5,480,48"/>
-<area shape="poly" title=" " alt="" coords="227,24,259,24,259,29,227,29"/>
-</map>
-</div>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph" id="adc/db5/class_counter_manager_a9948b79dd6b95ddeb00ec92d1083f5ff_icgraph">
-<area shape="rect" title=" " alt="" coords="236,5,457,32"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#aa9e7cde1b6c43f2ee7139b394dc7133b" title="注文料理を受け取る" alt="" coords="5,5,188,32"/>
-<area shape="poly" title=" " alt="" coords="220,21,188,21,188,16,220,16"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a1615f4935537842c27d37df8319f7e63" name="a1615f4935537842c27d37df8319f7e63"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1615f4935537842c27d37df8319f7e63">&#9670;&#160;</a></span>GetCounterFoodData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> CounterManager.GetCounterFoodData </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00155">155</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -405,9 +795,29 @@ CounterManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00315">315</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  316</span>    {</div>
+<div class="line"><span class="lineno">  317</span> </div>
+<div class="line"><span class="lineno">  318</span>        <span class="comment">// カウンターポイントを取得</span></div>
+<div class="line"><span class="lineno">  319</span>        <a class="code hl_class" href="../../d4/da6/class_counter_point.html">CounterPoint</a> point = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">  320</span> </div>
+<div class="line"><span class="lineno">  321</span>        <a class="code hl_variable" href="#aedc26002b9bf43fac9ddae86f6232fca">m_counterPointList</a>.RandomList();</div>
+<div class="line"><span class="lineno">  322</span>        <span class="keywordflow">foreach</span> (var counterPoint <span class="keywordflow">in</span> <a class="code hl_variable" href="#aedc26002b9bf43fac9ddae86f6232fca">m_counterPointList</a>)</div>
+<div class="line"><span class="lineno">  323</span>        {</div>
+<div class="line"><span class="lineno">  324</span>            <span class="keywordflow">if</span> (counterPoint == <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  325</span>                counterPoint.SetPoint == <span class="keyword">null</span> &amp;&amp;</div>
+<div class="line"><span class="lineno">  326</span>                counterPoint.DestinationPoint == <span class="keyword">null</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  327</span> </div>
+<div class="line"><span class="lineno">  328</span>            <span class="comment">// 設置されていれば</span></div>
+<div class="line"><span class="lineno">  329</span>            <span class="keywordflow">if</span> (counterPoint.IsSet) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  330</span> </div>
+<div class="line"><span class="lineno">  331</span>            point = counterPoint;</div>
+<div class="line"><span class="lineno">  332</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  333</span>        }</div>
+<div class="line"><span class="lineno">  334</span> </div>
+<div class="line"><span class="lineno">  335</span>        <span class="keywordflow">return</span> point;</div>
+<div class="line"><span class="lineno">  336</span>    }</div>
+<div class="ttc" id="aclass_counter_manager_html_aedc26002b9bf43fac9ddae86f6232fca"><div class="ttname"><a href="#aedc26002b9bf43fac9ddae86f6232fca">CounterManager.m_counterPointList</a></div><div class="ttdeci">List&lt; CounterPoint &gt; m_counterPointList</div><div class="ttdef"><b>Definition</b> CounterManager.cs:53</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/db5/class_counter_manager_a59e6b2e08db60ac403c73c4ef1780c03_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a59e6b2e08db60ac403c73c4ef1780c03_icgraph" alt=""/></div>
@@ -419,208 +829,6 @@ CounterManager 連携図</div>
 <area shape="poly" title=" " alt="" coords="437,29,405,29,405,24,437,24"/>
 <area shape="rect" href="../../dc/db5/class_counter_manager.html#af262aa074867c091d3a8708106246c07" title=" " alt="" coords="5,13,169,40"/>
 <area shape="poly" title=" " alt="" coords="201,29,169,29,169,24,201,24"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="af83fd7b67ac4a8977ea40bcc8a1b1ebd" name="af83fd7b67ac4a8977ea40bcc8a1b1ebd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af83fd7b67ac4a8977ea40bcc8a1b1ebd">&#9670;&#160;</a></span>IsCooking()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CounterManager.IsCooking </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>調理中(作成中)の料理があるかどうか </p>
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00137">137</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a5a5c0d0ce7a11d5494fd846c94a0e026" name="a5a5c0d0ce7a11d5494fd846c94a0e026"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a5c0d0ce7a11d5494fd846c94a0e026">&#9670;&#160;</a></span>IsOrder()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CounterManager.IsOrder </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>料理を注文できるかどうか </p>
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00106">106</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph" id="adc/db5/class_counter_manager_a5a5c0d0ce7a11d5494fd846c94a0e026_icgraph">
-<area shape="rect" title="料理を注文できるかどうか" alt="" coords="236,5,400,32"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#aa9e7cde1b6c43f2ee7139b394dc7133b" title="注文料理を受け取る" alt="" coords="5,5,188,32"/>
-<area shape="poly" title=" " alt="" coords="220,21,188,21,188,16,220,16"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a268903d7c35648dc3d58bb73fc7049c4" name="a268903d7c35648dc3d58bb73fc7049c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a268903d7c35648dc3d58bb73fc7049c4">&#9670;&#160;</a></span>IsOrdering()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CounterManager.IsOrdering </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00121">121</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aa9e7cde1b6c43f2ee7139b394dc7133b" name="aa9e7cde1b6c43f2ee7139b394dc7133b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9e7cde1b6c43f2ee7139b394dc7133b">&#9670;&#160;</a></span>OrderFood()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a> CounterManager.OrderFood </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d4/d6b/class_customer_data.html">CustomerData</a></td>          <td class="paramname"><span class="paramname"><em>_customerData</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>注文料理を受け取る </p>
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00074">74</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph" id="adc/db5/class_counter_manager_aa9e7cde1b6c43f2ee7139b394dc7133b_cgraph">
-<area shape="rect" title="注文料理を受け取る" alt="" coords="5,39,188,65"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a9948b79dd6b95ddeb00ec92d1083f5ff" title=" " alt="" coords="236,13,457,40"/>
-<area shape="poly" title=" " alt="" coords="188,40,220,37,220,42,188,45"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a5a5c0d0ce7a11d5494fd846c94a0e026" title="料理を注文できるかどうか" alt="" coords="264,64,428,91"/>
-<area shape="poly" title=" " alt="" coords="188,59,249,65,248,70,188,64"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0a598ac1d3db87d162c5a2a2c00f736" title=" " alt="" coords="505,5,710,48"/>
-<area shape="poly" title=" " alt="" coords="457,24,490,24,490,29,457,29"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ae0bcf66ad18be218e9ae25269b5ec6a5" name="ae0bcf66ad18be218e9ae25269b5ec6a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0bcf66ad18be218e9ae25269b5ec6a5">&#9670;&#160;</a></span>SetCounterPoint()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CounterManager.SetCounterPoint </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="../../d2/d11/class_order_food_data.html">OrderFoodData</a></td>          <td class="paramname"><span class="paramname"><em>_data</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00254">254</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph" id="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_cgraph">
-<area shape="rect" title=" " alt="" coords="5,35,193,77"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03" title=" " alt="" coords="251,5,442,48"/>
-<area shape="poly" title=" " alt="" coords="193,42,235,37,235,42,193,48"/>
-<area shape="rect" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e" title="座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される" alt="" coords="241,72,452,99"/>
-<area shape="poly" title=" " alt="" coords="193,64,226,68,225,74,193,70"/>
-</map>
-</div>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph.png" border="0" usemap="#adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph" id="adc/db5/class_counter_manager_ae0bcf66ad18be218e9ae25269b5ec6a5_icgraph">
-<area shape="rect" title=" " alt="" coords="453,5,640,48"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a41b086e340bf5ac5684974cad9905e68" title=" " alt="" coords="217,13,405,40"/>
-<area shape="poly" title=" " alt="" coords="437,29,405,29,405,24,437,24"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#af262aa074867c091d3a8708106246c07" title=" " alt="" coords="5,13,169,40"/>
-<area shape="poly" title=" " alt="" coords="201,29,169,29,169,24,201,24"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="af262aa074867c091d3a8708106246c07" name="af262aa074867c091d3a8708106246c07"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af262aa074867c091d3a8708106246c07">&#9670;&#160;</a></span>Update()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void CounterManager.Update </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00177">177</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph.png" border="0" usemap="#adc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph" alt=""/></div>
-<map name="adc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph" id="adc/db5/class_counter_manager_af262aa074867c091d3a8708106246c07_cgraph">
-<area shape="rect" title=" " alt="" coords="5,43,169,69"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#aa122668db8d0410f8a157eff9b79b4df" title=" " alt="" coords="217,5,425,48"/>
-<area shape="poly" title=" " alt="" coords="169,43,201,39,202,44,170,48"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a41b086e340bf5ac5684974cad9905e68" title=" " alt="" coords="227,72,415,99"/>
-<area shape="poly" title=" " alt="" coords="170,64,211,69,211,74,169,69"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#ae0bcf66ad18be218e9ae25269b5ec6a5" title=" " alt="" coords="473,64,660,107"/>
-<area shape="poly" title=" " alt="" coords="415,83,458,83,458,88,415,88"/>
-<area shape="rect" href="../../dc/db5/class_counter_manager.html#a59e6b2e08db60ac403c73c4ef1780c03" title=" " alt="" coords="718,35,910,77"/>
-<area shape="poly" title=" " alt="" coords="661,72,702,67,703,72,661,77"/>
-<area shape="rect" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e" title="座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される" alt="" coords="708,101,920,128"/>
-<area shape="poly" title=" " alt="" coords="661,94,693,98,693,103,661,99"/>
 </map>
 </div>
 
@@ -647,8 +855,6 @@ CounterManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00053">53</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a82248a6804f3f08865b489bbde8e0b77" name="a82248a6804f3f08865b489bbde8e0b77"></a>
@@ -670,8 +876,6 @@ CounterManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00060">60</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -695,13 +899,14 @@ CounterManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a> の <a class="el" href="../../d6/d34/_counter_manager_8cs_source.html#l00062">62</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="#a82248a6804f3f08865b489bbde8e0b77">m_orderFoodDataList</a>; }</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/101_Management_Common/Manager/Counter/<a class="el" href="../../d6/d34/_counter_manager_8cs_source.html">CounterManager.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/101_Management_Common/Manager/Counter/<a class="el" href="../../d6/d34/_counter_manager_8cs.html">CounterManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

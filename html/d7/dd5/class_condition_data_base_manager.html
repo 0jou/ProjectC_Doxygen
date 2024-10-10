@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -156,10 +156,7 @@ ConditionDataBaseManager 連携図</div>
 <tr class="memitem:a032625833cb6a4924ac0dd620932892d inherit pro_methods_class_base_manager" id="r_a032625833cb6a4924ac0dd620932892d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc6/class_base_manager.html#a032625833cb6a4924ac0dd620932892d">Awake</a> ()</td></tr>
 <tr class="separator:a032625833cb6a4924ac0dd620932892d inherit pro_methods_class_base_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html">ConditionDataBaseManager.cs</a> の <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ab1a44c78283d91ce2a5fff53dde20370" name="ab1a44c78283d91ce2a5fff53dde20370"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab1a44c78283d91ce2a5fff53dde20370">&#9670;&#160;</a></span>GetConditionData()</h2>
 
@@ -182,9 +179,79 @@ ConditionDataBaseManager 連携図</div>
 <dl class="section return"><dt>戻り値</dt><dd><p class="startdd">����ID�ƈ�v����ConditionData(��v���Ȃ����null��Ԃ�) </p>
 <p class="enddd"></p>
 </dd></dl>
-
-<p class="definition"> <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html">ConditionDataBaseManager.cs</a> の <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html#l00035">35</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">// �Ԃ��f�[�^</span></div>
+<div class="line"><span class="lineno">   39</span>        <a class="code hl_class" href="../../dd/d95/class_condition_data.html">ConditionData</a> data = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">foreach</span> (var list <span class="keywordflow">in</span> <a class="code hl_variable" href="#ad03099522e517b8992d16519dea24bb3">m_dataBase</a>.<a class="code hl_property" href="../../db/db6/class_condition_data_base.html#a5e889106a08f5e16acabad18981e00b5">ConditionDataBaseList</a>)</div>
+<div class="line"><span class="lineno">   43</span>        {</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span><span class="preprocessor">#if DEBUG</span></div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (!list)</div>
+<div class="line"><span class="lineno">   48</span>            {</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>                <span class="comment">// �f�[�^�x�[�X��null�łȂ����m�F����</span></div>
+<div class="line"><span class="lineno">   51</span>                <span class="keywordflow">if</span> (data != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   52</span>                {</div>
+<div class="line"><span class="lineno">   53</span>                    Debug.LogError(<span class="stringliteral">&quot;��ԃf�[�^���o�^����Ă��܂���&quot;</span>);</div>
+<div class="line"><span class="lineno">   54</span>                }</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>            }</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>            <span class="keywordflow">if</span> (list.ConditionID == _id)</div>
+<div class="line"><span class="lineno">   62</span>            {</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>                <span class="comment">// �f�o�b�O����ID������Ă��Ȃ����m�F����</span></div>
+<div class="line"><span class="lineno">   65</span>                <span class="keywordflow">if</span> (data != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   66</span>                {</div>
+<div class="line"><span class="lineno">   67</span>                    Debug.LogError(<span class="stringliteral">&quot;ID��2���݂��܂��B�m�F���Ă�������&quot;</span>);</div>
+<div class="line"><span class="lineno">   68</span>                }</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>                data = list;</div>
+<div class="line"><span class="lineno">   71</span> </div>
+<div class="line"><span class="lineno">   72</span>            }</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span><span class="preprocessor">#else</span></div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span> </div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">if</span> (!list)</div>
+<div class="line"><span class="lineno">   79</span>            {</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>            }</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>            <span class="comment">// ��v�����</span></div>
+<div class="line"><span class="lineno">   86</span>            <span class="keywordflow">if</span> (list.ConditionID == _id)</div>
+<div class="line"><span class="lineno">   87</span>            {</div>
+<div class="line"><span class="lineno">   88</span>                data = list;</div>
+<div class="line"><span class="lineno">   89</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   90</span>            }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        }</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span> </div>
+<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   98</span>        {</div>
+<div class="line"><span class="lineno">   99</span>            Debug.LogError(_id + <span class="stringliteral">&quot; ����ID�̏�Ԃ͑��݂��܂���B�o�^�ł��Ă��邩�m�F���Ă�������&quot;</span>);</div>
+<div class="line"><span class="lineno">  100</span>        }</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>        <span class="keywordflow">return</span> data;</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>    }</div>
+<div class="ttc" id="aclass_condition_data_base_html_a5e889106a08f5e16acabad18981e00b5"><div class="ttname"><a href="../../db/db6/class_condition_data_base.html#a5e889106a08f5e16acabad18981e00b5">ConditionDataBase.ConditionDataBaseList</a></div><div class="ttdeci">List&lt; ConditionData &gt; ConditionDataBaseList</div><div class="ttdoc">状態のデータベースリストを返す、読み取り専用プロパティ</div><div class="ttdef"><b>Definition</b> ConditionDataBase.cs:28</div></div>
+<div class="ttc" id="aclass_condition_data_base_manager_html_ad03099522e517b8992d16519dea24bb3"><div class="ttname"><a href="#ad03099522e517b8992d16519dea24bb3">ConditionDataBaseManager.m_dataBase</a></div><div class="ttdeci">ConditionDataBase m_dataBase</div><div class="ttdef"><b>Definition</b> ConditionDataBaseManager.cs:12</div></div>
+<div class="ttc" id="aclass_condition_data_html"><div class="ttname"><a href="../../dd/d95/class_condition_data.html">ConditionData</a></div><div class="ttdef"><b>Definition</b> ConditionData.cs:9</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -208,8 +275,6 @@ ConditionDataBaseManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html">ConditionDataBaseManager.cs</a> の <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <h2 class="groupheader">プロパティ詳解</h2>
@@ -232,13 +297,12 @@ ConditionDataBaseManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html">ConditionDataBaseManager.cs</a> の <a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   15</span>{ <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="#ad03099522e517b8992d16519dea24bb3">m_dataBase</a>; } }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/006_Condition/Manager/<a class="el" href="../../da/d40/_condition_data_base_manager_8cs_source.html">ConditionDataBaseManager.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/006_Condition/Manager/<a class="el" href="../../da/d40/_condition_data_base_manager_8cs.html">ConditionDataBaseManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

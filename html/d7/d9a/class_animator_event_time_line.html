@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -133,10 +133,7 @@ AnimatorEventTimeLine 連携図</div>
 <tr class="memitem:a7b72420b22487a9df4841efe548947e4" id="r_a7b72420b22487a9df4841efe548947e4"><td class="memItemLeft" align="right" valign="top">TimelineAsset&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7b72420b22487a9df4841efe548947e4">timeline</a></td></tr>
 <tr class="separator:a7b72420b22487a9df4841efe548947e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html">AnimatorEventTimeLine.cs</a> の <a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html#l00009">9</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a28c9298e7756a60624a594a91b4d58a6" name="a28c9298e7756a60624a594a91b4d58a6"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28c9298e7756a60624a594a91b4d58a6">&#9670;&#160;</a></span>OnEvent()</h2>
 
@@ -151,9 +148,42 @@ AnimatorEventTimeLine 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html">AnimatorEventTimeLine.cs</a> の <a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   15</span>    {</div>
+<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a7b72420b22487a9df4841efe548947e4">timeline</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   17</span>        {</div>
+<div class="line"><span class="lineno">   18</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   19</span>        }</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>        <span class="comment">//if (animator.transform.root.TryGetComponent(out ShareNodes nodes))</span></div>
+<div class="line"><span class="lineno">   22</span>        <span class="comment">//{</span></div>
+<div class="line"><span class="lineno">   23</span>        <span class="comment">//    if (nodes.Nodes.TryGetValue(m_parent, out Transform parent))</span></div>
+<div class="line"><span class="lineno">   24</span>        <span class="comment">//    {</span></div>
+<div class="line"><span class="lineno">   25</span>        <span class="comment">//        m_createdInstance = GameObject.Instantiate(m_object, parent);</span></div>
+<div class="line"><span class="lineno">   26</span>        <span class="comment">//    }</span></div>
+<div class="line"><span class="lineno">   27</span>        <span class="comment">//    else</span></div>
+<div class="line"><span class="lineno">   28</span>        <span class="comment">//    {</span></div>
+<div class="line"><span class="lineno">   29</span>        <span class="comment">//        Debug.LogError(&quot;攻撃当たり判定の親オブジェクトが見つかりませんでした。&quot; +</span></div>
+<div class="line"><span class="lineno">   30</span>        <span class="comment">//            &quot;登録名が間違っているか、ShareNodeに追加されていません。&quot;);</span></div>
+<div class="line"><span class="lineno">   31</span>        <span class="comment">//    }</span></div>
+<div class="line"><span class="lineno">   32</span>        <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">   33</span>        <span class="comment">//else Debug.LogError(&quot;ShareNodesコンポーネントが見つかりませんでした&quot;);</span></div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">if</span> (animator.transform.TryGetComponent(out PlayableDirector director))</div>
+<div class="line"><span class="lineno">   37</span>        {</div>
+<div class="line"><span class="lineno">   38</span>            <span class="comment">//指定したタイムラインを再生</span></div>
+<div class="line"><span class="lineno">   39</span>            director.Play(<a class="code hl_variable" href="#a7b72420b22487a9df4841efe548947e4">timeline</a>);</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>        }</div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   43</span>        {</div>
+<div class="line"><span class="lineno">   44</span>            Debug.LogError(<span class="stringliteral">&quot;PlayableDirectorコンポーネントが見つかりませんでした&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>    }</div>
+<div class="ttc" id="aclass_animator_event_time_line_html_a7b72420b22487a9df4841efe548947e4"><div class="ttname"><a href="#a7b72420b22487a9df4841efe548947e4">AnimatorEventTimeLine.timeline</a></div><div class="ttdeci">TimelineAsset timeline</div><div class="ttdef"><b>Definition</b> AnimatorEventTimeLine.cs:12</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -177,12 +207,10 @@ AnimatorEventTimeLine 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html">AnimatorEventTimeLine.cs</a> の <a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/AnimatorEvent/<a class="el" href="../../d0/d64/_animator_event_time_line_8cs_source.html">AnimatorEventTimeLine.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/AnimatorEvent/<a class="el" href="../../d0/d64/_animator_event_time_line_8cs.html">AnimatorEventTimeLine.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -2,8 +2,7 @@
 \hypertarget{class_storehouse_window}{}\label{class_storehouse_window}\index{StorehouseWindow@{StorehouseWindow}}
 
 
-Storehouse\+Window の継承関係図
-\nopagebreak
+Storehouse\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Storehouse\+Window の継承関係図
 \end{figure}
 
 
-Storehouse\+Window 連携図
-\nopagebreak
+Storehouse\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -124,13 +122,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_storehouse_window_8cs_source}{Storehouse\+Window.\+cs}} の \mbox{\hyperlink{_storehouse_window_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_storehouse_window_a06d13a6816401149455785b1de7b8c9e}\index{StorehouseWindow@{StorehouseWindow}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!StorehouseWindow@{StorehouseWindow}}
@@ -143,11 +134,45 @@ override async Uni\+Task Storehouse\+Window.\+On\+Initialize (\begin{DoxyParamCa
 \mbox{\hyperlink{class_base_window_a20cbaa0d7aa0d1224e85a0c07b88d6cf}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnInitialize();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_storehouse_window_ae3207045285af8bd8f56a22303855b87}{m\_createItemSlotList}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CreateItemSlotListコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b}{m\_changeItemSlotDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeItemSlotDescriotionコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スロット作成}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_storehouse_window_ae3207045285af8bd8f56a22303855b87}{m\_createItemSlotList}}.\mbox{\hyperlink{class_base_create_slot_list_a6059aef6a5971425788c7080bca5a4b6}{OnInitialize}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文を初期化}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b}{m\_changeItemSlotDescription}}.\mbox{\hyperlink{class_change_item_description_a372615885181314c2bf445cc29d00601}{OnInitialize}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_storehouse_window_8cs_source}{Storehouse\+Window.\+cs}} の \mbox{\hyperlink{_storehouse_window_8cs_source_l00027}{27}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -165,11 +190,66 @@ override async Uni\+Task Storehouse\+Window.\+On\+Update (\begin{DoxyParamCaptio
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_storehouse_window_a38a90d38c9f6deaac033d72d6f416021}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SlotContorollerコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b}{m\_changeItemSlotDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeItemSlotDescriptionコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームを常に停止する}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_window_a785cd5968c10a476229d1df761ccd3ae}{SetTimeScale}}(0.0f);}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIコントローラーの更新}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_storehouse_window_a38a90d38c9f6deaac033d72d6f416021}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文の更新}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b}{m\_changeItemSlotDescription}}.\mbox{\hyperlink{class_change_item_description_add800bb5c8e841af0e1e9365272e371e}{OnUpdate}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Select"{}})\ ||}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIコントローラーの後処理}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_storehouse_window_a38a90d38c9f6deaac033d72d6f416021}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_storehouse_window_8cs_source}{Storehouse\+Window.\+cs}} の \mbox{\hyperlink{_storehouse_window_8cs_source_l00065}{65}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -179,35 +259,23 @@ override async Uni\+Task Storehouse\+Window.\+On\+Update (\begin{DoxyParamCaptio
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b}\index{StorehouseWindow@{StorehouseWindow}!m\_changeItemSlotDescription@{m\_changeItemSlotDescription}}
-\index{m\_changeItemSlotDescription@{m\_changeItemSlotDescription}!StorehouseWindow@{StorehouseWindow}}
-\doxysubsubsection{\texorpdfstring{m\_changeItemSlotDescription}{m\_changeItemSlotDescription}}
-{\footnotesize\ttfamily \label{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b} 
-\mbox{\hyperlink{class_change_item_description}{Change\+Item\+Description}} Storehouse\+Window.\+m\+\_\+change\+Item\+Slot\+Description = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_storehouse_window_8cs_source}{Storehouse\+Window.\+cs}} の \mbox{\hyperlink{_storehouse_window_8cs_source_l00019}{19}} 行目に定義があります。
-
 \Hypertarget{class_storehouse_window_ae3207045285af8bd8f56a22303855b87}\index{StorehouseWindow@{StorehouseWindow}!m\_createItemSlotList@{m\_createItemSlotList}}
 \index{m\_createItemSlotList@{m\_createItemSlotList}!StorehouseWindow@{StorehouseWindow}}
 \doxysubsubsection{\texorpdfstring{m\_createItemSlotList}{m\_createItemSlotList}}
 {\footnotesize\ttfamily \label{class_storehouse_window_ae3207045285af8bd8f56a22303855b87} 
 \mbox{\hyperlink{class_create_item_slot_list}{Create\+Item\+Slot\+List}} Storehouse\+Window.\+m\+\_\+create\+Item\+Slot\+List = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_storehouse_window_8cs_source}{Storehouse\+Window.\+cs}} の \mbox{\hyperlink{_storehouse_window_8cs_source_l00014}{14}} 行目に定義があります。
+\Hypertarget{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b}\index{StorehouseWindow@{StorehouseWindow}!m\_changeItemSlotDescription@{m\_changeItemSlotDescription}}
+\index{m\_changeItemSlotDescription@{m\_changeItemSlotDescription}!StorehouseWindow@{StorehouseWindow}}
+\doxysubsubsection{\texorpdfstring{m\_changeItemSlotDescription}{m\_changeItemSlotDescription}}
+{\footnotesize\ttfamily \label{class_storehouse_window_a622134515a78a2d4f41106bbbdee0b1b} 
+\mbox{\hyperlink{class_change_item_description}{Change\+Item\+Description}} Storehouse\+Window.\+m\+\_\+change\+Item\+Slot\+Description = null\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_storehouse_window_a38a90d38c9f6deaac033d72d6f416021}\index{StorehouseWindow@{StorehouseWindow}!m\_selectUIController@{m\_selectUIController}}
 \index{m\_selectUIController@{m\_selectUIController}!StorehouseWindow@{StorehouseWindow}}
 \doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
 {\footnotesize\ttfamily \label{class_storehouse_window_a38a90d38c9f6deaac033d72d6f416021} 
 \mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Storehouse\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_storehouse_window_8cs_source}{Storehouse\+Window.\+cs}} の \mbox{\hyperlink{_storehouse_window_8cs_source_l00024}{24}} 行目に定義があります。
 
 
 

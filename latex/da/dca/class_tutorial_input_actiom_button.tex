@@ -2,8 +2,7 @@
 \hypertarget{class_tutorial_input_actiom_button}{}\label{class_tutorial_input_actiom_button}\index{TutorialInputActiomButton@{TutorialInputActiomButton}}
 
 
-Tutorial\+Input\+Actiom\+Button の継承関係図
-\nopagebreak
+Tutorial\+Input\+Actiom\+Button の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Tutorial\+Input\+Actiom\+Button の継承関係図
 \end{figure}
 
 
-Tutorial\+Input\+Actiom\+Button 連携図
-\nopagebreak
+Tutorial\+Input\+Actiom\+Button 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -56,13 +54,6 @@ Image \mbox{\hyperlink{class_input_action_button_a32ba2dd30ca9c2b7fcb0f94a00cc9d
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source}{Tutorial\+Input\+Actiom\+Button.\+cs}} の \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source_l00005}{5}} 行目に定義があります。
-
-
-
 \doxysubsection{列挙型メンバ詳解}
 \Hypertarget{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735a}\index{TutorialInputActiomButton@{TutorialInputActiomButton}!TutorialButtonType@{TutorialButtonType}}
 \index{TutorialButtonType@{TutorialButtonType}!TutorialInputActiomButton@{TutorialInputActiomButton}}
@@ -85,9 +76,14 @@ Close&\\
 
 \end{DoxyEnumFields}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735aa10ac3d04253ef7e1ddc73e6091c0cd55}{Next}},}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735aa0557fa923dcee4d0f86b1409f5c2167f}{Back}},}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735aad3d2e617335f08df83599665eef8a418}{Close}},}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source}{Tutorial\+Input\+Actiom\+Button.\+cs}} の \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source_l00016}{16}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{メソッド詳解}
@@ -102,11 +98,40 @@ override bool Tutorial\+Input\+Actiom\+Button.\+Is\+Press (\begin{DoxyParamCapti
 \mbox{\hyperlink{class_input_action_button_ab1c29386a568174cbcb4eaf2d498bb9c}{Input\+Action\+Button}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_tutorial_input_actiom_button_a5d830e43ae4a190cb3e81b297c692a4e}{m\_selectTutorialController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectTutorialControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\mbox{\hyperlink{class_tutorial_input_actiom_button_a538532184e79ac47fcfb6fffbfd06f83}{m\_tutorialButtonType}})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735a}{TutorialButtonType}}.Next:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_tutorial_input_actiom_button_a5d830e43ae4a190cb3e81b297c692a4e}{m\_selectTutorialController}}.\mbox{\hyperlink{class_select_tutorial_controller_a14602479ed648e5d9def94081b36c53f}{IsGoNext}}();}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735a}{TutorialButtonType}}.Back:}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_tutorial_input_actiom_button_a5d830e43ae4a190cb3e81b297c692a4e}{m\_selectTutorialController}}.\mbox{\hyperlink{class_select_tutorial_controller_a36eeb39e4faa1e364a741b0eac581718}{IsGoBack}}();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735a}{TutorialButtonType}}.Close:}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_tutorial_input_actiom_button_a5d830e43ae4a190cb3e81b297c692a4e}{m\_selectTutorialController}}.\mbox{\hyperlink{class_select_tutorial_controller_a0f0df433ca461a537f40bd87534508a5}{IsGoClose}}();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source}{Tutorial\+Input\+Actiom\+Button.\+cs}} の \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source_l00032}{32}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -122,19 +147,11 @@ override bool Tutorial\+Input\+Actiom\+Button.\+Is\+Press (\begin{DoxyParamCapti
 {\footnotesize\ttfamily \label{class_tutorial_input_actiom_button_a5d830e43ae4a190cb3e81b297c692a4e} 
 \mbox{\hyperlink{class_select_tutorial_controller}{Select\+Tutorial\+Controller}} Tutorial\+Input\+Actiom\+Button.\+m\+\_\+select\+Tutorial\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source}{Tutorial\+Input\+Actiom\+Button.\+cs}} の \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source_l00014}{14}} 行目に定義があります。
-
 \Hypertarget{class_tutorial_input_actiom_button_a538532184e79ac47fcfb6fffbfd06f83}\index{TutorialInputActiomButton@{TutorialInputActiomButton}!m\_tutorialButtonType@{m\_tutorialButtonType}}
 \index{m\_tutorialButtonType@{m\_tutorialButtonType}!TutorialInputActiomButton@{TutorialInputActiomButton}}
 \doxysubsubsection{\texorpdfstring{m\_tutorialButtonType}{m\_tutorialButtonType}}
 {\footnotesize\ttfamily \label{class_tutorial_input_actiom_button_a538532184e79ac47fcfb6fffbfd06f83} 
 \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735a}{Tutorial\+Button\+Type}} Tutorial\+Input\+Actiom\+Button.\+m\+\_\+tutorial\+Button\+Type = \mbox{\hyperlink{class_tutorial_input_actiom_button_a051844e80c34e5f6714ddd785065735aa10ac3d04253ef7e1ddc73e6091c0cd55}{Tutorial\+Button\+Type.\+Next}}\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source}{Tutorial\+Input\+Actiom\+Button.\+cs}} の \mbox{\hyperlink{_tutorial_input_actiom_button_8cs_source_l00025}{25}} 行目に定義があります。
 
 
 

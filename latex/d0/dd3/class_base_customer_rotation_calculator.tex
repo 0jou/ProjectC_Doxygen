@@ -50,13 +50,6 @@ Output\+Slot\+Vector3 \mbox{\hyperlink{class_base_customer_calculator_addba77a54
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source}{Base\+Customer\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_base_customer_rotation_calculator_af73551e6a05b844577ffa65ea65bc17e}\index{BaseCustomerRotationCalculator@{BaseCustomerRotationCalculator}!GetTargetPosition@{GetTargetPosition}}
 \index{GetTargetPosition@{GetTargetPosition}!BaseCustomerRotationCalculator@{BaseCustomerRotationCalculator}}
@@ -69,9 +62,12 @@ virtual void Base\+Customer\+Rotation\+Calculator.\+Get\+Target\+Position (\begi
 \mbox{\hyperlink{class_calc_rotate_queue_head_customer_ae50db68e586516bee6f19ecf2bab8be7}{Calc\+Rotate\+Queue\+Head\+Customer}}, \mbox{\hyperlink{class_calc_rotate_target_table_customer_a985e6f3b1ceef0d197be256382f80870}{Calc\+Rotate\+Target\+Table\+Customer}}で再実装されています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}オーバーライドして書き換えてください"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source}{Base\+Customer\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -86,9 +82,29 @@ virtual void Base\+Customer\+Rotation\+Calculator.\+Get\+Target\+Position (\begi
 override void Base\+Customer\+Rotation\+Calculator.\+On\+Calculate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ var\ obj\ =\ \mbox{\hyperlink{class_base_customer_calculator_ac58b385491c523655f6ea843a812cc33}{GetRootGameObject}}();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ var\ pos\ =\ obj.transform.position;}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ var\ targetPos\ =\ obj.transform.position;}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_rotation_calculator_af73551e6a05b844577ffa65ea65bc17e}{GetTargetPosition}}(ref\ targetPos);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 角度}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetPos\ -\/\ pos;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ dir.y\ =\ 0.0f;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ dir.Normalize();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ pos\ =\ pos\ +\ (dir\ *\ \mbox{\hyperlink{class_base_customer_rotation_calculator_a49d5f985b63d0a47880d771f47bf0396}{m\_moveDistance}});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_calculator_addba77a541765a540418e9eea35f7754}{m\_outputPos}}.SetValue(pos);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source}{Base\+Customer\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source_l00026}{26}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -104,10 +120,6 @@ override void Base\+Customer\+Rotation\+Calculator.\+On\+Calculate (\begin{DoxyP
 \doxysubsubsection{\texorpdfstring{m\_moveDistance}{m\_moveDistance}}
 {\footnotesize\ttfamily \label{class_base_customer_rotation_calculator_a49d5f985b63d0a47880d771f47bf0396} 
 float Base\+Customer\+Rotation\+Calculator.\+m\+\_\+move\+Distance = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source}{Base\+Customer\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_customer_rotation_calculator_8cs_source_l00016}{16}} 行目に定義があります。
 
 
 

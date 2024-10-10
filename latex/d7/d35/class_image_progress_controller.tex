@@ -51,24 +51,79 @@ float \mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1df
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311}\index{ImageProgressController@{ImageProgressController}!SetProgress@{SetProgress}}
+\Hypertarget{class_image_progress_controller_aeda49fe713ee2904d6d038d38c005148}\index{ImageProgressController@{ImageProgressController}!Start@{Start}}
+\index{Start@{Start}!ImageProgressController@{ImageProgressController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_image_progress_controller_aeda49fe713ee2904d6d038d38c005148} 
+void Image\+Progress\+Controller.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}}\ =\ 0.0f;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4}{m\_textures}}.Length\ ==\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}{m\_visualEffect}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}{m\_visualEffect}}.SetFloat(\textcolor{stringliteral}{"{}Progress"{}},\ \mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}{m\_visualEffect}}.SetTexture(\textcolor{stringliteral}{"{}MainTex"{}},\ \mbox{\hyperlink{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4}{m\_textures}}[0]);}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_image_progress_controller_a7e32e087bc463d5c7f3c5ace60b661d9}\index{ImageProgressController@{ImageProgressController}!Update@{Update}}
+\index{Update@{Update}!ImageProgressController@{ImageProgressController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_image_progress_controller_a7e32e087bc463d5c7f3c5ace60b661d9} 
+void Image\+Progress\+Controller.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311}{SetProgress}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d35/class_image_progress_controller_a7e32e087bc463d5c7f3c5ace60b661d9_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_image_progress_controller_ae6d66846c4ad4d33539bded45f1f7314}\index{ImageProgressController@{ImageProgressController}!SetProgress@{SetProgress}}
 \index{SetProgress@{SetProgress}!ImageProgressController@{ImageProgressController}}
 \doxysubsubsection{\texorpdfstring{SetProgress()}{SetProgress()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_image_progress_controller_ae6d66846c4ad4d33539bded45f1f7314} 
+void Image\+Progress\+Controller.\+Set\+Progress (\begin{DoxyParamCaption}\item[{float}]{new\+Progress}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}{m\_visualEffect}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}}\ =\ Mathf.Clamp01(newProgress);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ imageIndex\ =\ Mathf.FloorToInt(\mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}}\ *\ \mbox{\hyperlink{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4}{m\_textures}}.Length);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (imageIndex\ >=\ 0\ \&\&\ imageIndex\ <\ \mbox{\hyperlink{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4}{m\_textures}}.Length)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}{m\_visualEffect}}.SetTexture(\textcolor{stringliteral}{"{}MainTex"{}},\ \mbox{\hyperlink{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4}{m\_textures}}[imageIndex]);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}{m\_visualEffect}}.SetFloat(\textcolor{stringliteral}{"{}Progress"{}},\ \mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}});}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311}\index{ImageProgressController@{ImageProgressController}!SetProgress@{SetProgress}}
+\index{SetProgress@{SetProgress}!ImageProgressController@{ImageProgressController}}
+\doxysubsubsection{\texorpdfstring{SetProgress()}{SetProgress()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
 {\footnotesize\ttfamily \label{class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311} 
 void Image\+Progress\+Controller.\+Set\+Progress (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311}{SetProgress}}(\mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}});}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00051}{51}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -83,65 +138,14 @@ void Image\+Progress\+Controller.\+Set\+Progress (\begin{DoxyParamCaption}{}{}\e
 \includegraphics[width=350pt]{d7/d35/class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_image_progress_controller_ae6d66846c4ad4d33539bded45f1f7314}\index{ImageProgressController@{ImageProgressController}!SetProgress@{SetProgress}}
-\index{SetProgress@{SetProgress}!ImageProgressController@{ImageProgressController}}
-\doxysubsubsection{\texorpdfstring{SetProgress()}{SetProgress()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
-{\footnotesize\ttfamily \label{class_image_progress_controller_ae6d66846c4ad4d33539bded45f1f7314} 
-void Image\+Progress\+Controller.\+Set\+Progress (\begin{DoxyParamCaption}\item[{float}]{new\+Progress}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00037}{37}} 行目に定義があります。
-
-\Hypertarget{class_image_progress_controller_aeda49fe713ee2904d6d038d38c005148}\index{ImageProgressController@{ImageProgressController}!Start@{Start}}
-\index{Start@{Start}!ImageProgressController@{ImageProgressController}}
-\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily \label{class_image_progress_controller_aeda49fe713ee2904d6d038d38c005148} 
-void Image\+Progress\+Controller.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00023}{23}} 行目に定義があります。
-
-\Hypertarget{class_image_progress_controller_a7e32e087bc463d5c7f3c5ace60b661d9}\index{ImageProgressController@{ImageProgressController}!Update@{Update}}
-\index{Update@{Update}!ImageProgressController@{ImageProgressController}}
-\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily \label{class_image_progress_controller_a7e32e087bc463d5c7f3c5ace60b661d9} 
-void Image\+Progress\+Controller.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00033}{33}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d7/d35/class_image_progress_controller_a7e32e087bc463d5c7f3c5ace60b661d9_cgraph}
-\end{center}
-\end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}\index{ImageProgressController@{ImageProgressController}!m\_progress@{m\_progress}}
-\index{m\_progress@{m\_progress}!ImageProgressController@{ImageProgressController}}
-\doxysubsubsection{\texorpdfstring{m\_progress}{m\_progress}}
-{\footnotesize\ttfamily \label{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4} 
-float Image\+Progress\+Controller.\+m\+\_\+progress = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00016}{16}} 行目に定義があります。
-
 \Hypertarget{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4}\index{ImageProgressController@{ImageProgressController}!m\_textures@{m\_textures}}
 \index{m\_textures@{m\_textures}!ImageProgressController@{ImageProgressController}}
 \doxysubsubsection{\texorpdfstring{m\_textures}{m\_textures}}
 {\footnotesize\ttfamily \label{class_image_progress_controller_a0a9bc330f96fd1ac59125836e49a11c4} 
 Texture2D \mbox{[}$\,$\mbox{]} Image\+Progress\+Controller.\+m\+\_\+textures\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00010}{10}} 行目に定義があります。
 
 \Hypertarget{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d}\index{ImageProgressController@{ImageProgressController}!m\_visualEffect@{m\_visualEffect}}
 \index{m\_visualEffect@{m\_visualEffect}!ImageProgressController@{ImageProgressController}}
@@ -149,9 +153,11 @@ Texture2D \mbox{[}$\,$\mbox{]} Image\+Progress\+Controller.\+m\+\_\+textures\hsp
 {\footnotesize\ttfamily \label{class_image_progress_controller_a96055dab4f0292a207334fcc3f93191d} 
 Visual\+Effect Image\+Progress\+Controller.\+m\+\_\+visual\+Effect}
 
-
-
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00013}{13}} 行目に定義があります。
+\Hypertarget{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}\index{ImageProgressController@{ImageProgressController}!m\_progress@{m\_progress}}
+\index{m\_progress@{m\_progress}!ImageProgressController@{ImageProgressController}}
+\doxysubsubsection{\texorpdfstring{m\_progress}{m\_progress}}
+{\footnotesize\ttfamily \label{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4} 
+float Image\+Progress\+Controller.\+m\+\_\+progress = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -163,9 +169,13 @@ Visual\+Effect Image\+Progress\+Controller.\+m\+\_\+visual\+Effect}
 float Image\+Progress\+Controller.\+Progress\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_image_progress_controller_ae693bcf4c36d1a3eb351c1dfee98c2e4}{m\_progress}};\ \}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_image_progress_controller_ac1b3c7318f02d6bfa5e8049ff53d2311}{SetProgress}}(value);\ \}}
+\DoxyCodeLine{00021\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_image_progress_controller_8cs_source}{Image\+Progress\+Controller.\+cs}} の \mbox{\hyperlink{_image_progress_controller_8cs_source_l00018}{18}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

@@ -36,13 +36,6 @@ Game\+Object \mbox{\hyperlink{class_create_pop_up_window_ab396384e3b8a6b9556270f
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_create_pop_up_window_8cs_source}{Create\+Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_create_pop_up_window_8cs_source_l00006}{6}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_create_pop_up_window_a88ca929b76bbb818ff392051923cfae9}\index{CreatePopUpWindow@{CreatePopUpWindow}!Create@{Create}}
 \index{Create@{Create}!CreatePopUpWindow@{CreatePopUpWindow}}
@@ -51,9 +44,33 @@ Game\+Object \mbox{\hyperlink{class_create_pop_up_window_ab396384e3b8a6b9556270f
 async Uni\+Task Create\+Pop\+Up\+Window.\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_pop_up_window_a4ae01e435622c8b7965bce82c732c0a1}{m\_popUpWindow}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ウィンドウがシリアライズされていません"{}});}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013}{m\_createWindow}}\ =\ Instantiate(\mbox{\hyperlink{class_create_pop_up_window_a4ae01e435622c8b7965bce82c732c0a1}{m\_popUpWindow}});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ var\ controller\ =\ \mbox{\hyperlink{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013}{m\_createWindow}}.GetComponent<\mbox{\hyperlink{class_window_controller}{WindowController}}>();}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (controller\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ await\ controller.CreateWindow<\mbox{\hyperlink{class_base_window}{BaseWindow}}>();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除する}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013}{m\_createWindow}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013}{m\_createWindow}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_pop_up_window_8cs_source}{Create\+Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_create_pop_up_window_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -68,9 +85,12 @@ async Uni\+Task Create\+Pop\+Up\+Window.\+Create (\begin{DoxyParamCaption}{}{}\e
 void Create\+Pop\+Up\+Window.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_create_pop_up_window_a88ca929b76bbb818ff392051923cfae9}{Create}}().Forget();}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_pop_up_window_8cs_source}{Create\+Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_create_pop_up_window_8cs_source_l00046}{46}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -85,31 +105,26 @@ void Create\+Pop\+Up\+Window.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParam
 void Create\+Pop\+Up\+Window.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_pop_up_window_8cs_source}{Create\+Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_create_pop_up_window_8cs_source_l00052}{52}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013}\index{CreatePopUpWindow@{CreatePopUpWindow}!m\_createWindow@{m\_createWindow}}
-\index{m\_createWindow@{m\_createWindow}!CreatePopUpWindow@{CreatePopUpWindow}}
-\doxysubsubsection{\texorpdfstring{m\_createWindow}{m\_createWindow}}
-{\footnotesize\ttfamily \label{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013} 
-Game\+Object Create\+Pop\+Up\+Window.\+m\+\_\+create\+Window = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_create_pop_up_window_8cs_source}{Create\+Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_create_pop_up_window_8cs_source_l00017}{17}} 行目に定義があります。
-
 \Hypertarget{class_create_pop_up_window_a4ae01e435622c8b7965bce82c732c0a1}\index{CreatePopUpWindow@{CreatePopUpWindow}!m\_popUpWindow@{m\_popUpWindow}}
 \index{m\_popUpWindow@{m\_popUpWindow}!CreatePopUpWindow@{CreatePopUpWindow}}
 \doxysubsubsection{\texorpdfstring{m\_popUpWindow}{m\_popUpWindow}}
 {\footnotesize\ttfamily \label{class_create_pop_up_window_a4ae01e435622c8b7965bce82c732c0a1} 
 Game\+Object Create\+Pop\+Up\+Window.\+m\+\_\+pop\+Up\+Window = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_create_pop_up_window_8cs_source}{Create\+Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_create_pop_up_window_8cs_source_l00013}{13}} 行目に定義があります。
+\Hypertarget{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013}\index{CreatePopUpWindow@{CreatePopUpWindow}!m\_createWindow@{m\_createWindow}}
+\index{m\_createWindow@{m\_createWindow}!CreatePopUpWindow@{CreatePopUpWindow}}
+\doxysubsubsection{\texorpdfstring{m\_createWindow}{m\_createWindow}}
+{\footnotesize\ttfamily \label{class_create_pop_up_window_ab396384e3b8a6b9556270f8875042013} 
+Game\+Object Create\+Pop\+Up\+Window.\+m\+\_\+create\+Window = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

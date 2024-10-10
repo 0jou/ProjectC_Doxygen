@@ -34,13 +34,6 @@ Game\+Object \mbox{\hyperlink{class_emotion_base_afd0789c7a766e6f1df09f4600f421b
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_emotion_base_8cs_source}{Emotion\+Base.\+cs}} の \mbox{\hyperlink{_emotion_base_8cs_source_l00011}{11}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_emotion_base_ae52d69dc1a0b72bb7eabc8e46d2d4e8f}\index{EmotionBase@{EmotionBase}!PopupEmotion@{PopupEmotion}}
 \index{PopupEmotion@{PopupEmotion}!EmotionBase@{EmotionBase}}
@@ -49,9 +42,26 @@ Game\+Object \mbox{\hyperlink{class_emotion_base_afd0789c7a766e6f1df09f4600f421b
 async Uni\+Task$<$ Game\+Object $>$ Emotion\+Base.\+Popup\+Emotion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_emotion_base_afd0789c7a766e6f1df09f4600f421b0d}{Parent}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ var\ handle\ =\ Addressables.LoadAssetAsync<GameObject>(\mbox{\hyperlink{class_emotion_base_a6457020ec801aedcfb0cd397e0228bb6}{Emotion}});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ await\ handle;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_emotion_base_afd0789c7a766e6f1df09f4600f421b0d}{Parent}})\ \{\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};\ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ var\ obj\ =\ Instantiate(handle.Result,\ \mbox{\hyperlink{class_emotion_base_afd0789c7a766e6f1df09f4600f421b0d}{Parent}}.transform);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ obj.OnDestroyAsObservable().Subscribe(\_\ =>}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ Addressables.Release(handle);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ obj;}
+\DoxyCodeLine{00033\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_emotion_base_8cs_source}{Emotion\+Base.\+cs}} の \mbox{\hyperlink{_emotion_base_8cs_source_l00016}{16}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -66,9 +76,13 @@ async Uni\+Task$<$ Game\+Object $>$ Emotion\+Base.\+Popup\+Emotion (\begin{DoxyP
 async void Emotion\+Base.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ await\ UniTask.Delay(500);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_emotion_base_ae52d69dc1a0b72bb7eabc8e46d2d4e8f}{PopupEmotion}}();}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_emotion_base_8cs_source}{Emotion\+Base.\+cs}} の \mbox{\hyperlink{_emotion_base_8cs_source_l00036}{36}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -86,9 +100,10 @@ async void Emotion\+Base.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 string Emotion\+Base.\+Emotion\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
 
- \mbox{\hyperlink{_emotion_base_8cs_source}{Emotion\+Base.\+cs}} の \mbox{\hyperlink{_emotion_base_8cs_source_l00013}{13}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_emotion_base_afd0789c7a766e6f1df09f4600f421b0d}\index{EmotionBase@{EmotionBase}!Parent@{Parent}}
 \index{Parent@{Parent}!EmotionBase@{EmotionBase}}
 \doxysubsubsection{\texorpdfstring{Parent}{Parent}}
@@ -96,9 +111,10 @@ string Emotion\+Base.\+Emotion\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}
 Game\+Object Emotion\+Base.\+Parent\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}}
 
- \mbox{\hyperlink{_emotion_base_8cs_source}{Emotion\+Base.\+cs}} の \mbox{\hyperlink{_emotion_base_8cs_source_l00014}{14}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -150,10 +150,7 @@ CharacterCore.ActionState_UnSheathWeapon.ActionState_ProximityCreateWindow 連�
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00705">705</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a3063345982a3c24d453fc3d93df33234" name="a3063345982a3c24d453fc3d93df33234"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3063345982a3c24d453fc3d93df33234">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -178,9 +175,19 @@ CharacterCore.ActionState_UnSheathWeapon.ActionState_ProximityCreateWindow 連�
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00707">707</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  708</span>            {</div>
+<div class="line"><span class="lineno">  709</span>                base.OnEnter();</div>
+<div class="line"><span class="lineno">  710</span>                <span class="keywordflow">foreach</span> (var obj <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;ProximityCreateWindow&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">  711</span>                {</div>
+<div class="line"><span class="lineno">  712</span>                    <span class="keywordflow">if</span> (obj.IsCreate == <span class="keyword">true</span>)</div>
+<div class="line"><span class="lineno">  713</span>                    {</div>
+<div class="line"><span class="lineno">  714</span>                        obj.CreateWindow();</div>
+<div class="line"><span class="lineno">  715</span>                    }</div>
+<div class="line"><span class="lineno">  716</span>                }</div>
+<div class="line"><span class="lineno">  717</span>            }</div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> MetaAI.cs:12</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a5538533e130a7a180b806f1937f65447"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">IMetaAI.ObjectList</a></div><div class="ttdeci">HashSet&lt; T &gt; ObjectList</div><div class="ttdef"><b>Definition</b> MetaAI.cs:16</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a9b405cdd25b5110d1fc1185bba7cc988" name="a9b405cdd25b5110d1fc1185bba7cc988"></a>
@@ -207,13 +214,20 @@ CharacterCore.ActionState_UnSheathWeapon.ActionState_ProximityCreateWindow 連�
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00718">718</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  719</span>            {</div>
+<div class="line"><span class="lineno">  720</span>                <span class="comment">//foreach (var obj in IMetaAI&lt;ProximityCreateWindow&gt;.Instance.ObjectList)</span></div>
+<div class="line"><span class="lineno">  721</span>                <span class="comment">//{</span></div>
+<div class="line"><span class="lineno">  722</span>                <span class="comment">//    if (obj.IsCreate == true)</span></div>
+<div class="line"><span class="lineno">  723</span>                <span class="comment">//    {</span></div>
+<div class="line"><span class="lineno">  724</span>                <span class="comment">//        obj.CreateWindow();</span></div>
+<div class="line"><span class="lineno">  725</span>                <span class="comment">//    }</span></div>
+<div class="line"><span class="lineno">  726</span>                <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">  727</span>            }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs.html">PlayerState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

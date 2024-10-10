@@ -50,10 +50,6 @@ override void \mbox{\hyperlink{class_add_probability_event_a24dd822dadeb1f5ec77d
 \doxysubsection{詳解}
 クリーニングイベントを発生させる Add\+Probability\+Eventを継承している Arbor側で紐づけられるイベントスクリプトは\+Cleaning\+Eventにキャストできる必要がある 
 
- \mbox{\hyperlink{_add_cleaning_probability_event_8cs_source}{Add\+Cleaning\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_cleaning_probability_event_8cs_source_l00014}{14}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_add_cleaning_probability_event_a2c1e6379d19e8b11fd893b8a84e31c3e}\index{AddCleaningProbabilityEvent@{AddCleaningProbabilityEvent}!EventInitializeProcess@{EventInitializeProcess}}
 \index{EventInitializeProcess@{EventInitializeProcess}!AddCleaningProbabilityEvent@{AddCleaningProbabilityEvent}}
@@ -70,9 +66,20 @@ override void Add\+Cleaning\+Probability\+Event.\+Event\+Initialize\+Process (\b
 \mbox{\hyperlink{class_add_probability_event_a957117d94c311394b0c24491ebae3600}{Add\+Probability\+Event}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ var\ castCleaningEvent\ =\ \mbox{\hyperlink{class_add_probability_event_ad4ecb3ee4715071918e7023af840ca3f}{m\_managementEvent}}\ as\ \mbox{\hyperlink{class_generate_cleaning_event}{GenerateCleaningEvent}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (castCleaningEvent\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CleaningEventにキャストできません"{}});}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ castCleaningEvent.\mbox{\hyperlink{class_generate_cleaning_event_a39ac33feeb6ffc286554f2abec21d6f8}{SetPosition}}(gameObject.transform.root.position);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ castCleaningEvent.SetRandomRange(\mbox{\hyperlink{class_add_cleaning_probability_event_a0f6e4ad223ff00a61dcf4fb33e772b4d}{m\_randomRange}});}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_add_cleaning_probability_event_8cs_source}{Add\+Cleaning\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_cleaning_probability_event_8cs_source_l00023}{23}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -88,10 +95,6 @@ override void Add\+Cleaning\+Probability\+Event.\+Event\+Initialize\+Process (\b
 \doxysubsubsection{\texorpdfstring{m\_randomRange}{m\_randomRange}}
 {\footnotesize\ttfamily \label{class_add_cleaning_probability_event_a0f6e4ad223ff00a61dcf4fb33e772b4d} 
 float Add\+Cleaning\+Probability\+Event.\+m\+\_\+random\+Range = 0.\+3f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_add_cleaning_probability_event_8cs_source}{Add\+Cleaning\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_cleaning_probability_event_8cs_source_l00017}{17}} 行目に定義があります。
 
 
 

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -150,10 +150,7 @@ CharacterCore.ActionState_SkillBremen_Attack_Wait 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a> の <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html#l00079">79</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ae6b4f7edfc1f12a76d4b5a8db2d660fa" name="ae6b4f7edfc1f12a76d4b5a8db2d660fa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae6b4f7edfc1f12a76d4b5a8db2d660fa">&#9670;&#160;</a></span>OnUpdate()</h2>
 
@@ -178,13 +175,26 @@ CharacterCore.ActionState_SkillBremen_Attack_Wait 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#abd0a7d1992675f10146a3d2839d136fe">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a> の <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html#l00081">81</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   82</span>        {</div>
+<div class="line"><span class="lineno">   83</span>            base.OnUpdate();</div>
+<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">if</span> (Core.PlayerSkillsParameters.MinusStayStorySkillTime())</div>
+<div class="line"><span class="lineno">   85</span>            {</div>
+<div class="line"><span class="lineno">   86</span>                Core.m_animator.SetTrigger(<span class="stringliteral">&quot;Finish&quot;</span>);</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>                <span class="comment">//SetTriggerAnimatorListコンポーネントにアクセスし、その他のAnimatorにトリガーを送る</span></div>
+<div class="line"><span class="lineno">   89</span>                <span class="keywordflow">if</span> (Core.transform.TryGetComponent(out <a class="code hl_class" href="../../db/d10/class_set_trigger_in_animator_list.html">SetTriggerInAnimatorList</a> <span class="keyword">set</span>))</div>
+<div class="line"><span class="lineno">   90</span>                {</div>
+<div class="line"><span class="lineno">   91</span>                    <span class="keyword">set</span>.SetTriggerAnimatorInList(<span class="stringliteral">&quot;Finish&quot;</span>);</div>
+<div class="line"><span class="lineno">   92</span>                }</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>            }</div>
+<div class="line"><span class="lineno">   95</span>        }</div>
+<div class="ttc" id="aclass_set_trigger_in_animator_list_html"><div class="ttname"><a href="../../db/d10/class_set_trigger_in_animator_list.html">SetTriggerInAnimatorList</a></div><div class="ttdef"><b>Definition</b> SetTriggerInAnimatorList.cs:7</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/StorySkillState/<a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/StorySkillState/<a class="el" href="../../d4/d2f/_bremen_skill_state_8cs.html">BremenSkillState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

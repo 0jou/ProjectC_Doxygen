@@ -53,13 +53,6 @@ Axis\+State \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be605205
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00010}{10}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_aim_camera_controller_afdcf058944dbd86544dbe594adf77265}\index{AimCameraController@{AimCameraController}!Awake@{Awake}}
 \index{Awake@{Awake}!AimCameraController@{AimCameraController}}
@@ -68,29 +61,12 @@ Axis\+State \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be605205
 void Aim\+Camera\+Controller.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09}{m\_inputProvider}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_player_input_provider}{PlayerInputProvider}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00029}{29}} 行目に定義があります。
-
-\Hypertarget{class_aim_camera_controller_a3b21102ff5572a9859bcf49e5efb8a63}\index{AimCameraController@{AimCameraController}!OnDisable@{OnDisable}}
-\index{OnDisable@{OnDisable}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{OnDisable()}{OnDisable()}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_a3b21102ff5572a9859bcf49e5efb8a63} 
-void Aim\+Camera\+Controller.\+On\+Disable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00054}{54}} 行目に定義があります。
-
-\Hypertarget{class_aim_camera_controller_a4f7834b7ecb8ba7dca7ac8f2b28bfbb0}\index{AimCameraController@{AimCameraController}!OnEnable@{OnEnable}}
-\index{OnEnable@{OnEnable}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{OnEnable()}{OnEnable()}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_a4f7834b7ecb8ba7dca7ac8f2b28bfbb0} 
-void Aim\+Camera\+Controller.\+On\+Enable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00062}{62}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_aim_camera_controller_a07dd729cea8fb561a1e035b319c107fe}\index{AimCameraController@{AimCameraController}!Update@{Update}}
 \index{Update@{Update}!AimCameraController@{AimCameraController}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
@@ -98,21 +74,91 @@ void Aim\+Camera\+Controller.\+On\+Enable (\begin{DoxyParamCaption}{}{}\end{Doxy
 void Aim\+Camera\+Controller.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ Vector2\ inputVec\ =\textcolor{keyword}{new}(}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}{m\_cinemachineInputProvider}}.GetAxisValue(0)\ *\ -\/1.0f,\textcolor{comment}{//\ リバースしているので-\/1をかける}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}{m\_cinemachineInputProvider}}.GetAxisValue(1));}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector2\ inputVec\ =\ m\_inputProvider.ThrowAim;}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ m\_vertical.m\_InputAxisValue\ =\ inputVec.y;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ m\_horizontal.m\_InputAxisValue\ =\ inputVec.x;}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}}.Update(Time.deltaTime);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}}.Update(Time.deltaTime);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ var\ horizontalRotation\ =\ Quaternion.AngleAxis(\mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}}.Value,\ Vector3.up);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ var\ verticalRotation\ =\ Quaternion.AngleAxis(\mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}}.Value,\ Vector3.right);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ m\_horizontalTarget.rotation\ =\ horizontalRotation;}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ m\_verticalTarget.localRotation\ =\ verticalRotation;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00035}{35}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_aim_camera_controller_a3b21102ff5572a9859bcf49e5efb8a63}\index{AimCameraController@{AimCameraController}!OnDisable@{OnDisable}}
+\index{OnDisable@{OnDisable}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{OnDisable()}{OnDisable()}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_a3b21102ff5572a9859bcf49e5efb8a63} 
+void Aim\+Camera\+Controller.\+On\+Disable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ m\_verticalTarget.localRotation\ =\ Quaternion.identity;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ m\_horizontalTarget.rotation\ =\ Quaternion.identity;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ m\_vertical.Value\ =\ 0;}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ m\_horizontal.Value\ =\ 0;}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_aim_camera_controller_a4f7834b7ecb8ba7dca7ac8f2b28bfbb0}\index{AimCameraController@{AimCameraController}!OnEnable@{OnEnable}}
+\index{OnEnable@{OnEnable}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{OnEnable()}{OnEnable()}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_a4f7834b7ecb8ba7dca7ac8f2b28bfbb0} 
+void Aim\+Camera\+Controller.\+On\+Enable (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ Vector3\ angle\ =\ \mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b}{Camera}}.main.transform.localRotation.eulerAngles;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ m\_horizontalTarget.eulerAngles\ =\ \textcolor{keyword}{new}\ Vector3(0,angle.y,0);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ Vector3\ horizonVec\ =\ \mbox{\hyperlink{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2}{m\_horizontalTarget}}.rotation.eulerAngles;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ m\_horizontal.Value\ =\ horizonVec.y;}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
+\Hypertarget{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09}\index{AimCameraController@{AimCameraController}!m\_inputProvider@{m\_inputProvider}}
+\index{m\_inputProvider@{m\_inputProvider}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{m\_inputProvider}{m\_inputProvider}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09} 
+\mbox{\hyperlink{interface_i_input_provider}{IInput\+Provider}} Aim\+Camera\+Controller.\+m\+\_\+input\+Provider = null\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}\index{AimCameraController@{AimCameraController}!m\_cinemachineInputProvider@{m\_cinemachineInputProvider}}
 \index{m\_cinemachineInputProvider@{m\_cinemachineInputProvider}!AimCameraController@{AimCameraController}}
 \doxysubsubsection{\texorpdfstring{m\_cinemachineInputProvider}{m\_cinemachineInputProvider}}
 {\footnotesize\ttfamily \label{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844} 
 Cinemachine\+Input\+Provider Aim\+Camera\+Controller.\+m\+\_\+cinemachine\+Input\+Provider = null\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_aim_camera_controller_aae1fc0f10ee2177dce323fa57cc24066}\index{AimCameraController@{AimCameraController}!m\_verticalTarget@{m\_verticalTarget}}
+\index{m\_verticalTarget@{m\_verticalTarget}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{m\_verticalTarget}{m\_verticalTarget}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_aae1fc0f10ee2177dce323fa57cc24066} 
+Transform Aim\+Camera\+Controller.\+m\+\_\+vertical\+Target = null\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2}\index{AimCameraController@{AimCameraController}!m\_horizontalTarget@{m\_horizontalTarget}}
+\index{m\_horizontalTarget@{m\_horizontalTarget}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{m\_horizontalTarget}{m\_horizontalTarget}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2} 
+Transform Aim\+Camera\+Controller.\+m\+\_\+horizontal\+Target = null\hspace{0.3cm}{\ttfamily [private]}}
 
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00014}{14}} 行目に定義があります。
+\Hypertarget{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}\index{AimCameraController@{AimCameraController}!m\_vertical@{m\_vertical}}
+\index{m\_vertical@{m\_vertical}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{m\_vertical}{m\_vertical}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3} 
+Axis\+State Aim\+Camera\+Controller.\+m\+\_\+vertical\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}\index{AimCameraController@{AimCameraController}!m\_horizontal@{m\_horizontal}}
 \index{m\_horizontal@{m\_horizontal}!AimCameraController@{AimCameraController}}
@@ -122,61 +168,7 @@ Axis\+State Aim\+Camera\+Controller.\+m\+\_\+horizontal\hspace{0.3cm}{\ttfamily 
 
 
 
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00026}{26}} 行目に定義があります。
-
-\Hypertarget{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2}\index{AimCameraController@{AimCameraController}!m\_horizontalTarget@{m\_horizontalTarget}}
-\index{m\_horizontalTarget@{m\_horizontalTarget}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{m\_horizontalTarget}{m\_horizontalTarget}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2} 
-Transform Aim\+Camera\+Controller.\+m\+\_\+horizontal\+Target = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00020}{20}} 行目に定義があります。
-
-\Hypertarget{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09}\index{AimCameraController@{AimCameraController}!m\_inputProvider@{m\_inputProvider}}
-\index{m\_inputProvider@{m\_inputProvider}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{m\_inputProvider}{m\_inputProvider}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09} 
-\mbox{\hyperlink{interface_i_input_provider}{IInput\+Provider}} Aim\+Camera\+Controller.\+m\+\_\+input\+Provider = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00013}{13}} 行目に定義があります。
-
-\Hypertarget{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}\index{AimCameraController@{AimCameraController}!m\_vertical@{m\_vertical}}
-\index{m\_vertical@{m\_vertical}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{m\_vertical}{m\_vertical}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3} 
-Axis\+State Aim\+Camera\+Controller.\+m\+\_\+vertical\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00023}{23}} 行目に定義があります。
-
-\Hypertarget{class_aim_camera_controller_aae1fc0f10ee2177dce323fa57cc24066}\index{AimCameraController@{AimCameraController}!m\_verticalTarget@{m\_verticalTarget}}
-\index{m\_verticalTarget@{m\_verticalTarget}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{m\_verticalTarget}{m\_verticalTarget}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_aae1fc0f10ee2177dce323fa57cc24066} 
-Transform Aim\+Camera\+Controller.\+m\+\_\+vertical\+Target = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00017}{17}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
-\Hypertarget{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645}\index{AimCameraController@{AimCameraController}!Horizontal@{Horizontal}}
-\index{Horizontal@{Horizontal}!AimCameraController@{AimCameraController}}
-\doxysubsubsection{\texorpdfstring{Horizontal}{Horizontal}}
-{\footnotesize\ttfamily \label{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645} 
-Axis\+State Aim\+Camera\+Controller.\+Horizontal\hspace{0.3cm}{\ttfamily [get]}}
-
-
-
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00027}{27}} 行目に定義があります。
-
 \Hypertarget{class_aim_camera_controller_a49c8633411ce87464d4e85ba5f1931a9}\index{AimCameraController@{AimCameraController}!Vertical@{Vertical}}
 \index{Vertical@{Vertical}!AimCameraController@{AimCameraController}}
 \doxysubsubsection{\texorpdfstring{Vertical}{Vertical}}
@@ -184,9 +176,21 @@ Axis\+State Aim\+Camera\+Controller.\+Horizontal\hspace{0.3cm}{\ttfamily [get]}}
 Axis\+State Aim\+Camera\+Controller.\+Vertical\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}};\ \}\ \}}
 
- \mbox{\hyperlink{_aim_camera_controller_8cs_source}{Aim\+Camera\+Controller.\+cs}} の \mbox{\hyperlink{_aim_camera_controller_8cs_source_l00024}{24}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645}\index{AimCameraController@{AimCameraController}!Horizontal@{Horizontal}}
+\index{Horizontal@{Horizontal}!AimCameraController@{AimCameraController}}
+\doxysubsubsection{\texorpdfstring{Horizontal}{Horizontal}}
+{\footnotesize\ttfamily \label{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645} 
+Axis\+State Aim\+Camera\+Controller.\+Horizontal\hspace{0.3cm}{\ttfamily [get]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00027\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}};\ \}\ \}}
+
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

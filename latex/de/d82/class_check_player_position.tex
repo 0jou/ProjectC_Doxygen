@@ -46,13 +46,6 @@ Vector3 \mbox{\hyperlink{class_check_player_position_ad10c0462fdc44692abc94d7c40
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_check_player_position_a31d54088a043b5bd42588fc4dada682c}\index{CheckPlayerPosition@{CheckPlayerPosition}!OnAwake@{OnAwake}}
 \index{OnAwake@{OnAwake}!CheckPlayerPosition@{CheckPlayerPosition}}
@@ -61,29 +54,14 @@ Vector3 \mbox{\hyperlink{class_check_player_position_ad10c0462fdc44692abc94d7c40
 override void Check\+Player\+Position.\+On\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ base.OnAwake();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_player_position_a520d1fdfc6d73397247653e27b691349}{m\_myTransform}}\ =\ transform.root;}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00025}{25}} 行目に定義があります。
-
-\Hypertarget{class_check_player_position_a2b680394a9ed1cb6a73cb06326fa8553}\index{CheckPlayerPosition@{CheckPlayerPosition}!OnConditionCheck@{OnConditionCheck}}
-\index{OnConditionCheck@{OnConditionCheck}!CheckPlayerPosition@{CheckPlayerPosition}}
-\doxysubsubsection{\texorpdfstring{OnConditionCheck()}{OnConditionCheck()}}
-{\footnotesize\ttfamily \label{class_check_player_position_a2b680394a9ed1cb6a73cb06326fa8553} 
-override bool Check\+Player\+Position.\+On\+Condition\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00036}{36}} 行目に定義があります。
-
-\Hypertarget{class_check_player_position_a5cff2665c6bf5b6b0db0abdf1baaca2f}\index{CheckPlayerPosition@{CheckPlayerPosition}!OnEnd@{OnEnd}}
-\index{OnEnd@{OnEnd}!CheckPlayerPosition@{CheckPlayerPosition}}
-\doxysubsubsection{\texorpdfstring{OnEnd()}{OnEnd()}}
-{\footnotesize\ttfamily \label{class_check_player_position_a5cff2665c6bf5b6b0db0abdf1baaca2f} 
-override void Check\+Player\+Position.\+On\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00065}{65}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_check_player_position_aa9f6ea147753bd6b786fee1d09496824}\index{CheckPlayerPosition@{CheckPlayerPosition}!OnStart@{OnStart}}
 \index{OnStart@{OnStart}!CheckPlayerPosition@{CheckPlayerPosition}}
 \doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
@@ -91,41 +69,68 @@ override void Check\+Player\+Position.\+On\+End (\begin{DoxyParamCaption}{}{}\en
 override void Check\+Player\+Position.\+On\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00032}{32}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_check_player_position_a2b680394a9ed1cb6a73cb06326fa8553}\index{CheckPlayerPosition@{CheckPlayerPosition}!OnConditionCheck@{OnConditionCheck}}
+\index{OnConditionCheck@{OnConditionCheck}!CheckPlayerPosition@{CheckPlayerPosition}}
+\doxysubsubsection{\texorpdfstring{OnConditionCheck()}{OnConditionCheck()}}
+{\footnotesize\ttfamily \label{class_check_player_position_a2b680394a9ed1cb6a73cb06326fa8553} 
+override bool Check\+Player\+Position.\+On\+Condition\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \_isWarpFlg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//プレイヤーの位置情報を探して代入}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ chara\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CharacterCore>}}.Instance.\mbox{\hyperlink{interface_i_meta_a_i_a5538533e130a7a180b806f1937f65447}{ObjectList}})}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.transform.tag\ ==\ \textcolor{stringliteral}{"{}Player"{}})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_player_position_adc95cc2535f314368561170cbe6483f6}{m\_playerTransform}}.parameter.SetTransform(chara.transform);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_player_position_ad10c0462fdc44692abc94d7c40be4125}{m\_targetPos}}\ =\ \mbox{\hyperlink{class_check_player_position_adc95cc2535f314368561170cbe6483f6}{m\_playerTransform}}.value.position;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ vec\ =\ \mbox{\hyperlink{class_check_player_position_ad10c0462fdc44692abc94d7c40be4125}{m\_targetPos}}\ -\/\ transform.position;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ length\ =\ vec.magnitude;}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_check_player_position_aee412eb2501f0f75abfff1a0e61ced86}{m\_warpDistance}}.value\ <=\ length)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_isWarpFlg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_isWarpFlg;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_isWarpFlg;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_check_player_position_a5cff2665c6bf5b6b0db0abdf1baaca2f}\index{CheckPlayerPosition@{CheckPlayerPosition}!OnEnd@{OnEnd}}
+\index{OnEnd@{OnEnd}!CheckPlayerPosition@{CheckPlayerPosition}}
+\doxysubsubsection{\texorpdfstring{OnEnd()}{OnEnd()}}
+{\footnotesize\ttfamily \label{class_check_player_position_a5cff2665c6bf5b6b0db0abdf1baaca2f} 
+override void Check\+Player\+Position.\+On\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_check_player_position_ad494052b569c442d464def1919d923c4}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_chaseParameters@{m\_chaseParameters}}
-\index{m\_chaseParameters@{m\_chaseParameters}!CheckPlayerPosition@{CheckPlayerPosition}}
-\doxysubsubsection{\texorpdfstring{m\_chaseParameters}{m\_chaseParameters}}
-{\footnotesize\ttfamily \label{class_check_player_position_ad494052b569c442d464def1919d923c4} 
-\mbox{\hyperlink{class_flexible_chase_parameters}{Flexible\+Chase\+Parameters}} Check\+Player\+Position.\+m\+\_\+chase\+Parameters = new \mbox{\hyperlink{class_flexible_chase_parameters}{Flexible\+Chase\+Parameters}}()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00020}{20}} 行目に定義があります。
-
-\Hypertarget{class_check_player_position_a520d1fdfc6d73397247653e27b691349}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_myTransform@{m\_myTransform}}
-\index{m\_myTransform@{m\_myTransform}!CheckPlayerPosition@{CheckPlayerPosition}}
-\doxysubsubsection{\texorpdfstring{m\_myTransform}{m\_myTransform}}
-{\footnotesize\ttfamily \label{class_check_player_position_a520d1fdfc6d73397247653e27b691349} 
-Transform Check\+Player\+Position.\+m\+\_\+my\+Transform\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00022}{22}} 行目に定義があります。
-
 \Hypertarget{class_check_player_position_adc95cc2535f314368561170cbe6483f6}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_playerTransform@{m\_playerTransform}}
 \index{m\_playerTransform@{m\_playerTransform}!CheckPlayerPosition@{CheckPlayerPosition}}
 \doxysubsubsection{\texorpdfstring{m\_playerTransform}{m\_playerTransform}}
 {\footnotesize\ttfamily \label{class_check_player_position_adc95cc2535f314368561170cbe6483f6} 
 Flexible\+Transform Check\+Player\+Position.\+m\+\_\+player\+Transform = new Flexible\+Transform()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00014}{14}} 行目に定義があります。
 
 \Hypertarget{class_check_player_position_acc784b93138bef7b68c887d48473d158}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_stoppingDistance@{m\_stoppingDistance}}
 \index{m\_stoppingDistance@{m\_stoppingDistance}!CheckPlayerPosition@{CheckPlayerPosition}}
@@ -133,29 +138,29 @@ Flexible\+Transform Check\+Player\+Position.\+m\+\_\+player\+Transform = new Fle
 {\footnotesize\ttfamily \label{class_check_player_position_acc784b93138bef7b68c887d48473d158} 
 Flexible\+Float Check\+Player\+Position.\+m\+\_\+stopping\+Distance = new Flexible\+Float()\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00016}{16}} 行目に定義があります。
-
-\Hypertarget{class_check_player_position_ad10c0462fdc44692abc94d7c40be4125}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_targetPos@{m\_targetPos}}
-\index{m\_targetPos@{m\_targetPos}!CheckPlayerPosition@{CheckPlayerPosition}}
-\doxysubsubsection{\texorpdfstring{m\_targetPos}{m\_targetPos}}
-{\footnotesize\ttfamily \label{class_check_player_position_ad10c0462fdc44692abc94d7c40be4125} 
-Vector3 Check\+Player\+Position.\+m\+\_\+target\+Pos = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00023}{23}} 行目に定義があります。
-
 \Hypertarget{class_check_player_position_aee412eb2501f0f75abfff1a0e61ced86}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_warpDistance@{m\_warpDistance}}
 \index{m\_warpDistance@{m\_warpDistance}!CheckPlayerPosition@{CheckPlayerPosition}}
 \doxysubsubsection{\texorpdfstring{m\_warpDistance}{m\_warpDistance}}
 {\footnotesize\ttfamily \label{class_check_player_position_aee412eb2501f0f75abfff1a0e61ced86} 
 Flexible\+Float Check\+Player\+Position.\+m\+\_\+warp\+Distance = new Flexible\+Float()\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_check_player_position_ad494052b569c442d464def1919d923c4}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_chaseParameters@{m\_chaseParameters}}
+\index{m\_chaseParameters@{m\_chaseParameters}!CheckPlayerPosition@{CheckPlayerPosition}}
+\doxysubsubsection{\texorpdfstring{m\_chaseParameters}{m\_chaseParameters}}
+{\footnotesize\ttfamily \label{class_check_player_position_ad494052b569c442d464def1919d923c4} 
+\mbox{\hyperlink{class_flexible_chase_parameters}{Flexible\+Chase\+Parameters}} Check\+Player\+Position.\+m\+\_\+chase\+Parameters = new \mbox{\hyperlink{class_flexible_chase_parameters}{Flexible\+Chase\+Parameters}}()\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_check_player_position_a520d1fdfc6d73397247653e27b691349}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_myTransform@{m\_myTransform}}
+\index{m\_myTransform@{m\_myTransform}!CheckPlayerPosition@{CheckPlayerPosition}}
+\doxysubsubsection{\texorpdfstring{m\_myTransform}{m\_myTransform}}
+{\footnotesize\ttfamily \label{class_check_player_position_a520d1fdfc6d73397247653e27b691349} 
+Transform Check\+Player\+Position.\+m\+\_\+my\+Transform\hspace{0.3cm}{\ttfamily [private]}}
 
- \mbox{\hyperlink{_check_player_position_8cs_source}{Check\+Player\+Position.\+cs}} の \mbox{\hyperlink{_check_player_position_8cs_source_l00018}{18}} 行目に定義があります。
+\Hypertarget{class_check_player_position_ad10c0462fdc44692abc94d7c40be4125}\index{CheckPlayerPosition@{CheckPlayerPosition}!m\_targetPos@{m\_targetPos}}
+\index{m\_targetPos@{m\_targetPos}!CheckPlayerPosition@{CheckPlayerPosition}}
+\doxysubsubsection{\texorpdfstring{m\_targetPos}{m\_targetPos}}
+{\footnotesize\ttfamily \label{class_check_player_position_ad10c0462fdc44692abc94d7c40be4125} 
+Vector3 Check\+Player\+Position.\+m\+\_\+target\+Pos = new()\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

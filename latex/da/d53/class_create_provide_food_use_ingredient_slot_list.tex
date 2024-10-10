@@ -2,8 +2,7 @@
 \hypertarget{class_create_provide_food_use_ingredient_slot_list}{}\label{class_create_provide_food_use_ingredient_slot_list}\index{CreateProvideFoodUseIngredientSlotList@{CreateProvideFoodUseIngredientSlotList}}
 
 
-Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List の継承関係図
-\nopagebreak
+Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List の継承関係図
 \end{figure}
 
 
-Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List 連携図
-\nopagebreak
+Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -73,13 +71,6 @@ List$<$ \mbox{\hyperlink{class_item_slot_data}{Item\+Slot\+Data}} $>$ \mbox{\hyp
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_create_provide_food_use_ingredient_slot_list_8cs_source}{Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_provide_food_use_ingredient_slot_list_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_create_provide_food_use_ingredient_slot_list_a693c4e1f7a96457db31f5ab4bb3fc23d}\index{CreateProvideFoodUseIngredientSlotList@{CreateProvideFoodUseIngredientSlotList}!CreateSlotInstance@{CreateSlotInstance}}
 \index{CreateSlotInstance@{CreateSlotInstance}!CreateProvideFoodUseIngredientSlotList@{CreateProvideFoodUseIngredientSlotList}}
@@ -92,11 +83,53 @@ override void Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List.\+Create\+Slot\
 \mbox{\hyperlink{class_base_create_slot_list_a51b06cac02cad5cb1ecba94d423d7f41}{Base\+Create\+Slot\+List}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成するスロットが登録されていません"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供料理リスト}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ provideFood\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.ProvideFoodDataList)}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (provideFood\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データ}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ var\ foodData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)provideFood.FoodID);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (foodData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要材料リスト}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ need\ \textcolor{keywordflow}{in}\ foodData.NeedIngredientObjectList)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ ingredientData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)need.IngredientID);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ingredientData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 子オブジェクトにスロットを追加}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ slot\ =\ Instantiate(\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}},\ transform);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slot.TryGetComponent<\mbox{\hyperlink{class_provide_food_use_ingredient_slot_data}{ProvideFoodUseIngredientSlotData}}>(out\ var\ slotData))}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.SetNeedProvideFoodUseIngredient(provideFood,\ need);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.SetItemSlotData(ingredientData,\ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.PocketType);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ リストに追加}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}}.Add(slotData);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}スロットにNeedIngredientSlotDataコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIcontrollerに追加}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_a6d53b2ee37d87dd253e3743208052040}{AddSelectUIControler}}(slot);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_provide_food_use_ingredient_slot_list_8cs_source}{Create\+Provide\+Food\+Use\+Ingredient\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_provide_food_use_ingredient_slot_list_8cs_source_l00017}{17}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

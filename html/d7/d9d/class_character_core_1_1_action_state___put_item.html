@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -160,10 +160,7 @@ CharacterCore.ActionState_PutItem 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00361">361</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a8c0aa2993af269cf7f18763883546e20" name="a8c0aa2993af269cf7f18763883546e20"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8c0aa2993af269cf7f18763883546e20">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -188,9 +185,24 @@ CharacterCore.ActionState_PutItem 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00365">365</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  366</span>        {</div>
+<div class="line"><span class="lineno">  367</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">  368</span>            Debug.Log(<span class="stringliteral">&quot;設置開始&quot;</span>);</div>
+<div class="line"><span class="lineno">  369</span> </div>
+<div class="line"><span class="lineno">  370</span>            <span class="comment">// 設置設定（アニメーション中に変更されないように）</span></div>
+<div class="line"><span class="lineno">  371</span>            <a class="code hl_variable" href="#a56b50ef309ca6c58e51072fb6a1b6916">m_putItemInstance</a> = Core.AddComponent&lt;<a class="code hl_class" href="../../d6/da5/class_put_item_instance.html">PutItemInstance</a>&gt;();</div>
+<div class="line"><span class="lineno">  372</span>            <a class="code hl_variable" href="#a56b50ef309ca6c58e51072fb6a1b6916">m_putItemInstance</a>.<a class="code hl_function" href="../../d6/da5/class_put_item_instance.html#a3f1f89bb7353b66b19f4a636ae258390">SetItemID</a>(Core.PlayerParameters.m_putItemInfo.m_itemTypeID, Core.PlayerParameters.m_putItemInfo.m_itemID);</div>
+<div class="line"><span class="lineno">  373</span> </div>
+<div class="line"><span class="lineno">  374</span>            <span class="comment">// 追加　上甲　効果音</span></div>
+<div class="line"><span class="lineno">  375</span>            <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;PutItem&quot;</span>);</div>
+<div class="line"><span class="lineno">  376</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___put_item_html_a56b50ef309ca6c58e51072fb6a1b6916"><div class="ttname"><a href="#a56b50ef309ca6c58e51072fb6a1b6916">CharacterCore.ActionState_PutItem.m_putItemInstance</a></div><div class="ttdeci">PutItemInstance m_putItemInstance</div><div class="ttdef"><b>Definition</b> PlayerState.cs:363</div></div>
+<div class="ttc" id="aclass_put_item_instance_html"><div class="ttname"><a href="../../d6/da5/class_put_item_instance.html">PutItemInstance</a></div><div class="ttdef"><b>Definition</b> PutItemInstance.cs:7</div></div>
+<div class="ttc" id="aclass_put_item_instance_html_a3f1f89bb7353b66b19f4a636ae258390"><div class="ttname"><a href="../../d6/da5/class_put_item_instance.html#a3f1f89bb7353b66b19f4a636ae258390">PutItemInstance.SetItemID</a></div><div class="ttdeci">void SetItemID(ItemTypeID _itemTypeID, uint _itemID)</div><div class="ttdef"><b>Definition</b> PutItemInstance.cs:50</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> SoundManager.cs:44</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d9d/class_character_core_1_1_action_state___put_item_a8c0aa2993af269cf7f18763883546e20_cgraph.png" border="0" usemap="#ad7/d9d/class_character_core_1_1_action_state___put_item_a8c0aa2993af269cf7f18763883546e20_cgraph" alt=""/></div>
@@ -200,59 +212,6 @@ CharacterCore.ActionState_PutItem 連携図</div>
 <area shape="poly" title=" " alt="" coords="184,32,222,27,223,33,184,37"/>
 <area shape="rect" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5" title="2Dでのサウンド再生" alt="" coords="232,56,426,83"/>
 <area shape="poly" title=" " alt="" coords="184,51,216,54,216,60,184,56"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a0e842e096f9869dad6402de5e1a874cf" name="a0e842e096f9869dad6402de5e1a874cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0e842e096f9869dad6402de5e1a874cf">&#9670;&#160;</a></span>OnExit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_PutItem.OnExit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00384">384</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph.png" border="0" usemap="#ad7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph" alt=""/></div>
-<map name="ad7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph" id="ad7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph">
-<area shape="rect" title=" " alt="" coords="5,131,184,173"/>
-<area shape="rect" href="../../d6/da5/class_put_item_instance.html#a617e7045b93e4fdd4b092bd643a8fb4b" title=" " alt="" coords="232,139,382,165"/>
-<area shape="poly" title=" " alt="" coords="184,149,216,149,216,155,184,155"/>
-<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a6059aef6a5971425788c7080bca5a4b6" title=" " alt="" coords="430,105,634,132"/>
-<area shape="poly" title=" " alt="" coords="382,138,422,132,423,137,383,144"/>
-<area shape="rect" href="../../dc/dbc/class_inventory_manager.html#a646b12789b3abe1580efeb77809d7965" title="アイテムリストに存在する引数アイテムを減算/削除する" alt="" coords="430,164,634,191"/>
-<area shape="poly" title=" " alt="" coords="383,158,415,161,414,167,382,163"/>
-<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a1050fa09f7705d5e74fa66f14594368b" title=" " alt="" coords="685,47,886,73"/>
-<area shape="poly" title=" " alt="" coords="592,102,710,75,711,80,594,107"/>
-<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a4ffb3cced3ac36001117fd8dd2f0e87a" title=" " alt="" coords="694,97,877,140"/>
-<area shape="poly" title=" " alt="" coords="634,116,679,116,679,121,634,121"/>
-<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41" title=" " alt="" coords="942,5,1119,48"/>
-<area shape="poly" title=" " alt="" coords="886,44,926,38,927,43,886,49"/>
-<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a693cdbf1d249c8dd8319c2c080098cd0" title=" " alt="" coords="937,72,1124,115"/>
-<area shape="poly" title=" " alt="" coords="886,71,921,76,921,81,886,76"/>
-<area shape="rect" href="../../d3/da8/class_base_pocket_item_data_controller.html#ae2288f88afd8a41455c69514c8cdd594" title="アイテムリストに存在する引数アイテムを減算/削除する" alt="" coords="682,164,889,207"/>
-<area shape="poly" title=" " alt="" coords="635,178,667,179,667,184,635,183"/>
 </map>
 </div>
 
@@ -282,8 +241,83 @@ CharacterCore.ActionState_PutItem 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">  379</span>        {</div>
+<div class="line"><span class="lineno">  380</span>            <span class="comment">//移動量を減らす</span></div>
+<div class="line"><span class="lineno">  381</span>            Core.Move(0.0f);</div>
+<div class="line"><span class="lineno">  382</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0e842e096f9869dad6402de5e1a874cf" name="a0e842e096f9869dad6402de5e1a874cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e842e096f9869dad6402de5e1a874cf">&#9670;&#160;</a></span>OnExit()</h2>
 
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00378">378</a> 行目に定義があります。</p>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_PutItem.OnExit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">  385</span>        {</div>
+<div class="line"><span class="lineno">  386</span>            <span class="keywordflow">if</span> (m_putItemInstance != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  387</span>            {</div>
+<div class="line"><span class="lineno">  388</span>                <a class="code hl_variable" href="#a56b50ef309ca6c58e51072fb6a1b6916">m_putItemInstance</a>.<a class="code hl_function" href="../../d6/da5/class_put_item_instance.html#a617e7045b93e4fdd4b092bd643a8fb4b">Craft</a>();</div>
+<div class="line"><span class="lineno">  389</span>                Destroy(m_putItemInstance);</div>
+<div class="line"><span class="lineno">  390</span>            }</div>
+<div class="line"><span class="lineno">  391</span> </div>
+<div class="line"><span class="lineno">  392</span>            <span class="comment">// 未設定状態にする</span></div>
+<div class="line"><span class="lineno">  393</span>            Core.PlayerParameters.m_putItemInfo.m_itemID = 0;</div>
+<div class="line"><span class="lineno">  394</span> </div>
+<div class="line"><span class="lineno">  395</span>            <span class="comment">//フラグをfalseに（山本）</span></div>
+<div class="line"><span class="lineno">  396</span>            Core.m_animator.SetBool(<span class="stringliteral">&quot;IsPutItem&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  397</span> </div>
+<div class="line"><span class="lineno">  398</span>            <span class="comment">// UIの表示</span></div>
+<div class="line"><span class="lineno">  399</span>            Core.PlayerParameters.AddActionUIState(<a class="code hl_class" href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a>.<a class="code hl_enumeration" href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIState</a>.Attack);</div>
+<div class="line"><span class="lineno">  400</span> </div>
+<div class="line"><span class="lineno">  401</span> </div>
+<div class="line"><span class="lineno">  402</span>            <span class="comment">// Debug.Log(&quot;設置終了&quot;);</span></div>
+<div class="line"><span class="lineno">  403</span>        }</div>
+<div class="ttc" id="aclass_action_u_i_controller_html"><div class="ttname"><a href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a></div><div class="ttdef"><b>Definition</b> ActionUIController.cs:12</div></div>
+<div class="ttc" id="aclass_action_u_i_controller_html_abc8005cedbe73e7e76027add0612b708"><div class="ttname"><a href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIController.ActionUIState</a></div><div class="ttdeci">ActionUIState</div><div class="ttdef"><b>Definition</b> ActionUIController.cs:30</div></div>
+<div class="ttc" id="aclass_put_item_instance_html_a617e7045b93e4fdd4b092bd643a8fb4b"><div class="ttname"><a href="../../d6/da5/class_put_item_instance.html#a617e7045b93e4fdd4b092bd643a8fb4b">PutItemInstance.Craft</a></div><div class="ttdeci">void Craft()</div><div class="ttdef"><b>Definition</b> PutItemInstance.cs:59</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph.png" border="0" usemap="#ad7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph" alt=""/></div>
+<map name="ad7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph" id="ad7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph">
+<area shape="rect" title=" " alt="" coords="5,131,184,173"/>
+<area shape="rect" href="../../d6/da5/class_put_item_instance.html#a617e7045b93e4fdd4b092bd643a8fb4b" title=" " alt="" coords="232,139,382,165"/>
+<area shape="poly" title=" " alt="" coords="184,149,216,149,216,155,184,155"/>
+<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a6059aef6a5971425788c7080bca5a4b6" title=" " alt="" coords="430,105,634,132"/>
+<area shape="poly" title=" " alt="" coords="382,138,422,132,423,137,383,144"/>
+<area shape="rect" href="../../dc/dbc/class_inventory_manager.html#a646b12789b3abe1580efeb77809d7965" title="アイテムリストに存在する引数アイテムを減算/削除する" alt="" coords="430,164,634,191"/>
+<area shape="poly" title=" " alt="" coords="383,158,415,161,414,167,382,163"/>
+<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a1050fa09f7705d5e74fa66f14594368b" title=" " alt="" coords="685,47,886,73"/>
+<area shape="poly" title=" " alt="" coords="592,102,710,75,711,80,594,107"/>
+<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a4ffb3cced3ac36001117fd8dd2f0e87a" title=" " alt="" coords="694,97,877,140"/>
+<area shape="poly" title=" " alt="" coords="634,116,679,116,679,121,634,121"/>
+<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a51b06cac02cad5cb1ecba94d423d7f41" title=" " alt="" coords="942,5,1119,48"/>
+<area shape="poly" title=" " alt="" coords="886,44,926,38,927,43,886,49"/>
+<area shape="rect" href="../../d0/d4c/class_base_create_slot_list.html#a693cdbf1d249c8dd8319c2c080098cd0" title=" " alt="" coords="937,72,1124,115"/>
+<area shape="poly" title=" " alt="" coords="886,71,921,76,921,81,886,76"/>
+<area shape="rect" href="../../d3/da8/class_base_pocket_item_data_controller.html#ae2288f88afd8a41455c69514c8cdd594" title="アイテムリストに存在する引数アイテムを減算/削除する" alt="" coords="682,164,889,207"/>
+<area shape="poly" title=" " alt="" coords="635,178,667,179,667,184,635,183"/>
+</map>
+</div>
 
 </div>
 </div>
@@ -308,12 +342,10 @@ CharacterCore.ActionState_PutItem 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00363">363</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs.html">PlayerState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

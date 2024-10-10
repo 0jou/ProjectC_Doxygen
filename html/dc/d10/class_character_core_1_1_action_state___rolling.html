@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -150,10 +150,7 @@ CharacterCore.ActionState_Rolling 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a534e9468594fc54843dd03ebd5016f94" name="a534e9468594fc54843dd03ebd5016f94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a534e9468594fc54843dd03ebd5016f94">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -178,9 +175,21 @@ CharacterCore.ActionState_Rolling 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">   27</span>            Core.m_animator.SetFloat(<span class="stringliteral">&quot;RollingSpeed&quot;</span>, Core.PlayerParameters.m_rollingAnimeSpeed);</div>
+<div class="line"><span class="lineno">   28</span>            Core.m_isNoDamage = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>            Core.m_characterStatus.m_stamina.Value -= Core.m_characterStatus.m_rollingStaminaCost;</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>            <span class="comment">// 回避SE 上甲</span></div>
+<div class="line"><span class="lineno">   33</span>            <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;Rolling&quot;</span>);</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>        }</div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> SoundManager.cs:44</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d10/class_character_core_1_1_action_state___rolling_a534e9468594fc54843dd03ebd5016f94_cgraph.png" border="0" usemap="#adc/d10/class_character_core_1_1_action_state___rolling_a534e9468594fc54843dd03ebd5016f94_cgraph" alt=""/></div>
@@ -190,64 +199,6 @@ CharacterCore.ActionState_Rolling 連携図</div>
 <area shape="poly" title=" " alt="" coords="184,24,216,24,216,29,184,29"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="ad0834d66cb92635b9e8f1c4d6e92aeb0" name="ad0834d66cb92635b9e8f1c4d6e92aeb0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0834d66cb92635b9e8f1c4d6e92aeb0">&#9670;&#160;</a></span>OnExit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_Rolling.OnExit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00056">56</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a32f61a77d62548c13824448cf2113541" name="a32f61a77d62548c13824448cf2113541"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a32f61a77d62548c13824448cf2113541">&#9670;&#160;</a></span>OnFixedUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_Rolling.OnFixedUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00050">50</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -275,13 +226,83 @@ CharacterCore.ActionState_Rolling 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#abd0a7d1992675f10146a3d2839d136fe">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>        {</div>
+<div class="line"><span class="lineno">   39</span>            var input = Core.m_inputProvider.MoveVector;</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>            <span class="comment">//方向キーの入力があったら、その向きにキャラクターを回転させる（回避時すぐにキーの方向に向く処理）</span></div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (input.magnitude != 0)</div>
+<div class="line"><span class="lineno">   43</span>            {</div>
+<div class="line"><span class="lineno">   44</span>                <span class="comment">//var playerDir = new Vector3(input.x, 0, input.y);</span></div>
+<div class="line"><span class="lineno">   45</span>                var v = Vector3.RotateTowards(Core.transform.forward, input, 10000.0f, 0);</div>
+<div class="line"><span class="lineno">   46</span>                Core.SetRotateToTarget(v);</div>
+<div class="line"><span class="lineno">   47</span>            }</div>
+<div class="line"><span class="lineno">   48</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a32f61a77d62548c13824448cf2113541" name="a32f61a77d62548c13824448cf2113541"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32f61a77d62548c13824448cf2113541">&#9670;&#160;</a></span>OnFixedUpdate()</h2>
 
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00037">37</a> 行目に定義があります。</p>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_Rolling.OnFixedUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>        {</div>
+<div class="line"><span class="lineno">   52</span>            AnimatorStateInfo stateInfo = Core.m_animator.GetCurrentAnimatorStateInfo(0);</div>
+<div class="line"><span class="lineno">   53</span>            Core.Move(Core.PlayerParameters.m_rollingPow / stateInfo.length);</div>
+<div class="line"><span class="lineno">   54</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ad0834d66cb92635b9e8f1c4d6e92aeb0" name="ad0834d66cb92635b9e8f1c4d6e92aeb0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0834d66cb92635b9e8f1c4d6e92aeb0">&#9670;&#160;</a></span>OnExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_Rolling.OnExit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   57</span>        {</div>
+<div class="line"><span class="lineno">   58</span>            Core.m_isNoDamage = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   59</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs.html">PlayerState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -2,8 +2,7 @@
 \hypertarget{class_type_write_effect_text}{}\label{class_type_write_effect_text}\index{TypeWriteEffectText@{TypeWriteEffectText}}
 
 
-Type\+Write\+Effect\+Text の継承関係図
-\nopagebreak
+Type\+Write\+Effect\+Text の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Type\+Write\+Effect\+Text の継承関係図
 \end{figure}
 
 
-Type\+Write\+Effect\+Text 連携図
-\nopagebreak
+Type\+Write\+Effect\+Text 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,13 +36,6 @@ Cancellation\+Token\+Source \mbox{\hyperlink{class_base_effect_text_a1df9d7b7861
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_type_write_effect_text_8cs_source}{Type\+Write\+Effect\+Text.\+cs}} の \mbox{\hyperlink{_type_write_effect_text_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_type_write_effect_text_a3683feedf285c0182fa4a1b65cf4947e}\index{TypeWriteEffectText@{TypeWriteEffectText}!PlayEffect@{PlayEffect}}
 \index{PlayEffect@{PlayEffect}!TypeWriteEffectText@{TypeWriteEffectText}}
@@ -57,9 +48,54 @@ override async Uni\+Task Type\+Write\+Effect\+Text.\+Play\+Effect (\begin{DoxyPa
 \mbox{\hyperlink{class_base_effect_text_aadce15a0e231a50af928fdc27f36c3b0}{Base\+Effect\+Text}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_effect_text_ab4548b299eec92fdcbf52996e101b9a0}{m\_text}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}対象のテキストが存在しません"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_effect_text_a1df9d7b7861ce288d62f0f8916990ff6}{m\_cancellationToken}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 操作中に再度この処理が通った場合既に通っている処理をキャンセルする}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_effect_text_a1df9d7b7861ce288d62f0f8916990ff6}{m\_cancellationToken}}.Cancel();}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_effect_text_a1df9d7b7861ce288d62f0f8916990ff6}{m\_cancellationToken}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ var\ ct\ =\ \mbox{\hyperlink{class_base_effect_text_a1df9d7b7861ce288d62f0f8916990ff6}{m\_cancellationToken}}.Token;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度保持}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ displayText\ =\ \mbox{\hyperlink{class_base_effect_text_ab4548b299eec92fdcbf52996e101b9a0}{m\_text}}.text;}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ m\_text.text\ =\ \textcolor{stringliteral}{"{}"{}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ displayText.Length;\ ++i)}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ テキストを一文ずつ追加}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ text\ =\ m\_text.text\ +\ displayText[i];}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_text.text\ =\ text;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 待機}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(\mbox{\hyperlink{class_base_effect_text_a36c38699f1494993e46668566180081d}{m\_delay}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ct.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ ct.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_type_write_effect_text_8cs_source}{Type\+Write\+Effect\+Text.\+cs}} の \mbox{\hyperlink{_type_write_effect_text_8cs_source_l00017}{17}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

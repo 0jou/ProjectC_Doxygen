@@ -2,8 +2,7 @@
 \hypertarget{class_item_slot_data}{}\label{class_item_slot_data}\index{ItemSlotData@{ItemSlotData}}
 
 
-Item\+Slot\+Data の継承関係図
-\nopagebreak
+Item\+Slot\+Data の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Item\+Slot\+Data の継承関係図
 \end{figure}
 
 
-Item\+Slot\+Data 連携図
-\nopagebreak
+Item\+Slot\+Data 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -74,14 +72,60 @@ virtual uint \mbox{\hyperlink{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00011}{11}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
+\Hypertarget{class_item_slot_data_a7ea4021717735f1023a462908cc78e0f}\index{ItemSlotData@{ItemSlotData}!SetItemSlotData@{SetItemSlotData}}
+\index{SetItemSlotData@{SetItemSlotData}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{SetItemSlotData()}{SetItemSlotData()}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a7ea4021717735f1023a462908cc78e0f} 
+virtual void Item\+Slot\+Data.\+Set\+Item\+Slot\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{, }\item[{\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{Pocket\+Type}}}]{\+\_\+pocket\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_food_slot_data_a28807d6e7b835fc5ad20478ef942e8c2}{Food\+Slot\+Data}}, \mbox{\hyperlink{class_provide_food_recipe_slot_data_a8eeef1d8538737f9c84614db3706d663}{Provide\+Food\+Recipe\+Slot\+Data}}, \mbox{\hyperlink{class_provide_food_slot_data_ab133829ad866b084df7d55e3d3fa2f7a}{Provide\+Food\+Slot\+Data}}, \mbox{\hyperlink{class_recipe_item_slot_data_ae7e2162f8df9d9788047a957924bf568}{Recipe\+Item\+Slot\+Data}}で再実装されています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}このアイテムは登録されていません"{}});}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726}{m\_itemTypeID}}\ =\ \_itemData.\mbox{\hyperlink{class_base_item_data_aaf5b8f37feb095e78add9f025799fe19}{ItemTypeID}};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}}\ =\ \_itemData.\mbox{\hyperlink{class_base_item_data_a2773b4f33c38d2e30f0c86578da55fcd}{ItemID}};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885}{m\_pocketType}}\ =\ \_pocketType;}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 名前をセット}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_abc98443aabd8f48de9c2b3cd675c96bd}{SetItemName}}(\_itemData.\mbox{\hyperlink{class_base_item_data_ae0197cdbf094578793ce3b3f061eb70d}{ItemName}});}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文をセット}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a8561e651b61623c67254426ef5f61bc8}{SetDescription}}(\_itemData.\mbox{\hyperlink{class_base_item_data_aecd947b8b3a1051c56941f1bdc911e04}{ItemDescriptionText}});}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテム画像をセット}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a14af77717cc0cd375bf5e27f0428fb4b}{SetItemImage}}(\_itemData.\mbox{\hyperlink{class_base_item_data_a4fec579337b9458ef356c3500ca23ceb}{ItemSprite}});}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 状態をセット}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a057dd61a5eec59f983b60824307abff4}{SetConditionImage}}(\_itemData);}
+\DoxyCodeLine{00127\ }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数テキストをセット}}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_af69f1d48a8030a217a3a06bc5e89e890}{SetItemNum}}();}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 状態の背景色を変更（吉田）}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a7be5650519d22664baf8c44336719812}{SetConditionBackColor}}(\_itemData);}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a7ea4021717735f1023a462908cc78e0f_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_item_slot_data_a105d5dc5002914f5944f3c8e9c66ac8a}\index{ItemSlotData@{ItemSlotData}!InitializeSlotData@{InitializeSlotData}}
 \index{InitializeSlotData@{InitializeSlotData}!ItemSlotData@{ItemSlotData}}
 \doxysubsubsection{\texorpdfstring{InitializeSlotData()}{InitializeSlotData()}}
@@ -93,67 +137,34 @@ virtual void Item\+Slot\+Data.\+Initialize\+Slot\+Data (\begin{DoxyParamCaption}
 \mbox{\hyperlink{class_food_slot_data_a037856bc9bcaf98a50ace2dff1015d02}{Food\+Slot\+Data}}, \mbox{\hyperlink{class_need_ingredient_slot_data_aea5fa1e53f3f55d71b5603a4d83606c1}{Need\+Ingredient\+Slot\+Data}}, \mbox{\hyperlink{class_provide_food_recipe_slot_data_a90c7cce1ea9e76accac75a57ff23d37d}{Provide\+Food\+Recipe\+Slot\+Data}}, \mbox{\hyperlink{class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a}{Provide\+Food\+Slot\+Data}}で再実装されています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00138\ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 名前をセット}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_abc98443aabd8f48de9c2b3cd675c96bd}{SetItemName}}(\textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテム画像をセット}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a14af77717cc0cd375bf5e27f0428fb4b}{SetItemImage}}(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文をセット}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a8561e651b61623c67254426ef5f61bc8}{SetDescription}}(\textcolor{stringliteral}{"{}"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 状態をセット}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a057dd61a5eec59f983b60824307abff4}{SetConditionImage}}(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 数テキストをセット}}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_af69f1d48a8030a217a3a06bc5e89e890}{SetItemNum}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 状態の背景色をセット（吉田）}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a7be5650519d22664baf8c44336719812}{SetConditionBackColor}}(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00137}{137}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dd/d23/class_item_slot_data_a105d5dc5002914f5944f3c8e9c66ac8a_cgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_item_slot_data_a7be5650519d22664baf8c44336719812}\index{ItemSlotData@{ItemSlotData}!SetConditionBackColor@{SetConditionBackColor}}
-\index{SetConditionBackColor@{SetConditionBackColor}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{SetConditionBackColor()}{SetConditionBackColor()}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a7be5650519d22664baf8c44336719812} 
-virtual void Item\+Slot\+Data.\+Set\+Condition\+Back\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00317}{317}} 行目に定義があります。
-
-被呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a7be5650519d22664baf8c44336719812_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_item_slot_data_a057dd61a5eec59f983b60824307abff4}\index{ItemSlotData@{ItemSlotData}!SetConditionImage@{SetConditionImage}}
-\index{SetConditionImage@{SetConditionImage}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{SetConditionImage()}{SetConditionImage()}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a057dd61a5eec59f983b60824307abff4} 
-virtual void Item\+Slot\+Data.\+Set\+Condition\+Image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00273}{273}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a057dd61a5eec59f983b60824307abff4_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_item_slot_data_a8561e651b61623c67254426ef5f61bc8}\index{ItemSlotData@{ItemSlotData}!SetDescription@{SetDescription}}
-\index{SetDescription@{SetDescription}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{SetDescription()}{SetDescription()}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a8561e651b61623c67254426ef5f61bc8} 
-virtual void Item\+Slot\+Data.\+Set\+Description (\begin{DoxyParamCaption}\item[{string}]{\+\_\+description}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00216}{216}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a8561e651b61623c67254426ef5f61bc8_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_item_slot_data_a14af77717cc0cd375bf5e27f0428fb4b}\index{ItemSlotData@{ItemSlotData}!SetItemImage@{SetItemImage}}
@@ -163,9 +174,35 @@ virtual void Item\+Slot\+Data.\+Set\+Description (\begin{DoxyParamCaption}\item[
 virtual void Item\+Slot\+Data.\+Set\+Item\+Image (\begin{DoxyParamCaption}\item[{Sprite}]{\+\_\+sprite}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00164\ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344}{m\_itemImage}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}アイテムの見た目を表示するイメージが存在しません"{}});}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 非表示}}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344}{m\_itemImage}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_sprite\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}引数Spriteが存在しません"{}});}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344}{m\_itemImage}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 画像をセット}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ m\_itemImage.sprite\ =\ \_sprite;}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00163}{163}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -180,14 +217,70 @@ virtual void Item\+Slot\+Data.\+Set\+Item\+Image (\begin{DoxyParamCaption}\item[
 virtual void Item\+Slot\+Data.\+Set\+Item\+Name (\begin{DoxyParamCaption}\item[{string}]{\+\_\+name\+Text}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00194\ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6}{m\_nameText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}アイテムの見た目を表示するイメージが存在しません"{}});}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6}{m\_nameText}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6}{m\_nameText}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00209\ }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 名前テキストをセット}}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ m\_nameText.text\ =\ \_nameText;}
+\DoxyCodeLine{00212\ }
+\DoxyCodeLine{00213\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00193}{193}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dd/d23/class_item_slot_data_abc98443aabd8f48de9c2b3cd675c96bd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_item_slot_data_a8561e651b61623c67254426ef5f61bc8}\index{ItemSlotData@{ItemSlotData}!SetDescription@{SetDescription}}
+\index{SetDescription@{SetDescription}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{SetDescription()}{SetDescription()}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a8561e651b61623c67254426ef5f61bc8} 
+virtual void Item\+Slot\+Data.\+Set\+Description (\begin{DoxyParamCaption}\item[{string}]{\+\_\+description}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00217\ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a}{m\_descriptionText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}アイテムの説明文を表示するテキストが存在しません"{}});}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 非表示}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a}{m\_descriptionText}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00226\ }
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a}{m\_descriptionText}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文をセット}}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ m\_descriptionText.text\ =\ \_description;}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a8561e651b61623c67254426ef5f61bc8_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_item_slot_data_af69f1d48a8030a217a3a06bc5e89e890}\index{ItemSlotData@{ItemSlotData}!SetItemNum@{SetItemNum}}
@@ -197,9 +290,39 @@ virtual void Item\+Slot\+Data.\+Set\+Item\+Name (\begin{DoxyParamCaption}\item[{
 virtual void Item\+Slot\+Data.\+Set\+Item\+Num (\begin{DoxyParamCaption}\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00240\ \ \ \ \ \{}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11}{m\_numText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}アイテムの所持数を表示するテキストが存在しません"{}});}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00246\ }
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11}{m\_numText}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00249\ }
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00252\ }
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数}}
+\DoxyCodeLine{00254\ \ \ \ \ \ \ \ \ var\ num\ =\ \mbox{\hyperlink{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885}{m\_pocketType}}.GetPocketItemDataManager().GetItemNum(\mbox{\hyperlink{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726}{m\_itemTypeID}},\ \mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}});}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 0を表示しない設定であれば}}
+\DoxyCodeLine{00257\ }
+\DoxyCodeLine{00258\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ <\ 1)}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00261\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00262\ }
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11}{m\_numText}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00265\ }
+\DoxyCodeLine{00266\ }
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ m\_numText.text\ =\ num.ToString();}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00239}{239}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -207,31 +330,190 @@ virtual void Item\+Slot\+Data.\+Set\+Item\+Num (\begin{DoxyParamCaption}\item[{b
 \includegraphics[width=350pt]{dd/d23/class_item_slot_data_af69f1d48a8030a217a3a06bc5e89e890_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_item_slot_data_a7ea4021717735f1023a462908cc78e0f}\index{ItemSlotData@{ItemSlotData}!SetItemSlotData@{SetItemSlotData}}
-\index{SetItemSlotData@{SetItemSlotData}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{SetItemSlotData()}{SetItemSlotData()}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a7ea4021717735f1023a462908cc78e0f} 
-virtual void Item\+Slot\+Data.\+Set\+Item\+Slot\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{, }\item[{\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{Pocket\+Type}}}]{\+\_\+pocket\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+\Hypertarget{class_item_slot_data_a057dd61a5eec59f983b60824307abff4}\index{ItemSlotData@{ItemSlotData}!SetConditionImage@{SetConditionImage}}
+\index{SetConditionImage@{SetConditionImage}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{SetConditionImage()}{SetConditionImage()}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a057dd61a5eec59f983b60824307abff4} 
+virtual void Item\+Slot\+Data.\+Set\+Condition\+Image (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00274\ \ \ \ \ \{}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_ac685b7276b804b5331213b2173399270}{m\_conditionImage}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}アイテムの状態を表示するイメージが存在しません"{}});}
+\DoxyCodeLine{00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00280\ }
+\DoxyCodeLine{00281\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 非表示}}
+\DoxyCodeLine{00282\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_ac685b7276b804b5331213b2173399270}{m\_conditionImage}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00283\ }
+\DoxyCodeLine{00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00285\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00286\ }
+\DoxyCodeLine{00287\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00289\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}引数アイテムデータが存在しません"{}});}
+\DoxyCodeLine{00290\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00291\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00292\ }
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemData\ is\ \mbox{\hyperlink{class_base_edible_item}{BaseEdibleItem}}\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00294\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}食料アイテムにキャスト出来ません"{}});}
+\DoxyCodeLine{00296\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00297\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00298\ \ \ \ \ \ \ \ \ var\ edibleData\ =\ \_itemData\ as\ \mbox{\hyperlink{class_base_edible_item}{BaseEdibleItem}};}
+\DoxyCodeLine{00299\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482}{ConditionID}}\ conditionID\ =\ edibleData.\mbox{\hyperlink{class_base_edible_item_ac3f585ea0ac04706d1aae6e83ed5bad9}{ConditionID}};}
+\DoxyCodeLine{00300\ }
+\DoxyCodeLine{00301\ }
+\DoxyCodeLine{00302\ }
+\DoxyCodeLine{00303\ \ \ \ \ \ \ \ \ Sprite\ sprite\ =\ \mbox{\hyperlink{class_condition_data_base_manager}{ConditionDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetConditionData(conditionID).ConditionSprite;}
+\DoxyCodeLine{00304\ }
+\DoxyCodeLine{00305\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (sprite\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00308\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_ac685b7276b804b5331213b2173399270}{m\_conditionImage}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00309\ }
+\DoxyCodeLine{00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 画像をセット}}
+\DoxyCodeLine{00311\ \ \ \ \ \ \ \ \ \ \ \ \ m\_conditionImage.sprite\ =\ sprite;}
+\DoxyCodeLine{00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00313\ }
+\DoxyCodeLine{00314\ \ \ \ \ \}}
 
-\mbox{\hyperlink{class_food_slot_data_a28807d6e7b835fc5ad20478ef942e8c2}{Food\+Slot\+Data}}, \mbox{\hyperlink{class_provide_food_recipe_slot_data_a8eeef1d8538737f9c84614db3706d663}{Provide\+Food\+Recipe\+Slot\+Data}}, \mbox{\hyperlink{class_provide_food_slot_data_ab133829ad866b084df7d55e3d3fa2f7a}{Provide\+Food\+Slot\+Data}}, \mbox{\hyperlink{class_recipe_item_slot_data_ae7e2162f8df9d9788047a957924bf568}{Recipe\+Item\+Slot\+Data}}で再実装されています。
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00102}{102}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a7ea4021717735f1023a462908cc78e0f_cgraph}
+\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a057dd61a5eec59f983b60824307abff4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_item_slot_data_a7be5650519d22664baf8c44336719812}\index{ItemSlotData@{ItemSlotData}!SetConditionBackColor@{SetConditionBackColor}}
+\index{SetConditionBackColor@{SetConditionBackColor}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{SetConditionBackColor()}{SetConditionBackColor()}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a7be5650519d22664baf8c44336719812} 
+virtual void Item\+Slot\+Data.\+Set\+Condition\+Back\+Color (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00318\ \ \ \ \ \{}
+\DoxyCodeLine{00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6}{m\_conditionBackColor}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00320\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00321\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}アイテムの状態の色を変更する背景imgaeがシリアライズされていません"{}});}
+\DoxyCodeLine{00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00323\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00324\ }
+\DoxyCodeLine{00325\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6}{m\_conditionBackColor}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00326\ }
+\DoxyCodeLine{00327\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00329\ }
+\DoxyCodeLine{00330\ }
+\DoxyCodeLine{00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00332\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00333\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}引数アイテムデータが存在しません"{}});}
+\DoxyCodeLine{00334\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00335\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00336\ }
+\DoxyCodeLine{00337\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャストできるか確認}}
+\DoxyCodeLine{00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_itemData\ is\ \mbox{\hyperlink{class_base_edible_item}{BaseEdibleItem}}\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00339\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00340\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}食料アイテムにキャスト出来ません"{}});}
+\DoxyCodeLine{00341\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00342\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00343\ }
+\DoxyCodeLine{00344\ \ \ \ \ \ \ \ \ var\ edibleData\ =\ \_itemData\ as\ \mbox{\hyperlink{class_base_edible_item}{BaseEdibleItem}};}
+\DoxyCodeLine{00345\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482}{ConditionID}}\ conditionID\ =\ edibleData.\mbox{\hyperlink{class_base_edible_item_ac3f585ea0ac04706d1aae6e83ed5bad9}{ConditionID}};}
+\DoxyCodeLine{00346\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_condition_data_base_manager}{ConditionDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetConditionData(conditionID);}
+\DoxyCodeLine{00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00348\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00349\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}この状態データは存在しません"{}});}
+\DoxyCodeLine{00350\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00351\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00352\ }
+\DoxyCodeLine{00353\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.ConditionColor\ ==\ Color.white)}
+\DoxyCodeLine{00354\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00355\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}この状態の色は初期値と同じ\ 白\ です。処理しません。"{}});}
+\DoxyCodeLine{00356\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00357\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00358\ }
+\DoxyCodeLine{00359\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 色をセット}}
+\DoxyCodeLine{00360\ \ \ \ \ \ \ \ \ Color\ backColor\ =\ \textcolor{keyword}{new}(}
+\DoxyCodeLine{00361\ \ \ \ \ \ \ \ \ \ \ \ \ data.ConditionColor.r,}
+\DoxyCodeLine{00362\ \ \ \ \ \ \ \ \ \ \ \ \ data.ConditionColor.g,}
+\DoxyCodeLine{00363\ \ \ \ \ \ \ \ \ \ \ \ \ data.ConditionColor.b,}
+\DoxyCodeLine{00364\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_abd554f4961489cb6b0fa4d37d42fb122}{m\_conditionBackAlpha}});}
+\DoxyCodeLine{00365\ \ \ \ \ \ \ \ \ m\_conditionBackColor.color\ =\ backColor;}
+\DoxyCodeLine{00366\ }
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6}{m\_conditionBackColor}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00369\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/d23/class_item_slot_data_a7be5650519d22664baf8c44336719812_icgraph}
 \end{center}
 \end{figure}
 
 
 \doxysubsection{フィールド詳解}
+\Hypertarget{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344}\index{ItemSlotData@{ItemSlotData}!m\_itemImage@{m\_itemImage}}
+\index{m\_itemImage@{m\_itemImage}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_itemImage}{m\_itemImage}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344} 
+Image Item\+Slot\+Data.\+m\+\_\+item\+Image = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6}\index{ItemSlotData@{ItemSlotData}!m\_nameText@{m\_nameText}}
+\index{m\_nameText@{m\_nameText}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_nameText}{m\_nameText}}
+{\footnotesize\ttfamily \label{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6} 
+Text\+Mesh\+Pro\+UGUI Item\+Slot\+Data.\+m\+\_\+name\+Text = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a}\index{ItemSlotData@{ItemSlotData}!m\_descriptionText@{m\_descriptionText}}
+\index{m\_descriptionText@{m\_descriptionText}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_descriptionText}{m\_descriptionText}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a} 
+Text\+Mesh\+Pro\+UGUI Item\+Slot\+Data.\+m\+\_\+description\+Text = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_ac685b7276b804b5331213b2173399270}\index{ItemSlotData@{ItemSlotData}!m\_conditionImage@{m\_conditionImage}}
+\index{m\_conditionImage@{m\_conditionImage}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_conditionImage}{m\_conditionImage}}
+{\footnotesize\ttfamily \label{class_item_slot_data_ac685b7276b804b5331213b2173399270} 
+Image Item\+Slot\+Data.\+m\+\_\+condition\+Image = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11}\index{ItemSlotData@{ItemSlotData}!m\_numText@{m\_numText}}
+\index{m\_numText@{m\_numText}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_numText}{m\_numText}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11} 
+Text\+Mesh\+Pro\+UGUI Item\+Slot\+Data.\+m\+\_\+num\+Text = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726}\index{ItemSlotData@{ItemSlotData}!m\_itemTypeID@{m\_itemTypeID}}
+\index{m\_itemTypeID@{m\_itemTypeID}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_itemTypeID}{m\_itemTypeID}}
+{\footnotesize\ttfamily \label{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726} 
+\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}} Item\+Slot\+Data.\+m\+\_\+item\+Type\+ID = Item\+Type\+ID.\+Ingredient\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}\index{ItemSlotData@{ItemSlotData}!m\_itemID@{m\_itemID}}
+\index{m\_itemID@{m\_itemID}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_itemID}{m\_itemID}}
+{\footnotesize\ttfamily \label{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0} 
+uint Item\+Slot\+Data.\+m\+\_\+item\+ID = new()\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885}\index{ItemSlotData@{ItemSlotData}!m\_pocketType@{m\_pocketType}}
+\index{m\_pocketType@{m\_pocketType}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_pocketType}{m\_pocketType}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885} 
+\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{Pocket\+Type}} Item\+Slot\+Data.\+m\+\_\+pocket\+Type = Pocket\+Type.\+Inventory\hspace{0.3cm}{\ttfamily [protected]}}
+
+\Hypertarget{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6}\index{ItemSlotData@{ItemSlotData}!m\_conditionBackColor@{m\_conditionBackColor}}
+\index{m\_conditionBackColor@{m\_conditionBackColor}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{m\_conditionBackColor}{m\_conditionBackColor}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6} 
+Image Item\+Slot\+Data.\+m\+\_\+condition\+Back\+Color = null\hspace{0.3cm}{\ttfamily [protected]}}
+
 \Hypertarget{class_item_slot_data_abd554f4961489cb6b0fa4d37d42fb122}\index{ItemSlotData@{ItemSlotData}!m\_conditionBackAlpha@{m\_conditionBackAlpha}}
 \index{m\_conditionBackAlpha@{m\_conditionBackAlpha}!ItemSlotData@{ItemSlotData}}
 \doxysubsubsection{\texorpdfstring{m\_conditionBackAlpha}{m\_conditionBackAlpha}}
@@ -240,111 +522,7 @@ float Item\+Slot\+Data.\+m\+\_\+condition\+Back\+Alpha = 0.\+2f\hspace{0.3cm}{\t
 
 
 
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00091}{91}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6}\index{ItemSlotData@{ItemSlotData}!m\_conditionBackColor@{m\_conditionBackColor}}
-\index{m\_conditionBackColor@{m\_conditionBackColor}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_conditionBackColor}{m\_conditionBackColor}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a7bd18d11ee55b80d5b0225cf76c4afa6} 
-Image Item\+Slot\+Data.\+m\+\_\+condition\+Back\+Color = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00085}{85}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_ac685b7276b804b5331213b2173399270}\index{ItemSlotData@{ItemSlotData}!m\_conditionImage@{m\_conditionImage}}
-\index{m\_conditionImage@{m\_conditionImage}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_conditionImage}{m\_conditionImage}}
-{\footnotesize\ttfamily \label{class_item_slot_data_ac685b7276b804b5331213b2173399270} 
-Image Item\+Slot\+Data.\+m\+\_\+condition\+Image = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00045}{45}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a}\index{ItemSlotData@{ItemSlotData}!m\_descriptionText@{m\_descriptionText}}
-\index{m\_descriptionText@{m\_descriptionText}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_descriptionText}{m\_descriptionText}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a3a95417bea1106d1000198d6a5dcec4a} 
-Text\+Mesh\+Pro\+UGUI Item\+Slot\+Data.\+m\+\_\+description\+Text = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00037}{37}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}\index{ItemSlotData@{ItemSlotData}!m\_itemID@{m\_itemID}}
-\index{m\_itemID@{m\_itemID}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_itemID}{m\_itemID}}
-{\footnotesize\ttfamily \label{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0} 
-uint Item\+Slot\+Data.\+m\+\_\+item\+ID = new()\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00068}{68}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344}\index{ItemSlotData@{ItemSlotData}!m\_itemImage@{m\_itemImage}}
-\index{m\_itemImage@{m\_itemImage}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_itemImage}{m\_itemImage}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a6eb9c0eb7a1f895488f419707d6c1344} 
-Image Item\+Slot\+Data.\+m\+\_\+item\+Image = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00022}{22}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726}\index{ItemSlotData@{ItemSlotData}!m\_itemTypeID@{m\_itemTypeID}}
-\index{m\_itemTypeID@{m\_itemTypeID}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_itemTypeID}{m\_itemTypeID}}
-{\footnotesize\ttfamily \label{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726} 
-\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}} Item\+Slot\+Data.\+m\+\_\+item\+Type\+ID = Item\+Type\+ID.\+Ingredient\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00060}{60}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6}\index{ItemSlotData@{ItemSlotData}!m\_nameText@{m\_nameText}}
-\index{m\_nameText@{m\_nameText}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_nameText}{m\_nameText}}
-{\footnotesize\ttfamily \label{class_item_slot_data_ae2065a97b74e10589d6761362d67aea6} 
-Text\+Mesh\+Pro\+UGUI Item\+Slot\+Data.\+m\+\_\+name\+Text = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00030}{30}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11}\index{ItemSlotData@{ItemSlotData}!m\_numText@{m\_numText}}
-\index{m\_numText@{m\_numText}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_numText}{m\_numText}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a013f5878c0f6d76c541a6a0b8990da11} 
-Text\+Mesh\+Pro\+UGUI Item\+Slot\+Data.\+m\+\_\+num\+Text = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00053}{53}} 行目に定義があります。
-
-\Hypertarget{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885}\index{ItemSlotData@{ItemSlotData}!m\_pocketType@{m\_pocketType}}
-\index{m\_pocketType@{m\_pocketType}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{m\_pocketType}{m\_pocketType}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885} 
-\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{Pocket\+Type}} Item\+Slot\+Data.\+m\+\_\+pocket\+Type = Pocket\+Type.\+Inventory\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00077}{77}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
-\Hypertarget{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d370b}\index{ItemSlotData@{ItemSlotData}!ItemID@{ItemID}}
-\index{ItemID@{ItemID}!ItemSlotData@{ItemSlotData}}
-\doxysubsubsection{\texorpdfstring{ItemID}{ItemID}}
-{\footnotesize\ttfamily \label{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d370b} 
-virtual uint Item\+Slot\+Data.\+Item\+ID\hspace{0.3cm}{\ttfamily [get]}}
-
-
-
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00070}{70}} 行目に定義があります。
-
 \Hypertarget{class_item_slot_data_a926183eb504c445b4f6c8fcbce3cefb2}\index{ItemSlotData@{ItemSlotData}!ItemTypeID@{ItemTypeID}}
 \index{ItemTypeID@{ItemTypeID}!ItemSlotData@{ItemSlotData}}
 \doxysubsubsection{\texorpdfstring{ItemTypeID}{ItemTypeID}}
@@ -352,9 +530,21 @@ virtual uint Item\+Slot\+Data.\+Item\+ID\hspace{0.3cm}{\ttfamily [get]}}
 virtual \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}} Item\+Slot\+Data.\+Item\+Type\+ID\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_item_slot_data_ae20422a1306e04d82ba233ae0589b726}{m\_itemTypeID}};\ \}\ \}}
 
- \mbox{\hyperlink{_item_slot_data_8cs_source}{Item\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_item_slot_data_8cs_source_l00062}{62}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d370b}\index{ItemSlotData@{ItemSlotData}!ItemID@{ItemID}}
+\index{ItemID@{ItemID}!ItemSlotData@{ItemSlotData}}
+\doxysubsubsection{\texorpdfstring{ItemID}{ItemID}}
+{\footnotesize\ttfamily \label{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d370b} 
+virtual uint Item\+Slot\+Data.\+Item\+ID\hspace{0.3cm}{\ttfamily [get]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00070\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}};\ \}\ \}}
+
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -179,12 +179,9 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
-<a id="abcee19226850e3ca14d8aa5e6176c7bf" name="abcee19226850e3ca14d8aa5e6176c7bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abcee19226850e3ca14d8aa5e6176c7bf">&#9670;&#160;</a></span>CheckPlayerDistance()</h2>
+<h2 class="groupheader">メソッド詳解</h2>
+<a id="a6f1b8cf4494b21835e09f1032b2040ec" name="a6f1b8cf4494b21835e09f1032b2040ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f1b8cf4494b21835e09f1032b2040ec">&#9670;&#160;</a></span>OnEnter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -193,9 +190,86 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">float CharacterCore.ActionState_IdleAndMove.CheckPlayerDistance </td>
+          <td class="memname">override void CharacterCore.ActionState_IdleAndMove.OnEnter </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">   25</span>            Core.m_isNoKnockBack = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">switch</span> (Core.GroupNo)</div>
+<div class="line"><span class="lineno">   27</span>            {</div>
+<div class="line"><span class="lineno">   28</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47">CharacterGroupNumber</a>.player:</div>
+<div class="line"><span class="lineno">   29</span>                    {</div>
+<div class="line"><span class="lineno">   30</span>                        <span class="keywordflow">if</span> (Core.m_inputType == InputTypes.Player) Core.PlayerParameters.StartVanishWeapon();</div>
+<div class="line"><span class="lineno">   31</span>                        <a class="code hl_variable" href="#abc1223983b765618a45eff29ceb10068">m_moveSound</a> = <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.SetLoopPlayback(<span class="stringliteral">&quot;Walk&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   32</span>                        <a class="code hl_variable" href="#abc1223983b765618a45eff29ceb10068">m_moveSound</a>.Pause(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   33</span>                    }</div>
+<div class="line"><span class="lineno">   34</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   35</span>            }</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="ttc" id="a_i_damageable_8cs_html_ae72376123e0488a173f6626e9fc0ba47"><div class="ttname"><a href="../../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47">CharacterGroupNumber</a></div><div class="ttdeci">CharacterGroupNumber</div><div class="ttdef"><b>Definition</b> IDamageable.cs:8</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_abc1223983b765618a45eff29ceb10068"><div class="ttname"><a href="#abc1223983b765618a45eff29ceb10068">CharacterCore.ActionState_IdleAndMove.m_moveSound</a></div><div class="ttdeci">CriAtomExPlayback m_moveSound</div><div class="ttdef"><b>Definition</b> CommonState.cs:21</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ade794e94a90218cd5ffa11d471af2155" name="ade794e94a90218cd5ffa11d471af2155"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade794e94a90218cd5ffa11d471af2155">&#9670;&#160;</a></span>OnExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_IdleAndMove.OnExit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>        {</div>
+<div class="line"><span class="lineno">   40</span>            Core.m_isRun = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keywordflow">if</span> (Core.m_dashEffect != <span class="keyword">null</span>) Core.m_dashEffect.Stop();</div>
+<div class="line"><span class="lineno">   42</span>            <a class="code hl_variable" href="#abc1223983b765618a45eff29ceb10068">m_moveSound</a>.Stop();</div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="abc243e2d63162e421461236b9fde8964" name="abc243e2d63162e421461236b9fde8964"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc243e2d63162e421461236b9fde8964">&#9670;&#160;</a></span>PlayerUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterCore.ActionState_IdleAndMove.PlayerUpdate </td>
+          <td>(</td>
+          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -205,56 +279,190 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00420">420</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">if</span> (Core.PlayerParameters == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   48</span>            {</div>
+<div class="line"><span class="lineno">   49</span>                Debug.LogError(<span class="stringliteral">&quot;PlayerParametersが設定されていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>            }</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>            <span class="comment">// ダッシュ時の判定処理</span></div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.DoDush &amp;&amp;</div>
+<div class="line"><span class="lineno">   54</span>            (Core.Status.m_stamina.Value &gt;= Core.Status.m_dashStaminaCost) &amp;&amp;</div>
+<div class="line"><span class="lineno">   55</span>            (input.magnitude != 0.0f))</div>
+<div class="line"><span class="lineno">   56</span>            {</div>
+<div class="line"><span class="lineno">   57</span>                <span class="keywordflow">if</span> (Core.m_isNoStamina)</div>
+<div class="line"><span class="lineno">   58</span>                {</div>
+<div class="line"><span class="lineno">   59</span>                    Core.m_isRun = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   60</span>                    Core.m_isPush = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   61</span>                    Core.m_isNoStamina = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   62</span>                }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>                <span class="keywordflow">if</span> (!Core.m_isPush &amp;&amp; !Core.m_isRun)</div>
+<div class="line"><span class="lineno">   65</span>                {</div>
+<div class="line"><span class="lineno">   66</span>                    Core.m_isRun = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   67</span>                    <span class="comment">//ダッシュエフェクト再生</span></div>
+<div class="line"><span class="lineno">   68</span>                    Core.m_dashEffect.Play();</div>
+<div class="line"><span class="lineno">   69</span>                    Core.m_isPush = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   70</span>                }</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Core.m_inputProvider.OnPressedDush)<span class="comment">//走り中に押しで走り解除</span></div>
+<div class="line"><span class="lineno">   72</span>                {</div>
+<div class="line"><span class="lineno">   73</span>                    Core.m_isRun = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   74</span>                    <span class="comment">//ダッシュエフェクト停止</span></div>
+<div class="line"><span class="lineno">   75</span>                    Core.m_dashEffect.Stop();</div>
+<div class="line"><span class="lineno">   76</span>                    Core.m_isPush = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   77</span>                }</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>            }</div>
+<div class="line"><span class="lineno">   80</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!Core.m_inputProvider.DoDush)<span class="comment">//ダッシュキーを離している時</span></div>
+<div class="line"><span class="lineno">   81</span>            {</div>
+<div class="line"><span class="lineno">   82</span>                Core.m_isPush = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">if</span> (Core.m_isNoStamina)</div>
+<div class="line"><span class="lineno">   85</span>                {</div>
+<div class="line"><span class="lineno">   86</span>                    Core.m_isNoStamina = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   87</span>                }</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>            }</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>            <span class="comment">// 移動そのものに対する判定処理</span></div>
+<div class="line"><span class="lineno">   92</span>            <span class="keywordflow">if</span> (input.magnitude == 0.0f)</div>
+<div class="line"><span class="lineno">   93</span>            {</div>
+<div class="line"><span class="lineno">   94</span>                <span class="comment">// 走り中かつ移動入力がない場合は走り状態解除</span></div>
+<div class="line"><span class="lineno">   95</span>                <span class="keywordflow">if</span> (Core.m_isRun)</div>
+<div class="line"><span class="lineno">   96</span>                {</div>
+<div class="line"><span class="lineno">   97</span>                    Core.m_isRun = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   98</span>                    <span class="comment">//ダッシュエフェクト停止</span></div>
+<div class="line"><span class="lineno">   99</span>                    Core.m_dashEffect.Stop();</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>                }</div>
+<div class="line"><span class="lineno">  102</span>                <a class="code hl_variable" href="#abc1223983b765618a45eff29ceb10068">m_moveSound</a>.Pause();</div>
+<div class="line"><span class="lineno">  103</span> </div>
+<div class="line"><span class="lineno">  104</span>            }</div>
+<div class="line"><span class="lineno">  105</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  106</span>            {</div>
+<div class="line"><span class="lineno">  107</span>                <a class="code hl_variable" href="#abc1223983b765618a45eff29ceb10068">m_moveSound</a>.Resume(CriAtomEx.ResumeMode.PausedPlayback);</div>
+<div class="line"><span class="lineno">  108</span>            }</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>            <span class="comment">//武器出現エフェクトのカウント</span></div>
+<div class="line"><span class="lineno">  111</span>            Core.PlayerParameters.UpdateVanishWeapon(Core.m_animator);</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span>            <span class="comment">// 攻撃ボタン押したら、攻撃に遷移</span></div>
+<div class="line"><span class="lineno">  114</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.AttackType != 0)</div>
+<div class="line"><span class="lineno">  115</span>            {</div>
+<div class="line"><span class="lineno">  116</span>                <span class="keywordflow">foreach</span> (var obj <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;ProximityCreateWindow&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">  117</span>                {</div>
+<div class="line"><span class="lineno">  118</span>                    <span class="keywordflow">if</span> (obj.IsCreate == <span class="keyword">true</span>)</div>
+<div class="line"><span class="lineno">  119</span>                    {</div>
+<div class="line"><span class="lineno">  120</span>                        Core.m_animator.SetTrigger(<span class="stringliteral">&quot;ProximityCreateWindow&quot;</span>);</div>
+<div class="line"><span class="lineno">  121</span>                        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  122</span>                    }</div>
+<div class="line"><span class="lineno">  123</span>                }</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>                <span class="comment">//走り状態でなければ通常攻撃へ、走り状態ならダッシュ攻撃へ（山本）</span></div>
+<div class="line"><span class="lineno">  126</span>                <span class="keywordflow">if</span> (Core.m_isRun == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">  127</span>                {</div>
+<div class="line"><span class="lineno">  128</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;Attack&quot;</span>);</div>
+<div class="line"><span class="lineno">  129</span>                }</div>
+<div class="line"><span class="lineno">  130</span>                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  131</span>                {</div>
+<div class="line"><span class="lineno">  132</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;DashAttack&quot;</span>);</div>
+<div class="line"><span class="lineno">  133</span>                }</div>
+<div class="line"><span class="lineno">  134</span> </div>
+<div class="line"><span class="lineno">  135</span>                <span class="comment">//武器消失時にイベントを再生し武器を出現する</span></div>
+<div class="line"><span class="lineno">  136</span>                Core.PlayerParameters.AppearWeapon(Core.m_animator);</div>
+<div class="line"><span class="lineno">  137</span>            }</div>
+<div class="line"><span class="lineno">  138</span> </div>
+<div class="line"><span class="lineno">  139</span>            <span class="comment">//回避ボタン押したら、回避に遷移（山本）</span></div>
+<div class="line"><span class="lineno">  140</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.DoRolling)</div>
+<div class="line"><span class="lineno">  141</span>            {</div>
+<div class="line"><span class="lineno">  142</span>                <span class="comment">// スタミナが消費できるか確認</span></div>
+<div class="line"><span class="lineno">  143</span>                <span class="keywordflow">if</span> (Core.m_characterStatus.m_stamina.Value &gt;= Core.m_characterStatus.m_rollingStaminaCost)</div>
+<div class="line"><span class="lineno">  144</span>                {</div>
+<div class="line"><span class="lineno">  145</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;Rolling&quot;</span>);</div>
+<div class="line"><span class="lineno">  146</span>                }</div>
+<div class="line"><span class="lineno">  147</span>            }</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>            <span class="comment">//童話スキルの消費BPが足りているときに詠唱状態へと移行（山本）</span></div>
+<div class="line"><span class="lineno">  150</span>            <span class="keywordflow">if</span> (</div>
+<div class="line"><span class="lineno">  151</span>                (Core.m_inputProvider.UseStorySkill_1 &amp;&amp; Core.PlayerParameters.UseSkill1Flg) ||</div>
+<div class="line"><span class="lineno">  152</span>                (Core.m_inputProvider.UseStorySkill_2 &amp;&amp; Core.PlayerParameters.UseSkill2Flg)</div>
+<div class="line"><span class="lineno">  153</span>                )</div>
+<div class="line"><span class="lineno">  154</span>            {</div>
+<div class="line"><span class="lineno">  155</span> </div>
+<div class="line"><span class="lineno">  156</span> </div>
+<div class="line"><span class="lineno">  157</span>                Core.m_animator.SetTrigger(<span class="stringliteral">&quot;StorySkill&quot;</span>);</div>
+<div class="line"><span class="lineno">  158</span>                <span class="comment">//武器出現時にイベントを再生し武器を消失する</span></div>
+<div class="line"><span class="lineno">  159</span>                Core.PlayerParameters.HideWeapon(Core.m_animator);</div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>                <span class="comment">//スキル1、スキル2どちらが使用されたか確認する</span></div>
+<div class="line"><span class="lineno">  162</span>                <span class="keywordflow">if</span> (Core.m_inputProvider.UseStorySkill_1 &amp;&amp; Core.PlayerParameters.UseSkill1Flg)</div>
+<div class="line"><span class="lineno">  163</span>                {</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>                    Core.PlayerParameters.TriggerStorySkill_1 = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  166</span>                }</div>
+<div class="line"><span class="lineno">  167</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (Core.m_inputProvider.UseStorySkill_2 &amp;&amp; Core.PlayerParameters.UseSkill2Flg)</div>
+<div class="line"><span class="lineno">  168</span>                {</div>
+<div class="line"><span class="lineno">  169</span> </div>
+<div class="line"><span class="lineno">  170</span>                    Core.PlayerParameters.TriggerStorySkill_2 = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  171</span>                }</div>
+<div class="line"><span class="lineno">  172</span> </div>
+<div class="line"><span class="lineno">  173</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  174</span> </div>
+<div class="line"><span class="lineno">  175</span>            }</div>
+<div class="line"><span class="lineno">  176</span> </div>
+<div class="line"><span class="lineno">  177</span>            <span class="comment">// 取得状態へ（吉田）</span></div>
+<div class="line"><span class="lineno">  178</span>            <span class="comment">// 採取可能状態にあるアイテムを探す→あったらState変更可</span></div>
+<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="#a38e320e20734267b4f9109b3b7b1179a">SearchGatheringItem</a>())</div>
+<div class="line"><span class="lineno">  180</span>            {</div>
+<div class="line"><span class="lineno">  181</span>                <span class="keywordflow">if</span> (Core.m_inputProvider.Gathering)</div>
+<div class="line"><span class="lineno">  182</span>                {</div>
+<div class="line"><span class="lineno">  183</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;Gathering&quot;</span>);</div>
+<div class="line"><span class="lineno">  184</span> </div>
+<div class="line"><span class="lineno">  185</span>                    <span class="comment">//武器出現時にイベントを再生し武器を消失する</span></div>
+<div class="line"><span class="lineno">  186</span>                    Core.PlayerParameters.HideWeapon(Core.m_animator);</div>
+<div class="line"><span class="lineno">  187</span>                }</div>
+<div class="line"><span class="lineno">  188</span> </div>
+<div class="line"><span class="lineno">  189</span>                <span class="comment">// UI表示</span></div>
+<div class="line"><span class="lineno">  190</span>                <span class="keywordtype">float</span> distance = Vector3.Distance(Core.PlayerParameters.m_ableGatheringItem.transform.position, Core.transform.position);</div>
+<div class="line"><span class="lineno">  191</span>                Core.PlayerParameters.AddAnyActionUIState(<a class="code hl_class" href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a>.<a class="code hl_enumeration" href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIState</a>.AbleGatherings, distance);</div>
+<div class="line"><span class="lineno">  192</span>                Core.PlayerParameters.AddActionUIState(<a class="code hl_class" href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a>.<a class="code hl_enumeration" href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIState</a>.AbleGatherings);</div>
+<div class="line"><span class="lineno">  193</span>            }</div>
+<div class="line"><span class="lineno">  194</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  195</span>            {</div>
+<div class="line"><span class="lineno">  196</span>                <span class="comment">// UI非表示</span></div>
+<div class="line"><span class="lineno">  197</span>                Core.PlayerParameters.RemoveAnyActionUIState(<a class="code hl_class" href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a>.<a class="code hl_enumeration" href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIState</a>.AbleGatherings);</div>
+<div class="line"><span class="lineno">  198</span>                Core.PlayerParameters.RemoveActionUIState(<a class="code hl_class" href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a>.<a class="code hl_enumeration" href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIState</a>.AbleGatherings);</div>
+<div class="line"><span class="lineno">  199</span>            }</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>            <span class="comment">// 経営シーン更新(上甲)</span></div>
+<div class="line"><span class="lineno">  202</span>            <a class="code hl_function" href="#afc98991d89353c5d6d57254bdf26bda6">ManagementScenePlayerUpdate</a>();</div>
+<div class="line"><span class="lineno">  203</span>        }</div>
+<div class="ttc" id="aclass_action_u_i_controller_html"><div class="ttname"><a href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a></div><div class="ttdef"><b>Definition</b> ActionUIController.cs:12</div></div>
+<div class="ttc" id="aclass_action_u_i_controller_html_abc8005cedbe73e7e76027add0612b708"><div class="ttname"><a href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIController.ActionUIState</a></div><div class="ttdeci">ActionUIState</div><div class="ttdef"><b>Definition</b> ActionUIController.cs:30</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_a38e320e20734267b4f9109b3b7b1179a"><div class="ttname"><a href="#a38e320e20734267b4f9109b3b7b1179a">CharacterCore.ActionState_IdleAndMove.SearchGatheringItem</a></div><div class="ttdeci">bool SearchGatheringItem()</div><div class="ttdef"><b>Definition</b> CommonState.cs:403</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_afc98991d89353c5d6d57254bdf26bda6"><div class="ttname"><a href="#afc98991d89353c5d6d57254bdf26bda6">CharacterCore.ActionState_IdleAndMove.ManagementScenePlayerUpdate</a></div><div class="ttdeci">void ManagementScenePlayerUpdate()</div><div class="ttdoc">経営シーンのプレイヤーの更新処理(上甲)</div><div class="ttdef"><b>Definition</b> CommonState.cs:207</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> MetaAI.cs:12</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a5538533e130a7a180b806f1937f65447"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">IMetaAI.ObjectList</a></div><div class="ttdeci">HashSet&lt; T &gt; ObjectList</div><div class="ttdef"><b>Definition</b> MetaAI.cs:16</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph">
-<area shape="rect" title=" " alt="" coords="253,5,488,48"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a92abe81f212c517b96f2182c1fda67f3" title=" " alt="" coords="5,5,205,48"/>
-<area shape="poly" title=" " alt="" coords="237,29,205,29,205,24,237,24"/>
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph">
+<area shape="rect" title=" " alt="" coords="5,51,193,93"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#afc98991d89353c5d6d57254bdf26bda6" title="経営シーンのプレイヤーの更新処理(上甲)" alt="" coords="241,5,498,64"/>
+<area shape="poly" title=" " alt="" coords="193,56,225,52,226,57,194,62"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a38e320e20734267b4f9109b3b7b1179a" title=" " alt="" coords="254,88,485,131"/>
+<area shape="poly" title=" " alt="" coords="194,82,238,89,238,94,193,88"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="afe4fb391ed29fe1734d002988cdbfd46" name="afe4fb391ed29fe1734d002988cdbfd46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe4fb391ed29fe1734d002988cdbfd46">&#9670;&#160;</a></span>CheckStorySkill()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool CharacterCore.ActionState_IdleAndMove.CheckStorySkill </td>
-          <td>(</td>
-          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>_slot</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="../../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa">StorySkill_ID</a></td>          <td class="paramname"><span class="paramname"><em>_skillID</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">GameObject</td>          <td class="paramname"><span class="paramname"><em>_obserbSkillObj</em></span>&#160;)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00534">534</a> 行目に定義があります。</p>
 <div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph">
-<area shape="rect" title=" " alt="" coords="479,5,681,48"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a738f1c01b6c48ad1a553a22ada55b83c" title=" " alt="" coords="253,5,431,48"/>
-<area shape="poly" title=" " alt="" coords="463,29,431,29,431,24,463,24"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a92abe81f212c517b96f2182c1fda67f3" title=" " alt="" coords="5,5,205,48"/>
-<area shape="poly" title=" " alt="" coords="237,29,205,29,205,24,237,24"/>
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph">
+<area shape="rect" title=" " alt="" coords="232,5,419,48"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#af71fa6a3885e187aca1ebc4a0de477c7" title=" " alt="" coords="5,5,184,48"/>
+<area shape="poly" title=" " alt="" coords="216,29,184,29,184,24,216,24"/>
 </map>
 </div>
 
@@ -285,9 +493,41 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 
 <p>経営シーンのプレイヤーの更新処理(上甲) </p>
 <dl class="todo"><dt><b><a class="el" href="../../dd/da0/todo.html#_todo000001">todo</a></b></dt><dd>特定シーンでのみ実行される処理をデバッグ用に無効化しているため、追々修正 </dd></dl>
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00207">207</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  208</span>        {</div>
+<div class="line"><span class="lineno">  210</span>            <span class="comment">//if (SceneNameManager.instance.CurrentSceneName != &quot;ManagementScene&quot;)</span></div>
+<div class="line"><span class="lineno">  211</span>            <span class="comment">//{</span></div>
+<div class="line"><span class="lineno">  212</span>            <span class="comment">//    return;</span></div>
+<div class="line"><span class="lineno">  213</span>            <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">  214</span> </div>
+<div class="line"><span class="lineno">  215</span>            <span class="keywordflow">if</span> (<a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;BaseAssignEventObject&gt;</a>.Instance == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  216</span>            {</div>
+<div class="line"><span class="lineno">  217</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  218</span>            }</div>
+<div class="line"><span class="lineno">  219</span> </div>
+<div class="line"><span class="lineno">  220</span>            <span class="keywordflow">foreach</span> (var eventObj <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;BaseAssignEventObject&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">  221</span>            {</div>
+<div class="line"><span class="lineno">  222</span>                <span class="keywordflow">if</span> (eventObj == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  223</span>                {</div>
+<div class="line"><span class="lineno">  224</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  225</span>                }</div>
+<div class="line"><span class="lineno">  226</span>                <span class="comment">// 接触していなければ処理は行わない</span></div>
+<div class="line"><span class="lineno">  227</span>                <span class="keywordflow">if</span> (!eventObj.Collided)</div>
+<div class="line"><span class="lineno">  228</span>                {</div>
+<div class="line"><span class="lineno">  229</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">  230</span>                }</div>
+<div class="line"><span class="lineno">  231</span>                <span class="keywordflow">if</span> (eventObj.IsAccessed(ref Core.m_inputProvider))</div>
+<div class="line"><span class="lineno">  232</span>                {</div>
+<div class="line"><span class="lineno">  233</span>                    eventObj.OnCollisionAccesesEvent();</div>
+<div class="line"><span class="lineno">  234</span>                    var triggerName = eventObj.AnimatorTriggerName;</div>
+<div class="line"><span class="lineno">  235</span>                    <span class="keywordflow">if</span> (triggerName != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  236</span>                    {</div>
+<div class="line"><span class="lineno">  237</span>                        Core.m_animator.SetTrigger(triggerName);</div>
+<div class="line"><span class="lineno">  238</span>                        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  239</span>                    }</div>
+<div class="line"><span class="lineno">  240</span>                }</div>
+<div class="line"><span class="lineno">  241</span>            }</div>
+<div class="line"><span class="lineno">  242</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_afc98991d89353c5d6d57254bdf26bda6_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_afc98991d89353c5d6d57254bdf26bda6_icgraph" alt=""/></div>
@@ -297,109 +537,6 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 <area shape="poly" title=" " alt="" coords="451,37,419,37,419,32,451,32"/>
 <area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#af71fa6a3885e187aca1ebc4a0de477c7" title=" " alt="" coords="5,13,184,56"/>
 <area shape="poly" title=" " alt="" coords="216,37,184,37,184,32,216,32"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a6f1b8cf4494b21835e09f1032b2040ec" name="a6f1b8cf4494b21835e09f1032b2040ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f1b8cf4494b21835e09f1032b2040ec">&#9670;&#160;</a></span>OnEnter()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_IdleAndMove.OnEnter </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ade794e94a90218cd5ffa11d471af2155" name="ade794e94a90218cd5ffa11d471af2155"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade794e94a90218cd5ffa11d471af2155">&#9670;&#160;</a></span>OnExit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_IdleAndMove.OnExit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00038">38</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a92abe81f212c517b96f2182c1fda67f3" name="a92abe81f212c517b96f2182c1fda67f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a92abe81f212c517b96f2182c1fda67f3">&#9670;&#160;</a></span>OnFixedUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_IdleAndMove.OnFixedUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00258">258</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph">
-<area shape="rect" title=" " alt="" coords="5,72,205,115"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#abcee19226850e3ca14d8aa5e6176c7bf" title=" " alt="" coords="253,5,488,48"/>
-<area shape="poly" title=" " alt="" coords="192,69,267,50,268,55,193,74"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a738f1c01b6c48ad1a553a22ada55b83c" title=" " alt="" coords="281,72,460,115"/>
-<area shape="poly" title=" " alt="" coords="205,91,266,91,266,96,205,96"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#adeed1a708c127636608b62d26800d7fb" title=" " alt="" coords="271,139,470,181"/>
-<area shape="poly" title=" " alt="" coords="193,113,268,132,267,137,192,118"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#afe4fb391ed29fe1734d002988cdbfd46" title=" " alt="" coords="536,72,738,115"/>
-<area shape="poly" title=" " alt="" coords="460,91,520,91,520,96,460,96"/>
 </map>
 </div>
 
@@ -429,9 +566,18 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#abd0a7d1992675f10146a3d2839d136fe">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00245">245</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  246</span>        {</div>
+<div class="line"><span class="lineno">  247</span>            <span class="keywordflow">switch</span> (Core.GroupNo)</div>
+<div class="line"><span class="lineno">  248</span>            {</div>
+<div class="line"><span class="lineno">  249</span>                <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47">CharacterGroupNumber</a>.player:</div>
+<div class="line"><span class="lineno">  250</span>                    {</div>
+<div class="line"><span class="lineno">  251</span>                        <a class="code hl_function" href="#abc243e2d63162e421461236b9fde8964">PlayerUpdate</a>(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  252</span>                    }</div>
+<div class="line"><span class="lineno">  253</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  254</span>            }</div>
+<div class="line"><span class="lineno">  255</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_abc243e2d63162e421461236b9fde8964"><div class="ttname"><a href="#abc243e2d63162e421461236b9fde8964">CharacterCore.ActionState_IdleAndMove.PlayerUpdate</a></div><div class="ttdeci">void PlayerUpdate(Vector3 input)</div><div class="ttdef"><b>Definition</b> CommonState.cs:45</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_af71fa6a3885e187aca1ebc4a0de477c7_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_af71fa6a3885e187aca1ebc4a0de477c7_cgraph" alt=""/></div>
@@ -448,8 +594,8 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 
 </div>
 </div>
-<a id="abc243e2d63162e421461236b9fde8964" name="abc243e2d63162e421461236b9fde8964"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abc243e2d63162e421461236b9fde8964">&#9670;&#160;</a></span>PlayerUpdate()</h2>
+<a id="a92abe81f212c517b96f2182c1fda67f3" name="a92abe81f212c517b96f2182c1fda67f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a92abe81f212c517b96f2182c1fda67f3">&#9670;&#160;</a></span>OnFixedUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,40 +604,180 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void CharacterCore.ActionState_IdleAndMove.PlayerUpdate </td>
+          <td class="memname">override void CharacterCore.ActionState_IdleAndMove.OnFixedUpdate </td>
           <td>(</td>
-          <td class="paramtype">Vector3</td>          <td class="paramname"><span class="paramname"><em>input</em></span></td><td>)</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00045">45</a> 行目に定義があります。</p>
-<div class="dynheader">
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">  259</span>        {</div>
+<div class="line"><span class="lineno">  260</span>            <span class="keywordflow">switch</span> (Core.m_inputType)</div>
+<div class="line"><span class="lineno">  261</span>            {</div>
+<div class="line"><span class="lineno">  262</span>                <span class="keywordflow">case</span> InputTypes.Player:</div>
+<div class="line"><span class="lineno">  263</span>                    {</div>
+<div class="line"><span class="lineno">  264</span>                        var input = Core.m_inputProvider.MoveVector;</div>
+<div class="line"><span class="lineno">  265</span> </div>
+<div class="line"><span class="lineno">  266</span>                        <span class="comment">// 方向キーの入力があったら、その向きにキャラクターを回転させる</span></div>
+<div class="line"><span class="lineno">  267</span>                        <span class="keywordflow">if</span> (input.magnitude != 0)</div>
+<div class="line"><span class="lineno">  268</span>                        {</div>
+<div class="line"><span class="lineno">  269</span>                            Core.SetRotateToTarget(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  270</span>                            Core.SetMoveVec(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  271</span>                        }</div>
+<div class="line"><span class="lineno">  272</span> </div>
+<div class="line"><span class="lineno">  273</span>                        <span class="comment">// 移動速度の計算</span></div>
+<div class="line"><span class="lineno">  274</span>                        <span class="keywordtype">float</span> speedByStick = input.magnitude;</div>
+<div class="line"><span class="lineno">  275</span>                        Core.PlayerParameters.SpeedStick = speedByStick;</div>
+<div class="line"><span class="lineno">  276</span> </div>
+<div class="line"><span class="lineno">  277</span>                        <span class="keywordtype">float</span> finalSpeed;</div>
+<div class="line"><span class="lineno">  278</span>                        <span class="keywordflow">if</span> (Core.m_isRun) finalSpeed = Core.m_dushSpeed;</div>
+<div class="line"><span class="lineno">  279</span>                        <span class="keywordflow">else</span> finalSpeed = Core.m_walkSpeed * speedByStick;</div>
+<div class="line"><span class="lineno">  280</span>                        Core.Move(finalSpeed);</div>
+<div class="line"><span class="lineno">  281</span> </div>
+<div class="line"><span class="lineno">  282</span>                        <span class="comment">// 移動音速度調整(上甲) todo 仕様変更につき一時速度調整なし</span></div>
+<div class="line"><span class="lineno">  283</span>                        <span class="comment">// m_moveSound.SetPlaybackRatio(finalSpeed / Core.m_walkSpeed);</span></div>
+<div class="line"><span class="lineno">  284</span> </div>
+<div class="line"><span class="lineno">  285</span>                        <span class="comment">// スタミナ回復（吉田）</span></div>
+<div class="line"><span class="lineno">  286</span>                        <a class="code hl_function" href="#adeed1a708c127636608b62d26800d7fb">UpdateStamina</a>();</div>
+<div class="line"><span class="lineno">  287</span>                        <span class="comment">//BP回復(山本)</span></div>
+<div class="line"><span class="lineno">  288</span>                        <a class="code hl_function" href="#a738f1c01b6c48ad1a553a22ada55b83c">UpdateBP</a>();</div>
+<div class="line"><span class="lineno">  289</span>                    }</div>
+<div class="line"><span class="lineno">  290</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  291</span> </div>
+<div class="line"><span class="lineno">  292</span>                <span class="keywordflow">case</span> InputTypes.Enemy:</div>
+<div class="line"><span class="lineno">  293</span>                    </div>
+<div class="line"><span class="lineno">  294</span>                <span class="keywordflow">case</span> InputTypes.Management:</div>
+<div class="line"><span class="lineno">  295</span>                    {</div>
+<div class="line"><span class="lineno">  296</span>                        <span class="comment">//リグ存在し、Weightが0でなければリグを働かせないようにする（山本）</span></div>
+<div class="line"><span class="lineno">  297</span>                        <span class="keywordflow">if</span> (Core.EnemyParameters?.m_rig)</div>
+<div class="line"><span class="lineno">  298</span>                        {</div>
+<div class="line"><span class="lineno">  299</span>                            <span class="keywordflow">if</span> (Core.EnemyParameters.m_rig.weight != 0.0f)</div>
+<div class="line"><span class="lineno">  300</span>                                Core.EnemyParameters.m_rig.weight = 0.0f;</div>
+<div class="line"><span class="lineno">  301</span>                        }</div>
+<div class="line"><span class="lineno">  302</span> </div>
+<div class="line"><span class="lineno">  303</span>                        <span class="keywordflow">if</span> (!Core.m_inputProvider.IsArrive)</div>
+<div class="line"><span class="lineno">  304</span>                        {</div>
+<div class="line"><span class="lineno">  305</span>                            Core.SetMoveVec(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  306</span>                            <span class="keywordflow">if</span> (Core.m_inputProvider.LookVector.magnitude != 0.0f)</div>
+<div class="line"><span class="lineno">  307</span>                            {</div>
+<div class="line"><span class="lineno">  308</span>                                Core.SetRotateToTarget(Core.m_inputProvider.LookVector);</div>
+<div class="line"><span class="lineno">  309</span>                            }</div>
+<div class="line"><span class="lineno">  310</span>                            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  311</span>                            {</div>
+<div class="line"><span class="lineno">  312</span>                                Core.SetRotateToTarget(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  313</span>                            }</div>
+<div class="line"><span class="lineno">  314</span> </div>
+<div class="line"><span class="lineno">  315</span>                            <span class="comment">// 接敵中なら急ぐ　伊波</span></div>
+<div class="line"><span class="lineno">  316</span>                            <span class="keywordflow">if</span> (Core.EnemyParameters?.Arbor)</div>
+<div class="line"><span class="lineno">  317</span>                            {</div>
+<div class="line"><span class="lineno">  318</span>                                Transform target = Core.EnemyParameters.Arbor.parameterContainer.GetTransform(<span class="stringliteral">&quot;Target&quot;</span>);</div>
+<div class="line"><span class="lineno">  319</span>                                <span class="keywordflow">if</span> (target)</div>
+<div class="line"><span class="lineno">  320</span>                                {</div>
+<div class="line"><span class="lineno">  321</span>                                    Core.Move(Core.m_dushSpeed);</div>
+<div class="line"><span class="lineno">  322</span>                                }</div>
+<div class="line"><span class="lineno">  323</span>                                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  324</span>                                {</div>
+<div class="line"><span class="lineno">  325</span>                                    Core.Move(Core.m_walkSpeed);</div>
+<div class="line"><span class="lineno">  326</span>                                }</div>
+<div class="line"><span class="lineno">  327</span>                            }</div>
+<div class="line"><span class="lineno">  328</span>                            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  329</span>                            {</div>
+<div class="line"><span class="lineno">  330</span>                                Core.Move(Core.m_walkSpeed);</div>
+<div class="line"><span class="lineno">  331</span>                            }</div>
+<div class="line"><span class="lineno">  332</span>                        }</div>
+<div class="line"><span class="lineno">  333</span>                        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  334</span>                        {</div>
+<div class="line"><span class="lineno">  335</span>                            <span class="keywordflow">if</span> (Core.m_inputProvider.LookVector.magnitude != 0.0f)</div>
+<div class="line"><span class="lineno">  336</span>                            {</div>
+<div class="line"><span class="lineno">  337</span>                                Core.SetRotateToTarget(Core.m_inputProvider.LookVector);</div>
+<div class="line"><span class="lineno">  338</span>                            }</div>
+<div class="line"><span class="lineno">  339</span>                            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  340</span>                            {</div>
+<div class="line"><span class="lineno">  341</span>                                Core.SetRotateToTarget(Core.m_inputProvider.Destination - Core.transform.position);</div>
+<div class="line"><span class="lineno">  342</span>                            }</div>
+<div class="line"><span class="lineno">  343</span>                            Core.Move(0f);</div>
+<div class="line"><span class="lineno">  344</span>                        }</div>
+<div class="line"><span class="lineno">  345</span>                    }</div>
+<div class="line"><span class="lineno">  346</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  347</span> </div>
+<div class="line"><span class="lineno">  348</span>                <span class="keywordflow">case</span> InputTypes.SkillChara:</div>
+<div class="line"><span class="lineno">  349</span>                    {</div>
+<div class="line"><span class="lineno">  350</span>                        <span class="keywordflow">if</span> (!Core.m_inputProvider.IsArrive)</div>
+<div class="line"><span class="lineno">  351</span>                        {</div>
+<div class="line"><span class="lineno">  352</span> </div>
+<div class="line"><span class="lineno">  353</span>                            Core.SetMoveVec(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  354</span>                            <span class="keywordflow">if</span> (Core.m_inputProvider.LookVector.magnitude != 0.0f)</div>
+<div class="line"><span class="lineno">  355</span>                            {</div>
+<div class="line"><span class="lineno">  356</span>                                Core.SetRotateToTarget(Core.m_inputProvider.LookVector);</div>
+<div class="line"><span class="lineno">  357</span>                            }</div>
+<div class="line"><span class="lineno">  358</span>                            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  359</span>                            {</div>
+<div class="line"><span class="lineno">  360</span>                                Core.SetRotateToTarget(Core.m_inputProvider.MoveVector);</div>
+<div class="line"><span class="lineno">  361</span>                            }</div>
+<div class="line"><span class="lineno">  362</span> </div>
+<div class="line"><span class="lineno">  363</span>                            <span class="keywordtype">float</span> playerDist = <a class="code hl_function" href="#abcee19226850e3ca14d8aa5e6176c7bf">CheckPlayerDistance</a>();</div>
+<div class="line"><span class="lineno">  364</span> </div>
+<div class="line"><span class="lineno">  365</span>                            <span class="comment">//童話スキルキャラが走る</span></div>
+<div class="line"><span class="lineno">  366</span>                            <span class="keywordflow">if</span> (playerDist &gt;= Core.PlayerSkillsParameters.RunDist)</div>
+<div class="line"><span class="lineno">  367</span>                            {</div>
+<div class="line"><span class="lineno">  368</span>                                Core.Move(Core.m_dushSpeed);</div>
+<div class="line"><span class="lineno">  369</span>                            }</div>
+<div class="line"><span class="lineno">  370</span>                            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (playerDist &lt; Core.PlayerSkillsParameters.WalkDist)</div>
+<div class="line"><span class="lineno">  371</span>                            {</div>
+<div class="line"><span class="lineno">  372</span> </div>
+<div class="line"><span class="lineno">  373</span>                                <span class="keywordtype">float</span> walkSpeed = Core.m_walkSpeed * <a class="code hl_variable" href="#a0ad35a32f682749ddd590c54165b733a">m_speedStick</a>;</div>
+<div class="line"><span class="lineno">  374</span>                                Core.Move(walkSpeed);</div>
+<div class="line"><span class="lineno">  375</span>                            }</div>
+<div class="line"><span class="lineno">  376</span>                            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  377</span>                            {</div>
+<div class="line"><span class="lineno">  378</span>                                <span class="keywordflow">if</span> (!m_isRun)</div>
+<div class="line"><span class="lineno">  379</span>                                {</div>
+<div class="line"><span class="lineno">  380</span>                                    Core.Move(Core.m_walkSpeed);</div>
+<div class="line"><span class="lineno">  381</span>                                }</div>
+<div class="line"><span class="lineno">  382</span>                                <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  383</span>                                {</div>
+<div class="line"><span class="lineno">  384</span>                                    <span class="keywordtype">float</span> dushSpeed = Core.m_walkSpeed * 2.0f;</div>
+<div class="line"><span class="lineno">  385</span>                                    Core.Move(dushSpeed);</div>
+<div class="line"><span class="lineno">  386</span>                                }</div>
+<div class="line"><span class="lineno">  387</span>                            }</div>
+<div class="line"><span class="lineno">  388</span> </div>
+<div class="line"><span class="lineno">  389</span>                        }</div>
+<div class="line"><span class="lineno">  390</span>                        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  391</span>                        {</div>
+<div class="line"><span class="lineno">  392</span>                            Core.SetRotateToTarget(Core.m_inputProvider.Destination - Core.transform.position);</div>
+<div class="line"><span class="lineno">  393</span>                            Core.Move(0f);</div>
+<div class="line"><span class="lineno">  394</span>                        }</div>
+<div class="line"><span class="lineno">  395</span> </div>
+<div class="line"><span class="lineno">  396</span>                    }</div>
+<div class="line"><span class="lineno">  397</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  398</span> </div>
+<div class="line"><span class="lineno">  399</span>            }</div>
+<div class="line"><span class="lineno">  400</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_a0ad35a32f682749ddd590c54165b733a"><div class="ttname"><a href="#a0ad35a32f682749ddd590c54165b733a">CharacterCore.ActionState_IdleAndMove.m_speedStick</a></div><div class="ttdeci">float m_speedStick</div><div class="ttdef"><b>Definition</b> CommonState.cs:17</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_a738f1c01b6c48ad1a553a22ada55b83c"><div class="ttname"><a href="#a738f1c01b6c48ad1a553a22ada55b83c">CharacterCore.ActionState_IdleAndMove.UpdateBP</a></div><div class="ttdeci">void UpdateBP()</div><div class="ttdef"><b>Definition</b> CommonState.cs:476</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_abcee19226850e3ca14d8aa5e6176c7bf"><div class="ttname"><a href="#abcee19226850e3ca14d8aa5e6176c7bf">CharacterCore.ActionState_IdleAndMove.CheckPlayerDistance</a></div><div class="ttdeci">float CheckPlayerDistance()</div><div class="ttdef"><b>Definition</b> CommonState.cs:420</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_adeed1a708c127636608b62d26800d7fb"><div class="ttname"><a href="#adeed1a708c127636608b62d26800d7fb">CharacterCore.ActionState_IdleAndMove.UpdateStamina</a></div><div class="ttdeci">void UpdateStamina()</div><div class="ttdef"><b>Definition</b> CommonState.cs:439</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_cgraph">
-<area shape="rect" title=" " alt="" coords="5,51,193,93"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#afc98991d89353c5d6d57254bdf26bda6" title="経営シーンのプレイヤーの更新処理(上甲)" alt="" coords="241,5,498,64"/>
-<area shape="poly" title=" " alt="" coords="193,56,225,52,226,57,194,62"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a38e320e20734267b4f9109b3b7b1179a" title=" " alt="" coords="254,88,485,131"/>
-<area shape="poly" title=" " alt="" coords="194,82,238,89,238,94,193,88"/>
-</map>
-</div>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_abc243e2d63162e421461236b9fde8964_icgraph">
-<area shape="rect" title=" " alt="" coords="232,5,419,48"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#af71fa6a3885e187aca1ebc4a0de477c7" title=" " alt="" coords="5,5,184,48"/>
-<area shape="poly" title=" " alt="" coords="216,29,184,29,184,24,216,24"/>
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_a92abe81f212c517b96f2182c1fda67f3_cgraph">
+<area shape="rect" title=" " alt="" coords="5,72,205,115"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#abcee19226850e3ca14d8aa5e6176c7bf" title=" " alt="" coords="253,5,488,48"/>
+<area shape="poly" title=" " alt="" coords="192,69,267,50,268,55,193,74"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a738f1c01b6c48ad1a553a22ada55b83c" title=" " alt="" coords="281,72,460,115"/>
+<area shape="poly" title=" " alt="" coords="205,91,266,91,266,96,205,96"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#adeed1a708c127636608b62d26800d7fb" title=" " alt="" coords="271,139,470,181"/>
+<area shape="poly" title=" " alt="" coords="193,113,268,132,267,137,192,118"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#afe4fb391ed29fe1734d002988cdbfd46" title=" " alt="" coords="536,72,738,115"/>
+<area shape="poly" title=" " alt="" coords="460,91,520,91,520,96,460,96"/>
 </map>
 </div>
 
@@ -519,9 +805,23 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00403">403</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  404</span>        {</div>
+<div class="line"><span class="lineno">  405</span>            <span class="keywordflow">foreach</span> (var item <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;AssignItemID&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">  406</span>            {</div>
+<div class="line"><span class="lineno">  407</span>                <a class="code hl_class" href="../../d1/d7f/class_get_item_object.html">GetItemObject</a> getItemObject = item.GetComponent&lt;<a class="code hl_class" href="../../d1/d7f/class_get_item_object.html">GetItemObject</a>&gt;();</div>
+<div class="line"><span class="lineno">  408</span>                <span class="keywordflow">if</span> (getItemObject == <span class="keyword">null</span>) { <span class="keywordflow">continue</span>; }</div>
+<div class="line"><span class="lineno">  409</span> </div>
+<div class="line"><span class="lineno">  410</span>                <span class="keywordflow">if</span> (getItemObject.<a class="code hl_property" href="../../d1/d7f/class_get_item_object.html#a5937bdc5f33e2b178e351a04b047d74c">IsGet</a>)</div>
+<div class="line"><span class="lineno">  411</span>                {</div>
+<div class="line"><span class="lineno">  412</span>                    Core.PlayerParameters.m_ableGatheringItem = item;</div>
+<div class="line"><span class="lineno">  413</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  414</span>                }</div>
+<div class="line"><span class="lineno">  415</span>            }</div>
+<div class="line"><span class="lineno">  416</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  417</span>        }</div>
+<div class="ttc" id="aclass_get_item_object_html"><div class="ttname"><a href="../../d1/d7f/class_get_item_object.html">GetItemObject</a></div><div class="ttdef"><b>Definition</b> GetItemObject.cs:13</div></div>
+<div class="ttc" id="aclass_get_item_object_html_a5937bdc5f33e2b178e351a04b047d74c"><div class="ttname"><a href="../../d1/d7f/class_get_item_object.html#a5937bdc5f33e2b178e351a04b047d74c">GetItemObject.IsGet</a></div><div class="ttdeci">bool IsGet</div><div class="ttdef"><b>Definition</b> GetItemObject.cs:25</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a38e320e20734267b4f9109b3b7b1179a_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a38e320e20734267b4f9109b3b7b1179a_icgraph" alt=""/></div>
@@ -536,8 +836,8 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 
 </div>
 </div>
-<a id="a738f1c01b6c48ad1a553a22ada55b83c" name="a738f1c01b6c48ad1a553a22ada55b83c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a738f1c01b6c48ad1a553a22ada55b83c">&#9670;&#160;</a></span>UpdateBP()</h2>
+<a id="abcee19226850e3ca14d8aa5e6176c7bf" name="abcee19226850e3ca14d8aa5e6176c7bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abcee19226850e3ca14d8aa5e6176c7bf">&#9670;&#160;</a></span>CheckPlayerDistance()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -546,7 +846,7 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void CharacterCore.ActionState_IdleAndMove.UpdateBP </td>
+          <td class="memname">float CharacterCore.ActionState_IdleAndMove.CheckPlayerDistance </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -558,24 +858,29 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00476">476</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,184,48"/>
-<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#afe4fb391ed29fe1734d002988cdbfd46" title=" " alt="" coords="232,5,434,48"/>
-<area shape="poly" title=" " alt="" coords="184,24,216,24,216,29,184,29"/>
-</map>
-</div>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  421</span>        {</div>
+<div class="line"><span class="lineno">  422</span>            <span class="keywordflow">foreach</span> (var chara <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">  423</span>            {</div>
+<div class="line"><span class="lineno">  424</span>                <span class="keywordflow">if</span> (chara.tag == <span class="stringliteral">&quot;Player&quot;</span>)</div>
+<div class="line"><span class="lineno">  425</span>                {</div>
+<div class="line"><span class="lineno">  426</span>                    var dist = (chara.transform.position - Core.transform.position).magnitude;</div>
+<div class="line"><span class="lineno">  427</span> </div>
+<div class="line"><span class="lineno">  428</span>                    <a class="code hl_variable" href="#a0ad35a32f682749ddd590c54165b733a">m_speedStick</a> = chara.PlayerParameters.SpeedStick;</div>
+<div class="line"><span class="lineno">  429</span>                    <a class="code hl_variable" href="#a4a28a0d5e38fbb17f575d6e9df240381">m_isRun</a> = chara.m_isRun;</div>
+<div class="line"><span class="lineno">  430</span> </div>
+<div class="line"><span class="lineno">  431</span>                    <span class="keywordflow">return</span> dist;</div>
+<div class="line"><span class="lineno">  432</span>                }</div>
+<div class="line"><span class="lineno">  433</span>            }</div>
+<div class="line"><span class="lineno">  434</span> </div>
+<div class="line"><span class="lineno">  435</span>            <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><span class="lineno">  436</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_a4a28a0d5e38fbb17f575d6e9df240381"><div class="ttname"><a href="#a4a28a0d5e38fbb17f575d6e9df240381">CharacterCore.ActionState_IdleAndMove.m_isRun</a></div><div class="ttdeci">bool m_isRun</div><div class="ttdef"><b>Definition</b> CommonState.cs:18</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph" alt=""/></div>
-<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph">
-<area shape="rect" title=" " alt="" coords="253,5,431,48"/>
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_abcee19226850e3ca14d8aa5e6176c7bf_icgraph">
+<area shape="rect" title=" " alt="" coords="253,5,488,48"/>
 <area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a92abe81f212c517b96f2182c1fda67f3" title=" " alt="" coords="5,5,205,48"/>
 <area shape="poly" title=" " alt="" coords="237,29,205,29,205,24,237,24"/>
 </map>
@@ -605,9 +910,40 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00439">439</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  440</span>        {</div>
+<div class="line"><span class="lineno">  441</span>            <span class="comment">// ダッシュ時 ---------------</span></div>
+<div class="line"><span class="lineno">  442</span>            <span class="keywordflow">if</span> (Core.m_isRun)</div>
+<div class="line"><span class="lineno">  443</span>            {</div>
+<div class="line"><span class="lineno">  444</span>                <span class="comment">// スタミナ消費</span></div>
+<div class="line"><span class="lineno">  445</span>                Core.m_characterStatus.m_stamina.Value -= Core.m_characterStatus.m_dashStaminaCost;</div>
+<div class="line"><span class="lineno">  446</span>                <span class="keywordflow">if</span> (Core.m_characterStatus.m_stamina.Value &lt; 0)</div>
+<div class="line"><span class="lineno">  447</span>                {</div>
+<div class="line"><span class="lineno">  448</span>                    <span class="comment">//スタミナなくなった</span></div>
+<div class="line"><span class="lineno">  449</span>                    Core.m_characterStatus.m_stamina.Value = 0;</div>
+<div class="line"><span class="lineno">  450</span>                    <span class="keywordflow">if</span> (Core.m_dashEffect != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  451</span>                    {</div>
+<div class="line"><span class="lineno">  452</span>                        Core.m_dashEffect.Stop();</div>
+<div class="line"><span class="lineno">  453</span>                        Core.m_isNoStamina = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  454</span>                    }</div>
+<div class="line"><span class="lineno">  455</span>                    Core.m_isRun = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  456</span>                }</div>
+<div class="line"><span class="lineno">  457</span> </div>
+<div class="line"><span class="lineno">  458</span>                <span class="keywordflow">return</span>;<span class="comment">// ダッシュ時は回復しない</span></div>
+<div class="line"><span class="lineno">  459</span>            }</div>
+<div class="line"><span class="lineno">  460</span> </div>
+<div class="line"><span class="lineno">  461</span> </div>
+<div class="line"><span class="lineno">  462</span>            <span class="comment">// 回復 ---------------</span></div>
+<div class="line"><span class="lineno">  463</span>            <span class="keywordflow">if</span> (Core.m_characterStatus.m_stamina.Value &gt;= Core.m_characterStatus.MaxStamina) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  464</span> </div>
+<div class="line"><span class="lineno">  465</span>            Core.m_characterStatus.m_stamina.Value += Core.m_characterStatus.m_staminaSpeed * Time.deltaTime;</div>
+<div class="line"><span class="lineno">  466</span> </div>
+<div class="line"><span class="lineno">  467</span>            <span class="keywordflow">if</span> (Core.m_characterStatus.m_stamina.Value &gt;= Core.m_characterStatus.MaxStamina)</div>
+<div class="line"><span class="lineno">  468</span>            {</div>
+<div class="line"><span class="lineno">  469</span>                Core.m_characterStatus.m_stamina.Value = Core.m_characterStatus.MaxStamina;</div>
+<div class="line"><span class="lineno">  470</span> </div>
+<div class="line"><span class="lineno">  471</span>            }</div>
+<div class="line"><span class="lineno">  472</span>        }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_adeed1a708c127636608b62d26800d7fb_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_adeed1a708c127636608b62d26800d7fb_icgraph" alt=""/></div>
@@ -620,7 +956,201 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 
 </div>
 </div>
+<a id="a738f1c01b6c48ad1a553a22ada55b83c" name="a738f1c01b6c48ad1a553a22ada55b83c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a738f1c01b6c48ad1a553a22ada55b83c">&#9670;&#160;</a></span>UpdateBP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CharacterCore.ActionState_IdleAndMove.UpdateBP </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  477</span>        {</div>
+<div class="line"><span class="lineno">  478</span>            <span class="comment">//童話スキル１が使用できるかチェック（山本）</span></div>
+<div class="line"><span class="lineno">  479</span>            Core.PlayerParameters.UseSkill1Flg = <a class="code hl_function" href="#afe4fb391ed29fe1734d002988cdbfd46">CheckStorySkill</a></div>
+<div class="line"><span class="lineno">  480</span>            (</div>
+<div class="line"><span class="lineno">  481</span>                0,</div>
+<div class="line"><span class="lineno">  482</span>               Core.PlayerParameters.StorySkill1_ID,</div>
+<div class="line"><span class="lineno">  483</span>               Core.PlayerParameters.m_obserbSkill1</div>
+<div class="line"><span class="lineno">  484</span>             );</div>
+<div class="line"><span class="lineno">  485</span> </div>
+<div class="line"><span class="lineno">  486</span>            <span class="comment">//童話スキル2が使用できるかチェック（山本）</span></div>
+<div class="line"><span class="lineno">  487</span>            Core.PlayerParameters.UseSkill2Flg = <a class="code hl_function" href="#afe4fb391ed29fe1734d002988cdbfd46">CheckStorySkill</a></div>
+<div class="line"><span class="lineno">  488</span>           (</div>
+<div class="line"><span class="lineno">  489</span>                1,</div>
+<div class="line"><span class="lineno">  490</span>               Core.PlayerParameters.StorySkill2_ID,</div>
+<div class="line"><span class="lineno">  491</span>               Core.PlayerParameters.m_obserbSkill2</div>
+<div class="line"><span class="lineno">  492</span> </div>
+<div class="line"><span class="lineno">  493</span>            );</div>
+<div class="line"><span class="lineno">  494</span> </div>
+<div class="line"><span class="lineno">  495</span>            <span class="comment">//それぞれのBPを回復する(吉田)</span></div>
+<div class="line"><span class="lineno">  496</span>            {</div>
+<div class="line"><span class="lineno">  497</span>                <span class="comment">//スキルBPを回復する(吉田)</span></div>
+<div class="line"><span class="lineno">  498</span>                <span class="keywordflow">if</span> (Core.PlayerParameters.m_obserbSkill1 == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  499</span>                    Core.m_characterStatus.m_bpSkill_1.Value += Core.m_characterStatus.m_bpRecoverSpeed * Time.deltaTime;</div>
+<div class="line"><span class="lineno">  500</span> </div>
+<div class="line"><span class="lineno">  501</span>                <span class="keywordflow">if</span> (Core.PlayerParameters.m_obserbSkill2 == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  502</span>                    Core.m_characterStatus.m_bpSkill_2.Value += Core.m_characterStatus.m_bpRecoverSpeed * Time.deltaTime;</div>
+<div class="line"><span class="lineno">  503</span> </div>
+<div class="line"><span class="lineno">  504</span>                <span class="comment">//Max超えてたらMaxに戻す（吉田）</span></div>
+<div class="line"><span class="lineno">  505</span>                <span class="keywordflow">if</span> (Core.m_characterStatus.m_bpSkill_1.Value &gt;= Core.m_characterStatus.MaxBPSkill_1)</div>
+<div class="line"><span class="lineno">  506</span>                {</div>
+<div class="line"><span class="lineno">  507</span>                    Core.m_characterStatus.m_bpSkill_1.Value = Core.m_characterStatus.MaxBPSkill_1;</div>
+<div class="line"><span class="lineno">  508</span>                }</div>
+<div class="line"><span class="lineno">  509</span>                <span class="keywordflow">if</span> (Core.m_characterStatus.m_bpSkill_2.Value &gt;= Core.m_characterStatus.MaxBPSkill_2)</div>
+<div class="line"><span class="lineno">  510</span>                {</div>
+<div class="line"><span class="lineno">  511</span>                    Core.m_characterStatus.m_bpSkill_2.Value = Core.m_characterStatus.MaxBPSkill_2;</div>
+<div class="line"><span class="lineno">  512</span>                }</div>
+<div class="line"><span class="lineno">  513</span> </div>
+<div class="line"><span class="lineno">  514</span>            }</div>
+<div class="line"><span class="lineno">  515</span> </div>
+<div class="line"><span class="lineno">  516</span> </div>
+<div class="line"><span class="lineno">  517</span>            <span class="comment">//if (Core.m_characterStatus.m_bp.Value &gt;= Core.m_characterStatus.MaxBP)</span></div>
+<div class="line"><span class="lineno">  518</span>            <span class="comment">//{</span></div>
+<div class="line"><span class="lineno">  519</span>            <span class="comment">//    return;</span></div>
+<div class="line"><span class="lineno">  520</span>            <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">  521</span> </div>
+<div class="line"><span class="lineno">  522</span>            <span class="comment">//Core.m_characterStatus.m_bp.Value += Core.m_characterStatus.m_bpRecoverSpeed * Time.deltaTime;</span></div>
+<div class="line"><span class="lineno">  523</span> </div>
+<div class="line"><span class="lineno">  524</span> </div>
+<div class="line"><span class="lineno">  525</span>            <span class="comment">//if (Core.m_characterStatus.m_bp.Value &gt;= Core.m_characterStatus.MaxBP)</span></div>
+<div class="line"><span class="lineno">  526</span>            <span class="comment">//{</span></div>
+<div class="line"><span class="lineno">  527</span>            <span class="comment">//    Core.m_characterStatus.m_bp.Value = Core.m_characterStatus.MaxBP;</span></div>
+<div class="line"><span class="lineno">  528</span>            <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">  529</span> </div>
+<div class="line"><span class="lineno">  530</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___idle_and_move_html_afe4fb391ed29fe1734d002988cdbfd46"><div class="ttname"><a href="#afe4fb391ed29fe1734d002988cdbfd46">CharacterCore.ActionState_IdleAndMove.CheckStorySkill</a></div><div class="ttdeci">bool CheckStorySkill(int _slot, StorySkill_ID _skillID, GameObject _obserbSkillObj)</div><div class="ttdef"><b>Definition</b> CommonState.cs:534</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,184,48"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#afe4fb391ed29fe1734d002988cdbfd46" title=" " alt="" coords="232,5,434,48"/>
+<area shape="poly" title=" " alt="" coords="184,24,216,24,216,29,184,29"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_a738f1c01b6c48ad1a553a22ada55b83c_icgraph">
+<area shape="rect" title=" " alt="" coords="253,5,431,48"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a92abe81f212c517b96f2182c1fda67f3" title=" " alt="" coords="5,5,205,48"/>
+<area shape="poly" title=" " alt="" coords="237,29,205,29,205,24,237,24"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="afe4fb391ed29fe1734d002988cdbfd46" name="afe4fb391ed29fe1734d002988cdbfd46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe4fb391ed29fe1734d002988cdbfd46">&#9670;&#160;</a></span>CheckStorySkill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool CharacterCore.ActionState_IdleAndMove.CheckStorySkill </td>
+          <td>(</td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>_slot</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa">StorySkill_ID</a></td>          <td class="paramname"><span class="paramname"><em>_skillID</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">GameObject</td>          <td class="paramname"><span class="paramname"><em>_obserbSkillObj</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  535</span>        {</div>
+<div class="line"><span class="lineno">  536</span>            <span class="keywordtype">bool</span> useSkillFlg = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  537</span> </div>
+<div class="line"><span class="lineno">  538</span>            <span class="comment">//童話スキル装備してないならfalse</span></div>
+<div class="line"><span class="lineno">  539</span>            <span class="keywordflow">if</span> (_skillID == <a class="code hl_enumeration" href="../../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa">StorySkill_ID</a>.None)</div>
+<div class="line"><span class="lineno">  540</span>            {</div>
+<div class="line"><span class="lineno">  541</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  542</span>            }</div>
+<div class="line"><span class="lineno">  543</span> </div>
+<div class="line"><span class="lineno">  544</span> </div>
+<div class="line"><span class="lineno">  545</span>            <span class="keywordflow">if</span> (_obserbSkillObj == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  546</span>            {</div>
+<div class="line"><span class="lineno">  547</span> </div>
+<div class="line"><span class="lineno">  548</span>                var storySkillData = <a class="code hl_class" href="../../d0/dd5/class_story_skill_data_base_manager.html">StorySkillDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetStorySkillData(_skillID);</div>
+<div class="line"><span class="lineno">  549</span> </div>
+<div class="line"><span class="lineno">  550</span>                <span class="comment">//プレイヤーのBPがデータに登録された消費BP以上ならスキル使用可能（吉田）</span></div>
+<div class="line"><span class="lineno">  551</span>                <span class="keywordflow">if</span> (_slot == 0 &amp;&amp; storySkillData.PayBP &lt;= Core.m_characterStatus.m_bpSkill_1.Value)</div>
+<div class="line"><span class="lineno">  552</span>                {</div>
+<div class="line"><span class="lineno">  553</span>                    useSkillFlg = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  554</span>                }</div>
+<div class="line"><span class="lineno">  555</span>                <span class="keywordflow">else</span> <span class="keywordflow">if</span> (_slot == 1 &amp;&amp; storySkillData.PayBP &lt;= Core.m_characterStatus.m_bpSkill_2.Value)</div>
+<div class="line"><span class="lineno">  556</span>                {</div>
+<div class="line"><span class="lineno">  557</span>                    useSkillFlg = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  558</span>                }</div>
+<div class="line"><span class="lineno">  559</span> </div>
+<div class="line"><span class="lineno">  560</span> </div>
+<div class="line"><span class="lineno">  561</span>            }</div>
+<div class="line"><span class="lineno">  562</span> </div>
+<div class="line"><span class="lineno">  563</span>            <span class="keywordflow">return</span> useSkillFlg;</div>
+<div class="line"><span class="lineno">  564</span> </div>
+<div class="line"><span class="lineno">  565</span>        }</div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_story_skill_data_base_manager_html"><div class="ttname"><a href="../../d0/dd5/class_story_skill_data_base_manager.html">StorySkillDataBaseManager</a></div><div class="ttdef"><b>Definition</b> StorySkillDataBaseManager.cs:9</div></div>
+<div class="ttc" id="anamespace_story_skill_info_html_a496d88cb4016f418cd837e2c1fc6b8aa"><div class="ttname"><a href="../../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa">StorySkillInfo.StorySkill_ID</a></div><div class="ttdeci">StorySkill_ID</div><div class="ttdef"><b>Definition</b> StorySkill_ID.cs:8</div></div>
+</div><!-- fragment --><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../dc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph.png" border="0" usemap="#adc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph" alt=""/></div>
+<map name="adc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph" id="adc/d89/class_character_core_1_1_action_state___idle_and_move_afe4fb391ed29fe1734d002988cdbfd46_icgraph">
+<area shape="rect" title=" " alt="" coords="479,5,681,48"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a738f1c01b6c48ad1a553a22ada55b83c" title=" " alt="" coords="253,5,431,48"/>
+<area shape="poly" title=" " alt="" coords="463,29,431,29,431,24,463,24"/>
+<area shape="rect" href="../../dc/d89/class_character_core_1_1_action_state___idle_and_move.html#a92abe81f212c517b96f2182c1fda67f3" title=" " alt="" coords="5,5,205,48"/>
+<area shape="poly" title=" " alt="" coords="237,29,205,29,205,24,237,24"/>
+</map>
+</div>
+
+</div>
+</div>
 <h2 class="groupheader">フィールド詳解</h2>
+<a id="a0ad35a32f682749ddd590c54165b733a" name="a0ad35a32f682749ddd590c54165b733a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ad35a32f682749ddd590c54165b733a">&#9670;&#160;</a></span>m_speedStick</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CharacterCore.ActionState_IdleAndMove.m_speedStick = 0.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a4a28a0d5e38fbb17f575d6e9df240381" name="a4a28a0d5e38fbb17f575d6e9df240381"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a28a0d5e38fbb17f575d6e9df240381">&#9670;&#160;</a></span>m_isRun</h2>
 
@@ -640,8 +1170,6 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -665,36 +1193,10 @@ CharacterCore.ActionState_IdleAndMove 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00021">21</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a0ad35a32f682749ddd590c54165b733a" name="a0ad35a32f682749ddd590c54165b733a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ad35a32f682749ddd590c54165b733a">&#9670;&#160;</a></span>m_speedStick</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float CharacterCore.ActionState_IdleAndMove.m_speedStick = 0.0f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a> の <a class="el" href="../../dd/d97/_common_state_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../dd/d97/_common_state_8cs_source.html">CommonState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../dd/d97/_common_state_8cs.html">CommonState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

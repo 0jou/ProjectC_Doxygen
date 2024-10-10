@@ -55,13 +55,6 @@ bool \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_adefd6d5
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00734}{734}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_character_core_1_1_action_state___hold_item_a2f05122c262b5177093b055c6fc3a029}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!OnEnter@{OnEnter}}
 \index{OnEnter@{OnEnter}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
@@ -74,9 +67,33 @@ override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Enter (\be
 \mbox{\hyperlink{class_character_core_1_1_action_state___base_a48c88438ec535f030782a32ef0d59161}{Character\+Core.\+Action\+State\+\_\+\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00744\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00745\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{00746\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsHoldItem"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00747\ }
+\DoxyCodeLine{00748\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//武器が存在する場合は消す}}
+\DoxyCodeLine{00749\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.HideWeapon(Core.m\_animator);}
+\DoxyCodeLine{00750\ }
+\DoxyCodeLine{00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//選択アイテムを出現させる}}
+\DoxyCodeLine{00752\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}\ =\ Core.AddComponent<\mbox{\hyperlink{class_hold_item_instance}{HoldItemInstance}}>();}
+\DoxyCodeLine{00753\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_ad0b9e8619b19ff2aea7f69c6e724c0df}{SetHoldPoint}}(Core.PlayerParameters.m\_holdTrans);}
+\DoxyCodeLine{00754\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_a62f0f1c1c169ecf807553bb7ddcf45ee}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{00756\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_ac55e636301903dc4b83bba20ea861102}{Craft}}();}
+\DoxyCodeLine{00757\ }
+\DoxyCodeLine{00758\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//料理データにアクセスし、食べられものかどうかをチェック}}
+\DoxyCodeLine{00759\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>}
+\DoxyCodeLine{00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{00762\ }
+\DoxyCodeLine{00763\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_adefd6d5ac93c20a075d4f901c03134b5}{m\_isEat}}\ =\ data.IsEat;}
+\DoxyCodeLine{00764\ }
+\DoxyCodeLine{00766\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.Attack);}}
+\DoxyCodeLine{00768\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.AddActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{00769\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00743}{743}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -84,34 +101,6 @@ override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Enter (\be
 \includegraphics[width=350pt]{df/da3/class_character_core_1_1_action_state___hold_item_a2f05122c262b5177093b055c6fc3a029_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_character_core_1_1_action_state___hold_item_a4fb6d22ed05b721192dcb991cb4241c0}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!OnExit@{OnExit}}
-\index{OnExit@{OnExit}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
-\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
-{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___hold_item_a4fb6d22ed05b721192dcb991cb4241c0} 
-override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00858}{858}} 行目に定義があります。
-
-\Hypertarget{class_character_core_1_1_action_state___hold_item_a8988d23b8cb7321e8db87ab7a1a7347e}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!OnFixedUpdate@{OnFixedUpdate}}
-\index{OnFixedUpdate@{OnFixedUpdate}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
-\doxysubsubsection{\texorpdfstring{OnFixedUpdate()}{OnFixedUpdate()}}
-{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___hold_item_a8988d23b8cb7321e8db87ab7a1a7347e} 
-override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Fixed\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00836}{836}} 行目に定義があります。
-
 \Hypertarget{class_character_core_1_1_action_state___hold_item_a564ae6358df0b8342b44bcbb10e038e5}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
 \doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
@@ -123,9 +112,69 @@ override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Update (\b
 \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00772\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00773\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//選択アイテムが変更されたらコンポーネントを変更}}
+\DoxyCodeLine{00774\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_a735768a9d7fd540a3ef6445107ad0939}{ItemID}}\ !=\ Core.PlayerParameters.m\_putItemInfo.m\_itemID)}
+\DoxyCodeLine{00775\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_a4c019e28246688a65de0702be2de82b5}{DestroyPrefab}}();}
+\DoxyCodeLine{00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_ad0b9e8619b19ff2aea7f69c6e724c0df}{SetHoldPoint}}(Core.PlayerParameters.m\_holdTrans);}
+\DoxyCodeLine{00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_a62f0f1c1c169ecf807553bb7ddcf45ee}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}.\mbox{\hyperlink{class_hold_item_instance_ac55e636301903dc4b83bba20ea861102}{Craft}}();}
+\DoxyCodeLine{00781\ }
+\DoxyCodeLine{00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//料理データにアクセスし、食べられものかどうかをチェック}}
+\DoxyCodeLine{00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>}
+\DoxyCodeLine{00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{00786\ }
+\DoxyCodeLine{00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_adefd6d5ac93c20a075d4f901c03134b5}{m\_isEat}}\ =\ data.IsEat;}
+\DoxyCodeLine{00788\ }
+\DoxyCodeLine{00789\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00790\ }
+\DoxyCodeLine{00791\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 指定のボタンの入力で設置状態へ（吉田）}}
+\DoxyCodeLine{00792\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.PutItem)}
+\DoxyCodeLine{00793\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムの設定されていたらState変更可}}
+\DoxyCodeLine{00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.m\_putItemInfo.m\_itemID\ !=\ 0)}
+\DoxyCodeLine{00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}PutItem"{}});}
+\DoxyCodeLine{00798\ }
+\DoxyCodeLine{00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00802\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00803\ }
+\DoxyCodeLine{00804\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//指定のボタン入力かつ食べられる料理の場合、食事状態に移行}}
+\DoxyCodeLine{00805\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.Eat\ \&\&\ m\_isEat)}
+\DoxyCodeLine{00806\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}IsEat"{}});}
+\DoxyCodeLine{00808\ }
+\DoxyCodeLine{00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{00811\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00812\ }
+\DoxyCodeLine{00813\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 指定のボタンの入力で投げ準備状態へ（吉田）}}
+\DoxyCodeLine{00814\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.ReadyThrowItem)}
+\DoxyCodeLine{00815\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムの設定されていたらState変更可}}
+\DoxyCodeLine{00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.m\_putItemInfo.m\_itemID\ !=\ 0)}
+\DoxyCodeLine{00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}ReadyToThrow"{}});}
+\DoxyCodeLine{00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00821\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00822\ }
+\DoxyCodeLine{00823\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//キャンセルボタンを押すことでMoveに戻る}}
+\DoxyCodeLine{00824\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.Cancel)}
+\DoxyCodeLine{00825\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsHoldItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00827\ }
+\DoxyCodeLine{00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示}}
+\DoxyCodeLine{00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.Attack);}
+\DoxyCodeLine{00832\ }
+\DoxyCodeLine{00833\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00834\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00771}{771}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -133,6 +182,64 @@ override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Update (\b
 \includegraphics[width=350pt]{df/da3/class_character_core_1_1_action_state___hold_item_a564ae6358df0b8342b44bcbb10e038e5_cgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_character_core_1_1_action_state___hold_item_a8988d23b8cb7321e8db87ab7a1a7347e}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!OnFixedUpdate@{OnFixedUpdate}}
+\index{OnFixedUpdate@{OnFixedUpdate}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
+\doxysubsubsection{\texorpdfstring{OnFixedUpdate()}{OnFixedUpdate()}}
+{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___hold_item_a8988d23b8cb7321e8db87ab7a1a7347e} 
+override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Fixed\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00837\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00838\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//移動処理}}
+\DoxyCodeLine{00839\ \ \ \ \ \ \ \ \ \ \ \ \ var\ input\ =\ Core.m\_inputProvider.MoveVector;}
+\DoxyCodeLine{00840\ }
+\DoxyCodeLine{00841\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 方向キーの入力があったら、その向きにキャラクターを回転させる}}
+\DoxyCodeLine{00842\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input.magnitude\ !=\ 0)}
+\DoxyCodeLine{00843\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(input);}
+\DoxyCodeLine{00845\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00846\ }
+\DoxyCodeLine{00847\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 移動速度の計算}}
+\DoxyCodeLine{00848\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ speedByStick\ =\ input.magnitude;}
+\DoxyCodeLine{00849\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ finalSpeed;}
+\DoxyCodeLine{00850\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_isRun)\ finalSpeed\ =\ Core.m\_dushSpeed\ *\ speedByStick;}
+\DoxyCodeLine{00851\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ finalSpeed\ =\ Core.m\_walkSpeed\ *\ speedByStick;}
+\DoxyCodeLine{00852\ }
+\DoxyCodeLine{00853\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(finalSpeed);}
+\DoxyCodeLine{00854\ }
+\DoxyCodeLine{00855\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_character_core_1_1_action_state___hold_item_a4fb6d22ed05b721192dcb991cb4241c0}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!OnExit@{OnExit}}
+\index{OnExit@{OnExit}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
+\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
+{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___hold_item_a4fb6d22ed05b721192dcb991cb4241c0} 
+override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00859\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00860\ }
+\DoxyCodeLine{00861\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsHoldItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00862\ }
+\DoxyCodeLine{00863\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//コンポーネントを削除}}
+\DoxyCodeLine{00864\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_holdItemInstance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00865\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_holdItemInstance);}
+\DoxyCodeLine{00867\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00868\ }
+\DoxyCodeLine{00869\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -142,19 +249,11 @@ override void Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+On\+Update (\b
 {\footnotesize\ttfamily \label{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c} 
 \mbox{\hyperlink{class_hold_item_instance}{Hold\+Item\+Instance}} Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+m\+\_\+hold\+Item\+Instance = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00739}{739}} 行目に定義があります。
-
 \Hypertarget{class_character_core_1_1_action_state___hold_item_adefd6d5ac93c20a075d4f901c03134b5}\index{CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}!m\_isEat@{m\_isEat}}
 \index{m\_isEat@{m\_isEat}!CharacterCore.ActionState\_HoldItem@{CharacterCore.ActionState\_HoldItem}}
 \doxysubsubsection{\texorpdfstring{m\_isEat}{m\_isEat}}
 {\footnotesize\ttfamily \label{class_character_core_1_1_action_state___hold_item_adefd6d5ac93c20a075d4f901c03134b5} 
 bool Character\+Core.\+Action\+State\+\_\+\+Hold\+Item.\+m\+\_\+is\+Eat = false\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00741}{741}} 行目に定義があります。
 
 
 

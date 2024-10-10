@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -211,55 +211,63 @@ BPSkill_2Presenter 連携図</div>
 <tr class="memitem:af388a8abb112612f1bf39539504b76e0" id="r_af388a8abb112612f1bf39539504b76e0"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af388a8abb112612f1bf39539504b76e0">m_pressKeyEffectObj</a></td></tr>
 <tr class="separator:af388a8abb112612f1bf39539504b76e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
-<a id="a613bdf815a0dc2940c42c7f72694846f" name="a613bdf815a0dc2940c42c7f72694846f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a613bdf815a0dc2940c42c7f72694846f">&#9670;&#160;</a></span>BarSetting()</h2>
+<h2 class="groupheader">メソッド詳解</h2>
+<a id="a90734d94dd1715072026086db9e39718" name="a90734d94dd1715072026086db9e39718"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90734d94dd1715072026086db9e39718">&#9670;&#160;</a></span>Start()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void BPSkill_2Presenter.BarSetting </td>
+          <td class="memname">void BPSkill_2Presenter.Start </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00057">57</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   14</span>    {</div>
+<div class="line"><span class="lineno">   15</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a439da3137b9ca5ad47ac29f5b107a908">m_barController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   16</span>        {</div>
+<div class="line"><span class="lineno">   17</span>            <a class="code hl_variable" href="#a439da3137b9ca5ad47ac29f5b107a908">m_barController</a> = GetComponent&lt;StorySkillUIController&gt;();</div>
+<div class="line"><span class="lineno">   18</span>        }</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a48dc30853faf3cf2fa67170205493e85">m_colorChanger</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span>            <a class="code hl_variable" href="#a48dc30853faf3cf2fa67170205493e85">m_colorChanger</a> = GetComponent&lt;StorySkillUIChangeColor&gt;();</div>
+<div class="line"><span class="lineno">   22</span>        }</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>        <span class="comment">// HPの初期設定</span></div>
+<div class="line"><span class="lineno">   25</span>        <a class="code hl_function" href="#a613bdf815a0dc2940c42c7f72694846f">BarSetting</a>();</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>        <span class="comment">// 変わったら実行する処理を登録</span></div>
+<div class="line"><span class="lineno">   28</span>        <a class="code hl_variable" href="#a14ffd3498eec68ef2eb58f72f275dddc">m_characterCore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a86a264969769d50237e1f67cdc0d984d">m_bpSkill_2</a>.Subscribe(x =&gt; <a class="code hl_function" href="#aaa08cd2fc6446f0fc9690e40bf1bf2c1">BarUpdate</a>());</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="ttc" id="aclass_b_p_skill__2_presenter_html_a14ffd3498eec68ef2eb58f72f275dddc"><div class="ttname"><a href="#a14ffd3498eec68ef2eb58f72f275dddc">BPSkill_2Presenter.m_characterCore</a></div><div class="ttdeci">CharacterCore m_characterCore</div><div class="ttdef"><b>Definition</b> BPSkill_2Presenter.cs:8</div></div>
+<div class="ttc" id="aclass_b_p_skill__2_presenter_html_a439da3137b9ca5ad47ac29f5b107a908"><div class="ttname"><a href="#a439da3137b9ca5ad47ac29f5b107a908">BPSkill_2Presenter.m_barController</a></div><div class="ttdeci">StorySkillUIController m_barController</div><div class="ttdef"><b>Definition</b> BPSkill_2Presenter.cs:9</div></div>
+<div class="ttc" id="aclass_b_p_skill__2_presenter_html_a48dc30853faf3cf2fa67170205493e85"><div class="ttname"><a href="#a48dc30853faf3cf2fa67170205493e85">BPSkill_2Presenter.m_colorChanger</a></div><div class="ttdeci">StorySkillUIChangeColor m_colorChanger</div><div class="ttdef"><b>Definition</b> BPSkill_2Presenter.cs:10</div></div>
+<div class="ttc" id="aclass_b_p_skill__2_presenter_html_a613bdf815a0dc2940c42c7f72694846f"><div class="ttname"><a href="#a613bdf815a0dc2940c42c7f72694846f">BPSkill_2Presenter.BarSetting</a></div><div class="ttdeci">void BarSetting()</div><div class="ttdef"><b>Definition</b> BPSkill_2Presenter.cs:57</div></div>
+<div class="ttc" id="aclass_b_p_skill__2_presenter_html_aaa08cd2fc6446f0fc9690e40bf1bf2c1"><div class="ttname"><a href="#aaa08cd2fc6446f0fc9690e40bf1bf2c1">BPSkill_2Presenter.BarUpdate</a></div><div class="ttdeci">void BarUpdate()</div><div class="ttdef"><b>Definition</b> BPSkill_2Presenter.cs:31</div></div>
+<div class="ttc" id="aclass_character_core_html_aa4fbd2c5ca05a49e198309470c4730d4"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">CharacterCore.Status</a></div><div class="ttdeci">CharatcerStatus Status</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:126</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_a86a264969769d50237e1f67cdc0d984d"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a86a264969769d50237e1f67cdc0d984d">CharacterCore.CharatcerStatus.m_bpSkill_2</a></div><div class="ttdeci">FloatReactiveProperty m_bpSkill_2</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:106</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
-<div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph" alt=""/></div>
-<map name="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph" id="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,59,205,85"/>
-<area shape="rect" href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d" title=" " alt="" coords="253,5,424,48"/>
-<area shape="poly" title=" " alt="" coords="177,55,237,44,238,49,178,61"/>
-<area shape="rect" href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82" title=" " alt="" coords="253,96,424,139"/>
-<area shape="poly" title=" " alt="" coords="178,83,238,95,237,100,177,89"/>
-<area shape="poly" title=" " alt="" coords="294,96,292,86,300,77,315,71,338,69,363,72,378,78,376,83,362,77,338,75,316,77,303,81,297,87,299,95"/>
-</map>
-</div>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph" alt=""/></div>
-<map name="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph" id="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph">
-<area shape="rect" title=" " alt="" coords="220,5,419,32"/>
-<area shape="rect" href="../../d9/dff/class_b_p_skill__2_presenter.html#a90734d94dd1715072026086db9e39718" title=" " alt="" coords="5,5,172,32"/>
-<area shape="poly" title=" " alt="" coords="204,21,172,21,172,16,204,16"/>
+<div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph" alt=""/></div>
+<map name="ad9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph" id="ad9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph">
+<area shape="rect" title=" " alt="" coords="5,79,172,105"/>
+<area shape="rect" href="../../d9/dff/class_b_p_skill__2_presenter.html#a613bdf815a0dc2940c42c7f72694846f" title=" " alt="" coords="220,53,420,80"/>
+<area shape="poly" title=" " alt="" coords="171,80,204,77,205,82,172,86"/>
+<area shape="rect" href="../../d9/dff/class_b_p_skill__2_presenter.html#aaa08cd2fc6446f0fc9690e40bf1bf2c1" title=" " alt="" coords="220,104,420,131"/>
+<area shape="poly" title=" " alt="" coords="172,98,205,102,204,107,171,104"/>
+<area shape="rect" href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d" title=" " alt="" coords="468,96,639,139"/>
+<area shape="poly" title=" " alt="" coords="386,78,453,93,452,98,384,83"/>
+<area shape="rect" href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82" title=" " alt="" coords="468,29,639,72"/>
+<area shape="poly" title=" " alt="" coords="420,57,452,55,453,60,420,62"/>
+<area shape="poly" title=" " alt="" coords="509,29,508,19,515,10,530,5,554,3,579,5,594,11,592,16,577,10,554,8,532,10,518,15,513,21,515,28"/>
+<area shape="poly" title=" " alt="" coords="421,115,452,115,452,120,421,120"/>
+<area shape="poly" title=" " alt="" coords="377,101,419,89,469,74,471,80,421,95,378,106"/>
+<area shape="rect" href="../../d3/d32/class_story_skill_u_i_change_color.html#a686b9556db3c59829ccb0db7d631eede" title=" " alt="" coords="468,163,639,205"/>
+<area shape="poly" title=" " alt="" coords="370,129,462,155,461,160,369,134"/>
 </map>
 </div>
 
@@ -287,9 +295,35 @@ BPSkill_2Presenter 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00031">31</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   32</span>    {</div>
+<div class="line"><span class="lineno">   33</span>        <a class="code hl_variable" href="#a439da3137b9ca5ad47ac29f5b107a908">m_barController</a>.<a class="code hl_function" href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82">SetValue</a>(<a class="code hl_variable" href="#a14ffd3498eec68ef2eb58f72f275dddc">m_characterCore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a86a264969769d50237e1f67cdc0d984d">m_bpSkill_2</a>.Value);</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a48dc30853faf3cf2fa67170205493e85">m_colorChanger</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   36</span>        <span class="comment">// スキルが使えるかどうかで</span></div>
+<div class="line"><span class="lineno">   37</span>        <span class="comment">// ・色を変える</span></div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">// ・エフェクトの表示非表示を変える</span></div>
+<div class="line"><span class="lineno">   39</span>        var parameter = <a class="code hl_variable" href="#a14ffd3498eec68ef2eb58f72f275dddc">m_characterCore</a>.<a class="code hl_variable" href="../../d7/d2e/class_character_core.html#ab5bf6b6f900839c44b44eb63938f3664">PlayerParameters</a>;</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (parameter)</div>
+<div class="line"><span class="lineno">   41</span>        {</div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (parameter.UseSkill2Flg)</div>
+<div class="line"><span class="lineno">   43</span>            {</div>
+<div class="line"><span class="lineno">   44</span>                <a class="code hl_variable" href="#a48dc30853faf3cf2fa67170205493e85">m_colorChanger</a>.<a class="code hl_function" href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d">ChangeUseColor</a>();</div>
+<div class="line"><span class="lineno">   45</span>                <a class="code hl_variable" href="#af388a8abb112612f1bf39539504b76e0">m_pressKeyEffectObj</a>.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   46</span>            }</div>
+<div class="line"><span class="lineno">   47</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   48</span>            {</div>
+<div class="line"><span class="lineno">   49</span>                <a class="code hl_variable" href="#a48dc30853faf3cf2fa67170205493e85">m_colorChanger</a>.<a class="code hl_function" href="../../d3/d32/class_story_skill_u_i_change_color.html#a686b9556db3c59829ccb0db7d631eede">ChangeNoUseColor</a>();</div>
+<div class="line"><span class="lineno">   50</span>                <a class="code hl_variable" href="#af388a8abb112612f1bf39539504b76e0">m_pressKeyEffectObj</a>.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   51</span>            }</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+<div class="ttc" id="aclass_b_p_skill__2_presenter_html_af388a8abb112612f1bf39539504b76e0"><div class="ttname"><a href="#af388a8abb112612f1bf39539504b76e0">BPSkill_2Presenter.m_pressKeyEffectObj</a></div><div class="ttdeci">GameObject m_pressKeyEffectObj</div><div class="ttdef"><b>Definition</b> BPSkill_2Presenter.cs:11</div></div>
+<div class="ttc" id="aclass_character_core_html_ab5bf6b6f900839c44b44eb63938f3664"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#ab5bf6b6f900839c44b44eb63938f3664">CharacterCore.PlayerParameters</a></div><div class="ttdeci">PlayerParameters PlayerParameters</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:129</div></div>
+<div class="ttc" id="aclass_story_skill_u_i_change_color_html_a4e314f5d39819fcddd55b297314aeb3d"><div class="ttname"><a href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d">StorySkillUIChangeColor.ChangeUseColor</a></div><div class="ttdeci">void ChangeUseColor()</div><div class="ttdef"><b>Definition</b> StorySkillUIChangeColor.cs:90</div></div>
+<div class="ttc" id="aclass_story_skill_u_i_change_color_html_a686b9556db3c59829ccb0db7d631eede"><div class="ttname"><a href="../../d3/d32/class_story_skill_u_i_change_color.html#a686b9556db3c59829ccb0db7d631eede">StorySkillUIChangeColor.ChangeNoUseColor</a></div><div class="ttdeci">void ChangeNoUseColor()</div><div class="ttdef"><b>Definition</b> StorySkillUIChangeColor.cs:80</div></div>
+<div class="ttc" id="aclass_story_skill_u_i_controller_html_a386a1b3165db53042dfee2c390a5cf82"><div class="ttname"><a href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82">StorySkillUIController.SetValue</a></div><div class="ttdeci">void SetValue(float _current, float _max)</div><div class="ttdef"><b>Definition</b> StorySkillUIController.cs:17</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_aaa08cd2fc6446f0fc9690e40bf1bf2c1_cgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_aaa08cd2fc6446f0fc9690e40bf1bf2c1_cgraph" alt=""/></div>
@@ -317,49 +351,8 @@ BPSkill_2Presenter 連携図</div>
 
 </div>
 </div>
-<a id="a90734d94dd1715072026086db9e39718" name="a90734d94dd1715072026086db9e39718"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90734d94dd1715072026086db9e39718">&#9670;&#160;</a></span>Start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void BPSkill_2Presenter.Start </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph" alt=""/></div>
-<map name="ad9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph" id="ad9/dff/class_b_p_skill__2_presenter_a90734d94dd1715072026086db9e39718_cgraph">
-<area shape="rect" title=" " alt="" coords="5,79,172,105"/>
-<area shape="rect" href="../../d9/dff/class_b_p_skill__2_presenter.html#a613bdf815a0dc2940c42c7f72694846f" title=" " alt="" coords="220,53,420,80"/>
-<area shape="poly" title=" " alt="" coords="171,80,204,77,205,82,172,86"/>
-<area shape="rect" href="../../d9/dff/class_b_p_skill__2_presenter.html#aaa08cd2fc6446f0fc9690e40bf1bf2c1" title=" " alt="" coords="220,104,420,131"/>
-<area shape="poly" title=" " alt="" coords="172,98,205,102,204,107,171,104"/>
-<area shape="rect" href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d" title=" " alt="" coords="468,96,639,139"/>
-<area shape="poly" title=" " alt="" coords="386,78,453,93,452,98,384,83"/>
-<area shape="rect" href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82" title=" " alt="" coords="468,29,639,72"/>
-<area shape="poly" title=" " alt="" coords="420,57,452,55,453,60,420,62"/>
-<area shape="poly" title=" " alt="" coords="509,29,508,19,515,10,530,5,554,3,579,5,594,11,592,16,577,10,554,8,532,10,518,15,513,21,515,28"/>
-<area shape="poly" title=" " alt="" coords="421,115,452,115,452,120,421,120"/>
-<area shape="poly" title=" " alt="" coords="377,101,419,89,469,74,471,80,421,95,378,106"/>
-<area shape="rect" href="../../d3/d32/class_story_skill_u_i_change_color.html#a686b9556db3c59829ccb0db7d631eede" title=" " alt="" coords="468,163,639,205"/>
-<area shape="poly" title=" " alt="" coords="370,129,462,155,461,160,369,134"/>
-</map>
-</div>
-
-</div>
-</div>
-<h2 class="groupheader">フィールド詳解</h2>
-<a id="a439da3137b9ca5ad47ac29f5b107a908" name="a439da3137b9ca5ad47ac29f5b107a908"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a439da3137b9ca5ad47ac29f5b107a908">&#9670;&#160;</a></span>m_barController</h2>
+<a id="a613bdf815a0dc2940c42c7f72694846f" name="a613bdf815a0dc2940c42c7f72694846f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a613bdf815a0dc2940c42c7f72694846f">&#9670;&#160;</a></span>BarSetting()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -368,7 +361,10 @@ BPSkill_2Presenter 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/de1/class_story_skill_u_i_controller.html">StorySkillUIController</a> BPSkill_2Presenter.m_barController</td>
+          <td class="memname">void BPSkill_2Presenter.BarSetting </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -377,11 +373,43 @@ BPSkill_2Presenter 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00009">9</a> 行目に定義があります。</p>
+<div class="fragment"><div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>        <span class="comment">// BPの初期値を設定</span></div>
+<div class="line"><span class="lineno">   60</span>        <a class="code hl_variable" href="#a439da3137b9ca5ad47ac29f5b107a908">m_barController</a>.<a class="code hl_function" href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82">SetValue</a>(</div>
+<div class="line"><span class="lineno">   61</span>            <a class="code hl_variable" href="#a14ffd3498eec68ef2eb58f72f275dddc">m_characterCore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a86a264969769d50237e1f67cdc0d984d">m_bpSkill_2</a>.Value,</div>
+<div class="line"><span class="lineno">   62</span>            <a class="code hl_variable" href="#a14ffd3498eec68ef2eb58f72f275dddc">m_characterCore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b">MaxBPSkill_2</a>);</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span>        <a class="code hl_variable" href="#a48dc30853faf3cf2fa67170205493e85">m_colorChanger</a>.<a class="code hl_function" href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d">ChangeUseColor</a>();</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>    }</div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b">CharacterCore.CharatcerStatus.MaxBPSkill_2</a></div><div class="ttdeci">float MaxBPSkill_2</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:108</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph" alt=""/></div>
+<map name="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph" id="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_cgraph">
+<area shape="rect" title=" " alt="" coords="5,59,205,85"/>
+<area shape="rect" href="../../d3/d32/class_story_skill_u_i_change_color.html#a4e314f5d39819fcddd55b297314aeb3d" title=" " alt="" coords="253,5,424,48"/>
+<area shape="poly" title=" " alt="" coords="177,55,237,44,238,49,178,61"/>
+<area shape="rect" href="../../dd/de1/class_story_skill_u_i_controller.html#a386a1b3165db53042dfee2c390a5cf82" title=" " alt="" coords="253,96,424,139"/>
+<area shape="poly" title=" " alt="" coords="178,83,238,95,237,100,177,89"/>
+<area shape="poly" title=" " alt="" coords="294,96,292,86,300,77,315,71,338,69,363,72,378,78,376,83,362,77,338,75,316,77,303,81,297,87,299,95"/>
+</map>
+</div>
+<div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph.png" border="0" usemap="#ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph" alt=""/></div>
+<map name="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph" id="ad9/dff/class_b_p_skill__2_presenter_a613bdf815a0dc2940c42c7f72694846f_icgraph">
+<area shape="rect" title=" " alt="" coords="220,5,419,32"/>
+<area shape="rect" href="../../d9/dff/class_b_p_skill__2_presenter.html#a90734d94dd1715072026086db9e39718" title=" " alt="" coords="5,5,172,32"/>
+<area shape="poly" title=" " alt="" coords="204,21,172,21,172,16,204,16"/>
+</map>
+</div>
 
 </div>
 </div>
+<h2 class="groupheader">フィールド詳解</h2>
 <a id="a14ffd3498eec68ef2eb58f72f275dddc" name="a14ffd3498eec68ef2eb58f72f275dddc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a14ffd3498eec68ef2eb58f72f275dddc">&#9670;&#160;</a></span>m_characterCore</h2>
 
@@ -402,7 +430,27 @@ BPSkill_2Presenter 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a439da3137b9ca5ad47ac29f5b107a908" name="a439da3137b9ca5ad47ac29f5b107a908"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a439da3137b9ca5ad47ac29f5b107a908">&#9670;&#160;</a></span>m_barController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/de1/class_story_skill_u_i_controller.html">StorySkillUIController</a> BPSkill_2Presenter.m_barController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -426,8 +474,6 @@ BPSkill_2Presenter 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="af388a8abb112612f1bf39539504b76e0" name="af388a8abb112612f1bf39539504b76e0"></a>
@@ -450,12 +496,10 @@ BPSkill_2Presenter 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a> の <a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Script/Presenter/StorySkill/<a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs_source.html">BPSkill_2Presenter.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Script/Presenter/StorySkill/<a class="el" href="../../d9/d4a/_b_p_skill__2_presenter_8cs.html">BPSkill_2Presenter.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

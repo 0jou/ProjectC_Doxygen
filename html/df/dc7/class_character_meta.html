@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -161,10 +161,7 @@ CharacterMeta 連携図</div>
 <tr class="memitem:a902ab4d443992a88f4739504250a3495" id="r_a902ab4d443992a88f4739504250a3495"><td class="memItemLeft" align="right" valign="top">HashSet&lt; <a class="el" href="../../d7/d2e/class_character_core.html">CharacterCore</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a902ab4d443992a88f4739504250a3495">_bossList</a> = new()</td></tr>
 <tr class="separator:a902ab4d443992a88f4739504250a3495"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ab2704e38b3d1bb783a0723ec89336667" name="ab2704e38b3d1bb783a0723ec89336667"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab2704e38b3d1bb783a0723ec89336667">&#9670;&#160;</a></span>Awake()</h2>
 
@@ -187,9 +184,20 @@ CharacterMeta 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
+<div class="line"><span class="lineno">   14</span>        <span class="keywordflow">if</span> (<a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">Instance</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   15</span>        {</div>
+<div class="line"><span class="lineno">   16</span>            <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">Instance</a> = <span class="keyword">this</span>;</div>
+<div class="line"><span class="lineno">   17</span>            DontDestroyOnLoad(gameObject);</div>
+<div class="line"><span class="lineno">   18</span>        }</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span>            Destroy(gameObject);</div>
+<div class="line"><span class="lineno">   22</span>        }</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> MetaAI.cs:12</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a81091acf9bf85e074a370e77b8bb3e16"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">IMetaAI&lt; CharacterCore &gt;::Instance</a></div><div class="ttdeci">static IMetaAI&lt; T &gt; Instance</div><div class="ttdef"><b>Definition</b> MetaAI.cs:13</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="aba1b962e3c09989c2c27383a3306c6da" name="aba1b962e3c09989c2c27383a3306c6da"></a>
@@ -206,36 +214,47 @@ CharacterMeta 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00033">33</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">if</span> (chara == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a212b7738b11aa1579d4057d151005f86">_characterList</a>.Add(chara))</div>
+<div class="line"><span class="lineno">   37</span>        {</div>
+<div class="line"><span class="lineno">   38</span>            <span class="comment">// 敵の移動優先順位を決定 (伊波)</span></div>
+<div class="line"><span class="lineno">   39</span>            <span class="comment">// TODO:シーン切替時にpriorityリセットしたい</span></div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (chara.TryGetComponent(out NavMeshAgent agent))</div>
+<div class="line"><span class="lineno">   41</span>            {</div>
+<div class="line"><span class="lineno">   42</span>                <span class="keywordflow">if</span> (chara.TryGetComponent(out <a class="code hl_class" href="../../df/d06/class_enemy_parameters.html">EnemyParameters</a> eParam))</div>
+<div class="line"><span class="lineno">   43</span>                {</div>
+<div class="line"><span class="lineno">   44</span>                    <span class="keywordflow">if</span> (eParam.IsBoss)</div>
+<div class="line"><span class="lineno">   45</span>                    {</div>
+<div class="line"><span class="lineno">   46</span>                        <a class="code hl_variable" href="#a902ab4d443992a88f4739504250a3495">_bossList</a>.Add(chara);</div>
+<div class="line"><span class="lineno">   47</span>                        agent.avoidancePriority = <a class="code hl_variable" href="#a902ab4d443992a88f4739504250a3495">_bossList</a>.Count;</div>
+<div class="line"><span class="lineno">   48</span>                    }</div>
+<div class="line"><span class="lineno">   49</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   50</span>                    {</div>
+<div class="line"><span class="lineno">   51</span>                        <span class="comment">// priorityは0～99が有効</span></div>
+<div class="line"><span class="lineno">   52</span>                        <span class="keywordtype">int</span> priority = _characterList.Count + 10;</div>
+<div class="line"><span class="lineno">   53</span>                        <span class="keywordflow">while</span> (priority &gt;= 100) priority += -(100 - <a class="code hl_variable" href="#a902ab4d443992a88f4739504250a3495">_bossList</a>.Count);</div>
+<div class="line"><span class="lineno">   54</span>                        agent.avoidancePriority = priority;</div>
+<div class="line"><span class="lineno">   55</span>                    }</div>
+<div class="line"><span class="lineno">   56</span>                }</div>
+<div class="line"><span class="lineno">   57</span>            }</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>            chara.OnDestroyAsObservable()</div>
+<div class="line"><span class="lineno">   60</span>                .Subscribe(_ =&gt;</div>
+<div class="line"><span class="lineno">   61</span>                {</div>
+<div class="line"><span class="lineno">   62</span>                    <a class="code hl_variable" href="#a212b7738b11aa1579d4057d151005f86">_characterList</a>.Remove(chara);</div>
+<div class="line"><span class="lineno">   63</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a902ab4d443992a88f4739504250a3495">_bossList</a>.Contains(chara)) <a class="code hl_variable" href="#a902ab4d443992a88f4739504250a3495">_bossList</a>.Remove(chara);</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>                }).AddTo(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   66</span>        }</div>
+<div class="line"><span class="lineno">   67</span>    }</div>
+<div class="ttc" id="aclass_character_meta_html_a212b7738b11aa1579d4057d151005f86"><div class="ttname"><a href="#a212b7738b11aa1579d4057d151005f86">CharacterMeta._characterList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; _characterList</div><div class="ttdef"><b>Definition</b> CharacterMeta.cs:26</div></div>
+<div class="ttc" id="aclass_character_meta_html_a902ab4d443992a88f4739504250a3495"><div class="ttname"><a href="#a902ab4d443992a88f4739504250a3495">CharacterMeta._bossList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; _bossList</div><div class="ttdef"><b>Definition</b> CharacterMeta.cs:30</div></div>
+<div class="ttc" id="aclass_enemy_parameters_html"><div class="ttname"><a href="../../df/d06/class_enemy_parameters.html">EnemyParameters</a></div><div class="ttdef"><b>Definition</b> EnemyParameters.cs:12</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a902ab4d443992a88f4739504250a3495" name="a902ab4d443992a88f4739504250a3495"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a902ab4d443992a88f4739504250a3495">&#9670;&#160;</a></span>_bossList</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">HashSet&lt;<a class="el" href="../../d7/d2e/class_character_core.html">CharacterCore</a>&gt; CharacterMeta._bossList = new()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00030">30</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="a212b7738b11aa1579d4057d151005f86" name="a212b7738b11aa1579d4057d151005f86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a212b7738b11aa1579d4057d151005f86">&#9670;&#160;</a></span>_characterList</h2>
 
@@ -256,13 +275,10 @@ CharacterMeta 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00026">26</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<h2 class="groupheader">プロパティ詳解</h2>
-<a id="ab61bf3eee1aabbe43d6518226bccf453" name="ab61bf3eee1aabbe43d6518226bccf453"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab61bf3eee1aabbe43d6518226bccf453">&#9670;&#160;</a></span>BossList</h2>
+<a id="a902ab4d443992a88f4739504250a3495" name="a902ab4d443992a88f4739504250a3495"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a902ab4d443992a88f4739504250a3495">&#9670;&#160;</a></span>_bossList</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -271,20 +287,19 @@ CharacterMeta 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">HashSet&lt;<a class="el" href="../../d7/d2e/class_character_core.html">CharacterCore</a>&gt; CharacterMeta.BossList</td>
+          <td class="memname">HashSet&lt;<a class="el" href="../../d7/d2e/class_character_core.html">CharacterCore</a>&gt; CharacterMeta._bossList = new()</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00031">31</a> 行目に定義があります。</p>
-
 </div>
 </div>
+<h2 class="groupheader">プロパティ詳解</h2>
 <a id="a45d15bcd0165639dc2f31fac30514af0" name="a45d15bcd0165639dc2f31fac30514af0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a45d15bcd0165639dc2f31fac30514af0">&#9670;&#160;</a></span>ObjectList</h2>
 
@@ -305,12 +320,32 @@ CharacterMeta 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a> の <a class="el" href="../../d2/d83/_character_meta_8cs_source.html#l00028">28</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="ab61bf3eee1aabbe43d6518226bccf453" name="ab61bf3eee1aabbe43d6518226bccf453"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab61bf3eee1aabbe43d6518226bccf453">&#9670;&#160;</a></span>BossList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">HashSet&lt;<a class="el" href="../../d7/d2e/class_character_core.html">CharacterCore</a>&gt; CharacterMeta.BossList</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/MetaAI/<a class="el" href="../../d2/d83/_character_meta_8cs_source.html">CharacterMeta.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/MetaAI/<a class="el" href="../../d2/d83/_character_meta_8cs.html">CharacterMeta.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

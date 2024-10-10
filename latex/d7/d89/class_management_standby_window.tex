@@ -2,8 +2,7 @@
 \hypertarget{class_management_standby_window}{}\label{class_management_standby_window}\index{ManagementStandbyWindow@{ManagementStandbyWindow}}
 
 
-Management\+Standby\+Window の継承関係図
-\nopagebreak
+Management\+Standby\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Management\+Standby\+Window の継承関係図
 \end{figure}
 
 
-Management\+Standby\+Window 連携図
-\nopagebreak
+Management\+Standby\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -120,13 +118,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_management_standby_window_8cs_source}{Management\+Standby\+Window.\+cs}} の \mbox{\hyperlink{_management_standby_window_8cs_source_l00006}{6}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_management_standby_window_a99df7f1e88b16f2618a6fc26d76a2470}\index{ManagementStandbyWindow@{ManagementStandbyWindow}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!ManagementStandbyWindow@{ManagementStandbyWindow}}
@@ -139,11 +130,45 @@ override async Uni\+Task Management\+Standby\+Window.\+On\+Update (\begin{DoxyPa
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_standby_window_abfcdc7a3281cb8c217097e14d530eb08}{m\_inputActionButton}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}InputActionButtonがシリアライズされていません"{}});}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンが押されたら}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_management_standby_window_abfcdc7a3281cb8c217097e14d530eb08}{m\_inputActionButton}}.\mbox{\hyperlink{class_input_action_button_a847c561b8a3deeea260be80e698bd342}{IsInputActionTrriger}}())}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_management_standby_window_8cs_source}{Management\+Standby\+Window.\+cs}} の \mbox{\hyperlink{_management_standby_window_8cs_source_l00019}{19}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -158,10 +183,6 @@ override async Uni\+Task Management\+Standby\+Window.\+On\+Update (\begin{DoxyPa
 \doxysubsubsection{\texorpdfstring{m\_inputActionButton}{m\_inputActionButton}}
 {\footnotesize\ttfamily \label{class_management_standby_window_abfcdc7a3281cb8c217097e14d530eb08} 
 \mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Management\+Standby\+Window.\+m\+\_\+input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_management_standby_window_8cs_source}{Management\+Standby\+Window.\+cs}} の \mbox{\hyperlink{_management_standby_window_8cs_source_l00013}{13}} 行目に定義があります。
 
 
 

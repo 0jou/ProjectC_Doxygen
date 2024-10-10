@@ -32,13 +32,6 @@ Image \mbox{\hyperlink{class_capture_screen_to_image_a4e69f12bd619819af26ff88115
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_capture_screen_to_image_8cs_source}{Capture\+Screen\+To\+Image.\+cs}} の \mbox{\hyperlink{_capture_screen_to_image_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_capture_screen_to_image_a54863429f1703904ae76b31ffa9170bc}\index{CaptureScreenToImage@{CaptureScreenToImage}!Button@{Button}}
 \index{Button@{Button}!CaptureScreenToImage@{CaptureScreenToImage}}
@@ -47,9 +40,12 @@ Image \mbox{\hyperlink{class_capture_screen_to_image_a4e69f12bd619819af26ff88115
 void Capture\+Screen\+To\+Image.\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f}{Capture}}().Forget();}
+\DoxyCodeLine{00018\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_capture_screen_to_image_8cs_source}{Capture\+Screen\+To\+Image.\+cs}} の \mbox{\hyperlink{_capture_screen_to_image_8cs_source_l00015}{15}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -64,9 +60,44 @@ void Capture\+Screen\+To\+Image.\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyP
 async Uni\+Task Capture\+Screen\+To\+Image.\+Capture (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ReadPixelsがこの後でないと使えないので必ず書く}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ var\ runner\ =\ \textcolor{keyword}{new}\ GameObject(\textcolor{stringliteral}{"{}runner"{}}).AddComponent<CoroutineRunner>();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ await\ UniTask.WaitForEndOfFrame(runner);}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクリーンの大きさのSpriteを作る}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ var\ texture\ =\ \textcolor{keyword}{new}\ Texture2D(Screen.width,\ Screen.height);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクリーンを取得する}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ texture.ReadPixels(\textcolor{keyword}{new}\ Rect(0,\ 0,\ Screen.width,\ Screen.height),\ 0,\ 0);}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 適応する}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ texture.Apply();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 取得した画像をSpriteに入るように変換する}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}[]\ pngdata\ =\ texture.EncodeToPNG();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ texture.LoadImage(pngdata);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ texture.name\ =\ \textcolor{stringliteral}{"{}CapturedImage"{}};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 先ほど作ったSpriteに画像をいれる}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ Sprite\ sprite\ =\ Sprite.Create(texture,\ \textcolor{keyword}{new}\ Rect(0,\ 0,\ texture.width,\ texture.height),\ \textcolor{keyword}{new}\ Vector2(0.5f,\ 0.5f));}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Captured"{}});}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Spriteを使用するオブジェクトに指定する}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 今回はUIのImage}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ SceneCaptureManager.m\_capturedImage\ =\ sprite;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ サイズ変更}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ SceneCaptureManager.m\_sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2(texture.width,\ texture.height);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_capture_screen_to_image_a4e69f12bd619819af26ff8811536b566}{m\_image}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ m\_image.sprite\ =\ sprite;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ Destroy(runner.gameObject);}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_capture_screen_to_image_8cs_source}{Capture\+Screen\+To\+Image.\+cs}} の \mbox{\hyperlink{_capture_screen_to_image_8cs_source_l00020}{20}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -82,10 +113,6 @@ async Uni\+Task Capture\+Screen\+To\+Image.\+Capture (\begin{DoxyParamCaption}{}
 \doxysubsubsection{\texorpdfstring{m\_image}{m\_image}}
 {\footnotesize\ttfamily \label{class_capture_screen_to_image_a4e69f12bd619819af26ff8811536b566} 
 Image Capture\+Screen\+To\+Image.\+m\+\_\+image = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_capture_screen_to_image_8cs_source}{Capture\+Screen\+To\+Image.\+cs}} の \mbox{\hyperlink{_capture_screen_to_image_8cs_source_l00011}{11}} 行目に定義があります。
 
 
 

@@ -2,8 +2,7 @@
 \hypertarget{class_provide_food_slot_data}{}\label{class_provide_food_slot_data}\index{ProvideFoodSlotData@{ProvideFoodSlotData}}
 
 
-Provide\+Food\+Slot\+Data の継承関係図
-\nopagebreak
+Provide\+Food\+Slot\+Data の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Provide\+Food\+Slot\+Data の継承関係図
 \end{figure}
 
 
-Provide\+Food\+Slot\+Data 連携図
-\nopagebreak
+Provide\+Food\+Slot\+Data 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -117,50 +115,54 @@ virtual uint \mbox{\hyperlink{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00013}{13}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!Check@{Check}}
-\index{Check@{Check}!ProvideFoodSlotData@{ProvideFoodSlotData}}
-\doxysubsubsection{\texorpdfstring{Check()}{Check()}}
-{\footnotesize\ttfamily \label{class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1} 
-void Provide\+Food\+Slot\+Data.\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_provide_food_slot_data_a3684e60097c4e67e3ea5c0d36465650c}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!Start@{Start}}
+\index{Start@{Start}!ProvideFoodSlotData@{ProvideFoodSlotData}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_provide_food_slot_data_a3684e60097c4e67e3ea5c0d36465650c} 
+void Provide\+Food\+Slot\+Data.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_slot_data_a55d7fde4bd08cfbc31de077ae9123885}{m\_pocketType}}\ =\ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.PocketType;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供料理データ変更イベントを受信}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ MessageBroker.Default.Receive<\mbox{\hyperlink{class_global_change_provide_food_event}{GlobalChangeProvideFoodEvent}}>().Subscribe(\_\ =>}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 変更が加わるたびに更新する}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_a52c2a65a443e4cc13d3b6504c679b7ba}{SetProvideFoodData}}();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00159}{159}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!InitializeSlotData@{InitializeSlotData}}
-\index{InitializeSlotData@{InitializeSlotData}!ProvideFoodSlotData@{ProvideFoodSlotData}}
-\doxysubsubsection{\texorpdfstring{InitializeSlotData()}{InitializeSlotData()}}
-{\footnotesize\ttfamily \label{class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a} 
-override void Provide\+Food\+Slot\+Data.\+Initialize\+Slot\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_food_slot_data_a037856bc9bcaf98a50ace2dff1015d02}{Food\+Slot\+Data}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00061}{61}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a_cgraph}
+\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_a3684e60097c4e67e3ea5c0d36465650c_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_provide_food_slot_data_a929e72c9a34387b918270e9dec5ff4f6}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!Update@{Update}}
+\index{Update@{Update}!ProvideFoodSlotData@{ProvideFoodSlotData}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_provide_food_slot_data_a929e72c9a34387b918270e9dec5ff4f6} 
+void Provide\+Food\+Slot\+Data.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1}{Check}}();}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_a929e72c9a34387b918270e9dec5ff4f6_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_provide_food_slot_data_ab133829ad866b084df7d55e3d3fa2f7a}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!SetItemSlotData@{SetItemSlotData}}
@@ -174,14 +176,47 @@ override void Provide\+Food\+Slot\+Data.\+Set\+Item\+Slot\+Data (\begin{DoxyPara
 \mbox{\hyperlink{class_food_slot_data_a28807d6e7b835fc5ad20478ef942e8c2}{Food\+Slot\+Data}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ base.SetItemSlotData(\_itemData,\ \_pocketType);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_a52c2a65a443e4cc13d3b6504c679b7ba}{SetProvideFoodData}}();}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00053}{53}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_ab133829ad866b084df7d55e3d3fa2f7a_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!InitializeSlotData@{InitializeSlotData}}
+\index{InitializeSlotData@{InitializeSlotData}!ProvideFoodSlotData@{ProvideFoodSlotData}}
+\doxysubsubsection{\texorpdfstring{InitializeSlotData()}{InitializeSlotData()}}
+{\footnotesize\ttfamily \label{class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a} 
+override void Provide\+Food\+Slot\+Data.\+Initialize\+Slot\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_food_slot_data_a037856bc9bcaf98a50ace2dff1015d02}{Food\+Slot\+Data}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ base.InitializeSlotData();}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_aa22d501af2493b3378d35f186f54a91d}{SetSoldNumText}}(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_a68eb67d27d0b49bde05cbf47982f6c4b}{SetSoldPriceText}}(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_accc02c6c44f48c5943cd8b6bb92e67ef}{SetProvidePossibleNumText}}(\textcolor{keyword}{null},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_ad00af79418884ed62e3205157c88124a_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_provide_food_slot_data_a52c2a65a443e4cc13d3b6504c679b7ba}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!SetProvideFoodData@{SetProvideFoodData}}
@@ -191,9 +226,18 @@ override void Provide\+Food\+Slot\+Data.\+Set\+Item\+Slot\+Data (\begin{DoxyPara
 void Provide\+Food\+Slot\+Data.\+Set\+Provide\+Food\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供料理マネージャーからデータを取得}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetProvideFood((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})\mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_aa22d501af2493b3378d35f186f54a91d}{SetSoldNumText}}(data);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_a68eb67d27d0b49bde05cbf47982f6c4b}{SetSoldPriceText}}(data);}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_accc02c6c44f48c5943cd8b6bb92e67ef}{SetProvidePossibleNumText}}(data);}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00072}{72}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -215,9 +259,29 @@ void Provide\+Food\+Slot\+Data.\+Set\+Provide\+Food\+Data (\begin{DoxyParamCapti
 void Provide\+Food\+Slot\+Data.\+Set\+Provide\+Possible\+Num\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_provide_food_data}{Provide\+Food\+Data}}}]{\+\_\+data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086\ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_provide_food_slot_data_ade877c000faf92e40a4337fc06283d25}{m\_providePossibleNumText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供可能数がシリアライズされていません}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 非表示}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_ade877c000faf92e40a4337fc06283d25}{m\_providePossibleNumText}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_ade877c000faf92e40a4337fc06283d25}{m\_providePossibleNumText}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ m\_providePossibleNumText.text\ =\ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetProvidePossibleNum(\_data.\mbox{\hyperlink{class_provide_food_data_ae815cf6f3b6c65f684bb6cc9f8b1fb61}{FoodID}}).ToString(\textcolor{stringliteral}{"{}00"{}});}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00085}{85}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -232,9 +296,29 @@ void Provide\+Food\+Slot\+Data.\+Set\+Provide\+Possible\+Num\+Text (\begin{DoxyP
 void Provide\+Food\+Slot\+Data.\+Set\+Sold\+Num\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_provide_food_data}{Provide\+Food\+Data}}}]{\+\_\+data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00110\ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_provide_food_slot_data_a97154bd7b11b15f21f7ca06078ecc631}{m\_soldNumText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 売上数がシリアライズされていません}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 非表示}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_a97154bd7b11b15f21f7ca06078ecc631}{m\_soldNumText}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_a97154bd7b11b15f21f7ca06078ecc631}{m\_soldNumText}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ m\_soldNumText.text\ =\ \_data.\mbox{\hyperlink{class_provide_food_data_a3f4012538960cd7d58366164d59f6718}{SoldNum}}.ToString();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00109}{109}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -249,9 +333,32 @@ void Provide\+Food\+Slot\+Data.\+Set\+Sold\+Num\+Text (\begin{DoxyParamCaption}\
 void Provide\+Food\+Slot\+Data.\+Set\+Sold\+Price\+Text (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_provide_food_data}{Provide\+Food\+Data}}}]{\+\_\+data}{, }\item[{bool}]{\+\_\+active}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00132\ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_provide_food_slot_data_aeaa591a1684728b9da1afe303d2200d0}{m\_soldPriceText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 売上がシリアライズされていません}}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 非表示}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_aeaa591a1684728b9da1afe303d2200d0}{m\_soldPriceText}}.gameObject.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化用}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_active)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 表示}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_provide_food_slot_data_aeaa591a1684728b9da1afe303d2200d0}{m\_soldPriceText}}.gameObject.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ var\ price\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_data.\mbox{\hyperlink{class_provide_food_data_ae815cf6f3b6c65f684bb6cc9f8b1fb61}{FoodID}})?.Price;}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ m\_soldPriceText.text\ =\ \textcolor{stringliteral}{"{}￥\ :\ "{}}\ +\ (\_data.SoldNum\ *\ price).ToString();}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00131}{131}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -259,38 +366,28 @@ void Provide\+Food\+Slot\+Data.\+Set\+Sold\+Price\+Text (\begin{DoxyParamCaption
 \includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_a68eb67d27d0b49bde05cbf47982f6c4b_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_provide_food_slot_data_a3684e60097c4e67e3ea5c0d36465650c}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!Start@{Start}}
-\index{Start@{Start}!ProvideFoodSlotData@{ProvideFoodSlotData}}
-\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily \label{class_provide_food_slot_data_a3684e60097c4e67e3ea5c0d36465650c} 
-void Provide\+Food\+Slot\+Data.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+\Hypertarget{class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!Check@{Check}}
+\index{Check@{Check}!ProvideFoodSlotData@{ProvideFoodSlotData}}
+\doxysubsubsection{\texorpdfstring{Check()}{Check()}}
+{\footnotesize\ttfamily \label{class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1} 
+void Provide\+Food\+Slot\+Data.\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供予定料理リストにこの料理がなければ}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsAddedProvideFood((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})\mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}})\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00034}{34}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_a3684e60097c4e67e3ea5c0d36465650c_cgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_provide_food_slot_data_a929e72c9a34387b918270e9dec5ff4f6}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!Update@{Update}}
-\index{Update@{Update}!ProvideFoodSlotData@{ProvideFoodSlotData}}
-\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily \label{class_provide_food_slot_data_a929e72c9a34387b918270e9dec5ff4f6} 
-void Provide\+Food\+Slot\+Data.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00048}{48}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_a929e72c9a34387b918270e9dec5ff4f6_cgraph}
+\includegraphics[width=350pt]{d4/dc1/class_provide_food_slot_data_aaf09e1962b315f2801360dec309301f1_icgraph}
 \end{center}
 \end{figure}
 
@@ -302,29 +399,17 @@ void Provide\+Food\+Slot\+Data.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 {\footnotesize\ttfamily \label{class_provide_food_slot_data_ade877c000faf92e40a4337fc06283d25} 
 Text\+Mesh\+Pro\+UGUI Provide\+Food\+Slot\+Data.\+m\+\_\+provide\+Possible\+Num\+Text = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00020}{20}} 行目に定義があります。
-
 \Hypertarget{class_provide_food_slot_data_a97154bd7b11b15f21f7ca06078ecc631}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!m\_soldNumText@{m\_soldNumText}}
 \index{m\_soldNumText@{m\_soldNumText}!ProvideFoodSlotData@{ProvideFoodSlotData}}
 \doxysubsubsection{\texorpdfstring{m\_soldNumText}{m\_soldNumText}}
 {\footnotesize\ttfamily \label{class_provide_food_slot_data_a97154bd7b11b15f21f7ca06078ecc631} 
 Text\+Mesh\+Pro\+UGUI Provide\+Food\+Slot\+Data.\+m\+\_\+sold\+Num\+Text = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00024}{24}} 行目に定義があります。
-
 \Hypertarget{class_provide_food_slot_data_aeaa591a1684728b9da1afe303d2200d0}\index{ProvideFoodSlotData@{ProvideFoodSlotData}!m\_soldPriceText@{m\_soldPriceText}}
 \index{m\_soldPriceText@{m\_soldPriceText}!ProvideFoodSlotData@{ProvideFoodSlotData}}
 \doxysubsubsection{\texorpdfstring{m\_soldPriceText}{m\_soldPriceText}}
 {\footnotesize\ttfamily \label{class_provide_food_slot_data_aeaa591a1684728b9da1afe303d2200d0} 
 Text\+Mesh\+Pro\+UGUI Provide\+Food\+Slot\+Data.\+m\+\_\+sold\+Price\+Text = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_provide_food_slot_data_8cs_source}{Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_provide_food_slot_data_8cs_source_l00028}{28}} 行目に定義があります。
 
 
 

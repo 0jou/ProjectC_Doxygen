@@ -79,61 +79,89 @@ Vector3 \mbox{\hyperlink{class_draw_throw_item_arc_a84a9d3fc295e2c2f9f7012b6af92
 \doxysubsection{詳解}
 アイテム投の放物線を描画するクラス（吉田） 参考：https\+://qiita.com/\+\_\+udonba/items/860041daa27e0b7ffa6c 
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00011}{11}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252}\index{DrawThrowItemArc@{DrawThrowItemArc}!CreateLineRendererObjects@{CreateLineRendererObjects}}
-\index{CreateLineRendererObjects@{CreateLineRendererObjects}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{CreateLineRendererObjects()}{CreateLineRendererObjects()}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252} 
-void Draw\+Throw\+Item\+Arc.\+Create\+Line\+Renderer\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_draw_throw_item_arc_a8e9153f30e9251fee2c39b453765db9f}\index{DrawThrowItemArc@{DrawThrowItemArc}!Start@{Start}}
+\index{Start@{Start}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a8e9153f30e9251fee2c39b453765db9f} 
+void Draw\+Throw\+Item\+Arc.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Addressableから取得}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ Addressables.LoadAssetAsync<Material>(\textcolor{stringliteral}{"{}ThrowItemArcMatrial"{}})}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ .Completed\ +=\ \mbox{\hyperlink{class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90}{OnMaterialLoaded}};}
+\DoxyCodeLine{00081\ \ \ \ \ \}}
 
-Line\+Rendererオブジェクトを作成 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00156}{156}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d}\index{DrawThrowItemArc@{DrawThrowItemArc}!GetArcHitTime@{GetArcHitTime}}
-\index{GetArcHitTime@{GetArcHitTime}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{GetArcHitTime()}{GetArcHitTime()}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d} 
-float Draw\+Throw\+Item\+Arc.\+Get\+Arc\+Hit\+Time (\begin{DoxyParamCaption}\item[{float}]{start\+Time}{, }\item[{float}]{end\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-2点間の線分で衝突判定し、衝突する時間を返す 
-
-\begin{DoxyReturn}{戻り値}
-衝突した時間(してない場合はfloat.\+Max\+Value)
-\end{DoxyReturn}
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00199}{199}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d_cgraph}
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a8e9153f30e9251fee2c39b453765db9f_cgraph}
 \end{center}
 \end{figure}
-被呼び出し関係図\+:\nopagebreak
+\Hypertarget{class_draw_throw_item_arc_a172a719cdf348117e793209cdbf76462}\index{DrawThrowItemArc@{DrawThrowItemArc}!Update@{Update}}
+\index{Update@{Update}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a172a719cdf348117e793209cdbf76462} 
+void Draw\+Throw\+Item\+Arc.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_draw_throw_item_arc_abc20a90890593b359faac90852a23d4f}{m\_showArc}}\ \&\&\ \mbox{\hyperlink{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}{arcObjectsParent}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 放物線を表示}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ timeStep\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_a313ad7e319a167ff02a03ccd0c063c2e}{predictionTime}}\ /\ \mbox{\hyperlink{class_draw_throw_item_arc_ad5827f2701a877e98eaed6b5958b341f}{segmentCount}};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ draw\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ hitTime\ =\ \textcolor{keywordtype}{float}.MaxValue;}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_draw_throw_item_arc_ad5827f2701a877e98eaed6b5958b341f}{segmentCount}};\ i++)}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 線の座標を更新}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ startTime\ =\ timeStep\ *\ i;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ endTime\ =\ startTime\ +\ timeStep;}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ac19af02bd2c55e2aa6cf1d3a9ca16e7c}{SetLineRendererPosition}}(i,\ startTime,\ endTime,\ !draw);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 衝突判定}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!draw)}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hitTime\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d}{GetArcHitTime}}(startTime,\ endTime);}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hitTime\ !=\ \textcolor{keywordtype}{float}.MaxValue)}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ draw\ =\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ 衝突したらその先の放物線は表示しない}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ マーカーの表示}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hitTime\ !=\ \textcolor{keywordtype}{float}.MaxValue)}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ hitPosition\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1}{GetArcPositionAtTime}}(hitTime);}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_aaa2cf55d3fbb280287f243daa045cebf}{ShowPointer}}(hitPosition);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}{arcObjectsParent}})}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 放物線とマーカーを表示しない}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}.Length;\ i++)}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//pointerObject.SetActive(false);}}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d_icgraph}
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a172a719cdf348117e793209cdbf76462_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1}\index{DrawThrowItemArc@{DrawThrowItemArc}!GetArcPositionAtTime@{GetArcPositionAtTime}}
@@ -155,48 +183,17 @@ Vector3 Draw\+Throw\+Item\+Arc.\+Get\+Arc\+Position\+At\+Time (\begin{DoxyParamC
 座標
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00136\ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ (\mbox{\hyperlink{class_draw_throw_item_arc_a5a310b3e0bc9e87f626369e394861a7f}{startPos}}\ +\ ((\mbox{\hyperlink{class_draw_throw_item_arc_a84a9d3fc295e2c2f9f7012b6af92a527}{throwPower}}\ *\ time)\ +\ (0.5f\ *\ time\ *\ time)\ *\ Physics.gravity));}
+\DoxyCodeLine{00138\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00135}{135}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_draw_throw_item_arc_a43a466e2d45d347565757be40ecab4fe}\index{DrawThrowItemArc@{DrawThrowItemArc}!OnDestroy@{OnDestroy}}
-\index{OnDestroy@{OnDestroy}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a43a466e2d45d347565757be40ecab4fe} 
-void Draw\+Throw\+Item\+Arc.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00232}{232}} 行目に定義があります。
-
-\Hypertarget{class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90}\index{DrawThrowItemArc@{DrawThrowItemArc}!OnMaterialLoaded@{OnMaterialLoaded}}
-\index{OnMaterialLoaded@{OnMaterialLoaded}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{OnMaterialLoaded()}{OnMaterialLoaded()}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90} 
-void Draw\+Throw\+Item\+Arc.\+On\+Material\+Loaded (\begin{DoxyParamCaption}\item[{Async\+Operation\+Handle$<$ Material $>$}]{handle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00216}{216}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90_cgraph}
-\end{center}
-\end{figure}
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_draw_throw_item_arc_ac19af02bd2c55e2aa6cf1d3a9ca16e7c}\index{DrawThrowItemArc@{DrawThrowItemArc}!SetLineRendererPosition@{SetLineRendererPosition}}
@@ -219,9 +216,14 @@ Line\+Rendererの座標を更新
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00147\ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[index].SetPosition(0,\ \mbox{\hyperlink{class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1}{GetArcPositionAtTime}}(startTime));}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[index].SetPosition(1,\ \mbox{\hyperlink{class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1}{GetArcPositionAtTime}}(endTime));}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[index].enabled\ =\ draw;}
+\DoxyCodeLine{00151\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00146}{146}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -234,6 +236,54 @@ Line\+Rendererの座標を更新
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_ac19af02bd2c55e2aa6cf1d3a9ca16e7c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252}\index{DrawThrowItemArc@{DrawThrowItemArc}!CreateLineRendererObjects@{CreateLineRendererObjects}}
+\index{CreateLineRendererObjects@{CreateLineRendererObjects}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{CreateLineRendererObjects()}{CreateLineRendererObjects()}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252} 
+void Draw\+Throw\+Item\+Arc.\+Create\+Line\+Renderer\+Objects (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Line\+Rendererオブジェクトを作成 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00157\ \ \ \ \ \{}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 親オブジェクトを作り、LineRendererを持つ子オブジェクトを作る}}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}{arcObjectsParent}}\ =\ \textcolor{keyword}{new}\ GameObject(\textcolor{stringliteral}{"{}ArcObject"{}});}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}\ =\ \textcolor{keyword}{new}\ LineRenderer[\mbox{\hyperlink{class_draw_throw_item_arc_ad5827f2701a877e98eaed6b5958b341f}{segmentCount}}];}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_draw_throw_item_arc_ad5827f2701a877e98eaed6b5958b341f}{segmentCount}};\ i++)}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ newObject\ =\ \textcolor{keyword}{new}\ GameObject(\textcolor{stringliteral}{"{}LineRenderer\_"{}}\ +\ i);}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ newObject.transform.SetParent(\mbox{\hyperlink{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}{arcObjectsParent}}.transform);}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i]\ =\ newObject.AddComponent<LineRenderer>();}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 光源関連を使用しない}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].receiveShadows\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].reflectionProbeUsage\ =\ UnityEngine.Rendering.ReflectionProbeUsage.Off;}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].lightProbeUsage\ =\ UnityEngine.Rendering.LightProbeUsage.Off;}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].shadowCastingMode\ =\ UnityEngine.Rendering.ShadowCastingMode.Off;}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 線の幅とマテリアル}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ List<Material>\ materials\ =\ \textcolor{keyword}{new}\ List<Material>();}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ materials.Add(\mbox{\hyperlink{class_draw_throw_item_arc_a476e420e0344a699fc6d20537d9385a4}{arcMaterial}});}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].SetMaterials(materials);}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].startWidth\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_a25e9760d41a1ec1267350e1d32f5ad53}{arcWidth}};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].endWidth\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_a25e9760d41a1ec1267350e1d32f5ad53}{arcWidth}};}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].numCapVertices\ =\ 5;}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}{lineRenderers}}[i].enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00183\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_draw_throw_item_arc_aaa2cf55d3fbb280287f243daa045cebf}\index{DrawThrowItemArc@{DrawThrowItemArc}!ShowPointer@{ShowPointer}}
@@ -252,9 +302,13 @@ void Draw\+Throw\+Item\+Arc.\+Show\+Pointer (\begin{DoxyParamCaption}\item[{Vect
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00190\ \ \ \ \ \{}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pointerObject.transform.position\ =\ position;}}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//pointerObject.SetActive(true);}}
+\DoxyCodeLine{00193\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00189}{189}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -262,99 +316,106 @@ void Draw\+Throw\+Item\+Arc.\+Show\+Pointer (\begin{DoxyParamCaption}\item[{Vect
 \includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_aaa2cf55d3fbb280287f243daa045cebf_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_draw_throw_item_arc_a8e9153f30e9251fee2c39b453765db9f}\index{DrawThrowItemArc@{DrawThrowItemArc}!Start@{Start}}
-\index{Start@{Start}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a8e9153f30e9251fee2c39b453765db9f} 
-void Draw\+Throw\+Item\+Arc.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d}\index{DrawThrowItemArc@{DrawThrowItemArc}!GetArcHitTime@{GetArcHitTime}}
+\index{GetArcHitTime@{GetArcHitTime}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{GetArcHitTime()}{GetArcHitTime()}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d} 
+float Draw\+Throw\+Item\+Arc.\+Get\+Arc\+Hit\+Time (\begin{DoxyParamCaption}\item[{float}]{start\+Time}{, }\item[{float}]{end\+Time}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00076}{76}} 行目に定義があります。
+2点間の線分で衝突判定し、衝突する時間を返す 
 
+\begin{DoxyReturn}{戻り値}
+衝突した時間(してない場合はfloat.\+Max\+Value)
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00200\ \ \ \ \ \{}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Linecastする線分の始終点の座標}}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ Vector3\ startPosition\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1}{GetArcPositionAtTime}}(startTime);}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ Vector3\ endPosition\ =\ \mbox{\hyperlink{class_draw_throw_item_arc_a8364bad4948399d8451ec49c9eea07b1}{GetArcPositionAtTime}}(endTime);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 衝突判定}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ RaycastHit\ hitInfo;}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Linecast(startPosition,\ endPosition,\ out\ hitInfo))}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 衝突したColliderまでの距離から実際の衝突時間を算出}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ Vector3.Distance(startPosition,\ endPosition);}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ startTime\ +\ (endTime\ -\/\ startTime)\ *\ (hitInfo.distance\ /\ distance);}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordtype}{float}.MaxValue;}
+\DoxyCodeLine{00214\ \ \ \ \ \}}
+
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a8e9153f30e9251fee2c39b453765db9f_cgraph}
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_draw_throw_item_arc_a172a719cdf348117e793209cdbf76462}\index{DrawThrowItemArc@{DrawThrowItemArc}!Update@{Update}}
-\index{Update@{Update}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a172a719cdf348117e793209cdbf76462} 
-void Draw\+Throw\+Item\+Arc.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_ad8edab7db635fc27677c17d5712e299d_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90}\index{DrawThrowItemArc@{DrawThrowItemArc}!OnMaterialLoaded@{OnMaterialLoaded}}
+\index{OnMaterialLoaded@{OnMaterialLoaded}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{OnMaterialLoaded()}{OnMaterialLoaded()}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90} 
+void Draw\+Throw\+Item\+Arc.\+On\+Material\+Loaded (\begin{DoxyParamCaption}\item[{Async\+Operation\+Handle$<$ Material $>$}]{handle}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00217\ \ \ \ \ \{}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\textcolor{keyword}{this}\ ==\ \textcolor{keyword}{null}\ ||\ gameObject\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (handle.Status\ ==\ AsyncOperationStatus.Succeeded)}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_a476e420e0344a699fc6d20537d9385a4}{arcMaterial}}\ =\ handle.Result;}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc_a383d8e0272bafba7286a377a66fcb252}{CreateLineRendererObjects}}();}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Addressableでの取得に失敗した場合}}
+\DoxyCodeLine{00228\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}マテリアル取得失敗。"{}});}
+\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00230\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00083}{83}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a172a719cdf348117e793209cdbf76462_cgraph}
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90_cgraph}
 \end{center}
 \end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d09/class_draw_throw_item_arc_a7310cfcb3ebf080fe2e8c880f48a6a90_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_draw_throw_item_arc_a43a466e2d45d347565757be40ecab4fe}\index{DrawThrowItemArc@{DrawThrowItemArc}!OnDestroy@{OnDestroy}}
+\index{OnDestroy@{OnDestroy}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{OnDestroy()}{OnDestroy()}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a43a466e2d45d347565757be40ecab4fe} 
+void Draw\+Throw\+Item\+Arc.\+On\+Destroy (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00233\ \ \ \ \ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}{arcObjectsParent}});}
+\DoxyCodeLine{00235\ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_draw_throw_item_arc_a476e420e0344a699fc6d20537d9385a4}\index{DrawThrowItemArc@{DrawThrowItemArc}!arcMaterial@{arcMaterial}}
-\index{arcMaterial@{arcMaterial}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{arcMaterial}{arcMaterial}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a476e420e0344a699fc6d20537d9385a4} 
-Material Draw\+Throw\+Item\+Arc.\+arc\+Material\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-放物線の\+Material 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00034}{34}} 行目に定義があります。
-
-\Hypertarget{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}\index{DrawThrowItemArc@{DrawThrowItemArc}!arcObjectsParent@{arcObjectsParent}}
-\index{arcObjectsParent@{arcObjectsParent}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{arcObjectsParent}{arcObjectsParent}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3} 
-Game\+Object Draw\+Throw\+Item\+Arc.\+arc\+Objects\+Parent = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-放物線描画の親オブジェクト 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00045}{45}} 行目に定義があります。
-
-\Hypertarget{class_draw_throw_item_arc_a25e9760d41a1ec1267350e1d32f5ad53}\index{DrawThrowItemArc@{DrawThrowItemArc}!arcWidth@{arcWidth}}
-\index{arcWidth@{arcWidth}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{arcWidth}{arcWidth}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a25e9760d41a1ec1267350e1d32f5ad53} 
-float Draw\+Throw\+Item\+Arc.\+arc\+Width = 0.\+02F\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-放物線の幅 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00040}{40}} 行目に定義があります。
-
-\Hypertarget{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}\index{DrawThrowItemArc@{DrawThrowItemArc}!lineRenderers@{lineRenderers}}
-\index{lineRenderers@{lineRenderers}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{lineRenderers}{lineRenderers}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b} 
-Line\+Renderer \mbox{[}$\,$\mbox{]} Draw\+Throw\+Item\+Arc.\+line\+Renderers\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-放物線を構成する\+Line\+Renderer 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00050}{50}} 行目に定義があります。
-
 \Hypertarget{class_draw_throw_item_arc_abc20a90890593b359faac90852a23d4f}\index{DrawThrowItemArc@{DrawThrowItemArc}!m\_showArc@{m\_showArc}}
 \index{m\_showArc@{m\_showArc}!DrawThrowItemArc@{DrawThrowItemArc}}
 \doxysubsubsection{\texorpdfstring{m\_showArc}{m\_showArc}}
@@ -364,24 +425,6 @@ bool Draw\+Throw\+Item\+Arc.\+m\+\_\+show\+Arc = true\hspace{0.3cm}{\ttfamily [p
 
 
 放物線の描画\+ON/\+OFF 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00016}{16}} 行目に定義があります。
-
-\Hypertarget{class_draw_throw_item_arc_a313ad7e319a167ff02a03ccd0c063c2e}\index{DrawThrowItemArc@{DrawThrowItemArc}!predictionTime@{predictionTime}}
-\index{predictionTime@{predictionTime}!DrawThrowItemArc@{DrawThrowItemArc}}
-\doxysubsubsection{\texorpdfstring{predictionTime}{predictionTime}}
-{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a313ad7e319a167ff02a03ccd0c063c2e} 
-float Draw\+Throw\+Item\+Arc.\+prediction\+Time = 6.\+0F\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-放物線を長さ計算するか 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00028}{28}} 行目に定義があります。
 
 \Hypertarget{class_draw_throw_item_arc_ad5827f2701a877e98eaed6b5958b341f}\index{DrawThrowItemArc@{DrawThrowItemArc}!segmentCount@{segmentCount}}
 \index{segmentCount@{segmentCount}!DrawThrowItemArc@{DrawThrowItemArc}}
@@ -393,9 +436,55 @@ int Draw\+Throw\+Item\+Arc.\+segment\+Count = 100\hspace{0.3cm}{\ttfamily [priva
 
 放物線を構成する線分の数 
 
+\Hypertarget{class_draw_throw_item_arc_a313ad7e319a167ff02a03ccd0c063c2e}\index{DrawThrowItemArc@{DrawThrowItemArc}!predictionTime@{predictionTime}}
+\index{predictionTime@{predictionTime}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{predictionTime}{predictionTime}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a313ad7e319a167ff02a03ccd0c063c2e} 
+float Draw\+Throw\+Item\+Arc.\+prediction\+Time = 6.\+0F\hspace{0.3cm}{\ttfamily [private]}}
 
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00023}{23}} 行目に定義があります。
+
+放物線を長さ計算するか 
+
+\Hypertarget{class_draw_throw_item_arc_a476e420e0344a699fc6d20537d9385a4}\index{DrawThrowItemArc@{DrawThrowItemArc}!arcMaterial@{arcMaterial}}
+\index{arcMaterial@{arcMaterial}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{arcMaterial}{arcMaterial}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a476e420e0344a699fc6d20537d9385a4} 
+Material Draw\+Throw\+Item\+Arc.\+arc\+Material\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+放物線の\+Material 
+
+\Hypertarget{class_draw_throw_item_arc_a25e9760d41a1ec1267350e1d32f5ad53}\index{DrawThrowItemArc@{DrawThrowItemArc}!arcWidth@{arcWidth}}
+\index{arcWidth@{arcWidth}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{arcWidth}{arcWidth}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a25e9760d41a1ec1267350e1d32f5ad53} 
+float Draw\+Throw\+Item\+Arc.\+arc\+Width = 0.\+02F\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+放物線の幅 
+
+\Hypertarget{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3}\index{DrawThrowItemArc@{DrawThrowItemArc}!arcObjectsParent@{arcObjectsParent}}
+\index{arcObjectsParent@{arcObjectsParent}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{arcObjectsParent}{arcObjectsParent}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_a3208d1185bac138575f25ab32c45bfd3} 
+Game\+Object Draw\+Throw\+Item\+Arc.\+arc\+Objects\+Parent = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+放物線描画の親オブジェクト 
+
+\Hypertarget{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b}\index{DrawThrowItemArc@{DrawThrowItemArc}!lineRenderers@{lineRenderers}}
+\index{lineRenderers@{lineRenderers}!DrawThrowItemArc@{DrawThrowItemArc}}
+\doxysubsubsection{\texorpdfstring{lineRenderers}{lineRenderers}}
+{\footnotesize\ttfamily \label{class_draw_throw_item_arc_ae85cca2ec9949a9f958f205984c3f33b} 
+Line\+Renderer \mbox{[}$\,$\mbox{]} Draw\+Throw\+Item\+Arc.\+line\+Renderers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+放物線を構成する\+Line\+Renderer 
 
 \Hypertarget{class_draw_throw_item_arc_a5a310b3e0bc9e87f626369e394861a7f}\index{DrawThrowItemArc@{DrawThrowItemArc}!startPos@{startPos}}
 \index{startPos@{startPos}!DrawThrowItemArc@{DrawThrowItemArc}}
@@ -406,10 +495,6 @@ Vector3 Draw\+Throw\+Item\+Arc.\+start\+Pos\hspace{0.3cm}{\ttfamily [private]}}
 
 
 生成開始座標 
-
-
-
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00055}{55}} 行目に定義があります。
 
 \Hypertarget{class_draw_throw_item_arc_a84a9d3fc295e2c2f9f7012b6af92a527}\index{DrawThrowItemArc@{DrawThrowItemArc}!throwPower@{throwPower}}
 \index{throwPower@{throwPower}!DrawThrowItemArc@{DrawThrowItemArc}}
@@ -423,10 +508,6 @@ Vector3 Draw\+Throw\+Item\+Arc.\+throw\+Power = Vector3.\+zero\hspace{0.3cm}{\tt
 
 
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00061}{61}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_draw_throw_item_arc_abb343d2d86a298d4f829f33ebced38b0}\index{DrawThrowItemArc@{DrawThrowItemArc}!ShowArc@{ShowArc}}
 \index{ShowArc@{ShowArc}!DrawThrowItemArc@{DrawThrowItemArc}}
@@ -435,9 +516,10 @@ Vector3 Draw\+Throw\+Item\+Arc.\+throw\+Power = Vector3.\+zero\hspace{0.3cm}{\tt
 bool Draw\+Throw\+Item\+Arc.\+Show\+Arc\hspace{0.3cm}{\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_draw_throw_item_arc_abc20a90890593b359faac90852a23d4f}{m\_showArc}}\ =\ value;\ \}\ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00017}{17}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_draw_throw_item_arc_ada966977a934490eaf03954264e682d9}\index{DrawThrowItemArc@{DrawThrowItemArc}!StartPos@{StartPos}}
 \index{StartPos@{StartPos}!DrawThrowItemArc@{DrawThrowItemArc}}
 \doxysubsubsection{\texorpdfstring{StartPos}{StartPos}}
@@ -445,9 +527,10 @@ bool Draw\+Throw\+Item\+Arc.\+Show\+Arc\hspace{0.3cm}{\ttfamily [set]}}
 Vector3 Draw\+Throw\+Item\+Arc.\+Start\+Pos\hspace{0.3cm}{\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_draw_throw_item_arc_a5a310b3e0bc9e87f626369e394861a7f}{startPos}}\ =\ value;\ \}\ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00056}{56}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_draw_throw_item_arc_a4be544aa0757cfe4774ba9dafc271b7a}\index{DrawThrowItemArc@{DrawThrowItemArc}!ThrowPower@{ThrowPower}}
 \index{ThrowPower@{ThrowPower}!DrawThrowItemArc@{DrawThrowItemArc}}
 \doxysubsubsection{\texorpdfstring{ThrowPower}{ThrowPower}}
@@ -455,9 +538,10 @@ Vector3 Draw\+Throw\+Item\+Arc.\+Start\+Pos\hspace{0.3cm}{\ttfamily [set]}}
 Vector3 Draw\+Throw\+Item\+Arc.\+Throw\+Power\hspace{0.3cm}{\ttfamily [set]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_draw_throw_item_arc_a84a9d3fc295e2c2f9f7012b6af92a527}{throwPower}}\ =\ value;\ \}\ \}}
 
- \mbox{\hyperlink{_draw_throw_item_arc_8cs_source}{Draw\+Throw\+Item\+Arc.\+cs}} の \mbox{\hyperlink{_draw_throw_item_arc_8cs_source_l00062}{62}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

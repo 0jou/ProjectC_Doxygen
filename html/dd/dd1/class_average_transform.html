@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -139,8 +139,6 @@ AverageTransform 連携図</div>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>TransformListの平均座標を計算　伊波 </p>
 <p>狼が岩掴む処理に使用　計算結果は自身のTransformに反映 </p>
-
-<p class="definition"> <a class="el" href="../../d6/da3/_average_transform_8cs_source.html">AverageTransform.cs</a> の <a class="el" href="../../d6/da3/_average_transform_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
 </div><h2 class="groupheader">メソッド詳解</h2>
 <a id="a29d2e11752c2a3fd8b10f015148c1e6c" name="a29d2e11752c2a3fd8b10f015148c1e6c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a29d2e11752c2a3fd8b10f015148c1e6c">&#9670;&#160;</a></span>FixedUpdate()</h2>
@@ -164,9 +162,19 @@ AverageTransform 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d6/da3/_average_transform_8cs_source.html">AverageTransform.cs</a> の <a class="el" href="../../d6/da3/_average_transform_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   17</span>    {</div>
+<div class="line"><span class="lineno">   18</span>        Vector3 sumPos = Vector3.zero;</div>
+<div class="line"><span class="lineno">   19</span>        Vector3 sumRot = Vector3.zero;</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">foreach</span> (Transform t <span class="keywordflow">in</span> <a class="code hl_variable" href="#a725b0c87ce09ad5c614f1c127cd1a2cb">m_transforms</a>)</div>
+<div class="line"><span class="lineno">   21</span>        {</div>
+<div class="line"><span class="lineno">   22</span>            sumPos += t.position;</div>
+<div class="line"><span class="lineno">   23</span>            sumRot += t.eulerAngles;</div>
+<div class="line"><span class="lineno">   24</span>        }</div>
+<div class="line"><span class="lineno">   25</span>        transform.position = sumPos / <a class="code hl_variable" href="#a725b0c87ce09ad5c614f1c127cd1a2cb">m_transforms</a>.Count;</div>
+<div class="line"><span class="lineno">   26</span>        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(sumRot / <a class="code hl_variable" href="#a725b0c87ce09ad5c614f1c127cd1a2cb">m_transforms</a>.Count), 0.5f * Time.fixedDeltaTime);</div>
+<div class="line"><span class="lineno">   27</span>    }</div>
+<div class="ttc" id="aclass_average_transform_html_a725b0c87ce09ad5c614f1c127cd1a2cb"><div class="ttname"><a href="#a725b0c87ce09ad5c614f1c127cd1a2cb">AverageTransform.m_transforms</a></div><div class="ttdeci">List&lt; Transform &gt; m_transforms</div><div class="ttdef"><b>Definition</b> AverageTransform.cs:14</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -190,12 +198,10 @@ AverageTransform 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d6/da3/_average_transform_8cs_source.html">AverageTransform.cs</a> の <a class="el" href="../../d6/da3/_average_transform_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/Boss/Wolf/<a class="el" href="../../d6/da3/_average_transform_8cs_source.html">AverageTransform.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/Boss/Wolf/<a class="el" href="../../d6/da3/_average_transform_8cs.html">AverageTransform.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

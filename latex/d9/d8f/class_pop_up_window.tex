@@ -2,8 +2,7 @@
 \hypertarget{class_pop_up_window}{}\label{class_pop_up_window}\index{PopUpWindow@{PopUpWindow}}
 
 
-Pop\+Up\+Window の継承関係図
-\nopagebreak
+Pop\+Up\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Pop\+Up\+Window の継承関係図
 \end{figure}
 
 
-Pop\+Up\+Window 連携図
-\nopagebreak
+Pop\+Up\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -129,31 +127,7 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_pop_up_window_8cs_source}{Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_pop_up_window_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0}\index{PopUpWindow@{PopUpWindow}!CalcTime@{CalcTime}}
-\index{CalcTime@{CalcTime}!PopUpWindow@{PopUpWindow}}
-\doxysubsubsection{\texorpdfstring{CalcTime()}{CalcTime()}}
-{\footnotesize\ttfamily \label{class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0} 
-bool Pop\+Up\+Window.\+Calc\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_pop_up_window_8cs_source}{Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_pop_up_window_8cs_source_l00055}{55}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d9/d8f/class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_pop_up_window_aba448f20a3b4e9ef307d4de037d1044b}\index{PopUpWindow@{PopUpWindow}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!PopUpWindow@{PopUpWindow}}
 \doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
@@ -165,9 +139,37 @@ override async Uni\+Task Pop\+Up\+Window.\+On\+Update (\begin{DoxyParamCaption}{
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 時間が経過するまで}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0}{CalcTime}}())}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_pop_up_window_8cs_source}{Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_pop_up_window_8cs_source_l00025}{25}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -175,28 +177,45 @@ override async Uni\+Task Pop\+Up\+Window.\+On\+Update (\begin{DoxyParamCaption}{
 \includegraphics[width=350pt]{d9/d8f/class_pop_up_window_aba448f20a3b4e9ef307d4de037d1044b_cgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0}\index{PopUpWindow@{PopUpWindow}!CalcTime@{CalcTime}}
+\index{CalcTime@{CalcTime}!PopUpWindow@{PopUpWindow}}
+\doxysubsubsection{\texorpdfstring{CalcTime()}{CalcTime()}}
+{\footnotesize\ttfamily \label{class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0} 
+bool Pop\+Up\+Window.\+Calc\+Time (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pop_up_window_aa3b634415caeb23b2c7d3f8be9888085}{m\_endless}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pop_up_window_a3d2d60c2f07840f02ac7e162d7f32e81}{m\_currentTime}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_pop_up_window_a8817d13b89f3d652f0f9002e7d9a9ff3}{m\_endTime}}\ <=\ \mbox{\hyperlink{class_pop_up_window_a3d2d60c2f07840f02ac7e162d7f32e81}{m\_currentTime}})}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d8f/class_pop_up_window_a02405f13f3b0532a5febc1ed85401cf0_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_pop_up_window_a3d2d60c2f07840f02ac7e162d7f32e81}\index{PopUpWindow@{PopUpWindow}!m\_currentTime@{m\_currentTime}}
-\index{m\_currentTime@{m\_currentTime}!PopUpWindow@{PopUpWindow}}
-\doxysubsubsection{\texorpdfstring{m\_currentTime}{m\_currentTime}}
-{\footnotesize\ttfamily \label{class_pop_up_window_a3d2d60c2f07840f02ac7e162d7f32e81} 
-float Pop\+Up\+Window.\+m\+\_\+current\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_pop_up_window_8cs_source}{Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_pop_up_window_8cs_source_l00021}{21}} 行目に定義があります。
-
 \Hypertarget{class_pop_up_window_aa3b634415caeb23b2c7d3f8be9888085}\index{PopUpWindow@{PopUpWindow}!m\_endless@{m\_endless}}
 \index{m\_endless@{m\_endless}!PopUpWindow@{PopUpWindow}}
 \doxysubsubsection{\texorpdfstring{m\_endless}{m\_endless}}
 {\footnotesize\ttfamily \label{class_pop_up_window_aa3b634415caeb23b2c7d3f8be9888085} 
 bool Pop\+Up\+Window.\+m\+\_\+endless = false\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_pop_up_window_8cs_source}{Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_pop_up_window_8cs_source_l00015}{15}} 行目に定義があります。
 
 \Hypertarget{class_pop_up_window_a8817d13b89f3d652f0f9002e7d9a9ff3}\index{PopUpWindow@{PopUpWindow}!m\_endTime@{m\_endTime}}
 \index{m\_endTime@{m\_endTime}!PopUpWindow@{PopUpWindow}}
@@ -204,9 +223,11 @@ bool Pop\+Up\+Window.\+m\+\_\+endless = false\hspace{0.3cm}{\ttfamily [private]}
 {\footnotesize\ttfamily \label{class_pop_up_window_a8817d13b89f3d652f0f9002e7d9a9ff3} 
 float Pop\+Up\+Window.\+m\+\_\+end\+Time = 10.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_pop_up_window_8cs_source}{Pop\+Up\+Window.\+cs}} の \mbox{\hyperlink{_pop_up_window_8cs_source_l00019}{19}} 行目に定義があります。
+\Hypertarget{class_pop_up_window_a3d2d60c2f07840f02ac7e162d7f32e81}\index{PopUpWindow@{PopUpWindow}!m\_currentTime@{m\_currentTime}}
+\index{m\_currentTime@{m\_currentTime}!PopUpWindow@{PopUpWindow}}
+\doxysubsubsection{\texorpdfstring{m\_currentTime}{m\_currentTime}}
+{\footnotesize\ttfamily \label{class_pop_up_window_a3d2d60c2f07840f02ac7e162d7f32e81} 
+float Pop\+Up\+Window.\+m\+\_\+current\+Time = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

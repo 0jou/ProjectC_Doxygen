@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -135,10 +135,7 @@ CreateToUpdateConfirmationWindow 連携図</div>
 <tr class="memitem:aea1bd6c0499b575063254148556669cf" id="r_aea1bd6c0499b575063254148556669cf"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aea1bd6c0499b575063254148556669cf">m_createWindow</a> = null</td></tr>
 <tr class="separator:aea1bd6c0499b575063254148556669cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html">CreateToUpdateConfirmationWindow.cs</a> の <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ab9eb29433d3e192a0998ba83a0e20fd9" name="ab9eb29433d3e192a0998ba83a0e20fd9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab9eb29433d3e192a0998ba83a0e20fd9">&#9670;&#160;</a></span>Create&lt; WindowType &gt;()</h2>
 
@@ -161,9 +158,53 @@ CreateToUpdateConfirmationWindow 連携図</div>
 </dd>
 </dl>
 </div>
-
-<p class="definition"> <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html">CreateToUpdateConfirmationWindow.cs</a> の <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   19</span>                                                                                                                         : <a class="code hl_class" href="../../d2/d5a/class_confirmation_window.html">ConfirmationWindow</a></div>
+<div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad01016a798e9f7a5649eac193c168fb8">m_confirmationWindowController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            Debug.LogError(<span class="stringliteral">&quot;m_judgeWindowControllerがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   26</span>        }</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>        <span class="comment">// インスタンスを作成</span></div>
+<div class="line"><span class="lineno">   29</span>        var window = Instantiate(<a class="code hl_variable" href="#ad01016a798e9f7a5649eac193c168fb8">m_confirmationWindowController</a>);</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        <span class="comment">// コントローラーを取得</span></div>
+<div class="line"><span class="lineno">   32</span>        var windowController = window.GetComponent&lt;<a class="code hl_class" href="../../d7/d6f/class_window_controller.html">WindowController</a>&gt;();</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (windowController == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   35</span>        {</div>
+<div class="line"><span class="lineno">   36</span>            Debug.LogError(<span class="stringliteral">&quot;WindowControllerコンポーネントが登録されていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span> (window != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   38</span>            {</div>
+<div class="line"><span class="lineno">   39</span>                Destroy(window);</div>
+<div class="line"><span class="lineno">   40</span>            }</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   42</span>        }</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>        <span class="comment">//SE音追加（山本）</span></div>
+<div class="line"><span class="lineno">   45</span>        <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;DoneCook&quot;</span>);</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>        <span class="comment">// 作成したウィンドウのアップデート</span></div>
+<div class="line"><span class="lineno">   48</span>        await windowController.CreateWindow&lt;WindowType&gt;(<span class="keyword">false</span>, onBeforeInitialize);</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>        <span class="comment">// ウィンドウGameObjectを削除</span></div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">if</span> (window!=<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   52</span>        {</div>
+<div class="line"><span class="lineno">   53</span>            Destroy(window);</div>
+<div class="line"><span class="lineno">   54</span>        }</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        await UniTask.CompletedTask;</div>
+<div class="line"><span class="lineno">   57</span> </div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="ttc" id="aclass_confirmation_window_html"><div class="ttname"><a href="../../d2/d5a/class_confirmation_window.html">ConfirmationWindow</a></div><div class="ttdef"><b>Definition</b> ConfirmationWindow.cs:7</div></div>
+<div class="ttc" id="aclass_create_to_update_confirmation_window_html_ad01016a798e9f7a5649eac193c168fb8"><div class="ttname"><a href="#ad01016a798e9f7a5649eac193c168fb8">CreateToUpdateConfirmationWindow.m_confirmationWindowController</a></div><div class="ttdeci">GameObject m_confirmationWindowController</div><div class="ttdef"><b>Definition</b> CreateToUpdateConfirmationWindow.cs:14</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> SoundManager.cs:44</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+<div class="ttc" id="aclass_window_controller_html"><div class="ttname"><a href="../../d7/d6f/class_window_controller.html">WindowController</a></div><div class="ttdef"><b>Definition</b> WindowController.cs:14</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d3/d4e/class_create_to_update_confirmation_window_ab9eb29433d3e192a0998ba83a0e20fd9_cgraph.png" border="0" usemap="#ad3/d4e/class_create_to_update_confirmation_window_ab9eb29433d3e192a0998ba83a0e20fd9_cgraph" alt=""/></div>
@@ -197,8 +238,6 @@ CreateToUpdateConfirmationWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html">CreateToUpdateConfirmationWindow.cs</a> の <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="aea1bd6c0499b575063254148556669cf" name="aea1bd6c0499b575063254148556669cf"></a>
@@ -221,12 +260,10 @@ CreateToUpdateConfirmationWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html">CreateToUpdateConfirmationWindow.cs</a> の <a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/ConfirmationWindow/Create/<a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs_source.html">CreateToUpdateConfirmationWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/ConfirmationWindow/Create/<a class="el" href="../../dd/d16/_create_to_update_confirmation_window_8cs.html">CreateToUpdateConfirmationWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

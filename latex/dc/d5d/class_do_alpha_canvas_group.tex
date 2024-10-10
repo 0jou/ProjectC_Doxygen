@@ -86,13 +86,6 @@ Sequence \mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455
 \begin{DoxyCompactList}\small\item\em 実行中の\+Sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source}{Do\+Alpha\+Canvas\+Group.\+cs}} の \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_do_alpha_canvas_group_a58ccd440a7064342cd8d1589bc4d321f}\index{DoAlphaCanvasGroup@{DoAlphaCanvasGroup}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!DoAlphaCanvasGroup@{DoAlphaCanvasGroup}}
@@ -105,9 +98,19 @@ override void Do\+Alpha\+Canvas\+Group.\+On\+Initialize (\begin{DoxyParamCaption
 \mbox{\hyperlink{class_base_do_tween_u_i_a6a623674f87a15b0c8b5fc0a2903acf5}{Base\+Do\+Tween\+UI}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_do_alpha_canvas_group_a4f2533d5bd276ac13fa8b00afc7485a4}{m\_canvasGroup}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CanvasGroupがシリアライズされていません"{}});}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期の透明度をセット}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ m\_canvasGroup.alpha\ =\ \mbox{\hyperlink{class_do_alpha_canvas_group_abaa0fd3c7c1a9089dd3c510665c01012}{m\_initializeAlpha}};}
+\DoxyCodeLine{00044\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source}{Do\+Alpha\+Canvas\+Group.\+cs}} の \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source_l00034}{34}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_do_alpha_canvas_group_a6913f8aaf9fd7252f4b2a3227ffac925}\index{DoAlphaCanvasGroup@{DoAlphaCanvasGroup}!StartDoTween@{StartDoTween}}
 \index{StartDoTween@{StartDoTween}!DoAlphaCanvasGroup@{DoAlphaCanvasGroup}}
 \doxysubsubsection{\texorpdfstring{StartDoTween()}{StartDoTween()}}
@@ -115,9 +118,36 @@ override void Do\+Alpha\+Canvas\+Group.\+On\+Initialize (\begin{DoxyParamCaption
 override void Do\+Alpha\+Canvas\+Group.\+Start\+Do\+Tween (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_do_alpha_canvas_group_a4f2533d5bd276ac13fa8b00afc7485a4}{m\_canvasGroup}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CanvasGroupがシリアライズされていません"{}});}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度初期化}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{KillSequence}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 開始}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ =\ DOTween.Sequence();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ alpha\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_do_alpha_canvas_group_a3ea5ef5e89a433545612ad226148e4c2}{m\_targetAlphaList}})}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.Append(}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_do_alpha_canvas_group_a4f2533d5bd276ac13fa8b00afc7485a4}{m\_canvasGroup}}.DOFade(alpha,\ \mbox{\hyperlink{class_base_do_tween_u_i_afac415f8cc86bb6c0d498ef420dd73dc}{m\_duration}}).}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ SetDelay(\mbox{\hyperlink{class_base_do_tween_u_i_add825ea273bddeceb6366b843650c092}{m\_delay}}).}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ SetEase(\mbox{\hyperlink{class_base_do_tween_u_i_a28c42ac637a0a1545bbd1068ec2b60f7}{m\_ease}}).}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ SetLink(gameObject)).}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetLoops(\mbox{\hyperlink{class_base_do_tween_u_i_a0981dac4174fa204a80ea78ccb9376b7}{m\_loopCount}},\ \mbox{\hyperlink{class_base_do_tween_u_i_a3b9ae474f7cc59876265db492de02f3a}{m\_loopType}});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source}{Do\+Alpha\+Canvas\+Group.\+cs}} の \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source_l00047}{47}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -134,29 +164,17 @@ override void Do\+Alpha\+Canvas\+Group.\+Start\+Do\+Tween (\begin{DoxyParamCapti
 {\footnotesize\ttfamily \label{class_do_alpha_canvas_group_a4f2533d5bd276ac13fa8b00afc7485a4} 
 Canvas\+Group Do\+Alpha\+Canvas\+Group.\+m\+\_\+canvas\+Group = null\hspace{0.3cm}{\ttfamily [protected]}}
 
-
-
- \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source}{Do\+Alpha\+Canvas\+Group.\+cs}} の \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source_l00015}{15}} 行目に定義があります。
-
 \Hypertarget{class_do_alpha_canvas_group_abaa0fd3c7c1a9089dd3c510665c01012}\index{DoAlphaCanvasGroup@{DoAlphaCanvasGroup}!m\_initializeAlpha@{m\_initializeAlpha}}
 \index{m\_initializeAlpha@{m\_initializeAlpha}!DoAlphaCanvasGroup@{DoAlphaCanvasGroup}}
 \doxysubsubsection{\texorpdfstring{m\_initializeAlpha}{m\_initializeAlpha}}
 {\footnotesize\ttfamily \label{class_do_alpha_canvas_group_abaa0fd3c7c1a9089dd3c510665c01012} 
 float Do\+Alpha\+Canvas\+Group.\+m\+\_\+initialize\+Alpha = 1.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source}{Do\+Alpha\+Canvas\+Group.\+cs}} の \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source_l00021}{21}} 行目に定義があります。
-
 \Hypertarget{class_do_alpha_canvas_group_a3ea5ef5e89a433545612ad226148e4c2}\index{DoAlphaCanvasGroup@{DoAlphaCanvasGroup}!m\_targetAlphaList@{m\_targetAlphaList}}
 \index{m\_targetAlphaList@{m\_targetAlphaList}!DoAlphaCanvasGroup@{DoAlphaCanvasGroup}}
 \doxysubsubsection{\texorpdfstring{m\_targetAlphaList}{m\_targetAlphaList}}
 {\footnotesize\ttfamily \label{class_do_alpha_canvas_group_a3ea5ef5e89a433545612ad226148e4c2} 
 List$<$float$>$ Do\+Alpha\+Canvas\+Group.\+m\+\_\+target\+Alpha\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source}{Do\+Alpha\+Canvas\+Group.\+cs}} の \mbox{\hyperlink{_do_alpha_canvas_group_8cs_source_l00027}{27}} 行目に定義があります。
 
 
 

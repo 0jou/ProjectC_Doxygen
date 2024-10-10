@@ -51,13 +51,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{è©³è§£}
-
-
- \mbox{\hyperlink{_condition_data_base_manager_8cs_source}{Condition\+Data\+Base\+Manager.\+cs}} ã® \mbox{\hyperlink{_condition_data_base_manager_8cs_source_l00006}{6}} è¡Œç›®ã«å®šç¾©ãŒã‚ã‚Šã¾ã™ã€‚
-
-
-
 \doxysubsection{ãƒ¡ã‚½ãƒƒãƒ‰è©³è§£}
 \Hypertarget{class_condition_data_base_manager_ab1a44c78283d91ce2a5fff53dde20370}\index{ConditionDataBaseManager@{ConditionDataBaseManager}!GetConditionData@{GetConditionData}}
 \index{GetConditionData@{GetConditionData}!ConditionDataBaseManager@{ConditionDataBaseManager}}
@@ -77,9 +70,78 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ •Ô‚·ƒf[ƒ\string^}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_condition_data}{ConditionData}}\ data\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_condition_data_base_manager_ad03099522e517b8992d16519dea24bb3}{m\_dataBase}}.\mbox{\hyperlink{class_condition_data_base_a5e889106a08f5e16acabad18981e00b5}{ConditionDataBaseList}})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#if\ DEBUG }}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list)}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ƒf[ƒ\string^ƒx[ƒX‚ªnull‚Å‚È‚¢‚©Šm”F‚·‚é}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ó‘Ôƒf[ƒ\string^‚ª“o˜\string^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ConditionID\ ==\ \_id)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ƒfƒoƒbƒOŽž‚ÍID‚ª”í‚Á‚Ä‚¢‚È‚¢‚©Šm”F‚·‚é}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ID‚ª2‚Â‘¶Ý‚µ‚Ü‚·BŠm”F‚µ‚Ä‚­‚¾‚³‚¢"{}});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ list;}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#else }}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ˆê’v‚·‚ê‚Î}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ConditionID\ ==\ \_id)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ list;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\_id\ +\ \textcolor{stringliteral}{"{}\ ‚±‚ÌID‚Ìó‘Ô‚Í‘¶Ý‚µ‚Ü‚¹‚ñB“o˜\string^‚Å‚«‚Ä‚¢‚é‚©Šm”F‚µ‚Ä‚­‚¾‚³‚¢"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_data_base_manager_8cs_source}{Condition\+Data\+Base\+Manager.\+cs}} ã® \mbox{\hyperlink{_condition_data_base_manager_8cs_source_l00035}{35}} è¡Œç›®ã«å®šç¾©ãŒã‚ã‚Šã¾ã™ã€‚
-
+\end{DoxyCode}
 
 
 \doxysubsection{ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰è©³è§£}
@@ -91,10 +153,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 
 
- \mbox{\hyperlink{_condition_data_base_manager_8cs_source}{Condition\+Data\+Base\+Manager.\+cs}} ã® \mbox{\hyperlink{_condition_data_base_manager_8cs_source_l00012}{12}} è¡Œç›®ã«å®šç¾©ãŒã‚ã‚Šã¾ã™ã€‚
-
-
-
 \doxysubsection{ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£è©³è§£}
 \Hypertarget{class_condition_data_base_manager_a4a04ea60022f3499a32635d83871ce8b}\index{ConditionDataBaseManager@{ConditionDataBaseManager}!DataBase@{DataBase}}
 \index{DataBase@{DataBase}!ConditionDataBaseManager@{ConditionDataBaseManager}}
@@ -103,9 +161,10 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \mbox{\hyperlink{class_condition_data_base}{Condition\+Data\+Base}} Condition\+Data\+Base\+Manager.\+Data\+Base\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_condition_data_base_manager_ad03099522e517b8992d16519dea24bb3}{m\_dataBase}};\ \}\ \}}
 
- \mbox{\hyperlink{_condition_data_base_manager_8cs_source}{Condition\+Data\+Base\+Manager.\+cs}} ã® \mbox{\hyperlink{_condition_data_base_manager_8cs_source_l00015}{15}} è¡Œç›®ã«å®šç¾©ãŒã‚ã‚Šã¾ã™ã€‚
-
+\end{DoxyCode}
 
 
 ã“ã®ã‚¯ãƒ©ã‚¹è©³è§£ã¯æ¬¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã‹ã‚‰æŠ½å‡ºã•ã‚Œã¾ã—ãŸ\+:\begin{DoxyCompactItemize}

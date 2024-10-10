@@ -64,14 +64,99 @@ Vector3 \mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___i
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00120}{120}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
+\Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_ad76e37076d5c4003f3ee89067cc92455}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_ad76e37076d5c4003f3ee89067cc92455} 
+override void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+On\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_animator.GetComponent<\mbox{\hyperlink{class_set_rig_info}{SetRigInfo}}>().\mbox{\hyperlink{class_set_rig_info_a00ab933d463e16d96af6c197513a3261}{UseRig}}.weight\ ==\ 0)}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//リグが働くようにWeightを1に}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.GetComponent<\mbox{\hyperlink{class_set_rig_info}{SetRigInfo}}>().UseRig.weight\ =\ 1.0f;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_a92ef1b28712f01f1c44243ba22dcc2b8}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!OnFixedUpdate@{OnFixedUpdate}}
+\index{OnFixedUpdate@{OnFixedUpdate}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
+\doxysubsubsection{\texorpdfstring{OnFixedUpdate()}{OnFixedUpdate()}}
+{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_a92ef1b28712f01f1c44243ba22dcc2b8} 
+override void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+On\+Fixed\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetVec\ =\ \mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___idle_a49c2e90b8f4a3eb40b33048d85392c4d}{GetNearestEnemyVector}}();}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1}{RotateToTargetEnemy}}(targetVec);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/db0/class_character_core_1_1_action_state___skill_l_r_r___idle_a92ef1b28712f01f1c44243ba22dcc2b8_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!RotateToTargetEnemy@{RotateToTargetEnemy}}
+\index{RotateToTargetEnemy@{RotateToTargetEnemy}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
+\doxysubsubsection{\texorpdfstring{RotateToTargetEnemy()}{RotateToTargetEnemy()}}
+{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1} 
+void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Rotate\+To\+Target\+Enemy (\begin{DoxyParamCaption}\item[{Vector3}]{target\+Vec}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetVec\ ==\ Vector3.zero)}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//見つめる先の位置取得}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ nowTargetPos\ =\ Core.m\_animator.GetComponent<\mbox{\hyperlink{class_set_rig_info}{SetRigInfo}}>().TargetTransform.position;}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//目標の地点へ移動\ }}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ nowTargetPos\ =\ Vector3.MoveTowards(nowTargetPos,\ m\_targetPos,\ Core.PlayerSkillsParameters.MoveLookTargetSpeed\ *\ Time.fixedDeltaTime);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//座標更新}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.GetComponent<\mbox{\hyperlink{class_set_rig_info}{SetRigInfo}}>().TargetTransform.position\ =\ nowTargetPos;}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//距離取得}}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist\ =\ Vector3.Distance(m\_targetPos,\ nowTargetPos);}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Angle(targetVec,\ Core.transform.forward)\ <\ 1f\ \&\&\ dist\ ==\ 0.0f)}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}SkillAttack"{}});}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ targetVec.Normalize();}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Quaternion\ characterTargetRotation\ =\ Quaternion.LookRotation(targetVec);}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.transform.rotation\ =\ Quaternion.RotateTowards(Core.transform.rotation,\ characterTargetRotation,\ Core.m\_rotationSpeed\ *\ Time.fixedDeltaTime);}}
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_charaCtrl.LookVector\ =\ targetVec;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/db0/class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_a49c2e90b8f4a3eb40b33048d85392c4d}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!GetNearestEnemyVector@{GetNearestEnemyVector}}
 \index{GetNearestEnemyVector@{GetNearestEnemyVector}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
 \doxysubsubsection{\texorpdfstring{GetNearestEnemyVector()}{GetNearestEnemyVector()}}
@@ -79,9 +164,35 @@ Vector3 \mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___i
 Vector3 Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Get\+Nearest\+Enemy\+Vector (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ nearestEnemyPos\ =\ Vector3.zero;}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetVec\ =\ Vector3.zero;}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ nearestDist\ =\ \textcolor{keywordtype}{float}.MaxValue;}
+\DoxyCodeLine{00187\ }
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ chara\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CharacterCore>}}.Instance.\mbox{\hyperlink{interface_i_meta_a_i_a5538533e130a7a180b806f1937f65447}{ObjectList}})}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.GroupNo\ !=\ \mbox{\hyperlink{_i_damageable_8cs_ae72376123e0488a173f6626e9fc0ba47}{CharacterGroupNumber}}.enemy)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.m\_characterStatus.m\_hp.Value\ <=\ 0.0f)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00192\ }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___idle_ab0e41f0217cce776f465190503dee152}{SearchTarget}}(chara.gameObject,\ ref\ nearestDist))}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nearestEnemyPos\ =\ chara.transform.position;}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nearestEnemyPos.y\ +=\ chara.GetComponent<CapsuleCollider>().center.y;}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___idle_a34ed85167bc7cb28e31b1c80b99e0284}{m\_targetPos}}\ =\ nearestEnemyPos;}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerSkillsParameters.TargetPos\ =\ m\_targetPos;}}
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ targetVec\ =\ \mbox{\hyperlink{class_character_core_1_1_action_state___skill_l_r_r___idle_a34ed85167bc7cb28e31b1c80b99e0284}{m\_targetPos}}\ -\/\ Core.transform.position;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ targetVec.y\ =\ 0;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ targetVec.Normalize();}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ targetVec;}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00182}{182}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -96,58 +207,6 @@ Vector3 Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Get\+Nea
 \includegraphics[width=350pt]{d8/db0/class_character_core_1_1_action_state___skill_l_r_r___idle_a49c2e90b8f4a3eb40b33048d85392c4d_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_a92ef1b28712f01f1c44243ba22dcc2b8}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!OnFixedUpdate@{OnFixedUpdate}}
-\index{OnFixedUpdate@{OnFixedUpdate}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
-\doxysubsubsection{\texorpdfstring{OnFixedUpdate()}{OnFixedUpdate()}}
-{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_a92ef1b28712f01f1c44243ba22dcc2b8} 
-override void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+On\+Fixed\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00134}{134}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d8/db0/class_character_core_1_1_action_state___skill_l_r_r___idle_a92ef1b28712f01f1c44243ba22dcc2b8_cgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_ad76e37076d5c4003f3ee89067cc92455}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!OnUpdate@{OnUpdate}}
-\index{OnUpdate@{OnUpdate}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
-\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
-{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_ad76e37076d5c4003f3ee89067cc92455} 
-override void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+On\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00124}{124}} 行目に定義があります。
-
-\Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!RotateToTargetEnemy@{RotateToTargetEnemy}}
-\index{RotateToTargetEnemy@{RotateToTargetEnemy}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
-\doxysubsubsection{\texorpdfstring{RotateToTargetEnemy()}{RotateToTargetEnemy()}}
-{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1} 
-void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Rotate\+To\+Target\+Enemy (\begin{DoxyParamCaption}\item[{Vector3}]{target\+Vec}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00150}{150}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d8/db0/class_character_core_1_1_action_state___skill_l_r_r___idle_af1f968640955ef9c592633bbb4c3eec1_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_character_core_1_1_action_state___skill_l_r_r___idle_ab0e41f0217cce776f465190503dee152}\index{CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}!SearchTarget@{SearchTarget}}
 \index{SearchTarget@{SearchTarget}!CharacterCore.ActionState\_SkillLRR\_Idle@{CharacterCore.ActionState\_SkillLRR\_Idle}}
 \doxysubsubsection{\texorpdfstring{SearchTarget()}{SearchTarget()}}
@@ -155,9 +214,20 @@ void Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Rotate\+To\
 bool Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Search\+Target (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+target}{, }\item[{ref float}]{\+\_\+nearest\+Dist}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist;}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(Core.transform.position,\ \_target.transform.position);}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >\ \_nearestDist)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00212}{212}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -173,10 +243,6 @@ bool Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+Search\+Tar
 \doxysubsubsection{\texorpdfstring{m\_targetPos}{m\_targetPos}}
 {\footnotesize\ttfamily \label{class_character_core_1_1_action_state___skill_l_r_r___idle_a34ed85167bc7cb28e31b1c80b99e0284} 
 Vector3 Character\+Core.\+Action\+State\+\_\+\+Skill\+LRR\+\_\+\+Idle.\+m\+\_\+target\+Pos = Vector3.\+zero\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source}{LRRHSkill\+State.\+cs}} の \mbox{\hyperlink{_l_r_r_h_skill_state_8cs_source_l00122}{122}} 行目に定義があります。
 
 
 

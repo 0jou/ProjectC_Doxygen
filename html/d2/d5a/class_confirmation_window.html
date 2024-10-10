@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -221,10 +221,7 @@ ConfirmationWindow 連携図</div>
 <tr class="memitem:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window" id="r_aca92cddf024d4e19bdd003441678c3d6"><td class="memItemLeft" align="right" valign="top">PlayerInput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc1/class_base_window.html#aca92cddf024d4e19bdd003441678c3d6">Input</a><code> [get, set]</code></td></tr>
 <tr class="separator:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html">ConfirmationWindow.cs</a> の <a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a95fc4abf1373738ef91d4e3a691dcf45" name="a95fc4abf1373738ef91d4e3a691dcf45"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a95fc4abf1373738ef91d4e3a691dcf45">&#9670;&#160;</a></span>OnUpdate()</h2>
 
@@ -249,9 +246,43 @@ ConfirmationWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a7dbb4bd0d8326442b7ad896895fd2995">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html">ConfirmationWindow.cs</a> の <a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   12</span>    {</div>
+<div class="line"><span class="lineno">   13</span> </div>
+<div class="line"><span class="lineno">   14</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   15</span> </div>
+<div class="line"><span class="lineno">   16</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   17</span>        {</div>
+<div class="line"><span class="lineno">   18</span>            <span class="keywordflow">while</span> (cancelToken.IsCancellationRequested == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   19</span>            {</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>                await base.OnUpdate();</div>
+<div class="line"><span class="lineno">   22</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>                <span class="comment">// キャンセル</span></div>
+<div class="line"><span class="lineno">   25</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;Select&quot;</span>) ||</div>
+<div class="line"><span class="lineno">   26</span>                    <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;Cancel&quot;</span>))</div>
+<div class="line"><span class="lineno">   27</span>                {</div>
+<div class="line"><span class="lineno">   28</span>                    <span class="comment">// 動作を行う</span></div>
+<div class="line"><span class="lineno">   29</span>                    await <a class="code hl_function" href="#ab37a7f9daa014d6d467c09fb55a1d01b">UpdateConfirmation</a>();</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   32</span>                }</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>                await UniTask.DelayFrame(1);</div>
+<div class="line"><span class="lineno">   35</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>            }</div>
+<div class="line"><span class="lineno">   38</span>        }</div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   40</span>        {</div>
+<div class="line"><span class="lineno">   41</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   42</span>        }</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43ac"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a></div><div class="ttdeci">InputActionMapTypes</div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:7</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_confirmation_window_html_ab37a7f9daa014d6d467c09fb55a1d01b"><div class="ttname"><a href="#ab37a7f9daa014d6d467c09fb55a1d01b">ConfirmationWindow.UpdateConfirmation</a></div><div class="ttdeci">virtual async UniTask UpdateConfirmation()</div><div class="ttdef"><b>Definition</b> ConfirmationWindow.cs:46</div></div>
+<div class="ttc" id="aclass_player_input_manager_html"><div class="ttname"><a href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a></div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:15</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/d5a/class_confirmation_window_a95fc4abf1373738ef91d4e3a691dcf45_cgraph.png" border="0" usemap="#ad2/d5a/class_confirmation_window_a95fc4abf1373738ef91d4e3a691dcf45_cgraph" alt=""/></div>
@@ -288,9 +319,11 @@ ConfirmationWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/d22/class_trial_session_window.html#aa94acbaf8543102438e223b2ea6ed349">TrialSessionWindow</a>で再実装されています。</p>
-
-<p class="definition"> <a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html">ConfirmationWindow.cs</a> の <a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html#l00046">46</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
+<div class="line"><span class="lineno">   48</span>        <span class="comment">// 派生クラスでの処理はこのメソッドをオーバーライドして行う</span></div>
+<div class="line"><span class="lineno">   49</span>        await UniTask.CompletedTask;</div>
+<div class="line"><span class="lineno">   50</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/d5a/class_confirmation_window_ab37a7f9daa014d6d467c09fb55a1d01b_icgraph.png" border="0" usemap="#ad2/d5a/class_confirmation_window_ab37a7f9daa014d6d467c09fb55a1d01b_icgraph" alt=""/></div>
@@ -304,7 +337,7 @@ ConfirmationWindow 連携図</div>
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/ConfirmationWindow/<a class="el" href="../../dc/ddb/_confirmation_window_8cs_source.html">ConfirmationWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/ConfirmationWindow/<a class="el" href="../../dc/ddb/_confirmation_window_8cs.html">ConfirmationWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -158,10 +158,7 @@ CharacterCore.ActionState_SkillLRR_Warp 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a> の <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html#l00326">326</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ab90f9672d4dbe3bf9411f7120d7cb274" name="ab90f9672d4dbe3bf9411f7120d7cb274"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab90f9672d4dbe3bf9411f7120d7cb274">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -186,38 +183,31 @@ CharacterCore.ActionState_SkillLRR_Warp 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a> の <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html#l00334">334</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ae1746b42bd83af79c54cac58c063445f" name="ae1746b42bd83af79c54cac58c063445f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1746b42bd83af79c54cac58c063445f">&#9670;&#160;</a></span>OnExit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_SkillLRR_Warp.OnExit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a> の <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html#l00373">373</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  335</span>        {</div>
+<div class="line"><span class="lineno">  336</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">  337</span> </div>
+<div class="line"><span class="lineno">  338</span>            <span class="keywordflow">if</span> (m_player != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  339</span>            {</div>
+<div class="line"><span class="lineno">  340</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  341</span>            }</div>
+<div class="line"><span class="lineno">  342</span> </div>
+<div class="line"><span class="lineno">  343</span>            <span class="comment">//プレイヤーを探して代入</span></div>
+<div class="line"><span class="lineno">  344</span>            <span class="keywordflow">foreach</span> (var chara <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">  345</span>            {</div>
+<div class="line"><span class="lineno">  346</span>                <span class="keywordflow">if</span> (chara.transform.tag == <span class="stringliteral">&quot;Player&quot;</span>)</div>
+<div class="line"><span class="lineno">  347</span>                {</div>
+<div class="line"><span class="lineno">  348</span>                    <a class="code hl_variable" href="#abd13f78126bd6e6aab029cae7e2a456b">m_player</a> = chara.gameObject;</div>
+<div class="line"><span class="lineno">  349</span>                }</div>
+<div class="line"><span class="lineno">  350</span> </div>
+<div class="line"><span class="lineno">  351</span>            }</div>
+<div class="line"><span class="lineno">  352</span> </div>
+<div class="line"><span class="lineno">  353</span> </div>
+<div class="line"><span class="lineno">  354</span> </div>
+<div class="line"><span class="lineno">  355</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___skill_l_r_r___warp_html_abd13f78126bd6e6aab029cae7e2a456b"><div class="ttname"><a href="#abd13f78126bd6e6aab029cae7e2a456b">CharacterCore.ActionState_SkillLRR_Warp.m_player</a></div><div class="ttdeci">GameObject m_player</div><div class="ttdef"><b>Definition</b> LRRHSkillState.cs:331</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> MetaAI.cs:12</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a5538533e130a7a180b806f1937f65447"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">IMetaAI.ObjectList</a></div><div class="ttdeci">HashSet&lt; T &gt; ObjectList</div><div class="ttdef"><b>Definition</b> MetaAI.cs:16</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a3c649257e78bca35a03f81c72b2a46ef" name="a3c649257e78bca35a03f81c72b2a46ef"></a>
@@ -244,14 +234,24 @@ CharacterCore.ActionState_SkillLRR_Warp 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#abd0a7d1992675f10146a3d2839d136fe">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a> の <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html#l00357">357</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  358</span>        {</div>
+<div class="line"><span class="lineno">  359</span>            base.OnUpdate();</div>
+<div class="line"><span class="lineno">  360</span> </div>
+<div class="line"><span class="lineno">  361</span>            <span class="keywordflow">if</span> (m_player)</div>
+<div class="line"><span class="lineno">  362</span>            {</div>
+<div class="line"><span class="lineno">  363</span>                var nextVec = m_player.transform.position - Core.transform.position;</div>
+<div class="line"><span class="lineno">  364</span>                nextVec.Normalize();</div>
+<div class="line"><span class="lineno">  365</span> </div>
+<div class="line"><span class="lineno">  366</span>                <span class="comment">//ターゲットの方を向く</span></div>
+<div class="line"><span class="lineno">  367</span>                Core.SetRotateToTarget(nextVec);</div>
+<div class="line"><span class="lineno">  368</span>            }</div>
+<div class="line"><span class="lineno">  369</span> </div>
+<div class="line"><span class="lineno">  370</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<h2 class="groupheader">フィールド詳解</h2>
-<a id="abd13f78126bd6e6aab029cae7e2a456b" name="abd13f78126bd6e6aab029cae7e2a456b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd13f78126bd6e6aab029cae7e2a456b">&#9670;&#160;</a></span>m_player</h2>
+<a id="ae1746b42bd83af79c54cac58c063445f" name="ae1746b42bd83af79c54cac58c063445f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1746b42bd83af79c54cac58c063445f">&#9670;&#160;</a></span>OnExit()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -260,20 +260,45 @@ CharacterCore.ActionState_SkillLRR_Warp 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">GameObject CharacterCore.ActionState_SkillLRR_Warp.m_player = null</td>
+          <td class="memname">override void CharacterCore.ActionState_SkillLRR_Warp.OnExit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a> の <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html#l00331">331</a> 行目に定義があります。</p>
-
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">  374</span>        {</div>
+<div class="line"><span class="lineno">  375</span>            base.OnExit();</div>
+<div class="line"><span class="lineno">  376</span> </div>
+<div class="line"><span class="lineno">  377</span>            <span class="keywordflow">if</span> (!m_player)</div>
+<div class="line"><span class="lineno">  378</span>            {</div>
+<div class="line"><span class="lineno">  379</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  380</span>            }</div>
+<div class="line"><span class="lineno">  381</span> </div>
+<div class="line"><span class="lineno">  382</span>            <span class="comment">//ターゲット位置へとワープする</span></div>
+<div class="line"><span class="lineno">  383</span>            var appearPos = m_player.transform.position - m_player.transform.forward * <a class="code hl_variable" href="#a1e5454ff8f3f5e2665cc1adce84aa611">m_playerDist</a>;</div>
+<div class="line"><span class="lineno">  384</span>            Core.m_charaCtrl.SetPositionMotor(appearPos, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  385</span> </div>
+<div class="line"><span class="lineno">  386</span> </div>
+<div class="line"><span class="lineno">  387</span>            var nextVec = m_player.transform.position - Core.transform.position;</div>
+<div class="line"><span class="lineno">  388</span>            nextVec.Normalize();</div>
+<div class="line"><span class="lineno">  389</span> </div>
+<div class="line"><span class="lineno">  390</span>            <span class="comment">//ターゲットの方を向く</span></div>
+<div class="line"><span class="lineno">  391</span>            Core.SetRotateToTarget(nextVec);</div>
+<div class="line"><span class="lineno">  392</span> </div>
+<div class="line"><span class="lineno">  393</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___skill_l_r_r___warp_html_a1e5454ff8f3f5e2665cc1adce84aa611"><div class="ttname"><a href="#a1e5454ff8f3f5e2665cc1adce84aa611">CharacterCore.ActionState_SkillLRR_Warp.m_playerDist</a></div><div class="ttdeci">float m_playerDist</div><div class="ttdef"><b>Definition</b> LRRHSkillState.cs:329</div></div>
+</div><!-- fragment -->
 </div>
 </div>
+<h2 class="groupheader">フィールド詳解</h2>
 <a id="a1e5454ff8f3f5e2665cc1adce84aa611" name="a1e5454ff8f3f5e2665cc1adce84aa611"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1e5454ff8f3f5e2665cc1adce84aa611">&#9670;&#160;</a></span>m_playerDist</h2>
 
@@ -294,12 +319,32 @@ CharacterCore.ActionState_SkillLRR_Warp 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a> の <a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html#l00329">329</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="abd13f78126bd6e6aab029cae7e2a456b" name="abd13f78126bd6e6aab029cae7e2a456b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd13f78126bd6e6aab029cae7e2a456b">&#9670;&#160;</a></span>m_player</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject CharacterCore.ActionState_SkillLRR_Warp.m_player = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/StorySkillState/<a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs_source.html">LRRHSkillState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/StorySkillState/<a class="el" href="../../d3/d96/_l_r_r_h_skill_state_8cs.html">LRRHSkillState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -135,10 +135,7 @@ SkillAnimeEventAttck 連携図</div>
 <tr class="memitem:a7362cf14d7765fe37db1a03eeadd8c34" id="r_a7362cf14d7765fe37db1a03eeadd8c34"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7362cf14d7765fe37db1a03eeadd8c34">m_assetAttack</a></td></tr>
 <tr class="separator:a7362cf14d7765fe37db1a03eeadd8c34"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html">SkillAnimeEventAttck.cs</a> の <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a8d1d58435a0d6ea83b3e16cdbecf96c5" name="a8d1d58435a0d6ea83b3e16cdbecf96c5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8d1d58435a0d6ea83b3e16cdbecf96c5">&#9670;&#160;</a></span>OnEvent()</h2>
 
@@ -153,9 +150,28 @@ SkillAnimeEventAttck 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html">SkillAnimeEventAttck.cs</a> の <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   16</span>    {</div>
+<div class="line"><span class="lineno">   17</span>        var charaCore = animator.transform.GetComponentInParent&lt;<a class="code hl_class" href="../../d7/d2e/class_character_core.html">CharacterCore</a>&gt;();</div>
+<div class="line"><span class="lineno">   18</span>        var targetVec = charaCore.PlayerSkillsParameters.TargetPosition - charaCore.<a class="code hl_variable" href="../../d7/d2e/class_character_core.html#affa19c52127edade08a6792773d357b9">PlayerSkillsParameters</a>.<a class="code hl_property" href="../../df/d52/class_player_skills_parameters.html#ab8381971450bebe858f142b5e7e3fa29">StartSkillPos</a>;</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>        Quaternion targetQua = Quaternion.LookRotation(targetVec, charaCore.transform.up);</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        <span class="comment">//新しいオブジェクトをシーン内に配置する（親子関係だと親の回転に影響してしまう）</span></div>
+<div class="line"><span class="lineno">   23</span>        <span class="comment">//登録したスキル開始地点から発射</span></div>
+<div class="line"><span class="lineno">   24</span>        var newObj = GameObject.Instantiate(<a class="code hl_variable" href="#a7362cf14d7765fe37db1a03eeadd8c34">m_assetAttack</a>, charaCore.PlayerSkillsParameters.StartSkillPos, targetQua);</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>        <span class="comment">// 作成者情報を記憶</span></div>
+<div class="line"><span class="lineno">   27</span>        var ownerInfo = newObj.AddComponent&lt;<a class="code hl_class" href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a>&gt;();</div>
+<div class="line"><span class="lineno">   28</span>        ownerInfo.GroupNo = charaCore.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a56a9ad5e93c0d771bd43700982edfd06">GroupNo</a>;</div>
+<div class="line"><span class="lineno">   29</span>        ownerInfo.Characore = charaCore;</div>
+<div class="line"><span class="lineno">   30</span>    }</div>
+<div class="ttc" id="aclass_character_core_html"><div class="ttname"><a href="../../d7/d2e/class_character_core.html">CharacterCore</a></div><div class="ttdef"><b>Definition</b> CharacterCore.cs:13</div></div>
+<div class="ttc" id="aclass_character_core_html_affa19c52127edade08a6792773d357b9"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#affa19c52127edade08a6792773d357b9">CharacterCore.PlayerSkillsParameters</a></div><div class="ttdeci">PlayerSkillsParameters PlayerSkillsParameters</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:135</div></div>
+<div class="ttc" id="aclass_owner_info_tag_html"><div class="ttname"><a href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a></div><div class="ttdef"><b>Definition</b> OwnerInfoTag.cs:8</div></div>
+<div class="ttc" id="aclass_owner_info_tag_html_a56a9ad5e93c0d771bd43700982edfd06"><div class="ttname"><a href="../../dd/dbb/class_owner_info_tag.html#a56a9ad5e93c0d771bd43700982edfd06">OwnerInfoTag.GroupNo</a></div><div class="ttdeci">CharacterGroupNumber GroupNo</div><div class="ttdef"><b>Definition</b> OwnerInfoTag.cs:9</div></div>
+<div class="ttc" id="aclass_player_skills_parameters_html_ab8381971450bebe858f142b5e7e3fa29"><div class="ttname"><a href="../../df/d52/class_player_skills_parameters.html#ab8381971450bebe858f142b5e7e3fa29">PlayerSkillsParameters.StartSkillPos</a></div><div class="ttdeci">Vector3 StartSkillPos</div><div class="ttdef"><b>Definition</b> PlayerSkillsParameters.cs:125</div></div>
+<div class="ttc" id="aclass_skill_anime_event_attck_html_a7362cf14d7765fe37db1a03eeadd8c34"><div class="ttname"><a href="#a7362cf14d7765fe37db1a03eeadd8c34">SkillAnimeEventAttck.m_assetAttack</a></div><div class="ttdeci">GameObject m_assetAttack</div><div class="ttdef"><b>Definition</b> SkillAnimeEventAttck.cs:11</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="af65cb8b44ec7fbbcd3e4f54b64d81b02" name="af65cb8b44ec7fbbcd3e4f54b64d81b02"></a>
@@ -172,9 +188,9 @@ SkillAnimeEventAttck 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html">SkillAnimeEventAttck.cs</a> の <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html#l00032">32</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   33</span>    {</div>
+<div class="line"><span class="lineno">   34</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -198,12 +214,10 @@ SkillAnimeEventAttck 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html">SkillAnimeEventAttck.cs</a> の <a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/SkillCharacters/01_LittleRedRidingHood/Huter&amp;LRRH/Scripts/<a class="el" href="../../de/d29/_skill_anime_event_attck_8cs_source.html">SkillAnimeEventAttck.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/SkillCharacters/01_LittleRedRidingHood/Huter&amp;LRRH/Scripts/<a class="el" href="../../de/d29/_skill_anime_event_attck_8cs.html">SkillAnimeEventAttck.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

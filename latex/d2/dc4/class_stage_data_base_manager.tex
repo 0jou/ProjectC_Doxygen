@@ -51,13 +51,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_stage_data_base_manager_8cs_source}{Stage\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_stage_data_base_manager_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_stage_data_base_manager_ab97c43ed2c94b78d896d36d096e81963}\index{StageDataBaseManager@{StageDataBaseManager}!GetStageData@{GetStageData}}
 \index{GetStageData@{GetStageData}!StageDataBaseManager@{StageDataBaseManager}}
@@ -77,9 +70,78 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 返すデータ}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stage_data}{StageData}}\ data\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_stage_data_base_manager_ad81f10c05ba95bc5d1715c8948a70f5b}{m\_dataBase}}.\mbox{\hyperlink{class_stage_data_base_a16bf2a0f6cba2b9864df6fa05647202d}{StageDataBaseList}})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#if\ DEBUG }}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list)}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ データベースがnullでないか確認する}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ステージデータが登録されていません"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.StageID\ ==\ \_id)}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デバッグ時はIDが被っていないか確認する}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}IDが2つ存在します。確認してください"{}});}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ list;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#else }}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list)}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一致すれば}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.StageID\ ==\ \_id)}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ list;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\_id\ +\ \textcolor{stringliteral}{"{}\ このIDの状態は存在しません。登録できているか確認してください"{}});}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_stage_data_base_manager_8cs_source}{Stage\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_stage_data_base_manager_8cs_source_l00038}{38}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -91,10 +153,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 
 
- \mbox{\hyperlink{_stage_data_base_manager_8cs_source}{Stage\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_stage_data_base_manager_8cs_source_l00015}{15}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_stage_data_base_manager_a7299bebdc03aa1e0f846e00e4b5805ea}\index{StageDataBaseManager@{StageDataBaseManager}!DataBase@{DataBase}}
 \index{DataBase@{DataBase}!StageDataBaseManager@{StageDataBaseManager}}
@@ -103,9 +161,10 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \mbox{\hyperlink{class_stage_data_base}{Stage\+Data\+Base}} Stage\+Data\+Base\+Manager.\+Data\+Base\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_stage_data_base_manager_ad81f10c05ba95bc5d1715c8948a70f5b}{m\_dataBase}};\ \}\ \}}
 
- \mbox{\hyperlink{_stage_data_base_manager_8cs_source}{Stage\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_stage_data_base_manager_8cs_source_l00018}{18}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

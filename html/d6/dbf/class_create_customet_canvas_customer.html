@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -182,10 +182,7 @@ CreateCustometCanvasCustomer 連携図</div>
 <tr class="memitem:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour" id="r_aa3ddb22d160f0879f27eef6ff96f0076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d72/class_flexible_customer_data_variable.html">FlexibleCustomerDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d11/class_base_customer_state_behaviour.html#aa3ddb22d160f0879f27eef6ff96f0076">m_flexibleCustomerDataVariable</a> = null</td></tr>
 <tr class="separator:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html">CreateCustometCanvasCustomer.cs</a> の <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a1ebef475ab018e38b11440564f08d5bc" name="a1ebef475ab018e38b11440564f08d5bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ebef475ab018e38b11440564f08d5bc">&#9670;&#160;</a></span>Create()</h2>
 
@@ -208,9 +205,23 @@ CreateCustometCanvasCustomer 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html">CreateCustometCanvasCustomer.cs</a> の <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html#l00020">20</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        var data = <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">GetCustomerData</a>();</div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a96728c970a0a114555ffa0495e22444a">m_customerCanvas</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   26</span>        {</div>
+<div class="line"><span class="lineno">   27</span>            Debug.LogError(<span class="stringliteral">&quot;CustometCanvasがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   28</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   29</span>        }</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        var canvas = Instantiate&lt;CustomerCanvas&gt;(<a class="code hl_variable" href="#a96728c970a0a114555ffa0495e22444a">m_customerCanvas</a>, <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a6911eba8f0a18108bb8f3da8eb9ceaae">GetRootGameObject</a>().transform);</div>
+<div class="line"><span class="lineno">   32</span>        canvas.TargetCustomerData = data;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a32567768b2bf7e9e2901117de1ec359c"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">BaseCustomerStateBehaviour.GetCustomerData</a></div><div class="ttdeci">CustomerData GetCustomerData()</div><div class="ttdoc">客情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:27</div></div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a6911eba8f0a18108bb8f3da8eb9ceaae"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a6911eba8f0a18108bb8f3da8eb9ceaae">BaseCustomerStateBehaviour.GetRootGameObject</a></div><div class="ttdeci">GameObject GetRootGameObject()</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:63</div></div>
+<div class="ttc" id="aclass_create_customet_canvas_customer_html_a96728c970a0a114555ffa0495e22444a"><div class="ttname"><a href="#a96728c970a0a114555ffa0495e22444a">CreateCustometCanvasCustomer.m_customerCanvas</a></div><div class="ttdeci">CustomerCanvas m_customerCanvas</div><div class="ttdef"><b>Definition</b> CreateCustometCanvasCustomer.cs:14</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/dbf/class_create_customet_canvas_customer_a1ebef475ab018e38b11440564f08d5bc_cgraph.png" border="0" usemap="#ad6/dbf/class_create_customet_canvas_customer_a1ebef475ab018e38b11440564f08d5bc_cgraph" alt=""/></div>
@@ -249,9 +260,11 @@ CreateCustometCanvasCustomer 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html">CreateCustometCanvasCustomer.cs</a> の <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html#l00037">37</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   38</span>    {</div>
+<div class="line"><span class="lineno">   39</span>        <a class="code hl_function" href="#a1ebef475ab018e38b11440564f08d5bc">Create</a>();</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="ttc" id="aclass_create_customet_canvas_customer_html_a1ebef475ab018e38b11440564f08d5bc"><div class="ttname"><a href="#a1ebef475ab018e38b11440564f08d5bc">CreateCustometCanvasCustomer.Create</a></div><div class="ttdeci">void Create()</div><div class="ttdef"><b>Definition</b> CreateCustometCanvasCustomer.cs:20</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/dbf/class_create_customet_canvas_customer_a480da0375fbe3e337fc0fdd804ed7eee_cgraph.png" border="0" usemap="#ad6/dbf/class_create_customet_canvas_customer_a480da0375fbe3e337fc0fdd804ed7eee_cgraph" alt=""/></div>
@@ -289,12 +302,10 @@ CreateCustometCanvasCustomer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html">CreateCustometCanvasCustomer.cs</a> の <a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/<a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs_source.html">CreateCustometCanvasCustomer.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/<a class="el" href="../../df/d52/_create_customet_canvas_customer_8cs.html">CreateCustometCanvasCustomer.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

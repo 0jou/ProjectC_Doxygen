@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -144,10 +144,7 @@ BaseChefStateBehavior 連携図</div>
 <tr class="memitem:a7feb1613761a7a1d6bca815578746773" id="r_a7feb1613761a7a1d6bca815578746773"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/d5b/class_flexible_chef_data_variable.html">FlexibleChefDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7feb1613761a7a1d6bca815578746773">m_flexibleChefDataVariable</a> = null</td></tr>
 <tr class="separator:a7feb1613761a7a1d6bca815578746773"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html">BaseChefStateBehavior.cs</a> の <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a9a0d4bfb072ce7f857185330afac972d" name="a9a0d4bfb072ce7f857185330afac972d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9a0d4bfb072ce7f857185330afac972d">&#9670;&#160;</a></span>GetChefData()</h2>
 
@@ -172,9 +169,28 @@ BaseChefStateBehavior 連携図</div>
 </div><div class="memdoc">
 
 <p>シェフ情報が存在するかのチェック </p>
-
-<p class="definition"> <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html">BaseChefStateBehavior.cs</a> の <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html#l00021">21</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   22</span>    {</div>
+<div class="line"><span class="lineno">   23</span> </div>
+<div class="line"><span class="lineno">   24</span>        <span class="comment">// シェフ情報が存在するか確認</span></div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a7feb1613761a7a1d6bca815578746773">m_flexibleChefDataVariable</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   27</span>        {</div>
+<div class="line"><span class="lineno">   28</span>            Debug.LogError(this.name + <span class="stringliteral">&quot;シェフ情報がシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   29</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   30</span>        }</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a7feb1613761a7a1d6bca815578746773">m_flexibleChefDataVariable</a>.value.ChefData == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   33</span>        {</div>
+<div class="line"><span class="lineno">   34</span>            Debug.LogError(this.name + <span class="stringliteral">&quot;シェフ情報が存在しません&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">// 存在する</span></div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="#a7feb1613761a7a1d6bca815578746773">m_flexibleChefDataVariable</a>.value.ChefData;</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="ttc" id="aclass_base_chef_state_behavior_html_a7feb1613761a7a1d6bca815578746773"><div class="ttname"><a href="#a7feb1613761a7a1d6bca815578746773">BaseChefStateBehavior.m_flexibleChefDataVariable</a></div><div class="ttdeci">FlexibleChefDataVariable m_flexibleChefDataVariable</div><div class="ttdef"><b>Definition</b> BaseChefStateBehavior.cs:13</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/d94/class_base_chef_state_behavior_a9a0d4bfb072ce7f857185330afac972d_icgraph.png" border="0" usemap="#adf/d94/class_base_chef_state_behavior_a9a0d4bfb072ce7f857185330afac972d_icgraph" alt=""/></div>
@@ -186,33 +202,6 @@ BaseChefStateBehavior 連携図</div>
 <area shape="poly" title=" " alt="" coords="223,29,191,29,191,24,223,24"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a8860a2b9006da94470e47d2f7a613386" name="a8860a2b9006da94470e47d2f7a613386"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8860a2b9006da94470e47d2f7a613386">&#9670;&#160;</a></span>GetRootGameObject()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">GameObject BaseChefStateBehavior.GetRootGameObject </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html">BaseChefStateBehavior.cs</a> の <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html#l00057">57</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -238,9 +227,53 @@ BaseChefStateBehavior 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   45</span>    {</div>
+<div class="line"><span class="lineno">   46</span>        <span class="keywordflow">if</span> (_link == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   47</span>        {</div>
+<div class="line"><span class="lineno">   48</span>            Debug.LogError(<span class="stringliteral">&quot;次のシーンがセットされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   49</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   50</span>        }</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>        Transition(_link);</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8860a2b9006da94470e47d2f7a613386" name="a8860a2b9006da94470e47d2f7a613386"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8860a2b9006da94470e47d2f7a613386">&#9670;&#160;</a></span>GetRootGameObject()</h2>
 
-<p class="definition"> <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html">BaseChefStateBehavior.cs</a> の <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html#l00044">44</a> 行目に定義があります。</p>
-
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">GameObject BaseChefStateBehavior.GetRootGameObject </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>        Transform currentTransform = transform;</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>        <span class="comment">// ルートオブジェクトに到達するまで親を辿る</span></div>
+<div class="line"><span class="lineno">   62</span>        <span class="keywordflow">while</span> (currentTransform.parent != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   63</span>        {</div>
+<div class="line"><span class="lineno">   64</span>            currentTransform = currentTransform.parent;</div>
+<div class="line"><span class="lineno">   65</span>        }</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> currentTransform.gameObject;</div>
+<div class="line"><span class="lineno">   68</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -264,12 +297,10 @@ BaseChefStateBehavior 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html">BaseChefStateBehavior.cs</a> の <a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Chef/Scripts/Arbor3/State/<a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs_source.html">BaseChefStateBehavior.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Chef/Scripts/Arbor3/State/<a class="el" href="../../d9/db7/_base_chef_state_behavior_8cs.html">BaseChefStateBehavior.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -220,10 +220,7 @@ ManagementStandbyWindow 連携図</div>
 <tr class="memitem:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window" id="r_aca92cddf024d4e19bdd003441678c3d6"><td class="memItemLeft" align="right" valign="top">PlayerInput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc1/class_base_window.html#aca92cddf024d4e19bdd003441678c3d6">Input</a><code> [get, set]</code></td></tr>
 <tr class="separator:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html">ManagementStandbyWindow.cs</a> の <a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a99df7f1e88b16f2618a6fc26d76a2470" name="a99df7f1e88b16f2618a6fc26d76a2470"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a99df7f1e88b16f2618a6fc26d76a2470">&#9670;&#160;</a></span>OnUpdate()</h2>
 
@@ -248,9 +245,44 @@ ManagementStandbyWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a7dbb4bd0d8326442b7ad896895fd2995">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html">ManagementStandbyWindow.cs</a> の <a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span><span class="preprocessor">        #region nullチェック</span></div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#abfcdc7a3281cb8c217097e14d530eb08">m_inputActionButton</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   23</span>        {</div>
+<div class="line"><span class="lineno">   24</span>            Debug.LogError(<span class="stringliteral">&quot;InputActionButtonがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   25</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   26</span>        }</div>
+<div class="line"><span class="lineno">   27</span><span class="preprocessor">        #endregion</span></div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="comment">// ボタンを押すまで</span></div>
+<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">while</span> (cancelToken.IsCancellationRequested == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   35</span>            {</div>
+<div class="line"><span class="lineno">   36</span>                await base.OnUpdate();</div>
+<div class="line"><span class="lineno">   37</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>                <span class="comment">// ボタンが押されたら</span></div>
+<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">if</span>(<a class="code hl_variable" href="#abfcdc7a3281cb8c217097e14d530eb08">m_inputActionButton</a>.<a class="code hl_function" href="../../d5/dd8/class_input_action_button.html#a847c561b8a3deeea260be80e698bd342">IsInputActionTrriger</a>())</div>
+<div class="line"><span class="lineno">   41</span>                {</div>
+<div class="line"><span class="lineno">   42</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   43</span>                }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>                await UniTask.DelayFrame(1);</div>
+<div class="line"><span class="lineno">   46</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>            }</div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   51</span>        {</div>
+<div class="line"><span class="lineno">   52</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   53</span>        }</div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+<div class="ttc" id="aclass_input_action_button_html_a847c561b8a3deeea260be80e698bd342"><div class="ttname"><a href="../../d5/dd8/class_input_action_button.html#a847c561b8a3deeea260be80e698bd342">InputActionButton.IsInputActionTrriger</a></div><div class="ttdeci">bool IsInputActionTrriger()</div><div class="ttdoc">ボタンを選択したかどうか</div><div class="ttdef"><b>Definition</b> InputActionButton.cs:99</div></div>
+<div class="ttc" id="aclass_management_standby_window_html_abfcdc7a3281cb8c217097e14d530eb08"><div class="ttname"><a href="#abfcdc7a3281cb8c217097e14d530eb08">ManagementStandbyWindow.m_inputActionButton</a></div><div class="ttdeci">InputActionButton m_inputActionButton</div><div class="ttdef"><b>Definition</b> ManagementStandbyWindow.cs:13</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d89/class_management_standby_window_a99df7f1e88b16f2618a6fc26d76a2470_cgraph.png" border="0" usemap="#ad7/d89/class_management_standby_window_a99df7f1e88b16f2618a6fc26d76a2470_cgraph" alt=""/></div>
@@ -286,12 +318,10 @@ ManagementStandbyWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html">ManagementStandbyWindow.cs</a> の <a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/102_Management_UI/Window/Standby/<a class="el" href="../../d1/d0a/_management_standby_window_8cs_source.html">ManagementStandbyWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/102_Management_UI/Window/Standby/<a class="el" href="../../d1/d0a/_management_standby_window_8cs.html">ManagementStandbyWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -122,10 +122,44 @@ ManagementExtensions 連携図</div>
 <tr class="memdesc:a13d56f9e95ebf4ddc344f56c4874eb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">ハッシュセットをランダムにする  <br /></td></tr>
 <tr class="separator:a13d56f9e95ebf4ddc344f56c4874eb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../db/db4/_management_extensions_8cs_source.html">ManagementExtensions.cs</a> の <a class="el" href="../../db/db4/_management_extensions_8cs_source.html#l00005">5</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
+<a id="a9fd0fdf9d38c708acf45f06c55ebeb2d" name="a9fd0fdf9d38c708acf45f06c55ebeb2d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9fd0fdf9d38c708acf45f06c55ebeb2d">&#9670;&#160;</a></span>RandomList&lt; T &gt;()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static List&lt; T &gt; ManagementExtensions.RandomList&lt; T &gt; </td>
+          <td>(</td>
+          <td class="paramtype">this List&lt; T &gt;</td>          <td class="paramname"><span class="paramname"><em>_list</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>リストをランダムにする </p>
+<div class="fragment"><div class="line"><span class="lineno">   14</span>    {</div>
+<div class="line"><span class="lineno">   15</span>        <span class="comment">// ランダムインスタンスを作成</span></div>
+<div class="line"><span class="lineno">   16</span>        System.Random random = <span class="keyword">new</span> System.Random();</div>
+<div class="line"><span class="lineno">   17</span> </div>
+<div class="line"><span class="lineno">   18</span>        <span class="comment">// Listの要素をランダムに並び替える</span></div>
+<div class="line"><span class="lineno">   19</span>        List&lt;T&gt; shuffleList = _list.OrderBy(x =&gt; random.Next()).ToList();</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        <span class="keywordflow">return</span> shuffleList;</div>
+<div class="line"><span class="lineno">   23</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="a33b6b6dbdb890fd0c683d50575171b18" name="a33b6b6dbdb890fd0c683d50575171b18"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a33b6b6dbdb890fd0c683d50575171b18">&#9670;&#160;</a></span>Random&lt; T &gt;()</h2>
 
@@ -150,9 +184,17 @@ ManagementExtensions 連携図</div>
 </div><div class="memdoc">
 
 <p>リストからランダムで値を取得 </p>
-
-<p class="definition"> <a class="el" href="../../db/db4/_management_extensions_8cs_source.html">ManagementExtensions.cs</a> の <a class="el" href="../../db/db4/_management_extensions_8cs_source.html#l00028">28</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   29</span>    {</div>
+<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">if</span> (_list == <span class="keyword">null</span> || _list.Count == 0)</div>
+<div class="line"><span class="lineno">   31</span>        {</div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">return</span> <span class="keywordflow">default</span>;</div>
+<div class="line"><span class="lineno">   33</span>        }</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>        System.Random random = <span class="keyword">new</span> System.Random();</div>
+<div class="line"><span class="lineno">   36</span>        <span class="keywordtype">int</span> index = random.Next(_list.Count);</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> _list[index];</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a13d56f9e95ebf4ddc344f56c4874eb71" name="a13d56f9e95ebf4ddc344f56c4874eb71"></a>
@@ -179,42 +221,20 @@ ManagementExtensions 連携図</div>
 </div><div class="memdoc">
 
 <p>ハッシュセットをランダムにする </p>
-
-<p class="definition"> <a class="el" href="../../db/db4/_management_extensions_8cs_source.html">ManagementExtensions.cs</a> の <a class="el" href="../../db/db4/_management_extensions_8cs_source.html#l00044">44</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a9fd0fdf9d38c708acf45f06c55ebeb2d" name="a9fd0fdf9d38c708acf45f06c55ebeb2d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9fd0fdf9d38c708acf45f06c55ebeb2d">&#9670;&#160;</a></span>RandomList&lt; T &gt;()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static List&lt; T &gt; ManagementExtensions.RandomList&lt; T &gt; </td>
-          <td>(</td>
-          <td class="paramtype">this List&lt; T &gt;</td>          <td class="paramname"><span class="paramname"><em>_list</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>リストをランダムにする </p>
-
-<p class="definition"> <a class="el" href="../../db/db4/_management_extensions_8cs_source.html">ManagementExtensions.cs</a> の <a class="el" href="../../db/db4/_management_extensions_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   45</span>    {</div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">// ランダムインスタンスを作成</span></div>
+<div class="line"><span class="lineno">   47</span>        System.Random random = <span class="keyword">new</span> System.Random();</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>        <span class="comment">// HashSetの要素をランダムに並び替える</span></div>
+<div class="line"><span class="lineno">   50</span>        HashSet&lt;T&gt; shuffleHashSet = _hashSet.OrderBy(x =&gt; random.Next()).ToHashSet();</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">return</span> shuffleHashSet;</div>
+<div class="line"><span class="lineno">   53</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/101_Management_Common/Extension/<a class="el" href="../../db/db4/_management_extensions_8cs_source.html">ManagementExtensions.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/101_Management_Common/Extension/<a class="el" href="../../db/db4/_management_extensions_8cs.html">ManagementExtensions.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

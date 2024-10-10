@@ -38,10 +38,6 @@ List$<$ Game\+Object $>$ \mbox{\hyperlink{class_entry_point_base_af9800b138eb136
 \doxysubsection{詳解}
 どのシーンから起動しても共通の初期化、処理などを実行し特定のシーンからの遷移しないと動かないといった症状を防ぐための基底クラス 基本的に\+On\+Editor\+First\+Pre\+Initializeに記述される前提だが、エディタ時のみ実行される処理のためビルド時には動かないといった事が起こりうるため注意 
 
- \mbox{\hyperlink{_entry_point_base_8cs_source}{Entry\+Point\+Base.\+cs}} の \mbox{\hyperlink{_entry_point_base_8cs_source_l00015}{15}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_entry_point_base_a5c38968b11c36dd770814afaa088a268}\index{EntryPointBase@{EntryPointBase}!OnFirstPreInitializeFunc@{OnFirstPreInitializeFunc}}
 \index{OnFirstPreInitializeFunc@{OnFirstPreInitializeFunc}!EntryPointBase@{EntryPointBase}}
@@ -50,9 +46,24 @@ List$<$ Game\+Object $>$ \mbox{\hyperlink{class_entry_point_base_af9800b138eb136
 Uni\+Task Entry\+Point\+Base.\+On\+First\+Pre\+Initialize\+Func (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セーブデータの保存先(共用版)}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ QuickSaveGlobalSettings.StorageLocation\ =\ \textcolor{stringliteral}{"{}Assets/ProjectC/998\_DebugSaveData"{}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ obj\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_entry_point_base_af9800b138eb13640532b84fd0104f2c7}{initializeObjects}})}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ Instantiate(obj);}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ UniTask.CompletedTask;}
+\DoxyCodeLine{00036\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_entry_point_base_8cs_source}{Entry\+Point\+Base.\+cs}} の \mbox{\hyperlink{_entry_point_base_8cs_source_l00021}{21}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -68,10 +79,6 @@ Uni\+Task Entry\+Point\+Base.\+On\+First\+Pre\+Initialize\+Func (\begin{DoxyPara
 \doxysubsubsection{\texorpdfstring{initializeObjects}{initializeObjects}}
 {\footnotesize\ttfamily \label{class_entry_point_base_af9800b138eb13640532b84fd0104f2c7} 
 List$<$Game\+Object$>$ Entry\+Point\+Base.\+initialize\+Objects = new List$<$Game\+Object$>$()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_entry_point_base_8cs_source}{Entry\+Point\+Base.\+cs}} の \mbox{\hyperlink{_entry_point_base_8cs_source_l00019}{19}} 行目に定義があります。
 
 
 

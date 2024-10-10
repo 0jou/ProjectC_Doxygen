@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -137,10 +137,7 @@ EmotionBase 連携図</div>
 <tr class="memitem:afd0789c7a766e6f1df09f4600f421b0d" id="r_afd0789c7a766e6f1df09f4600f421b0d"><td class="memItemLeft" align="right" valign="top">GameObject&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afd0789c7a766e6f1df09f4600f421b0d">Parent</a><code> [get, set]</code></td></tr>
 <tr class="separator:afd0789c7a766e6f1df09f4600f421b0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../da/d88/_emotion_base_8cs_source.html">EmotionBase.cs</a> の <a class="el" href="../../da/d88/_emotion_base_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ae52d69dc1a0b72bb7eabc8e46d2d4e8f" name="ae52d69dc1a0b72bb7eabc8e46d2d4e8f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae52d69dc1a0b72bb7eabc8e46d2d4e8f">&#9670;&#160;</a></span>PopupEmotion()</h2>
 
@@ -155,9 +152,26 @@ EmotionBase 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/d88/_emotion_base_8cs_source.html">EmotionBase.cs</a> の <a class="el" href="../../da/d88/_emotion_base_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   17</span>    {</div>
+<div class="line"><span class="lineno">   18</span>        <span class="keywordflow">if</span> (!<a class="code hl_property" href="#afd0789c7a766e6f1df09f4600f421b0d">Parent</a>) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><span class="lineno">   19</span> </div>
+<div class="line"><span class="lineno">   20</span>        var handle = Addressables.LoadAssetAsync&lt;GameObject&gt;(<a class="code hl_property" href="#a6457020ec801aedcfb0cd397e0228bb6">Emotion</a>);</div>
+<div class="line"><span class="lineno">   21</span>        await handle;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">if</span> (!<a class="code hl_property" href="#afd0789c7a766e6f1df09f4600f421b0d">Parent</a>) { <span class="keywordflow">return</span> <span class="keyword">null</span>; }</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        var obj = Instantiate(handle.Result, <a class="code hl_property" href="#afd0789c7a766e6f1df09f4600f421b0d">Parent</a>.transform);</div>
+<div class="line"><span class="lineno">   26</span> </div>
+<div class="line"><span class="lineno">   27</span>        obj.OnDestroyAsObservable().Subscribe(_ =&gt;</div>
+<div class="line"><span class="lineno">   28</span>        {</div>
+<div class="line"><span class="lineno">   29</span>            Addressables.Release(handle);</div>
+<div class="line"><span class="lineno">   30</span>        });</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">return</span> obj;</div>
+<div class="line"><span class="lineno">   33</span>    }</div>
+<div class="ttc" id="aclass_emotion_base_html_a6457020ec801aedcfb0cd397e0228bb6"><div class="ttname"><a href="#a6457020ec801aedcfb0cd397e0228bb6">EmotionBase.Emotion</a></div><div class="ttdeci">string Emotion</div><div class="ttdef"><b>Definition</b> EmotionBase.cs:13</div></div>
+<div class="ttc" id="aclass_emotion_base_html_afd0789c7a766e6f1df09f4600f421b0d"><div class="ttname"><a href="#afd0789c7a766e6f1df09f4600f421b0d">EmotionBase.Parent</a></div><div class="ttdeci">GameObject Parent</div><div class="ttdef"><b>Definition</b> EmotionBase.cs:14</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d74/class_emotion_base_ae52d69dc1a0b72bb7eabc8e46d2d4e8f_icgraph.png" border="0" usemap="#ad0/d74/class_emotion_base_ae52d69dc1a0b72bb7eabc8e46d2d4e8f_icgraph" alt=""/></div>
@@ -184,9 +198,12 @@ EmotionBase 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/d88/_emotion_base_8cs_source.html">EmotionBase.cs</a> の <a class="el" href="../../da/d88/_emotion_base_8cs_source.html#l00036">36</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        await UniTask.Delay(500);</div>
+<div class="line"><span class="lineno">   39</span>        await <a class="code hl_function" href="#ae52d69dc1a0b72bb7eabc8e46d2d4e8f">PopupEmotion</a>();</div>
+<div class="line"><span class="lineno">   40</span>    }</div>
+<div class="ttc" id="aclass_emotion_base_html_ae52d69dc1a0b72bb7eabc8e46d2d4e8f"><div class="ttname"><a href="#ae52d69dc1a0b72bb7eabc8e46d2d4e8f">EmotionBase.PopupEmotion</a></div><div class="ttdeci">async UniTask&lt; GameObject &gt; PopupEmotion()</div><div class="ttdef"><b>Definition</b> EmotionBase.cs:16</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d74/class_emotion_base_acc45cd0e6fe92292dca17159b31f4624_cgraph.png" border="0" usemap="#ad0/d74/class_emotion_base_acc45cd0e6fe92292dca17159b31f4624_cgraph" alt=""/></div>
@@ -219,9 +236,8 @@ EmotionBase 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/d88/_emotion_base_8cs_source.html">EmotionBase.cs</a> の <a class="el" href="../../da/d88/_emotion_base_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   13</span>{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="afd0789c7a766e6f1df09f4600f421b0d" name="afd0789c7a766e6f1df09f4600f421b0d"></a>
@@ -243,13 +259,12 @@ EmotionBase 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../da/d88/_emotion_base_8cs_source.html">EmotionBase.cs</a> の <a class="el" href="../../da/d88/_emotion_base_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   14</span>{ <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/102_Management_UI/EmotionUI/Scripts/<a class="el" href="../../da/d88/_emotion_base_8cs_source.html">EmotionBase.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/102_Management_UI/EmotionUI/Scripts/<a class="el" href="../../da/d88/_emotion_base_8cs.html">EmotionBase.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

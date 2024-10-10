@@ -83,13 +83,6 @@ Sequence \mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455
 \begin{DoxyCompactList}\small\item\em 実行中の\+Sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_do_scale_u_i_8cs_source}{Do\+Scale\+UI.\+cs}} の \mbox{\hyperlink{_do_scale_u_i_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_do_scale_u_i_ad3125a641b4a69d4634932cb33f9ef7b}\index{DoScaleUI@{DoScaleUI}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!DoScaleUI@{DoScaleUI}}
@@ -102,9 +95,19 @@ override void Do\+Scale\+UI.\+On\+Initialize (\begin{DoxyParamCaption}{}{}\end{D
 \mbox{\hyperlink{class_base_do_tween_u_i_a6a623674f87a15b0c8b5fc0a2903acf5}{Base\+Do\+Tween\+UI}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RectTransformがシリアライズされていません"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期のサイズをセット}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ m\_rectTransform.localScale\ =\ \mbox{\hyperlink{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297}{m\_initializeScale}};}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_do_scale_u_i_8cs_source}{Do\+Scale\+UI.\+cs}} の \mbox{\hyperlink{_do_scale_u_i_8cs_source_l00030}{30}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_do_scale_u_i_a0318eb1eea1fdff79a769efabed5fb95}\index{DoScaleUI@{DoScaleUI}!StartDoTween@{StartDoTween}}
 \index{StartDoTween@{StartDoTween}!DoScaleUI@{DoScaleUI}}
 \doxysubsubsection{\texorpdfstring{StartDoTween()}{StartDoTween()}}
@@ -112,9 +115,37 @@ override void Do\+Scale\+UI.\+On\+Initialize (\begin{DoxyParamCaption}{}{}\end{D
 override void Do\+Scale\+UI.\+Start\+Do\+Tween (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RectTransformがシリアライズされていません"{}});}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度初期化}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{KillSequence}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 開始}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ =\ DOTween.Sequence();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ scale\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_do_scale_u_i_a91f3f38d1a354d53be0820fad88ebe17}{m\_targetScaleList}})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.Append(}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}.DOScale(scale,\ \mbox{\hyperlink{class_base_do_tween_u_i_afac415f8cc86bb6c0d498ef420dd73dc}{m\_duration}}).}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ SetDelay(\mbox{\hyperlink{class_base_do_tween_u_i_add825ea273bddeceb6366b843650c092}{m\_delay}}).}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ SetEase(\mbox{\hyperlink{class_base_do_tween_u_i_a28c42ac637a0a1545bbd1068ec2b60f7}{m\_ease}}).}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ SetLink(gameObject)).}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetLoops(\mbox{\hyperlink{class_base_do_tween_u_i_a0981dac4174fa204a80ea78ccb9376b7}{m\_loopCount}},\ \mbox{\hyperlink{class_base_do_tween_u_i_a3b9ae474f7cc59876265db492de02f3a}{m\_loopType}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_do_scale_u_i_8cs_source}{Do\+Scale\+UI.\+cs}} の \mbox{\hyperlink{_do_scale_u_i_8cs_source_l00043}{43}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -125,35 +156,23 @@ override void Do\+Scale\+UI.\+Start\+Do\+Tween (\begin{DoxyParamCaption}{}{}\end
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297}\index{DoScaleUI@{DoScaleUI}!m\_initializeScale@{m\_initializeScale}}
-\index{m\_initializeScale@{m\_initializeScale}!DoScaleUI@{DoScaleUI}}
-\doxysubsubsection{\texorpdfstring{m\_initializeScale}{m\_initializeScale}}
-{\footnotesize\ttfamily \label{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297} 
-Vector3 Do\+Scale\+UI.\+m\+\_\+initialize\+Scale = new Vector3(1.\+0f, 1.\+0f, 1.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_do_scale_u_i_8cs_source}{Do\+Scale\+UI.\+cs}} の \mbox{\hyperlink{_do_scale_u_i_8cs_source_l00019}{19}} 行目に定義があります。
-
 \Hypertarget{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}\index{DoScaleUI@{DoScaleUI}!m\_rectTransform@{m\_rectTransform}}
 \index{m\_rectTransform@{m\_rectTransform}!DoScaleUI@{DoScaleUI}}
 \doxysubsubsection{\texorpdfstring{m\_rectTransform}{m\_rectTransform}}
 {\footnotesize\ttfamily \label{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf} 
 Rect\+Transform Do\+Scale\+UI.\+m\+\_\+rect\+Transform = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_do_scale_u_i_8cs_source}{Do\+Scale\+UI.\+cs}} の \mbox{\hyperlink{_do_scale_u_i_8cs_source_l00015}{15}} 行目に定義があります。
+\Hypertarget{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297}\index{DoScaleUI@{DoScaleUI}!m\_initializeScale@{m\_initializeScale}}
+\index{m\_initializeScale@{m\_initializeScale}!DoScaleUI@{DoScaleUI}}
+\doxysubsubsection{\texorpdfstring{m\_initializeScale}{m\_initializeScale}}
+{\footnotesize\ttfamily \label{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297} 
+Vector3 Do\+Scale\+UI.\+m\+\_\+initialize\+Scale = new Vector3(1.\+0f, 1.\+0f, 1.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_do_scale_u_i_a91f3f38d1a354d53be0820fad88ebe17}\index{DoScaleUI@{DoScaleUI}!m\_targetScaleList@{m\_targetScaleList}}
 \index{m\_targetScaleList@{m\_targetScaleList}!DoScaleUI@{DoScaleUI}}
 \doxysubsubsection{\texorpdfstring{m\_targetScaleList}{m\_targetScaleList}}
 {\footnotesize\ttfamily \label{class_do_scale_u_i_a91f3f38d1a354d53be0820fad88ebe17} 
 List$<$Vector3$>$ Do\+Scale\+UI.\+m\+\_\+target\+Scale\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_do_scale_u_i_8cs_source}{Do\+Scale\+UI.\+cs}} の \mbox{\hyperlink{_do_scale_u_i_8cs_source_l00023}{23}} 行目に定義があります。
 
 
 

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -135,10 +135,7 @@ CaptureScreenToImage 連携図</div>
 <tr class="memitem:a4e69f12bd619819af26ff8811536b566" id="r_a4e69f12bd619819af26ff8811536b566"><td class="memItemLeft" align="right" valign="top">Image&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e69f12bd619819af26ff8811536b566">m_image</a> = null</td></tr>
 <tr class="separator:a4e69f12bd619819af26ff8811536b566"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html">CaptureScreenToImage.cs</a> の <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html#l00009">9</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a54863429f1703904ae76b31ffa9170bc" name="a54863429f1703904ae76b31ffa9170bc"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a54863429f1703904ae76b31ffa9170bc">&#9670;&#160;</a></span>Button()</h2>
 
@@ -153,9 +150,11 @@ CaptureScreenToImage 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html">CaptureScreenToImage.cs</a> の <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   16</span>    {</div>
+<div class="line"><span class="lineno">   17</span>        <a class="code hl_function" href="#abd2da869578f7d67fd1f07987c90735f">Capture</a>().Forget();</div>
+<div class="line"><span class="lineno">   18</span>    }</div>
+<div class="ttc" id="aclass_capture_screen_to_image_html_abd2da869578f7d67fd1f07987c90735f"><div class="ttname"><a href="#abd2da869578f7d67fd1f07987c90735f">CaptureScreenToImage.Capture</a></div><div class="ttdeci">async UniTask Capture()</div><div class="ttdef"><b>Definition</b> CaptureScreenToImage.cs:20</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d74/class_capture_screen_to_image_a54863429f1703904ae76b31ffa9170bc_cgraph.png" border="0" usemap="#ad8/d74/class_capture_screen_to_image_a54863429f1703904ae76b31ffa9170bc_cgraph" alt=""/></div>
@@ -182,9 +181,43 @@ CaptureScreenToImage 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html">CaptureScreenToImage.cs</a> の <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html#l00020">20</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   21</span>    {</div>
+<div class="line"><span class="lineno">   22</span>        <span class="comment">// ReadPixelsがこの後でないと使えないので必ず書く</span></div>
+<div class="line"><span class="lineno">   23</span>        var runner = <span class="keyword">new</span> GameObject(<span class="stringliteral">&quot;runner&quot;</span>).AddComponent&lt;CoroutineRunner&gt;();</div>
+<div class="line"><span class="lineno">   24</span>        await UniTask.WaitForEndOfFrame(runner);</div>
+<div class="line"><span class="lineno">   25</span>        <span class="comment">// スクリーンの大きさのSpriteを作る</span></div>
+<div class="line"><span class="lineno">   26</span>        var texture = <span class="keyword">new</span> Texture2D(Screen.width, Screen.height);</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>        <span class="comment">// スクリーンを取得する</span></div>
+<div class="line"><span class="lineno">   29</span>        texture.ReadPixels(<span class="keyword">new</span> Rect(0, 0, Screen.width, Screen.height), 0, 0);</div>
+<div class="line"><span class="lineno">   30</span>        <span class="comment">// 適応する</span></div>
+<div class="line"><span class="lineno">   31</span>        texture.Apply();</div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>        <span class="comment">// 取得した画像をSpriteに入るように変換する</span></div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordtype">byte</span>[] pngdata = texture.EncodeToPNG();</div>
+<div class="line"><span class="lineno">   35</span>        texture.LoadImage(pngdata);</div>
+<div class="line"><span class="lineno">   36</span>        texture.name = <span class="stringliteral">&quot;CapturedImage&quot;</span>;</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">// 先ほど作ったSpriteに画像をいれる</span></div>
+<div class="line"><span class="lineno">   39</span>        Sprite sprite = Sprite.Create(texture, <span class="keyword">new</span> Rect(0, 0, texture.width, texture.height), <span class="keyword">new</span> Vector2(0.5f, 0.5f));</div>
+<div class="line"><span class="lineno">   40</span>        Debug.Log(<span class="stringliteral">&quot;Captured&quot;</span>);</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>        <span class="comment">// Spriteを使用するオブジェクトに指定する</span></div>
+<div class="line"><span class="lineno">   43</span>        <span class="comment">// 今回はUIのImage</span></div>
+<div class="line"><span class="lineno">   44</span>        SceneCaptureManager.m_capturedImage = sprite;</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">// サイズ変更</span></div>
+<div class="line"><span class="lineno">   47</span>        SceneCaptureManager.m_sizeDelta = <span class="keyword">new</span> Vector2(texture.width, texture.height);</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a4e69f12bd619819af26ff8811536b566">m_image</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   50</span>        {</div>
+<div class="line"><span class="lineno">   51</span>            m_image.sprite = sprite;</div>
+<div class="line"><span class="lineno">   52</span>        }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>        Destroy(runner.gameObject);</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="ttc" id="aclass_capture_screen_to_image_html_a4e69f12bd619819af26ff8811536b566"><div class="ttname"><a href="#a4e69f12bd619819af26ff8811536b566">CaptureScreenToImage.m_image</a></div><div class="ttdeci">Image m_image</div><div class="ttdef"><b>Definition</b> CaptureScreenToImage.cs:11</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d74/class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f_icgraph.png" border="0" usemap="#ad8/d74/class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f_icgraph" alt=""/></div>
@@ -228,12 +261,10 @@ CaptureScreenToImage 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html">CaptureScreenToImage.cs</a> の <a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html#l00011">11</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/TitleScene/<a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs_source.html">CaptureScreenToImage.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/TitleScene/<a class="el" href="../../d9/dd9/_capture_screen_to_image_8cs.html">CaptureScreenToImage.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

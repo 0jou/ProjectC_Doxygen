@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -175,10 +175,7 @@ CheckTargetOrderFoodStateStaff 連携図</div>
 <tr class="memitem:aed961e5db883c46e1719ce2a07385b58 inherit pro_attribs_class_base_staff_state_behaviour" id="r_aed961e5db883c46e1719ce2a07385b58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d1e/class_flexible_staff_data_variable.html">FlexibleStaffDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/class_base_staff_state_behaviour.html#aed961e5db883c46e1719ce2a07385b58">m_flexibleStaffDataVariable</a> = null</td></tr>
 <tr class="separator:aed961e5db883c46e1719ce2a07385b58 inherit pro_attribs_class_base_staff_state_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="abcb1364d65c0b5b03f7dca053a961cca" name="abcb1364d65c0b5b03f7dca053a961cca"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abcb1364d65c0b5b03f7dca053a961cca">&#9670;&#160;</a></span>Check()</h2>
 
@@ -201,9 +198,45 @@ CheckTargetOrderFoodStateStaff 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00026">26</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   27</span>    {</div>
+<div class="line"><span class="lineno">   28</span>        var data = <a class="code hl_function" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811">GetStaffData</a>();</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        var targetFood = data.TargetOrderFoodData;</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span> (targetFood == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">switch</span> (targetFood.CurrentOrderFoodState)</div>
+<div class="line"><span class="lineno">   35</span>        {</div>
+<div class="line"><span class="lineno">   36</span>            <span class="comment">// カウンターで待機していれば</span></div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodState</a>.WaitCounter:</div>
+<div class="line"><span class="lineno">   38</span>                {</div>
+<div class="line"><span class="lineno">   39</span>                    <a class="code hl_function" href="../../d6/d9c/class_base_staff_state_behaviour.html#acbf91c03b7085441d9873e1b3ab87e71">SetTransition</a>(<a class="code hl_variable" href="#a3d1b8969550594bf3cac8c0047710d94">m_waitCounterLink</a>);</div>
+<div class="line"><span class="lineno">   40</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   41</span>                }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>            <span class="comment">// 運ばれていれば</span></div>
+<div class="line"><span class="lineno">   45</span>            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodState</a>.Carry:</div>
+<div class="line"><span class="lineno">   46</span>                {</div>
+<div class="line"><span class="lineno">   47</span>                    <a class="code hl_function" href="../../d6/d9c/class_base_staff_state_behaviour.html#acbf91c03b7085441d9873e1b3ab87e71">SetTransition</a>(<a class="code hl_variable" href="#aa579f081c7f8651f7d5416b9127adc42">m_carryLink</a>);</div>
+<div class="line"><span class="lineno">   48</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   49</span>                }</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>            <span class="comment">// セットされていれば</span></div>
+<div class="line"><span class="lineno">   52</span>            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodState</a>.Set:</div>
+<div class="line"><span class="lineno">   53</span>                {</div>
+<div class="line"><span class="lineno">   54</span>                    <a class="code hl_function" href="../../d6/d9c/class_base_staff_state_behaviour.html#acbf91c03b7085441d9873e1b3ab87e71">SetTransition</a>(<a class="code hl_variable" href="#a47150f4700138aaade4d9bb7108b31f9">m_setLink</a>);</div>
+<div class="line"><span class="lineno">   55</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   56</span>                }</div>
+<div class="line"><span class="lineno">   57</span>        }</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="ttc" id="aclass_base_staff_state_behaviour_html_acbf91c03b7085441d9873e1b3ab87e71"><div class="ttname"><a href="../../d6/d9c/class_base_staff_state_behaviour.html#acbf91c03b7085441d9873e1b3ab87e71">BaseStaffStateBehaviour.SetTransition</a></div><div class="ttdeci">bool SetTransition(StateLink _link)</div><div class="ttdef"><b>Definition</b> BaseStaffStateBehaviour.cs:50</div></div>
+<div class="ttc" id="aclass_base_staff_state_behaviour_html_aecf7aba8c57332905715f924eacef811"><div class="ttname"><a href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811">BaseStaffStateBehaviour.GetStaffData</a></div><div class="ttdeci">StaffData GetStaffData()</div><div class="ttdoc">スタッフ情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> BaseStaffStateBehaviour.cs:28</div></div>
+<div class="ttc" id="aclass_check_target_order_food_state_staff_html_a3d1b8969550594bf3cac8c0047710d94"><div class="ttname"><a href="#a3d1b8969550594bf3cac8c0047710d94">CheckTargetOrderFoodStateStaff.m_waitCounterLink</a></div><div class="ttdeci">StateLink m_waitCounterLink</div><div class="ttdef"><b>Definition</b> CheckTargetOrderFoodStateStaff.cs:18</div></div>
+<div class="ttc" id="aclass_check_target_order_food_state_staff_html_a47150f4700138aaade4d9bb7108b31f9"><div class="ttname"><a href="#a47150f4700138aaade4d9bb7108b31f9">CheckTargetOrderFoodStateStaff.m_setLink</a></div><div class="ttdeci">StateLink m_setLink</div><div class="ttdef"><b>Definition</b> CheckTargetOrderFoodStateStaff.cs:24</div></div>
+<div class="ttc" id="aclass_check_target_order_food_state_staff_html_aa579f081c7f8651f7d5416b9127adc42"><div class="ttname"><a href="#aa579f081c7f8651f7d5416b9127adc42">CheckTargetOrderFoodStateStaff.m_carryLink</a></div><div class="ttdeci">StateLink m_carryLink</div><div class="ttdef"><b>Definition</b> CheckTargetOrderFoodStateStaff.cs:21</div></div>
+<div class="ttc" id="anamespace_order_food_info_html_a09ddb2386d4c25716e924f4a3a6e31fa"><div class="ttname"><a href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodInfo.OrderFoodState</a></div><div class="ttdeci">OrderFoodState</div><div class="ttdef"><b>Definition</b> OrderFoodData.cs:13</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d34/class_check_target_order_food_state_staff_abcb1364d65c0b5b03f7dca053a961cca_cgraph.png" border="0" usemap="#ad0/d34/class_check_target_order_food_state_staff_abcb1364d65c0b5b03f7dca053a961cca_cgraph" alt=""/></div>
@@ -228,6 +261,34 @@ CheckTargetOrderFoodStateStaff 連携図</div>
 
 </div>
 </div>
+<a id="a8735abf2db04c3330a9d81ceca455df4" name="a8735abf2db04c3330a9d81ceca455df4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8735abf2db04c3330a9d81ceca455df4">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void CheckTargetOrderFoodStateStaff.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ab53276c2752694aeadbfdf3e3a5e8283" name="ab53276c2752694aeadbfdf3e3a5e8283"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab53276c2752694aeadbfdf3e3a5e8283">&#9670;&#160;</a></span>OnStateAwake()</h2>
 
@@ -242,9 +303,9 @@ CheckTargetOrderFoodStateStaff 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00068">68</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   69</span>    {</div>
+<div class="line"><span class="lineno">   70</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac1c356c6370bf5d03de05e1fdbaf2fbd" name="ac1c356c6370bf5d03de05e1fdbaf2fbd"></a>
@@ -261,9 +322,11 @@ CheckTargetOrderFoodStateStaff 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00073">73</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>        <a class="code hl_function" href="#abcb1364d65c0b5b03f7dca053a961cca">Check</a>();</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="ttc" id="aclass_check_target_order_food_state_staff_html_abcb1364d65c0b5b03f7dca053a961cca"><div class="ttname"><a href="#abcb1364d65c0b5b03f7dca053a961cca">CheckTargetOrderFoodStateStaff.Check</a></div><div class="ttdeci">void Check()</div><div class="ttdef"><b>Definition</b> CheckTargetOrderFoodStateStaff.cs:26</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d0/d34/class_check_target_order_food_state_staff_ac1c356c6370bf5d03de05e1fdbaf2fbd_cgraph.png" border="0" usemap="#ad0/d34/class_check_target_order_food_state_staff_ac1c356c6370bf5d03de05e1fdbaf2fbd_cgraph" alt=""/></div>
@@ -294,28 +357,9 @@ CheckTargetOrderFoodStateStaff 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00079">79</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aebdb8cda7d1b8e167c05c8d01a1f487b" name="aebdb8cda7d1b8e167c05c8d01a1f487b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aebdb8cda7d1b8e167c05c8d01a1f487b">&#9670;&#160;</a></span>OnStateLateUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CheckTargetOrderFoodStateStaff.OnStateLateUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00089">89</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   80</span>    {</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4e92c625f36fcbeb8820cc2917967cdf" name="a4e92c625f36fcbeb8820cc2917967cdf"></a>
@@ -332,13 +376,33 @@ CheckTargetOrderFoodStateStaff 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00084">84</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   85</span>    {</div>
+<div class="line"><span class="lineno">   86</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a id="a8735abf2db04c3330a9d81ceca455df4" name="a8735abf2db04c3330a9d81ceca455df4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8735abf2db04c3330a9d81ceca455df4">&#9670;&#160;</a></span>Start()</h2>
+<a id="aebdb8cda7d1b8e167c05c8d01a1f487b" name="aebdb8cda7d1b8e167c05c8d01a1f487b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aebdb8cda7d1b8e167c05c8d01a1f487b">&#9670;&#160;</a></span>OnStateLateUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CheckTargetOrderFoodStateStaff.OnStateLateUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   90</span>    {</div>
+<div class="line"><span class="lineno">   91</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<h2 class="groupheader">フィールド詳解</h2>
+<a id="a3d1b8969550594bf3cac8c0047710d94" name="a3d1b8969550594bf3cac8c0047710d94"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d1b8969550594bf3cac8c0047710d94">&#9670;&#160;</a></span>m_waitCounterLink</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -347,10 +411,7 @@ CheckTargetOrderFoodStateStaff 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void CheckTargetOrderFoodStateStaff.Start </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
+          <td class="memname">StateLink CheckTargetOrderFoodStateStaff.m_waitCounterLink = null</td>
         </tr>
       </table>
   </td>
@@ -360,11 +421,8 @@ CheckTargetOrderFoodStateStaff 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00062">62</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<h2 class="groupheader">フィールド詳解</h2>
 <a id="aa579f081c7f8651f7d5416b9127adc42" name="aa579f081c7f8651f7d5416b9127adc42"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa579f081c7f8651f7d5416b9127adc42">&#9670;&#160;</a></span>m_carryLink</h2>
 
@@ -384,8 +442,6 @@ CheckTargetOrderFoodStateStaff 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00021">21</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -409,36 +465,10 @@ CheckTargetOrderFoodStateStaff 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a3d1b8969550594bf3cac8c0047710d94" name="a3d1b8969550594bf3cac8c0047710d94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d1b8969550594bf3cac8c0047710d94">&#9670;&#160;</a></span>m_waitCounterLink</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">StateLink CheckTargetOrderFoodStateStaff.m_waitCounterLink = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a> の <a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Staff/Scripts/Arbor3/State/TargetOrderFood/<a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs_source.html">CheckTargetOrderFoodStateStaff.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Staff/Scripts/Arbor3/State/TargetOrderFood/<a class="el" href="../../d0/da2/_check_target_order_food_state_staff_8cs.html">CheckTargetOrderFoodStateStaff.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

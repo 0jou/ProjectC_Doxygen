@@ -34,13 +34,6 @@ Output\+Slot\+Vector3 \mbox{\hyperlink{class_base_chef_calclator_a2834473ed800d5
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_base_chef_calclator_8cs_source}{Base\+Chef\+Calclator.\+cs}} の \mbox{\hyperlink{_base_chef_calclator_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_base_chef_calclator_a6c3dee1152d402afc0cf86b5caab9459}\index{BaseChefCalclator@{BaseChefCalclator}!GetChefData@{GetChefData}}
 \index{GetChefData@{GetChefData}!BaseChefCalclator@{BaseChefCalclator}}
@@ -53,9 +46,28 @@ Output\+Slot\+Vector3 \mbox{\hyperlink{class_base_chef_calclator_a2834473ed800d5
 シェフ情報が存在するかのチェック 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シェフ情報が存在するか確認}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_chef_calclator_a03f9ed929b46109461b9bbdc3b099fb3}{m\_flexibleChefDataVariable}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(this.name\ +\ \textcolor{stringliteral}{"{}シェフ情報がシリアライズされていません"{}});}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_chef_calclator_a03f9ed929b46109461b9bbdc3b099fb3}{m\_flexibleChefDataVariable}}.value.ChefData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(this.name\ +\ \textcolor{stringliteral}{"{}客情報が存在しません"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 存在する}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_chef_calclator_a03f9ed929b46109461b9bbdc3b099fb3}{m\_flexibleChefDataVariable}}.value.ChefData;}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_chef_calclator_8cs_source}{Base\+Chef\+Calclator.\+cs}} の \mbox{\hyperlink{_base_chef_calclator_8cs_source_l00030}{30}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_base_chef_calclator_a61052933e1c662d48c761861d8ed12e6}\index{BaseChefCalclator@{BaseChefCalclator}!GetRootGameObject@{GetRootGameObject}}
 \index{GetRootGameObject@{GetRootGameObject}!BaseChefCalclator@{BaseChefCalclator}}
 \doxysubsubsection{\texorpdfstring{GetRootGameObject()}{GetRootGameObject()}}
@@ -63,9 +75,20 @@ Output\+Slot\+Vector3 \mbox{\hyperlink{class_base_chef_calclator_a2834473ed800d5
 Game\+Object Base\+Chef\+Calclator.\+Get\+Root\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ Transform\ currentTransform\ =\ transform;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートオブジェクトに到達するまで親を辿る}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (currentTransform.parent\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ currentTransform\ =\ currentTransform.parent;}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ currentTransform.gameObject;}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_chef_calclator_8cs_source}{Base\+Chef\+Calclator.\+cs}} の \mbox{\hyperlink{_base_chef_calclator_8cs_source_l00053}{53}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -82,19 +105,11 @@ Game\+Object Base\+Chef\+Calclator.\+Get\+Root\+Game\+Object (\begin{DoxyParamCa
 {\footnotesize\ttfamily \label{class_base_chef_calclator_a03f9ed929b46109461b9bbdc3b099fb3} 
 \mbox{\hyperlink{class_flexible_chef_data_variable}{Flexible\+Chef\+Data\+Variable}} Base\+Chef\+Calclator.\+m\+\_\+flexible\+Chef\+Data\+Variable = null\hspace{0.3cm}{\ttfamily [protected]}}
 
-
-
- \mbox{\hyperlink{_base_chef_calclator_8cs_source}{Base\+Chef\+Calclator.\+cs}} の \mbox{\hyperlink{_base_chef_calclator_8cs_source_l00016}{16}} 行目に定義があります。
-
 \Hypertarget{class_base_chef_calclator_a2834473ed800d514955bb5a38a3c65e4}\index{BaseChefCalclator@{BaseChefCalclator}!m\_outputPos@{m\_outputPos}}
 \index{m\_outputPos@{m\_outputPos}!BaseChefCalclator@{BaseChefCalclator}}
 \doxysubsubsection{\texorpdfstring{m\_outputPos}{m\_outputPos}}
 {\footnotesize\ttfamily \label{class_base_chef_calclator_a2834473ed800d514955bb5a38a3c65e4} 
 Output\+Slot\+Vector3 Base\+Chef\+Calclator.\+m\+\_\+output\+Pos = new()\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_base_chef_calclator_8cs_source}{Base\+Chef\+Calclator.\+cs}} の \mbox{\hyperlink{_base_chef_calclator_8cs_source_l00024}{24}} 行目に定義があります。
 
 
 

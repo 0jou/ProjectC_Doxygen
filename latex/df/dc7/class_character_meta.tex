@@ -56,13 +56,6 @@ Hash\+Set$<$ \mbox{\hyperlink{class_character_core}{Character\+Core}} $>$ \mbox{
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00010}{10}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_character_meta_ab2704e38b3d1bb783a0723ec89336667}\index{CharacterMeta@{CharacterMeta}!Awake@{Awake}}
 \index{Awake@{Awake}!CharacterMeta@{CharacterMeta}}
@@ -71,9 +64,20 @@ Hash\+Set$<$ \mbox{\hyperlink{class_character_core}{Character\+Core}} $>$ \mbox{
 void Character\+Meta.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013\ \ \ \ \ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CharacterCore>}}.\mbox{\hyperlink{interface_i_meta_a_i_a81091acf9bf85e074a370e77b8bb3e16}{Instance}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CharacterCore>}}.\mbox{\hyperlink{interface_i_meta_a_i_a81091acf9bf85e074a370e77b8bb3e16}{Instance}}\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00012}{12}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_character_meta_aba1b962e3c09989c2c27383a3306c6da}\index{CharacterMeta@{CharacterMeta}!RegisterObject@{RegisterObject}}
 \index{RegisterObject@{RegisterObject}!CharacterMeta@{CharacterMeta}}
 \doxysubsubsection{\texorpdfstring{RegisterObject()}{RegisterObject()}}
@@ -81,12 +85,52 @@ void Character\+Meta.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}
 void Character\+Meta.\+Register\+Object (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_character_core}{Character\+Core}}}]{chara}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara\ ==\ \textcolor{keyword}{null})\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_character_meta_a212b7738b11aa1579d4057d151005f86}{\_characterList}}.Add(chara))}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 敵の移動優先順位を決定\ (伊波)}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:シーン切替時にpriorityリセットしたい}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.TryGetComponent(out\ NavMeshAgent\ agent))}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.TryGetComponent(out\ \mbox{\hyperlink{class_enemy_parameters}{EnemyParameters}}\ eParam))}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (eParam.IsBoss)}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_meta_a902ab4d443992a88f4739504250a3495}{\_bossList}}.Add(chara);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ agent.avoidancePriority\ =\ \mbox{\hyperlink{class_character_meta_a902ab4d443992a88f4739504250a3495}{\_bossList}}.Count;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ priorityは0～99が有効}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ priority\ =\ \_characterList.Count\ +\ 10;}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (priority\ >=\ 100)\ priority\ +=\ -\/(100\ -\/\ \mbox{\hyperlink{class_character_meta_a902ab4d443992a88f4739504250a3495}{\_bossList}}.Count);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ agent.avoidancePriority\ =\ priority;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ chara.OnDestroyAsObservable()}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ .Subscribe(\_\ =>}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_meta_a212b7738b11aa1579d4057d151005f86}{\_characterList}}.Remove(chara);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_character_meta_a902ab4d443992a88f4739504250a3495}{\_bossList}}.Contains(chara))\ \mbox{\hyperlink{class_character_meta_a902ab4d443992a88f4739504250a3495}{\_bossList}}.Remove(chara);}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00033}{33}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
+\Hypertarget{class_character_meta_a212b7738b11aa1579d4057d151005f86}\index{CharacterMeta@{CharacterMeta}!\_characterList@{\_characterList}}
+\index{\_characterList@{\_characterList}!CharacterMeta@{CharacterMeta}}
+\doxysubsubsection{\texorpdfstring{\_characterList}{\_characterList}}
+{\footnotesize\ttfamily \label{class_character_meta_a212b7738b11aa1579d4057d151005f86} 
+Hash\+Set$<$\mbox{\hyperlink{class_character_core}{Character\+Core}}$>$ Character\+Meta.\+\_\+character\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{class_character_meta_a902ab4d443992a88f4739504250a3495}\index{CharacterMeta@{CharacterMeta}!\_bossList@{\_bossList}}
 \index{\_bossList@{\_bossList}!CharacterMeta@{CharacterMeta}}
 \doxysubsubsection{\texorpdfstring{\_bossList}{\_bossList}}
@@ -95,40 +139,18 @@ Hash\+Set$<$\mbox{\hyperlink{class_character_core}{Character\+Core}}$>$ Characte
 
 
 
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00030}{30}} 行目に定義があります。
-
-\Hypertarget{class_character_meta_a212b7738b11aa1579d4057d151005f86}\index{CharacterMeta@{CharacterMeta}!\_characterList@{\_characterList}}
-\index{\_characterList@{\_characterList}!CharacterMeta@{CharacterMeta}}
-\doxysubsubsection{\texorpdfstring{\_characterList}{\_characterList}}
-{\footnotesize\ttfamily \label{class_character_meta_a212b7738b11aa1579d4057d151005f86} 
-Hash\+Set$<$\mbox{\hyperlink{class_character_core}{Character\+Core}}$>$ Character\+Meta.\+\_\+character\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00026}{26}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
-\Hypertarget{class_character_meta_ab61bf3eee1aabbe43d6518226bccf453}\index{CharacterMeta@{CharacterMeta}!BossList@{BossList}}
-\index{BossList@{BossList}!CharacterMeta@{CharacterMeta}}
-\doxysubsubsection{\texorpdfstring{BossList}{BossList}}
-{\footnotesize\ttfamily \label{class_character_meta_ab61bf3eee1aabbe43d6518226bccf453} 
-Hash\+Set$<$\mbox{\hyperlink{class_character_core}{Character\+Core}}$>$ Character\+Meta.\+Boss\+List\hspace{0.3cm}{\ttfamily [get]}}
-
-
-
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00031}{31}} 行目に定義があります。
-
 \Hypertarget{class_character_meta_a45d15bcd0165639dc2f31fac30514af0}\index{CharacterMeta@{CharacterMeta}!ObjectList@{ObjectList}}
 \index{ObjectList@{ObjectList}!CharacterMeta@{CharacterMeta}}
 \doxysubsubsection{\texorpdfstring{ObjectList}{ObjectList}}
 {\footnotesize\ttfamily \label{class_character_meta_a45d15bcd0165639dc2f31fac30514af0} 
 Hash\+Set$<$\mbox{\hyperlink{class_character_core}{Character\+Core}}$>$ Character\+Meta.\+Object\+List\hspace{0.3cm}{\ttfamily [get]}}
 
-
-
- \mbox{\hyperlink{_character_meta_8cs_source}{Character\+Meta.\+cs}} の \mbox{\hyperlink{_character_meta_8cs_source_l00028}{28}} 行目に定義があります。
+\Hypertarget{class_character_meta_ab61bf3eee1aabbe43d6518226bccf453}\index{CharacterMeta@{CharacterMeta}!BossList@{BossList}}
+\index{BossList@{BossList}!CharacterMeta@{CharacterMeta}}
+\doxysubsubsection{\texorpdfstring{BossList}{BossList}}
+{\footnotesize\ttfamily \label{class_character_meta_ab61bf3eee1aabbe43d6518226bccf453} 
+Hash\+Set$<$\mbox{\hyperlink{class_character_core}{Character\+Core}}$>$ Character\+Meta.\+Boss\+List\hspace{0.3cm}{\ttfamily [get]}}
 
 
 

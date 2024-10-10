@@ -51,28 +51,7 @@ bool \mbox{\hyperlink{class_action_u_i_base_controller_a3943c4c3728f3c486ec26d19
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_action_u_i_element_controller_8cs_source}{Action\+UIElement\+Controller.\+cs}} の \mbox{\hyperlink{_action_u_i_element_controller_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_action_u_i_element_controller_a17bbd4c04fe1a025b4be198b39456cfd}\index{ActionUIElementController@{ActionUIElementController}!OnClose@{OnClose}}
-\index{OnClose@{OnClose}!ActionUIElementController@{ActionUIElementController}}
-\doxysubsubsection{\texorpdfstring{OnClose()}{OnClose()}}
-{\footnotesize\ttfamily \label{class_action_u_i_element_controller_a17bbd4c04fe1a025b4be198b39456cfd} 
-override async Uni\+Task Action\+UIElement\+Controller.\+On\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_action_u_i_base_controller_a9b997cf1bb41577e66bb80d0d9cb5b1e}{Action\+UIBase\+Controller}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_action_u_i_element_controller_8cs_source}{Action\+UIElement\+Controller.\+cs}} の \mbox{\hyperlink{_action_u_i_element_controller_8cs_source_l00053}{53}} 行目に定義があります。
-
 \Hypertarget{class_action_u_i_element_controller_aea266c97132c89d99aa1a7f4c1cdde62}\index{ActionUIElementController@{ActionUIElementController}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!ActionUIElementController@{ActionUIElementController}}
 \doxysubsubsection{\texorpdfstring{OnInitialize()}{OnInitialize()}}
@@ -84,9 +63,21 @@ override Uni\+Task Action\+UIElement\+Controller.\+On\+Initialize (\begin{DoxyPa
 \mbox{\hyperlink{class_action_u_i_base_controller_ab25f5cc40de47570b9661b9ea3467e10}{Action\+UIBase\+Controller}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ base.OnInitialize();}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}{m\_canvasGroup}}\ =\ GetComponent<CanvasGroup>();}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}{m\_canvasGroup}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CanvasGroupコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ UniTask.CompletedTask;}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ UniTask.CompletedTask;}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_action_u_i_element_controller_8cs_source}{Action\+UIElement\+Controller.\+cs}} の \mbox{\hyperlink{_action_u_i_element_controller_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_action_u_i_element_controller_a9faceac17c7fa5d411fbc24a44a7dfb9}\index{ActionUIElementController@{ActionUIElementController}!OnShow@{OnShow}}
 \index{OnShow@{OnShow}!ActionUIElementController@{ActionUIElementController}}
 \doxysubsubsection{\texorpdfstring{OnShow()}{OnShow()}}
@@ -98,31 +89,69 @@ override async Uni\+Task Action\+UIElement\+Controller.\+On\+Show (\begin{DoxyPa
 \mbox{\hyperlink{class_action_u_i_base_controller_aea37f8247520534131cecf3e0e1d45ad}{Action\+UIBase\+Controller}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_action_u_i_base_controller_a7dbfc4bce9271953dfdddfd6cd34618b}{m\_isShowPlay}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ await\ base.OnShow();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}{m\_canvasGroup}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CanvasGroupコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}{m\_canvasGroup}}.DOFade(1,\ \mbox{\hyperlink{class_action_u_i_element_controller_acfb538ebebedc1eff2010abb4ec1880b}{m\_doSpead}})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{false})\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームストップ中は動かない}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ .SetLink(gameObject);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_u_i_base_controller_a7dbfc4bce9271953dfdddfd6cd34618b}{m\_isShowPlay}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_action_u_i_element_controller_8cs_source}{Action\+UIElement\+Controller.\+cs}} の \mbox{\hyperlink{_action_u_i_element_controller_8cs_source_l00034}{34}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_action_u_i_element_controller_a17bbd4c04fe1a025b4be198b39456cfd}\index{ActionUIElementController@{ActionUIElementController}!OnClose@{OnClose}}
+\index{OnClose@{OnClose}!ActionUIElementController@{ActionUIElementController}}
+\doxysubsubsection{\texorpdfstring{OnClose()}{OnClose()}}
+{\footnotesize\ttfamily \label{class_action_u_i_element_controller_a17bbd4c04fe1a025b4be198b39456cfd} 
+override async Uni\+Task Action\+UIElement\+Controller.\+On\+Close (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+
+
+\mbox{\hyperlink{class_action_u_i_base_controller_a9b997cf1bb41577e66bb80d0d9cb5b1e}{Action\+UIBase\+Controller}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_action_u_i_base_controller_a3943c4c3728f3c486ec26d19a96299d0}{m\_isClosePlay}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_u_i_base_controller_a3943c4c3728f3c486ec26d19a96299d0}{m\_isClosePlay}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}{m\_canvasGroup}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CanvasGroupコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}{m\_canvasGroup}}.DOFade(0,\ \mbox{\hyperlink{class_action_u_i_element_controller_acfb538ebebedc1eff2010abb4ec1880b}{m\_doSpead}})}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{false})\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームストップ中は動かない}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ .SetLink(gameObject);}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ await\ base.OnClose();}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}\index{ActionUIElementController@{ActionUIElementController}!m\_canvasGroup@{m\_canvasGroup}}
-\index{m\_canvasGroup@{m\_canvasGroup}!ActionUIElementController@{ActionUIElementController}}
-\doxysubsubsection{\texorpdfstring{m\_canvasGroup}{m\_canvasGroup}}
-{\footnotesize\ttfamily \label{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b} 
-Canvas\+Group Action\+UIElement\+Controller.\+m\+\_\+canvas\+Group = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_action_u_i_element_controller_8cs_source}{Action\+UIElement\+Controller.\+cs}} の \mbox{\hyperlink{_action_u_i_element_controller_8cs_source_l00016}{16}} 行目に定義があります。
-
 \Hypertarget{class_action_u_i_element_controller_acfb538ebebedc1eff2010abb4ec1880b}\index{ActionUIElementController@{ActionUIElementController}!m\_doSpead@{m\_doSpead}}
 \index{m\_doSpead@{m\_doSpead}!ActionUIElementController@{ActionUIElementController}}
 \doxysubsubsection{\texorpdfstring{m\_doSpead}{m\_doSpead}}
 {\footnotesize\ttfamily \label{class_action_u_i_element_controller_acfb538ebebedc1eff2010abb4ec1880b} 
 float Action\+UIElement\+Controller.\+m\+\_\+do\+Spead = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_action_u_i_element_controller_8cs_source}{Action\+UIElement\+Controller.\+cs}} の \mbox{\hyperlink{_action_u_i_element_controller_8cs_source_l00014}{14}} 行目に定義があります。
+\Hypertarget{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b}\index{ActionUIElementController@{ActionUIElementController}!m\_canvasGroup@{m\_canvasGroup}}
+\index{m\_canvasGroup@{m\_canvasGroup}!ActionUIElementController@{ActionUIElementController}}
+\doxysubsubsection{\texorpdfstring{m\_canvasGroup}{m\_canvasGroup}}
+{\footnotesize\ttfamily \label{class_action_u_i_element_controller_aba84b14293107cadca2020eefe46e24b} 
+Canvas\+Group Action\+UIElement\+Controller.\+m\+\_\+canvas\+Group = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

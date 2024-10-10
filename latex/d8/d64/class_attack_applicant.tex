@@ -2,8 +2,7 @@
 \hypertarget{class_attack_applicant}{}\label{class_attack_applicant}\index{AttackApplicant@{AttackApplicant}}
 
 
-Attack\+Applicant の継承関係図
-\nopagebreak
+Attack\+Applicant の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Attack\+Applicant の継承関係図
 \end{figure}
 
 
-Attack\+Applicant 連携図
-\nopagebreak
+Attack\+Applicant 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -54,31 +52,7 @@ List$<$ Collider $>$ \mbox{\hyperlink{class_attack_applicant_aec7c80c1f1e3ad326e
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00010}{10}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448}\index{AttackApplicant@{AttackApplicant}!AddCondition@{AddCondition}}
-\index{AddCondition@{AddCondition}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{AddCondition()}{AddCondition()}}
-{\footnotesize\ttfamily \label{class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448} 
-void Attack\+Applicant.\+Add\+Condition (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+enemy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00136}{136}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_attack_applicant_a8f8d408340ebe6c11ce14dca008fcc94}\index{AttackApplicant@{AttackApplicant}!Start@{Start}}
 \index{Start@{Start}!AttackApplicant@{AttackApplicant}}
 \doxysubsubsection{\texorpdfstring{Start()}{Start()}}
@@ -86,29 +60,154 @@ void Attack\+Applicant.\+Add\+Condition (\begin{DoxyParamCaption}\item[{Game\+Ob
 void Attack\+Applicant.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オーナー情報}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}\ =\ GetComponent<OwnerInfoTag>();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}\ ==\ \textcolor{keyword}{null})\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!TryGetComponent(out\ Collider\ myCol))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ this.OnTriggerEnterAsObservable()}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(\_\ =>\ enabled)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ .Subscribe(collider\ =>}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}\ ==\ \textcolor{keyword}{null})\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 自分との当たり判定なら進まない}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (collider.transform.root.name\ ==\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.name)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//プレイヤーとストーリースキルキャラクターの攻撃は当たらない（山本）}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.transform.root.tag\ ==\ \textcolor{stringliteral}{"{}Player"{}}\ \&\&\ collider.transform.tag\ ==\ \textcolor{stringliteral}{"{}SkillCharacter"{}})}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ otherObj\ =\ collider.gameObject;}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ダメージをもらえるオブジェクトであれば、処理を行う}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ damageable\ =\ otherObj.GetComponent<\mbox{\hyperlink{interface_i_damageable}{IDamageable}}>();}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (damageable\ ==\ \textcolor{keyword}{null})\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 仮　攻撃可能でなければ終わり}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_a7e6366b8935590ac281fd1f255cc098e}{DoFriendlyFire}}\ \&\&}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !\mbox{\hyperlink{class_attack_applicant_a7259e07c0fc0da1215ca96422ddd7981}{m\_doFriendlyFire}}\ \&\&}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ !damageable.IsAttackable(\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a56a9ad5e93c0d771bd43700982edfd06}{GroupNo}}))\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 多段ヒット判断}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_attack_applicant_a0930fb6b8b7c7751afd67509350390a8}{m\_doMultiHit}}\ \&\&\ \mbox{\hyperlink{class_attack_applicant_aec7c80c1f1e3ad326ee819c260345b7a}{m\_hittedColliders}}.Contains(collider))\ \{\ \textcolor{keywordflow}{return};\ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_damage_notification}{DamageNotification}}\ damageNotification\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 与えるダメージ量}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ damageNotification.m\_damage\ =\ m\_ownerInfoTag.Characore.Status.m\_attack\ +\ \mbox{\hyperlink{class_attack_applicant_a8b4f1f848c3e6a842b1d0f0b268e149f}{m\_attack}};}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 送信するヒットストップ時間}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ damageNotification.m\_hitStopTime\ =\ \mbox{\hyperlink{class_attack_applicant_ad246b0f02fe6eeded80f35b4f4620ce7}{m\_hitStopTime}};}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ダメージ処理・相手側のヒットストップもこの中で}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ damageable.Damaged(damageNotification,\ myCol,\ \mbox{\hyperlink{class_attack_applicant_a2687d74ac9b7ce423ea6ff594a7aeee4}{m\_knockBackMultiplier}});}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　当たったなら、当たった際の処理を実行}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (damageNotification.\mbox{\hyperlink{class_damage_notification_abf0f31c8bbab428e2ff58437794111c1}{m\_replyIsHit}})}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448}{AddCondition}}(otherObj);}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_attack_applicant_aec7c80c1f1e3ad326ee819c260345b7a}{m\_hittedColliders}}.Add(collider);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 自分にヒットストップを適用させる}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.HitStopRemainingTime\ =\ \mbox{\hyperlink{class_attack_applicant_ad246b0f02fe6eeded80f35b4f4620ce7}{m\_hitStopTime}};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SkillごとにBPを回復する（吉田）}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//BPを回復する(山本)}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a3f32a4a18ad0cca21f0756bcdd2677e8}{m\_bp}}.Value\ <\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_ac31914eb761240464e33c3a456b98ca4}{MaxBP}})}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.Status.m\_bp.Value\ +=\ damageNotification.m\_damage\ *\ \mbox{\hyperlink{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08}{m\_recoverBPMagni}};}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Max超えてたらMaxに戻す}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a3f32a4a18ad0cca21f0756bcdd2677e8}{m\_bp}}.Value\ >=\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_ac31914eb761240464e33c3a456b98ca4}{MaxBP}})}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.Status.m\_bp.Value\ =\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_ac31914eb761240464e33c3a456b98ca4}{MaxBP}};}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//スキルBPを回復する(吉田)}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.Status.m\_bpSkill\_1.Value\ +=\ damageNotification.m\_damage\ *\ \mbox{\hyperlink{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08}{m\_recoverBPMagni}};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.Status.m\_bpSkill\_2.Value\ +=\ damageNotification.m\_damage\ *\ \mbox{\hyperlink{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08}{m\_recoverBPMagni}};}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Max超えてたらMaxに戻す（吉田）}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a62d0aea0e449679d50fef581c79fc369}{m\_bpSkill\_1}}.Value\ >=\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a714b2cc8c72df27856fe721488f00f45}{MaxBPSkill\_1}})}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.Status.m\_bpSkill\_1.Value\ =\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a714b2cc8c72df27856fe721488f00f45}{MaxBPSkill\_1}};}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a86a264969769d50237e1f67cdc0d984d}{m\_bpSkill\_2}}.Value\ >=\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b}{MaxBPSkill\_2}})}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_ownerInfoTag.Characore.Status.m\_bpSkill\_2.Value\ =\ \mbox{\hyperlink{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}{m\_ownerInfoTag}}.\mbox{\hyperlink{class_owner_info_tag_a0e59a7e3de951dbe6f33c351e5a31607}{Characore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b}{MaxBPSkill\_2}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ヒットエフェクト表示}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_attack_applicant_ab41ba8c2a688f67e0f7ee5ffb3c74d97}{m\_assetHitEffect}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//修正：ヒットエフェクトを攻撃判定が当たった場所に表示にする(山本)}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Instantiate(\mbox{\hyperlink{class_attack_applicant_ab41ba8c2a688f67e0f7ee5ffb3c74d97}{m\_assetHitEffect}},}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ position:\ collider.ClosestPoint(gameObject.transform.position),}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotation:\ Quaternion.identity,}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parent:\ \textcolor{keyword}{null});}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(!\textcolor{keywordtype}{string}.IsNullOrEmpty(\mbox{\hyperlink{class_attack_applicant_a9b9dcd1a006befd61201c4554c8a501f}{m\_soundData}}.\mbox{\hyperlink{class_sound_data_ab2997c66644365fca4de625db4ab8c1c}{m\_soundName}}))}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a71bf6aeca5886488a7fdccd5890df00e}{Start3DPlayback}}(\mbox{\hyperlink{class_attack_applicant_a9b9dcd1a006befd61201c4554c8a501f}{m\_soundData}},\ transform.position);}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00134\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00034}{34}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d8/d64/class_attack_applicant_a8f8d408340ebe6c11ce14dca008fcc94_cgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448}\index{AttackApplicant@{AttackApplicant}!AddCondition@{AddCondition}}
+\index{AddCondition@{AddCondition}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{AddCondition()}{AddCondition()}}
+{\footnotesize\ttfamily \label{class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448} 
+void Attack\+Applicant.\+Add\+Condition (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+enemy}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_enemy\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ var\ conditionData\ =\ \mbox{\hyperlink{class_condition_data_base_manager}{ConditionDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetConditionData(\mbox{\hyperlink{class_attack_applicant_a9f46ccc83744bd15adb43f85d0d955fd}{m\_condition}});}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conditionData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conditionData.ConditionPrefab\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ Transform\ managerObj\ =\ \_enemy.transform.Find(\textcolor{stringliteral}{"{}ConditionManager"{}});}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!managerObj.TryGetComponent(out\ \mbox{\hyperlink{class_condition_manager}{ConditionManager}}\ manager))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ manager.AddCondition(conditionData.ConditionPrefab);}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_attack_applicant_ab41ba8c2a688f67e0f7ee5ffb3c74d97}\index{AttackApplicant@{AttackApplicant}!m\_assetHitEffect@{m\_assetHitEffect}}
-\index{m\_assetHitEffect@{m\_assetHitEffect}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_assetHitEffect}{m\_assetHitEffect}}
-{\footnotesize\ttfamily \label{class_attack_applicant_ab41ba8c2a688f67e0f7ee5ffb3c74d97} 
-Game\+Object Attack\+Applicant.\+m\+\_\+asset\+Hit\+Effect\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00017}{17}} 行目に定義があります。
+\Hypertarget{class_attack_applicant_ad246b0f02fe6eeded80f35b4f4620ce7}\index{AttackApplicant@{AttackApplicant}!m\_hitStopTime@{m\_hitStopTime}}
+\index{m\_hitStopTime@{m\_hitStopTime}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_hitStopTime}{m\_hitStopTime}}
+{\footnotesize\ttfamily \label{class_attack_applicant_ad246b0f02fe6eeded80f35b4f4620ce7} 
+float Attack\+Applicant.\+m\+\_\+hit\+Stop\+Time\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_attack_applicant_a8b4f1f848c3e6a842b1d0f0b268e149f}\index{AttackApplicant@{AttackApplicant}!m\_attack@{m\_attack}}
 \index{m\_attack@{m\_attack}!AttackApplicant@{AttackApplicant}}
@@ -116,89 +215,17 @@ Game\+Object Attack\+Applicant.\+m\+\_\+asset\+Hit\+Effect\hspace{0.3cm}{\ttfami
 {\footnotesize\ttfamily \label{class_attack_applicant_a8b4f1f848c3e6a842b1d0f0b268e149f} 
 float Attack\+Applicant.\+m\+\_\+attack\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00014}{14}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_a9f46ccc83744bd15adb43f85d0d955fd}\index{AttackApplicant@{AttackApplicant}!m\_condition@{m\_condition}}
-\index{m\_condition@{m\_condition}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_condition}{m\_condition}}
-{\footnotesize\ttfamily \label{class_attack_applicant_a9f46ccc83744bd15adb43f85d0d955fd} 
-\mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482}{Condition\+Info.\+Condition\+ID}} Attack\+Applicant.\+m\+\_\+condition = \mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482a960b44c579bc2f6818d2daaf9e4c16f0}{Condition\+Info.\+Condition\+ID.\+Normal}}\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00029}{29}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_a7259e07c0fc0da1215ca96422ddd7981}\index{AttackApplicant@{AttackApplicant}!m\_doFriendlyFire@{m\_doFriendlyFire}}
-\index{m\_doFriendlyFire@{m\_doFriendlyFire}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_doFriendlyFire}{m\_doFriendlyFire}}
-{\footnotesize\ttfamily \label{class_attack_applicant_a7259e07c0fc0da1215ca96422ddd7981} 
-bool Attack\+Applicant.\+m\+\_\+do\+Friendly\+Fire = false\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00022}{22}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_a0930fb6b8b7c7751afd67509350390a8}\index{AttackApplicant@{AttackApplicant}!m\_doMultiHit@{m\_doMultiHit}}
-\index{m\_doMultiHit@{m\_doMultiHit}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_doMultiHit}{m\_doMultiHit}}
-{\footnotesize\ttfamily \label{class_attack_applicant_a0930fb6b8b7c7751afd67509350390a8} 
-bool Attack\+Applicant.\+m\+\_\+do\+Multi\+Hit = false\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00023}{23}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_ad246b0f02fe6eeded80f35b4f4620ce7}\index{AttackApplicant@{AttackApplicant}!m\_hitStopTime@{m\_hitStopTime}}
-\index{m\_hitStopTime@{m\_hitStopTime}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_hitStopTime}{m\_hitStopTime}}
-{\footnotesize\ttfamily \label{class_attack_applicant_ad246b0f02fe6eeded80f35b4f4620ce7} 
-float Attack\+Applicant.\+m\+\_\+hit\+Stop\+Time\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00013}{13}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_aec7c80c1f1e3ad326ee819c260345b7a}\index{AttackApplicant@{AttackApplicant}!m\_hittedColliders@{m\_hittedColliders}}
-\index{m\_hittedColliders@{m\_hittedColliders}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_hittedColliders}{m\_hittedColliders}}
-{\footnotesize\ttfamily \label{class_attack_applicant_aec7c80c1f1e3ad326ee819c260345b7a} 
-List$<$Collider$>$ Attack\+Applicant.\+m\+\_\+hitted\+Colliders = new List$<$Collider$>$()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00032}{32}} 行目に定義があります。
-
 \Hypertarget{class_attack_applicant_a2687d74ac9b7ce423ea6ff594a7aeee4}\index{AttackApplicant@{AttackApplicant}!m\_knockBackMultiplier@{m\_knockBackMultiplier}}
 \index{m\_knockBackMultiplier@{m\_knockBackMultiplier}!AttackApplicant@{AttackApplicant}}
 \doxysubsubsection{\texorpdfstring{m\_knockBackMultiplier}{m\_knockBackMultiplier}}
 {\footnotesize\ttfamily \label{class_attack_applicant_a2687d74ac9b7ce423ea6ff594a7aeee4} 
 float Attack\+Applicant.\+m\+\_\+knock\+Back\+Multiplier = 1f\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00015}{15}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}\index{AttackApplicant@{AttackApplicant}!m\_ownerInfoTag@{m\_ownerInfoTag}}
-\index{m\_ownerInfoTag@{m\_ownerInfoTag}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_ownerInfoTag}{m\_ownerInfoTag}}
-{\footnotesize\ttfamily \label{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c} 
-\mbox{\hyperlink{class_owner_info_tag}{Owner\+Info\+Tag}} Attack\+Applicant.\+m\+\_\+owner\+Info\+Tag\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00031}{31}} 行目に定義があります。
-
-\Hypertarget{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08}\index{AttackApplicant@{AttackApplicant}!m\_recoverBPMagni@{m\_recoverBPMagni}}
-\index{m\_recoverBPMagni@{m\_recoverBPMagni}!AttackApplicant@{AttackApplicant}}
-\doxysubsubsection{\texorpdfstring{m\_recoverBPMagni}{m\_recoverBPMagni}}
-{\footnotesize\ttfamily \label{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08} 
-float Attack\+Applicant.\+m\+\_\+recover\+BPMagni = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00026}{26}} 行目に定義があります。
+\Hypertarget{class_attack_applicant_ab41ba8c2a688f67e0f7ee5ffb3c74d97}\index{AttackApplicant@{AttackApplicant}!m\_assetHitEffect@{m\_assetHitEffect}}
+\index{m\_assetHitEffect@{m\_assetHitEffect}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_assetHitEffect}{m\_assetHitEffect}}
+{\footnotesize\ttfamily \label{class_attack_applicant_ab41ba8c2a688f67e0f7ee5ffb3c74d97} 
+Game\+Object Attack\+Applicant.\+m\+\_\+asset\+Hit\+Effect\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_attack_applicant_a9b9dcd1a006befd61201c4554c8a501f}\index{AttackApplicant@{AttackApplicant}!m\_soundData@{m\_soundData}}
 \index{m\_soundData@{m\_soundData}!AttackApplicant@{AttackApplicant}}
@@ -206,9 +233,41 @@ float Attack\+Applicant.\+m\+\_\+recover\+BPMagni = 0.\+1f\hspace{0.3cm}{\ttfami
 {\footnotesize\ttfamily \label{class_attack_applicant_a9b9dcd1a006befd61201c4554c8a501f} 
 \mbox{\hyperlink{class_sound_data}{Sound\+Data}} Attack\+Applicant.\+m\+\_\+sound\+Data\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_attack_applicant_a7259e07c0fc0da1215ca96422ddd7981}\index{AttackApplicant@{AttackApplicant}!m\_doFriendlyFire@{m\_doFriendlyFire}}
+\index{m\_doFriendlyFire@{m\_doFriendlyFire}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_doFriendlyFire}{m\_doFriendlyFire}}
+{\footnotesize\ttfamily \label{class_attack_applicant_a7259e07c0fc0da1215ca96422ddd7981} 
+bool Attack\+Applicant.\+m\+\_\+do\+Friendly\+Fire = false\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_attack_applicant_a0930fb6b8b7c7751afd67509350390a8}\index{AttackApplicant@{AttackApplicant}!m\_doMultiHit@{m\_doMultiHit}}
+\index{m\_doMultiHit@{m\_doMultiHit}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_doMultiHit}{m\_doMultiHit}}
+{\footnotesize\ttfamily \label{class_attack_applicant_a0930fb6b8b7c7751afd67509350390a8} 
+bool Attack\+Applicant.\+m\+\_\+do\+Multi\+Hit = false\hspace{0.3cm}{\ttfamily [private]}}
 
- \mbox{\hyperlink{_attack_applicant_8cs_source}{Attack\+Applicant.\+cs}} の \mbox{\hyperlink{_attack_applicant_8cs_source_l00020}{20}} 行目に定義があります。
+\Hypertarget{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08}\index{AttackApplicant@{AttackApplicant}!m\_recoverBPMagni@{m\_recoverBPMagni}}
+\index{m\_recoverBPMagni@{m\_recoverBPMagni}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_recoverBPMagni}{m\_recoverBPMagni}}
+{\footnotesize\ttfamily \label{class_attack_applicant_ad8649ce881fd5aabbc3beccac2e26f08} 
+float Attack\+Applicant.\+m\+\_\+recover\+BPMagni = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_attack_applicant_a9f46ccc83744bd15adb43f85d0d955fd}\index{AttackApplicant@{AttackApplicant}!m\_condition@{m\_condition}}
+\index{m\_condition@{m\_condition}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_condition}{m\_condition}}
+{\footnotesize\ttfamily \label{class_attack_applicant_a9f46ccc83744bd15adb43f85d0d955fd} 
+\mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482}{Condition\+Info.\+Condition\+ID}} Attack\+Applicant.\+m\+\_\+condition = \mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482a960b44c579bc2f6818d2daaf9e4c16f0}{Condition\+Info.\+Condition\+ID.\+Normal}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c}\index{AttackApplicant@{AttackApplicant}!m\_ownerInfoTag@{m\_ownerInfoTag}}
+\index{m\_ownerInfoTag@{m\_ownerInfoTag}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_ownerInfoTag}{m\_ownerInfoTag}}
+{\footnotesize\ttfamily \label{class_attack_applicant_aec172d6168b33de504b5b6b421e39f8c} 
+\mbox{\hyperlink{class_owner_info_tag}{Owner\+Info\+Tag}} Attack\+Applicant.\+m\+\_\+owner\+Info\+Tag\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_attack_applicant_aec7c80c1f1e3ad326ee819c260345b7a}\index{AttackApplicant@{AttackApplicant}!m\_hittedColliders@{m\_hittedColliders}}
+\index{m\_hittedColliders@{m\_hittedColliders}!AttackApplicant@{AttackApplicant}}
+\doxysubsubsection{\texorpdfstring{m\_hittedColliders}{m\_hittedColliders}}
+{\footnotesize\ttfamily \label{class_attack_applicant_aec7c80c1f1e3ad326ee819c260345b7a} 
+List$<$Collider$>$ Attack\+Applicant.\+m\+\_\+hitted\+Colliders = new List$<$Collider$>$()\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

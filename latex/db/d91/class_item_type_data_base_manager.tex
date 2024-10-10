@@ -51,13 +51,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_item_type_data_base_manager_8cs_source}{Item\+Type\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_item_type_data_base_manager_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_item_type_data_base_manager_a82dde19aa52821f1445e45782313e42d}\index{ItemTypeDataBaseManager@{ItemTypeDataBaseManager}!GetItemTypeData@{GetItemTypeData}}
 \index{GetItemTypeData@{GetItemTypeData}!ItemTypeDataBaseManager@{ItemTypeDataBaseManager}}
@@ -77,9 +70,78 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 返すデータ}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_item_type_data}{ItemTypeData}}\ data\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_item_type_data_base_manager_ad558c634e2ff17a6994081162b246c70}{m\_dataBase}}.\mbox{\hyperlink{class_item_type_data_base_a02784058fe9ef9dfbf337d3422e9cb7b}{ItemTypeDataBaseList}})}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#if\ DEBUG }}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list)}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ データベースがnullでないか確認する}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}状態データが登録されていません"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ItemTypeID\ ==\ \_id)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デバッグ時はIDが被っていないか確認する}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}IDが2つ存在します。確認してください"{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ list;}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#else }}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!list)}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一致すれば}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ItemTypeID\ ==\ \_id)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ data\ =\ list;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#endif }}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\_id\ +\ \textcolor{stringliteral}{"{}\ このIDのItemTypeは存在しません。登録できているか確認してください"{}});}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_item_type_data_base_manager_8cs_source}{Item\+Type\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_item_type_data_base_manager_8cs_source_l00036}{36}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -91,10 +153,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 
 
- \mbox{\hyperlink{_item_type_data_base_manager_8cs_source}{Item\+Type\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_item_type_data_base_manager_8cs_source_l00013}{13}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_item_type_data_base_manager_ab7532b960a37cf74bee8a4f7511b899d}\index{ItemTypeDataBaseManager@{ItemTypeDataBaseManager}!DataBase@{DataBase}}
 \index{DataBase@{DataBase}!ItemTypeDataBaseManager@{ItemTypeDataBaseManager}}
@@ -103,9 +161,10 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \mbox{\hyperlink{class_item_type_data_base}{Item\+Type\+Data\+Base}} Item\+Type\+Data\+Base\+Manager.\+Data\+Base\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_item_type_data_base_manager_ad558c634e2ff17a6994081162b246c70}{m\_dataBase}};\ \}\ \}}
 
- \mbox{\hyperlink{_item_type_data_base_manager_8cs_source}{Item\+Type\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_item_type_data_base_manager_8cs_source_l00016}{16}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

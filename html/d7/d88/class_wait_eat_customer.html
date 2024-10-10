@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -161,43 +161,7 @@ WaitEatCustomer 連携図</div>
 <tr class="memitem:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour" id="r_aa3ddb22d160f0879f27eef6ff96f0076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d72/class_flexible_customer_data_variable.html">FlexibleCustomerDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d11/class_base_customer_state_behaviour.html#aa3ddb22d160f0879f27eef6ff96f0076">m_flexibleCustomerDataVariable</a> = null</td></tr>
 <tr class="separator:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html">WaitEatCustomer.cs</a> の <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
-<a id="a061c67cf0ef8cbd944b59ea47256b3ad" name="a061c67cf0ef8cbd944b59ea47256b3ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a061c67cf0ef8cbd944b59ea47256b3ad">&#9670;&#160;</a></span>OnStateUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void WaitEatCustomer.OnStateUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html">WaitEatCustomer.cs</a> の <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html#l00033">33</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph.png" border="0" usemap="#ad7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph" alt=""/></div>
-<map name="ad7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph" id="ad7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph">
-<area shape="rect" title=" " alt="" coords="5,47,224,73"/>
-<area shape="rect" href="../../d7/d88/class_wait_eat_customer.html#a3876e18e1f7ccdb5af8b62b64018ca71" title=" " alt="" coords="272,47,426,73"/>
-<area shape="poly" title=" " alt="" coords="224,57,256,57,256,63,224,63"/>
-<area shape="rect" href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c" title="客情報が存在するかのチェック" alt="" coords="474,5,675,48"/>
-<area shape="poly" title=" " alt="" coords="426,46,458,41,459,46,427,51"/>
-<area shape="rect" href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d" title=" " alt="" coords="474,72,675,115"/>
-<area shape="poly" title=" " alt="" coords="427,69,459,74,458,79,426,74"/>
-</map>
-</div>
-
-</div>
-</div>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a3876e18e1f7ccdb5af8b62b64018ca71" name="a3876e18e1f7ccdb5af8b62b64018ca71"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3876e18e1f7ccdb5af8b62b64018ca71">&#9670;&#160;</a></span>Wait()</h2>
 
@@ -220,9 +184,21 @@ WaitEatCustomer 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html">WaitEatCustomer.cs</a> の <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   19</span>    {</div>
+<div class="line"><span class="lineno">   20</span>        var data = <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">GetCustomerData</a>();</div>
+<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>        <span class="comment">// 怒ったら</span></div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">if</span> (data.CountEat())</div>
+<div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            data.EatCount = 0;</div>
+<div class="line"><span class="lineno">   27</span>            <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d">SetTransition</a>(<a class="code hl_variable" href="#a69271ec9cfc2ae0bc2d6dac3e885bd66">m_nextState</a>);</div>
+<div class="line"><span class="lineno">   28</span>        }</div>
+<div class="line"><span class="lineno">   29</span>    }</div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a32567768b2bf7e9e2901117de1ec359c"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">BaseCustomerStateBehaviour.GetCustomerData</a></div><div class="ttdeci">CustomerData GetCustomerData()</div><div class="ttdoc">客情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:27</div></div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a811dd08072f5b967a2260cd67d17e95d"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d">BaseCustomerStateBehaviour.SetTransition</a></div><div class="ttdeci">void SetTransition(StateLink _link)</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:50</div></div>
+<div class="ttc" id="aclass_wait_eat_customer_html_a69271ec9cfc2ae0bc2d6dac3e885bd66"><div class="ttname"><a href="#a69271ec9cfc2ae0bc2d6dac3e885bd66">WaitEatCustomer.m_nextState</a></div><div class="ttdeci">StateLink m_nextState</div><div class="ttdef"><b>Definition</b> WaitEatCustomer.cs:15</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d88/class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71_cgraph.png" border="0" usemap="#ad7/d88/class_wait_eat_customer_a3876e18e1f7ccdb5af8b62b64018ca71_cgraph" alt=""/></div>
@@ -242,6 +218,41 @@ WaitEatCustomer 連携図</div>
 <area shape="rect" title=" " alt="" coords="272,5,426,32"/>
 <area shape="rect" href="../../d7/d88/class_wait_eat_customer.html#a061c67cf0ef8cbd944b59ea47256b3ad" title=" " alt="" coords="5,5,224,32"/>
 <area shape="poly" title=" " alt="" coords="256,21,224,21,224,16,256,16"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a061c67cf0ef8cbd944b59ea47256b3ad" name="a061c67cf0ef8cbd944b59ea47256b3ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a061c67cf0ef8cbd944b59ea47256b3ad">&#9670;&#160;</a></span>OnStateUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void WaitEatCustomer.OnStateUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   34</span>    {</div>
+<div class="line"><span class="lineno">   35</span>        <a class="code hl_function" href="#a3876e18e1f7ccdb5af8b62b64018ca71">Wait</a>();</div>
+<div class="line"><span class="lineno">   36</span>    }</div>
+<div class="ttc" id="aclass_wait_eat_customer_html_a3876e18e1f7ccdb5af8b62b64018ca71"><div class="ttname"><a href="#a3876e18e1f7ccdb5af8b62b64018ca71">WaitEatCustomer.Wait</a></div><div class="ttdeci">void Wait()</div><div class="ttdef"><b>Definition</b> WaitEatCustomer.cs:18</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph.png" border="0" usemap="#ad7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph" alt=""/></div>
+<map name="ad7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph" id="ad7/d88/class_wait_eat_customer_a061c67cf0ef8cbd944b59ea47256b3ad_cgraph">
+<area shape="rect" title=" " alt="" coords="5,47,224,73"/>
+<area shape="rect" href="../../d7/d88/class_wait_eat_customer.html#a3876e18e1f7ccdb5af8b62b64018ca71" title=" " alt="" coords="272,47,426,73"/>
+<area shape="poly" title=" " alt="" coords="224,57,256,57,256,63,224,63"/>
+<area shape="rect" href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c" title="客情報が存在するかのチェック" alt="" coords="474,5,675,48"/>
+<area shape="poly" title=" " alt="" coords="426,46,458,41,459,46,427,51"/>
+<area shape="rect" href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d" title=" " alt="" coords="474,72,675,115"/>
+<area shape="poly" title=" " alt="" coords="427,69,459,74,458,79,426,74"/>
 </map>
 </div>
 
@@ -268,12 +279,10 @@ WaitEatCustomer 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html">WaitEatCustomer.cs</a> の <a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/<a class="el" href="../../d7/d55/_wait_eat_customer_8cs_source.html">WaitEatCustomer.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/<a class="el" href="../../d7/d55/_wait_eat_customer_8cs.html">WaitEatCustomer.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

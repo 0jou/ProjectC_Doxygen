@@ -86,13 +86,6 @@ Sequence \mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455
 \begin{DoxyCompactList}\small\item\em 実行中の\+Sequence \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source}{DOAnchor\+Pos\+UI.\+cs}} の \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_d_o_anchor_pos_u_i_aad62e595462360862fca00bb0065705c}\index{DOAnchorPosUI@{DOAnchorPosUI}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!DOAnchorPosUI@{DOAnchorPosUI}}
@@ -105,9 +98,19 @@ override void DOAnchor\+Pos\+UI.\+On\+Initialize (\begin{DoxyParamCaption}{}{}\e
 \mbox{\hyperlink{class_base_do_tween_u_i_a6a623674f87a15b0c8b5fc0a2903acf5}{Base\+Do\+Tween\+UI}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_d_o_anchor_pos_u_i_a436a6140d99766922310d1efe0fdd325}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RectTransformがシリアライズされていません"{}});}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期のサイズをセット}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ m\_rectTransform.anchoredPosition\ =\ \mbox{\hyperlink{class_d_o_anchor_pos_u_i_a515465ef180a635dfec6914d07bc5920}{m\_initializePos}};}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source}{DOAnchor\+Pos\+UI.\+cs}} の \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source_l00031}{31}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_d_o_anchor_pos_u_i_ac5889d10ba01106d2820af49f6c894ec}\index{DOAnchorPosUI@{DOAnchorPosUI}!StartDoTween@{StartDoTween}}
 \index{StartDoTween@{StartDoTween}!DOAnchorPosUI@{DOAnchorPosUI}}
 \doxysubsubsection{\texorpdfstring{StartDoTween()}{StartDoTween()}}
@@ -115,9 +118,35 @@ override void DOAnchor\+Pos\+UI.\+On\+Initialize (\begin{DoxyParamCaption}{}{}\e
 override void DOAnchor\+Pos\+UI.\+Start\+Do\+Tween (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_d_o_anchor_pos_u_i_a436a6140d99766922310d1efe0fdd325}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RectTransformがシリアライズされていません"{}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度初期化}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{KillSequence}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 開始}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ =\ DOTween.Sequence();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ pos\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_d_o_anchor_pos_u_i_a67e6e525ac100f5920a9d49876efd79f}{m\_targetPosList}})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.Append(}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_d_o_anchor_pos_u_i_a436a6140d99766922310d1efe0fdd325}{m\_rectTransform}}.DOAnchorPos(pos,\ \mbox{\hyperlink{class_base_do_tween_u_i_afac415f8cc86bb6c0d498ef420dd73dc}{m\_duration}}).}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetDelay(\mbox{\hyperlink{class_base_do_tween_u_i_add825ea273bddeceb6366b843650c092}{m\_delay}}).}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetEase(\mbox{\hyperlink{class_base_do_tween_u_i_a28c42ac637a0a1545bbd1068ec2b60f7}{m\_ease}}).}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetLink(gameObject)).}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetLoops(\mbox{\hyperlink{class_base_do_tween_u_i_a0981dac4174fa204a80ea78ccb9376b7}{m\_loopCount}},\ \mbox{\hyperlink{class_base_do_tween_u_i_a3b9ae474f7cc59876265db492de02f3a}{m\_loopType}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source}{DOAnchor\+Pos\+UI.\+cs}} の \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source_l00044}{44}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -128,35 +157,23 @@ override void DOAnchor\+Pos\+UI.\+Start\+Do\+Tween (\begin{DoxyParamCaption}{}{}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_d_o_anchor_pos_u_i_a515465ef180a635dfec6914d07bc5920}\index{DOAnchorPosUI@{DOAnchorPosUI}!m\_initializePos@{m\_initializePos}}
-\index{m\_initializePos@{m\_initializePos}!DOAnchorPosUI@{DOAnchorPosUI}}
-\doxysubsubsection{\texorpdfstring{m\_initializePos}{m\_initializePos}}
-{\footnotesize\ttfamily \label{class_d_o_anchor_pos_u_i_a515465ef180a635dfec6914d07bc5920} 
-Vector3 DOAnchor\+Pos\+UI.\+m\+\_\+initialize\+Pos = new Vector3(0.\+0f, 0.\+0f, 0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source}{DOAnchor\+Pos\+UI.\+cs}} の \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source_l00020}{20}} 行目に定義があります。
-
 \Hypertarget{class_d_o_anchor_pos_u_i_a436a6140d99766922310d1efe0fdd325}\index{DOAnchorPosUI@{DOAnchorPosUI}!m\_rectTransform@{m\_rectTransform}}
 \index{m\_rectTransform@{m\_rectTransform}!DOAnchorPosUI@{DOAnchorPosUI}}
 \doxysubsubsection{\texorpdfstring{m\_rectTransform}{m\_rectTransform}}
 {\footnotesize\ttfamily \label{class_d_o_anchor_pos_u_i_a436a6140d99766922310d1efe0fdd325} 
 Rect\+Transform DOAnchor\+Pos\+UI.\+m\+\_\+rect\+Transform = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source}{DOAnchor\+Pos\+UI.\+cs}} の \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source_l00016}{16}} 行目に定義があります。
+\Hypertarget{class_d_o_anchor_pos_u_i_a515465ef180a635dfec6914d07bc5920}\index{DOAnchorPosUI@{DOAnchorPosUI}!m\_initializePos@{m\_initializePos}}
+\index{m\_initializePos@{m\_initializePos}!DOAnchorPosUI@{DOAnchorPosUI}}
+\doxysubsubsection{\texorpdfstring{m\_initializePos}{m\_initializePos}}
+{\footnotesize\ttfamily \label{class_d_o_anchor_pos_u_i_a515465ef180a635dfec6914d07bc5920} 
+Vector3 DOAnchor\+Pos\+UI.\+m\+\_\+initialize\+Pos = new Vector3(0.\+0f, 0.\+0f, 0.\+0f)\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_d_o_anchor_pos_u_i_a67e6e525ac100f5920a9d49876efd79f}\index{DOAnchorPosUI@{DOAnchorPosUI}!m\_targetPosList@{m\_targetPosList}}
 \index{m\_targetPosList@{m\_targetPosList}!DOAnchorPosUI@{DOAnchorPosUI}}
 \doxysubsubsection{\texorpdfstring{m\_targetPosList}{m\_targetPosList}}
 {\footnotesize\ttfamily \label{class_d_o_anchor_pos_u_i_a67e6e525ac100f5920a9d49876efd79f} 
 List$<$Vector3$>$ DOAnchor\+Pos\+UI.\+m\+\_\+target\+Pos\+List = new()}
-
-
-
- \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source}{DOAnchor\+Pos\+UI.\+cs}} の \mbox{\hyperlink{_d_o_anchor_pos_u_i_8cs_source_l00024}{24}} 行目に定義があります。
 
 
 

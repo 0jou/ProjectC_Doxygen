@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -147,10 +147,7 @@ SelectUseItemButton 連携図</div>
 <tr class="memitem:a34da2f27c5aa8dc979f016ef14c0ebd7" id="r_a34da2f27c5aa8dc979f016ef14c0ebd7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a34da2f27c5aa8dc979f016ef14c0ebd7">m_isCanPress</a> = true</td></tr>
 <tr class="separator:a34da2f27c5aa8dc979f016ef14c0ebd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00009">9</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a914c9aa34bd57c1cdf8d4474638bbd08" name="a914c9aa34bd57c1cdf8d4474638bbd08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a914c9aa34bd57c1cdf8d4474638bbd08">&#9670;&#160;</a></span>SetData()</h2>
 
@@ -174,9 +171,42 @@ SelectUseItemButton 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00045">45</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   46</span>    {</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a1518a9da0d83ac6b77903b67b6021feb">m_buttonText</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   48</span>        {</div>
+<div class="line"><span class="lineno">   49</span>            Debug.LogError(<span class="stringliteral">&quot;TextMeshProが存在しません&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   51</span>        }</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>        <span class="comment">// IDを更新</span></div>
+<div class="line"><span class="lineno">   54</span>        <a class="code hl_variable" href="#a660093fe86deccc4f95be5fc3f14701c">m_id</a> = _id;</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        <span class="comment">// 押せるかどうかを更新</span></div>
+<div class="line"><span class="lineno">   57</span>        <a class="code hl_variable" href="#a34da2f27c5aa8dc979f016ef14c0ebd7">m_isCanPress</a> = _active;</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>        <span class="comment">// ボタンのテキストを更新</span></div>
+<div class="line"><span class="lineno">   60</span>        m_buttonText.text = _text;</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>        <span class="comment">// 押すことができなければ</span></div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a34da2f27c5aa8dc979f016ef14c0ebd7">m_isCanPress</a>)</div>
+<div class="line"><span class="lineno">   64</span>        {</div>
+<div class="line"><span class="lineno">   65</span>            <span class="comment">// 画像を少し黒く薄く</span></div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ac31347befa137ceaabd752f4ab241f1c">m_buttonImage</a>)</div>
+<div class="line"><span class="lineno">   67</span>            {</div>
+<div class="line"><span class="lineno">   68</span>                Color color = <a class="code hl_variable" href="#ac31347befa137ceaabd752f4ab241f1c">m_buttonImage</a>.color;</div>
+<div class="line"><span class="lineno">   69</span>                color.r = 0.2f;</div>
+<div class="line"><span class="lineno">   70</span>                color.g = 0.2f;</div>
+<div class="line"><span class="lineno">   71</span>                color.b = 0.2f;</div>
+<div class="line"><span class="lineno">   72</span>                color.a = 0.5f;</div>
+<div class="line"><span class="lineno">   73</span>                m_buttonImage.color = color;</div>
+<div class="line"><span class="lineno">   74</span>            }</div>
+<div class="line"><span class="lineno">   75</span>        }</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="ttc" id="aclass_select_use_item_button_html_a1518a9da0d83ac6b77903b67b6021feb"><div class="ttname"><a href="#a1518a9da0d83ac6b77903b67b6021feb">SelectUseItemButton.m_buttonText</a></div><div class="ttdeci">TextMeshProUGUI m_buttonText</div><div class="ttdef"><b>Definition</b> SelectUseItemButton.cs:21</div></div>
+<div class="ttc" id="aclass_select_use_item_button_html_a34da2f27c5aa8dc979f016ef14c0ebd7"><div class="ttname"><a href="#a34da2f27c5aa8dc979f016ef14c0ebd7">SelectUseItemButton.m_isCanPress</a></div><div class="ttdeci">bool m_isCanPress</div><div class="ttdef"><b>Definition</b> SelectUseItemButton.cs:38</div></div>
+<div class="ttc" id="aclass_select_use_item_button_html_a660093fe86deccc4f95be5fc3f14701c"><div class="ttname"><a href="#a660093fe86deccc4f95be5fc3f14701c">SelectUseItemButton.m_id</a></div><div class="ttdeci">SelectUseItemID m_id</div><div class="ttdef"><b>Definition</b> SelectUseItemButton.cs:29</div></div>
+<div class="ttc" id="aclass_select_use_item_button_html_ac31347befa137ceaabd752f4ab241f1c"><div class="ttname"><a href="#ac31347befa137ceaabd752f4ab241f1c">SelectUseItemButton.m_buttonImage</a></div><div class="ttdeci">Image m_buttonImage</div><div class="ttdef"><b>Definition</b> SelectUseItemButton.cs:16</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/d80/class_select_use_item_button_a914c9aa34bd57c1cdf8d4474638bbd08_icgraph.png" border="0" usemap="#adf/d80/class_select_use_item_button_a914c9aa34bd57c1cdf8d4474638bbd08_icgraph" alt=""/></div>
@@ -227,8 +257,6 @@ SelectUseItemButton 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a1518a9da0d83ac6b77903b67b6021feb" name="a1518a9da0d83ac6b77903b67b6021feb"></a>
@@ -250,8 +278,6 @@ SelectUseItemButton 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00021">21</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -275,8 +301,6 @@ SelectUseItemButton 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00029">29</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a34da2f27c5aa8dc979f016ef14c0ebd7" name="a34da2f27c5aa8dc979f016ef14c0ebd7"></a>
@@ -298,8 +322,6 @@ SelectUseItemButton 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00038">38</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -323,9 +345,8 @@ SelectUseItemButton 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00031">31</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   31</span>{ <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="#a660093fe86deccc4f95be5fc3f14701c">m_id</a>; } }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4a209fa700fd6eb32e95dcba81f697bd" name="a4a209fa700fd6eb32e95dcba81f697bd"></a>
@@ -347,13 +368,12 @@ SelectUseItemButton 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a> の <a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html#l00040">40</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{ <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="#a34da2f27c5aa8dc979f016ef14c0ebd7">m_isCanPress</a>; } }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/SelectUseItemWindow/Prefab/Button/<a class="el" href="../../d7/d6e/_select_use_item_button_8cs_source.html">SelectUseItemButton.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/003_Item/Window/SelectUseItemWindow/Prefab/Button/<a class="el" href="../../d7/d6e/_select_use_item_button_8cs.html">SelectUseItemButton.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

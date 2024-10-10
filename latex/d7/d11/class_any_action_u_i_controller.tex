@@ -54,10 +54,6 @@ Action\+UIState \mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f0882
 \doxysubsection{詳解}
 アイテムを拾ったり、インタラクトする際の\+UI表示を制御するクラス 
 
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00017}{17}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_any_action_u_i_controller_aec5c205f1a5f8c5334d234892e6f7148}\index{AnyActionUIController@{AnyActionUIController}!ChangeNowStateUI@{ChangeNowStateUI}}
 \index{ChangeNowStateUI@{ChangeNowStateUI}!AnyActionUIController@{AnyActionUIController}}
@@ -70,9 +66,12 @@ void Any\+Action\+UIController.\+Change\+Now\+State\+UI (\begin{DoxyParamCaption
 m\+\_\+now\+Action\+State に応じた\+UIを表示する 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a5b7e6ba0d8bc871ac0cdf084bb32666e}{ChangeStateUI}}(\mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\_nowActionState}});}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00054}{54}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -96,9 +95,48 @@ void Any\+Action\+UIController.\+Change\+State\+UI (\begin{DoxyParamCaption}\ite
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_actionState\ ==\ ActionUIState.None)}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_anyActionUIが設定されていません"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.GetComponentInChildren<TextMeshProUGUI>();}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_anyActionUITextが設定されていません"{}});}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}.ContainsKey(\_actionState))}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ m\_anyActionUIText.text\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}[\_actionState].ActionText;}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_actionInfoListに"{}}\ +\ \_actionState\ +\ \textcolor{stringliteral}{"{}が設定されていません"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\_nowActionState}}\ =\ \_actionState;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00063}{63}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -109,25 +147,11 @@ void Any\+Action\+UIController.\+Change\+State\+UI (\begin{DoxyParamCaption}\ite
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}\index{AnyActionUIController@{AnyActionUIController}!m\_actionInfoList@{m\_actionInfoList}}
-\index{m\_actionInfoList@{m\_actionInfoList}!AnyActionUIController@{AnyActionUIController}}
-\doxysubsubsection{\texorpdfstring{m\_actionInfoList}{m\_actionInfoList}}
-{\footnotesize\ttfamily \label{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a} 
-\mbox{\hyperlink{class_serializable_dictionary}{Serializable\+Dictionary}}$<$Action\+UIState, \mbox{\hyperlink{struct_any_action_u_i_controller_1_1_any_action_info}{Any\+Action\+Info}}$>$ Any\+Action\+UIController.\+m\+\_\+action\+Info\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00044}{44}} 行目に定義があります。
-
 \Hypertarget{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}\index{AnyActionUIController@{AnyActionUIController}!m\_anyActionUI@{m\_anyActionUI}}
 \index{m\_anyActionUI@{m\_anyActionUI}!AnyActionUIController@{AnyActionUIController}}
 \doxysubsubsection{\texorpdfstring{m\_anyActionUI}{m\_anyActionUI}}
 {\footnotesize\ttfamily \label{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11} 
 Game\+Object Any\+Action\+UIController.\+m\+\_\+any\+Action\+UI = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00021}{21}} 行目に定義があります。
 
 \Hypertarget{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}\index{AnyActionUIController@{AnyActionUIController}!m\_anyActionUIText@{m\_anyActionUIText}}
 \index{m\_anyActionUIText@{m\_anyActionUIText}!AnyActionUIController@{AnyActionUIController}}
@@ -135,19 +159,17 @@ Game\+Object Any\+Action\+UIController.\+m\+\_\+any\+Action\+UI = null\hspace{0.
 {\footnotesize\ttfamily \label{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6} 
 Text\+Mesh\+Pro\+UGUI Any\+Action\+UIController.\+m\+\_\+any\+Action\+UIText = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00024}{24}} 行目に定義があります。
+\Hypertarget{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}\index{AnyActionUIController@{AnyActionUIController}!m\_actionInfoList@{m\_actionInfoList}}
+\index{m\_actionInfoList@{m\_actionInfoList}!AnyActionUIController@{AnyActionUIController}}
+\doxysubsubsection{\texorpdfstring{m\_actionInfoList}{m\_actionInfoList}}
+{\footnotesize\ttfamily \label{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a} 
+\mbox{\hyperlink{class_serializable_dictionary}{Serializable\+Dictionary}}$<$Action\+UIState, \mbox{\hyperlink{struct_any_action_u_i_controller_1_1_any_action_info}{Any\+Action\+Info}}$>$ Any\+Action\+UIController.\+m\+\_\+action\+Info\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}\index{AnyActionUIController@{AnyActionUIController}!m\_nowActionState@{m\_nowActionState}}
 \index{m\_nowActionState@{m\_nowActionState}!AnyActionUIController@{AnyActionUIController}}
 \doxysubsubsection{\texorpdfstring{m\_nowActionState}{m\_nowActionState}}
 {\footnotesize\ttfamily \label{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17} 
 Action\+UIState Any\+Action\+UIController.\+m\+\_\+now\+Action\+State\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_any_action_u_i_controller_8cs_source}{Any\+Action\+UIController.\+cs}} の \mbox{\hyperlink{_any_action_u_i_controller_8cs_source_l00048}{48}} 行目に定義があります。
 
 
 

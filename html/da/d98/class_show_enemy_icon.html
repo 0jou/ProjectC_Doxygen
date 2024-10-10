@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -160,10 +160,7 @@ ShowEnemyIcon 連携図</div>
 <tr class="memitem:a2a1a411e09aced11f1bfd15de763857f" id="r_a2a1a411e09aced11f1bfd15de763857f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../da/d6f/class_enemy_icon_controller.html">EnemyIconController</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2a1a411e09aced11f1bfd15de763857f">m_iconController</a></td></tr>
 <tr class="separator:a2a1a411e09aced11f1bfd15de763857f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a6310b586321e815dd12f2fda8b60002d" name="a6310b586321e815dd12f2fda8b60002d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6310b586321e815dd12f2fda8b60002d">&#9670;&#160;</a></span>OnStateAwake()</h2>
 
@@ -178,9 +175,17 @@ ShowEnemyIcon 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   25</span>    {</div>
+<div class="line"><span class="lineno">   26</span>        base.OnStateAwake();</div>
+<div class="line"><span class="lineno">   27</span>        <a class="code hl_variable" href="#a2a1a411e09aced11f1bfd15de763857f">m_iconController</a> = transform.root.GetComponentInChildren&lt;<a class="code hl_class" href="../../da/d6f/class_enemy_icon_controller.html">EnemyIconController</a>&gt;();</div>
+<div class="line"><span class="lineno">   28</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a2a1a411e09aced11f1bfd15de763857f">m_iconController</a>)</div>
+<div class="line"><span class="lineno">   29</span>        {</div>
+<div class="line"><span class="lineno">   30</span>            Debug.LogError(<span class="stringliteral">&quot;EnemyIconControllerが見つかりませんでした。&quot;</span> + gameObject.name);</div>
+<div class="line"><span class="lineno">   31</span>        }</div>
+<div class="line"><span class="lineno">   32</span>    }</div>
+<div class="ttc" id="aclass_enemy_icon_controller_html"><div class="ttname"><a href="../../da/d6f/class_enemy_icon_controller.html">EnemyIconController</a></div><div class="ttdef"><b>Definition</b> EnemyIconController.cs:6</div></div>
+<div class="ttc" id="aclass_show_enemy_icon_html_a2a1a411e09aced11f1bfd15de763857f"><div class="ttname"><a href="#a2a1a411e09aced11f1bfd15de763857f">ShowEnemyIcon.m_iconController</a></div><div class="ttdeci">EnemyIconController m_iconController</div><div class="ttdef"><b>Definition</b> ShowEnemyIcon.cs:22</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="adcba8c1ea1f61f102fa411a9ab312a33" name="adcba8c1ea1f61f102fa411a9ab312a33"></a>
@@ -197,9 +202,22 @@ ShowEnemyIcon 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00035">35</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a2a1a411e09aced11f1bfd15de763857f">m_iconController</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   38</span>        <a class="code hl_variable" href="#a2a1a411e09aced11f1bfd15de763857f">m_iconController</a>.<a class="code hl_function" href="../../da/d6f/class_enemy_icon_controller.html#a6c3bcb26f50ae5681e19164e8f745bac">ShowIcon</a>(<a class="code hl_variable" href="#a52ae2cdcf81b1f5d75cda930c48c5f59">m_showIconType</a>, <a class="code hl_variable" href="#a97a2feb3f51a79be307192b1e4c295ef">m_iconFillTime</a>.value);</div>
+<div class="line"><span class="lineno">   39</span>        <span class="comment">//await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</span></div>
+<div class="line"><span class="lineno">   40</span>        <span class="comment">//if (iconController)</span></div>
+<div class="line"><span class="lineno">   41</span>        <span class="comment">//{</span></div>
+<div class="line"><span class="lineno">   42</span>        <span class="comment">//    iconController.HideIcon(EnemyIconController.EnemyIconType.DiscoverIcon);</span></div>
+<div class="line"><span class="lineno">   43</span>        <span class="comment">//}</span></div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>        Transition(<a class="code hl_variable" href="#aa429dc51334811cb2d0d4932b96c49e1">m_successLink</a>);</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+<div class="ttc" id="aclass_enemy_icon_controller_html_a6c3bcb26f50ae5681e19164e8f745bac"><div class="ttname"><a href="../../da/d6f/class_enemy_icon_controller.html#a6c3bcb26f50ae5681e19164e8f745bac">EnemyIconController.ShowIcon</a></div><div class="ttdeci">void ShowIcon(EnemyIconType _type, float _fillTime)</div><div class="ttdef"><b>Definition</b> EnemyIconController.cs:24</div></div>
+<div class="ttc" id="aclass_show_enemy_icon_html_a52ae2cdcf81b1f5d75cda930c48c5f59"><div class="ttname"><a href="#a52ae2cdcf81b1f5d75cda930c48c5f59">ShowEnemyIcon.m_showIconType</a></div><div class="ttdeci">EnemyIconType m_showIconType</div><div class="ttdef"><b>Definition</b> ShowEnemyIcon.cs:17</div></div>
+<div class="ttc" id="aclass_show_enemy_icon_html_a97a2feb3f51a79be307192b1e4c295ef"><div class="ttname"><a href="#a97a2feb3f51a79be307192b1e4c295ef">ShowEnemyIcon.m_iconFillTime</a></div><div class="ttdeci">FlexibleFloat m_iconFillTime</div><div class="ttdef"><b>Definition</b> ShowEnemyIcon.cs:20</div></div>
+<div class="ttc" id="aclass_show_enemy_icon_html_aa429dc51334811cb2d0d4932b96c49e1"><div class="ttname"><a href="#aa429dc51334811cb2d0d4932b96c49e1">ShowEnemyIcon.m_successLink</a></div><div class="ttdeci">StateLink m_successLink</div><div class="ttdef"><b>Definition</b> ShowEnemyIcon.cs:14</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../da/d98/class_show_enemy_icon_adcba8c1ea1f61f102fa411a9ab312a33_cgraph.png" border="0" usemap="#ada/d98/class_show_enemy_icon_adcba8c1ea1f61f102fa411a9ab312a33_cgraph" alt=""/></div>
@@ -213,51 +231,17 @@ ShowEnemyIcon 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a2a1a411e09aced11f1bfd15de763857f" name="a2a1a411e09aced11f1bfd15de763857f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2a1a411e09aced11f1bfd15de763857f">&#9670;&#160;</a></span>m_iconController</h2>
+<a id="aa429dc51334811cb2d0d4932b96c49e1" name="aa429dc51334811cb2d0d4932b96c49e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa429dc51334811cb2d0d4932b96c49e1">&#9670;&#160;</a></span>m_successLink</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../da/d6f/class_enemy_icon_controller.html">EnemyIconController</a> ShowEnemyIcon.m_iconController</td>
+          <td class="memname">StateLink ShowEnemyIcon.m_successLink</td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a97a2feb3f51a79be307192b1e4c295ef" name="a97a2feb3f51a79be307192b1e4c295ef"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a97a2feb3f51a79be307192b1e4c295ef">&#9670;&#160;</a></span>m_iconFillTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">FlexibleFloat ShowEnemyIcon.m_iconFillTime</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00020">20</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -281,28 +265,54 @@ ShowEnemyIcon 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<a id="aa429dc51334811cb2d0d4932b96c49e1" name="aa429dc51334811cb2d0d4932b96c49e1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa429dc51334811cb2d0d4932b96c49e1">&#9670;&#160;</a></span>m_successLink</h2>
+<a id="a97a2feb3f51a79be307192b1e4c295ef" name="a97a2feb3f51a79be307192b1e4c295ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97a2feb3f51a79be307192b1e4c295ef">&#9670;&#160;</a></span>m_iconFillTime</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">StateLink ShowEnemyIcon.m_successLink</td>
+          <td class="memname">FlexibleFloat ShowEnemyIcon.m_iconFillTime</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a> の <a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a2a1a411e09aced11f1bfd15de763857f" name="a2a1a411e09aced11f1bfd15de763857f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a1a411e09aced11f1bfd15de763857f">&#9670;&#160;</a></span>m_iconController</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../da/d6f/class_enemy_icon_controller.html">EnemyIconController</a> ShowEnemyIcon.m_iconController</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/CommonState/FSMScripts/<a class="el" href="../../d3/d17/_show_enemy_icon_8cs_source.html">ShowEnemyIcon.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/CommonState/FSMScripts/<a class="el" href="../../d3/d17/_show_enemy_icon_8cs.html">ShowEnemyIcon.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -155,10 +155,7 @@ StorySkillDataBaseManager 連携図</div>
 <tr class="memitem:a032625833cb6a4924ac0dd620932892d inherit pro_methods_class_base_manager" id="r_a032625833cb6a4924ac0dd620932892d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d8/dc6/class_base_manager.html#a032625833cb6a4924ac0dd620932892d">Awake</a> ()</td></tr>
 <tr class="separator:a032625833cb6a4924ac0dd620932892d inherit pro_methods_class_base_manager"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html">StorySkillDataBaseManager.cs</a> の <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a28023e5123606a350a1dabb9373c94ea" name="a28023e5123606a350a1dabb9373c94ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a28023e5123606a350a1dabb9373c94ea">&#9670;&#160;</a></span>GetStorySkillData()</h2>
 
@@ -173,9 +170,45 @@ StorySkillDataBaseManager 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html">StorySkillDataBaseManager.cs</a> の <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html#l00021">21</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   22</span>    {</div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#ace5d573a3162ac40aa11020f420adb46">m_storySkillDataBase</a>==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   24</span>        {</div>
+<div class="line"><span class="lineno">   25</span>            Debug.LogError(<span class="stringliteral">&quot;童話スキルのデータベースが空です！&quot;</span>);</div>
+<div class="line"><span class="lineno">   26</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   27</span>        }</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>        <span class="comment">//返すデータ</span></div>
+<div class="line"><span class="lineno">   30</span>        <a class="code hl_class" href="../../d0/d67/class_story_skill_data.html">StorySkillData</a> storySkillData = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span> </div>
+<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">foreach</span> (var data <span class="keywordflow">in</span> <a class="code hl_variable" href="#ace5d573a3162ac40aa11020f420adb46">m_storySkillDataBase</a>.<a class="code hl_property" href="../../d5/dba/class_story_skill_data_base.html#ad8f895ea7c0d783816d28da52111241f">StorySkillDataList</a>)</div>
+<div class="line"><span class="lineno">   34</span>        {</div>
+<div class="line"><span class="lineno">   35</span>            </div>
+<div class="line"><span class="lineno">   36</span>            <span class="comment">//データのIDと引数のIDが一致すればそれを返す</span></div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordflow">if</span>(data.StorySkill_ID==_id)</div>
+<div class="line"><span class="lineno">   38</span>            {</div>
+<div class="line"><span class="lineno">   39</span>                storySkillData= data;</div>
+<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   41</span>            }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>            </div>
+<div class="line"><span class="lineno">   44</span>        }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        <span class="comment">//ストーリースキル空だったら（探して見つからなかったら）</span></div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span>(storySkillData==<span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   48</span>        {</div>
+<div class="line"><span class="lineno">   49</span>            Debug.LogError(<span class="stringliteral">&quot;指定したIDの童話スキルは登録されてません。&quot;</span>);</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   51</span>        }</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">return</span> storySkillData;</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+<div class="ttc" id="aclass_story_skill_data_base_html_ad8f895ea7c0d783816d28da52111241f"><div class="ttname"><a href="../../d5/dba/class_story_skill_data_base.html#ad8f895ea7c0d783816d28da52111241f">StorySkillDataBase.StorySkillDataList</a></div><div class="ttdeci">List&lt; StorySkillData &gt; StorySkillDataList</div><div class="ttdef"><b>Definition</b> StorySkillDataBase.cs:12</div></div>
+<div class="ttc" id="aclass_story_skill_data_base_manager_html_ace5d573a3162ac40aa11020f420adb46"><div class="ttname"><a href="#ace5d573a3162ac40aa11020f420adb46">StorySkillDataBaseManager.m_storySkillDataBase</a></div><div class="ttdeci">StorySkillDataBase m_storySkillDataBase</div><div class="ttdef"><b>Definition</b> StorySkillDataBaseManager.cs:13</div></div>
+<div class="ttc" id="aclass_story_skill_data_html"><div class="ttname"><a href="../../d0/d67/class_story_skill_data.html">StorySkillData</a></div><div class="ttdef"><b>Definition</b> StorySkillData.cs:10</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -199,8 +232,6 @@ StorySkillDataBaseManager 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html">StorySkillDataBaseManager.cs</a> の <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <h2 class="groupheader">プロパティ詳解</h2>
@@ -223,13 +254,12 @@ StorySkillDataBaseManager 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html">StorySkillDataBaseManager.cs</a> の <a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   15</span>{ <span class="keyword">get</span> {<span class="keywordflow">return</span> <a class="code hl_variable" href="#ace5d573a3162ac40aa11020f420adb46">m_storySkillDataBase</a>; } }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/SkillCharacters/00_Common/DataBase/<a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs_source.html">StorySkillDataBaseManager.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/SkillCharacters/00_Common/DataBase/<a class="el" href="../../d0/dc0/_story_skill_data_base_manager_8cs.html">StorySkillDataBaseManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

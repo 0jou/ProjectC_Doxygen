@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -173,10 +173,7 @@ AddQueueCustemor 連携図</div>
 <tr class="memitem:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour" id="r_aa3ddb22d160f0879f27eef6ff96f0076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d72/class_flexible_customer_data_variable.html">FlexibleCustomerDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d11/class_base_customer_state_behaviour.html#aa3ddb22d160f0879f27eef6ff96f0076">m_flexibleCustomerDataVariable</a> = null</td></tr>
 <tr class="separator:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a8f7237960ac40dc54b2e03586f097da9" name="a8f7237960ac40dc54b2e03586f097da9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f7237960ac40dc54b2e03586f097da9">&#9670;&#160;</a></span>AddQueue()</h2>
 
@@ -199,9 +196,35 @@ AddQueueCustemor 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   23</span>    {</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        var data = <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">GetCustomerData</a>();</div>
+<div class="line"><span class="lineno">   26</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>        var controller = <a class="code hl_class" href="../../dc/df7/class_queue_manager.html">QueueManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>;</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">if</span> (controller == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        <span class="comment">// 待ち列に追加</span></div>
+<div class="line"><span class="lineno">   32</span>        data.QueueData = controller.AddQueueObject(<a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a6911eba8f0a18108bb8f3da8eb9ceaae">GetRootGameObject</a>());</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (data.QueueData != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   35</span>        {</div>
+<div class="line"><span class="lineno">   36</span>            <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d">SetTransition</a>(<a class="code hl_variable" href="#aacfa142985d14bfe5a40d84400fc39a5">m_successLink</a>);</div>
+<div class="line"><span class="lineno">   37</span>        }</div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   39</span>        {</div>
+<div class="line"><span class="lineno">   40</span>            <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d">SetTransition</a>(<a class="code hl_variable" href="#a36289486d103832e805a4b62c28b665f">m_failLink</a>);</div>
+<div class="line"><span class="lineno">   41</span>        }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="ttc" id="aclass_add_queue_custemor_html_a36289486d103832e805a4b62c28b665f"><div class="ttname"><a href="#a36289486d103832e805a4b62c28b665f">AddQueueCustemor.m_failLink</a></div><div class="ttdeci">StateLink m_failLink</div><div class="ttdef"><b>Definition</b> AddQueueCustemor.cs:18</div></div>
+<div class="ttc" id="aclass_add_queue_custemor_html_aacfa142985d14bfe5a40d84400fc39a5"><div class="ttname"><a href="#aacfa142985d14bfe5a40d84400fc39a5">AddQueueCustemor.m_successLink</a></div><div class="ttdeci">StateLink m_successLink</div><div class="ttdef"><b>Definition</b> AddQueueCustemor.cs:15</div></div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a32567768b2bf7e9e2901117de1ec359c"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">BaseCustomerStateBehaviour.GetCustomerData</a></div><div class="ttdeci">CustomerData GetCustomerData()</div><div class="ttdoc">客情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:27</div></div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a6911eba8f0a18108bb8f3da8eb9ceaae"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a6911eba8f0a18108bb8f3da8eb9ceaae">BaseCustomerStateBehaviour.GetRootGameObject</a></div><div class="ttdeci">GameObject GetRootGameObject()</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:63</div></div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a811dd08072f5b967a2260cd67d17e95d"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a811dd08072f5b967a2260cd67d17e95d">BaseCustomerStateBehaviour.SetTransition</a></div><div class="ttdeci">void SetTransition(StateLink _link)</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:50</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_queue_manager_html"><div class="ttname"><a href="../../dc/df7/class_queue_manager.html">QueueManager</a></div><div class="ttdef"><b>Definition</b> QueueManager.cs:25</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d95/class_add_queue_custemor_a8f7237960ac40dc54b2e03586f097da9_cgraph.png" border="0" usemap="#ad7/d95/class_add_queue_custemor_a8f7237960ac40dc54b2e03586f097da9_cgraph" alt=""/></div>
@@ -228,6 +251,34 @@ AddQueueCustemor 連携図</div>
 
 </div>
 </div>
+<a id="a19f2d45c296451643e4f4ad14371b76a" name="a19f2d45c296451643e4f4ad14371b76a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19f2d45c296451643e4f4ad14371b76a">&#9670;&#160;</a></span>Start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AddQueueCustemor.Start </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   52</span>    {</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a id="ad52f34ab2389388900c14fd781902f99" name="ad52f34ab2389388900c14fd781902f99"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad52f34ab2389388900c14fd781902f99">&#9670;&#160;</a></span>OnStateAwake()</h2>
 
@@ -242,9 +293,9 @@ AddQueueCustemor 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00057">57</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="abc2b71540162c03d198dbfa033aff40b" name="abc2b71540162c03d198dbfa033aff40b"></a>
@@ -261,9 +312,11 @@ AddQueueCustemor 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00062">62</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <a class="code hl_function" href="#a8f7237960ac40dc54b2e03586f097da9">AddQueue</a>();</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+<div class="ttc" id="aclass_add_queue_custemor_html_a8f7237960ac40dc54b2e03586f097da9"><div class="ttname"><a href="#a8f7237960ac40dc54b2e03586f097da9">AddQueueCustemor.AddQueue</a></div><div class="ttdeci">void AddQueue()</div><div class="ttdef"><b>Definition</b> AddQueueCustemor.cs:22</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d95/class_add_queue_custemor_abc2b71540162c03d198dbfa033aff40b_cgraph.png" border="0" usemap="#ad7/d95/class_add_queue_custemor_abc2b71540162c03d198dbfa033aff40b_cgraph" alt=""/></div>
@@ -296,28 +349,9 @@ AddQueueCustemor 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00068">68</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a82d7628515b6a1fbbd590ed3361e5431" name="a82d7628515b6a1fbbd590ed3361e5431"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a82d7628515b6a1fbbd590ed3361e5431">&#9670;&#160;</a></span>OnStateLateUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void AddQueueCustemor.OnStateLateUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00078">78</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   69</span>    {</div>
+<div class="line"><span class="lineno">   70</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a1851fad75090dad913fcbc1aa2f4700c" name="a1851fad75090dad913fcbc1aa2f4700c"></a>
@@ -334,63 +368,31 @@ AddQueueCustemor 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00073">73</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   74</span>    {</div>
+<div class="line"><span class="lineno">   75</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
-<a id="a19f2d45c296451643e4f4ad14371b76a" name="a19f2d45c296451643e4f4ad14371b76a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19f2d45c296451643e4f4ad14371b76a">&#9670;&#160;</a></span>Start()</h2>
+<a id="a82d7628515b6a1fbbd590ed3361e5431" name="a82d7628515b6a1fbbd590ed3361e5431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82d7628515b6a1fbbd590ed3361e5431">&#9670;&#160;</a></span>OnStateLateUpdate()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void AddQueueCustemor.Start </td>
+          <td class="memname">override void AddQueueCustemor.OnStateLateUpdate </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00051">51</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   79</span>    {</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a36289486d103832e805a4b62c28b665f" name="a36289486d103832e805a4b62c28b665f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a36289486d103832e805a4b62c28b665f">&#9670;&#160;</a></span>m_failLink</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">StateLink AddQueueCustemor.m_failLink = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="aacfa142985d14bfe5a40d84400fc39a5" name="aacfa142985d14bfe5a40d84400fc39a5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aacfa142985d14bfe5a40d84400fc39a5">&#9670;&#160;</a></span>m_successLink</h2>
 
@@ -411,12 +413,32 @@ AddQueueCustemor 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a> の <a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a36289486d103832e805a4b62c28b665f" name="a36289486d103832e805a4b62c28b665f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36289486d103832e805a4b62c28b665f">&#9670;&#160;</a></span>m_failLink</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">StateLink AddQueueCustemor.m_failLink = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/Find/<a class="el" href="../../d4/d78/_add_queue_custemor_8cs_source.html">AddQueueCustemor.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/Find/<a class="el" href="../../d4/d78/_add_queue_custemor_8cs.html">AddQueueCustemor.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

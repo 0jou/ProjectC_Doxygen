@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -244,10 +244,7 @@ NewItemWindow 連携図</div>
 <tr class="memitem:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window" id="r_aca92cddf024d4e19bdd003441678c3d6"><td class="memItemLeft" align="right" valign="top">PlayerInput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc1/class_base_window.html#aca92cddf024d4e19bdd003441678c3d6">Input</a><code> [get, set]</code></td></tr>
 <tr class="separator:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a> の <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ad183bec63c6a4bd4ab06429128ab810f" name="ad183bec63c6a4bd4ab06429128ab810f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad183bec63c6a4bd4ab06429128ab810f">&#9670;&#160;</a></span>OnInitialize()</h2>
 
@@ -272,9 +269,46 @@ NewItemWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a20cbaa0d7aa0d1224e85a0c07b88d6cf">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a> の <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html#l00027">27</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   28</span>    {</div>
+<div class="line"><span class="lineno">   29</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            await base.OnInitialize();</div>
+<div class="line"><span class="lineno">   34</span>            cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ae3b2cd06a2d554fe86f2d340cb55c0e3">m_createItemSlotList</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   37</span>            {</div>
+<div class="line"><span class="lineno">   38</span>                Debug.LogError(<span class="stringliteral">&quot;CreateItemSlotListコンポーネントがアタッチされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   39</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   40</span>            }</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a17f4521b3c45cac847d9e55582cca354">m_changeItemSlotDescription</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   43</span>            {</div>
+<div class="line"><span class="lineno">   44</span>                Debug.LogError(<span class="stringliteral">&quot;ChangeItemSlotDescriotionコンポーネントがアタッチされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   45</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   46</span>            }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>            <span class="comment">// スロット作成</span></div>
+<div class="line"><span class="lineno">   49</span>            <a class="code hl_variable" href="#ae3b2cd06a2d554fe86f2d340cb55c0e3">m_createItemSlotList</a>.<a class="code hl_function" href="../../d0/d4c/class_base_create_slot_list.html#a6059aef6a5971425788c7080bca5a4b6">OnInitialize</a>();</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>            await UniTask.DelayFrame(1);</div>
+<div class="line"><span class="lineno">   52</span>            cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>            <span class="comment">// 説明文を初期化</span></div>
+<div class="line"><span class="lineno">   55</span>            <a class="code hl_variable" href="#a17f4521b3c45cac847d9e55582cca354">m_changeItemSlotDescription</a>.<a class="code hl_function" href="../../d1/dde/class_change_item_description.html#a372615885181314c2bf445cc29d00601">OnInitialize</a>();</div>
+<div class="line"><span class="lineno">   56</span>        }</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   58</span>        {</div>
+<div class="line"><span class="lineno">   59</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="ttc" id="aclass_base_create_slot_list_html_a6059aef6a5971425788c7080bca5a4b6"><div class="ttname"><a href="../../d0/d4c/class_base_create_slot_list.html#a6059aef6a5971425788c7080bca5a4b6">BaseCreateSlotList.OnInitialize</a></div><div class="ttdeci">virtual void OnInitialize()</div><div class="ttdef"><b>Definition</b> BaseCreateSlotList.cs:55</div></div>
+<div class="ttc" id="aclass_change_item_description_html_a372615885181314c2bf445cc29d00601"><div class="ttname"><a href="../../d1/dde/class_change_item_description.html#a372615885181314c2bf445cc29d00601">ChangeItemDescription.OnInitialize</a></div><div class="ttdeci">virtual void OnInitialize()</div><div class="ttdef"><b>Definition</b> ChangeItemDescription.cs:189</div></div>
+<div class="ttc" id="aclass_new_item_window_html_a17f4521b3c45cac847d9e55582cca354"><div class="ttname"><a href="#a17f4521b3c45cac847d9e55582cca354">NewItemWindow.m_changeItemSlotDescription</a></div><div class="ttdeci">ChangeItemDescription m_changeItemSlotDescription</div><div class="ttdef"><b>Definition</b> NewItemWindow.cs:19</div></div>
+<div class="ttc" id="aclass_new_item_window_html_ae3b2cd06a2d554fe86f2d340cb55c0e3"><div class="ttname"><a href="#ae3b2cd06a2d554fe86f2d340cb55c0e3">NewItemWindow.m_createItemSlotList</a></div><div class="ttdeci">CreateItemSlotList m_createItemSlotList</div><div class="ttdef"><b>Definition</b> NewItemWindow.cs:14</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d9e/class_new_item_window_ad183bec63c6a4bd4ab06429128ab810f_cgraph.png" border="0" usemap="#ad6/d9e/class_new_item_window_ad183bec63c6a4bd4ab06429128ab810f_cgraph" alt=""/></div>
@@ -374,9 +408,76 @@ NewItemWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a7dbb4bd0d8326442b7ad896895fd2995">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a> の <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html#l00065">65</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   66</span>    {</div>
+<div class="line"><span class="lineno">   67</span> </div>
+<div class="line"><span class="lineno">   68</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   69</span> </div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   71</span>        {</div>
+<div class="line"><span class="lineno">   72</span>           </div>
+<div class="line"><span class="lineno">   73</span>            <span class="comment">// ボタンを押すまで</span></div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">while</span> (cancelToken.IsCancellationRequested == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   75</span>            {</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>                await base.OnUpdate();</div>
+<div class="line"><span class="lineno">   78</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   79</span> </div>
+<div class="line"><span class="lineno">   80</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#abe109b0b285b2c696ffeb3da0a97bfaa">m_selectUIController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   81</span>                {</div>
+<div class="line"><span class="lineno">   82</span>                    Debug.LogError(<span class="stringliteral">&quot;SlotContorollerコンポーネントがアタッチされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   83</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   84</span>                }</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a17f4521b3c45cac847d9e55582cca354">m_changeItemSlotDescription</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   87</span>                {</div>
+<div class="line"><span class="lineno">   88</span>                    Debug.LogError(<span class="stringliteral">&quot;ChangeItemSlotDescriptionコンポーネントがアタッチされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   89</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   90</span>                }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>                <span class="comment">// ゲームを常に停止する</span></div>
+<div class="line"><span class="lineno">   94</span>                <a class="code hl_function" href="../../da/dc1/class_base_window.html#a785cd5968c10a476229d1df761ccd3ae">SetTimeScale</a>(0.0f);</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>                <span class="comment">// UIコントローラーの更新</span></div>
+<div class="line"><span class="lineno">   97</span>                <a class="code hl_variable" href="#abe109b0b285b2c696ffeb3da0a97bfaa">m_selectUIController</a>.<a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a807f9c965bdc2f43f19da12e4afa49e3">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>                <span class="comment">// 説明文の更新</span></div>
+<div class="line"><span class="lineno">  100</span>                <a class="code hl_variable" href="#a17f4521b3c45cac847d9e55582cca354">m_changeItemSlotDescription</a>.<a class="code hl_function" href="../../d1/dde/class_change_item_description.html#add800bb5c8e841af0e1e9365272e371e">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>                <span class="comment">// キャンセル</span></div>
+<div class="line"><span class="lineno">  103</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;Select&quot;</span>) ||</div>
+<div class="line"><span class="lineno">  104</span>                    <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;Cancel&quot;</span>))</div>
+<div class="line"><span class="lineno">  105</span>                {</div>
+<div class="line"><span class="lineno">  106</span>                    <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;Cancel&quot;</span>);</div>
+<div class="line"><span class="lineno">  107</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  108</span>                }</div>
+<div class="line"><span class="lineno">  109</span> </div>
+<div class="line"><span class="lineno">  110</span>                <span class="comment">// UIコントローラーの後処理</span></div>
+<div class="line"><span class="lineno">  111</span>                <a class="code hl_variable" href="#abe109b0b285b2c696ffeb3da0a97bfaa">m_selectUIController</a>.<a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a4c693b99fa30040236b1b5cccf671e4b">OnLateUpdate</a>();</div>
+<div class="line"><span class="lineno">  112</span> </div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>                await UniTask.DelayFrame(1);</div>
+<div class="line"><span class="lineno">  115</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>            }</div>
+<div class="line"><span class="lineno">  118</span>        }</div>
+<div class="line"><span class="lineno">  119</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">  120</span>        {</div>
+<div class="line"><span class="lineno">  121</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">  122</span>        }</div>
+<div class="line"><span class="lineno">  123</span>    }</div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43ac"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a></div><div class="ttdeci">InputActionMapTypes</div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:7</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_base_window_html_a785cd5968c10a476229d1df761ccd3ae"><div class="ttname"><a href="../../da/dc1/class_base_window.html#a785cd5968c10a476229d1df761ccd3ae">BaseWindow.SetTimeScale</a></div><div class="ttdeci">void SetTimeScale(float _timeScale)</div><div class="ttdef"><b>Definition</b> BaseWindow.cs:297</div></div>
+<div class="ttc" id="aclass_change_item_description_html_add800bb5c8e841af0e1e9365272e371e"><div class="ttname"><a href="../../d1/dde/class_change_item_description.html#add800bb5c8e841af0e1e9365272e371e">ChangeItemDescription.OnUpdate</a></div><div class="ttdeci">virtual void OnUpdate()</div><div class="ttdef"><b>Definition</b> ChangeItemDescription.cs:196</div></div>
+<div class="ttc" id="aclass_new_item_window_html_abe109b0b285b2c696ffeb3da0a97bfaa"><div class="ttname"><a href="#abe109b0b285b2c696ffeb3da0a97bfaa">NewItemWindow.m_selectUIController</a></div><div class="ttdeci">SelectUIController m_selectUIController</div><div class="ttdef"><b>Definition</b> NewItemWindow.cs:24</div></div>
+<div class="ttc" id="aclass_player_input_manager_html"><div class="ttname"><a href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a></div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:15</div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a4c693b99fa30040236b1b5cccf671e4b"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a4c693b99fa30040236b1b5cccf671e4b">SelectUIController.OnLateUpdate</a></div><div class="ttdeci">virtual void OnLateUpdate()</div><div class="ttdef"><b>Definition</b> SelectUIController.cs:206</div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a807f9c965bdc2f43f19da12e4afa49e3"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a807f9c965bdc2f43f19da12e4afa49e3">SelectUIController.OnUpdate</a></div><div class="ttdeci">virtual void OnUpdate()</div><div class="ttdef"><b>Definition</b> SelectUIController.cs:191</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> SoundManager.cs:44</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d6/d9e/class_new_item_window_aa34ebf692699bb6f404d289a3142a7bb_cgraph.png" border="0" usemap="#ad6/d9e/class_new_item_window_aa34ebf692699bb6f404d289a3142a7bb_cgraph" alt=""/></div>
@@ -489,30 +590,6 @@ NewItemWindow 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a17f4521b3c45cac847d9e55582cca354" name="a17f4521b3c45cac847d9e55582cca354"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17f4521b3c45cac847d9e55582cca354">&#9670;&#160;</a></span>m_changeItemSlotDescription</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d1/dde/class_change_item_description.html">ChangeItemDescription</a> NewItemWindow.m_changeItemSlotDescription = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a> の <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="ae3b2cd06a2d554fe86f2d340cb55c0e3" name="ae3b2cd06a2d554fe86f2d340cb55c0e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae3b2cd06a2d554fe86f2d340cb55c0e3">&#9670;&#160;</a></span>m_createItemSlotList</h2>
 
@@ -533,7 +610,27 @@ NewItemWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a> の <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a17f4521b3c45cac847d9e55582cca354" name="a17f4521b3c45cac847d9e55582cca354"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17f4521b3c45cac847d9e55582cca354">&#9670;&#160;</a></span>m_changeItemSlotDescription</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/dde/class_change_item_description.html">ChangeItemDescription</a> NewItemWindow.m_changeItemSlotDescription = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -557,12 +654,10 @@ NewItemWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a> の <a class="el" href="../../d1/d53/_new_item_window_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/202_Lobby_UI/Window/NewItemWindow/<a class="el" href="../../d1/d53/_new_item_window_8cs_source.html">NewItemWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/202_Lobby_UI/Window/NewItemWindow/<a class="el" href="../../d1/d53/_new_item_window_8cs.html">NewItemWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

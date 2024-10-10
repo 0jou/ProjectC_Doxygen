@@ -50,13 +50,6 @@ Transform \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a2
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_condition_manager_a1bcb486d45857eb83f089e95ca378e3e}\index{ConditionManager@{ConditionManager}!AddCondition@{AddCondition}}
 \index{AddCondition@{AddCondition}!ConditionManager@{ConditionManager}}
@@ -65,31 +58,33 @@ Transform \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a2
 void Condition\+Manager.\+Add\+Condition (\begin{DoxyParamCaption}\item[{Game\+Object}]{condition\+Prefab}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!conditionPrefab.TryGetComponent(out\ \mbox{\hyperlink{interface_i_condition}{ICondition}}\ newCondition))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_condition}{ICondition}}\ condition;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.childCount;\ i++)}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ condition\ =\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.GetChild(i).GetComponent<\mbox{\hyperlink{interface_i_condition}{ICondition}}>();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(condition.\mbox{\hyperlink{interface_i_condition_af08ed32b6383a43d9e2970fedf8f5883}{ConditionID}}==\ newCondition.ConditionID)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ condition.\mbox{\hyperlink{interface_i_condition_adc48ca2ce7dd027e0c3e28faa92f6800}{ReplaceCondition}}(newCondition,\ \mbox{\hyperlink{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e}{m\_resistances}});}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 元からある状態異常と被ってなければ新規作成}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ Instantiate(conditionPrefab,\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}});}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d4/dfe/class_condition_manager_a1bcb486d45857eb83f089e95ca378e3e_cgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_condition_manager_aaa692aaf9dee8e4f9524f4f293191f68}\index{ConditionManager@{ConditionManager}!DamageMulti@{DamageMulti}}
-\index{DamageMulti@{DamageMulti}!ConditionManager@{ConditionManager}}
-\doxysubsubsection{\texorpdfstring{DamageMulti()}{DamageMulti()}}
-{\footnotesize\ttfamily \label{class_condition_manager_aaa692aaf9dee8e4f9524f4f293191f68} 
-float Condition\+Manager.\+Damage\+Multi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00052}{52}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d4/dfe/class_condition_manager_aaa692aaf9dee8e4f9524f4f293191f68_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_condition_manager_aef85c677ee032c3f0cdeb3c43f10967f}\index{ConditionManager@{ConditionManager}!IsCondition@{IsCondition}}
@@ -99,9 +94,49 @@ float Condition\+Manager.\+Damage\+Multi (\begin{DoxyParamCaption}{}{}\end{DoxyP
 bool Condition\+Manager.\+Is\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482}{Condition\+ID}}}]{id}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041\ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_condition}{ICondition}}\ condition;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.childCount;\ i++)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ condition\ =\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.GetChild(i).GetComponent<\mbox{\hyperlink{interface_i_condition}{ICondition}}>();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition.\mbox{\hyperlink{interface_i_condition_af08ed32b6383a43d9e2970fedf8f5883}{ConditionID}}\ ==\ \textcolor{keywordtype}{id})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00040}{40}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_condition_manager_aaa692aaf9dee8e4f9524f4f293191f68}\index{ConditionManager@{ConditionManager}!DamageMulti@{DamageMulti}}
+\index{DamageMulti@{DamageMulti}!ConditionManager@{ConditionManager}}
+\doxysubsubsection{\texorpdfstring{DamageMulti()}{DamageMulti()}}
+{\footnotesize\ttfamily \label{class_condition_manager_aaa692aaf9dee8e4f9524f4f293191f68} 
+float Condition\+Manager.\+Damage\+Multi (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ damageMulti\ =\ 1f;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_condition}{ICondition}}\ condition;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.childCount;\ i++)}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ condition\ =\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.GetChild(i).GetComponent<\mbox{\hyperlink{interface_i_condition}{ICondition}}>();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!condition.\mbox{\hyperlink{interface_i_condition_a74f30e9560632cc6d4fac6bdf54c06f5}{IsEffective}}())\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ damageMulti\ +=\ condition.\mbox{\hyperlink{interface_i_condition_a55fbef593ec4c8b71d8d747a5929ee99}{DamageMulti}}(\mbox{\hyperlink{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e}{m\_resistances}})\ -\/\ 1.0f;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ damageMulti;}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/dfe/class_condition_manager_aaa692aaf9dee8e4f9524f4f293191f68_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_condition_manager_a0e41ffbab2b99e03301920c343b972c4}\index{ConditionManager@{ConditionManager}!Start@{Start}}
 \index{Start@{Start}!ConditionManager@{ConditionManager}}
 \doxysubsubsection{\texorpdfstring{Start()}{Start()}}
@@ -109,9 +144,13 @@ bool Condition\+Manager.\+Is\+Condition (\begin{DoxyParamCaption}\item[{\mbox{\h
 void Condition\+Manager.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ TryGetComponent(out\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}});}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_condition_manager_a3a17cd3e16b4962c5904b226894d4bd1}{m\_owner}}\ =\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.root.gameObject;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00067}{67}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_condition_manager_a141ed6ab45b6f1dc7da5e49d916e69ea}\index{ConditionManager@{ConditionManager}!Update@{Update}}
 \index{Update@{Update}!ConditionManager@{ConditionManager}}
 \doxysubsubsection{\texorpdfstring{Update()}{Update()}}
@@ -119,9 +158,23 @@ void Condition\+Manager.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 void Condition\+Manager.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ childrenNum\ =\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.childCount;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{interface_i_condition}{ICondition}}\ condition;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ childrenNum\ -\/\ 1;\ i\ >=\ 0;\ -\/-\/i)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ condition\ =\ \mbox{\hyperlink{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}{m\_myTransform}}.GetChild(i).GetComponent<\mbox{\hyperlink{interface_i_condition}{ICondition}}>();}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (condition\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!condition.\mbox{\hyperlink{interface_i_condition_a74f30e9560632cc6d4fac6bdf54c06f5}{IsEffective}}())}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(condition.\mbox{\hyperlink{interface_i_condition_af80cd262533632ad05674554e9e3a976}{Owner}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00073}{73}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -132,15 +185,11 @@ void Condition\+Manager.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}\index{ConditionManager@{ConditionManager}!m\_myTransform@{m\_myTransform}}
-\index{m\_myTransform@{m\_myTransform}!ConditionManager@{ConditionManager}}
-\doxysubsubsection{\texorpdfstring{m\_myTransform}{m\_myTransform}}
-{\footnotesize\ttfamily \label{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527} 
-Transform Condition\+Manager.\+m\+\_\+my\+Transform\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00017}{17}} 行目に定義があります。
+\Hypertarget{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e}\index{ConditionManager@{ConditionManager}!m\_resistances@{m\_resistances}}
+\index{m\_resistances@{m\_resistances}!ConditionManager@{ConditionManager}}
+\doxysubsubsection{\texorpdfstring{m\_resistances}{m\_resistances}}
+{\footnotesize\ttfamily \label{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e} 
+\mbox{\hyperlink{namespace_condition_info_a369ee4cbf7a2389bdaf531b0f94387a4}{Condition\+Info.\+Resistance\+ID}} \mbox{[}$\,$\mbox{]} Condition\+Manager.\+m\+\_\+resistances = new \mbox{\hyperlink{namespace_condition_info_a369ee4cbf7a2389bdaf531b0f94387a4}{Condition\+Info.\+Resistance\+ID}}\mbox{[}(int)\mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482af1bddc6d99b2fe69116d582c4d4d2f70}{Condition\+Info.\+Condition\+ID.\+Condition\+Type\+Num}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_condition_manager_a3a17cd3e16b4962c5904b226894d4bd1}\index{ConditionManager@{ConditionManager}!m\_owner@{m\_owner}}
 \index{m\_owner@{m\_owner}!ConditionManager@{ConditionManager}}
@@ -148,19 +197,11 @@ Transform Condition\+Manager.\+m\+\_\+my\+Transform\hspace{0.3cm}{\ttfamily [pri
 {\footnotesize\ttfamily \label{class_condition_manager_a3a17cd3e16b4962c5904b226894d4bd1} 
 Game\+Object Condition\+Manager.\+m\+\_\+owner\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00016}{16}} 行目に定義があります。
-
-\Hypertarget{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e}\index{ConditionManager@{ConditionManager}!m\_resistances@{m\_resistances}}
-\index{m\_resistances@{m\_resistances}!ConditionManager@{ConditionManager}}
-\doxysubsubsection{\texorpdfstring{m\_resistances}{m\_resistances}}
-{\footnotesize\ttfamily \label{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e} 
-\mbox{\hyperlink{namespace_condition_info_a369ee4cbf7a2389bdaf531b0f94387a4}{Condition\+Info.\+Resistance\+ID}} \mbox{[}$\,$\mbox{]} Condition\+Manager.\+m\+\_\+resistances = new \mbox{\hyperlink{namespace_condition_info_a369ee4cbf7a2389bdaf531b0f94387a4}{Condition\+Info.\+Resistance\+ID}}\mbox{[}(int)\mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482af1bddc6d99b2fe69116d582c4d4d2f70}{Condition\+Info.\+Condition\+ID.\+Condition\+Type\+Num}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00013}{13}} 行目に定義があります。
+\Hypertarget{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527}\index{ConditionManager@{ConditionManager}!m\_myTransform@{m\_myTransform}}
+\index{m\_myTransform@{m\_myTransform}!ConditionManager@{ConditionManager}}
+\doxysubsubsection{\texorpdfstring{m\_myTransform}{m\_myTransform}}
+{\footnotesize\ttfamily \label{class_condition_manager_a88b1e1755d9b42ef22a61168e9a21527} 
+Transform Condition\+Manager.\+m\+\_\+my\+Transform\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -172,9 +213,10 @@ Game\+Object Condition\+Manager.\+m\+\_\+owner\hspace{0.3cm}{\ttfamily [private]
 \mbox{\hyperlink{namespace_condition_info_a369ee4cbf7a2389bdaf531b0f94387a4}{Condition\+Info.\+Resistance\+ID}} \mbox{[}$\,$\mbox{]} Condition\+Manager.\+Resistances\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_condition_manager_acf1678e04ad5b3813b23a59d6e49b74e}{m\_resistances}};\ \}\ \}}
 
- \mbox{\hyperlink{_condition_manager_8cs_source}{Condition\+Manager.\+cs}} の \mbox{\hyperlink{_condition_manager_8cs_source_l00014}{14}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

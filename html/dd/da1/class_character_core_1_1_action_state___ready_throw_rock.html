@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -160,10 +160,7 @@ CharacterCore.ActionState_ReadyThrowRock 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a> の <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html#l00168">168</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a37751cbab3af37816ac1c6e6dbc8aca5" name="a37751cbab3af37816ac1c6e6dbc8aca5"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a37751cbab3af37816ac1c6e6dbc8aca5">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -188,9 +185,17 @@ CharacterCore.ActionState_ReadyThrowRock 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a> の <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html#l00177">177</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  178</span>        {</div>
+<div class="line"><span class="lineno">  179</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">  180</span>            Core.m_isNoKnockBack = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  181</span> </div>
+<div class="line"><span class="lineno">  182</span>            <span class="keywordflow">if</span> (Core.transform.TryGetComponent(out ArborFSM arbor))</div>
+<div class="line"><span class="lineno">  183</span>            {</div>
+<div class="line"><span class="lineno">  184</span>                <a class="code hl_variable" href="#aab46ab3912932a9ad689a8c693b01ad0">m_target</a> = arbor.parameterContainer.GetTransform(<span class="stringliteral">&quot;Target&quot;</span>);</div>
+<div class="line"><span class="lineno">  185</span>            }</div>
+<div class="line"><span class="lineno">  186</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_aab46ab3912932a9ad689a8c693b01ad0"><div class="ttname"><a href="#aab46ab3912932a9ad689a8c693b01ad0">CharacterCore.ActionState_ReadyThrowRock.m_target</a></div><div class="ttdeci">Transform m_target</div><div class="ttdef"><b>Definition</b> EnemyState.cs:175</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a52e98158f170afe2625d31fe8903e1a9" name="a52e98158f170afe2625d31fe8903e1a9"></a>
@@ -217,36 +222,24 @@ CharacterCore.ActionState_ReadyThrowRock 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a> の <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html#l00188">188</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">  189</span>        {</div>
+<div class="line"><span class="lineno">  190</span>            base.OnFixedUpdate();</div>
+<div class="line"><span class="lineno">  191</span>            <span class="keywordflow">if</span> (Core.m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime &gt; m_startHomingProgress)</div>
+<div class="line"><span class="lineno">  192</span>            {</div>
+<div class="line"><span class="lineno">  193</span>                <span class="keywordflow">if</span> (!m_target) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  194</span>                Vector3 rotVec = m_target.transform.position - Core.transform.position;</div>
+<div class="line"><span class="lineno">  195</span>                rotVec.y = 0.0f;</div>
+<div class="line"><span class="lineno">  196</span>                rotVec.Normalize();</div>
+<div class="line"><span class="lineno">  197</span>                rotVec = Core.transform.forward + rotVec * <a class="code hl_variable" href="#a8d7bf02eb2fd6ffd549b3aa20466a953">m_rateHoming</a>;</div>
+<div class="line"><span class="lineno">  198</span>                Core.SetRotateToTarget(rotVec);</div>
+<div class="line"><span class="lineno">  199</span>            }</div>
+<div class="line"><span class="lineno">  200</span>            Core.Move(0.0f);</div>
+<div class="line"><span class="lineno">  201</span>        }</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_a8d7bf02eb2fd6ffd549b3aa20466a953"><div class="ttname"><a href="#a8d7bf02eb2fd6ffd549b3aa20466a953">CharacterCore.ActionState_ReadyThrowRock.m_rateHoming</a></div><div class="ttdeci">float m_rateHoming</div><div class="ttdef"><b>Definition</b> EnemyState.cs:173</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a8d7bf02eb2fd6ffd549b3aa20466a953" name="a8d7bf02eb2fd6ffd549b3aa20466a953"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8d7bf02eb2fd6ffd549b3aa20466a953">&#9670;&#160;</a></span>m_rateHoming</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float CharacterCore.ActionState_ReadyThrowRock.m_rateHoming</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a> の <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html#l00173">173</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="a4719460ca80ff7d62ba3d8e1946365af" name="a4719460ca80ff7d62ba3d8e1946365af"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4719460ca80ff7d62ba3d8e1946365af">&#9670;&#160;</a></span>m_startHomingProgress</h2>
 
@@ -267,7 +260,27 @@ CharacterCore.ActionState_ReadyThrowRock 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a> の <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html#l00171">171</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a8d7bf02eb2fd6ffd549b3aa20466a953" name="a8d7bf02eb2fd6ffd549b3aa20466a953"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8d7bf02eb2fd6ffd549b3aa20466a953">&#9670;&#160;</a></span>m_rateHoming</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float CharacterCore.ActionState_ReadyThrowRock.m_rateHoming</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -291,12 +304,10 @@ CharacterCore.ActionState_ReadyThrowRock 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a> の <a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html#l00175">175</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d9/d8f/_enemy_state_8cs_source.html">EnemyState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d9/d8f/_enemy_state_8cs.html">EnemyState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

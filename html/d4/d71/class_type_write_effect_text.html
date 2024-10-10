@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -142,10 +142,7 @@ TypeWriteEffectText 連携図</div>
 <tr class="memitem:a1df9d7b7861ce288d62f0f8916990ff6 inherit pro_attribs_class_base_effect_text" id="r_a1df9d7b7861ce288d62f0f8916990ff6"><td class="memItemLeft" align="right" valign="top">CancellationTokenSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> = null</td></tr>
 <tr class="separator:a1df9d7b7861ce288d62f0f8916990ff6 inherit pro_attribs_class_base_effect_text"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d9/dcd/_type_write_effect_text_8cs_source.html">TypeWriteEffectText.cs</a> の <a class="el" href="../../d9/dcd/_type_write_effect_text_8cs_source.html#l00007">7</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a3683feedf285c0182fa4a1b65cf4947e" name="a3683feedf285c0182fa4a1b65cf4947e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3683feedf285c0182fa4a1b65cf4947e">&#9670;&#160;</a></span>PlayEffect()</h2>
 
@@ -170,13 +167,59 @@ TypeWriteEffectText 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d4/da3/class_base_effect_text.html#aadce15a0e231a50af928fdc27f36c3b0">BaseEffectText</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d9/dcd/_type_write_effect_text_8cs_source.html">TypeWriteEffectText.cs</a> の <a class="el" href="../../d9/dcd/_type_write_effect_text_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   18</span>    {</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#ab4548b299eec92fdcbf52996e101b9a0">m_text</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   20</span>        {</div>
+<div class="line"><span class="lineno">   21</span>            Debug.LogError(<span class="stringliteral">&quot;対象のテキストが存在しません&quot;</span>);</div>
+<div class="line"><span class="lineno">   22</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   23</span>        }</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   26</span>        {</div>
+<div class="line"><span class="lineno">   27</span>            <span class="comment">// 操作中に再度この処理が通った場合既に通っている処理をキャンセルする</span></div>
+<div class="line"><span class="lineno">   28</span>            <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a>.Cancel();</div>
+<div class="line"><span class="lineno">   29</span>        }</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> = <span class="keyword">new</span>();</div>
+<div class="line"><span class="lineno">   32</span>        var ct = <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a>.Token;</div>
+<div class="line"><span class="lineno">   33</span> </div>
+<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   35</span>        {</div>
+<div class="line"><span class="lineno">   36</span>            <span class="comment">// 一度保持</span></div>
+<div class="line"><span class="lineno">   37</span>            <span class="keywordtype">string</span> displayText = <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#ab4548b299eec92fdcbf52996e101b9a0">m_text</a>.text;</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>            <span class="comment">// 初期化</span></div>
+<div class="line"><span class="lineno">   40</span>            m_text.text = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; displayText.Length; ++i)</div>
+<div class="line"><span class="lineno">   43</span>            {</div>
+<div class="line"><span class="lineno">   44</span>                <span class="comment">// テキストを一文ずつ追加</span></div>
+<div class="line"><span class="lineno">   45</span>                <span class="keywordtype">string</span> text = m_text.text + displayText[i];</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>                m_text.text = text;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>                <span class="comment">// 待機</span></div>
+<div class="line"><span class="lineno">   50</span>                await UniTask.DelayFrame(<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a36c38699f1494993e46668566180081d">m_delay</a>);</div>
+<div class="line"><span class="lineno">   51</span>                ct.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   52</span>            }</div>
+<div class="line"><span class="lineno">   53</span> </div>
+<div class="line"><span class="lineno">   54</span>            ct.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        }</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   58</span>        {</div>
+<div class="line"><span class="lineno">   59</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   60</span>        }</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="ttc" id="aclass_base_effect_text_html_a1df9d7b7861ce288d62f0f8916990ff6"><div class="ttname"><a href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">BaseEffectText.m_cancellationToken</a></div><div class="ttdeci">CancellationTokenSource m_cancellationToken</div><div class="ttdef"><b>Definition</b> BaseEffectText.cs:46</div></div>
+<div class="ttc" id="aclass_base_effect_text_html_a36c38699f1494993e46668566180081d"><div class="ttname"><a href="../../d4/da3/class_base_effect_text.html#a36c38699f1494993e46668566180081d">BaseEffectText.m_delay</a></div><div class="ttdeci">int m_delay</div><div class="ttdef"><b>Definition</b> BaseEffectText.cs:29</div></div>
+<div class="ttc" id="aclass_base_effect_text_html_ab4548b299eec92fdcbf52996e101b9a0"><div class="ttname"><a href="../../d4/da3/class_base_effect_text.html#ab4548b299eec92fdcbf52996e101b9a0">BaseEffectText.m_text</a></div><div class="ttdeci">TextMeshProUGUI m_text</div><div class="ttdef"><b>Definition</b> BaseEffectText.cs:23</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Text/EffectText/<a class="el" href="../../d9/dcd/_type_write_effect_text_8cs_source.html">TypeWriteEffectText.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Text/EffectText/<a class="el" href="../../d9/dcd/_type_write_effect_text_8cs.html">TypeWriteEffectText.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -34,13 +34,6 @@ Game\+Object \mbox{\hyperlink{class_base_gangster_state_behaviour_a57901b1d3322d
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source}{Base\+Gangster\+State\+Behaviour.\+cs}} の \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}\index{BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}!GetGangsterData@{GetGangsterData}}
 \index{GetGangsterData@{GetGangsterData}!BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}}
@@ -53,14 +46,61 @@ Game\+Object \mbox{\hyperlink{class_base_gangster_state_behaviour_a57901b1d3322d
 客情報が存在するかのチェック 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ヤンキー情報が存在するか確認}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_gangster_state_behaviour_a40885abec5d56788018a50fe4c045479}{m\_flexibleGangsterDataVariable}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ヤンキー情報がシリアライズされていません"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_gangster_state_behaviour_a40885abec5d56788018a50fe4c045479}{m\_flexibleGangsterDataVariable}}.value.GangsterData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ヤンキー情報が存在しません"{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 存在する}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a40885abec5d56788018a50fe4c045479}{m\_flexibleGangsterDataVariable}}.value.GangsterData;}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source}{Base\+Gangster\+State\+Behaviour.\+cs}} の \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source_l00027}{27}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d4/d7b/class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}\index{BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}!SetTransition@{SetTransition}}
+\index{SetTransition@{SetTransition}!BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}}
+\doxysubsubsection{\texorpdfstring{SetTransition()}{SetTransition()}}
+{\footnotesize\ttfamily \label{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7} 
+void Base\+Gangster\+State\+Behaviour.\+Set\+Transition (\begin{DoxyParamCaption}\item[{State\+Link}]{\+\_\+link}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_link\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}次のシーンがセットされていません"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ Transition(\_link);}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d7b/class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_base_gangster_state_behaviour_a57901b1d3322d80700150fc145bef18b}\index{BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}!GetRootGameObject@{GetRootGameObject}}
@@ -70,26 +110,20 @@ Game\+Object \mbox{\hyperlink{class_base_gangster_state_behaviour_a57901b1d3322d
 Game\+Object Base\+Gangster\+State\+Behaviour.\+Get\+Root\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064\ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ Transform\ currentTransform\ =\ transform;}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートオブジェクトに到達するまで親を辿る}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (currentTransform.parent\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ currentTransform\ =\ currentTransform.parent;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ currentTransform.gameObject;}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source}{Base\+Gangster\+State\+Behaviour.\+cs}} の \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source_l00063}{63}} 行目に定義があります。
-
-\Hypertarget{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}\index{BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}!SetTransition@{SetTransition}}
-\index{SetTransition@{SetTransition}!BaseGangsterStateBehaviour@{BaseGangsterStateBehaviour}}
-\doxysubsubsection{\texorpdfstring{SetTransition()}{SetTransition()}}
-{\footnotesize\ttfamily \label{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7} 
-void Base\+Gangster\+State\+Behaviour.\+Set\+Transition (\begin{DoxyParamCaption}\item[{State\+Link}]{\+\_\+link}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source}{Base\+Gangster\+State\+Behaviour.\+cs}} の \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source_l00050}{50}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d4/d7b/class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7_icgraph}
-\end{center}
-\end{figure}
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -98,10 +132,6 @@ void Base\+Gangster\+State\+Behaviour.\+Set\+Transition (\begin{DoxyParamCaption
 \doxysubsubsection{\texorpdfstring{m\_flexibleGangsterDataVariable}{m\_flexibleGangsterDataVariable}}
 {\footnotesize\ttfamily \label{class_base_gangster_state_behaviour_a40885abec5d56788018a50fe4c045479} 
 \mbox{\hyperlink{class_flexible_gangster_data_variable}{Flexible\+Gangster\+Data\+Variable}} Base\+Gangster\+State\+Behaviour.\+m\+\_\+flexible\+Gangster\+Data\+Variable = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source}{Base\+Gangster\+State\+Behaviour.\+cs}} の \mbox{\hyperlink{_base_gangster_state_behaviour_8cs_source_l00016}{16}} 行目に定義があります。
 
 
 

@@ -50,13 +50,6 @@ virtual void \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_condition_state_8cs_source}{Condition\+State.\+cs}} の \mbox{\hyperlink{_condition_state_8cs_source_l00162}{162}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_character_core_1_1_action_state___stun_a59b83214d0d6c4a5a6556b272f87b80d}\index{CharacterCore.ActionState\_Stun@{CharacterCore.ActionState\_Stun}!OnEnter@{OnEnter}}
 \index{OnEnter@{OnEnter}!CharacterCore.ActionState\_Stun@{CharacterCore.ActionState\_Stun}}
@@ -69,9 +62,24 @@ override void Character\+Core.\+Action\+State\+\_\+\+Stun.\+On\+Enter (\begin{Do
 \mbox{\hyperlink{class_character_core_1_1_action_state___base_a48c88438ec535f030782a32ef0d59161}{Character\+Core.\+Action\+State\+\_\+\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ダッシュエフェクトを止める（山本）}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_dashEffect\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_dashEffect.Stop();}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_rushAttackEffect)}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ラッシュ攻撃エフェクトを非アクティブにする}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_rushAttackEffect?.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_state_8cs_source}{Condition\+State.\+cs}} の \mbox{\hyperlink{_condition_state_8cs_source_l00164}{164}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_character_core_1_1_action_state___stun_aaf90afea34bb87df184a2cdac8252327}\index{CharacterCore.ActionState\_Stun@{CharacterCore.ActionState\_Stun}!OnFixedUpdate@{OnFixedUpdate}}
 \index{OnFixedUpdate@{OnFixedUpdate}!CharacterCore.ActionState\_Stun@{CharacterCore.ActionState\_Stun}}
 \doxysubsubsection{\texorpdfstring{OnFixedUpdate()}{OnFixedUpdate()}}
@@ -83,9 +91,13 @@ override void Character\+Core.\+Action\+State\+\_\+\+Stun.\+On\+Fixed\+Update (\
 \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnFixedUpdate();}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_condition_state_8cs_source}{Condition\+State.\+cs}} の \mbox{\hyperlink{_condition_state_8cs_source_l00181}{181}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

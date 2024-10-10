@@ -44,13 +44,6 @@ Game\+Object \mbox{\hyperlink{class_animator_event_create_object_in_parent_a17bd
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_animator_event_create_story_skill_effect_8cs_source}{Animator\+Event\+Create\+Story\+Skill\+Effect.\+cs}} の \mbox{\hyperlink{_animator_event_create_story_skill_effect_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_animator_event_create_story_skill_effect_a1db95085c0d2f3ae6d60f98b3307e43c}\index{AnimatorEventCreateStorySkillEffect@{AnimatorEventCreateStorySkillEffect}!OnEvent@{OnEvent}}
 \index{OnEvent@{OnEvent}!AnimatorEventCreateStorySkillEffect@{AnimatorEventCreateStorySkillEffect}}
@@ -59,9 +52,29 @@ Game\+Object \mbox{\hyperlink{class_animator_event_create_object_in_parent_a17bd
 override void Animator\+Event\+Create\+Story\+Skill\+Effect.\+On\+Event (\begin{DoxyParamCaption}\item[{Animator}]{animator}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ base.OnEvent(animator);}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_animator_event_create_object_in_parent_a17bd41b89052bb7ee156e66d1295116f}{m\_createdInstance}}.TryGetComponent(out\ \mbox{\hyperlink{class_stop_effect}{StopEffect}}\ stopEffect))}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ var\ charaCore\ =\ animator.transform.GetComponentInParent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(charaCore)}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_story_skill_info_a496d88cb4016f418cd837e2c1fc6b8aa}{StorySkill\_ID}}\ \textcolor{keywordtype}{id}\ =\ charaCore.PlayerSkillsParameters.GetStorySkill\_ID;}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_story_skill_data}{StorySkillData}}\ storySkillData=\ \mbox{\hyperlink{class_story_skill_data_base_manager}{StorySkillDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetStorySkillData(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ stopEffect.WaitTime\ =\ storySkillData.\mbox{\hyperlink{class_story_skill_data_aa05f760b566c2fb480bfa4f166b185cc}{StayTime}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//プレイヤーの監視用の変数に代入する}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (charaCore.PlayerSkillsParameters)}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ charaCore.PlayerSkillsParameters.ObserveEffect\ =\ \mbox{\hyperlink{class_animator_event_create_object_in_parent_a17bd41b89052bb7ee156e66d1295116f}{m\_createdInstance}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_animator_event_create_story_skill_effect_8cs_source}{Animator\+Event\+Create\+Story\+Skill\+Effect.\+cs}} の \mbox{\hyperlink{_animator_event_create_story_skill_effect_8cs_source_l00010}{10}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

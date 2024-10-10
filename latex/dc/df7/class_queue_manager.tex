@@ -69,14 +69,50 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00024}{24}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
+\Hypertarget{class_queue_manager_a1283b555e382d46784ee0facc20bec8a}\index{QueueManager@{QueueManager}!IsQueue@{IsQueue}}
+\index{IsQueue@{IsQueue}!QueueManager@{QueueManager}}
+\doxysubsubsection{\texorpdfstring{IsQueue()}{IsQueue()}}
+{\footnotesize\ttfamily \label{class_queue_manager_a1283b555e382d46784ee0facc20bec8a} 
+bool Queue\+Manager.\+Is\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00072\ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 待機列に存在していれば}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}.Count\ >\ 0)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de}\index{QueueManager@{QueueManager}!IsInQueue@{IsInQueue}}
+\index{IsInQueue@{IsInQueue}!QueueManager@{QueueManager}}
+\doxysubsubsection{\texorpdfstring{IsInQueue()}{IsInQueue()}}
+{\footnotesize\ttfamily \label{class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de} 
+bool Queue\+Manager.\+Is\+In\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00085\ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}.Count\ >=\ \mbox{\hyperlink{class_queue_manager_ae2aa2f1398ed9b95f15f272c1c29976b}{m\_maxQueue}})}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/df7/class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_queue_manager_a0a44a608b4f368624f6e1e9eb654cf15}\index{QueueManager@{QueueManager}!AddQueueObject@{AddQueueObject}}
 \index{AddQueueObject@{AddQueueObject}!QueueManager@{QueueManager}}
 \doxysubsubsection{\texorpdfstring{AddQueueObject()}{AddQueueObject()}}
@@ -88,9 +124,38 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 待ち列に引数オブジェクトを追加 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_object\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de}{IsInQueue}}())\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_data}{QueueData}}\ data\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトをセット}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ data.Object\ =\ \_object;}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトが削除されれば自動でリストから取り除く}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ data.\mbox{\hyperlink{class_queue_data_a465770346bf49e8ea971b0006ad8d589}{Object}}.OnDestroyAsObservable().Subscribe(\_\ =>}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 取り除く}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_manager_a25cab11ce87ae6678fe79c0709e5e1d1}{RemoveQueueObject}}(data);}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ ).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 待ち列にオブジェクトを追加}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}.Add(data);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 更新する}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_manager_a67404d802ed71d1f576b7f938b0ce392}{UpdateQueueData}}(data,\ \mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}.Count\ -\/\ 1);}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00127\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00098}{98}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -98,47 +163,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \includegraphics[width=350pt]{dc/df7/class_queue_manager_a0a44a608b4f368624f6e1e9eb654cf15_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_queue_manager_a71ef7ca8d1a98455e79c20dfe2d9aa0e}\index{QueueManager@{QueueManager}!GetQueueObject@{GetQueueObject}}
-\index{GetQueueObject@{GetQueueObject}!QueueManager@{QueueManager}}
-\doxysubsubsection{\texorpdfstring{GetQueueObject()}{GetQueueObject()}}
-{\footnotesize\ttfamily \label{class_queue_manager_a71ef7ca8d1a98455e79c20dfe2d9aa0e} 
-\mbox{\hyperlink{class_queue_data}{Queue\+Data}} Queue\+Manager.\+Get\+Queue\+Object (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+object}{}\end{DoxyParamCaption})}
-
-
-
-引数と一致するデータを取得する 
-
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00151}{151}} 行目に定義があります。
-
-\Hypertarget{class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de}\index{QueueManager@{QueueManager}!IsInQueue@{IsInQueue}}
-\index{IsInQueue@{IsInQueue}!QueueManager@{QueueManager}}
-\doxysubsubsection{\texorpdfstring{IsInQueue()}{IsInQueue()}}
-{\footnotesize\ttfamily \label{class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de} 
-bool Queue\+Manager.\+Is\+In\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00084}{84}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dc/df7/class_queue_manager_a6cd626b119ba8a96adcb9f5c81c7e4de_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_queue_manager_a1283b555e382d46784ee0facc20bec8a}\index{QueueManager@{QueueManager}!IsQueue@{IsQueue}}
-\index{IsQueue@{IsQueue}!QueueManager@{QueueManager}}
-\doxysubsubsection{\texorpdfstring{IsQueue()}{IsQueue()}}
-{\footnotesize\ttfamily \label{class_queue_manager_a1283b555e382d46784ee0facc20bec8a} 
-bool Queue\+Manager.\+Is\+Queue (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00071}{71}} 行目に定義があります。
-
 \Hypertarget{class_queue_manager_a25cab11ce87ae6678fe79c0709e5e1d1}\index{QueueManager@{QueueManager}!RemoveQueueObject@{RemoveQueueObject}}
 \index{RemoveQueueObject@{RemoveQueueObject}!QueueManager@{QueueManager}}
 \doxysubsubsection{\texorpdfstring{RemoveQueueObject()}{RemoveQueueObject()}}
@@ -150,9 +174,18 @@ void Queue\+Manager.\+Remove\+Queue\+Object (\begin{DoxyParamCaption}\item[{\mbo
 待ち列リストから引数オブジェクトを取り除く 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 取り除く}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}.Remove(\_data);}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 更新する}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_manager_aad4495a86ccae792abad7b660a4a6e2c}{UpdateQueueDataList}}();}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00134}{134}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -167,6 +200,33 @@ void Queue\+Manager.\+Remove\+Queue\+Object (\begin{DoxyParamCaption}\item[{\mbo
 \includegraphics[width=350pt]{dc/df7/class_queue_manager_a25cab11ce87ae6678fe79c0709e5e1d1_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_queue_manager_a71ef7ca8d1a98455e79c20dfe2d9aa0e}\index{QueueManager@{QueueManager}!GetQueueObject@{GetQueueObject}}
+\index{GetQueueObject@{GetQueueObject}!QueueManager@{QueueManager}}
+\doxysubsubsection{\texorpdfstring{GetQueueObject()}{GetQueueObject()}}
+{\footnotesize\ttfamily \label{class_queue_manager_a71ef7ca8d1a98455e79c20dfe2d9aa0e} 
+\mbox{\hyperlink{class_queue_data}{Queue\+Data}} Queue\+Manager.\+Get\+Queue\+Object (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+object}{}\end{DoxyParamCaption})}
+
+
+
+引数と一致するデータを取得する 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00152\ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}})}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null}\ ||\ data.Object\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.Object\ ==\ \_object)}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+
+\end{DoxyCode}
 \Hypertarget{class_queue_manager_a67404d802ed71d1f576b7f938b0ce392}\index{QueueManager@{QueueManager}!UpdateQueueData@{UpdateQueueData}}
 \index{UpdateQueueData@{UpdateQueueData}!QueueManager@{QueueManager}}
 \doxysubsubsection{\texorpdfstring{UpdateQueueData()}{UpdateQueueData()}}
@@ -174,9 +234,31 @@ void Queue\+Manager.\+Remove\+Queue\+Object (\begin{DoxyParamCaption}\item[{\mbo
 void Queue\+Manager.\+Update\+Queue\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_queue_data}{Queue\+Data}}}]{\+\_\+data}{, }\item[{int}]{\+\_\+number}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168\ \ \ \ \ \{}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c}{m\_headPoint}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}先端のポイントが存在しません"{}});}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ var\ pos\ =\ \mbox{\hyperlink{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c}{m\_headPoint}}.transform.position;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ var\ backword\ =\ -\/\mbox{\hyperlink{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c}{m\_headPoint}}.transform.forward;}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 先頭から何番目に位置するか}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \_data.HeadNumber\ =\ \_number;}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 目的地を更新}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \_data.Destination\ =\ pos\ -\/\ (backword\ *\ \mbox{\hyperlink{class_queue_manager_ae48dbe0af578f9cd83bd0feecfbb6656}{m\_distance}}\ *\ (\_data.HeadNumber\ +\ 1));}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 更新されたことを記憶}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \_data.IsUpdate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00188\ }
+\DoxyCodeLine{00189\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00167}{167}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -195,9 +277,22 @@ void Queue\+Manager.\+Update\+Queue\+Data\+List (\begin{DoxyParamCaption}{}{}\en
 目的地を計算する 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00198\ \ \ \ \ \{}
+\DoxyCodeLine{00199\ }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 座標を更新}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}.Count;\ ++i)}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}{m\_queueDataList}}[i];}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_queue_manager_a67404d802ed71d1f576b7f938b0ce392}{UpdateQueueData}}(data,\ i);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00210\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00197}{197}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -215,25 +310,17 @@ void Queue\+Manager.\+Update\+Queue\+Data\+List (\begin{DoxyParamCaption}{}{}\en
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_queue_manager_ae48dbe0af578f9cd83bd0feecfbb6656}\index{QueueManager@{QueueManager}!m\_distance@{m\_distance}}
-\index{m\_distance@{m\_distance}!QueueManager@{QueueManager}}
-\doxysubsubsection{\texorpdfstring{m\_distance}{m\_distance}}
-{\footnotesize\ttfamily \label{class_queue_manager_ae48dbe0af578f9cd83bd0feecfbb6656} 
-float Queue\+Manager.\+m\+\_\+distance = 1.\+0f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00054}{54}} 行目に定義があります。
-
 \Hypertarget{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c}\index{QueueManager@{QueueManager}!m\_headPoint@{m\_headPoint}}
 \index{m\_headPoint@{m\_headPoint}!QueueManager@{QueueManager}}
 \doxysubsubsection{\texorpdfstring{m\_headPoint}{m\_headPoint}}
 {\footnotesize\ttfamily \label{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c} 
 Game\+Object Queue\+Manager.\+m\+\_\+head\+Point = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00033}{33}} 行目に定義があります。
+\Hypertarget{class_queue_manager_ae48dbe0af578f9cd83bd0feecfbb6656}\index{QueueManager@{QueueManager}!m\_distance@{m\_distance}}
+\index{m\_distance@{m\_distance}!QueueManager@{QueueManager}}
+\doxysubsubsection{\texorpdfstring{m\_distance}{m\_distance}}
+{\footnotesize\ttfamily \label{class_queue_manager_ae48dbe0af578f9cd83bd0feecfbb6656} 
+float Queue\+Manager.\+m\+\_\+distance = 1.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_queue_manager_ae2aa2f1398ed9b95f15f272c1c29976b}\index{QueueManager@{QueueManager}!m\_maxQueue@{m\_maxQueue}}
 \index{m\_maxQueue@{m\_maxQueue}!QueueManager@{QueueManager}}
@@ -241,19 +328,11 @@ Game\+Object Queue\+Manager.\+m\+\_\+head\+Point = null\hspace{0.3cm}{\ttfamily 
 {\footnotesize\ttfamily \label{class_queue_manager_ae2aa2f1398ed9b95f15f272c1c29976b} 
 int Queue\+Manager.\+m\+\_\+max\+Queue = 5\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00061}{61}} 行目に定義があります。
-
 \Hypertarget{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a}\index{QueueManager@{QueueManager}!m\_queueDataList@{m\_queueDataList}}
 \index{m\_queueDataList@{m\_queueDataList}!QueueManager@{QueueManager}}
 \doxysubsubsection{\texorpdfstring{m\_queueDataList}{m\_queueDataList}}
 {\footnotesize\ttfamily \label{class_queue_manager_a0552cf6a5eaf86ee1ac2bcd0476c051a} 
 List$<$\mbox{\hyperlink{class_queue_data}{Queue\+Data}}$>$ Queue\+Manager.\+m\+\_\+queue\+Data\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00066}{66}} 行目に定義があります。
 
 
 
@@ -265,9 +344,21 @@ List$<$\mbox{\hyperlink{class_queue_data}{Queue\+Data}}$>$ Queue\+Manager.\+m\+\
 Game\+Object Queue\+Manager.\+Head\+Point\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c}{m\_headPoint}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ポイントが存在しません"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_queue_manager_a74469e7c1fdac0aca4082954a2dcb83c}{m\_headPoint}};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_queue_manager_8cs_source}{Queue\+Manager.\+cs}} の \mbox{\hyperlink{_queue_manager_8cs_source_l00036}{36}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

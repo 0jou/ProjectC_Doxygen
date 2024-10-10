@@ -42,31 +42,7 @@ readonly \mbox{\hyperlink{class_visual_field_judgment}{Visual\+Field\+Judgment}}
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00012}{12}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_search_enemy_a531ad926cd989b17f544f225c07a01c3}\index{SearchEnemy@{SearchEnemy}!OnConditionCheck@{OnConditionCheck}}
-\index{OnConditionCheck@{OnConditionCheck}!SearchEnemy@{SearchEnemy}}
-\doxysubsubsection{\texorpdfstring{OnConditionCheck()}{OnConditionCheck()}}
-{\footnotesize\ttfamily \label{class_search_enemy_a531ad926cd989b17f544f225c07a01c3} 
-override bool Search\+Enemy.\+On\+Condition\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00031}{31}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d9/df1/class_search_enemy_a531ad926cd989b17f544f225c07a01c3_cgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_search_enemy_a5fc12a57d964a0dc4114f5505defd580}\index{SearchEnemy@{SearchEnemy}!OnStart@{OnStart}}
 \index{OnStart@{OnStart}!SearchEnemy@{SearchEnemy}}
 \doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
@@ -74,61 +50,71 @@ override bool Search\+Enemy.\+On\+Condition\+Check (\begin{DoxyParamCaption}{}{}
 override void Search\+Enemy.\+On\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80}{m\_myCollider}}\ =\ transform.root.GetComponentInChildren<Collider>();}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80}{m\_myCollider}})}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Colliderが見つかりませんでした"{}}\ +\ gameObject.name);}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00022}{22}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_search_enemy_a531ad926cd989b17f544f225c07a01c3}\index{SearchEnemy@{SearchEnemy}!OnConditionCheck@{OnConditionCheck}}
+\index{OnConditionCheck@{OnConditionCheck}!SearchEnemy@{SearchEnemy}}
+\doxysubsubsection{\texorpdfstring{OnConditionCheck()}{OnConditionCheck()}}
+{\footnotesize\ttfamily \label{class_search_enemy_a531ad926cd989b17f544f225c07a01c3} 
+override bool Search\+Enemy.\+On\+Condition\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ nearestDist\ =\ \mbox{\hyperlink{class_search_enemy_a1ebbc2ae490b3f81344b975feb344ca6}{m\_chaseParameters}}.value.SearchCharacterDist;}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isFind\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ chara\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<CharacterCore>}}.Instance.\mbox{\hyperlink{interface_i_meta_a_i_a5538533e130a7a180b806f1937f65447}{ObjectList}})}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.GroupNo\ ==\ \mbox{\hyperlink{_i_damageable_8cs_ae72376123e0488a173f6626e9fc0ba47}{CharacterGroupNumber}}.enemy)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (chara.Status.m\_hp.Value\ <=\ 0.0f)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80}{m\_myCollider}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_search_enemy_a0018aedf7238c859998e3ebf1ed69d4b}{m\_judgment}}.\mbox{\hyperlink{class_visual_field_judgment_a15798d3e4db220c8c3813c1176f73c98}{SearchTarget}}(chara.gameObject,\ \mbox{\hyperlink{class_search_enemy_a1ebbc2ae490b3f81344b975feb344ca6}{m\_chaseParameters}}.value,\ \mbox{\hyperlink{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80}{m\_myCollider}},\ ref\ nearestDist))}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_search_enemy_aee552c6410bc3ff03a22e458f7435a5b}{m\_targetParameter}}.parameter.SetTransform(chara.transform);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//敵のCharacterCoreを参照}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_search_enemy_ab06b27acef26072bd0927264b690e7d8}{m\_targetCore}}.parameter.SetComponent(chara);}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isFind\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isFind;}
+\DoxyCodeLine{00061\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/df1/class_search_enemy_a531ad926cd989b17f544f225c07a01c3_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_search_enemy_a1ebbc2ae490b3f81344b975feb344ca6}\index{SearchEnemy@{SearchEnemy}!m\_chaseParameters@{m\_chaseParameters}}
-\index{m\_chaseParameters@{m\_chaseParameters}!SearchEnemy@{SearchEnemy}}
-\doxysubsubsection{\texorpdfstring{m\_chaseParameters}{m\_chaseParameters}}
-{\footnotesize\ttfamily \label{class_search_enemy_a1ebbc2ae490b3f81344b975feb344ca6} 
-\mbox{\hyperlink{class_flexible_chase_parameters}{Flexible\+Chase\+Parameters}} Search\+Enemy.\+m\+\_\+chase\+Parameters\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00016}{16}} 行目に定義があります。
-
-\Hypertarget{class_search_enemy_a0018aedf7238c859998e3ebf1ed69d4b}\index{SearchEnemy@{SearchEnemy}!m\_judgment@{m\_judgment}}
-\index{m\_judgment@{m\_judgment}!SearchEnemy@{SearchEnemy}}
-\doxysubsubsection{\texorpdfstring{m\_judgment}{m\_judgment}}
-{\footnotesize\ttfamily \label{class_search_enemy_a0018aedf7238c859998e3ebf1ed69d4b} 
-readonly \mbox{\hyperlink{class_visual_field_judgment}{Visual\+Field\+Judgment}} Search\+Enemy.\+m\+\_\+judgment = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00020}{20}} 行目に定義があります。
-
-\Hypertarget{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80}\index{SearchEnemy@{SearchEnemy}!m\_myCollider@{m\_myCollider}}
-\index{m\_myCollider@{m\_myCollider}!SearchEnemy@{SearchEnemy}}
-\doxysubsubsection{\texorpdfstring{m\_myCollider}{m\_myCollider}}
-{\footnotesize\ttfamily \label{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80} 
-Collider Search\+Enemy.\+m\+\_\+my\+Collider\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00019}{19}} 行目に定義があります。
-
 \Hypertarget{class_search_enemy_a30935b778fdb58883655ce12ec34a1e8}\index{SearchEnemy@{SearchEnemy}!m\_searchFlags@{m\_searchFlags}}
 \index{m\_searchFlags@{m\_searchFlags}!SearchEnemy@{SearchEnemy}}
 \doxysubsubsection{\texorpdfstring{m\_searchFlags}{m\_searchFlags}}
 {\footnotesize\ttfamily \label{class_search_enemy_a30935b778fdb58883655ce12ec34a1e8} 
 \mbox{\hyperlink{class_flexible_search_type}{Flexible\+Search\+Type}} Search\+Enemy.\+m\+\_\+search\+Flags\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00014}{14}} 行目に定義があります。
-
-\Hypertarget{class_search_enemy_ab06b27acef26072bd0927264b690e7d8}\index{SearchEnemy@{SearchEnemy}!m\_targetCore@{m\_targetCore}}
-\index{m\_targetCore@{m\_targetCore}!SearchEnemy@{SearchEnemy}}
-\doxysubsubsection{\texorpdfstring{m\_targetCore}{m\_targetCore}}
-{\footnotesize\ttfamily \label{class_search_enemy_ab06b27acef26072bd0927264b690e7d8} 
-Flexible\+Component Search\+Enemy.\+m\+\_\+target\+Core\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00017}{17}} 行目に定義があります。
 
 \Hypertarget{class_search_enemy_aee552c6410bc3ff03a22e458f7435a5b}\index{SearchEnemy@{SearchEnemy}!m\_targetParameter@{m\_targetParameter}}
 \index{m\_targetParameter@{m\_targetParameter}!SearchEnemy@{SearchEnemy}}
@@ -136,9 +122,29 @@ Flexible\+Component Search\+Enemy.\+m\+\_\+target\+Core\hspace{0.3cm}{\ttfamily 
 {\footnotesize\ttfamily \label{class_search_enemy_aee552c6410bc3ff03a22e458f7435a5b} 
 Flexible\+Transform Search\+Enemy.\+m\+\_\+target\+Parameter\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_search_enemy_a1ebbc2ae490b3f81344b975feb344ca6}\index{SearchEnemy@{SearchEnemy}!m\_chaseParameters@{m\_chaseParameters}}
+\index{m\_chaseParameters@{m\_chaseParameters}!SearchEnemy@{SearchEnemy}}
+\doxysubsubsection{\texorpdfstring{m\_chaseParameters}{m\_chaseParameters}}
+{\footnotesize\ttfamily \label{class_search_enemy_a1ebbc2ae490b3f81344b975feb344ca6} 
+\mbox{\hyperlink{class_flexible_chase_parameters}{Flexible\+Chase\+Parameters}} Search\+Enemy.\+m\+\_\+chase\+Parameters\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_search_enemy_ab06b27acef26072bd0927264b690e7d8}\index{SearchEnemy@{SearchEnemy}!m\_targetCore@{m\_targetCore}}
+\index{m\_targetCore@{m\_targetCore}!SearchEnemy@{SearchEnemy}}
+\doxysubsubsection{\texorpdfstring{m\_targetCore}{m\_targetCore}}
+{\footnotesize\ttfamily \label{class_search_enemy_ab06b27acef26072bd0927264b690e7d8} 
+Flexible\+Component Search\+Enemy.\+m\+\_\+target\+Core\hspace{0.3cm}{\ttfamily [private]}}
 
- \mbox{\hyperlink{_search_enemy_8cs_source}{Search\+Enemy.\+cs}} の \mbox{\hyperlink{_search_enemy_8cs_source_l00015}{15}} 行目に定義があります。
+\Hypertarget{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80}\index{SearchEnemy@{SearchEnemy}!m\_myCollider@{m\_myCollider}}
+\index{m\_myCollider@{m\_myCollider}!SearchEnemy@{SearchEnemy}}
+\doxysubsubsection{\texorpdfstring{m\_myCollider}{m\_myCollider}}
+{\footnotesize\ttfamily \label{class_search_enemy_add7f63234e19dbe3f2b200d8fd003d80} 
+Collider Search\+Enemy.\+m\+\_\+my\+Collider\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_search_enemy_a0018aedf7238c859998e3ebf1ed69d4b}\index{SearchEnemy@{SearchEnemy}!m\_judgment@{m\_judgment}}
+\index{m\_judgment@{m\_judgment}!SearchEnemy@{SearchEnemy}}
+\doxysubsubsection{\texorpdfstring{m\_judgment}{m\_judgment}}
+{\footnotesize\ttfamily \label{class_search_enemy_a0018aedf7238c859998e3ebf1ed69d4b} 
+readonly \mbox{\hyperlink{class_visual_field_judgment}{Visual\+Field\+Judgment}} Search\+Enemy.\+m\+\_\+judgment = new()\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

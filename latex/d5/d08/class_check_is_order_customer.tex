@@ -58,13 +58,6 @@ Game\+Object \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!Check@{Check}}
 \index{Check@{Check}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
@@ -73,9 +66,30 @@ Game\+Object \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18
 void Check\+Is\+Order\+Customer.\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理が存在すれば}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.TargetOrderFoodData\ !=\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ この状態であれば}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.WaitFood\ ||}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Eat\ ||}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.AngryExit\ ||}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Exit)}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsOrder())}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_check_is_order_customer_accc764572917d36509291aaf96dbba62}{m\_stateLink}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00020}{20}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -97,9 +111,11 @@ void Check\+Is\+Order\+Customer.\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 override void Check\+Is\+Order\+Customer.\+On\+State\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00046}{46}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_check_is_order_customer_aaf3f6d0ab838837ded9f2bdfa99ee65c}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateBegin@{OnStateBegin}}
 \index{OnStateBegin@{OnStateBegin}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
 \doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
@@ -107,9 +123,11 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Awake (\begin{DoxyParamCap
 override void Check\+Is\+Order\+Customer.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00051}{51}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_check_is_order_customer_ac9c6f66cec56314580e72a6ebd332e72}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateEnd@{OnStateEnd}}
 \index{OnStateEnd@{OnStateEnd}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
 \doxysubsubsection{\texorpdfstring{OnStateEnd()}{OnStateEnd()}}
@@ -117,19 +135,11 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Begin (\begin{DoxyParamCap
 override void Check\+Is\+Order\+Customer.\+On\+State\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00056}{56}} 行目に定義があります。
-
-\Hypertarget{class_check_is_order_customer_a85c52f067afd2a295c346c051f20c9df}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateLateUpdate@{OnStateLateUpdate}}
-\index{OnStateLateUpdate@{OnStateLateUpdate}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
-\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
-{\footnotesize\ttfamily \label{class_check_is_order_customer_a85c52f067afd2a295c346c051f20c9df} 
-override void Check\+Is\+Order\+Customer.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00067}{67}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_check_is_order_customer_a0620fbf2e2738e7280608c2fd4cabc8a}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateUpdate@{OnStateUpdate}}
 \index{OnStateUpdate@{OnStateUpdate}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
 \doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
@@ -137,9 +147,12 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Late\+Update (\begin{DoxyP
 override void Check\+Is\+Order\+Customer.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}{Check}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00061}{61}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -147,6 +160,18 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Update (\begin{DoxyParamCa
 \includegraphics[width=350pt]{d5/d08/class_check_is_order_customer_a0620fbf2e2738e7280608c2fd4cabc8a_cgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_check_is_order_customer_a85c52f067afd2a295c346c051f20c9df}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateLateUpdate@{OnStateLateUpdate}}
+\index{OnStateLateUpdate@{OnStateLateUpdate}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
+\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
+{\footnotesize\ttfamily \label{class_check_is_order_customer_a85c52f067afd2a295c346c051f20c9df} 
+override void Check\+Is\+Order\+Customer.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \}}
+
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -155,10 +180,6 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Update (\begin{DoxyParamCa
 \doxysubsubsection{\texorpdfstring{m\_stateLink}{m\_stateLink}}
 {\footnotesize\ttfamily \label{class_check_is_order_customer_accc764572917d36509291aaf96dbba62} 
 State\+Link Check\+Is\+Order\+Customer.\+m\+\_\+state\+Link = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_check_is_order_customer_8cs_source}{Check\+Is\+Order\+Customer.\+cs}} の \mbox{\hyperlink{_check_is_order_customer_8cs_source_l00016}{16}} 行目に定義があります。
 
 
 

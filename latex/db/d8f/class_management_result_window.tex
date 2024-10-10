@@ -2,8 +2,7 @@
 \hypertarget{class_management_result_window}{}\label{class_management_result_window}\index{ManagementResultWindow@{ManagementResultWindow}}
 
 
-Management\+Result\+Window の継承関係図
-\nopagebreak
+Management\+Result\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Management\+Result\+Window の継承関係図
 \end{figure}
 
 
-Management\+Result\+Window 連携図
-\nopagebreak
+Management\+Result\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -129,13 +127,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_management_result_window_a8a26e6acd99557f49440fd7d79698092}\index{ManagementResultWindow@{ManagementResultWindow}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!ManagementResultWindow@{ManagementResultWindow}}
@@ -148,11 +139,35 @@ override async Uni\+Task Management\+Result\+Window.\+On\+Initialize (\begin{Dox
 \mbox{\hyperlink{class_base_window_a20cbaa0d7aa0d1224e85a0c07b88d6cf}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_result_window_a34744b7f19678ef1ae34939533d0ce45}{m\_changeProvideFoodDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeProvideFoodDescriptionがシリアライズされていません"{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnInitialize();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文を初期化}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_result_window_a34744b7f19678ef1ae34939533d0ce45}{m\_changeProvideFoodDescription}}.\mbox{\hyperlink{class_change_result_description_ad816096e54a6a415b20e0f112f8622e8}{OnInitialize}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00035}{35}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -170,11 +185,35 @@ override async Uni\+Task Management\+Result\+Window.\+On\+Update (\begin{DoxyPar
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_result_window_adf3e9a89f6b2f82405e162a232dbaf30}{Transition}}())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00062}{62}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -188,19 +227,42 @@ override async Uni\+Task Management\+Result\+Window.\+On\+Update (\begin{DoxyPar
 bool Management\+Result\+Window.\+Transition (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00092\ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_result_window_a9102a87ed7f558af88926c2073067852}{m\_sceneTransitionManager}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}シーン変更クラスがシリアライズされていません"{}});}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_result_window_a4c151f14411fcad14617fe71b4a45b3d}{m\_inputActionButton}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}InputActionButtonがシリアライズされていません"{}});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択したボタンがスタートなら}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_result_window_a4c151f14411fcad14617fe71b4a45b3d}{m\_inputActionButton}}.\mbox{\hyperlink{class_input_action_button_a847c561b8a3deeea260be80e698bd342}{IsInputActionTrriger}}())}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Todo:ここでシーン遷移}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =\ \mbox{\hyperlink{class_management_result_window_a9102a87ed7f558af88926c2073067852}{m\_sceneTransitionManager}}.\mbox{\hyperlink{class_scene_transition_manager_a57a46b1860572b2f20db95dc3ca6f2ec}{SceneChange}}();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00091}{91}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{db/d8f/class_management_result_window_adf3e9a89f6b2f82405e162a232dbaf30_cgraph}
 \end{center}
 \end{figure}
-被呼び出し関係図\+:
-\nopagebreak
+被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -216,29 +278,17 @@ bool Management\+Result\+Window.\+Transition (\begin{DoxyParamCaption}{}{}\end{D
 {\footnotesize\ttfamily \label{class_management_result_window_a34744b7f19678ef1ae34939533d0ce45} 
 \mbox{\hyperlink{class_change_result_description}{Change\+Result\+Description}} Management\+Result\+Window.\+m\+\_\+change\+Provide\+Food\+Description = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00016}{16}} 行目に定義があります。
-
-\Hypertarget{class_management_result_window_a4c151f14411fcad14617fe71b4a45b3d}\index{ManagementResultWindow@{ManagementResultWindow}!m\_inputActionButton@{m\_inputActionButton}}
-\index{m\_inputActionButton@{m\_inputActionButton}!ManagementResultWindow@{ManagementResultWindow}}
-\doxysubsubsection{\texorpdfstring{m\_inputActionButton}{m\_inputActionButton}}
-{\footnotesize\ttfamily \label{class_management_result_window_a4c151f14411fcad14617fe71b4a45b3d} 
-\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Management\+Result\+Window.\+m\+\_\+input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00028}{28}} 行目に定義があります。
-
 \Hypertarget{class_management_result_window_a9102a87ed7f558af88926c2073067852}\index{ManagementResultWindow@{ManagementResultWindow}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
 \index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!ManagementResultWindow@{ManagementResultWindow}}
 \doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
 {\footnotesize\ttfamily \label{class_management_result_window_a9102a87ed7f558af88926c2073067852} 
 \mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Management\+Result\+Window.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_management_result_window_8cs_source}{Management\+Result\+Window.\+cs}} の \mbox{\hyperlink{_management_result_window_8cs_source_l00022}{22}} 行目に定義があります。
+\Hypertarget{class_management_result_window_a4c151f14411fcad14617fe71b4a45b3d}\index{ManagementResultWindow@{ManagementResultWindow}!m\_inputActionButton@{m\_inputActionButton}}
+\index{m\_inputActionButton@{m\_inputActionButton}!ManagementResultWindow@{ManagementResultWindow}}
+\doxysubsubsection{\texorpdfstring{m\_inputActionButton}{m\_inputActionButton}}
+{\footnotesize\ttfamily \label{class_management_result_window_a4c151f14411fcad14617fe71b4a45b3d} 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Management\+Result\+Window.\+m\+\_\+input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

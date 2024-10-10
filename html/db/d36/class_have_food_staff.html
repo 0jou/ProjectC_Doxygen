@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -165,10 +165,7 @@ HaveFoodStaff 連携図</div>
 <tr class="memitem:aed961e5db883c46e1719ce2a07385b58 inherit pro_attribs_class_base_staff_state_behaviour" id="r_aed961e5db883c46e1719ce2a07385b58"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d8/d1e/class_flexible_staff_data_variable.html">FlexibleStaffDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d6/d9c/class_base_staff_state_behaviour.html#aed961e5db883c46e1719ce2a07385b58">m_flexibleStaffDataVariable</a> = null</td></tr>
 <tr class="separator:aed961e5db883c46e1719ce2a07385b58 inherit pro_attribs_class_base_staff_state_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ad7e72cc357533ab02f5bbc6906536976" name="ad7e72cc357533ab02f5bbc6906536976"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad7e72cc357533ab02f5bbc6906536976">&#9670;&#160;</a></span>Have()</h2>
 
@@ -191,9 +188,21 @@ HaveFoodStaff 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   20</span>    {</div>
+<div class="line"><span class="lineno">   21</span>        <span class="comment">// スタッフデータが存在するか確認</span></div>
+<div class="line"><span class="lineno">   22</span>        var data = <a class="code hl_function" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811">GetStaffData</a>();</div>
+<div class="line"><span class="lineno">   23</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   24</span> </div>
+<div class="line"><span class="lineno">   25</span>        <span class="comment">// 料理データが存在するか確認</span></div>
+<div class="line"><span class="lineno">   26</span>        var targetFoodData = data.TargetOrderFoodData;</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">if</span> (targetFoodData == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   28</span> </div>
+<div class="line"><span class="lineno">   29</span>        <span class="comment">// ターゲット料理の座標を持つ座標に更新</span></div>
+<div class="line"><span class="lineno">   30</span>        Vector3 pos = data.GetHavePos();</div>
+<div class="line"><span class="lineno">   31</span>        targetFoodData.transform.position = pos;</div>
+<div class="line"><span class="lineno">   32</span>    }</div>
+<div class="ttc" id="aclass_base_staff_state_behaviour_html_aecf7aba8c57332905715f924eacef811"><div class="ttname"><a href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811">BaseStaffStateBehaviour.GetStaffData</a></div><div class="ttdeci">StaffData GetStaffData()</div><div class="ttdoc">スタッフ情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> BaseStaffStateBehaviour.cs:28</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d36/class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976_cgraph.png" border="0" usemap="#adb/d36/class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976_cgraph" alt=""/></div>
@@ -211,123 +220,6 @@ HaveFoodStaff 連携図</div>
 <area shape="rect" title=" " alt="" coords="256,5,399,32"/>
 <area shape="rect" href="../../db/d36/class_have_food_staff.html#a26c7d51c53b57f550cfda157c18f6dba" title=" " alt="" coords="5,5,208,32"/>
 <area shape="poly" title=" " alt="" coords="240,21,208,21,208,16,240,16"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a0774cb71abda90f916124449903708fc" name="a0774cb71abda90f916124449903708fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0774cb71abda90f916124449903708fc">&#9670;&#160;</a></span>OnStateAwake()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void HaveFoodStaff.OnStateAwake </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00041">41</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aa51674d29511982ddbd693cc3dc59b09" name="aa51674d29511982ddbd693cc3dc59b09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa51674d29511982ddbd693cc3dc59b09">&#9670;&#160;</a></span>OnStateBegin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void HaveFoodStaff.OnStateBegin </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00046">46</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../db/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph.png" border="0" usemap="#adb/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph" alt=""/></div>
-<map name="adb/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph" id="adb/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,199,40"/>
-<area shape="rect" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811" title="スタッフ情報が存在するかのチェック" alt="" coords="247,5,418,48"/>
-<area shape="poly" title=" " alt="" coords="199,24,231,24,231,29,199,29"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="ac7ce440afe766626dec190ad52d32ae5" name="ac7ce440afe766626dec190ad52d32ae5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7ce440afe766626dec190ad52d32ae5">&#9670;&#160;</a></span>OnStateEnd()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void HaveFoodStaff.OnStateEnd </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00061">61</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a8916d2092738354efdff67a57114e901" name="a8916d2092738354efdff67a57114e901"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8916d2092738354efdff67a57114e901">&#9670;&#160;</a></span>OnStateLateUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void HaveFoodStaff.OnStateLateUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00074">74</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a26c7d51c53b57f550cfda157c18f6dba" name="a26c7d51c53b57f550cfda157c18f6dba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a26c7d51c53b57f550cfda157c18f6dba">&#9670;&#160;</a></span>OnStateUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void HaveFoodStaff.OnStateUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00066">66</a> 行目に定義があります。</p>
-<div class="dynheader">
-呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../db/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph.png" border="0" usemap="#adb/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph" alt=""/></div>
-<map name="adb/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph" id="adb/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,208,40"/>
-<area shape="rect" href="../../db/d36/class_have_food_staff.html#ad7e72cc357533ab02f5bbc6906536976" title=" " alt="" coords="256,13,399,40"/>
-<area shape="poly" title=" " alt="" coords="208,24,240,24,240,29,208,29"/>
-<area shape="rect" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811" title="スタッフ情報が存在するかのチェック" alt="" coords="447,5,618,48"/>
-<area shape="poly" title=" " alt="" coords="400,24,431,24,431,29,400,29"/>
 </map>
 </div>
 
@@ -355,13 +247,146 @@ HaveFoodStaff 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a0774cb71abda90f916124449903708fc" name="a0774cb71abda90f916124449903708fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0774cb71abda90f916124449903708fc">&#9670;&#160;</a></span>OnStateAwake()</h2>
 
-<p class="definition"> <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a> の <a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html#l00035">35</a> 行目に定義があります。</p>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void HaveFoodStaff.OnStateAwake </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   42</span>    {</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa51674d29511982ddbd693cc3dc59b09" name="aa51674d29511982ddbd693cc3dc59b09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa51674d29511982ddbd693cc3dc59b09">&#9670;&#160;</a></span>OnStateBegin()</h2>
 
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void HaveFoodStaff.OnStateBegin </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
+<div class="line"><span class="lineno">   48</span>        <span class="comment">// スタッフデータが存在するか確認</span></div>
+<div class="line"><span class="lineno">   49</span>        var data = <a class="code hl_function" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811">GetStaffData</a>();</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>        <span class="comment">// 料理データが存在するか確認</span></div>
+<div class="line"><span class="lineno">   53</span>        var targetFoodData = data.TargetOrderFoodData;</div>
+<div class="line"><span class="lineno">   54</span>        <span class="keywordflow">if</span> (targetFoodData == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        <span class="comment">// 移動状態に変更</span></div>
+<div class="line"><span class="lineno">   57</span>        targetFoodData.CurrentOrderFoodState = <a class="code hl_enumeration" href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodState</a>.Carry;</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+<div class="ttc" id="anamespace_order_food_info_html_a09ddb2386d4c25716e924f4a3a6e31fa"><div class="ttname"><a href="../../d4/d3b/namespace_order_food_info.html#a09ddb2386d4c25716e924f4a3a6e31fa">OrderFoodInfo.OrderFoodState</a></div><div class="ttdeci">OrderFoodState</div><div class="ttdef"><b>Definition</b> OrderFoodData.cs:13</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph.png" border="0" usemap="#adb/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph" alt=""/></div>
+<map name="adb/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph" id="adb/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,199,40"/>
+<area shape="rect" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811" title="スタッフ情報が存在するかのチェック" alt="" coords="247,5,418,48"/>
+<area shape="poly" title=" " alt="" coords="199,24,231,24,231,29,199,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ac7ce440afe766626dec190ad52d32ae5" name="ac7ce440afe766626dec190ad52d32ae5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7ce440afe766626dec190ad52d32ae5">&#9670;&#160;</a></span>OnStateEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void HaveFoodStaff.OnStateEnd </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   62</span>    {</div>
+<div class="line"><span class="lineno">   63</span>    }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a26c7d51c53b57f550cfda157c18f6dba" name="a26c7d51c53b57f550cfda157c18f6dba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a26c7d51c53b57f550cfda157c18f6dba">&#9670;&#160;</a></span>OnStateUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void HaveFoodStaff.OnStateUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   67</span>    {</div>
+<div class="line"><span class="lineno">   68</span>        <span class="comment">// 料理を持つ</span></div>
+<div class="line"><span class="lineno">   69</span>        <a class="code hl_function" href="#ad7e72cc357533ab02f5bbc6906536976">Have</a>();</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>    }</div>
+<div class="ttc" id="aclass_have_food_staff_html_ad7e72cc357533ab02f5bbc6906536976"><div class="ttname"><a href="#ad7e72cc357533ab02f5bbc6906536976">HaveFoodStaff.Have</a></div><div class="ttdeci">void Have()</div><div class="ttdef"><b>Definition</b> HaveFoodStaff.cs:19</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../db/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph.png" border="0" usemap="#adb/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph" alt=""/></div>
+<map name="adb/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph" id="adb/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph">
+<area shape="rect" title=" " alt="" coords="5,13,208,40"/>
+<area shape="rect" href="../../db/d36/class_have_food_staff.html#ad7e72cc357533ab02f5bbc6906536976" title=" " alt="" coords="256,13,399,40"/>
+<area shape="poly" title=" " alt="" coords="208,24,240,24,240,29,208,29"/>
+<area shape="rect" href="../../d6/d9c/class_base_staff_state_behaviour.html#aecf7aba8c57332905715f924eacef811" title="スタッフ情報が存在するかのチェック" alt="" coords="447,5,618,48"/>
+<area shape="poly" title=" " alt="" coords="400,24,431,24,431,29,400,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a8916d2092738354efdff67a57114e901" name="a8916d2092738354efdff67a57114e901"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8916d2092738354efdff67a57114e901">&#9670;&#160;</a></span>OnStateLateUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void HaveFoodStaff.OnStateLateUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   75</span>    {</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Staff/Scripts/Arbor3/State/<a class="el" href="../../d2/d17/_have_food_staff_8cs_source.html">HaveFoodStaff.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Staff/Scripts/Arbor3/State/<a class="el" href="../../d2/d17/_have_food_staff_8cs.html">HaveFoodStaff.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

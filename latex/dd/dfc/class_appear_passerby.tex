@@ -42,14 +42,27 @@ Game\+Object \mbox{\hyperlink{class_appear_passerby_a1f75f9a9d6d506f0300e6c8f13b
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00005}{5}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
+\Hypertarget{class_appear_passerby_a315bd4bd94f9d4e0445624fbc4eea4ff}\index{AppearPasserby@{AppearPasserby}!Update@{Update}}
+\index{Update@{Update}!AppearPasserby@{AppearPasserby}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_appear_passerby_a315bd4bd94f9d4e0445624fbc4eea4ff} 
+void Appear\+Passerby.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_passerby_aa9f898cca2881cb426284f761c316c5b}{Appear}}();}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dd/dfc/class_appear_passerby_a315bd4bd94f9d4e0445624fbc4eea4ff_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_appear_passerby_aa9f898cca2881cb426284f761c316c5b}\index{AppearPasserby@{AppearPasserby}!Appear@{Appear}}
 \index{Appear@{Appear}!AppearPasserby@{AppearPasserby}}
 \doxysubsubsection{\texorpdfstring{Appear()}{Appear()}}
@@ -57,9 +70,24 @@ Game\+Object \mbox{\hyperlink{class_appear_passerby_a1f75f9a9d6d506f0300e6c8f13b
 void Appear\+Passerby.\+Appear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_passerby_aa7da84f15aed6e1e28045eff13881225}{m\_appearDelayCount}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appear_passerby_a3668de40422c245055aca63e710f64dc}{m\_appearDelay}}\ <\ \mbox{\hyperlink{class_appear_passerby_aa7da84f15aed6e1e28045eff13881225}{m\_appearDelayCount}})}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期値に戻す}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_passerby_aa7da84f15aed6e1e28045eff13881225}{m\_appearDelayCount}}\ -\/=\ \mbox{\hyperlink{class_appear_passerby_a3668de40422c245055aca63e710f64dc}{m\_appearDelay}};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 通行人を作成}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_appear_passerby_a1dbf17d4685f8bf3900edb86786e91d4}{CreateObject}}();}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00041}{41}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -81,9 +109,61 @@ void Appear\+Passerby.\+Appear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaptio
 void Appear\+Passerby.\+Create\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appear_passerby_a8a75a8dfab61d7831bcfda4ae9d8736a}{m\_appearPoint}}\ ==\ \textcolor{keyword}{null}\ ||\ \mbox{\hyperlink{class_appear_passerby_a1f75f9a9d6d506f0300e6c8f13bd42c8}{m\_exitPoint}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ポイントが存在しません"{}});}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ランダムで値を取得}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rand\ =\ Random.Range(0,\ \mbox{\hyperlink{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc}{m\_appearPrefabList}}.Count\ -\/\ 1);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc}{m\_appearPrefabList}}[rand]\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}シリアライズされているGameObjectがnullです"{}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ var\ pos\ =\ \mbox{\hyperlink{class_appear_passerby_a8a75a8dfab61d7831bcfda4ae9d8736a}{m\_appearPoint}}.transform.position;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ var\ rotate\ =\ \mbox{\hyperlink{class_appear_passerby_a8a75a8dfab61d7831bcfda4ae9d8736a}{m\_appearPoint}}.transform.rotation;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスを作成}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ var\ obj\ =\ Instantiate(\mbox{\hyperlink{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc}{m\_appearPrefabList}}[rand],\ pos,\ rotate);}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 通行人情報を更新}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ var\ data\ =\ obj.GetComponent<\mbox{\hyperlink{class_passerby_data}{PasserbyData}}>();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}通行人情報が存在しません"{}});}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 出口座標をセット}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ var\ exitPos\ =\ \mbox{\hyperlink{class_appear_passerby_a1f75f9a9d6d506f0300e6c8f13bd42c8}{m\_exitPoint}}.transform.position;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ data.ExitPos\ =\ exitPos;}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターモーターを更新する}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ var\ core\ =\ obj.GetComponent<\mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}>();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (core\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}キャラクターコントローラーが存在しません"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ core.\mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{SetPositionMotor}}(pos);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00112\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00060}{60}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -98,35 +178,20 @@ void Appear\+Passerby.\+Create\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyPar
 \includegraphics[width=350pt]{dd/dfc/class_appear_passerby_a1dbf17d4685f8bf3900edb86786e91d4_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_appear_passerby_a315bd4bd94f9d4e0445624fbc4eea4ff}\index{AppearPasserby@{AppearPasserby}!Update@{Update}}
-\index{Update@{Update}!AppearPasserby@{AppearPasserby}}
-\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
-{\footnotesize\ttfamily \label{class_appear_passerby_a315bd4bd94f9d4e0445624fbc4eea4ff} 
-void Appear\+Passerby.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00036}{36}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dd/dfc/class_appear_passerby_a315bd4bd94f9d4e0445624fbc4eea4ff_cgraph}
-\end{center}
-\end{figure}
 
 
 \doxysubsection{フィールド詳解}
+\Hypertarget{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc}\index{AppearPasserby@{AppearPasserby}!m\_appearPrefabList@{m\_appearPrefabList}}
+\index{m\_appearPrefabList@{m\_appearPrefabList}!AppearPasserby@{AppearPasserby}}
+\doxysubsubsection{\texorpdfstring{m\_appearPrefabList}{m\_appearPrefabList}}
+{\footnotesize\ttfamily \label{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc} 
+List$<$Game\+Object$>$ Appear\+Passerby.\+m\+\_\+appear\+Prefab\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{class_appear_passerby_a3668de40422c245055aca63e710f64dc}\index{AppearPasserby@{AppearPasserby}!m\_appearDelay@{m\_appearDelay}}
 \index{m\_appearDelay@{m\_appearDelay}!AppearPasserby@{AppearPasserby}}
 \doxysubsubsection{\texorpdfstring{m\_appearDelay}{m\_appearDelay}}
 {\footnotesize\ttfamily \label{class_appear_passerby_a3668de40422c245055aca63e710f64dc} 
 float Appear\+Passerby.\+m\+\_\+appear\+Delay = 10.\+0f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00018}{18}} 行目に定義があります。
 
 \Hypertarget{class_appear_passerby_aa7da84f15aed6e1e28045eff13881225}\index{AppearPasserby@{AppearPasserby}!m\_appearDelayCount@{m\_appearDelayCount}}
 \index{m\_appearDelayCount@{m\_appearDelayCount}!AppearPasserby@{AppearPasserby}}
@@ -134,39 +199,17 @@ float Appear\+Passerby.\+m\+\_\+appear\+Delay = 10.\+0f\hspace{0.3cm}{\ttfamily 
 {\footnotesize\ttfamily \label{class_appear_passerby_aa7da84f15aed6e1e28045eff13881225} 
 float Appear\+Passerby.\+m\+\_\+appear\+Delay\+Count = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00020}{20}} 行目に定義があります。
-
 \Hypertarget{class_appear_passerby_a8a75a8dfab61d7831bcfda4ae9d8736a}\index{AppearPasserby@{AppearPasserby}!m\_appearPoint@{m\_appearPoint}}
 \index{m\_appearPoint@{m\_appearPoint}!AppearPasserby@{AppearPasserby}}
 \doxysubsubsection{\texorpdfstring{m\_appearPoint}{m\_appearPoint}}
 {\footnotesize\ttfamily \label{class_appear_passerby_a8a75a8dfab61d7831bcfda4ae9d8736a} 
 Game\+Object Appear\+Passerby.\+m\+\_\+appear\+Point = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00026}{26}} 行目に定義があります。
-
-\Hypertarget{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc}\index{AppearPasserby@{AppearPasserby}!m\_appearPrefabList@{m\_appearPrefabList}}
-\index{m\_appearPrefabList@{m\_appearPrefabList}!AppearPasserby@{AppearPasserby}}
-\doxysubsubsection{\texorpdfstring{m\_appearPrefabList}{m\_appearPrefabList}}
-{\footnotesize\ttfamily \label{class_appear_passerby_a67babb380036dc1e4e1eda9cfea2f6fc} 
-List$<$Game\+Object$>$ Appear\+Passerby.\+m\+\_\+appear\+Prefab\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00012}{12}} 行目に定義があります。
-
 \Hypertarget{class_appear_passerby_a1f75f9a9d6d506f0300e6c8f13bd42c8}\index{AppearPasserby@{AppearPasserby}!m\_exitPoint@{m\_exitPoint}}
 \index{m\_exitPoint@{m\_exitPoint}!AppearPasserby@{AppearPasserby}}
 \doxysubsubsection{\texorpdfstring{m\_exitPoint}{m\_exitPoint}}
 {\footnotesize\ttfamily \label{class_appear_passerby_a1f75f9a9d6d506f0300e6c8f13bd42c8} 
 Game\+Object Appear\+Passerby.\+m\+\_\+exit\+Point = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_appear_passerby_8cs_source}{Appear\+Passerby.\+cs}} の \mbox{\hyperlink{_appear_passerby_8cs_source_l00032}{32}} 行目に定義があります。
 
 
 

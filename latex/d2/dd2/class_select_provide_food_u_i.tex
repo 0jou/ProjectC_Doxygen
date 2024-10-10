@@ -11,8 +11,7 @@ Select\+Provide\+Food\+UI の継承関係図\nopagebreak
 \end{figure}
 
 
-Select\+Provide\+Food\+UI 連携図
-\nopagebreak
+Select\+Provide\+Food\+UI 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -72,13 +71,6 @@ float \mbox{\hyperlink{class_base_window_u_i_a5fda6daf58a18c1def4a8d10ecea419e}{
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_select_provide_food_u_i_8cs_source}{Select\+Provide\+Food\+UI.\+cs}} の \mbox{\hyperlink{_select_provide_food_u_i_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_select_provide_food_u_i_a141fcf4447025194e3785543d0de42e0}\index{SelectProvideFoodUI@{SelectProvideFoodUI}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!SelectProvideFoodUI@{SelectProvideFoodUI}}
@@ -95,11 +87,20 @@ override async Uni\+Task Select\+Provide\+Food\+UI.\+On\+Initialize (\begin{Doxy
 \mbox{\hyperlink{class_base_window_u_i_a251f0048a9d78e7e59a80ab0c135d937}{Base\+Window\+UI}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_u_i_a7efdfac5bbf96c902cfc7d9859568ef2}{m\_createRecipeSlotList}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}スロット作成が存在しません"{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_u_i_a7efdfac5bbf96c902cfc7d9859568ef2}{m\_createRecipeSlotList}}.\mbox{\hyperlink{class_base_create_slot_list_a6059aef6a5971425788c7080bca5a4b6}{OnInitialize}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_provide_food_u_i_8cs_source}{Select\+Provide\+Food\+UI.\+cs}} の \mbox{\hyperlink{_select_provide_food_u_i_8cs_source_l00022}{22}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -121,11 +122,38 @@ override async Uni\+Task Select\+Provide\+Food\+UI.\+On\+Select\+Update (\begin{
 \mbox{\hyperlink{class_base_window_u_i_a85f33d9bbcbe1ad75e1ea81b88083913}{Base\+Window\+UI}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_provide_food_u_i_a0f94afb58162d7c97b6675f80507a8aa}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}選択コントローラーがシリアライズされていません"{}});}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_u_i_ad03d996168a817abc54eccdc8efb653f}{m\_changeScrollViewPosition}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeScrollViewPosコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{comment}{//=================================================================================}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択更新}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_provide_food_u_i_a0f94afb58162d7c97b6675f80507a8aa}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクロールビューの更新}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_u_i_ad03d996168a817abc54eccdc8efb653f}{m\_changeScrollViewPosition}}.\mbox{\hyperlink{class_change_scroll_view_position_a36e8c8f86b5fe4b10dd548227fb09961}{OnUpdate}}();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を選択}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_u_i_add40eab4c240cb96b4fb8244742376b9}{SetProvideFood}}();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_provide_food_u_i_8cs_source}{Select\+Provide\+Food\+UI.\+cs}} の \mbox{\hyperlink{_select_provide_food_u_i_8cs_source_l00035}{35}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -139,9 +167,36 @@ override async Uni\+Task Select\+Provide\+Food\+UI.\+On\+Select\+Update (\begin{
 void Select\+Provide\+Food\+UI.\+Set\+Provide\+Food (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択されれば}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_provide_food_u_i_a0f94afb58162d7c97b6675f80507a8aa}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a8c27f1eb7699e09a3d8568e68d46bacf}{IsPress}}\ ==\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ var\ itemSlotData\ =\ GetCurrentSelectItemSlotData<RecipeItemSlotData>();}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemSlotData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成出来ない状態であれば}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemSlotData.IsCreate\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 既に追加されていれば}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsAddedProvideFood((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})itemSlotData.ItemID))}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 取り除く}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.RemoveProvideFoodList((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})itemSlotData.ItemID);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ まだ追加されていなければ}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 追加する}}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.AddProvideFoodList((\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}})itemSlotData.ItemID);}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_provide_food_u_i_8cs_source}{Select\+Provide\+Food\+UI.\+cs}} の \mbox{\hyperlink{_select_provide_food_u_i_8cs_source_l00068}{68}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -152,25 +207,17 @@ void Select\+Provide\+Food\+UI.\+Set\+Provide\+Food (\begin{DoxyParamCaption}{}{
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_select_provide_food_u_i_ad03d996168a817abc54eccdc8efb653f}\index{SelectProvideFoodUI@{SelectProvideFoodUI}!m\_changeScrollViewPosition@{m\_changeScrollViewPosition}}
-\index{m\_changeScrollViewPosition@{m\_changeScrollViewPosition}!SelectProvideFoodUI@{SelectProvideFoodUI}}
-\doxysubsubsection{\texorpdfstring{m\_changeScrollViewPosition}{m\_changeScrollViewPosition}}
-{\footnotesize\ttfamily \label{class_select_provide_food_u_i_ad03d996168a817abc54eccdc8efb653f} 
-\mbox{\hyperlink{class_change_scroll_view_position}{Change\+Scroll\+View\+Position}} Select\+Provide\+Food\+UI.\+m\+\_\+change\+Scroll\+View\+Position = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_provide_food_u_i_8cs_source}{Select\+Provide\+Food\+UI.\+cs}} の \mbox{\hyperlink{_select_provide_food_u_i_8cs_source_l00019}{19}} 行目に定義があります。
-
 \Hypertarget{class_select_provide_food_u_i_a7efdfac5bbf96c902cfc7d9859568ef2}\index{SelectProvideFoodUI@{SelectProvideFoodUI}!m\_createRecipeSlotList@{m\_createRecipeSlotList}}
 \index{m\_createRecipeSlotList@{m\_createRecipeSlotList}!SelectProvideFoodUI@{SelectProvideFoodUI}}
 \doxysubsubsection{\texorpdfstring{m\_createRecipeSlotList}{m\_createRecipeSlotList}}
 {\footnotesize\ttfamily \label{class_select_provide_food_u_i_a7efdfac5bbf96c902cfc7d9859568ef2} 
 \mbox{\hyperlink{class_create_recipe_slot_list}{Create\+Recipe\+Slot\+List}} Select\+Provide\+Food\+UI.\+m\+\_\+create\+Recipe\+Slot\+List = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_select_provide_food_u_i_8cs_source}{Select\+Provide\+Food\+UI.\+cs}} の \mbox{\hyperlink{_select_provide_food_u_i_8cs_source_l00015}{15}} 行目に定義があります。
+\Hypertarget{class_select_provide_food_u_i_ad03d996168a817abc54eccdc8efb653f}\index{SelectProvideFoodUI@{SelectProvideFoodUI}!m\_changeScrollViewPosition@{m\_changeScrollViewPosition}}
+\index{m\_changeScrollViewPosition@{m\_changeScrollViewPosition}!SelectProvideFoodUI@{SelectProvideFoodUI}}
+\doxysubsubsection{\texorpdfstring{m\_changeScrollViewPosition}{m\_changeScrollViewPosition}}
+{\footnotesize\ttfamily \label{class_select_provide_food_u_i_ad03d996168a817abc54eccdc8efb653f} 
+\mbox{\hyperlink{class_change_scroll_view_position}{Change\+Scroll\+View\+Position}} Select\+Provide\+Food\+UI.\+m\+\_\+change\+Scroll\+View\+Position = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -249,10 +249,7 @@ SelectStageWindow 連携図</div>
 <tr class="memitem:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window" id="r_aca92cddf024d4e19bdd003441678c3d6"><td class="memItemLeft" align="right" valign="top">PlayerInput&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../da/dc1/class_base_window.html#aca92cddf024d4e19bdd003441678c3d6">Input</a><code> [get, set]</code></td></tr>
 <tr class="separator:aca92cddf024d4e19bdd003441678c3d6 inherit properties_class_base_window"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00008">8</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ad362ab73225450e03c1eb81e8bd93d60" name="ad362ab73225450e03c1eb81e8bd93d60"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad362ab73225450e03c1eb81e8bd93d60">&#9670;&#160;</a></span>OnInitialize()</h2>
 
@@ -277,9 +274,33 @@ SelectStageWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a20cbaa0d7aa0d1224e85a0c07b88d6cf">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00031">31</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   32</span>    {</div>
+<div class="line"><span class="lineno">   33</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   34</span> </div>
+<div class="line"><span class="lineno">   35</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   36</span>        {</div>
+<div class="line"><span class="lineno">   37</span>            await base.OnInitialize();</div>
+<div class="line"><span class="lineno">   38</span>            cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a80abd277635a9cec3ed5e338f15123b9">m_changeSelectStageDescription</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   41</span>            {</div>
+<div class="line"><span class="lineno">   42</span>                Debug.LogError(<span class="stringliteral">&quot;説明文がシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   43</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   44</span>            }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>            <span class="comment">// 説明文の初期化</span></div>
+<div class="line"><span class="lineno">   47</span>            <a class="code hl_variable" href="#a80abd277635a9cec3ed5e338f15123b9">m_changeSelectStageDescription</a>.<a class="code hl_function" href="../../d0/d8f/class_change_select_stage_description.html#ad7e16efa46d9e0ec3a8342e2b5ec0645">OnInitialize</a>();</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   51</span>        {</div>
+<div class="line"><span class="lineno">   52</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   53</span>        }</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="ttc" id="aclass_change_select_stage_description_html_ad7e16efa46d9e0ec3a8342e2b5ec0645"><div class="ttname"><a href="../../d0/d8f/class_change_select_stage_description.html#ad7e16efa46d9e0ec3a8342e2b5ec0645">ChangeSelectStageDescription.OnInitialize</a></div><div class="ttdeci">virtual void OnInitialize()</div><div class="ttdef"><b>Definition</b> ChangeSelectStageDescription.cs:32</div></div>
+<div class="ttc" id="aclass_select_stage_window_html_a80abd277635a9cec3ed5e338f15123b9"><div class="ttname"><a href="#a80abd277635a9cec3ed5e338f15123b9">SelectStageWindow.m_changeSelectStageDescription</a></div><div class="ttdeci">ChangeSelectStageDescription m_changeSelectStageDescription</div><div class="ttdef"><b>Definition</b> SelectStageWindow.cs:23</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d5c/class_select_stage_window_ad362ab73225450e03c1eb81e8bd93d60_cgraph.png" border="0" usemap="#ad4/d5c/class_select_stage_window_ad362ab73225450e03c1eb81e8bd93d60_cgraph" alt=""/></div>
@@ -326,9 +347,89 @@ SelectStageWindow 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../da/dc1/class_base_window.html#a7dbb4bd0d8326442b7ad896895fd2995">BaseWindow</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00057">57</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>        var cancelToken = this.GetCancellationTokenOnDestroy();</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   62</span>        {</div>
+<div class="line"><span class="lineno">   63</span>            <span class="comment">// ボタンを押すまで</span></div>
+<div class="line"><span class="lineno">   64</span>            <span class="keywordflow">while</span> (cancelToken.IsCancellationRequested == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   65</span>            {</div>
+<div class="line"><span class="lineno">   66</span>                await base.OnUpdate();</div>
+<div class="line"><span class="lineno">   67</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#afe4ae47e169f50ecb1b56dab4e8cd53b">m_selectUIController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   70</span>                {</div>
+<div class="line"><span class="lineno">   71</span>                    Debug.LogError(<span class="stringliteral">&quot;SelectUIControllerがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   72</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   73</span>                }</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a41ed65d224009b4b057beeb7f4a86687">m_selectStageController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   76</span>                {</div>
+<div class="line"><span class="lineno">   77</span>                    Debug.LogError(<span class="stringliteral">&quot;SelectStageControllerがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   78</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   79</span>                }</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a80abd277635a9cec3ed5e338f15123b9">m_changeSelectStageDescription</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   82</span>                {</div>
+<div class="line"><span class="lineno">   83</span>                    Debug.LogError(<span class="stringliteral">&quot;ChangeSelectStageDescriptionがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   84</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   85</span>                }</div>
+<div class="line"><span class="lineno">   86</span> </div>
+<div class="line"><span class="lineno">   87</span>                <span class="comment">// UI選択の更新</span></div>
+<div class="line"><span class="lineno">   88</span>                <a class="code hl_variable" href="#afe4ae47e169f50ecb1b56dab4e8cd53b">m_selectUIController</a>.<a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a807f9c965bdc2f43f19da12e4afa49e3">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>                <span class="comment">// ステージ選択の更新</span></div>
+<div class="line"><span class="lineno">   91</span>                <a class="code hl_variable" href="#a41ed65d224009b4b057beeb7f4a86687">m_selectStageController</a>.<a class="code hl_function" href="../../d5/de4/class_select_stage_controller.html#a65700719303fb5efa3e0bfd7d10b2da4">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">   92</span> </div>
+<div class="line"><span class="lineno">   93</span>                <span class="comment">// 説明文の更新</span></div>
+<div class="line"><span class="lineno">   94</span>                <a class="code hl_variable" href="#a80abd277635a9cec3ed5e338f15123b9">m_changeSelectStageDescription</a>.<a class="code hl_function" href="../../d0/d8f/class_change_select_stage_description.html#a811fe880c24bb9120286494eac17e350">OnUpdate</a>();</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>                <span class="comment">// シーン遷移</span></div>
+<div class="line"><span class="lineno">   97</span>                <span class="keywordflow">if</span> (<a class="code hl_function" href="#a8812b525b90f12f9d3f601c79d5f8b26">Transion</a>()) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>                <span class="comment">// 選択UIの後処理</span></div>
+<div class="line"><span class="lineno">  100</span>                <a class="code hl_variable" href="#afe4ae47e169f50ecb1b56dab4e8cd53b">m_selectUIController</a>.<a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a4c693b99fa30040236b1b5cccf671e4b">OnLateUpdate</a>();</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>                <span class="comment">// ステージ選択の更新</span></div>
+<div class="line"><span class="lineno">  103</span>                <a class="code hl_variable" href="#a41ed65d224009b4b057beeb7f4a86687">m_selectStageController</a>.<a class="code hl_function" href="../../d5/de4/class_select_stage_controller.html#ac7ef0c60a0306cf14eb4a65099b0f396">OnLateUpdate</a>();</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span> </div>
+<div class="line"><span class="lineno">  106</span>                <span class="comment">// キャンセル</span></div>
+<div class="line"><span class="lineno">  107</span>                <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;Cancel&quot;</span>))</div>
+<div class="line"><span class="lineno">  108</span>                {</div>
+<div class="line"><span class="lineno">  109</span>                    <span class="comment">//SE追加（山本）</span></div>
+<div class="line"><span class="lineno">  110</span>                    <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;Cancel&quot;</span>);</div>
+<div class="line"><span class="lineno">  111</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  112</span>                }</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>                await UniTask.DelayFrame(1);</div>
+<div class="line"><span class="lineno">  115</span>                cancelToken.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span> </div>
+<div class="line"><span class="lineno">  118</span>            }</div>
+<div class="line"><span class="lineno">  119</span>        }</div>
+<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">  121</span>        {</div>
+<div class="line"><span class="lineno">  122</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">  123</span>        }</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>    }</div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43ac"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a></div><div class="ttdeci">InputActionMapTypes</div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:7</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_change_select_stage_description_html_a811fe880c24bb9120286494eac17e350"><div class="ttname"><a href="../../d0/d8f/class_change_select_stage_description.html#a811fe880c24bb9120286494eac17e350">ChangeSelectStageDescription.OnUpdate</a></div><div class="ttdeci">virtual void OnUpdate()</div><div class="ttdef"><b>Definition</b> ChangeSelectStageDescription.cs:40</div></div>
+<div class="ttc" id="aclass_player_input_manager_html"><div class="ttname"><a href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a></div><div class="ttdef"><b>Definition</b> PlayerInputManager.cs:15</div></div>
+<div class="ttc" id="aclass_select_stage_controller_html_a65700719303fb5efa3e0bfd7d10b2da4"><div class="ttname"><a href="../../d5/de4/class_select_stage_controller.html#a65700719303fb5efa3e0bfd7d10b2da4">SelectStageController.OnUpdate</a></div><div class="ttdeci">void OnUpdate()</div><div class="ttdef"><b>Definition</b> SelectStageController.cs:48</div></div>
+<div class="ttc" id="aclass_select_stage_controller_html_ac7ef0c60a0306cf14eb4a65099b0f396"><div class="ttname"><a href="../../d5/de4/class_select_stage_controller.html#ac7ef0c60a0306cf14eb4a65099b0f396">SelectStageController.OnLateUpdate</a></div><div class="ttdeci">void OnLateUpdate()</div><div class="ttdef"><b>Definition</b> SelectStageController.cs:54</div></div>
+<div class="ttc" id="aclass_select_stage_window_html_a41ed65d224009b4b057beeb7f4a86687"><div class="ttname"><a href="#a41ed65d224009b4b057beeb7f4a86687">SelectStageWindow.m_selectStageController</a></div><div class="ttdeci">SelectStageController m_selectStageController</div><div class="ttdef"><b>Definition</b> SelectStageWindow.cs:19</div></div>
+<div class="ttc" id="aclass_select_stage_window_html_a8812b525b90f12f9d3f601c79d5f8b26"><div class="ttname"><a href="#a8812b525b90f12f9d3f601c79d5f8b26">SelectStageWindow.Transion</a></div><div class="ttdeci">bool Transion()</div><div class="ttdef"><b>Definition</b> SelectStageWindow.cs:130</div></div>
+<div class="ttc" id="aclass_select_stage_window_html_afe4ae47e169f50ecb1b56dab4e8cd53b"><div class="ttname"><a href="#afe4ae47e169f50ecb1b56dab4e8cd53b">SelectStageWindow.m_selectUIController</a></div><div class="ttdeci">SelectUIController m_selectUIController</div><div class="ttdef"><b>Definition</b> SelectStageWindow.cs:15</div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a4c693b99fa30040236b1b5cccf671e4b"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a4c693b99fa30040236b1b5cccf671e4b">SelectUIController.OnLateUpdate</a></div><div class="ttdeci">virtual void OnLateUpdate()</div><div class="ttdef"><b>Definition</b> SelectUIController.cs:206</div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a807f9c965bdc2f43f19da12e4afa49e3"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a807f9c965bdc2f43f19da12e4afa49e3">SelectUIController.OnUpdate</a></div><div class="ttdeci">virtual void OnUpdate()</div><div class="ttdef"><b>Definition</b> SelectUIController.cs:191</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> SoundManager.cs:44</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d5c/class_select_stage_window_a6904b552da9f3c8c90ef211989df1d8f_cgraph.png" border="0" usemap="#ad4/d5c/class_select_stage_window_a6904b552da9f3c8c90ef211989df1d8f_cgraph" alt=""/></div>
@@ -436,9 +537,46 @@ SelectStageWindow 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00130">130</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  131</span>    {</div>
+<div class="line"><span class="lineno">  132</span> </div>
+<div class="line"><span class="lineno">  133</span><span class="preprocessor">        #region nullチェック</span></div>
+<div class="line"><span class="lineno">  134</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a6c8b49e2e397389d7f9241b40a96166e">m_sceneTransitionManager</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  135</span>        {</div>
+<div class="line"><span class="lineno">  136</span>            Debug.LogError(<span class="stringliteral">&quot;シーン変更クラスがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">  137</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  138</span>        }</div>
+<div class="line"><span class="lineno">  139</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#afe4ae47e169f50ecb1b56dab4e8cd53b">m_selectUIController</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  140</span>        {</div>
+<div class="line"><span class="lineno">  141</span>            Debug.LogError(<span class="stringliteral">&quot;UI選択コントローラーがシリアライズされていません&quot;</span>);</div>
+<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  143</span>        }</div>
+<div class="line"><span class="lineno">  144</span><span class="preprocessor">        #endregion</span></div>
+<div class="line"><span class="lineno">  145</span> </div>
+<div class="line"><span class="lineno">  146</span>        var <span class="keywordtype">id</span> = <a class="code hl_variable" href="#afe4ae47e169f50ecb1b56dab4e8cd53b">m_selectUIController</a>.<a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#ada35550ac0a4899a09d5f563cde41891">IsPressButton</a>();</div>
+<div class="line"><span class="lineno">  147</span> </div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">switch</span> (<span class="keywordtype">id</span>)</div>
+<div class="line"><span class="lineno">  150</span>        {</div>
+<div class="line"><span class="lineno">  151</span>            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273e">ButtonID</a>.Start:</div>
+<div class="line"><span class="lineno">  152</span>                {</div>
+<div class="line"><span class="lineno">  153</span>                    var data = <a class="code hl_variable" href="#a41ed65d224009b4b057beeb7f4a86687">m_selectStageController</a>.<a class="code hl_function" href="../../d5/de4/class_select_stage_controller.html#ac58bfcab9d0d3a633aeec76230c0f71b">GetCurrentSelectStageData</a>();</div>
+<div class="line"><span class="lineno">  154</span>                    m_sceneTransitionManager.m_sceneName = data.<a class="code hl_property" href="../../d1/d59/class_stage_data.html#aa0e80bed27f92fdbc741410149267098">SceneName</a>;</div>
+<div class="line"><span class="lineno">  155</span>                    _ = <a class="code hl_variable" href="#a6c8b49e2e397389d7f9241b40a96166e">m_sceneTransitionManager</a>.<a class="code hl_function" href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneChange</a>();</div>
+<div class="line"><span class="lineno">  156</span>                    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">  157</span>                }</div>
+<div class="line"><span class="lineno">  158</span>        }</div>
+<div class="line"><span class="lineno">  159</span> </div>
+<div class="line"><span class="lineno">  160</span>     </div>
+<div class="line"><span class="lineno">  161</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>    }</div>
+<div class="ttc" id="aclass_scene_transition_manager_html_a57a46b1860572b2f20db95dc3ca6f2ec"><div class="ttname"><a href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneTransitionManager.SceneChange</a></div><div class="ttdeci">async UniTask SceneChange()</div><div class="ttdef"><b>Definition</b> SceneTransitionManager.cs:20</div></div>
+<div class="ttc" id="aclass_select_stage_controller_html_ac58bfcab9d0d3a633aeec76230c0f71b"><div class="ttname"><a href="../../d5/de4/class_select_stage_controller.html#ac58bfcab9d0d3a633aeec76230c0f71b">SelectStageController.GetCurrentSelectStageData</a></div><div class="ttdeci">StageData GetCurrentSelectStageData()</div><div class="ttdef"><b>Definition</b> SelectStageController.cs:60</div></div>
+<div class="ttc" id="aclass_select_stage_window_html_a6c8b49e2e397389d7f9241b40a96166e"><div class="ttname"><a href="#a6c8b49e2e397389d7f9241b40a96166e">SelectStageWindow.m_sceneTransitionManager</a></div><div class="ttdeci">SceneTransitionManager m_sceneTransitionManager</div><div class="ttdef"><b>Definition</b> SelectStageWindow.cs:27</div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_ada35550ac0a4899a09d5f563cde41891"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#ada35550ac0a4899a09d5f563cde41891">SelectUIController.IsPressButton</a></div><div class="ttdeci">ButtonID IsPressButton()</div><div class="ttdoc">選択したUIにボタンIDがあれば返す</div><div class="ttdef"><b>Definition</b> SelectUIController.cs:220</div></div>
+<div class="ttc" id="aclass_stage_data_html_aa0e80bed27f92fdbc741410149267098"><div class="ttname"><a href="../../d1/d59/class_stage_data.html#aa0e80bed27f92fdbc741410149267098">StageData.SceneName</a></div><div class="ttdeci">string SceneName</div><div class="ttdef"><b>Definition</b> StageData.cs:28</div></div>
+<div class="ttc" id="anamespace_button_info_html_ad4fc19fa9db4c92112d549c75644273e"><div class="ttname"><a href="../../d5/d7a/namespace_button_info.html#ad4fc19fa9db4c92112d549c75644273e">ButtonInfo.ButtonID</a></div><div class="ttdeci">ButtonID</div><div class="ttdef"><b>Definition</b> ButtonData.cs:10</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d5c/class_select_stage_window_a8812b525b90f12f9d3f601c79d5f8b26_cgraph.png" border="0" usemap="#ad4/d5c/class_select_stage_window_a8812b525b90f12f9d3f601c79d5f8b26_cgraph" alt=""/></div>
@@ -467,8 +605,8 @@ SelectStageWindow 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a80abd277635a9cec3ed5e338f15123b9" name="a80abd277635a9cec3ed5e338f15123b9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80abd277635a9cec3ed5e338f15123b9">&#9670;&#160;</a></span>m_changeSelectStageDescription</h2>
+<a id="afe4ae47e169f50ecb1b56dab4e8cd53b" name="afe4ae47e169f50ecb1b56dab4e8cd53b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe4ae47e169f50ecb1b56dab4e8cd53b">&#9670;&#160;</a></span>m_selectUIController</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -477,7 +615,7 @@ SelectStageWindow 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d0/d8f/class_change_select_stage_description.html">ChangeSelectStageDescription</a> SelectStageWindow.m_changeSelectStageDescription = null</td>
+          <td class="memname"><a class="el" href="../../d5/de6/class_select_u_i_controller.html">SelectUIController</a> SelectStageWindow.m_selectUIController = null</td>
         </tr>
       </table>
   </td>
@@ -486,32 +624,6 @@ SelectStageWindow 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00023">23</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a6c8b49e2e397389d7f9241b40a96166e" name="a6c8b49e2e397389d7f9241b40a96166e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c8b49e2e397389d7f9241b40a96166e">&#9670;&#160;</a></span>m_sceneTransitionManager</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d4/d9a/class_scene_transition_manager.html">SceneTransitionManager</a> SelectStageWindow.m_sceneTransitionManager = null</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00027">27</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -535,12 +647,10 @@ SelectStageWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<a id="afe4ae47e169f50ecb1b56dab4e8cd53b" name="afe4ae47e169f50ecb1b56dab4e8cd53b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe4ae47e169f50ecb1b56dab4e8cd53b">&#9670;&#160;</a></span>m_selectUIController</h2>
+<a id="a80abd277635a9cec3ed5e338f15123b9" name="a80abd277635a9cec3ed5e338f15123b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80abd277635a9cec3ed5e338f15123b9">&#9670;&#160;</a></span>m_changeSelectStageDescription</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -549,7 +659,7 @@ SelectStageWindow 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d5/de6/class_select_u_i_controller.html">SelectUIController</a> SelectStageWindow.m_selectUIController = null</td>
+          <td class="memname"><a class="el" href="../../d0/d8f/class_change_select_stage_description.html">ChangeSelectStageDescription</a> SelectStageWindow.m_changeSelectStageDescription = null</td>
         </tr>
       </table>
   </td>
@@ -559,12 +669,32 @@ SelectStageWindow 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a> の <a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a6c8b49e2e397389d7f9241b40a96166e" name="a6c8b49e2e397389d7f9241b40a96166e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c8b49e2e397389d7f9241b40a96166e">&#9670;&#160;</a></span>m_sceneTransitionManager</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d4/d9a/class_scene_transition_manager.html">SceneTransitionManager</a> SelectStageWindow.m_sceneTransitionManager = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/202_Lobby_UI/Window/SelectStageWindow/<a class="el" href="../../d0/d3c/_select_stage_window_8cs_source.html">SelectStageWindow.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/202_Lobby_UI/Window/SelectStageWindow/<a class="el" href="../../d0/d3c/_select_stage_window_8cs.html">SelectStageWindow.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

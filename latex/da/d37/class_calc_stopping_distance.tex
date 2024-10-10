@@ -44,10 +44,6 @@ Agentとターゲットの大きさに基づいて停止距離をだす（伊波
 
 自身とターゲットのコライダーの幅を足したfloatを出す\+Calculator 
 
- \mbox{\hyperlink{_calc_stopping_distance_8cs_source}{Calc\+Stopping\+Distance.\+cs}} の \mbox{\hyperlink{_calc_stopping_distance_8cs_source_l00017}{17}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_calc_stopping_distance_aa7306c7dd6e2ae4347a22f00c804b418}\index{CalcStoppingDistance@{CalcStoppingDistance}!OnCalculate@{OnCalculate}}
 \index{OnCalculate@{OnCalculate}!CalcStoppingDistance@{CalcStoppingDistance}}
@@ -56,31 +52,36 @@ Agentとターゲットの大きさに基づいて停止距離をだす（伊波
 override void Calc\+Stopping\+Distance.\+On\+Calculate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ NavMeshAgent\ controller\ =\ m\_rootObject.value\ as\ NavMeshAgent;}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}}.value\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(controller.radius);}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}{m\_targetTransform}}.value.gameObject.TryGetComponent(out\ CapsuleCollider\ m\_targetCollider))}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ radius\ =\ transform.root.localScale.x\ *\ controller.radius;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ REVIEW:敵同士で殴り合うようにしたい場合や、細長いコライダーに対応出来ないコードなので修正が必要}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(m\_targetCollider.radius\ *\ (\textcolor{keywordtype}{float})System.Math.Sqrt(2f)\ +\ radius);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}{m\_result}}.SetValue(controller.radius);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_calc_stopping_distance_8cs_source}{Calc\+Stopping\+Distance.\+cs}} の \mbox{\hyperlink{_calc_stopping_distance_8cs_source_l00028}{28}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}\index{CalcStoppingDistance@{CalcStoppingDistance}!m\_result@{m\_result}}
-\index{m\_result@{m\_result}!CalcStoppingDistance@{CalcStoppingDistance}}
-\doxysubsubsection{\texorpdfstring{m\_result}{m\_result}}
-{\footnotesize\ttfamily \label{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2} 
-Output\+Slot\+Float Calc\+Stopping\+Distance.\+m\+\_\+result = new ()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_calc_stopping_distance_8cs_source}{Calc\+Stopping\+Distance.\+cs}} の \mbox{\hyperlink{_calc_stopping_distance_8cs_source_l00025}{25}} 行目に定義があります。
-
 \Hypertarget{class_calc_stopping_distance_ab488622c793d7874afb4d83cde3cb6f4}\index{CalcStoppingDistance@{CalcStoppingDistance}!m\_rootObject@{m\_rootObject}}
 \index{m\_rootObject@{m\_rootObject}!CalcStoppingDistance@{CalcStoppingDistance}}
 \doxysubsubsection{\texorpdfstring{m\_rootObject}{m\_rootObject}}
 {\footnotesize\ttfamily \label{class_calc_stopping_distance_ab488622c793d7874afb4d83cde3cb6f4} 
 Flexible\+Component Calc\+Stopping\+Distance.\+m\+\_\+root\+Object = new (Flexible\+Hierarchy\+Type.\+Root\+Graph)\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_calc_stopping_distance_8cs_source}{Calc\+Stopping\+Distance.\+cs}} の \mbox{\hyperlink{_calc_stopping_distance_8cs_source_l00021}{21}} 行目に定義があります。
 
 \Hypertarget{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8}\index{CalcStoppingDistance@{CalcStoppingDistance}!m\_targetTransform@{m\_targetTransform}}
 \index{m\_targetTransform@{m\_targetTransform}!CalcStoppingDistance@{CalcStoppingDistance}}
@@ -88,9 +89,11 @@ Flexible\+Component Calc\+Stopping\+Distance.\+m\+\_\+root\+Object = new (Flexib
 {\footnotesize\ttfamily \label{class_calc_stopping_distance_ac56894f5201ebbaac24849217a22a2b8} 
 Flexible\+Transform Calc\+Stopping\+Distance.\+m\+\_\+target\+Transform\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_calc_stopping_distance_8cs_source}{Calc\+Stopping\+Distance.\+cs}} の \mbox{\hyperlink{_calc_stopping_distance_8cs_source_l00023}{23}} 行目に定義があります。
+\Hypertarget{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2}\index{CalcStoppingDistance@{CalcStoppingDistance}!m\_result@{m\_result}}
+\index{m\_result@{m\_result}!CalcStoppingDistance@{CalcStoppingDistance}}
+\doxysubsubsection{\texorpdfstring{m\_result}{m\_result}}
+{\footnotesize\ttfamily \label{class_calc_stopping_distance_a9790b8035a1ee724c8e0ffc12e1a2ef2} 
+Output\+Slot\+Float Calc\+Stopping\+Distance.\+m\+\_\+result = new ()\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

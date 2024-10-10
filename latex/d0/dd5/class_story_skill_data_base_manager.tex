@@ -51,13 +51,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source}{Story\+Skill\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_story_skill_data_base_manager_a28023e5123606a350a1dabb9373c94ea}\index{StorySkillDataBaseManager@{StorySkillDataBaseManager}!GetStorySkillData@{GetStorySkillData}}
 \index{GetStorySkillData@{GetStorySkillData}!StorySkillDataBaseManager@{StorySkillDataBaseManager}}
@@ -66,9 +59,44 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \mbox{\hyperlink{class_story_skill_data}{Story\+Skill\+Data}} Story\+Skill\+Data\+Base\+Manager.\+Get\+Story\+Skill\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_story_skill_info_a496d88cb4016f418cd837e2c1fc6b8aa}{Story\+Skill\+\_\+\+ID}}}]{\+\_\+id}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_story_skill_data_base_manager_ace5d573a3162ac40aa11020f420adb46}{m\_storySkillDataBase}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}童話スキルのデータベースが空です！"{}});}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//返すデータ}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_story_skill_data}{StorySkillData}}\ storySkillData\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_story_skill_data_base_manager_ace5d573a3162ac40aa11020f420adb46}{m\_storySkillDataBase}}.\mbox{\hyperlink{class_story_skill_data_base_ad8f895ea7c0d783816d28da52111241f}{StorySkillDataList}})}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//データのIDと引数のIDが一致すればそれを返す}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(data.StorySkill\_ID==\_id)}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ storySkillData=\ data;}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ストーリースキル空だったら（探して見つからなかったら）}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(storySkillData==\textcolor{keyword}{null})}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}指定したIDの童話スキルは登録されてません。"{}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ storySkillData;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source}{Story\+Skill\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source_l00021}{21}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -80,10 +108,6 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 
 
 
- \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source}{Story\+Skill\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source_l00013}{13}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_story_skill_data_base_manager_a9e225fa4d45649659fa1fa015e82dc4e}\index{StorySkillDataBaseManager@{StorySkillDataBaseManager}!DataBase@{DataBase}}
 \index{DataBase@{DataBase}!StorySkillDataBaseManager@{StorySkillDataBaseManager}}
@@ -92,9 +116,10 @@ virtual void \mbox{\hyperlink{class_base_manager_a032625833cb6a4924ac0dd62093289
 \mbox{\hyperlink{class_story_skill_data_base}{Story\+Skill\+Data\+Base}} Story\+Skill\+Data\+Base\+Manager.\+Data\+Base\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \{\ \textcolor{keyword}{get}\ \{\textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_story_skill_data_base_manager_ace5d573a3162ac40aa11020f420adb46}{m\_storySkillDataBase}};\ \}\ \}}
 
- \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source}{Story\+Skill\+Data\+Base\+Manager.\+cs}} の \mbox{\hyperlink{_story_skill_data_base_manager_8cs_source_l00015}{15}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

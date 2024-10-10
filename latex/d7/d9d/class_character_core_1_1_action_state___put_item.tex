@@ -55,13 +55,6 @@ virtual void \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00361}{361}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_character_core_1_1_action_state___put_item_a8c0aa2993af269cf7f18763883546e20}\index{CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}!OnEnter@{OnEnter}}
 \index{OnEnter@{OnEnter}!CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}}
@@ -74,36 +67,25 @@ override void Character\+Core.\+Action\+State\+\_\+\+Put\+Item.\+On\+Enter (\beg
 \mbox{\hyperlink{class_character_core_1_1_action_state___base_a48c88438ec535f030782a32ef0d59161}{Character\+Core.\+Action\+State\+\_\+\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00366\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00367\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{00368\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}設置開始"{}});}
+\DoxyCodeLine{00369\ }
+\DoxyCodeLine{00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 設置設定（アニメーション中に変更されないように）}}
+\DoxyCodeLine{00371\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a56b50ef309ca6c58e51072fb6a1b6916}{m\_putItemInstance}}\ =\ Core.AddComponent<\mbox{\hyperlink{class_put_item_instance}{PutItemInstance}}>();}
+\DoxyCodeLine{00372\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a56b50ef309ca6c58e51072fb6a1b6916}{m\_putItemInstance}}.\mbox{\hyperlink{class_put_item_instance_a3f1f89bb7353b66b19f4a636ae258390}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,\ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{00373\ }
+\DoxyCodeLine{00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 追加　上甲　効果音}}
+\DoxyCodeLine{00375\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}PutItem"{}});}
+\DoxyCodeLine{00376\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00365}{365}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d7/d9d/class_character_core_1_1_action_state___put_item_a8c0aa2993af269cf7f18763883546e20_cgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf}\index{CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}!OnExit@{OnExit}}
-\index{OnExit@{OnExit}!CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}}
-\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
-{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf} 
-override void Character\+Core.\+Action\+State\+\_\+\+Put\+Item.\+On\+Exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
-
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00384}{384}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_character_core_1_1_action_state___put_item_a29ecab9463193b2be079445b46eb98b4}\index{CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}!OnFixedUpdate@{OnFixedUpdate}}
@@ -117,9 +99,53 @@ override void Character\+Core.\+Action\+State\+\_\+\+Put\+Item.\+On\+Fixed\+Upda
 \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00379\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//移動量を減らす}}
+\DoxyCodeLine{00381\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{00382\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00378}{378}} 行目に定義があります。
+\end{DoxyCode}
+\Hypertarget{class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf}\index{CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}!OnExit@{OnExit}}
+\index{OnExit@{OnExit}!CharacterCore.ActionState\_PutItem@{CharacterCore.ActionState\_PutItem}}
+\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
+{\footnotesize\ttfamily \label{class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf} 
+override void Character\+Core.\+Action\+State\+\_\+\+Put\+Item.\+On\+Exit (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
+
+
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{Animator\+State\+Machine.\+Action\+State\+Base}}を再実装しています。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00385\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00386\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_putItemInstance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00387\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a56b50ef309ca6c58e51072fb6a1b6916}{m\_putItemInstance}}.\mbox{\hyperlink{class_put_item_instance_a617e7045b93e4fdd4b092bd643a8fb4b}{Craft}}();}
+\DoxyCodeLine{00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_putItemInstance);}
+\DoxyCodeLine{00390\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00391\ }
+\DoxyCodeLine{00392\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 未設定状態にする}}
+\DoxyCodeLine{00393\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID\ =\ 0;}
+\DoxyCodeLine{00394\ }
+\DoxyCodeLine{00395\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//フラグをfalseに（山本）}}
+\DoxyCodeLine{00396\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsPutItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{00397\ }
+\DoxyCodeLine{00398\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示}}
+\DoxyCodeLine{00399\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.Attack);}
+\DoxyCodeLine{00400\ }
+\DoxyCodeLine{00401\ }
+\DoxyCodeLine{00402\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Debug.Log("{}設置終了"{});}}
+\DoxyCodeLine{00403\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d9d/class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf_cgraph}
+\end{center}
+\end{figure}
 
 
 \doxysubsection{フィールド詳解}
@@ -128,10 +154,6 @@ override void Character\+Core.\+Action\+State\+\_\+\+Put\+Item.\+On\+Fixed\+Upda
 \doxysubsubsection{\texorpdfstring{m\_putItemInstance}{m\_putItemInstance}}
 {\footnotesize\ttfamily \label{class_character_core_1_1_action_state___put_item_a56b50ef309ca6c58e51072fb6a1b6916} 
 \mbox{\hyperlink{class_put_item_instance}{Put\+Item\+Instance}} Character\+Core.\+Action\+State\+\_\+\+Put\+Item.\+m\+\_\+put\+Item\+Instance = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_player_state_8cs_source}{Player\+State.\+cs}} の \mbox{\hyperlink{_player_state_8cs_source_l00363}{363}} 行目に定義があります。
 
 
 

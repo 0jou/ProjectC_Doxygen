@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -141,10 +141,7 @@ StopEffect 連携図</div>
 <tr class="memitem:ad6b0d3bb40cfa2bc250e48f40c373891" id="r_ad6b0d3bb40cfa2bc250e48f40c373891"><td class="memItemLeft" align="right" valign="top">VisualEffect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad6b0d3bb40cfa2bc250e48f40c373891">m_effect</a></td></tr>
 <tr class="separator:ad6b0d3bb40cfa2bc250e48f40c373891"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html">StopEffect.cs</a> の <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ad41cfaa979c0b991b6a0861bc3b69c68" name="ad41cfaa979c0b991b6a0861bc3b69c68"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad41cfaa979c0b991b6a0861bc3b69c68">&#9670;&#160;</a></span>Start()</h2>
 
@@ -167,36 +164,33 @@ StopEffect 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html">StopEffect.cs</a> の <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html#l00026">26</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   27</span>    {</div>
+<div class="line"><span class="lineno">   28</span>        <span class="comment">//指定時間待機</span></div>
+<div class="line"><span class="lineno">   29</span>        await UniTask.Delay(TimeSpan.FromSeconds(<a class="code hl_variable" href="#a6c527caac890eb110f8d24376b3a9eaf">m_waitTime</a>));</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad6b0d3bb40cfa2bc250e48f40c373891">m_effect</a>)</div>
+<div class="line"><span class="lineno">   32</span>        {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="comment">//エフェクト止める</span></div>
+<div class="line"><span class="lineno">   34</span>            <a class="code hl_variable" href="#ad6b0d3bb40cfa2bc250e48f40c373891">m_effect</a>.Stop();</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>            <span class="comment">//エフェクトが完全に消失するまで待機する</span></div>
+<div class="line"><span class="lineno">   37</span>            await UniTask.WaitUntil(() =&gt; <a class="code hl_variable" href="#ad6b0d3bb40cfa2bc250e48f40c373891">m_effect</a>.HasAnySystemAwake() == <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   38</span> </div>
+<div class="line"><span class="lineno">   39</span>            <span class="comment">//オブジェクト破壊</span></div>
+<div class="line"><span class="lineno">   40</span>            Destroy(gameObject);</div>
+<div class="line"><span class="lineno">   41</span>            </div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+<div class="ttc" id="aclass_stop_effect_html_a6c527caac890eb110f8d24376b3a9eaf"><div class="ttname"><a href="#a6c527caac890eb110f8d24376b3a9eaf">StopEffect.m_waitTime</a></div><div class="ttdeci">float m_waitTime</div><div class="ttdef"><b>Definition</b> StopEffect.cs:18</div></div>
+<div class="ttc" id="aclass_stop_effect_html_ad6b0d3bb40cfa2bc250e48f40c373891"><div class="ttname"><a href="#ad6b0d3bb40cfa2bc250e48f40c373891">StopEffect.m_effect</a></div><div class="ttdeci">VisualEffect m_effect</div><div class="ttdef"><b>Definition</b> StopEffect.cs:23</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="ad6b0d3bb40cfa2bc250e48f40c373891" name="ad6b0d3bb40cfa2bc250e48f40c373891"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad6b0d3bb40cfa2bc250e48f40c373891">&#9670;&#160;</a></span>m_effect</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">VisualEffect StopEffect.m_effect</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html">StopEffect.cs</a> の <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html#l00023">23</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="a6c527caac890eb110f8d24376b3a9eaf" name="a6c527caac890eb110f8d24376b3a9eaf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c527caac890eb110f8d24376b3a9eaf">&#9670;&#160;</a></span>m_waitTime</h2>
 
@@ -217,7 +211,27 @@ StopEffect 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html">StopEffect.cs</a> の <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="ad6b0d3bb40cfa2bc250e48f40c373891" name="ad6b0d3bb40cfa2bc250e48f40c373891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad6b0d3bb40cfa2bc250e48f40c373891">&#9670;&#160;</a></span>m_effect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">VisualEffect StopEffect.m_effect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -241,13 +255,12 @@ StopEffect 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html">StopEffect.cs</a> の <a class="el" href="../../d1/d46/_stop_effect_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   19</span>{ <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="#a6c527caac890eb110f8d24376b3a9eaf">m_waitTime</a>; } <span class="keyword">set</span> { <a class="code hl_variable" href="#a6c527caac890eb110f8d24376b3a9eaf">m_waitTime</a> = value; } }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/007_Effect/StorySkillEffect/Bremen/Script/<a class="el" href="../../d1/d46/_stop_effect_8cs_source.html">StopEffect.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/007_Effect/StorySkillEffect/Bremen/Script/<a class="el" href="../../d1/d46/_stop_effect_8cs.html">StopEffect.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

@@ -140,15 +140,15 @@ var namespaces_dup =
       ] ]
     ] ],
     [ "SelectUseItemInfo", "dc/d65/namespace_select_use_item_info.html", [
+      [ "SelectUseItemWindowType", "dc/d65/namespace_select_use_item_info.html#a66d67d87622727fdcfd064502774f021", [
+        [ "Inventory", "dc/d65/namespace_select_use_item_info.html#a66d67d87622727fdcfd064502774f021a4d604dd8f008145471dc845683399189", null ],
+        [ "Action", "dc/d65/namespace_select_use_item_info.html#a66d67d87622727fdcfd064502774f021a004bf6c9a40003140292e97330236c53", null ]
+      ] ],
       [ "SelectUseItemID", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2d", [
         [ "Put", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2dad0bf1810982e9728fcf3ac444a015373", null ],
         [ "Pitch", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2da87f800274a7f46c50e17114f89171e2e", null ],
         [ "Eat", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2dabd26b44bdadb13511edfa8e95455a43f", null ],
         [ "Exit", "dc/d65/namespace_select_use_item_info.html#a1afa9da7334368b026385efc0c369a2dafef46e5063ce3dc78b8ae64fa474241d", null ]
-      ] ],
-      [ "SelectUseItemWindowType", "dc/d65/namespace_select_use_item_info.html#a66d67d87622727fdcfd064502774f021", [
-        [ "Inventory", "dc/d65/namespace_select_use_item_info.html#a66d67d87622727fdcfd064502774f021a4d604dd8f008145471dc845683399189", null ],
-        [ "Action", "dc/d65/namespace_select_use_item_info.html#a66d67d87622727fdcfd064502774f021a004bf6c9a40003140292e97330236c53", null ]
       ] ]
     ] ],
     [ "StaffStateInfo", "de/da1/namespace_staff_state_info.html", [

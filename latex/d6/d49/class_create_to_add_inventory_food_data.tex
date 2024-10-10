@@ -23,13 +23,6 @@ void \mbox{\hyperlink{class_create_to_add_inventory_food_data_a44bcc9fda76b7a8cd
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source}{Create\+To\+Add\+Inventory\+Food\+Data.\+cs}} の \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_create_to_add_inventory_food_data_a2922c96a227cd99d5a4599423d309e3e}\index{CreateToAddInventoryFoodData@{CreateToAddInventoryFoodData}!CreateFood@{CreateFood}}
 \index{CreateFood@{CreateFood}!CreateToAddInventoryFoodData@{CreateToAddInventoryFoodData}}
@@ -56,9 +49,31 @@ void Create\+To\+Add\+Inventory\+Food\+Data.\+Create\+Food (\begin{DoxyParamCapt
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 食材を使用するか}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_removeFlg)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能か確認}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_create_to_add_inventory_food_data_a3fd45d6e945d99384c3ef430368d5d5d}{IsCreate}}(\_foodID))}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インベントリに料理を追加}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}}.\mbox{\hyperlink{class_inventory_manager_ad2bff3b02a0f3a6dcd036a9df1791034}{AddItem}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 食材を使用するか}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_removeFlg)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_create_to_add_inventory_food_data_a44bcc9fda76b7a8cdd96850cb0f46a8b}{RemoveNeedIngredient}}(\_foodID);}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source}{Create\+To\+Add\+Inventory\+Food\+Data.\+cs}} の \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source_l00032}{32}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -91,9 +106,48 @@ true -\/ 作成可能 false -\/ 作成不可
 
 \end{DoxyReturn}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_id);}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成しようとしている料理のデータは存在しません"{}});}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持しているか確認}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インベントリからデータを取得}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ var\ item\ =\ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}}.\mbox{\hyperlink{class_base_pocket_item_data_controller_a2d7d18decebd0d5d1bf86272558d113e}{GetItemData}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)list.IngredientID);}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持していなければ}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (item.Num\ <\ list.Num)}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数が必要数より少なければ}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能であれば}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source}{Create\+To\+Add\+Inventory\+Food\+Data.\+cs}} の \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source_l00073}{73}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -115,9 +169,26 @@ true -\/ 作成可能 false -\/ 作成不可
 void Create\+To\+Add\+Inventory\+Food\+Data.\+Remove\+Need\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{Food\+ID}}}]{\+\_\+food\+ID}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00119\ \ \ \ \ \{}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要なリスト分}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材数分}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ list.Num;\ ++i)}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}}.\mbox{\hyperlink{class_inventory_manager_a646b12789b3abe1580efeb77809d7965}{RemoveItem}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)list.IngredientID);}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source}{Create\+To\+Add\+Inventory\+Food\+Data.\+cs}} の \mbox{\hyperlink{_create_to_add_inventory_food_data_8cs_source_l00118}{118}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}

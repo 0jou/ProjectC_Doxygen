@@ -32,13 +32,6 @@ Game\+Object \mbox{\hyperlink{class_skill_anime_event_attck_a7362cf14d7765fe37db
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_skill_anime_event_attck_8cs_source}{Skill\+Anime\+Event\+Attck.\+cs}} の \mbox{\hyperlink{_skill_anime_event_attck_8cs_source_l00006}{6}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_skill_anime_event_attck_a8d1d58435a0d6ea83b3e16cdbecf96c5}\index{SkillAnimeEventAttck@{SkillAnimeEventAttck}!OnEvent@{OnEvent}}
 \index{OnEvent@{OnEvent}!SkillAnimeEventAttck@{SkillAnimeEventAttck}}
@@ -47,9 +40,24 @@ Game\+Object \mbox{\hyperlink{class_skill_anime_event_attck_a7362cf14d7765fe37db
 override void Skill\+Anime\+Event\+Attck.\+On\+Event (\begin{DoxyParamCaption}\item[{Animator}]{animator}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016\ \ \ \ \ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ var\ charaCore\ =\ animator.transform.GetComponentInParent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ var\ targetVec\ =\ charaCore.PlayerSkillsParameters.TargetPosition\ -\/\ charaCore.\mbox{\hyperlink{class_character_core_affa19c52127edade08a6792773d357b9}{PlayerSkillsParameters}}.\mbox{\hyperlink{class_player_skills_parameters_ab8381971450bebe858f142b5e7e3fa29}{StartSkillPos}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ Quaternion\ targetQua\ =\ Quaternion.LookRotation(targetVec,\ charaCore.transform.up);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//新しいオブジェクトをシーン内に配置する（親子関係だと親の回転に影響してしまう）}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//登録したスキル開始地点から発射}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ var\ newObj\ =\ GameObject.Instantiate(\mbox{\hyperlink{class_skill_anime_event_attck_a7362cf14d7765fe37db1a03eeadd8c34}{m\_assetAttack}},\ charaCore.PlayerSkillsParameters.StartSkillPos,\ targetQua);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成者情報を記憶}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ var\ ownerInfo\ =\ newObj.AddComponent<\mbox{\hyperlink{class_owner_info_tag}{OwnerInfoTag}}>();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ ownerInfo.GroupNo\ =\ charaCore.\mbox{\hyperlink{class_owner_info_tag_a56a9ad5e93c0d771bd43700982edfd06}{GroupNo}};}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ ownerInfo.Characore\ =\ charaCore;}
+\DoxyCodeLine{00030\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_skill_anime_event_attck_8cs_source}{Skill\+Anime\+Event\+Attck.\+cs}} の \mbox{\hyperlink{_skill_anime_event_attck_8cs_source_l00015}{15}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_skill_anime_event_attck_af65cb8b44ec7fbbcd3e4f54b64d81b02}\index{SkillAnimeEventAttck@{SkillAnimeEventAttck}!OnExit@{OnExit}}
 \index{OnExit@{OnExit}!SkillAnimeEventAttck@{SkillAnimeEventAttck}}
 \doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
@@ -57,9 +65,11 @@ override void Skill\+Anime\+Event\+Attck.\+On\+Event (\begin{DoxyParamCaption}\i
 override void Skill\+Anime\+Event\+Attck.\+On\+Exit (\begin{DoxyParamCaption}\item[{Animator}]{animator}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_skill_anime_event_attck_8cs_source}{Skill\+Anime\+Event\+Attck.\+cs}} の \mbox{\hyperlink{_skill_anime_event_attck_8cs_source_l00032}{32}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -68,10 +78,6 @@ override void Skill\+Anime\+Event\+Attck.\+On\+Exit (\begin{DoxyParamCaption}\it
 \doxysubsubsection{\texorpdfstring{m\_assetAttack}{m\_assetAttack}}
 {\footnotesize\ttfamily \label{class_skill_anime_event_attck_a7362cf14d7765fe37db1a03eeadd8c34} 
 Game\+Object Skill\+Anime\+Event\+Attck.\+m\+\_\+asset\+Attack\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_skill_anime_event_attck_8cs_source}{Skill\+Anime\+Event\+Attck.\+cs}} の \mbox{\hyperlink{_skill_anime_event_attck_8cs_source_l00011}{11}} 行目に定義があります。
 
 
 

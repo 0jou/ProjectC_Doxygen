@@ -2,8 +2,7 @@
 \hypertarget{class_sold_out_provide_food_slot_data}{}\label{class_sold_out_provide_food_slot_data}\index{SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}}
 
 
-Sold\+Out\+Provide\+Food\+Slot\+Data の継承関係図
-\nopagebreak
+Sold\+Out\+Provide\+Food\+Slot\+Data の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Sold\+Out\+Provide\+Food\+Slot\+Data の継承関係図
 \end{figure}
 
 
-Sold\+Out\+Provide\+Food\+Slot\+Data 連携図
-\nopagebreak
+Sold\+Out\+Provide\+Food\+Slot\+Data 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -108,31 +106,7 @@ virtual uint \mbox{\hyperlink{class_item_slot_data_a290b7d9e1c3fafab5fb7992d3e9d
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source}{Sold\+Out\+Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848}\index{SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}!SoldOut@{SoldOut}}
-\index{SoldOut@{SoldOut}!SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}}
-\doxysubsubsection{\texorpdfstring{SoldOut()}{SoldOut()}}
-{\footnotesize\ttfamily \label{class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848} 
-void Sold\+Out\+Provide\+Food\+Slot\+Data.\+Sold\+Out (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source}{Sold\+Out\+Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source_l00042}{42}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{dc/d6c/class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_sold_out_provide_food_slot_data_a3ec823b20fada72138af642df6e92bac}\index{SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}!Start@{Start}}
 \index{Start@{Start}!SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}}
 \doxysubsubsection{\texorpdfstring{Start()}{Start()}}
@@ -140,14 +114,53 @@ void Sold\+Out\+Provide\+Food\+Slot\+Data.\+Sold\+Out (\begin{DoxyParamCaption}{
 void Sold\+Out\+Provide\+Food\+Slot\+Data.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ base.Start();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 売り切れイベントを受信}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ MessageBroker.Default.Receive<\mbox{\hyperlink{class_global_sold_out_provide_food_event}{GlobalSoldOutProvideFoodEvent}}>().Subscribe(\_\ =>}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_item_slot_data_ac7cf21d3b87d76c8494058d6c7ad11f0}{m\_itemID}}\ ==\ (uint)\_.ProvideFoodData.FoodID)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848}{SoldOut}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source}{Sold\+Out\+Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source_l00023}{23}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{dc/d6c/class_sold_out_provide_food_slot_data_a3ec823b20fada72138af642df6e92bac_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848}\index{SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}!SoldOut@{SoldOut}}
+\index{SoldOut@{SoldOut}!SoldOutProvideFoodSlotData@{SoldOutProvideFoodSlotData}}
+\doxysubsubsection{\texorpdfstring{SoldOut()}{SoldOut()}}
+{\footnotesize\ttfamily \label{class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848} 
+void Sold\+Out\+Provide\+Food\+Slot\+Data.\+Sold\+Out (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043\ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ var\ images\ =\ gameObject.GetComponentsInChildren<Image>();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ image\ \textcolor{keywordflow}{in}\ images)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ image.color\ =\ \mbox{\hyperlink{class_sold_out_provide_food_slot_data_a2d1ba5f87dc5e0db164c63653f9f39fc}{m\_soldOutColor}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{dc/d6c/class_sold_out_provide_food_slot_data_a29f91afe30a94bf82e09c2e20ee47848_icgraph}
 \end{center}
 \end{figure}
 
@@ -158,10 +171,6 @@ void Sold\+Out\+Provide\+Food\+Slot\+Data.\+Start (\begin{DoxyParamCaption}{}{}\
 \doxysubsubsection{\texorpdfstring{m\_soldOutColor}{m\_soldOutColor}}
 {\footnotesize\ttfamily \label{class_sold_out_provide_food_slot_data_a2d1ba5f87dc5e0db164c63653f9f39fc} 
 Color Sold\+Out\+Provide\+Food\+Slot\+Data.\+m\+\_\+sold\+Out\+Color = Color.\+gray\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source}{Sold\+Out\+Provide\+Food\+Slot\+Data.\+cs}} の \mbox{\hyperlink{_sold_out_provide_food_slot_data_8cs_source_l00017}{17}} 行目に定義があります。
 
 
 

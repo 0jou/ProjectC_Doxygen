@@ -45,31 +45,7 @@ Game\+Object \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_pay_money_customer_8cs_source}{Pay\+Money\+Customer.\+cs}} の \mbox{\hyperlink{_pay_money_customer_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0}\index{PayMoneyCustomer@{PayMoneyCustomer}!OnStateBegin@{OnStateBegin}}
-\index{OnStateBegin@{OnStateBegin}!PayMoneyCustomer@{PayMoneyCustomer}}
-\doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
-{\footnotesize\ttfamily \label{class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0} 
-override void Pay\+Money\+Customer.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_pay_money_customer_8cs_source}{Pay\+Money\+Customer.\+cs}} の \mbox{\hyperlink{_pay_money_customer_8cs_source_l00038}{38}} 行目に定義があります。
-
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{da/d43/class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0_cgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_pay_money_customer_a7edf6a18544def5f13fa92cda85519d6}\index{PayMoneyCustomer@{PayMoneyCustomer}!Pay@{Pay}}
 \index{Pay@{Pay}!PayMoneyCustomer@{PayMoneyCustomer}}
 \doxysubsubsection{\texorpdfstring{Pay()}{Pay()}}
@@ -77,9 +53,26 @@ override void Pay\+Money\+Customer.\+On\+State\+Begin (\begin{DoxyParamCaption}{
 void Pay\+Money\+Customer.\+Pay (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ var\ targetFood\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFood\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ var\ foodData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info}{ItemInfo}}.ItemTypeID.Food,\ (uint)targetFood.FoodID);}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (foodData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ お金を払う}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_game_manager}{ManagementGameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.AddEarnedMoney(foodData.Price);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供した数を足す}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.SoldFood(targetFood.FoodID);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_pay_money_customer_8cs_source}{Pay\+Money\+Customer.\+cs}} の \mbox{\hyperlink{_pay_money_customer_8cs_source_l00017}{17}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -92,6 +85,26 @@ void Pay\+Money\+Customer.\+Pay (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapti
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{da/d43/class_pay_money_customer_a7edf6a18544def5f13fa92cda85519d6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0}\index{PayMoneyCustomer@{PayMoneyCustomer}!OnStateBegin@{OnStateBegin}}
+\index{OnStateBegin@{OnStateBegin}!PayMoneyCustomer@{PayMoneyCustomer}}
+\doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
+{\footnotesize\ttfamily \label{class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0} 
+override void Pay\+Money\+Customer.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pay_money_customer_a7edf6a18544def5f13fa92cda85519d6}{Pay}}();}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d43/class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0_cgraph}
 \end{center}
 \end{figure}
 

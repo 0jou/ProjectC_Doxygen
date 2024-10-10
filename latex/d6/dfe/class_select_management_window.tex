@@ -2,8 +2,7 @@
 \hypertarget{class_select_management_window}{}\label{class_select_management_window}\index{SelectManagementWindow@{SelectManagementWindow}}
 
 
-Select\+Management\+Window の継承関係図
-\nopagebreak
+Select\+Management\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Select\+Management\+Window の継承関係図
 \end{figure}
 
 
-Select\+Management\+Window 連携図
-\nopagebreak
+Select\+Management\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -129,13 +127,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_select_management_window_8cs_source}{Select\+Management\+Window.\+cs}} の \mbox{\hyperlink{_select_management_window_8cs_source_l00010}{10}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_select_management_window_ae457e5af9acbde27df5134abed497327}\index{SelectManagementWindow@{SelectManagementWindow}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!SelectManagementWindow@{SelectManagementWindow}}
@@ -148,11 +139,49 @@ override async Uni\+Task Select\+Management\+Window.\+On\+Update (\begin{DoxyPar
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の更新}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを選択}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_select_management_window_a6b50b3ba7d8a3883b8865323af37e794}{SelectButton}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択UIの後処理}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE追加（山本）}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_management_window_8cs_source}{Select\+Management\+Window.\+cs}} の \mbox{\hyperlink{_select_management_window_8cs_source_l00031}{31}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -166,11 +195,30 @@ override async Uni\+Task Select\+Management\+Window.\+On\+Update (\begin{DoxyPar
 async Uni\+Task Select\+Management\+Window.\+Select\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択したボタン}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ var\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_ada35550ac0a4899a09d5f563cde41891}{IsPressButton}}();}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\textcolor{keywordtype}{id})}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 経営倉庫ウィンドウを作成}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_button_info_ad4fc19fa9db4c92112d549c75644273e}{ButtonID}}.ManagementStorage:}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ CreateWindow<BaseWindow>(\mbox{\hyperlink{class_select_management_window_a5a725fadfa238c809d7713683c146444}{m\_managementStorageWindowController}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供料理選択ウィンドウを作成}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_button_info_ad4fc19fa9db4c92112d549c75644273e}{ButtonID}}.ProvideFood:}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ CreateWindow<BaseWindow>(\mbox{\hyperlink{class_select_management_window_a74d5c1e01c3938363e6b964d1e535722}{m\_provideFoodWindowController}});}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_management_window_8cs_source}{Select\+Management\+Window.\+cs}} の \mbox{\hyperlink{_select_management_window_8cs_source_l00073}{73}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -187,15 +235,11 @@ async Uni\+Task Select\+Management\+Window.\+Select\+Button (\begin{DoxyParamCap
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_select_management_window_a5a725fadfa238c809d7713683c146444}\index{SelectManagementWindow@{SelectManagementWindow}!m\_managementStorageWindowController@{m\_managementStorageWindowController}}
-\index{m\_managementStorageWindowController@{m\_managementStorageWindowController}!SelectManagementWindow@{SelectManagementWindow}}
-\doxysubsubsection{\texorpdfstring{m\_managementStorageWindowController}{m\_managementStorageWindowController}}
-{\footnotesize\ttfamily \label{class_select_management_window_a5a725fadfa238c809d7713683c146444} 
-\mbox{\hyperlink{class_window_controller}{Window\+Controller}} Select\+Management\+Window.\+m\+\_\+management\+Storage\+Window\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_management_window_8cs_source}{Select\+Management\+Window.\+cs}} の \mbox{\hyperlink{_select_management_window_8cs_source_l00028}{28}} 行目に定義があります。
+\Hypertarget{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}\index{SelectManagementWindow@{SelectManagementWindow}!m\_selectUIController@{m\_selectUIController}}
+\index{m\_selectUIController@{m\_selectUIController}!SelectManagementWindow@{SelectManagementWindow}}
+\doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
+{\footnotesize\ttfamily \label{class_select_management_window_a18cd41a35b979c57cb4ac75043748687} 
+\mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Select\+Management\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_select_management_window_a74d5c1e01c3938363e6b964d1e535722}\index{SelectManagementWindow@{SelectManagementWindow}!m\_provideFoodWindowController@{m\_provideFoodWindowController}}
 \index{m\_provideFoodWindowController@{m\_provideFoodWindowController}!SelectManagementWindow@{SelectManagementWindow}}
@@ -203,19 +247,11 @@ async Uni\+Task Select\+Management\+Window.\+Select\+Button (\begin{DoxyParamCap
 {\footnotesize\ttfamily \label{class_select_management_window_a74d5c1e01c3938363e6b964d1e535722} 
 \mbox{\hyperlink{class_window_controller}{Window\+Controller}} Select\+Management\+Window.\+m\+\_\+provide\+Food\+Window\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_select_management_window_8cs_source}{Select\+Management\+Window.\+cs}} の \mbox{\hyperlink{_select_management_window_8cs_source_l00023}{23}} 行目に定義があります。
-
-\Hypertarget{class_select_management_window_a18cd41a35b979c57cb4ac75043748687}\index{SelectManagementWindow@{SelectManagementWindow}!m\_selectUIController@{m\_selectUIController}}
-\index{m\_selectUIController@{m\_selectUIController}!SelectManagementWindow@{SelectManagementWindow}}
-\doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
-{\footnotesize\ttfamily \label{class_select_management_window_a18cd41a35b979c57cb4ac75043748687} 
-\mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Select\+Management\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_management_window_8cs_source}{Select\+Management\+Window.\+cs}} の \mbox{\hyperlink{_select_management_window_8cs_source_l00017}{17}} 行目に定義があります。
+\Hypertarget{class_select_management_window_a5a725fadfa238c809d7713683c146444}\index{SelectManagementWindow@{SelectManagementWindow}!m\_managementStorageWindowController@{m\_managementStorageWindowController}}
+\index{m\_managementStorageWindowController@{m\_managementStorageWindowController}!SelectManagementWindow@{SelectManagementWindow}}
+\doxysubsubsection{\texorpdfstring{m\_managementStorageWindowController}{m\_managementStorageWindowController}}
+{\footnotesize\ttfamily \label{class_select_management_window_a5a725fadfa238c809d7713683c146444} 
+\mbox{\hyperlink{class_window_controller}{Window\+Controller}} Select\+Management\+Window.\+m\+\_\+management\+Storage\+Window\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

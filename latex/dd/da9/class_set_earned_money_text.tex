@@ -2,8 +2,7 @@
 \hypertarget{class_set_earned_money_text}{}\label{class_set_earned_money_text}\index{SetEarnedMoneyText@{SetEarnedMoneyText}}
 
 
-Set\+Earned\+Money\+Text の継承関係図
-\nopagebreak
+Set\+Earned\+Money\+Text の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Set\+Earned\+Money\+Text の継承関係図
 \end{figure}
 
 
-Set\+Earned\+Money\+Text 連携図
-\nopagebreak
+Set\+Earned\+Money\+Text 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -49,13 +47,6 @@ List$<$ \mbox{\hyperlink{class_base_do_tween_u_i}{Base\+Do\+Tween\+UI}} $>$ \mbo
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_set_earned_money_text_8cs_source}{Set\+Earned\+Money\+Text.\+cs}} の \mbox{\hyperlink{_set_earned_money_text_8cs_source_l00005}{5}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_set_earned_money_text_a5b7c7a55df7f2316556c6ca6d8c1c07f}\index{SetEarnedMoneyText@{SetEarnedMoneyText}!ChangeText@{ChangeText}}
 \index{ChangeText@{ChangeText}!SetEarnedMoneyText@{SetEarnedMoneyText}}
@@ -68,11 +59,30 @@ override void Set\+Earned\+Money\+Text.\+Change\+Text (\begin{DoxyParamCaption}{
 \mbox{\hyperlink{class_base_change_text_a3452f4366c0aad47d94218e427c5068e}{Base\+Change\+Text}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_change_text_ae15a47b4faa9537c34d4918ae1118be9}{m\_text}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}更新するするテキストが存在しません"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ uint\ earnedMoney\ =\ \mbox{\hyperlink{class_management_game_manager}{ManagementGameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.EarnedMoney;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_set_earned_money_text_a2140eb21c110f0aa049250cb6b88f474}{m\_keepValue}}\ !=\ earnedMoney)}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 保存しておく}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_set_earned_money_text_a2140eb21c110f0aa049250cb6b88f474}{m\_keepValue}}\ =\ earnedMoney;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在の金額に更新する}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ m\_text.text\ =\ earnedMoney.ToString();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_change_text_a6a5e664db439088bc1b38fd935f3e5d3}{PlayEffect}}();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_change_text_a551d8e19da8bc726f852f9c84088a528}{PlayDoTween}}();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_set_earned_money_text_8cs_source}{Set\+Earned\+Money\+Text.\+cs}} の \mbox{\hyperlink{_set_earned_money_text_8cs_source_l00017}{17}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -87,10 +97,6 @@ override void Set\+Earned\+Money\+Text.\+Change\+Text (\begin{DoxyParamCaption}{
 \doxysubsubsection{\texorpdfstring{m\_keepValue}{m\_keepValue}}
 {\footnotesize\ttfamily \label{class_set_earned_money_text_a2140eb21c110f0aa049250cb6b88f474} 
 uint Set\+Earned\+Money\+Text.\+m\+\_\+keep\+Value = 0\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_set_earned_money_text_8cs_source}{Set\+Earned\+Money\+Text.\+cs}} の \mbox{\hyperlink{_set_earned_money_text_8cs_source_l00011}{11}} 行目に定義があります。
 
 
 

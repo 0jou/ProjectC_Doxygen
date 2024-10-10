@@ -2,8 +2,7 @@
 \hypertarget{class_confirmation_window}{}\label{class_confirmation_window}\index{ConfirmationWindow@{ConfirmationWindow}}
 
 
-Confirmation\+Window の継承関係図
-\nopagebreak
+Confirmation\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Confirmation\+Window の継承関係図
 \end{figure}
 
 
-Confirmation\+Window 連携図
-\nopagebreak
+Confirmation\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -120,13 +118,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_confirmation_window_8cs_source}{Confirmation\+Window.\+cs}} の \mbox{\hyperlink{_confirmation_window_8cs_source_l00006}{6}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_confirmation_window_a95fc4abf1373738ef91d4e3a691dcf45}\index{ConfirmationWindow@{ConfirmationWindow}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!ConfirmationWindow@{ConfirmationWindow}}
@@ -139,9 +130,41 @@ override async Uni\+Task Confirmation\+Window.\+On\+Update (\begin{DoxyParamCapt
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012\ \ \ \ \ \{}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Select"{}})\ ||}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 動作を行う}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_confirmation_window_ab37a7f9daa014d6d467c09fb55a1d01b}{UpdateConfirmation}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_confirmation_window_8cs_source}{Confirmation\+Window.\+cs}} の \mbox{\hyperlink{_confirmation_window_8cs_source_l00011}{11}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -160,9 +183,13 @@ virtual async Uni\+Task Confirmation\+Window.\+Update\+Confirmation (\begin{Doxy
 \mbox{\hyperlink{class_trial_session_window_aa94acbaf8543102438e223b2ea6ed349}{Trial\+Session\+Window}}で再実装されています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 派生クラスでの処理はこのメソッドをオーバーライドして行う}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_confirmation_window_8cs_source}{Confirmation\+Window.\+cs}} の \mbox{\hyperlink{_confirmation_window_8cs_source_l00046}{46}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}

@@ -20,31 +20,7 @@ bool \mbox{\hyperlink{class_visual_field_judgment_a728705e540b1d6b7c51eb072785fa
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_visual_field_judgment_8cs_source}{Visual\+Field\+Judgment.\+cs}} の \mbox{\hyperlink{_visual_field_judgment_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_visual_field_judgment_ae7222a89693bb8169debf59cfa0af60b}\index{VisualFieldJudgment@{VisualFieldJudgment}!ChaseTarget@{ChaseTarget}}
-\index{ChaseTarget@{ChaseTarget}!VisualFieldJudgment@{VisualFieldJudgment}}
-\doxysubsubsection{\texorpdfstring{ChaseTarget()}{ChaseTarget()}}
-{\footnotesize\ttfamily \label{class_visual_field_judgment_ae7222a89693bb8169debf59cfa0af60b} 
-bool Visual\+Field\+Judgment.\+Chase\+Target (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+target}{, }\item[{\mbox{\hyperlink{class_chase_parameters}{Chase\+Parameters}}}]{\+\_\+chase\+Parameters}{, }\item[{Collider}]{\+\_\+my\+Collider}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_visual_field_judgment_8cs_source}{Visual\+Field\+Judgment.\+cs}} の \mbox{\hyperlink{_visual_field_judgment_8cs_source_l00049}{49}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d1/d2f/class_visual_field_judgment_ae7222a89693bb8169debf59cfa0af60b_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_visual_field_judgment_a15798d3e4db220c8c3813c1176f73c98}\index{VisualFieldJudgment@{VisualFieldJudgment}!SearchTarget@{SearchTarget}}
 \index{SearchTarget@{SearchTarget}!VisualFieldJudgment@{VisualFieldJudgment}}
 \doxysubsubsection{\texorpdfstring{SearchTarget()}{SearchTarget()}}
@@ -52,14 +28,99 @@ bool Visual\+Field\+Judgment.\+Chase\+Target (\begin{DoxyParamCaption}\item[{Gam
 bool Visual\+Field\+Judgment.\+Search\+Target (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+target}{, }\item[{\mbox{\hyperlink{class_chase_parameters}{Chase\+Parameters}}}]{\+\_\+chase\+Parameters}{, }\item[{Collider}]{\+\_\+my\+Collider}{, }\item[{ref float}]{\+\_\+nearest\+Dist}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010\ \ \ \ \ \{}
+\DoxyCodeLine{00011\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_myCollider.transform.root.name\ ==\ \_target.name)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (Vector3.Distance(\_target.transform.position,\ m\_startPos)\ >=\ m\_chaseParameters.value.DistAwayFromSpawnPos)\ return\ false;}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist;}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(\_myCollider.transform.position,\ \_target.transform.position);}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ <=\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a38e5db20ae967729e4a788a6e5a75877}{NoticeDist}})}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a9e1047d5a49d18ff23171d1146fe4d1f}{SearchCharacterDist}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ angle\ =\ Vector3.Angle(\_myCollider.transform.forward,\ \_target.transform.position\ -\/\ \_myCollider.transform.position);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a86e068a195598a1d8c9f80b5c454d2e5}{ViewAngle}}\ *\ 0.5f)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >=\ \_nearestDist)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_target.TryGetComponent(out\ Collider\ targetCollider))}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetCollider.bounds.center\ -\/\ \_myCollider.bounds.center;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(targetCollider.bounds.center,\ \_myCollider.bounds.center);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ var\ ray\ =\ \textcolor{keyword}{new}\ Ray(\_myCollider.bounds.center,\ dir);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ Debug.DrawRay(ray.origin,\ ray.direction\ *\ dist,\ Color.red);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ RaycastHit\ hit,\ dist))}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.collider.gameObject.name\ ==\ targetCollider.gameObject.name)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_visual_field_judgment_8cs_source}{Visual\+Field\+Judgment.\+cs}} の \mbox{\hyperlink{_visual_field_judgment_8cs_source_l00009}{9}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d1/d2f/class_visual_field_judgment_a15798d3e4db220c8c3813c1176f73c98_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_visual_field_judgment_ae7222a89693bb8169debf59cfa0af60b}\index{VisualFieldJudgment@{VisualFieldJudgment}!ChaseTarget@{ChaseTarget}}
+\index{ChaseTarget@{ChaseTarget}!VisualFieldJudgment@{VisualFieldJudgment}}
+\doxysubsubsection{\texorpdfstring{ChaseTarget()}{ChaseTarget()}}
+{\footnotesize\ttfamily \label{class_visual_field_judgment_ae7222a89693bb8169debf59cfa0af60b} 
+bool Visual\+Field\+Judgment.\+Chase\+Target (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+target}{, }\item[{\mbox{\hyperlink{class_chase_parameters}{Chase\+Parameters}}}]{\+\_\+chase\+Parameters}{, }\item[{Collider}]{\+\_\+my\+Collider}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Distance(\_myCollider.transform.position,\ \_target.transform.position)\ <=\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a38e5db20ae967729e4a788a6e5a75877}{NoticeDist}})}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ angle\ =\ Vector3.Angle(\_myCollider.transform.forward,\ \_target.transform.position\ -\/\ \_myCollider.transform.position);}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a86e068a195598a1d8c9f80b5c454d2e5}{ViewAngle}}\ *\ 0.5f)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_target.TryGetComponent(out\ Collider\ targetCollider))}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetCollider.bounds.center\ -\/\ \_myCollider.bounds.center;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist\ =\ Vector3.Distance(targetCollider.bounds.center,\ \_myCollider.bounds.center);}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ Ray\ ray\ =\ \textcolor{keyword}{new}\ (\_myCollider.bounds.center,\ dir);}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ Debug.DrawRay(ray.origin,\ ray.direction\ *\ dist,\ Color.red);}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ RaycastHit\ hit,\ dist))}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.collider.gameObject.name\ ==\ targetCollider.gameObject.name)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d2f/class_visual_field_judgment_ae7222a89693bb8169debf59cfa0af60b_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_visual_field_judgment_a728705e540b1d6b7c51eb072785faab3}\index{VisualFieldJudgment@{VisualFieldJudgment}!SearchTargetNearSpawn@{SearchTargetNearSpawn}}
@@ -69,9 +130,49 @@ bool Visual\+Field\+Judgment.\+Search\+Target (\begin{DoxyParamCaption}\item[{Ga
 bool Visual\+Field\+Judgment.\+Search\+Target\+Near\+Spawn (\begin{DoxyParamCaption}\item[{Game\+Object}]{\+\_\+target}{, }\item[{\mbox{\hyperlink{class_chase_parameters}{Chase\+Parameters}}}]{\+\_\+chase\+Parameters}{, }\item[{Collider}]{\+\_\+my\+Collider}{, }\item[{Vector3}]{\+\_\+start\+Pos}{, }\item[{ref float}]{\+\_\+nearest\+Dist}{, }\item[{float}]{\+\_\+search\+Dist}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_myCollider.transform.root.name\ ==\ \_target.name)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Vector3.Distance(\_target.transform.position,\ \_startPos)\ >=\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_abb0ca6ac11da57de35d7f2ea4fbe90c4}{DistAwayFromSpawnPos}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ dist;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(\_myCollider.transform.position,\ \_target.transform.position);}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ <=\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a38e5db20ae967729e4a788a6e5a75877}{NoticeDist}})}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >\ \_searchDist)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angle;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ angle\ =\ Vector3.Angle(\_myCollider.transform.forward,\ \_target.transform.position\ -\/\ \_myCollider.transform.position);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (angle\ >\ \_chaseParameters.\mbox{\hyperlink{class_chase_parameters_a86e068a195598a1d8c9f80b5c454d2e5}{ViewAngle}}\ *\ 0.5f)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (dist\ >=\ \_nearestDist)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\_target.TryGetComponent(out\ Collider\ targetCollider))}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetCollider.bounds.center\ -\/\ \_myCollider.bounds.center;}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ dist\ =\ Vector3.Distance(targetCollider.bounds.center,\ \_myCollider.bounds.center);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ var\ ray\ =\ \textcolor{keyword}{new}\ Ray(\_myCollider.bounds.center,\ dir);}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ Debug.DrawRay(ray.origin,\ ray.direction\ *\ dist,\ Color.red);}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ RaycastHit\ hit,\ dist))}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit.collider.gameObject.name\ ==\ targetCollider.gameObject.name)}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_nearestDist\ =\ dist;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_visual_field_judgment_8cs_source}{Visual\+Field\+Judgment.\+cs}} の \mbox{\hyperlink{_visual_field_judgment_8cs_source_l00080}{80}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}

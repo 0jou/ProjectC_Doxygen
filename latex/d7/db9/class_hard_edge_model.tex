@@ -38,10 +38,6 @@ static void \mbox{\hyperlink{class_hard_edge_model_a23604efd5eb320ebda09ecb95b77
 \doxysubsection{詳解}
 ハードエッジモデルの頂点カラーにソフトエッジ情報を埋め込む（吉田） 以下のサイトを参考に作成 \href{https://blog.syn-sophia.co.jp/articles/2022/10/17/outline_rendering_01}{\texttt{ https\+://blog.\+syn-\/sophia.\+co.\+jp/articles/2022/10/17/outline\+\_\+rendering\+\_\+01}} 
 
- \mbox{\hyperlink{_soft_edge_8cs_source}{Soft\+Edge.\+cs}} の \mbox{\hyperlink{_soft_edge_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_hard_edge_model_ade275be2a3590063e2a07d6484f840ab}\index{HardEdgeModel@{HardEdgeModel}!Awake@{Awake}}
 \index{Awake@{Awake}!HardEdgeModel@{HardEdgeModel}}
@@ -50,9 +46,12 @@ static void \mbox{\hyperlink{class_hard_edge_model_a23604efd5eb320ebda09ecb95b77
 void Hard\+Edge\+Model.\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_hard_edge_model_a23604efd5eb320ebda09ecb95b7789d5}{EmbedSoftEdgeToVertexColor}}(gameObject);}
+\DoxyCodeLine{00013\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_soft_edge_8cs_source}{Soft\+Edge.\+cs}} の \mbox{\hyperlink{_soft_edge_8cs_source_l00010}{10}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -76,9 +75,40 @@ static void Hard\+Edge\+Model.\+Embed\+Soft\+Edge\+To\+Vertex\+Color (\begin{Dox
 \hline
 \end{DoxyParams}
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ var\ meshFilters\ =\ obj.GetComponentsInChildren<MeshFilter>();}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ meshFilter\ \textcolor{keywordflow}{in}\ meshFilters)}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ var\ mesh\ =\ meshFilter.sharedMesh;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ var\ normals\ =\ mesh.normals;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ var\ vertices\ =\ mesh.vertices;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ var\ vertexCount\ =\ mesh.vertexCount;}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソフトエッジ法線情報の生成}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ var\ softEdges\ =\ \textcolor{keyword}{new}\ Color[normals.Length];}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (var\ i\ =\ 0;\ i\ <\ vertexCount;\ i++)}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 同じ位置の頂点の法線座標の平均を設定する}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ softEdge\ =\ Vector3.zero;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (var\ j\ =\ 0;\ j\ <\ vertexCount;\ j++)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ v\ =\ vertices[i]\ -\/\ vertices[j];}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (v.sqrMagnitude\ <\ 1e-\/8f)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ softEdge\ +=\ normals[j];}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ softEdge.Normalize();}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ softEdges[i]\ =\ \textcolor{keyword}{new}\ Color(softEdge.x,\ softEdge.y,\ softEdge.z,\ 0);}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 頂点カラーに埋め込む}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ mesh.colors\ =\ softEdges;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_soft_edge_8cs_source}{Soft\+Edge.\+cs}} の \mbox{\hyperlink{_soft_edge_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}

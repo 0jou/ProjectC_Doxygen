@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -164,8 +164,6 @@ AddProbabilityEvent 連携図</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>Arbor経由でイベントを発生させる Arborのステートにアタッチして使用 内部インスペクターに <a class="el" href="../../d2/d85/_base_management_event_8cs.html" title="経営イベントの基底クラス">BaseManagementEvent.cs</a> を継承したコンポーネントをセットしたオブジェクトのprefabをセットする 確率も指定できる 0の場合はprefab側の設定が使用される </p>
-
-<p class="definition"> <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a> の <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html#l00019">19</a> 行目に定義があります。</p>
 </div><h2 class="groupheader">メソッド詳解</h2>
 <a id="ab1e7e2f6c6fd5ba5bdd3dc945e756d39" name="ab1e7e2f6c6fd5ba5bdd3dc945e756d39"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab1e7e2f6c6fd5ba5bdd3dc945e756d39">&#9670;&#160;</a></span>AddEvent()</h2>
@@ -191,9 +189,29 @@ AddProbabilityEvent 連携図</div>
 </div><div class="memdoc">
 
 <p>イベントを追加する @detail 確率が0超の場合は確率を設定する </p>
-
-<p class="definition"> <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a> の <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html#l00035">35</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   36</span>    {</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ad4ecb3ee4715071918e7023af840ca3f">m_managementEvent</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   38</span>        {</div>
+<div class="line"><span class="lineno">   39</span>            UnityEngine.Debug.LogError(<span class="stringliteral">&quot;イベントがセットできていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   40</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   41</span>        }</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aa9e6359c045c6a2ac6ae43772e8acfe2">m_probability</a> &gt; 0)</div>
+<div class="line"><span class="lineno">   44</span>        {</div>
+<div class="line"><span class="lineno">   45</span>            m_managementEvent.Probability = <a class="code hl_variable" href="#aa9e6359c045c6a2ac6ae43772e8acfe2">m_probability</a>;</div>
+<div class="line"><span class="lineno">   46</span>        }</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>        <span class="comment">// 継承先での専用処理実行</span></div>
+<div class="line"><span class="lineno">   49</span>        <a class="code hl_function" href="#a957117d94c311394b0c24491ebae3600">EventInitializeProcess</a>();</div>
+<div class="line"><span class="lineno">   50</span> </div>
+<div class="line"><span class="lineno">   51</span>        <a class="code hl_class" href="../../d8/dac/class_management_event_manager.html">ManagementEventManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.AddProbabilityEventList(<a class="code hl_variable" href="#ad4ecb3ee4715071918e7023af840ca3f">m_managementEvent</a>);</div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="ttc" id="aclass_add_probability_event_html_a957117d94c311394b0c24491ebae3600"><div class="ttname"><a href="#a957117d94c311394b0c24491ebae3600">AddProbabilityEvent.EventInitializeProcess</a></div><div class="ttdeci">virtual void EventInitializeProcess()</div><div class="ttdoc">継承先での情報設定用処理</div><div class="ttdef"><b>Definition</b> AddProbabilityEvent.cs:56</div></div>
+<div class="ttc" id="aclass_add_probability_event_html_aa9e6359c045c6a2ac6ae43772e8acfe2"><div class="ttname"><a href="#aa9e6359c045c6a2ac6ae43772e8acfe2">AddProbabilityEvent.m_probability</a></div><div class="ttdeci">int m_probability</div><div class="ttdef"><b>Definition</b> AddProbabilityEvent.cs:28</div></div>
+<div class="ttc" id="aclass_add_probability_event_html_ad4ecb3ee4715071918e7023af840ca3f"><div class="ttname"><a href="#ad4ecb3ee4715071918e7023af840ca3f">AddProbabilityEvent.m_managementEvent</a></div><div class="ttdeci">BaseManagementEvent m_managementEvent</div><div class="ttdef"><b>Definition</b> AddProbabilityEvent.cs:23</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_management_event_manager_html"><div class="ttname"><a href="../../d8/dac/class_management_event_manager.html">ManagementEventManager</a></div><div class="ttdoc">経営のイベントを管理するマネージャー BaseManagementEvent.cs を継承したイベントを抽選し実行する</div><div class="ttdef"><b>Definition</b> ManagementEventManager.cs:17</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d6c/class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39_cgraph.png" border="0" usemap="#adb/d6c/class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39_cgraph" alt=""/></div>
@@ -242,9 +260,9 @@ AddProbabilityEvent 連携図</div>
 <p>継承先での情報設定用処理 </p>
 
 <p><a class="el" href="../../dd/d69/class_add_cleaning_probability_event.html#a2c1e6379d19e8b11fd893b8a84e31c3e">AddCleaningProbabilityEvent</a>で再実装されています。</p>
-
-<p class="definition"> <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a> の <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html#l00056">56</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   57</span>    {</div>
+<div class="line"><span class="lineno">   58</span>    }</div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d6c/class_add_probability_event_a957117d94c311394b0c24491ebae3600_icgraph.png" border="0" usemap="#adb/d6c/class_add_probability_event_a957117d94c311394b0c24491ebae3600_icgraph" alt=""/></div>
@@ -273,9 +291,11 @@ AddProbabilityEvent 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a> の <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html#l00062">62</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   63</span>    {</div>
+<div class="line"><span class="lineno">   64</span>        <a class="code hl_function" href="#ab1e7e2f6c6fd5ba5bdd3dc945e756d39">AddEvent</a>();</div>
+<div class="line"><span class="lineno">   65</span>    }</div>
+<div class="ttc" id="aclass_add_probability_event_html_ab1e7e2f6c6fd5ba5bdd3dc945e756d39"><div class="ttname"><a href="#ab1e7e2f6c6fd5ba5bdd3dc945e756d39">AddProbabilityEvent.AddEvent</a></div><div class="ttdeci">void AddEvent()</div><div class="ttdoc">イベントを追加する @detail 確率が0超の場合は確率を設定する</div><div class="ttdef"><b>Definition</b> AddProbabilityEvent.cs:35</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../db/d6c/class_add_probability_event_a24dd822dadeb1f5ec77dd50895a1e9ff_cgraph.png" border="0" usemap="#adb/d6c/class_add_probability_event_a24dd822dadeb1f5ec77dd50895a1e9ff_cgraph" alt=""/></div>
@@ -311,8 +331,6 @@ AddProbabilityEvent 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a> の <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html#l00023">23</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="aa9e6359c045c6a2ac6ae43772e8acfe2" name="aa9e6359c045c6a2ac6ae43772e8acfe2"></a>
@@ -335,12 +353,10 @@ AddProbabilityEvent 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a> の <a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html#l00028">28</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Base/<a class="el" href="../../df/d8d/_add_probability_event_8cs_source.html">AddProbabilityEvent.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Base/<a class="el" href="../../df/d8d/_add_probability_event_8cs.html">AddProbabilityEvent.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

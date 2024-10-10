@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -137,47 +137,7 @@ PushOutCollider 連携図</div>
 <tr class="memitem:a4ac1c53d2ade2176a91be71a2d8a380c" id="r_a4ac1c53d2ade2176a91be71a2d8a380c"><td class="memItemLeft" align="right" valign="top">CapsuleCollider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4ac1c53d2ade2176a91be71a2d8a380c">myCapsuleCollider</a></td></tr>
 <tr class="separator:a4ac1c53d2ade2176a91be71a2d8a380c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html">PushOutCollider.cs</a> の <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
-<a id="a20ab2c9ffec32860920195cbc3d2358e" name="a20ab2c9ffec32860920195cbc3d2358e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20ab2c9ffec32860920195cbc3d2358e">&#9670;&#160;</a></span>PushOut()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void PushOutCollider.PushOut </td>
-          <td>(</td>
-          <td class="paramtype">Collider</td>          <td class="paramname"><span class="paramname"><em>collider</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html">PushOutCollider.cs</a> の <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html#l00039">39</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph.png" border="0" usemap="#ad4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph" alt=""/></div>
-<map name="ad4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph" id="ad4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph">
-<area shape="rect" title=" " alt="" coords="202,5,373,32"/>
-<area shape="rect" href="../../d4/d98/class_push_out_collider.html#a7e7e4790bee5ba4de1733ff987b3a7bb" title=" " alt="" coords="5,5,154,32"/>
-<area shape="poly" title=" " alt="" coords="186,21,154,21,154,16,186,16"/>
-</map>
-</div>
-
-</div>
-</div>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a7e7e4790bee5ba4de1733ff987b3a7bb" name="a7e7e4790bee5ba4de1733ff987b3a7bb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a7e7e4790bee5ba4de1733ff987b3a7bb">&#9670;&#160;</a></span>Start()</h2>
 
@@ -200,9 +160,28 @@ PushOutCollider 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html">PushOutCollider.cs</a> の <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html#l00018">18</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   19</span>    {</div>
+<div class="line"><span class="lineno">   20</span>        <span class="keywordflow">if</span> (!transform.root.TryGetComponent(out <a class="code hl_variable" href="#a4ac1c53d2ade2176a91be71a2d8a380c">myCapsuleCollider</a>)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   21</span> </div>
+<div class="line"><span class="lineno">   22</span>        this.OnTriggerEnterAsObservable()</div>
+<div class="line"><span class="lineno">   23</span>         .Where(_ =&gt; enabled)</div>
+<div class="line"><span class="lineno">   24</span>         .Subscribe(collider =&gt;</div>
+<div class="line"><span class="lineno">   25</span>         {</div>
+<div class="line"><span class="lineno">   26</span>             <a class="code hl_function" href="#a20ab2c9ffec32860920195cbc3d2358e">PushOut</a>(collider);</div>
+<div class="line"><span class="lineno">   27</span>         }</div>
+<div class="line"><span class="lineno">   28</span>         ).AddTo(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>        this.OnTriggerStayAsObservable()</div>
+<div class="line"><span class="lineno">   31</span>         .Where(_ =&gt; enabled)</div>
+<div class="line"><span class="lineno">   32</span>         .Subscribe(collider =&gt;</div>
+<div class="line"><span class="lineno">   33</span>         {</div>
+<div class="line"><span class="lineno">   34</span>             <a class="code hl_function" href="#a20ab2c9ffec32860920195cbc3d2358e">PushOut</a>(collider);</div>
+<div class="line"><span class="lineno">   35</span>         }</div>
+<div class="line"><span class="lineno">   36</span>         ).AddTo(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="ttc" id="aclass_push_out_collider_html_a20ab2c9ffec32860920195cbc3d2358e"><div class="ttname"><a href="#a20ab2c9ffec32860920195cbc3d2358e">PushOutCollider.PushOut</a></div><div class="ttdeci">void PushOut(Collider collider)</div><div class="ttdef"><b>Definition</b> PushOutCollider.cs:39</div></div>
+<div class="ttc" id="aclass_push_out_collider_html_a4ac1c53d2ade2176a91be71a2d8a380c"><div class="ttname"><a href="#a4ac1c53d2ade2176a91be71a2d8a380c">PushOutCollider.myCapsuleCollider</a></div><div class="ttdeci">CapsuleCollider myCapsuleCollider</div><div class="ttdef"><b>Definition</b> PushOutCollider.cs:16</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d4/d98/class_push_out_collider_a7e7e4790bee5ba4de1733ff987b3a7bb_cgraph.png" border="0" usemap="#ad4/d98/class_push_out_collider_a7e7e4790bee5ba4de1733ff987b3a7bb_cgraph" alt=""/></div>
@@ -210,6 +189,65 @@ PushOutCollider 連携図</div>
 <area shape="rect" title=" " alt="" coords="5,5,154,32"/>
 <area shape="rect" href="../../d4/d98/class_push_out_collider.html#a20ab2c9ffec32860920195cbc3d2358e" title=" " alt="" coords="202,5,373,32"/>
 <area shape="poly" title=" " alt="" coords="154,16,186,16,186,21,154,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a20ab2c9ffec32860920195cbc3d2358e" name="a20ab2c9ffec32860920195cbc3d2358e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20ab2c9ffec32860920195cbc3d2358e">&#9670;&#160;</a></span>PushOut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PushOutCollider.PushOut </td>
+          <td>(</td>
+          <td class="paramtype">Collider</td>          <td class="paramname"><span class="paramname"><em>collider</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   40</span>    {</div>
+<div class="line"><span class="lineno">   41</span>        <span class="comment">// 自分自身なら処理しない</span></div>
+<div class="line"><span class="lineno">   42</span>        <span class="keywordflow">if</span> (collider.transform.root.name == transform.root.name) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   43</span> </div>
+<div class="line"><span class="lineno">   44</span>        KinematicCharacterMotor hitMotor;</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (!collider.TryGetComponent(out hitMotor)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>        <span class="comment">// 相手との角度計算</span></div>
+<div class="line"><span class="lineno">   48</span>        Vector3 targetVec = collider.transform.root.position - transform.root.position;</div>
+<div class="line"><span class="lineno">   49</span>        targetVec.y = 0;</div>
+<div class="line"><span class="lineno">   50</span>        <span class="keywordtype">float</span> angle = Vector3.SignedAngle(transform.root.forward, targetVec.normalized, Vector3.up);</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">if</span> (Mathf.Abs(angle) &gt;= 90) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   52</span>        <span class="keywordflow">if</span> (angle &gt; 0) angle += <a class="code hl_variable" href="#a7e5228332e1fec994faec4ac22c6ea4e">m_angleSpeed</a> * Time.deltaTime; <span class="keywordflow">else</span> angle -= <a class="code hl_variable" href="#a7e5228332e1fec994faec4ac22c6ea4e">m_angleSpeed</a> * Time.deltaTime;</div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordtype">float</span> rad = angle * Mathf.Deg2Rad;</div>
+<div class="line"><span class="lineno">   54</span>        Vector3 vec = <span class="keyword">new</span> Vector3(Mathf.Cos(rad), 0, Mathf.Sin(rad));</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>        <span class="comment">// 相手の位置移動</span></div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordtype">float</span> dist = myCapsuleCollider.radius + hitMotor.Capsule.radius;</div>
+<div class="line"><span class="lineno">   58</span>        Vector3 pos = transform.position;</div>
+<div class="line"><span class="lineno">   59</span>        pos.y = hitMotor.transform.position.y;</div>
+<div class="line"><span class="lineno">   60</span>        Vector3 nextPos = pos + (Quaternion.Euler(0, angle, 0) * transform.root.forward) * dist;</div>
+<div class="line"><span class="lineno">   61</span>        hitMotor.MoveCharacter(nextPos);</div>
+<div class="line"><span class="lineno">   62</span>    }</div>
+<div class="ttc" id="aclass_push_out_collider_html_a7e5228332e1fec994faec4ac22c6ea4e"><div class="ttname"><a href="#a7e5228332e1fec994faec4ac22c6ea4e">PushOutCollider.m_angleSpeed</a></div><div class="ttdeci">float m_angleSpeed</div><div class="ttdef"><b>Definition</b> PushOutCollider.cs:15</div></div>
+</div><!-- fragment --><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph.png" border="0" usemap="#ad4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph" alt=""/></div>
+<map name="ad4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph" id="ad4/d98/class_push_out_collider_a20ab2c9ffec32860920195cbc3d2358e_icgraph">
+<area shape="rect" title=" " alt="" coords="202,5,373,32"/>
+<area shape="rect" href="../../d4/d98/class_push_out_collider.html#a7e7e4790bee5ba4de1733ff987b3a7bb" title=" " alt="" coords="5,5,154,32"/>
+<area shape="poly" title=" " alt="" coords="186,21,154,21,154,16,186,16"/>
 </map>
 </div>
 
@@ -236,8 +274,6 @@ PushOutCollider 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html">PushOutCollider.cs</a> の <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a4ac1c53d2ade2176a91be71a2d8a380c" name="a4ac1c53d2ade2176a91be71a2d8a380c"></a>
@@ -260,12 +296,10 @@ PushOutCollider 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html">PushOutCollider.cs</a> の <a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/<a class="el" href="../../d5/d2b/_push_out_collider_8cs_source.html">PushOutCollider.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/<a class="el" href="../../d5/d2b/_push_out_collider_8cs.html">PushOutCollider.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

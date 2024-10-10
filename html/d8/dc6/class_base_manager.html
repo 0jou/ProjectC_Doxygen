@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -145,18 +145,7 @@ BaseManager&lt; T &gt; 連携図</div>
 <tr class="memitem:a2cdeec047797d742cf35f9ad88bb3c70" id="r_a2cdeec047797d742cf35f9ad88bb3c70"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2cdeec047797d742cf35f9ad88bb3c70">m_dontDestroyOnLoad</a> = true</td></tr>
 <tr class="separator:a2cdeec047797d742cf35f9ad88bb3c70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><div class="typeconstraint">
-<dl><dt><b>型制約</b></dt><dd>
-<table border="0" cellspacing="2" cellpadding="0">
-<tr><td valign="top"><em>T</em></td><td>&#160;:</td><td valign="top"><em>MonoBehaviour</em></td><td>&#160;</td></tr>
-</table>
-</dd>
-</dl>
-</div>
-
-<p class="definition"> <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html">BaseManager.cs</a> の <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html#l00004">4</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a032625833cb6a4924ac0dd620932892d" name="a032625833cb6a4924ac0dd620932892d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a032625833cb6a4924ac0dd620932892d">&#9670;&#160;</a></span>Awake()</h2>
 
@@ -181,9 +170,25 @@ BaseManager&lt; T &gt; 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d2/d53/class_item_data_base_manager.html#a40391d2b6942b2302227afd979dc9155">ItemDataBaseManager</a>, <a class="el" href="../../da/d90/class_player_input_manager.html#a73ab69a615c299ac412b24f13faa53da">PlayerInputManager</a>で再実装されています。</p>
-
-<p class="definition"> <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html">BaseManager.cs</a> の <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html#l00012">12</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   13</span>    {</div>
+<div class="line"><span class="lineno">   14</span>        <span class="comment">// インスタンスがなければ作成</span></div>
+<div class="line"><span class="lineno">   15</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aa8c8aec87570694dda230cb2dfac79ac">instance</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   16</span>        {</div>
+<div class="line"><span class="lineno">   17</span>            <a class="code hl_variable" href="#aa8c8aec87570694dda230cb2dfac79ac">instance</a> = (T)FindObjectOfType(typeof(T));</div>
+<div class="line"><span class="lineno">   18</span>            <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a2cdeec047797d742cf35f9ad88bb3c70">m_dontDestroyOnLoad</a>)</div>
+<div class="line"><span class="lineno">   19</span>            {</div>
+<div class="line"><span class="lineno">   20</span>                DontDestroyOnLoad(gameObject);</div>
+<div class="line"><span class="lineno">   21</span>            }</div>
+<div class="line"><span class="lineno">   22</span>        }</div>
+<div class="line"><span class="lineno">   23</span>        <span class="comment">// あれば作成しない</span></div>
+<div class="line"><span class="lineno">   24</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   25</span>        {</div>
+<div class="line"><span class="lineno">   26</span>            Destroy(gameObject);</div>
+<div class="line"><span class="lineno">   27</span>        }</div>
+<div class="line"><span class="lineno">   28</span>    }</div>
+<div class="ttc" id="aclass_base_manager_html_a2cdeec047797d742cf35f9ad88bb3c70"><div class="ttname"><a href="#a2cdeec047797d742cf35f9ad88bb3c70">BaseManager.m_dontDestroyOnLoad</a></div><div class="ttdeci">bool m_dontDestroyOnLoad</div><div class="ttdef"><b>Definition</b> BaseManager.cs:10</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="ac3a9740730cd6012b6ee89c4cf9c4baa" name="ac3a9740730cd6012b6ee89c4cf9c4baa"></a>
@@ -200,9 +205,14 @@ BaseManager&lt; T &gt; 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html">BaseManager.cs</a> の <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html#l00030">30</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#aa8c8aec87570694dda230cb2dfac79ac">instance</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   33</span>        {</div>
+<div class="line"><span class="lineno">   34</span>            Destroy(<a class="code hl_variable" href="#aa8c8aec87570694dda230cb2dfac79ac">instance</a>);</div>
+<div class="line"><span class="lineno">   35</span>            <a class="code hl_variable" href="#aa8c8aec87570694dda230cb2dfac79ac">instance</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -226,8 +236,6 @@ BaseManager&lt; T &gt; 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html">BaseManager.cs</a> の <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a2cdeec047797d742cf35f9ad88bb3c70" name="a2cdeec047797d742cf35f9ad88bb3c70"></a>
@@ -250,12 +258,10 @@ BaseManager&lt; T &gt; 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html">BaseManager.cs</a> の <a class="el" href="../../d1/d5a/_base_manager_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Manager/BaseManager/<a class="el" href="../../d1/d5a/_base_manager_8cs_source.html">BaseManager.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Manager/BaseManager/<a class="el" href="../../d1/d5a/_base_manager_8cs.html">BaseManager.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

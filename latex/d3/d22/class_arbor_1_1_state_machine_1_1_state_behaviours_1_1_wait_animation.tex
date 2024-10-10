@@ -43,13 +43,6 @@ State\+Link \mbox{\hyperlink{class_arbor_1_1_state_machine_1_1_state_behaviours_
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00019}{19}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a199f54ac1deef8b4b36afca6f8614eb9}\index{Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}!CheckTransition@{CheckTransition}}
 \index{CheckTransition@{CheckTransition}!Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}}
@@ -62,9 +55,34 @@ void Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+Check\+Trans
 指定のアニメーションになったら次のステートに遷移 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Animator\ animator\ =\ m\_animator.value\ as\ Animator;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ layerName\ =\ \mbox{\hyperlink{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a32d645ddd445daf7dd03dce63c0e873f}{m\_layerName}}.value;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ stateName\ =\ \mbox{\hyperlink{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a832066b22311dc0a8dbc922a37b5472a}{m\_stateName}}.value;}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ layerIndex\ =\ AnimatorUtility.GetLayerIndex(animator,\ layerName);}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (layerIndex\ <\ 0)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}指定のレイヤーが見つかりません。"{}}\ +\ gameObject.name);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator.GetCurrentAnimatorStateInfo(layerIndex).IsName(stateName))}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!animator.IsInTransition(layerIndex))}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Transition(\mbox{\hyperlink{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a7f2eab5bc1ad1ffdde0010b91c7668b0}{\_NextState}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00039}{39}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -79,9 +97,12 @@ void Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+Check\+Trans
 override void Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a199f54ac1deef8b4b36afca6f8614eb9}{CheckTransition}}();}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00065}{65}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -96,9 +117,12 @@ override void Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+On\
 override void Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a199f54ac1deef8b4b36afca6f8614eb9}{CheckTransition}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00070}{70}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -109,25 +133,11 @@ override void Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+On\
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a7f2eab5bc1ad1ffdde0010b91c7668b0}\index{Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}!\_NextState@{\_NextState}}
-\index{\_NextState@{\_NextState}!Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}}
-\doxysubsubsection{\texorpdfstring{\_NextState}{\_NextState}}
-{\footnotesize\ttfamily \label{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a7f2eab5bc1ad1ffdde0010b91c7668b0} 
-State\+Link Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+\_\+\+Next\+State = new State\+Link()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00034}{34}} 行目に定義があります。
-
 \Hypertarget{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a9e00cfe2dd17deb4e15786474b96782b}\index{Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}!m\_animator@{m\_animator}}
 \index{m\_animator@{m\_animator}!Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}}
 \doxysubsubsection{\texorpdfstring{m\_animator}{m\_animator}}
 {\footnotesize\ttfamily \label{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a9e00cfe2dd17deb4e15786474b96782b} 
 Flexible\+Component Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+m\+\_\+animator = new Flexible\+Component(Flexible\+Hierarchy\+Type.\+Root\+Graph)\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00024}{24}} 行目に定義があります。
 
 \Hypertarget{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a32d645ddd445daf7dd03dce63c0e873f}\index{Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}!m\_layerName@{m\_layerName}}
 \index{m\_layerName@{m\_layerName}!Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}}
@@ -135,19 +145,17 @@ Flexible\+Component Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation
 {\footnotesize\ttfamily \label{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a32d645ddd445daf7dd03dce63c0e873f} 
 Flexible\+String Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+m\+\_\+layer\+Name = new Flexible\+String(string.\+Empty)\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00027}{27}} 行目に定義があります。
-
 \Hypertarget{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a832066b22311dc0a8dbc922a37b5472a}\index{Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}!m\_stateName@{m\_stateName}}
 \index{m\_stateName@{m\_stateName}!Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}}
 \doxysubsubsection{\texorpdfstring{m\_stateName}{m\_stateName}}
 {\footnotesize\ttfamily \label{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a832066b22311dc0a8dbc922a37b5472a} 
 Flexible\+String Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+m\+\_\+state\+Name = new Flexible\+String(string.\+Empty)\hspace{0.3cm}{\ttfamily [private]}}
 
-
-
- \mbox{\hyperlink{_wait_animation_8cs_source}{Wait\+Animation.\+cs}} の \mbox{\hyperlink{_wait_animation_8cs_source_l00030}{30}} 行目に定義があります。
+\Hypertarget{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a7f2eab5bc1ad1ffdde0010b91c7668b0}\index{Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}!\_NextState@{\_NextState}}
+\index{\_NextState@{\_NextState}!Arbor.StateMachine.StateBehaviours.WaitAnimation@{Arbor.StateMachine.StateBehaviours.WaitAnimation}}
+\doxysubsubsection{\texorpdfstring{\_NextState}{\_NextState}}
+{\footnotesize\ttfamily \label{class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_a7f2eab5bc1ad1ffdde0010b91c7668b0} 
+State\+Link Arbor.\+State\+Machine.\+State\+Behaviours.\+Wait\+Animation.\+\_\+\+Next\+State = new State\+Link()\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

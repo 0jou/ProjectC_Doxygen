@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -150,10 +150,7 @@ CharacterCore.ActionState_SkillBremen_WaitAppear 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a> の <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a36fca0a46ae8fa77b3643a5846320e3c" name="a36fca0a46ae8fa77b3643a5846320e3c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a36fca0a46ae8fa77b3643a5846320e3c">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -178,38 +175,39 @@ CharacterCore.ActionState_SkillBremen_WaitAppear 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a> の <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aab39528281963d733c9beb434345af9a" name="aab39528281963d733c9beb434345af9a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab39528281963d733c9beb434345af9a">&#9670;&#160;</a></span>OnExit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_SkillBremen_WaitAppear.OnExit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a> の <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html#l00069">69</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   18</span>        {</div>
+<div class="line"><span class="lineno">   19</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>            var parameter = Core.PlayerSkillsParameters;</div>
+<div class="line"><span class="lineno">   22</span> </div>
+<div class="line"><span class="lineno">   23</span>            <span class="keywordflow">if</span> (parameter == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   24</span>            {</div>
+<div class="line"><span class="lineno">   25</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   26</span>            }</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>            <span class="comment">//出現用Timelineを再生</span></div>
+<div class="line"><span class="lineno">   29</span>            parameter.StorySkillAppear();</div>
+<div class="line"><span class="lineno">   30</span> </div>
+<div class="line"><span class="lineno">   31</span>            <span class="comment">//ルートオブジェクトにSetTimeLineコンポーネントがあれば呼ぶ</span></div>
+<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">if</span> (Core.transform.root.TryGetComponent(out <a class="code hl_class" href="../../dc/d99/class_set_time_line_speed.html">SetTimeLineSpeed</a> setTimeLineSpeed))</div>
+<div class="line"><span class="lineno">   33</span>            {</div>
+<div class="line"><span class="lineno">   34</span>                setTimeLineSpeed.SetPlayableDirectorSpeed();</div>
+<div class="line"><span class="lineno">   35</span>            }</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>            <a class="code hl_enumeration" href="../../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa">StorySkill_ID</a> storySkill_ID = parameter.GetStorySkill_ID;</div>
+<div class="line"><span class="lineno">   38</span>            <a class="code hl_class" href="../../d0/d67/class_story_skill_data.html">StorySkillData</a> storySkillData = <a class="code hl_class" href="../../d0/dd5/class_story_skill_data_base_manager.html">StorySkillDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetStorySkillData(storySkill_ID);</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>            <span class="comment">//データベースからスキルの滞在時間を取得する</span></div>
+<div class="line"><span class="lineno">   41</span>            Core.PlayerSkillsParameters.DisappearTime = storySkillData.<a class="code hl_property" href="../../d0/d67/class_story_skill_data.html#aa05f760b566c2fb480bfa4f166b185cc">StayTime</a>;</div>
+<div class="line"><span class="lineno">   42</span> </div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_set_time_line_speed_html"><div class="ttname"><a href="../../dc/d99/class_set_time_line_speed.html">SetTimeLineSpeed</a></div><div class="ttdef"><b>Definition</b> SetTimeLineSpeed.cs:7</div></div>
+<div class="ttc" id="aclass_story_skill_data_base_manager_html"><div class="ttname"><a href="../../d0/dd5/class_story_skill_data_base_manager.html">StorySkillDataBaseManager</a></div><div class="ttdef"><b>Definition</b> StorySkillDataBaseManager.cs:9</div></div>
+<div class="ttc" id="aclass_story_skill_data_html"><div class="ttname"><a href="../../d0/d67/class_story_skill_data.html">StorySkillData</a></div><div class="ttdef"><b>Definition</b> StorySkillData.cs:10</div></div>
+<div class="ttc" id="aclass_story_skill_data_html_aa05f760b566c2fb480bfa4f166b185cc"><div class="ttname"><a href="../../d0/d67/class_story_skill_data.html#aa05f760b566c2fb480bfa4f166b185cc">StorySkillData.StayTime</a></div><div class="ttdeci">float StayTime</div><div class="ttdef"><b>Definition</b> StorySkillData.cs:31</div></div>
+<div class="ttc" id="anamespace_story_skill_info_html_a496d88cb4016f418cd837e2c1fc6b8aa"><div class="ttname"><a href="../../dc/d47/namespace_story_skill_info.html#a496d88cb4016f418cd837e2c1fc6b8aa">StorySkillInfo.StorySkill_ID</a></div><div class="ttdeci">StorySkill_ID</div><div class="ttdef"><b>Definition</b> StorySkill_ID.cs:8</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a4fbff93eafd27bcaf80516e0ff89c512" name="a4fbff93eafd27bcaf80516e0ff89c512"></a>
@@ -236,13 +234,64 @@ CharacterCore.ActionState_SkillBremen_WaitAppear 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#abd0a7d1992675f10146a3d2839d136fe">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   46</span>        {</div>
+<div class="line"><span class="lineno">   47</span>            base.OnUpdate();</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>            <span class="comment">//TimeLine再生終了したら次のStateへと移行</span></div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">if</span> (Core.PlayerSkillsParameters.m_playableDirector)</div>
+<div class="line"><span class="lineno">   51</span>            {</div>
+<div class="line"><span class="lineno">   52</span>                <span class="keywordflow">if</span> (Core.IsDoneTimeLine() == <span class="keyword">false</span>)</div>
+<div class="line"><span class="lineno">   53</span>                {</div>
+<div class="line"><span class="lineno">   54</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;Attack&quot;</span>);</div>
+<div class="line"><span class="lineno">   55</span> </div>
+<div class="line"><span class="lineno">   56</span>                    <span class="comment">//SetTriggerAnimatorListコンポーネントにアクセスし、その他のAnimatorにトリガーを送る</span></div>
+<div class="line"><span class="lineno">   57</span>                    <span class="keywordflow">if</span> (Core.transform.TryGetComponent(out <a class="code hl_class" href="../../db/d10/class_set_trigger_in_animator_list.html">SetTriggerInAnimatorList</a> <span class="keyword">set</span>))</div>
+<div class="line"><span class="lineno">   58</span>                    {</div>
+<div class="line"><span class="lineno">   59</span>                        <span class="keyword">set</span>.SetTriggerAnimatorInList(<span class="stringliteral">&quot;Attack&quot;</span>);</div>
+<div class="line"><span class="lineno">   60</span>                    }</div>
+<div class="line"><span class="lineno">   61</span> </div>
+<div class="line"><span class="lineno">   62</span>                }</div>
+<div class="line"><span class="lineno">   63</span> </div>
+<div class="line"><span class="lineno">   64</span> </div>
+<div class="line"><span class="lineno">   65</span>            }</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>        }</div>
+<div class="ttc" id="aclass_set_trigger_in_animator_list_html"><div class="ttname"><a href="../../db/d10/class_set_trigger_in_animator_list.html">SetTriggerInAnimatorList</a></div><div class="ttdef"><b>Definition</b> SetTriggerInAnimatorList.cs:7</div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aab39528281963d733c9beb434345af9a" name="aab39528281963d733c9beb434345af9a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab39528281963d733c9beb434345af9a">&#9670;&#160;</a></span>OnExit()</h2>
 
-<p class="definition"> <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a> の <a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html#l00045">45</a> 行目に定義があります。</p>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_SkillBremen_WaitAppear.OnExit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">   70</span>        {</div>
+<div class="line"><span class="lineno">   71</span>            base.OnExit();</div>
+<div class="line"><span class="lineno">   72</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/StorySkillState/<a class="el" href="../../d4/d2f/_bremen_skill_state_8cs_source.html">BremenSkillState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/StorySkillState/<a class="el" href="../../d4/d2f/_bremen_skill_state_8cs.html">BremenSkillState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

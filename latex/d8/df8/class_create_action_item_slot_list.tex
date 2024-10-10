@@ -2,8 +2,7 @@
 \hypertarget{class_create_action_item_slot_list}{}\label{class_create_action_item_slot_list}\index{CreateActionItemSlotList@{CreateActionItemSlotList}}
 
 
-Create\+Action\+Item\+Slot\+List の継承関係図
-\nopagebreak
+Create\+Action\+Item\+Slot\+List の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Create\+Action\+Item\+Slot\+List の継承関係図
 \end{figure}
 
 
-Create\+Action\+Item\+Slot\+List 連携図
-\nopagebreak
+Create\+Action\+Item\+Slot\+List 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -88,13 +86,6 @@ enum \mbox{\hyperlink{class_base_create_slot_list_a8c5fe4381648d701d997e063126f4
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_create_action_item_slot_list_8cs_source}{Create\+Action\+Item\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_action_item_slot_list_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_create_action_item_slot_list_a728d306ee2e102c945f86a2c8e67c5cd}\index{CreateActionItemSlotList@{CreateActionItemSlotList}!CreateSlotInstance@{CreateSlotInstance}}
 \index{CreateSlotInstance@{CreateSlotInstance}!CreateActionItemSlotList@{CreateActionItemSlotList}}
@@ -107,11 +98,51 @@ override void Create\+Action\+Item\+Slot\+List.\+Create\+Slot\+Instance (\begin{
 \mbox{\hyperlink{class_base_create_slot_list_a51b06cac02cad5cb1ecba94d423d7f41}{Base\+Create\+Slot\+List}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成するスロットが登録されていません"{}});}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ まだ作成できていないスロットリスト}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ var\ orderFoodList\ =\ \mbox{\hyperlink{class_create_action_item_slot_list_a6fc3914ae52aaa785755ad40aa29139b}{GetItemSlotDataList}}();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ food\ \textcolor{keywordflow}{in}\ orderFoodList)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (food\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 子オブジェクトにスロットを追加}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ var\ slot\ =\ Instantiate(\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}},\ transform);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//スケール値0.8に（仮）}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ slot.transform.localScale\ =\ \textcolor{keyword}{new}\ Vector3(0.8f,0.8f,1.0f);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ var\ slotData\ =\ slot.GetComponent<\mbox{\hyperlink{class_item_slot_data}{ItemSlotData}}>();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slotData)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 注文アイテムスロットのデータをセット}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)food.ItemID);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.SetItemSlotData(itemData,\ \mbox{\hyperlink{class_create_action_item_slot_list_af6d934e3db1f4361056eaf2f3a6f611b}{m\_pocketType}});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ItemSlotDataコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ リストに追加}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}}.Add(slotData);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIcontrollerに追加}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_a6d53b2ee37d87dd253e3743208052040}{AddSelectUIControler}}(slot);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_action_item_slot_list_8cs_source}{Create\+Action\+Item\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_action_item_slot_list_8cs_source_l00024}{24}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -125,9 +156,45 @@ override void Create\+Action\+Item\+Slot\+List.\+Create\+Slot\+Instance (\begin{
 List$<$ \mbox{\hyperlink{class_pocket_item_data}{Pocket\+Item\+Data}} $>$ Create\+Action\+Item\+Slot\+List.\+Get\+Item\+Slot\+Data\+List (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ var\ foodList\ =\ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}}.\mbox{\hyperlink{class_base_pocket_item_data_controller_a20aab7d3701a55455e2834a7eff7245c}{GetItemList}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food);}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ List<PocketItemData>\ creatSlotList\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ food\ \textcolor{keywordflow}{in}\ foodList)}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成済みか}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isCreate\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 既存のスロットに存在していれば作成しない}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ slot\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}})}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slot\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ slotData\ =\ slot.GetComponent<\mbox{\hyperlink{class_item_slot_data}{ItemSlotData}}>();}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slotData.ItemTypeID\ ==\ food.ItemTypeID\ \&\&}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.ItemID\ ==\ food.ItemID)}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ isCreate\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (isCreate\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成する}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ creatSlotList.Add(food);}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ creatSlotList;}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_create_action_item_slot_list_8cs_source}{Create\+Action\+Item\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_action_item_slot_list_8cs_source_l00068}{68}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -153,10 +220,6 @@ List$<$ \mbox{\hyperlink{class_pocket_item_data}{Pocket\+Item\+Data}} $>$ Create
 
 
 
- \mbox{\hyperlink{_create_action_item_slot_list_8cs_source}{Create\+Action\+Item\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_action_item_slot_list_8cs_source_l00016}{16}} 行目に定義があります。
-
-
-
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_create_action_item_slot_list_a8bfa1b270b18d1a5fc5e70b7aa118f1c}\index{CreateActionItemSlotList@{CreateActionItemSlotList}!SlotObj@{SlotObj}}
 \index{SlotObj@{SlotObj}!CreateActionItemSlotList@{CreateActionItemSlotList}}
@@ -165,9 +228,10 @@ List$<$ \mbox{\hyperlink{class_pocket_item_data}{Pocket\+Item\+Data}} $>$ Create
 Game\+Object Create\+Action\+Item\+Slot\+List.\+Slot\+Obj\hspace{0.3cm}{\ttfamily [get]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}};\ \}\ \}}
 
- \mbox{\hyperlink{_create_action_item_slot_list_8cs_source}{Create\+Action\+Item\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_action_item_slot_list_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

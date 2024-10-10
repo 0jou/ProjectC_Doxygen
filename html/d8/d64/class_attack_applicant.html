@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -160,47 +160,7 @@ AttackApplicant 連携図</div>
 <tr class="memitem:aec7c80c1f1e3ad326ee819c260345b7a" id="r_aec7c80c1f1e3ad326ee819c260345b7a"><td class="memItemLeft" align="right" valign="top">List&lt; Collider &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec7c80c1f1e3ad326ee819c260345b7a">m_hittedColliders</a> = new List&lt;Collider&gt;()</td></tr>
 <tr class="separator:aec7c80c1f1e3ad326ee819c260345b7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
-<a id="a4e2f1c6db4d1d4be31b32f10a3f69448" name="a4e2f1c6db4d1d4be31b32f10a3f69448"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e2f1c6db4d1d4be31b32f10a3f69448">&#9670;&#160;</a></span>AddCondition()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void AttackApplicant.AddCondition </td>
-          <td>(</td>
-          <td class="paramtype">GameObject</td>          <td class="paramname"><span class="paramname"><em>_enemy</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00136">136</a> 行目に定義があります。</p>
-<div class="dynheader">
-被呼び出し関係図:</div>
-<div class="dyncontent">
-<div class="center"><img src="../../d8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph.png" border="0" usemap="#ad8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph" alt=""/></div>
-<map name="ad8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph" id="ad8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph">
-<area shape="rect" title=" " alt="" coords="199,5,394,32"/>
-<area shape="rect" href="../../d8/d64/class_attack_applicant.html#a8f8d408340ebe6c11ce14dca008fcc94" title=" " alt="" coords="5,5,151,32"/>
-<area shape="poly" title=" " alt="" coords="184,21,151,21,151,16,184,16"/>
-</map>
-</div>
-
-</div>
-</div>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a8f8d408340ebe6c11ce14dca008fcc94" name="a8f8d408340ebe6c11ce14dca008fcc94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a8f8d408340ebe6c11ce14dca008fcc94">&#9670;&#160;</a></span>Start()</h2>
 
@@ -223,9 +183,135 @@ AttackApplicant 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00034">34</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>        <span class="comment">// オーナー情報</span></div>
+<div class="line"><span class="lineno">   37</span>        <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a> = GetComponent&lt;OwnerInfoTag&gt;();</div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">   39</span> </div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (!TryGetComponent(out Collider myCol)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   41</span> </div>
+<div class="line"><span class="lineno">   42</span>        this.OnTriggerEnterAsObservable()</div>
+<div class="line"><span class="lineno">   43</span>            .Where(_ =&gt; enabled)</div>
+<div class="line"><span class="lineno">   44</span>            .Subscribe(collider =&gt;</div>
+<div class="line"><span class="lineno">   45</span>            {</div>
+<div class="line"><span class="lineno">   46</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">   47</span>                <span class="comment">// 自分との当たり判定なら進まない</span></div>
+<div class="line"><span class="lineno">   48</span>                <span class="keywordflow">if</span> (collider.transform.root.name == <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.name) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   49</span>                <span class="comment">//プレイヤーとストーリースキルキャラクターの攻撃は当たらない（山本）</span></div>
+<div class="line"><span class="lineno">   50</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.transform.root.tag == <span class="stringliteral">&quot;Player&quot;</span> &amp;&amp; collider.transform.tag == <span class="stringliteral">&quot;SkillCharacter&quot;</span>)</div>
+<div class="line"><span class="lineno">   51</span>                {</div>
+<div class="line"><span class="lineno">   52</span>                    <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   53</span>                }</div>
+<div class="line"><span class="lineno">   54</span> </div>
+<div class="line"><span class="lineno">   55</span>                GameObject otherObj = collider.gameObject;</div>
+<div class="line"><span class="lineno">   56</span> </div>
+<div class="line"><span class="lineno">   57</span>                <span class="comment">// ダメージをもらえるオブジェクトであれば、処理を行う</span></div>
+<div class="line"><span class="lineno">   58</span>                var damageable = otherObj.GetComponent&lt;<a class="code hl_interface" href="../../df/d15/interface_i_damageable.html">IDamageable</a>&gt;();</div>
+<div class="line"><span class="lineno">   59</span>                <span class="keywordflow">if</span> (damageable == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>                <span class="comment">// 仮　攻撃可能でなければ終わり</span></div>
+<div class="line"><span class="lineno">   62</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#a7e6366b8935590ac281fd1f255cc098e">DoFriendlyFire</a> &amp;&amp;</div>
+<div class="line"><span class="lineno">   63</span>                !<a class="code hl_variable" href="#a7259e07c0fc0da1215ca96422ddd7981">m_doFriendlyFire</a> &amp;&amp;</div>
+<div class="line"><span class="lineno">   64</span>                !damageable.IsAttackable(<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a56a9ad5e93c0d771bd43700982edfd06">GroupNo</a>)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">   65</span> </div>
+<div class="line"><span class="lineno">   66</span>                <span class="comment">// 多段ヒット判断</span></div>
+<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">if</span> (!<a class="code hl_variable" href="#a0930fb6b8b7c7751afd67509350390a8">m_doMultiHit</a> &amp;&amp; <a class="code hl_variable" href="#aec7c80c1f1e3ad326ee819c260345b7a">m_hittedColliders</a>.Contains(collider)) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>                <a class="code hl_class" href="../../df/db9/class_damage_notification.html">DamageNotification</a> damageNotification = <span class="keyword">new</span>();</div>
+<div class="line"><span class="lineno">   70</span>                <span class="comment">// 与えるダメージ量</span></div>
+<div class="line"><span class="lineno">   71</span>                damageNotification.m_damage = m_ownerInfoTag.Characore.Status.m_attack + <a class="code hl_variable" href="#a8b4f1f848c3e6a842b1d0f0b268e149f">m_attack</a>;</div>
+<div class="line"><span class="lineno">   72</span>                <span class="comment">// 送信するヒットストップ時間</span></div>
+<div class="line"><span class="lineno">   73</span>                damageNotification.m_hitStopTime = <a class="code hl_variable" href="#ad246b0f02fe6eeded80f35b4f4620ce7">m_hitStopTime</a>;</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>                <span class="comment">// ダメージ処理・相手側のヒットストップもこの中で</span></div>
+<div class="line"><span class="lineno">   77</span>                damageable.Damaged(damageNotification, myCol, <a class="code hl_variable" href="#a2687d74ac9b7ce423ea6ff594a7aeee4">m_knockBackMultiplier</a>);</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>                <span class="comment">//　当たったなら、当たった際の処理を実行</span></div>
+<div class="line"><span class="lineno">   80</span>                <span class="keywordflow">if</span> (damageNotification.<a class="code hl_variable" href="../../df/db9/class_damage_notification.html#abf0f31c8bbab428e2ff58437794111c1">m_replyIsHit</a>)</div>
+<div class="line"><span class="lineno">   81</span>                {</div>
+<div class="line"><span class="lineno">   82</span>                    <a class="code hl_function" href="#a4e2f1c6db4d1d4be31b32f10a3f69448">AddCondition</a>(otherObj);</div>
+<div class="line"><span class="lineno">   83</span>                    <a class="code hl_variable" href="#aec7c80c1f1e3ad326ee819c260345b7a">m_hittedColliders</a>.Add(collider);</div>
+<div class="line"><span class="lineno">   84</span> </div>
+<div class="line"><span class="lineno">   85</span>                    <span class="comment">// 自分にヒットストップを適用させる</span></div>
+<div class="line"><span class="lineno">   86</span>                    m_ownerInfoTag.Characore.HitStopRemainingTime = <a class="code hl_variable" href="#ad246b0f02fe6eeded80f35b4f4620ce7">m_hitStopTime</a>;</div>
+<div class="line"><span class="lineno">   87</span> </div>
+<div class="line"><span class="lineno">   88</span>                    <span class="comment">// SkillごとにBPを回復する（吉田）</span></div>
+<div class="line"><span class="lineno">   89</span>                    {</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>                        <span class="comment">//BPを回復する(山本)</span></div>
+<div class="line"><span class="lineno">   92</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a3f32a4a18ad0cca21f0756bcdd2677e8">m_bp</a>.Value &lt; <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ac31914eb761240464e33c3a456b98ca4">MaxBP</a>)</div>
+<div class="line"><span class="lineno">   93</span>                            m_ownerInfoTag.Characore.Status.m_bp.Value += damageNotification.m_damage * <a class="code hl_variable" href="#ad8649ce881fd5aabbc3beccac2e26f08">m_recoverBPMagni</a>;</div>
+<div class="line"><span class="lineno">   94</span> </div>
+<div class="line"><span class="lineno">   95</span>                        <span class="comment">//Max超えてたらMaxに戻す</span></div>
+<div class="line"><span class="lineno">   96</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a3f32a4a18ad0cca21f0756bcdd2677e8">m_bp</a>.Value &gt;= <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ac31914eb761240464e33c3a456b98ca4">MaxBP</a>)</div>
+<div class="line"><span class="lineno">   97</span>                        {</div>
+<div class="line"><span class="lineno">   98</span>                            m_ownerInfoTag.Characore.Status.m_bp.Value = <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ac31914eb761240464e33c3a456b98ca4">MaxBP</a>;</div>
+<div class="line"><span class="lineno">   99</span>                        }</div>
+<div class="line"><span class="lineno">  100</span> </div>
+<div class="line"><span class="lineno">  101</span>                        <span class="comment">//スキルBPを回復する(吉田)</span></div>
+<div class="line"><span class="lineno">  102</span>                        m_ownerInfoTag.Characore.Status.m_bpSkill_1.Value += damageNotification.m_damage * <a class="code hl_variable" href="#ad8649ce881fd5aabbc3beccac2e26f08">m_recoverBPMagni</a>;</div>
+<div class="line"><span class="lineno">  103</span>                        m_ownerInfoTag.Characore.Status.m_bpSkill_2.Value += damageNotification.m_damage * <a class="code hl_variable" href="#ad8649ce881fd5aabbc3beccac2e26f08">m_recoverBPMagni</a>;</div>
+<div class="line"><span class="lineno">  104</span> </div>
+<div class="line"><span class="lineno">  105</span>                        <span class="comment">//Max超えてたらMaxに戻す（吉田）</span></div>
+<div class="line"><span class="lineno">  106</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a62d0aea0e449679d50fef581c79fc369">m_bpSkill_1</a>.Value &gt;= <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a714b2cc8c72df27856fe721488f00f45">MaxBPSkill_1</a>)</div>
+<div class="line"><span class="lineno">  107</span>                        {</div>
+<div class="line"><span class="lineno">  108</span>                            m_ownerInfoTag.Characore.Status.m_bpSkill_1.Value = <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a714b2cc8c72df27856fe721488f00f45">MaxBPSkill_1</a>;</div>
+<div class="line"><span class="lineno">  109</span>                        }</div>
+<div class="line"><span class="lineno">  110</span>                        <span class="keywordflow">if</span> (<a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_variable" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a86a264969769d50237e1f67cdc0d984d">m_bpSkill_2</a>.Value &gt;= <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b">MaxBPSkill_2</a>)</div>
+<div class="line"><span class="lineno">  111</span>                        {</div>
+<div class="line"><span class="lineno">  112</span>                            m_ownerInfoTag.Characore.Status.m_bpSkill_2.Value = <a class="code hl_variable" href="#aec172d6168b33de504b5b6b421e39f8c">m_ownerInfoTag</a>.<a class="code hl_property" href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">Characore</a>.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">Status</a>.<a class="code hl_property" href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b">MaxBPSkill_2</a>;</div>
+<div class="line"><span class="lineno">  113</span>                        }</div>
+<div class="line"><span class="lineno">  114</span> </div>
+<div class="line"><span class="lineno">  115</span>                    }</div>
+<div class="line"><span class="lineno">  116</span> </div>
+<div class="line"><span class="lineno">  117</span>                    <span class="comment">// ヒットエフェクト表示</span></div>
+<div class="line"><span class="lineno">  118</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ab41ba8c2a688f67e0f7ee5ffb3c74d97">m_assetHitEffect</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  119</span>                    {</div>
+<div class="line"><span class="lineno">  120</span>                        <span class="comment">//修正：ヒットエフェクトを攻撃判定が当たった場所に表示にする(山本)</span></div>
+<div class="line"><span class="lineno">  121</span>                        Instantiate(<a class="code hl_variable" href="#ab41ba8c2a688f67e0f7ee5ffb3c74d97">m_assetHitEffect</a>,</div>
+<div class="line"><span class="lineno">  122</span>                            position: collider.ClosestPoint(gameObject.transform.position),</div>
+<div class="line"><span class="lineno">  123</span>                            rotation: Quaternion.identity,</div>
+<div class="line"><span class="lineno">  124</span>                            parent: <span class="keyword">null</span>);</div>
+<div class="line"><span class="lineno">  125</span>                    }</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>                    <span class="keywordflow">if</span>(!<span class="keywordtype">string</span>.IsNullOrEmpty(<a class="code hl_variable" href="#a9b9dcd1a006befd61201c4554c8a501f">m_soundData</a>.<a class="code hl_variable" href="../../db/d61/class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">m_soundName</a>))</div>
+<div class="line"><span class="lineno">  128</span>                    {</div>
+<div class="line"><span class="lineno">  129</span>                        <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">Start3DPlayback</a>(<a class="code hl_variable" href="#a9b9dcd1a006befd61201c4554c8a501f">m_soundData</a>, transform.position);</div>
+<div class="line"><span class="lineno">  130</span>                    }</div>
+<div class="line"><span class="lineno">  131</span>                }</div>
+<div class="line"><span class="lineno">  132</span>            }</div>
+<div class="line"><span class="lineno">  133</span>            );</div>
+<div class="line"><span class="lineno">  134</span>    }</div>
+<div class="ttc" id="aclass_attack_applicant_html_a0930fb6b8b7c7751afd67509350390a8"><div class="ttname"><a href="#a0930fb6b8b7c7751afd67509350390a8">AttackApplicant.m_doMultiHit</a></div><div class="ttdeci">bool m_doMultiHit</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:23</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_a2687d74ac9b7ce423ea6ff594a7aeee4"><div class="ttname"><a href="#a2687d74ac9b7ce423ea6ff594a7aeee4">AttackApplicant.m_knockBackMultiplier</a></div><div class="ttdeci">float m_knockBackMultiplier</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:15</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_a4e2f1c6db4d1d4be31b32f10a3f69448"><div class="ttname"><a href="#a4e2f1c6db4d1d4be31b32f10a3f69448">AttackApplicant.AddCondition</a></div><div class="ttdeci">void AddCondition(GameObject _enemy)</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:136</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_a7259e07c0fc0da1215ca96422ddd7981"><div class="ttname"><a href="#a7259e07c0fc0da1215ca96422ddd7981">AttackApplicant.m_doFriendlyFire</a></div><div class="ttdeci">bool m_doFriendlyFire</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:22</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_a8b4f1f848c3e6a842b1d0f0b268e149f"><div class="ttname"><a href="#a8b4f1f848c3e6a842b1d0f0b268e149f">AttackApplicant.m_attack</a></div><div class="ttdeci">float m_attack</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:14</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_a9b9dcd1a006befd61201c4554c8a501f"><div class="ttname"><a href="#a9b9dcd1a006befd61201c4554c8a501f">AttackApplicant.m_soundData</a></div><div class="ttdeci">SoundData m_soundData</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:20</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_ab41ba8c2a688f67e0f7ee5ffb3c74d97"><div class="ttname"><a href="#ab41ba8c2a688f67e0f7ee5ffb3c74d97">AttackApplicant.m_assetHitEffect</a></div><div class="ttdeci">GameObject m_assetHitEffect</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:17</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_ad246b0f02fe6eeded80f35b4f4620ce7"><div class="ttname"><a href="#ad246b0f02fe6eeded80f35b4f4620ce7">AttackApplicant.m_hitStopTime</a></div><div class="ttdeci">float m_hitStopTime</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:13</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_ad8649ce881fd5aabbc3beccac2e26f08"><div class="ttname"><a href="#ad8649ce881fd5aabbc3beccac2e26f08">AttackApplicant.m_recoverBPMagni</a></div><div class="ttdeci">float m_recoverBPMagni</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:26</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_aec172d6168b33de504b5b6b421e39f8c"><div class="ttname"><a href="#aec172d6168b33de504b5b6b421e39f8c">AttackApplicant.m_ownerInfoTag</a></div><div class="ttdeci">OwnerInfoTag m_ownerInfoTag</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:31</div></div>
+<div class="ttc" id="aclass_attack_applicant_html_aec7c80c1f1e3ad326ee819c260345b7a"><div class="ttname"><a href="#aec7c80c1f1e3ad326ee819c260345b7a">AttackApplicant.m_hittedColliders</a></div><div class="ttdeci">List&lt; Collider &gt; m_hittedColliders</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:32</div></div>
+<div class="ttc" id="aclass_character_core_html_a7e6366b8935590ac281fd1f255cc098e"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#a7e6366b8935590ac281fd1f255cc098e">CharacterCore.DoFriendlyFire</a></div><div class="ttdeci">bool DoFriendlyFire</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:19</div></div>
+<div class="ttc" id="aclass_character_core_html_aa4fbd2c5ca05a49e198309470c4730d4"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#aa4fbd2c5ca05a49e198309470c4730d4">CharacterCore.Status</a></div><div class="ttdeci">CharatcerStatus Status</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:126</div></div>
+<div class="ttc" id="aclass_damage_notification_html"><div class="ttname"><a href="../../df/db9/class_damage_notification.html">DamageNotification</a></div><div class="ttdef"><b>Definition</b> IDamageable.cs:33</div></div>
+<div class="ttc" id="aclass_damage_notification_html_abf0f31c8bbab428e2ff58437794111c1"><div class="ttname"><a href="../../df/db9/class_damage_notification.html#abf0f31c8bbab428e2ff58437794111c1">DamageNotification.m_replyIsHit</a></div><div class="ttdeci">bool m_replyIsHit</div><div class="ttdef"><b>Definition</b> IDamageable.cs:40</div></div>
+<div class="ttc" id="aclass_owner_info_tag_html_a0e59a7e3de951dbe6f33c351e5a31607"><div class="ttname"><a href="../../dd/dbb/class_owner_info_tag.html#a0e59a7e3de951dbe6f33c351e5a31607">OwnerInfoTag.Characore</a></div><div class="ttdeci">CharacterCore Characore</div><div class="ttdef"><b>Definition</b> OwnerInfoTag.cs:11</div></div>
+<div class="ttc" id="aclass_owner_info_tag_html_a56a9ad5e93c0d771bd43700982edfd06"><div class="ttname"><a href="../../dd/dbb/class_owner_info_tag.html#a56a9ad5e93c0d771bd43700982edfd06">OwnerInfoTag.GroupNo</a></div><div class="ttdeci">CharacterGroupNumber GroupNo</div><div class="ttdef"><b>Definition</b> OwnerInfoTag.cs:9</div></div>
+<div class="ttc" id="aclass_sound_data_html_ab2997c66644365fca4de625db4ab8c1c"><div class="ttname"><a href="../../db/d61/class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">SoundData.m_soundName</a></div><div class="ttdeci">string m_soundName</div><div class="ttdef"><b>Definition</b> SoundManager.cs:253</div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> SoundManager.cs:25</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> SoundManager.cs:26</div></div>
+<div class="ttc" id="aclass_sound_manager_html_a71bf6aeca5886488a7fdccd5890df00e"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">SoundManager.Start3DPlayback</a></div><div class="ttdeci">CriAtomExPlayback Start3DPlayback(string cueName, UnityEngine.Vector3 pos, float vol=1.0f, float pitch=0)</div><div class="ttdoc">座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される</div><div class="ttdef"><b>Definition</b> SoundManager.cs:74</div></div>
+<div class="ttc" id="ainterface_i_damageable_html"><div class="ttname"><a href="../../df/d15/interface_i_damageable.html">IDamageable</a></div><div class="ttdef"><b>Definition</b> IDamageable.cs:19</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_a3f32a4a18ad0cca21f0756bcdd2677e8"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a3f32a4a18ad0cca21f0756bcdd2677e8">CharacterCore.CharatcerStatus.m_bp</a></div><div class="ttdeci">FloatReactiveProperty m_bp</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:95</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_a62d0aea0e449679d50fef581c79fc369"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a62d0aea0e449679d50fef581c79fc369">CharacterCore.CharatcerStatus.m_bpSkill_1</a></div><div class="ttdeci">FloatReactiveProperty m_bpSkill_1</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:102</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_a714b2cc8c72df27856fe721488f00f45"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a714b2cc8c72df27856fe721488f00f45">CharacterCore.CharatcerStatus.MaxBPSkill_1</a></div><div class="ttdeci">float MaxBPSkill_1</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:104</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_a86a264969769d50237e1f67cdc0d984d"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#a86a264969769d50237e1f67cdc0d984d">CharacterCore.CharatcerStatus.m_bpSkill_2</a></div><div class="ttdeci">FloatReactiveProperty m_bpSkill_2</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:106</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_ac31914eb761240464e33c3a456b98ca4"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ac31914eb761240464e33c3a456b98ca4">CharacterCore.CharatcerStatus.MaxBP</a></div><div class="ttdeci">float MaxBP</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:97</div></div>
+<div class="ttc" id="astruct_character_core_1_1_charatcer_status_html_ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b"><div class="ttname"><a href="../../da/dfe/struct_character_core_1_1_charatcer_status.html#ae1b1fa4bbfd7ec16bb6d78a4a6d2b86b">CharacterCore.CharatcerStatus.MaxBPSkill_2</a></div><div class="ttdeci">float MaxBPSkill_2</div><div class="ttdef"><b>Definition</b> CharacterCore.cs:108</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d8/d64/class_attack_applicant_a8f8d408340ebe6c11ce14dca008fcc94_cgraph.png" border="0" usemap="#ad8/d64/class_attack_applicant_a8f8d408340ebe6c11ce14dca008fcc94_cgraph" alt=""/></div>
@@ -240,9 +326,8 @@ AttackApplicant 連携図</div>
 
 </div>
 </div>
-<h2 class="groupheader">フィールド詳解</h2>
-<a id="ab41ba8c2a688f67e0f7ee5ffb3c74d97" name="ab41ba8c2a688f67e0f7ee5ffb3c74d97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab41ba8c2a688f67e0f7ee5ffb3c74d97">&#9670;&#160;</a></span>m_assetHitEffect</h2>
+<a id="a4e2f1c6db4d1d4be31b32f10a3f69448" name="a4e2f1c6db4d1d4be31b32f10a3f69448"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e2f1c6db4d1d4be31b32f10a3f69448">&#9670;&#160;</a></span>AddCondition()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -251,7 +336,10 @@ AttackApplicant 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">GameObject AttackApplicant.m_assetHitEffect</td>
+          <td class="memname">void AttackApplicant.AddCondition </td>
+          <td>(</td>
+          <td class="paramtype">GameObject</td>          <td class="paramname"><span class="paramname"><em>_enemy</em></span></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
@@ -260,8 +348,56 @@ AttackApplicant 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">  137</span>    {</div>
+<div class="line"><span class="lineno">  138</span>         <span class="keywordflow">if</span> (_enemy == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  139</span> </div>
+<div class="line"><span class="lineno">  140</span>        var conditionData = <a class="code hl_class" href="../../d7/dd5/class_condition_data_base_manager.html">ConditionDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetConditionData(<a class="code hl_variable" href="#a9f46ccc83744bd15adb43f85d0d955fd">m_condition</a>);</div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">if</span> (conditionData == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  142</span> </div>
+<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">if</span> (conditionData.ConditionPrefab == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  144</span>        Transform managerObj = _enemy.transform.Find(<span class="stringliteral">&quot;ConditionManager&quot;</span>);</div>
+<div class="line"><span class="lineno">  145</span>        <span class="keywordflow">if</span> (!managerObj.TryGetComponent(out <a class="code hl_class" href="../../d4/dfe/class_condition_manager.html">ConditionManager</a> manager)) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  146</span> </div>
+<div class="line"><span class="lineno">  147</span>        manager.AddCondition(conditionData.ConditionPrefab);</div>
+<div class="line"><span class="lineno">  148</span> </div>
+<div class="line"><span class="lineno">  149</span>    }</div>
+<div class="ttc" id="aclass_attack_applicant_html_a9f46ccc83744bd15adb43f85d0d955fd"><div class="ttname"><a href="#a9f46ccc83744bd15adb43f85d0d955fd">AttackApplicant.m_condition</a></div><div class="ttdeci">ConditionInfo.ConditionID m_condition</div><div class="ttdef"><b>Definition</b> AttackApplicant.cs:29</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_condition_data_base_manager_html"><div class="ttname"><a href="../../d7/dd5/class_condition_data_base_manager.html">ConditionDataBaseManager</a></div><div class="ttdef"><b>Definition</b> ConditionDataBaseManager.cs:7</div></div>
+<div class="ttc" id="aclass_condition_manager_html"><div class="ttname"><a href="../../d4/dfe/class_condition_manager.html">ConditionManager</a></div><div class="ttdef"><b>Definition</b> ConditionManager.cs:10</div></div>
+</div><!-- fragment --><div class="dynheader">
+被呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph.png" border="0" usemap="#ad8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph" alt=""/></div>
+<map name="ad8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph" id="ad8/d64/class_attack_applicant_a4e2f1c6db4d1d4be31b32f10a3f69448_icgraph">
+<area shape="rect" title=" " alt="" coords="199,5,394,32"/>
+<area shape="rect" href="../../d8/d64/class_attack_applicant.html#a8f8d408340ebe6c11ce14dca008fcc94" title=" " alt="" coords="5,5,151,32"/>
+<area shape="poly" title=" " alt="" coords="184,21,151,21,151,16,184,16"/>
+</map>
+</div>
 
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
+</div>
+</div>
+<h2 class="groupheader">フィールド詳解</h2>
+<a id="ad246b0f02fe6eeded80f35b4f4620ce7" name="ad246b0f02fe6eeded80f35b4f4620ce7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad246b0f02fe6eeded80f35b4f4620ce7">&#9670;&#160;</a></span>m_hitStopTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AttackApplicant.m_hitStopTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -285,128 +421,6 @@ AttackApplicant 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00014">14</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a9f46ccc83744bd15adb43f85d0d955fd" name="a9f46ccc83744bd15adb43f85d0d955fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9f46ccc83744bd15adb43f85d0d955fd">&#9670;&#160;</a></span>m_condition</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482">ConditionInfo.ConditionID</a> AttackApplicant.m_condition = <a class="el" href="../../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a960b44c579bc2f6818d2daaf9e4c16f0">ConditionInfo.ConditionID.Normal</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00029">29</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a7259e07c0fc0da1215ca96422ddd7981" name="a7259e07c0fc0da1215ca96422ddd7981"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7259e07c0fc0da1215ca96422ddd7981">&#9670;&#160;</a></span>m_doFriendlyFire</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool AttackApplicant.m_doFriendlyFire = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a0930fb6b8b7c7751afd67509350390a8" name="a0930fb6b8b7c7751afd67509350390a8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0930fb6b8b7c7751afd67509350390a8">&#9670;&#160;</a></span>m_doMultiHit</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool AttackApplicant.m_doMultiHit = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00023">23</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ad246b0f02fe6eeded80f35b4f4620ce7" name="ad246b0f02fe6eeded80f35b4f4620ce7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad246b0f02fe6eeded80f35b4f4620ce7">&#9670;&#160;</a></span>m_hitStopTime</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float AttackApplicant.m_hitStopTime</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="aec7c80c1f1e3ad326ee819c260345b7a" name="aec7c80c1f1e3ad326ee819c260345b7a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec7c80c1f1e3ad326ee819c260345b7a">&#9670;&#160;</a></span>m_hittedColliders</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">List&lt;Collider&gt; AttackApplicant.m_hittedColliders = new List&lt;Collider&gt;()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00032">32</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="a2687d74ac9b7ce423ea6ff594a7aeee4" name="a2687d74ac9b7ce423ea6ff594a7aeee4"></a>
@@ -429,12 +443,10 @@ AttackApplicant 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00015">15</a> 行目に定義があります。</p>
-
 </div>
 </div>
-<a id="aec172d6168b33de504b5b6b421e39f8c" name="aec172d6168b33de504b5b6b421e39f8c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec172d6168b33de504b5b6b421e39f8c">&#9670;&#160;</a></span>m_ownerInfoTag</h2>
+<a id="ab41ba8c2a688f67e0f7ee5ffb3c74d97" name="ab41ba8c2a688f67e0f7ee5ffb3c74d97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab41ba8c2a688f67e0f7ee5ffb3c74d97">&#9670;&#160;</a></span>m_assetHitEffect</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -443,7 +455,7 @@ AttackApplicant 連携図</div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a> AttackApplicant.m_ownerInfoTag</td>
+          <td class="memname">GameObject AttackApplicant.m_assetHitEffect</td>
         </tr>
       </table>
   </td>
@@ -452,32 +464,6 @@ AttackApplicant 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00031">31</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="ad8649ce881fd5aabbc3beccac2e26f08" name="ad8649ce881fd5aabbc3beccac2e26f08"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad8649ce881fd5aabbc3beccac2e26f08">&#9670;&#160;</a></span>m_recoverBPMagni</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float AttackApplicant.m_recoverBPMagni = 0.1f</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00026">26</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -501,12 +487,142 @@ AttackApplicant 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a> の <a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html#l00020">20</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a7259e07c0fc0da1215ca96422ddd7981" name="a7259e07c0fc0da1215ca96422ddd7981"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7259e07c0fc0da1215ca96422ddd7981">&#9670;&#160;</a></span>m_doFriendlyFire</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AttackApplicant.m_doFriendlyFire = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0930fb6b8b7c7751afd67509350390a8" name="a0930fb6b8b7c7751afd67509350390a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0930fb6b8b7c7751afd67509350390a8">&#9670;&#160;</a></span>m_doMultiHit</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool AttackApplicant.m_doMultiHit = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad8649ce881fd5aabbc3beccac2e26f08" name="ad8649ce881fd5aabbc3beccac2e26f08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8649ce881fd5aabbc3beccac2e26f08">&#9670;&#160;</a></span>m_recoverBPMagni</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float AttackApplicant.m_recoverBPMagni = 0.1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9f46ccc83744bd15adb43f85d0d955fd" name="a9f46ccc83744bd15adb43f85d0d955fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f46ccc83744bd15adb43f85d0d955fd">&#9670;&#160;</a></span>m_condition</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482">ConditionInfo.ConditionID</a> AttackApplicant.m_condition = <a class="el" href="../../d9/dd8/namespace_condition_info.html#a15935a815783d67be27a154f45f16482a960b44c579bc2f6818d2daaf9e4c16f0">ConditionInfo.ConditionID.Normal</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec172d6168b33de504b5b6b421e39f8c" name="aec172d6168b33de504b5b6b421e39f8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec172d6168b33de504b5b6b421e39f8c">&#9670;&#160;</a></span>m_ownerInfoTag</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/dbb/class_owner_info_tag.html">OwnerInfoTag</a> AttackApplicant.m_ownerInfoTag</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aec7c80c1f1e3ad326ee819c260345b7a" name="aec7c80c1f1e3ad326ee819c260345b7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec7c80c1f1e3ad326ee819c260345b7a">&#9670;&#160;</a></span>m_hittedColliders</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">List&lt;Collider&gt; AttackApplicant.m_hittedColliders = new List&lt;Collider&gt;()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/<a class="el" href="../../d1/d72/_attack_applicant_8cs_source.html">AttackApplicant.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/001_Common/Scripts/<a class="el" href="../../d1/d72/_attack_applicant_8cs.html">AttackApplicant.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

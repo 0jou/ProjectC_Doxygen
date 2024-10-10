@@ -47,14 +47,38 @@ Flexible\+Component \mbox{\hyperlink{class_default_animator_state_a0f874f145852e
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
+\Hypertarget{class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a}\index{DefaultAnimatorState@{DefaultAnimatorState}!GetAnimator@{GetAnimator}}
+\index{GetAnimator@{GetAnimator}!DefaultAnimatorState@{DefaultAnimatorState}}
+\doxysubsubsection{\texorpdfstring{GetAnimator()}{GetAnimator()}}
+{\footnotesize\ttfamily \label{class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a} 
+Animator Default\+Animator\+State.\+Get\+Animator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_default_animator_state_a0f874f145852e846228e25671f37d081}{m\_animator}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_default_animator_state_a0f874f145852e846228e25671f37d081}{m\_animator}}.value\ is\ Animator)}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ var\ animator\ =\ m\_animator.value\ as\ Animator;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ animator;}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/daf/class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_default_animator_state_aeebb2fd300ff6ef5baa1b92347fc3a0e}\index{DefaultAnimatorState@{DefaultAnimatorState}!Default@{Default}}
 \index{Default@{Default}!DefaultAnimatorState@{DefaultAnimatorState}}
 \doxysubsubsection{\texorpdfstring{Default()}{Default()}}
@@ -62,9 +86,27 @@ Flexible\+Component \mbox{\hyperlink{class_default_animator_state_a0f874f145852e
 void Default\+Animator\+State.\+Default (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ var\ animator\ =\ \mbox{\hyperlink{class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a}{GetAnimator}}();}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ステートをデフォルトにする}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ animator.Rebind();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーターのすべてのパラメータを取得}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ parameter\ \textcolor{keywordflow}{in}\ animator.parameters)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ トリガータイプのパラメータをリセット}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parameter.type\ ==\ AnimatorControllerParameterType.Trigger)}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ animator.ResetTrigger(parameter.name);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00034}{34}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -79,23 +121,19 @@ void Default\+Animator\+State.\+Default (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 \includegraphics[width=350pt]{d9/daf/class_default_animator_state_aeebb2fd300ff6ef5baa1b92347fc3a0e_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a}\index{DefaultAnimatorState@{DefaultAnimatorState}!GetAnimator@{GetAnimator}}
-\index{GetAnimator@{GetAnimator}!DefaultAnimatorState@{DefaultAnimatorState}}
-\doxysubsubsection{\texorpdfstring{GetAnimator()}{GetAnimator()}}
-{\footnotesize\ttfamily \label{class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a} 
-Animator Default\+Animator\+State.\+Get\+Animator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_default_animator_state_a5fa73dc607af0674a95abb500573e022}\index{DefaultAnimatorState@{DefaultAnimatorState}!Start@{Start}}
+\index{Start@{Start}!DefaultAnimatorState@{DefaultAnimatorState}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_default_animator_state_a5fa73dc607af0674a95abb500573e022} 
+void Default\+Animator\+State.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00018}{18}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d9/daf/class_default_animator_state_ad37bb0ed692a1383c726d9cd166c358a_icgraph}
-\end{center}
-\end{figure}
+\end{DoxyCode}
 \Hypertarget{class_default_animator_state_a7cabedb948c92cfa655879b0656c1c09}\index{DefaultAnimatorState@{DefaultAnimatorState}!OnStateAwake@{OnStateAwake}}
 \index{OnStateAwake@{OnStateAwake}!DefaultAnimatorState@{DefaultAnimatorState}}
 \doxysubsubsection{\texorpdfstring{OnStateAwake()}{OnStateAwake()}}
@@ -103,9 +141,11 @@ Animator Default\+Animator\+State.\+Get\+Animator (\begin{DoxyParamCaption}{}{}\
 override void Default\+Animator\+State.\+On\+State\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00065}{65}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_default_animator_state_ae0ab5fe335b36f87df229734b0cbac15}\index{DefaultAnimatorState@{DefaultAnimatorState}!OnStateBegin@{OnStateBegin}}
 \index{OnStateBegin@{OnStateBegin}!DefaultAnimatorState@{DefaultAnimatorState}}
 \doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
@@ -113,9 +153,12 @@ override void Default\+Animator\+State.\+On\+State\+Awake (\begin{DoxyParamCapti
 override void Default\+Animator\+State.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_default_animator_state_aeebb2fd300ff6ef5baa1b92347fc3a0e}{Default}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00070}{70}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -130,19 +173,11 @@ override void Default\+Animator\+State.\+On\+State\+Begin (\begin{DoxyParamCapti
 override void Default\+Animator\+State.\+On\+State\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00076}{76}} 行目に定義があります。
-
-\Hypertarget{class_default_animator_state_afa92a055237eca1165ec415191ddfa5d}\index{DefaultAnimatorState@{DefaultAnimatorState}!OnStateLateUpdate@{OnStateLateUpdate}}
-\index{OnStateLateUpdate@{OnStateLateUpdate}!DefaultAnimatorState@{DefaultAnimatorState}}
-\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
-{\footnotesize\ttfamily \label{class_default_animator_state_afa92a055237eca1165ec415191ddfa5d} 
-override void Default\+Animator\+State.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00086}{86}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_default_animator_state_ab01fb0c723d3e7fd6a9f194dbf51bcad}\index{DefaultAnimatorState@{DefaultAnimatorState}!OnStateUpdate@{OnStateUpdate}}
 \index{OnStateUpdate@{OnStateUpdate}!DefaultAnimatorState@{DefaultAnimatorState}}
 \doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
@@ -150,19 +185,23 @@ override void Default\+Animator\+State.\+On\+State\+Late\+Update (\begin{DoxyPar
 override void Default\+Animator\+State.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00081}{81}} 行目に定義があります。
-
-\Hypertarget{class_default_animator_state_a5fa73dc607af0674a95abb500573e022}\index{DefaultAnimatorState@{DefaultAnimatorState}!Start@{Start}}
-\index{Start@{Start}!DefaultAnimatorState@{DefaultAnimatorState}}
-\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily \label{class_default_animator_state_a5fa73dc607af0674a95abb500573e022} 
-void Default\+Animator\+State.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
+\end{DoxyCode}
+\Hypertarget{class_default_animator_state_afa92a055237eca1165ec415191ddfa5d}\index{DefaultAnimatorState@{DefaultAnimatorState}!OnStateLateUpdate@{OnStateLateUpdate}}
+\index{OnStateLateUpdate@{OnStateLateUpdate}!DefaultAnimatorState@{DefaultAnimatorState}}
+\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
+{\footnotesize\ttfamily \label{class_default_animator_state_afa92a055237eca1165ec415191ddfa5d} 
+override void Default\+Animator\+State.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00059}{59}} 行目に定義があります。
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00087\ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
 
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -171,10 +210,6 @@ void Default\+Animator\+State.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 \doxysubsubsection{\texorpdfstring{m\_animator}{m\_animator}}
 {\footnotesize\ttfamily \label{class_default_animator_state_a0f874f145852e846228e25671f37d081} 
 Flexible\+Component Default\+Animator\+State.\+m\+\_\+animator = new Flexible\+Component(Flexible\+Hierarchy\+Type.\+Self)\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_default_animator_state_8cs_source}{Default\+Animator\+State.\+cs}} の \mbox{\hyperlink{_default_animator_state_8cs_source_l00014}{14}} 行目に定義があります。
 
 
 

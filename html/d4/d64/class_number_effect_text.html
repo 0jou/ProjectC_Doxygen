@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -152,10 +152,7 @@ NumberEffectText 連携図</div>
 <tr class="memitem:a1df9d7b7861ce288d62f0f8916990ff6 inherit pro_attribs_class_base_effect_text" id="r_a1df9d7b7861ce288d62f0f8916990ff6"><td class="memItemLeft" align="right" valign="top">CancellationTokenSource&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> = null</td></tr>
 <tr class="separator:a1df9d7b7861ce288d62f0f8916990ff6 inherit pro_attribs_class_base_effect_text"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html">NumberEffectText.cs</a> の <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html#l00006">6</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a487e6704be6bd5b17dca27f193b8e416" name="a487e6704be6bd5b17dca27f193b8e416"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a487e6704be6bd5b17dca27f193b8e416">&#9670;&#160;</a></span>PlayEffect()</h2>
 
@@ -180,9 +177,77 @@ NumberEffectText 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d4/da3/class_base_effect_text.html#aadce15a0e231a50af928fdc27f36c3b0">BaseEffectText</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html">NumberEffectText.cs</a> の <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html#l00030">30</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#ab4548b299eec92fdcbf52996e101b9a0">m_text</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   33</span>        {</div>
+<div class="line"><span class="lineno">   34</span>            Debug.LogError(<span class="stringliteral">&quot;対象のテキストが存在しません&quot;</span>);</div>
+<div class="line"><span class="lineno">   35</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   39</span>        {</div>
+<div class="line"><span class="lineno">   40</span>            <span class="comment">// 操作中に再度この処理が通った場合既に通っている処理を終了</span></div>
+<div class="line"><span class="lineno">   41</span>            <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a>.Cancel();</div>
+<div class="line"><span class="lineno">   42</span>            <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> = <span class="keyword">null</span>;</div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="line"><span class="lineno">   44</span> </div>
+<div class="line"><span class="lineno">   45</span>        <span class="comment">// 新規作成</span></div>
+<div class="line"><span class="lineno">   46</span>        <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a> = <span class="keyword">new</span>();</div>
+<div class="line"><span class="lineno">   47</span> </div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">try</span></div>
+<div class="line"><span class="lineno">   49</span>        {</div>
+<div class="line"><span class="lineno">   50</span>            <span class="comment">// 数字に変換</span></div>
+<div class="line"><span class="lineno">   51</span>            <span class="keywordflow">if</span> (<span class="keywordtype">int</span>.TryParse(<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#ab4548b299eec92fdcbf52996e101b9a0">m_text</a>.text, out <span class="keywordtype">int</span> targetNum) == <span class="keyword">false</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   52</span> </div>
+<div class="line"><span class="lineno">   53</span>            <span class="comment">// 増やす場合</span></div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a09914bee4c0dad7d9d275d133b8907f5">m_initialNumber</a> &lt; targetNum)</div>
+<div class="line"><span class="lineno">   55</span>            {</div>
+<div class="line"><span class="lineno">   56</span>                <span class="keywordflow">for</span> (; <a class="code hl_variable" href="#a09914bee4c0dad7d9d275d133b8907f5">m_initialNumber</a> &lt; targetNum; <a class="code hl_variable" href="#a09914bee4c0dad7d9d275d133b8907f5">m_initialNumber</a> += <a class="code hl_variable" href="#acf3936524fec6d7a43e02b5f7599f5d9">m_value</a>)</div>
+<div class="line"><span class="lineno">   57</span>                {</div>
+<div class="line"><span class="lineno">   58</span>                    <span class="comment">// テキストを一文ずつ追加</span></div>
+<div class="line"><span class="lineno">   59</span>                    <span class="keywordtype">string</span> text = <a class="code hl_variable" href="#a09914bee4c0dad7d9d275d133b8907f5">m_initialNumber</a>.ToString(<a class="code hl_variable" href="#aa3159184515ef030930cfea213b03792">m_draftText</a>);</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>                    m_text.text = text;</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>                    <span class="comment">// 待機</span></div>
+<div class="line"><span class="lineno">   64</span>                    await UniTask.DelayFrame(<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a36c38699f1494993e46668566180081d">m_delay</a>);</div>
+<div class="line"><span class="lineno">   65</span>                    <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a>.Token.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   66</span>                }</div>
+<div class="line"><span class="lineno">   67</span>            }</div>
+<div class="line"><span class="lineno">   68</span>            <span class="comment">// 減らす場合</span></div>
+<div class="line"><span class="lineno">   69</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   70</span>            {</div>
+<div class="line"><span class="lineno">   71</span>                <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = <a class="code hl_variable" href="#a09914bee4c0dad7d9d275d133b8907f5">m_initialNumber</a>; targetNum &lt; i; i -= <a class="code hl_variable" href="#acf3936524fec6d7a43e02b5f7599f5d9">m_value</a>)</div>
+<div class="line"><span class="lineno">   72</span>                {</div>
+<div class="line"><span class="lineno">   73</span>                    <span class="comment">// テキストを一文ずつ追加</span></div>
+<div class="line"><span class="lineno">   74</span>                    m_text.text = i.ToString(<a class="code hl_variable" href="#aa3159184515ef030930cfea213b03792">m_draftText</a>);</div>
+<div class="line"><span class="lineno">   75</span>                    <a class="code hl_variable" href="#a09914bee4c0dad7d9d275d133b8907f5">m_initialNumber</a> = i;</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>                    <span class="comment">// 待機</span></div>
+<div class="line"><span class="lineno">   78</span>                    await UniTask.DelayFrame(<a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a36c38699f1494993e46668566180081d">m_delay</a>);</div>
+<div class="line"><span class="lineno">   79</span>                    <a class="code hl_variable" href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">m_cancellationToken</a>.Token.ThrowIfCancellationRequested();</div>
+<div class="line"><span class="lineno">   80</span>                }</div>
+<div class="line"><span class="lineno">   81</span>            }</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>            <span class="comment">// ターゲットの値をセット</span></div>
+<div class="line"><span class="lineno">   84</span>            m_text.text = targetNum.ToString(<a class="code hl_variable" href="#aa3159184515ef030930cfea213b03792">m_draftText</a>);</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>        }</div>
+<div class="line"><span class="lineno">   87</span>        <span class="keywordflow">catch</span> (System.OperationCanceledException ex)</div>
+<div class="line"><span class="lineno">   88</span>        {</div>
+<div class="line"><span class="lineno">   89</span>            Debug.Log(ex);</div>
+<div class="line"><span class="lineno">   90</span>        }</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>        await UniTask.CompletedTask;</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>    }</div>
+<div class="ttc" id="aclass_base_effect_text_html_a1df9d7b7861ce288d62f0f8916990ff6"><div class="ttname"><a href="../../d4/da3/class_base_effect_text.html#a1df9d7b7861ce288d62f0f8916990ff6">BaseEffectText.m_cancellationToken</a></div><div class="ttdeci">CancellationTokenSource m_cancellationToken</div><div class="ttdef"><b>Definition</b> BaseEffectText.cs:46</div></div>
+<div class="ttc" id="aclass_base_effect_text_html_a36c38699f1494993e46668566180081d"><div class="ttname"><a href="../../d4/da3/class_base_effect_text.html#a36c38699f1494993e46668566180081d">BaseEffectText.m_delay</a></div><div class="ttdeci">int m_delay</div><div class="ttdef"><b>Definition</b> BaseEffectText.cs:29</div></div>
+<div class="ttc" id="aclass_base_effect_text_html_ab4548b299eec92fdcbf52996e101b9a0"><div class="ttname"><a href="../../d4/da3/class_base_effect_text.html#ab4548b299eec92fdcbf52996e101b9a0">BaseEffectText.m_text</a></div><div class="ttdeci">TextMeshProUGUI m_text</div><div class="ttdef"><b>Definition</b> BaseEffectText.cs:23</div></div>
+<div class="ttc" id="aclass_number_effect_text_html_a09914bee4c0dad7d9d275d133b8907f5"><div class="ttname"><a href="#a09914bee4c0dad7d9d275d133b8907f5">NumberEffectText.m_initialNumber</a></div><div class="ttdeci">int m_initialNumber</div><div class="ttdef"><b>Definition</b> NumberEffectText.cs:22</div></div>
+<div class="ttc" id="aclass_number_effect_text_html_aa3159184515ef030930cfea213b03792"><div class="ttname"><a href="#aa3159184515ef030930cfea213b03792">NumberEffectText.m_draftText</a></div><div class="ttdeci">string m_draftText</div><div class="ttdef"><b>Definition</b> NumberEffectText.cs:13</div></div>
+<div class="ttc" id="aclass_number_effect_text_html_acf3936524fec6d7a43e02b5f7599f5d9"><div class="ttname"><a href="#acf3936524fec6d7a43e02b5f7599f5d9">NumberEffectText.m_value</a></div><div class="ttdeci">int m_value</div><div class="ttdef"><b>Definition</b> NumberEffectText.cs:17</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -206,7 +271,27 @@ NumberEffectText 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html">NumberEffectText.cs</a> の <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html#l00013">13</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="acf3936524fec6d7a43e02b5f7599f5d9" name="acf3936524fec6d7a43e02b5f7599f5d9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf3936524fec6d7a43e02b5f7599f5d9">&#9670;&#160;</a></span>m_value</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int NumberEffectText.m_value = 1</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -230,36 +315,10 @@ NumberEffectText 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html">NumberEffectText.cs</a> の <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="acf3936524fec6d7a43e02b5f7599f5d9" name="acf3936524fec6d7a43e02b5f7599f5d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acf3936524fec6d7a43e02b5f7599f5d9">&#9670;&#160;</a></span>m_value</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int NumberEffectText.m_value = 1</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html">NumberEffectText.cs</a> の <a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Text/EffectText/<a class="el" href="../../d5/d26/_number_effect_text_8cs_source.html">NumberEffectText.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Text/EffectText/<a class="el" href="../../d5/d26/_number_effect_text_8cs.html">NumberEffectText.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

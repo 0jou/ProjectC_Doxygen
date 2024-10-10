@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -162,10 +162,7 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 <tr class="memitem:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base" id="r_a5c2fa58c15fa5a7e8137f8d9002b2b1e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d3/d41/class_animator_state_machine.html">AnimatorStateMachine</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a5c2fa58c15fa5a7e8137f8d9002b2b1e">StateMachine</a><code> [get, private set]</code></td></tr>
 <tr class="separator:a5c2fa58c15fa5a7e8137f8d9002b2b1e inherit properties_class_animator_state_machine_1_1_action_state_base"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00734">734</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="a2f05122c262b5177093b055c6fc3a029" name="a2f05122c262b5177093b055c6fc3a029"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2f05122c262b5177093b055c6fc3a029">&#9670;&#160;</a></span>OnEnter()</h2>
 
@@ -190,9 +187,40 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../dc/de8/class_character_core_1_1_action_state___base.html#a48c88438ec535f030782a32ef0d59161">CharacterCore.ActionState_Base</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00743">743</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  744</span>        {</div>
+<div class="line"><span class="lineno">  745</span>            base.OnEnter();</div>
+<div class="line"><span class="lineno">  746</span>            Core.m_animator.SetBool(<span class="stringliteral">&quot;IsHoldItem&quot;</span>, <span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">  747</span> </div>
+<div class="line"><span class="lineno">  748</span>            <span class="comment">//武器が存在する場合は消す</span></div>
+<div class="line"><span class="lineno">  749</span>            Core.PlayerParameters.HideWeapon(Core.m_animator);</div>
+<div class="line"><span class="lineno">  750</span> </div>
+<div class="line"><span class="lineno">  751</span>            <span class="comment">//選択アイテムを出現させる</span></div>
+<div class="line"><span class="lineno">  752</span>            <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a> = Core.AddComponent&lt;<a class="code hl_class" href="../../df/d94/class_hold_item_instance.html">HoldItemInstance</a>&gt;();</div>
+<div class="line"><span class="lineno">  753</span>            <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#ad0b9e8619b19ff2aea7f69c6e724c0df">SetHoldPoint</a>(Core.PlayerParameters.m_holdTrans);</div>
+<div class="line"><span class="lineno">  754</span>            <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#a62f0f1c1c169ecf807553bb7ddcf45ee">SetItemID</a>(Core.PlayerParameters.m_putItemInfo.m_itemTypeID,</div>
+<div class="line"><span class="lineno">  755</span>                                            Core.PlayerParameters.m_putItemInfo.m_itemID);</div>
+<div class="line"><span class="lineno">  756</span>            <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#ac55e636301903dc4b83bba20ea861102">Craft</a>();</div>
+<div class="line"><span class="lineno">  757</span> </div>
+<div class="line"><span class="lineno">  758</span>            <span class="comment">//料理データにアクセスし、食べられものかどうかをチェック</span></div>
+<div class="line"><span class="lineno">  759</span>            var data = <a class="code hl_class" href="../../d2/d53/class_item_data_base_manager.html">ItemDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetItemData&lt;<a class="code hl_class" href="../../df/d05/class_food_data.html">FoodData</a>&gt;</div>
+<div class="line"><span class="lineno">  760</span>                (Core.PlayerParameters.m_putItemInfo.m_itemTypeID,</div>
+<div class="line"><span class="lineno">  761</span>                 Core.PlayerParameters.m_putItemInfo.m_itemID);</div>
+<div class="line"><span class="lineno">  762</span> </div>
+<div class="line"><span class="lineno">  763</span>            <a class="code hl_variable" href="#adefd6d5ac93c20a075d4f901c03134b5">m_isEat</a> = data.IsEat;</div>
+<div class="line"><span class="lineno">  764</span> </div>
+<div class="line"><span class="lineno">  766</span>            <span class="comment">//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.Attack);</span></div>
+<div class="line"><span class="lineno">  768</span>            <span class="comment">//Core.PlayerParameters.AddActionUIState(ActionUIController.ActionUIState.HoldItem);</span></div>
+<div class="line"><span class="lineno">  769</span>        }</div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___hold_item_html_ab2ae0d44613d3ecf0197baa784f3ca0c"><div class="ttname"><a href="#ab2ae0d44613d3ecf0197baa784f3ca0c">CharacterCore.ActionState_HoldItem.m_holdItemInstance</a></div><div class="ttdeci">HoldItemInstance m_holdItemInstance</div><div class="ttdef"><b>Definition</b> PlayerState.cs:739</div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___hold_item_html_adefd6d5ac93c20a075d4f901c03134b5"><div class="ttname"><a href="#adefd6d5ac93c20a075d4f901c03134b5">CharacterCore.ActionState_HoldItem.m_isEat</a></div><div class="ttdeci">bool m_isEat</div><div class="ttdef"><b>Definition</b> PlayerState.cs:741</div></div>
+<div class="ttc" id="aclass_food_data_html"><div class="ttname"><a href="../../df/d05/class_food_data.html">FoodData</a></div><div class="ttdef"><b>Definition</b> FoodData.cs:12</div></div>
+<div class="ttc" id="aclass_hold_item_instance_html"><div class="ttname"><a href="../../df/d94/class_hold_item_instance.html">HoldItemInstance</a></div><div class="ttdef"><b>Definition</b> HoldItemInstance.cs:7</div></div>
+<div class="ttc" id="aclass_hold_item_instance_html_a62f0f1c1c169ecf807553bb7ddcf45ee"><div class="ttname"><a href="../../df/d94/class_hold_item_instance.html#a62f0f1c1c169ecf807553bb7ddcf45ee">HoldItemInstance.SetItemID</a></div><div class="ttdeci">void SetItemID(ItemTypeID _itemTypeID, uint _itemID)</div><div class="ttdef"><b>Definition</b> HoldItemInstance.cs:52</div></div>
+<div class="ttc" id="aclass_hold_item_instance_html_ac55e636301903dc4b83bba20ea861102"><div class="ttname"><a href="../../df/d94/class_hold_item_instance.html#ac55e636301903dc4b83bba20ea861102">HoldItemInstance.Craft</a></div><div class="ttdeci">void Craft()</div><div class="ttdef"><b>Definition</b> HoldItemInstance.cs:65</div></div>
+<div class="ttc" id="aclass_hold_item_instance_html_ad0b9e8619b19ff2aea7f69c6e724c0df"><div class="ttname"><a href="../../df/d94/class_hold_item_instance.html#ad0b9e8619b19ff2aea7f69c6e724c0df">HoldItemInstance.SetHoldPoint</a></div><div class="ttdeci">void SetHoldPoint(Transform _holdPointTrans)</div><div class="ttdef"><b>Definition</b> HoldItemInstance.cs:58</div></div>
+<div class="ttc" id="aclass_item_data_base_manager_html"><div class="ttname"><a href="../../d2/d53/class_item_data_base_manager.html">ItemDataBaseManager</a></div><div class="ttdef"><b>Definition</b> ItemDataBaseManager.cs:10</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/da3/class_character_core_1_1_action_state___hold_item_a2f05122c262b5177093b055c6fc3a029_cgraph.png" border="0" usemap="#adf/da3/class_character_core_1_1_action_state___hold_item_a2f05122c262b5177093b055c6fc3a029_cgraph" alt=""/></div>
@@ -206,64 +234,6 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 <area shape="poly" title=" " alt="" coords="182,97,256,116,255,121,180,102"/>
 </map>
 </div>
-
-</div>
-</div>
-<a id="a4fb6d22ed05b721192dcb991cb4241c0" name="a4fb6d22ed05b721192dcb991cb4241c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fb6d22ed05b721192dcb991cb4241c0">&#9670;&#160;</a></span>OnExit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_HoldItem.OnExit </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00858">858</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a8988d23b8cb7321e8db87ab7a1a7347e" name="a8988d23b8cb7321e8db87ab7a1a7347e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8988d23b8cb7321e8db87ab7a1a7347e">&#9670;&#160;</a></span>OnFixedUpdate()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">override void CharacterCore.ActionState_HoldItem.OnFixedUpdate </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00836">836</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -291,9 +261,71 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 </div><div class="memdoc">
 
 <p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#abd0a7d1992675f10146a3d2839d136fe">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
-
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00771">771</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">  772</span>        {</div>
+<div class="line"><span class="lineno">  773</span>            <span class="comment">//選択アイテムが変更されたらコンポーネントを変更</span></div>
+<div class="line"><span class="lineno">  774</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_property" href="../../df/d94/class_hold_item_instance.html#a735768a9d7fd540a3ef6445107ad0939">ItemID</a> != Core.PlayerParameters.m_putItemInfo.m_itemID)</div>
+<div class="line"><span class="lineno">  775</span>            {</div>
+<div class="line"><span class="lineno">  776</span>                <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#a4c019e28246688a65de0702be2de82b5">DestroyPrefab</a>();</div>
+<div class="line"><span class="lineno">  777</span>                <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#ad0b9e8619b19ff2aea7f69c6e724c0df">SetHoldPoint</a>(Core.PlayerParameters.m_holdTrans);</div>
+<div class="line"><span class="lineno">  778</span>                <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#a62f0f1c1c169ecf807553bb7ddcf45ee">SetItemID</a>(Core.PlayerParameters.m_putItemInfo.m_itemTypeID,</div>
+<div class="line"><span class="lineno">  779</span>                                                Core.PlayerParameters.m_putItemInfo.m_itemID);</div>
+<div class="line"><span class="lineno">  780</span>                <a class="code hl_variable" href="#ab2ae0d44613d3ecf0197baa784f3ca0c">m_holdItemInstance</a>.<a class="code hl_function" href="../../df/d94/class_hold_item_instance.html#ac55e636301903dc4b83bba20ea861102">Craft</a>();</div>
+<div class="line"><span class="lineno">  781</span> </div>
+<div class="line"><span class="lineno">  782</span>                <span class="comment">//料理データにアクセスし、食べられものかどうかをチェック</span></div>
+<div class="line"><span class="lineno">  783</span>                var data = <a class="code hl_class" href="../../d2/d53/class_item_data_base_manager.html">ItemDataBaseManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetItemData&lt;<a class="code hl_class" href="../../df/d05/class_food_data.html">FoodData</a>&gt;</div>
+<div class="line"><span class="lineno">  784</span>                    (Core.PlayerParameters.m_putItemInfo.m_itemTypeID,</div>
+<div class="line"><span class="lineno">  785</span>                     Core.PlayerParameters.m_putItemInfo.m_itemID);</div>
+<div class="line"><span class="lineno">  786</span> </div>
+<div class="line"><span class="lineno">  787</span>                <a class="code hl_variable" href="#adefd6d5ac93c20a075d4f901c03134b5">m_isEat</a> = data.IsEat;</div>
+<div class="line"><span class="lineno">  788</span> </div>
+<div class="line"><span class="lineno">  789</span>            }</div>
+<div class="line"><span class="lineno">  790</span> </div>
+<div class="line"><span class="lineno">  791</span>            <span class="comment">// 指定のボタンの入力で設置状態へ（吉田）</span></div>
+<div class="line"><span class="lineno">  792</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.PutItem)</div>
+<div class="line"><span class="lineno">  793</span>            {</div>
+<div class="line"><span class="lineno">  794</span>                <span class="comment">// アイテムの設定されていたらState変更可</span></div>
+<div class="line"><span class="lineno">  795</span>                <span class="keywordflow">if</span> (Core.PlayerParameters.m_putItemInfo.m_itemID != 0)</div>
+<div class="line"><span class="lineno">  796</span>                {</div>
+<div class="line"><span class="lineno">  797</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;PutItem&quot;</span>);</div>
+<div class="line"><span class="lineno">  798</span> </div>
+<div class="line"><span class="lineno">  800</span>                    <span class="comment">//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);</span></div>
+<div class="line"><span class="lineno">  801</span>                }</div>
+<div class="line"><span class="lineno">  802</span>            }</div>
+<div class="line"><span class="lineno">  803</span> </div>
+<div class="line"><span class="lineno">  804</span>            <span class="comment">//指定のボタン入力かつ食べられる料理の場合、食事状態に移行</span></div>
+<div class="line"><span class="lineno">  805</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.Eat &amp;&amp; m_isEat)</div>
+<div class="line"><span class="lineno">  806</span>            {</div>
+<div class="line"><span class="lineno">  807</span>                Core.m_animator.SetTrigger(<span class="stringliteral">&quot;IsEat&quot;</span>);</div>
+<div class="line"><span class="lineno">  808</span> </div>
+<div class="line"><span class="lineno">  810</span>                <span class="comment">//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);</span></div>
+<div class="line"><span class="lineno">  811</span>            }</div>
+<div class="line"><span class="lineno">  812</span> </div>
+<div class="line"><span class="lineno">  813</span>            <span class="comment">// 指定のボタンの入力で投げ準備状態へ（吉田）</span></div>
+<div class="line"><span class="lineno">  814</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.ReadyThrowItem)</div>
+<div class="line"><span class="lineno">  815</span>            {</div>
+<div class="line"><span class="lineno">  816</span>                <span class="comment">// アイテムの設定されていたらState変更可</span></div>
+<div class="line"><span class="lineno">  817</span>                <span class="keywordflow">if</span> (Core.PlayerParameters.m_putItemInfo.m_itemID != 0)</div>
+<div class="line"><span class="lineno">  818</span>                {</div>
+<div class="line"><span class="lineno">  819</span>                    Core.m_animator.SetTrigger(<span class="stringliteral">&quot;ReadyToThrow&quot;</span>);</div>
+<div class="line"><span class="lineno">  820</span>                }</div>
+<div class="line"><span class="lineno">  821</span>            }</div>
+<div class="line"><span class="lineno">  822</span> </div>
+<div class="line"><span class="lineno">  823</span>            <span class="comment">//キャンセルボタンを押すことでMoveに戻る</span></div>
+<div class="line"><span class="lineno">  824</span>            <span class="keywordflow">if</span> (Core.m_inputProvider.Cancel)</div>
+<div class="line"><span class="lineno">  825</span>            {</div>
+<div class="line"><span class="lineno">  826</span>                Core.m_animator.SetBool(<span class="stringliteral">&quot;IsHoldItem&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  827</span> </div>
+<div class="line"><span class="lineno">  829</span>                <span class="comment">//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);</span></div>
+<div class="line"><span class="lineno">  830</span>                <span class="comment">// UIの表示</span></div>
+<div class="line"><span class="lineno">  831</span>                Core.PlayerParameters.AddActionUIState(<a class="code hl_class" href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a>.<a class="code hl_enumeration" href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIState</a>.Attack);</div>
+<div class="line"><span class="lineno">  832</span> </div>
+<div class="line"><span class="lineno">  833</span>            }</div>
+<div class="line"><span class="lineno">  834</span>        }</div>
+<div class="ttc" id="aclass_action_u_i_controller_html"><div class="ttname"><a href="../../db/d24/class_action_u_i_controller.html">ActionUIController</a></div><div class="ttdef"><b>Definition</b> ActionUIController.cs:12</div></div>
+<div class="ttc" id="aclass_action_u_i_controller_html_abc8005cedbe73e7e76027add0612b708"><div class="ttname"><a href="../../db/d24/class_action_u_i_controller.html#abc8005cedbe73e7e76027add0612b708">ActionUIController.ActionUIState</a></div><div class="ttdeci">ActionUIState</div><div class="ttdef"><b>Definition</b> ActionUIController.cs:30</div></div>
+<div class="ttc" id="aclass_hold_item_instance_html_a4c019e28246688a65de0702be2de82b5"><div class="ttname"><a href="../../df/d94/class_hold_item_instance.html#a4c019e28246688a65de0702be2de82b5">HoldItemInstance.DestroyPrefab</a></div><div class="ttdeci">void DestroyPrefab()</div><div class="ttdef"><b>Definition</b> HoldItemInstance.cs:111</div></div>
+<div class="ttc" id="aclass_hold_item_instance_html_a735768a9d7fd540a3ef6445107ad0939"><div class="ttname"><a href="../../df/d94/class_hold_item_instance.html#a735768a9d7fd540a3ef6445107ad0939">HoldItemInstance.ItemID</a></div><div class="ttdeci">uint ItemID</div><div class="ttdef"><b>Definition</b> HoldItemInstance.cs:33</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../df/da3/class_character_core_1_1_action_state___hold_item_a564ae6358df0b8342b44bcbb10e038e5_cgraph.png" border="0" usemap="#adf/da3/class_character_core_1_1_action_state___hold_item_a564ae6358df0b8342b44bcbb10e038e5_cgraph" alt=""/></div>
@@ -310,6 +342,90 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 </map>
 </div>
 
+</div>
+</div>
+<a id="a8988d23b8cb7321e8db87ab7a1a7347e" name="a8988d23b8cb7321e8db87ab7a1a7347e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8988d23b8cb7321e8db87ab7a1a7347e">&#9670;&#160;</a></span>OnFixedUpdate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_HoldItem.OnFixedUpdate </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a36303f7283e2c933da78c49d64749720">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">  837</span>        {</div>
+<div class="line"><span class="lineno">  838</span>            <span class="comment">//移動処理</span></div>
+<div class="line"><span class="lineno">  839</span>            var input = Core.m_inputProvider.MoveVector;</div>
+<div class="line"><span class="lineno">  840</span> </div>
+<div class="line"><span class="lineno">  841</span>            <span class="comment">// 方向キーの入力があったら、その向きにキャラクターを回転させる</span></div>
+<div class="line"><span class="lineno">  842</span>            <span class="keywordflow">if</span> (input.magnitude != 0)</div>
+<div class="line"><span class="lineno">  843</span>            {</div>
+<div class="line"><span class="lineno">  844</span>                Core.SetRotateToTarget(input);</div>
+<div class="line"><span class="lineno">  845</span>            }</div>
+<div class="line"><span class="lineno">  846</span> </div>
+<div class="line"><span class="lineno">  847</span>            <span class="comment">// 移動速度の計算</span></div>
+<div class="line"><span class="lineno">  848</span>            <span class="keywordtype">float</span> speedByStick = input.magnitude;</div>
+<div class="line"><span class="lineno">  849</span>            <span class="keywordtype">float</span> finalSpeed;</div>
+<div class="line"><span class="lineno">  850</span>            <span class="keywordflow">if</span> (Core.m_isRun) finalSpeed = Core.m_dushSpeed * speedByStick;</div>
+<div class="line"><span class="lineno">  851</span>            <span class="keywordflow">else</span> finalSpeed = Core.m_walkSpeed * speedByStick;</div>
+<div class="line"><span class="lineno">  852</span> </div>
+<div class="line"><span class="lineno">  853</span>            Core.Move(finalSpeed);</div>
+<div class="line"><span class="lineno">  854</span> </div>
+<div class="line"><span class="lineno">  855</span>        }</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a4fb6d22ed05b721192dcb991cb4241c0" name="a4fb6d22ed05b721192dcb991cb4241c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb6d22ed05b721192dcb991cb4241c0">&#9670;&#160;</a></span>OnExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void CharacterCore.ActionState_HoldItem.OnExit </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="../../d9/df3/class_animator_state_machine_1_1_action_state_base.html#a3495ba0fe498efaec9fc69ed71a9076b">AnimatorStateMachine.ActionStateBase</a>を再実装しています。</p>
+<div class="fragment"><div class="line"><span class="lineno">  859</span>        {</div>
+<div class="line"><span class="lineno">  860</span> </div>
+<div class="line"><span class="lineno">  861</span>            Core.m_animator.SetBool(<span class="stringliteral">&quot;IsHoldItem&quot;</span>, <span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  862</span> </div>
+<div class="line"><span class="lineno">  863</span>            <span class="comment">//コンポーネントを削除</span></div>
+<div class="line"><span class="lineno">  864</span>            <span class="keywordflow">if</span> (m_holdItemInstance != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">  865</span>            {</div>
+<div class="line"><span class="lineno">  866</span>                Destroy(m_holdItemInstance);</div>
+<div class="line"><span class="lineno">  867</span>            }</div>
+<div class="line"><span class="lineno">  868</span> </div>
+<div class="line"><span class="lineno">  869</span>        }</div>
+</div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
@@ -333,8 +449,6 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00739">739</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <a id="adefd6d5ac93c20a075d4f901c03134b5" name="adefd6d5ac93c20a075d4f901c03134b5"></a>
@@ -357,12 +471,10 @@ CharacterCore.ActionState_HoldItem 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a> の <a class="el" href="../../d4/da7/_player_state_8cs_source.html#l00741">741</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs_source.html">PlayerState.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Scripts/State/<a class="el" href="../../d4/da7/_player_state_8cs.html">PlayerState.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

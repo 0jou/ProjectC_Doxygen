@@ -32,13 +32,6 @@ Game\+Object \mbox{\hyperlink{class_base_chef_decorator_afb7afee26db5c511b656558
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_base_chef_decorator_8cs_source}{Base\+Chef\+Decorator.\+cs}} の \mbox{\hyperlink{_base_chef_decorator_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_base_chef_decorator_aaa5f0fabc1af0828249ca3afe60d406b}\index{BaseChefDecorator@{BaseChefDecorator}!GetChefData@{GetChefData}}
 \index{GetChefData@{GetChefData}!BaseChefDecorator@{BaseChefDecorator}}
@@ -47,9 +40,29 @@ Game\+Object \mbox{\hyperlink{class_base_chef_decorator_afb7afee26db5c511b656558
 \mbox{\hyperlink{class_chef_data}{Chef\+Data}} Base\+Chef\+Decorator.\+Get\+Chef\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022\ \ \ \ \ \{}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シェフ情報が存在するか確認}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_chef_decorator_a8e93e2a38df3d888271f3fedf98b3883}{m\_flexibleChefDataVariable}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(this.name\ +\ \textcolor{stringliteral}{"{}シェフ情報がシリアライズされていません"{}});}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_chef_decorator_a8e93e2a38df3d888271f3fedf98b3883}{m\_flexibleChefDataVariable}}.value.ChefData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(this.name\ +\ \textcolor{stringliteral}{"{}客情報が存在しません"{}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 存在する}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_chef_decorator_a8e93e2a38df3d888271f3fedf98b3883}{m\_flexibleChefDataVariable}}.value.ChefData;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_chef_decorator_8cs_source}{Base\+Chef\+Decorator.\+cs}} の \mbox{\hyperlink{_base_chef_decorator_8cs_source_l00021}{21}} 行目に定義があります。
-
+\end{DoxyCode}
 \Hypertarget{class_base_chef_decorator_afb7afee26db5c511b65655836d5cf646}\index{BaseChefDecorator@{BaseChefDecorator}!GetRootGameObject@{GetRootGameObject}}
 \index{GetRootGameObject@{GetRootGameObject}!BaseChefDecorator@{BaseChefDecorator}}
 \doxysubsubsection{\texorpdfstring{GetRootGameObject()}{GetRootGameObject()}}
@@ -57,9 +70,20 @@ Game\+Object \mbox{\hyperlink{class_base_chef_decorator_afb7afee26db5c511b656558
 Game\+Object Base\+Chef\+Decorator.\+Get\+Root\+Game\+Object (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ Transform\ currentTransform\ =\ transform;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートオブジェクトに到達するまで親を辿る}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (currentTransform.parent\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ currentTransform\ =\ currentTransform.parent;}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ currentTransform.gameObject;}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_chef_decorator_8cs_source}{Base\+Chef\+Decorator.\+cs}} の \mbox{\hyperlink{_base_chef_decorator_8cs_source_l00044}{44}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -68,10 +92,6 @@ Game\+Object Base\+Chef\+Decorator.\+Get\+Root\+Game\+Object (\begin{DoxyParamCa
 \doxysubsubsection{\texorpdfstring{m\_flexibleChefDataVariable}{m\_flexibleChefDataVariable}}
 {\footnotesize\ttfamily \label{class_base_chef_decorator_a8e93e2a38df3d888271f3fedf98b3883} 
 \mbox{\hyperlink{class_flexible_chef_data_variable}{Flexible\+Chef\+Data\+Variable}} Base\+Chef\+Decorator.\+m\+\_\+flexible\+Chef\+Data\+Variable = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_base_chef_decorator_8cs_source}{Base\+Chef\+Decorator.\+cs}} の \mbox{\hyperlink{_base_chef_decorator_8cs_source_l00017}{17}} 行目に定義があります。
 
 
 

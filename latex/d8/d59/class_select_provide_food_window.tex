@@ -2,8 +2,7 @@
 \hypertarget{class_select_provide_food_window}{}\label{class_select_provide_food_window}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}}
 
 
-Select\+Provide\+Food\+Window の継承関係図
-\nopagebreak
+Select\+Provide\+Food\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Select\+Provide\+Food\+Window の継承関係図
 \end{figure}
 
 
-Select\+Provide\+Food\+Window 連携図
-\nopagebreak
+Select\+Provide\+Food\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -131,13 +129,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_select_provide_food_window_a1ca4574113131af3f16a316703cfd5b4}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
@@ -150,11 +141,48 @@ override async Uni\+Task Select\+Provide\+Food\+Window.\+On\+Initialize (\begin{
 \mbox{\hyperlink{class_base_window_a20cbaa0d7aa0d1224e85a0c07b88d6cf}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039\ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}{m\_windowUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowUIコントローラーがシリアライズされていません"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_window_a71e5e82c16f3950c99f9d01441d1025f}{m\_selectFoodDetail}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectFoodDetailUIがシリアライズされていません"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnInitialize();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期化}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}{m\_windowUIController}}.\mbox{\hyperlink{class_window_u_i_controller_a74c822fe466c483d97399d4df75d5fd6}{OnInitialize}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 詳細UI処理}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_select_provide_food_window_a71e5e82c16f3950c99f9d01441d1025f}{m\_selectFoodDetail}}.\mbox{\hyperlink{class_select_food_detail_u_i_adaf860021fbe862068d01401dac1af30}{OnInitialize}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00038}{38}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -172,11 +200,71 @@ override async Uni\+Task Select\+Provide\+Food\+Window.\+On\+Update (\begin{Doxy
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}{m\_windowUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowUIコントローラーがシリアライズされていません"{}});}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_select_provide_food_window_a71e5e82c16f3950c99f9d01441d1025f}{m\_selectFoodDetail}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectFoodDetailUIがシリアライズされていません"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウUI処理}}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}{m\_windowUIController}}.\mbox{\hyperlink{class_window_u_i_controller_a883d549975cad2ed0e98c77dc39b0a5f}{OnUpdate}}();}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 詳細UI処理}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_select_provide_food_window_a71e5e82c16f3950c99f9d01441d1025f}{m\_selectFoodDetail}}.\mbox{\hyperlink{class_select_food_detail_u_i_ab6fa9b8cd74acf396806d555afb6424f}{OnUpdate}}();}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウUI後処理}}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}{m\_windowUIController}}.\mbox{\hyperlink{class_window_u_i_controller_a91a324323a9923b5fc18c32519c36663}{OnLateUpdate}}();}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シーン切り替え}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_provide_food_window_a482631d45065a2eb55b5f3b9507a8d2d}{Transition}}();}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ }
+\DoxyCodeLine{00140\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00079}{79}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -190,19 +278,37 @@ override async Uni\+Task Select\+Provide\+Food\+Window.\+On\+Update (\begin{Doxy
 void Select\+Provide\+Food\+Window.\+Transition (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00144\ \ \ \ \ \{}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_provide_food_window_abbc45f3d2e42cd6c95ee223c96e5dc4f}{m\_inputActionButton}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}InputAActionButtonがシリアライズされていません"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_select_provide_food_window_a9d0b4285fb3403536574d8f1ae62437d}{m\_sceneTransitionManager}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SceneTransitionManagerがシリアライズされていません"{}});}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_select_provide_food_window_abbc45f3d2e42cd6c95ee223c96e5dc4f}{m\_inputActionButton}}.\mbox{\hyperlink{class_input_action_button_a847c561b8a3deeea260be80e698bd342}{IsInputActionTrriger}}())}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =\ \mbox{\hyperlink{class_select_provide_food_window_a9d0b4285fb3403536574d8f1ae62437d}{m\_sceneTransitionManager}}.\mbox{\hyperlink{class_scene_transition_manager_a57a46b1860572b2f20db95dc3ca6f2ec}{SceneChange}}();}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00143}{143}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d8/d59/class_select_provide_food_window_a482631d45065a2eb55b5f3b9507a8d2d_cgraph}
 \end{center}
 \end{figure}
-被呼び出し関係図\+:
-\nopagebreak
+被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -212,25 +318,11 @@ void Select\+Provide\+Food\+Window.\+Transition (\begin{DoxyParamCaption}{}{}\en
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_select_provide_food_window_abbc45f3d2e42cd6c95ee223c96e5dc4f}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_inputActionButton@{m\_inputActionButton}}
-\index{m\_inputActionButton@{m\_inputActionButton}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
-\doxysubsubsection{\texorpdfstring{m\_inputActionButton}{m\_inputActionButton}}
-{\footnotesize\ttfamily \label{class_select_provide_food_window_abbc45f3d2e42cd6c95ee223c96e5dc4f} 
-\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Select\+Provide\+Food\+Window.\+m\+\_\+input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00032}{32}} 行目に定義があります。
-
-\Hypertarget{class_select_provide_food_window_a9d0b4285fb3403536574d8f1ae62437d}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
-\index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
-\doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
-{\footnotesize\ttfamily \label{class_select_provide_food_window_a9d0b4285fb3403536574d8f1ae62437d} 
-\mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Select\+Provide\+Food\+Window.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00027}{27}} 行目に定義があります。
+\Hypertarget{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_windowUIController@{m\_windowUIController}}
+\index{m\_windowUIController@{m\_windowUIController}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
+\doxysubsubsection{\texorpdfstring{m\_windowUIController}{m\_windowUIController}}
+{\footnotesize\ttfamily \label{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002} 
+\mbox{\hyperlink{class_window_u_i_controller}{Window\+UIController}} Select\+Provide\+Food\+Window.\+m\+\_\+window\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_select_provide_food_window_a71e5e82c16f3950c99f9d01441d1025f}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_selectFoodDetail@{m\_selectFoodDetail}}
 \index{m\_selectFoodDetail@{m\_selectFoodDetail}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
@@ -238,19 +330,17 @@ void Select\+Provide\+Food\+Window.\+Transition (\begin{DoxyParamCaption}{}{}\en
 {\footnotesize\ttfamily \label{class_select_provide_food_window_a71e5e82c16f3950c99f9d01441d1025f} 
 \mbox{\hyperlink{class_select_food_detail_u_i}{Select\+Food\+Detail\+UI}} Select\+Provide\+Food\+Window.\+m\+\_\+select\+Food\+Detail = null\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_select_provide_food_window_a9d0b4285fb3403536574d8f1ae62437d}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
+\index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
+\doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
+{\footnotesize\ttfamily \label{class_select_provide_food_window_a9d0b4285fb3403536574d8f1ae62437d} 
+\mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Select\+Provide\+Food\+Window.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00020}{20}} 行目に定義があります。
-
-\Hypertarget{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_windowUIController@{m\_windowUIController}}
-\index{m\_windowUIController@{m\_windowUIController}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
-\doxysubsubsection{\texorpdfstring{m\_windowUIController}{m\_windowUIController}}
-{\footnotesize\ttfamily \label{class_select_provide_food_window_a8e88b976f9b17f4d1db0349045167002} 
-\mbox{\hyperlink{class_window_u_i_controller}{Window\+UIController}} Select\+Provide\+Food\+Window.\+m\+\_\+window\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_provide_food_window_8cs_source}{Select\+Provide\+Food\+Window.\+cs}} の \mbox{\hyperlink{_select_provide_food_window_8cs_source_l00016}{16}} 行目に定義があります。
+\Hypertarget{class_select_provide_food_window_abbc45f3d2e42cd6c95ee223c96e5dc4f}\index{SelectProvideFoodWindow@{SelectProvideFoodWindow}!m\_inputActionButton@{m\_inputActionButton}}
+\index{m\_inputActionButton@{m\_inputActionButton}!SelectProvideFoodWindow@{SelectProvideFoodWindow}}
+\doxysubsubsection{\texorpdfstring{m\_inputActionButton}{m\_inputActionButton}}
+{\footnotesize\ttfamily \label{class_select_provide_food_window_abbc45f3d2e42cd6c95ee223c96e5dc4f} 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Select\+Provide\+Food\+Window.\+m\+\_\+input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -155,10 +155,7 @@ AddCameCustomerDataCustomer 連携図</div>
 <tr class="memitem:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour" id="r_aa3ddb22d160f0879f27eef6ff96f0076"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d4/d72/class_flexible_customer_data_variable.html">FlexibleCustomerDataVariable</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d11/class_base_customer_state_behaviour.html#aa3ddb22d160f0879f27eef6ff96f0076">m_flexibleCustomerDataVariable</a> = null</td></tr>
 <tr class="separator:aa3ddb22d160f0879f27eef6ff96f0076 inherit pro_attribs_class_base_customer_state_behaviour"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html">AddCameCustomerDataCustomer.cs</a> の <a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html#l00010">10</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ad5492d4b6321f0177f03a474dc0027b8" name="ad5492d4b6321f0177f03a474dc0027b8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad5492d4b6321f0177f03a474dc0027b8">&#9670;&#160;</a></span>Add()</h2>
 
@@ -181,9 +178,33 @@ AddCameCustomerDataCustomer 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html">AddCameCustomerDataCustomer.cs</a> の <a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html#l00016">16</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   17</span>    {</div>
+<div class="line"><span class="lineno">   18</span>        var data = <a class="code hl_function" href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">GetCustomerData</a>();</div>
+<div class="line"><span class="lineno">   19</span>        <span class="keywordflow">if</span> (data == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>        <span class="keywordflow">switch</span> (data.CurrentCustomerState)</div>
+<div class="line"><span class="lineno">   22</span>        {</div>
+<div class="line"><span class="lineno">   23</span>            <span class="comment">// 問題なく帰った場合</span></div>
+<div class="line"><span class="lineno">   24</span>            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987">CustomerState</a>.Exit:</div>
+<div class="line"><span class="lineno">   25</span>                {</div>
+<div class="line"><span class="lineno">   26</span>                    <a class="code hl_class" href="../../d2/d0b/class_management_game_manager.html">ManagementGameManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.AddCameCustomerNum(<a class="code hl_enumeration" href="../../d2/d7a/namespace_came_customer_info.html#a6aced3e5325e1b3529b441af5bd3862d">CameCustomerID</a>.Normal);</div>
+<div class="line"><span class="lineno">   27</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   28</span>                }</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>            <span class="comment">// 怒って帰った場合</span></div>
+<div class="line"><span class="lineno">   31</span>            <span class="keywordflow">case</span> <a class="code hl_enumeration" href="../../d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987">CustomerState</a>.AngryExit:</div>
+<div class="line"><span class="lineno">   32</span>                {</div>
+<div class="line"><span class="lineno">   33</span>                    <a class="code hl_class" href="../../d2/d0b/class_management_game_manager.html">ManagementGameManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.AddCameCustomerNum(<a class="code hl_enumeration" href="../../d2/d7a/namespace_came_customer_info.html#a6aced3e5325e1b3529b441af5bd3862d">CameCustomerID</a>.Angry);</div>
+<div class="line"><span class="lineno">   34</span>                    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   35</span>                }</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="ttc" id="aclass_base_customer_state_behaviour_html_a32567768b2bf7e9e2901117de1ec359c"><div class="ttname"><a href="../../d5/d11/class_base_customer_state_behaviour.html#a32567768b2bf7e9e2901117de1ec359c">BaseCustomerStateBehaviour.GetCustomerData</a></div><div class="ttdeci">CustomerData GetCustomerData()</div><div class="ttdoc">客情報が存在するかのチェック</div><div class="ttdef"><b>Definition</b> BaseCustomerStateBehaviour.cs:27</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> BaseManager.cs:6</div></div>
+<div class="ttc" id="aclass_management_game_manager_html"><div class="ttname"><a href="../../d2/d0b/class_management_game_manager.html">ManagementGameManager</a></div><div class="ttdef"><b>Definition</b> ManagementGameManager.cs:16</div></div>
+<div class="ttc" id="anamespace_came_customer_info_html_a6aced3e5325e1b3529b441af5bd3862d"><div class="ttname"><a href="../../d2/d7a/namespace_came_customer_info.html#a6aced3e5325e1b3529b441af5bd3862d">CameCustomerInfo.CameCustomerID</a></div><div class="ttdeci">CameCustomerID</div><div class="ttdef"><b>Definition</b> ManagementGameManager.cs:9</div></div>
+<div class="ttc" id="anamespace_customer_state_info_html_a76c8f9846f3b512edbff3ea766391987"><div class="ttname"><a href="../../d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987">CustomerStateInfo.CustomerState</a></div><div class="ttdeci">CustomerState</div><div class="ttdoc">客のステート</div><div class="ttdef"><b>Definition</b> CustomerData.cs:21</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d0f/class_add_came_customer_data_customer_ad5492d4b6321f0177f03a474dc0027b8_cgraph.png" border="0" usemap="#ad5/d0f/class_add_came_customer_data_customer_ad5492d4b6321f0177f03a474dc0027b8_cgraph" alt=""/></div>
@@ -220,9 +241,11 @@ AddCameCustomerDataCustomer 連携図</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html">AddCameCustomerDataCustomer.cs</a> の <a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html#l00040">40</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   41</span>    {</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_function" href="#ad5492d4b6321f0177f03a474dc0027b8">Add</a>();</div>
+<div class="line"><span class="lineno">   43</span>    }</div>
+<div class="ttc" id="aclass_add_came_customer_data_customer_html_ad5492d4b6321f0177f03a474dc0027b8"><div class="ttname"><a href="#ad5492d4b6321f0177f03a474dc0027b8">AddCameCustomerDataCustomer.Add</a></div><div class="ttdeci">void Add()</div><div class="ttdef"><b>Definition</b> AddCameCustomerDataCustomer.cs:16</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d0f/class_add_came_customer_data_customer_a079710246203d8991ac5e235276ea10a_cgraph.png" border="0" usemap="#ad5/d0f/class_add_came_customer_data_customer_a079710246203d8991ac5e235276ea10a_cgraph" alt=""/></div>
@@ -238,7 +261,7 @@ AddCameCustomerDataCustomer 連携図</div>
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/Exit/<a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs_source.html">AddCameCustomerDataCustomer.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Customer/Scripts/Arbor3/State/Exit/<a class="el" href="../../d0/d2f/_add_came_customer_data_customer_8cs.html">AddCameCustomerDataCustomer.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

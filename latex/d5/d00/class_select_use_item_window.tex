@@ -2,8 +2,7 @@
 \hypertarget{class_select_use_item_window}{}\label{class_select_use_item_window}\index{SelectUseItemWindow@{SelectUseItemWindow}}
 
 
-Select\+Use\+Item\+Window の継承関係図
-\nopagebreak
+Select\+Use\+Item\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Select\+Use\+Item\+Window の継承関係図
 \end{figure}
 
 
-Select\+Use\+Item\+Window 連携図
-\nopagebreak
+Select\+Use\+Item\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -147,56 +145,7 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_select_use_item_window___action_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Action.\+cs}} の \mbox{\hyperlink{_select_use_item_window___action_8cs_source_l00010}{10}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}\index{SelectUseItemWindow@{SelectUseItemWindow}!AddButton@{AddButton}}
-\index{AddButton@{AddButton}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{AddButton()}{AddButton()}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c} 
-void Select\+Use\+Item\+Window.\+Add\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{Select\+Use\+Item\+ID}}}]{\+\_\+id}{, }\item[{bool}]{\+\_\+active}{, }\item[{string}]{\+\_\+text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00171}{171}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c_cgraph}
-\end{center}
-\end{figure}
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54}\index{SelectUseItemWindow@{SelectUseItemWindow}!CheckPressSelectUseItemButton@{CheckPressSelectUseItemButton}}
-\index{CheckPressSelectUseItemButton@{CheckPressSelectUseItemButton}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{CheckPressSelectUseItemButton()}{CheckPressSelectUseItemButton()}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54} 
-bool Select\+Use\+Item\+Window.\+Check\+Press\+Select\+Use\+Item\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00135}{135}} 行目に定義があります。
-
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_select_use_item_window_a0d00a50685f9f860695bc069eed93355}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditActionWindow@{EditActionWindow}}
 \index{EditActionWindow@{EditActionWindow}!SelectUseItemWindow@{SelectUseItemWindow}}
 \doxysubsubsection{\texorpdfstring{EditActionWindow()}{EditActionWindow()}}
@@ -208,11 +157,38 @@ void Select\+Use\+Item\+Window.\+Edit\+Action\+Window (\begin{DoxyParamCaption}\
 // 選択ウィンドウ(アクションアイテムウィンドウ版)作成 
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムを取得}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\_typeID,\ \_id);}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}このアイテムのデータは存在しません。登録されているか確認してください"{}});}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (data.ItemTypeID)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_a7de98967d6d4e1063bab5b27c4a59da1}{EditSelectionWindowforActionWindow\_Ingredient}}(data);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food:}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4}{EditSelectionWindowforActionWindow\_Food}}(data);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_use_item_window___action_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Action.\+cs}} の \mbox{\hyperlink{_select_use_item_window___action_8cs_source_l00018}{18}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -226,60 +202,6 @@ void Select\+Use\+Item\+Window.\+Edit\+Action\+Window (\begin{DoxyParamCaption}\
 \includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a0d00a50685f9f860695bc069eed93355_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_select_use_item_window_a50800471b14912a5d114c2d6966184d5}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditInventoryWindow@{EditInventoryWindow}}
-\index{EditInventoryWindow@{EditInventoryWindow}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{EditInventoryWindow()}{EditInventoryWindow()}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_a50800471b14912a5d114c2d6966184d5} 
-void Select\+Use\+Item\+Window.\+Edit\+Inventory\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}}}]{\+\_\+type\+ID}{, }\item[{uint}]{\+\_\+id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
-// 選択ウィンドウ(インベントリアイテムウィンドウ版)作成 
-
-
-
- \mbox{\hyperlink{_select_use_item_window___inventory_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Inventory.\+cs}} の \mbox{\hyperlink{_select_use_item_window___inventory_8cs_source_l00017}{17}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a50800471b14912a5d114c2d6966184d5_cgraph}
-\end{center}
-\end{figure}
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a50800471b14912a5d114c2d6966184d5_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditSelectionWindowforActionWindow\_Food@{EditSelectionWindowforActionWindow\_Food}}
-\index{EditSelectionWindowforActionWindow\_Food@{EditSelectionWindowforActionWindow\_Food}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{EditSelectionWindowforActionWindow\_Food()}{EditSelectionWindowforActionWindow\_Food()}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4} 
-void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Action\+Window\+\_\+\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_use_item_window___action_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Action.\+cs}} の \mbox{\hyperlink{_select_use_item_window___action_8cs_source_l00057}{57}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4_cgraph}
-\end{center}
-\end{figure}
-被呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4_icgraph}
-\end{center}
-\end{figure}
 \Hypertarget{class_select_use_item_window_a7de98967d6d4e1063bab5b27c4a59da1}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditSelectionWindowforActionWindow\_Ingredient@{EditSelectionWindowforActionWindow\_Ingredient}}
 \index{EditSelectionWindowforActionWindow\_Ingredient@{EditSelectionWindowforActionWindow\_Ingredient}!SelectUseItemWindow@{SelectUseItemWindow}}
 \doxysubsubsection{\texorpdfstring{EditSelectionWindowforActionWindow\_Ingredient()}{EditSelectionWindowforActionWindow\_Ingredient()}}
@@ -287,11 +209,16 @@ void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Action\+Window\+\_\
 void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Action\+Window\+\_\+\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Put,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Put"{}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Pitch,\ \_active:\ \textcolor{keyword}{false},\ \_text:\ \textcolor{stringliteral}{"{}Throw"{}});\textcolor{comment}{//追加（山本）}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Eat,\ \_active:\ \textcolor{keyword}{false},\ \_text:\ \textcolor{stringliteral}{"{}Eat"{}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Exit"{}});}
+\DoxyCodeLine{00055\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_use_item_window___action_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Action.\+cs}} の \mbox{\hyperlink{_select_use_item_window___action_8cs_source_l00049}{49}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -305,29 +232,89 @@ void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Action\+Window\+\_\
 \includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a7de98967d6d4e1063bab5b27c4a59da1_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditSelectionWindowforInventoryWindow\_Food@{EditSelectionWindowforInventoryWindow\_Food}}
-\index{EditSelectionWindowforInventoryWindow\_Food@{EditSelectionWindowforInventoryWindow\_Food}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{EditSelectionWindowforInventoryWindow\_Food()}{EditSelectionWindowforInventoryWindow\_Food()}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13} 
-void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Inventory\+Window\+\_\+\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditSelectionWindowforActionWindow\_Food@{EditSelectionWindowforActionWindow\_Food}}
+\index{EditSelectionWindowforActionWindow\_Food@{EditSelectionWindowforActionWindow\_Food}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{EditSelectionWindowforActionWindow\_Food()}{EditSelectionWindowforActionWindow\_Food()}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4} 
+void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Action\+Window\+\_\+\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Put,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Put"{}});}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Pitch,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Throw"{}});\textcolor{comment}{//追加（山本）}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Eat,\ \_active:\ \textcolor{keyword}{false},\ \_text:\ \textcolor{stringliteral}{"{}Eat"{}});}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Exit"{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_use_item_window___inventory_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Inventory.\+cs}} の \mbox{\hyperlink{_select_use_item_window___inventory_8cs_source_l00054}{54}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13_cgraph}
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4_cgraph}
 \end{center}
 \end{figure}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13_icgraph}
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_ac22454c830d4f1380f55f990414ce0e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_use_item_window_a50800471b14912a5d114c2d6966184d5}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditInventoryWindow@{EditInventoryWindow}}
+\index{EditInventoryWindow@{EditInventoryWindow}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{EditInventoryWindow()}{EditInventoryWindow()}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_a50800471b14912a5d114c2d6966184d5} 
+void Select\+Use\+Item\+Window.\+Edit\+Inventory\+Window (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}}}]{\+\_\+type\+ID}{, }\item[{uint}]{\+\_\+id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+// 選択ウィンドウ(インベントリアイテムウィンドウ版)作成 
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018\ \ \ \ \ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムを取得}}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\_typeID,\ \_id);}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}このアイテムのデータは存在しません。登録されているか確認してください"{}});}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (data.ItemTypeID)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient:}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aac2f122f7e836135330d72cb1037bcd3}{EditSelectionWindowforInventoryWindow\_Ingredient}}(data);}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food:}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13}{EditSelectionWindowforInventoryWindow\_Food}}(data);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a50800471b14912a5d114c2d6966184d5_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a50800471b14912a5d114c2d6966184d5_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_select_use_item_window_aac2f122f7e836135330d72cb1037bcd3}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditSelectionWindowforInventoryWindow\_Ingredient@{EditSelectionWindowforInventoryWindow\_Ingredient}}
@@ -337,11 +324,15 @@ void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Inventory\+Window\+
 void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Inventory\+Window\+\_\+\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00048\ \ \ \ \ \{}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Exit"{}});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_use_item_window___inventory_8cs_source}{Select\+Use\+Item\+Window\+\_\+\+Inventory.\+cs}} の \mbox{\hyperlink{_select_use_item_window___inventory_8cs_source_l00047}{47}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -355,6 +346,71 @@ void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Inventory\+Window\+
 \includegraphics[width=350pt]{d5/d00/class_select_use_item_window_aac2f122f7e836135330d72cb1037bcd3_icgraph}
 \end{center}
 \end{figure}
+\Hypertarget{class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13}\index{SelectUseItemWindow@{SelectUseItemWindow}!EditSelectionWindowforInventoryWindow\_Food@{EditSelectionWindowforInventoryWindow\_Food}}
+\index{EditSelectionWindowforInventoryWindow\_Food@{EditSelectionWindowforInventoryWindow\_Food}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{EditSelectionWindowforInventoryWindow\_Food()}{EditSelectionWindowforInventoryWindow\_Food()}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13} 
+void Select\+Use\+Item\+Window.\+Edit\+Selection\+Windowfor\+Inventory\+Window\+\_\+\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_base_item_data}{Base\+Item\+Data}}}]{\+\_\+item\+Data}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}{AddButton}}(\_id:\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit,\ \_active:\ \textcolor{keyword}{true},\ \_text:\ \textcolor{stringliteral}{"{}Exit"{}});}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a2ee3432ac6aebe5c5848fe53d6464a13_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_use_item_window_ad518a1a292ad9373c49e04a3560f0cb2}\index{SelectUseItemWindow@{SelectUseItemWindow}!SetData@{SetData}}
+\index{SetData@{SetData}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{SetData()}{SetData()}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_ad518a1a292ad9373c49e04a3560f0cb2} 
+void Select\+Use\+Item\+Window.\+Set\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_select_use_item_info_a66d67d87622727fdcfd064502774f021}{Select\+Use\+Item\+Window\+Type}}}]{\+\_\+window\+Type}{, }\item[{\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}}}]{\+\_\+type\+ID}{, }\item[{uint}]{\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_windowType)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_select_use_item_info_a66d67d87622727fdcfd064502774f021}{SelectUseItemWindowType}}.Inventory:}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_a50800471b14912a5d114c2d6966184d5}{EditInventoryWindow}}(\_typeID,\ \_id);}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_select_use_item_info_a66d67d87622727fdcfd064502774f021}{SelectUseItemWindowType}}.Action:}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_a0d00a50685f9f860695bc069eed93355}{EditActionWindow}}(\_typeID,\ \_id);}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_ad518a1a292ad9373c49e04a3560f0cb2_cgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_select_use_item_window_a7f2ffbd156454942351e1b6222144ae4}\index{SelectUseItemWindow@{SelectUseItemWindow}!OnUpdate@{OnUpdate}}
 \index{OnUpdate@{OnUpdate}!SelectUseItemWindow@{SelectUseItemWindow}}
 \doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
@@ -366,57 +422,183 @@ new async Uni\+Task$<$ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083\ \ \ \ \ \{}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectUIControllerが登録されていません"{}});}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンが選択されたら}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54}{CheckPressSelectUseItemButton}}())}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_use_item_window_a708f5f7b6565cfc0c0e159287da1f876}{m\_currentSelectUseItemID}};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit;}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00082}{82}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a7f2ffbd156454942351e1b6222144ae4_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_select_use_item_window_ad518a1a292ad9373c49e04a3560f0cb2}\index{SelectUseItemWindow@{SelectUseItemWindow}!SetData@{SetData}}
-\index{SetData@{SetData}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{SetData()}{SetData()}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_ad518a1a292ad9373c49e04a3560f0cb2} 
-void Select\+Use\+Item\+Window.\+Set\+Data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_select_use_item_info_a66d67d87622727fdcfd064502774f021}{Select\+Use\+Item\+Window\+Type}}}]{\+\_\+window\+Type}{, }\item[{\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{Item\+Type\+ID}}}]{\+\_\+type\+ID}{, }\item[{uint}]{\+\_\+id}{}\end{DoxyParamCaption})}
+\Hypertarget{class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54}\index{SelectUseItemWindow@{SelectUseItemWindow}!CheckPressSelectUseItemButton@{CheckPressSelectUseItemButton}}
+\index{CheckPressSelectUseItemButton@{CheckPressSelectUseItemButton}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{CheckPressSelectUseItemButton()}{CheckPressSelectUseItemButton()}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54} 
+bool Select\+Use\+Item\+Window.\+Check\+Press\+Select\+Use\+Item\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00136\ \ \ \ \ \{}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectUIControllerが登録されていません"{}});}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択されれば}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a8c27f1eb7699e09a3d8568e68d46bacf}{IsPress}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ var\ ui\ =\ \mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a1aef4ef13b4789ae388a562cc0f87622}{CurrentSelectUI}};}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ui\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//==================}}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ var\ button\ =\ ui.GetComponent<\mbox{\hyperlink{class_select_use_item_button}{SelectUseItemButton}}>();}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (button?.IsCanPress\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 返すIDをセット}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_a708f5f7b6565cfc0c0e159287da1f876}{m\_currentSelectUseItemID}}\ =\ button.\mbox{\hyperlink{class_select_use_item_button_a9a4b51ef4cbefe71d7c79788d16a0f44}{ID}};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00166\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00058}{58}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_ad518a1a292ad9373c49e04a3560f0cb2_cgraph}
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_a24a6d65dd1634916c019f1a71e673e54_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c}\index{SelectUseItemWindow@{SelectUseItemWindow}!AddButton@{AddButton}}
+\index{AddButton@{AddButton}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{AddButton()}{AddButton()}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c} 
+void Select\+Use\+Item\+Window.\+Add\+Button (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{Select\+Use\+Item\+ID}}}]{\+\_\+id}{, }\item[{bool}]{\+\_\+active}{, }\item[{string}]{\+\_\+text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00172\ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}UI選択コントローラーが存在しません"{}});}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_use_item_window_a7c8554b2c7c0334c21304208a5d2d6e8}{m\_parentUI}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}親にするUIが存在しません"{}});}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00185\ }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_use_item_window_ace95c06ff79cef813ad93fc03ebfd929}{m\_button}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成するボタンが存在しません"{}});}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを作成(親指定)}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ var\ obj\ =\ Instantiate(\mbox{\hyperlink{class_select_use_item_window_ace95c06ff79cef813ad93fc03ebfd929}{m\_button}},\ \mbox{\hyperlink{class_select_use_item_window_a7c8554b2c7c0334c21304208a5d2d6e8}{m\_parentUI}}.transform);}
+\DoxyCodeLine{00194\ }
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ var\ button\ =\ obj.GetComponentInChildren<\mbox{\hyperlink{class_select_use_item_button}{SelectUseItemButton}}>();}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (button\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectUseItemButtonコンポーネントが存在しません"{}});}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ button.\mbox{\hyperlink{class_select_use_item_button_a914c9aa34bd57c1cdf8d4474638bbd08}{SetData}}(\_id,\ \_active,\ \_text);}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIコントローラーに追加}}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a51d52388666b9ccca7c02b1aa9176d1c}{AddUI}}(obj,\mbox{\hyperlink{namespace_select_u_i_info_a78ccac10f67d2bdf057b08c8961710ff}{SelectUIType}}.Press,\ 1);}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/d00/class_select_use_item_window_aa0a241dc7130d295593d73fa0b70aa6c_icgraph}
 \end{center}
 \end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_select_use_item_window_ace95c06ff79cef813ad93fc03ebfd929}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_button@{m\_button}}
-\index{m\_button@{m\_button}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{m\_button}{m\_button}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_ace95c06ff79cef813ad93fc03ebfd929} 
-Game\+Object Select\+Use\+Item\+Window.\+m\+\_\+button = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00048}{48}} 行目に定義があります。
-
-\Hypertarget{class_select_use_item_window_a708f5f7b6565cfc0c0e159287da1f876}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_currentSelectUseItemID@{m\_currentSelectUseItemID}}
-\index{m\_currentSelectUseItemID@{m\_currentSelectUseItemID}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{m\_currentSelectUseItemID}{m\_currentSelectUseItemID}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_a708f5f7b6565cfc0c0e159287da1f876} 
-\mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{Select\+Use\+Item\+ID}} Select\+Use\+Item\+Window.\+m\+\_\+current\+Select\+Use\+Item\+ID = new()\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00052}{52}} 行目に定義があります。
+\Hypertarget{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_selectUIController@{m\_selectUIController}}
+\index{m\_selectUIController@{m\_selectUIController}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087} 
+\mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Select\+Use\+Item\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_select_use_item_window_a7c8554b2c7c0334c21304208a5d2d6e8}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_parentUI@{m\_parentUI}}
 \index{m\_parentUI@{m\_parentUI}!SelectUseItemWindow@{SelectUseItemWindow}}
@@ -424,19 +606,17 @@ Game\+Object Select\+Use\+Item\+Window.\+m\+\_\+button = null\hspace{0.3cm}{\ttf
 {\footnotesize\ttfamily \label{class_select_use_item_window_a7c8554b2c7c0334c21304208a5d2d6e8} 
 Game\+Object Select\+Use\+Item\+Window.\+m\+\_\+parent\+UI = null\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_select_use_item_window_ace95c06ff79cef813ad93fc03ebfd929}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_button@{m\_button}}
+\index{m\_button@{m\_button}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{m\_button}{m\_button}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_ace95c06ff79cef813ad93fc03ebfd929} 
+Game\+Object Select\+Use\+Item\+Window.\+m\+\_\+button = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00043}{43}} 行目に定義があります。
-
-\Hypertarget{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_selectUIController@{m\_selectUIController}}
-\index{m\_selectUIController@{m\_selectUIController}!SelectUseItemWindow@{SelectUseItemWindow}}
-\doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
-{\footnotesize\ttfamily \label{class_select_use_item_window_af37b5344ad8d72813f526b0756b87087} 
-\mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Select\+Use\+Item\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_use_item_window_8cs_source}{Select\+Use\+Item\+Window.\+cs}} の \mbox{\hyperlink{_select_use_item_window_8cs_source_l00038}{38}} 行目に定義があります。
+\Hypertarget{class_select_use_item_window_a708f5f7b6565cfc0c0e159287da1f876}\index{SelectUseItemWindow@{SelectUseItemWindow}!m\_currentSelectUseItemID@{m\_currentSelectUseItemID}}
+\index{m\_currentSelectUseItemID@{m\_currentSelectUseItemID}!SelectUseItemWindow@{SelectUseItemWindow}}
+\doxysubsubsection{\texorpdfstring{m\_currentSelectUseItemID}{m\_currentSelectUseItemID}}
+{\footnotesize\ttfamily \label{class_select_use_item_window_a708f5f7b6565cfc0c0e159287da1f876} 
+\mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{Select\+Use\+Item\+ID}} Select\+Use\+Item\+Window.\+m\+\_\+current\+Select\+Use\+Item\+ID = new()\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

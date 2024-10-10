@@ -2,8 +2,7 @@
 \hypertarget{class_judge_window}{}\label{class_judge_window}\index{JudgeWindow@{JudgeWindow}}
 
 
-Judge\+Window の継承関係図
-\nopagebreak
+Judge\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Judge\+Window の継承関係図
 \end{figure}
 
 
-Judge\+Window 連携図
-\nopagebreak
+Judge\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -138,47 +136,29 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00009}{9}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_judge_window_a0248e3ebed3db09b26846d9db66239d6}\index{JudgeWindow@{JudgeWindow}!CheckPressSelectButton@{CheckPressSelectButton}}
-\index{CheckPressSelectButton@{CheckPressSelectButton}!JudgeWindow@{JudgeWindow}}
-\doxysubsubsection{\texorpdfstring{CheckPressSelectButton()}{CheckPressSelectButton()}}
-{\footnotesize\ttfamily \label{class_judge_window_a0248e3ebed3db09b26846d9db66239d6} 
-bool Judge\+Window.\+Check\+Press\+Select\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79}\index{JudgeWindow@{JudgeWindow}!UpdateJudge@{UpdateJudge}}
+\index{UpdateJudge@{UpdateJudge}!JudgeWindow@{JudgeWindow}}
+\doxysubsubsection{\texorpdfstring{UpdateJudge()}{UpdateJudge()}}
+{\footnotesize\ttfamily \label{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79} 
+virtual async Uni\+Task Judge\+Window.\+Update\+Judge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
 
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00147}{147}} 行目に定義があります。
+\mbox{\hyperlink{class_game_over_window_a0d5014fb19c5591530758e049c54474b}{Game\+Over\+Window}}, \mbox{\hyperlink{class_no_time_window_a52beadda51e7c97db6c709ae89c23562}{No\+Time\+Window}}, \mbox{\hyperlink{class_return_home_window_ab946add00c4ec3a5bb5c402ffd8303d6}{Return\+Home\+Window}}で再実装されています。
 
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{00037\ \ \ \ \ \}}
+
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d4/d13/class_judge_window_a0248e3ebed3db09b26846d9db66239d6_icgraph}
-\end{center}
-\end{figure}
-\Hypertarget{class_judge_window_aa9764461af1637ac6fab4b2bfb970664}\index{JudgeWindow@{JudgeWindow}!OnSelfUpdate@{OnSelfUpdate}}
-\index{OnSelfUpdate@{OnSelfUpdate}!JudgeWindow@{JudgeWindow}}
-\doxysubsubsection{\texorpdfstring{OnSelfUpdate()}{OnSelfUpdate()}}
-{\footnotesize\ttfamily \label{class_judge_window_aa9764461af1637ac6fab4b2bfb970664} 
-async Uni\+Task$<$ bool $>$ Judge\+Window.\+On\+Self\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00093}{93}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d4/d13/class_judge_window_aa9764461af1637ac6fab4b2bfb970664_cgraph}
+\includegraphics[width=350pt]{d4/d13/class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_judge_window_a5d5e5afb2e01e057a2cab81727171a7c}\index{JudgeWindow@{JudgeWindow}!OnUpdate@{OnUpdate}}
@@ -192,70 +172,182 @@ override async Uni\+Task Judge\+Window.\+On\+Update (\begin{DoxyParamCaption}{}{
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SlotContorollerコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の更新}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 結果を返信}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_judge_window_a0248e3ebed3db09b26846d9db66239d6}{CheckPressSelectButton}}())}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 処理を行う}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79}{UpdateJudge}}();}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の後処理}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00046}{46}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d4/d13/class_judge_window_a5d5e5afb2e01e057a2cab81727171a7c_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79}\index{JudgeWindow@{JudgeWindow}!UpdateJudge@{UpdateJudge}}
-\index{UpdateJudge@{UpdateJudge}!JudgeWindow@{JudgeWindow}}
-\doxysubsubsection{\texorpdfstring{UpdateJudge()}{UpdateJudge()}}
-{\footnotesize\ttfamily \label{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79} 
-virtual async Uni\+Task Judge\+Window.\+Update\+Judge (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+\Hypertarget{class_judge_window_aa9764461af1637ac6fab4b2bfb970664}\index{JudgeWindow@{JudgeWindow}!OnSelfUpdate@{OnSelfUpdate}}
+\index{OnSelfUpdate@{OnSelfUpdate}!JudgeWindow@{JudgeWindow}}
+\doxysubsubsection{\texorpdfstring{OnSelfUpdate()}{OnSelfUpdate()}}
+{\footnotesize\ttfamily \label{class_judge_window_aa9764461af1637ac6fab4b2bfb970664} 
+async Uni\+Task$<$ bool $>$ Judge\+Window.\+On\+Self\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094\ \ \ \ \ \{}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SlotContorollerコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の更新}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 結果を返信}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_judge_window_a0248e3ebed3db09b26846d9db66239d6}{CheckPressSelectButton}}())}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 処理を行う}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79}{UpdateJudge}}();}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad}{m\_judgeFlg}};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の後処理}}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00134\ }
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00141\ }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
 
-\mbox{\hyperlink{class_game_over_window_a0d5014fb19c5591530758e049c54474b}{Game\+Over\+Window}}, \mbox{\hyperlink{class_no_time_window_a52beadda51e7c97db6c709ae89c23562}{No\+Time\+Window}}, \mbox{\hyperlink{class_return_home_window_ab946add00c4ec3a5bb5c402ffd8303d6}{Return\+Home\+Window}}で再実装されています。
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d4/d13/class_judge_window_aa9764461af1637ac6fab4b2bfb970664_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_judge_window_a0248e3ebed3db09b26846d9db66239d6}\index{JudgeWindow@{JudgeWindow}!CheckPressSelectButton@{CheckPressSelectButton}}
+\index{CheckPressSelectButton@{CheckPressSelectButton}!JudgeWindow@{JudgeWindow}}
+\doxysubsubsection{\texorpdfstring{CheckPressSelectButton()}{CheckPressSelectButton()}}
+{\footnotesize\ttfamily \label{class_judge_window_a0248e3ebed3db09b26846d9db66239d6} 
+bool Judge\+Window.\+Check\+Press\+Select\+Button (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00148\ \ \ \ \ \{}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectUIControllerが登録されていません"{}});}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択されれば}}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a8c27f1eb7699e09a3d8568e68d46bacf}{IsPress}})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ var\ ui\ =\ \mbox{\hyperlink{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a1aef4ef13b4789ae388a562cc0f87622}{CurrentSelectUI}};}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択されたのがYesUIであれば}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ui\ ==\ \mbox{\hyperlink{class_judge_window_ae2c1bfed5d6ab5969981dd30dc38d64f}{m\_yesUI}})}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad}{m\_judgeFlg}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択されたのがNoUIであれば}}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ui\ ==\ \mbox{\hyperlink{class_judge_window_ad73766f01713d468530991e294933646}{m\_noUI}})}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad}{m\_judgeFlg}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00174\ }
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00034}{34}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d4/d13/class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79_icgraph}
+\includegraphics[width=350pt]{d4/d13/class_judge_window_a0248e3ebed3db09b26846d9db66239d6_icgraph}
 \end{center}
 \end{figure}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad}\index{JudgeWindow@{JudgeWindow}!m\_judgeFlg@{m\_judgeFlg}}
-\index{m\_judgeFlg@{m\_judgeFlg}!JudgeWindow@{JudgeWindow}}
-\doxysubsubsection{\texorpdfstring{m\_judgeFlg}{m\_judgeFlg}}
-{\footnotesize\ttfamily \label{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad} 
-bool Judge\+Window.\+m\+\_\+judge\+Flg = false\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00029}{29}} 行目に定義があります。
-
-\Hypertarget{class_judge_window_ad73766f01713d468530991e294933646}\index{JudgeWindow@{JudgeWindow}!m\_noUI@{m\_noUI}}
-\index{m\_noUI@{m\_noUI}!JudgeWindow@{JudgeWindow}}
-\doxysubsubsection{\texorpdfstring{m\_noUI}{m\_noUI}}
-{\footnotesize\ttfamily \label{class_judge_window_ad73766f01713d468530991e294933646} 
-Game\+Object Judge\+Window.\+m\+\_\+no\+UI = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00026}{26}} 行目に定義があります。
-
 \Hypertarget{class_judge_window_a1992419930de7dd65e9a3f35e4046bae}\index{JudgeWindow@{JudgeWindow}!m\_selectUIController@{m\_selectUIController}}
 \index{m\_selectUIController@{m\_selectUIController}!JudgeWindow@{JudgeWindow}}
 \doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
 {\footnotesize\ttfamily \label{class_judge_window_a1992419930de7dd65e9a3f35e4046bae} 
 \mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Judge\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00016}{16}} 行目に定義があります。
 
 \Hypertarget{class_judge_window_ae2c1bfed5d6ab5969981dd30dc38d64f}\index{JudgeWindow@{JudgeWindow}!m\_yesUI@{m\_yesUI}}
 \index{m\_yesUI@{m\_yesUI}!JudgeWindow@{JudgeWindow}}
@@ -263,9 +355,17 @@ Game\+Object Judge\+Window.\+m\+\_\+no\+UI = null\hspace{0.3cm}{\ttfamily [prote
 {\footnotesize\ttfamily \label{class_judge_window_ae2c1bfed5d6ab5969981dd30dc38d64f} 
 Game\+Object Judge\+Window.\+m\+\_\+yes\+UI = null\hspace{0.3cm}{\ttfamily [protected]}}
 
+\Hypertarget{class_judge_window_ad73766f01713d468530991e294933646}\index{JudgeWindow@{JudgeWindow}!m\_noUI@{m\_noUI}}
+\index{m\_noUI@{m\_noUI}!JudgeWindow@{JudgeWindow}}
+\doxysubsubsection{\texorpdfstring{m\_noUI}{m\_noUI}}
+{\footnotesize\ttfamily \label{class_judge_window_ad73766f01713d468530991e294933646} 
+Game\+Object Judge\+Window.\+m\+\_\+no\+UI = null\hspace{0.3cm}{\ttfamily [protected]}}
 
-
- \mbox{\hyperlink{_judge_window_8cs_source}{Judge\+Window.\+cs}} の \mbox{\hyperlink{_judge_window_8cs_source_l00021}{21}} 行目に定義があります。
+\Hypertarget{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad}\index{JudgeWindow@{JudgeWindow}!m\_judgeFlg@{m\_judgeFlg}}
+\index{m\_judgeFlg@{m\_judgeFlg}!JudgeWindow@{JudgeWindow}}
+\doxysubsubsection{\texorpdfstring{m\_judgeFlg}{m\_judgeFlg}}
+{\footnotesize\ttfamily \label{class_judge_window_a83f04f9e66f07c10c049176bc32f24ad} 
+bool Judge\+Window.\+m\+\_\+judge\+Flg = false\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 

@@ -40,10 +40,6 @@ void \mbox{\hyperlink{class_judge_stun_a86e8eacf4e16cb2012229c991751de9c}{Start}
 
 自分がスタンになるか判断する。主に突進系 
 
- \mbox{\hyperlink{_judge_stun_8cs_source}{Judge\+Stun.\+cs}} の \mbox{\hyperlink{_judge_stun_8cs_source_l00014}{14}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_judge_stun_a86e8eacf4e16cb2012229c991751de9c}\index{JudgeStun@{JudgeStun}!Start@{Start}}
 \index{Start@{Start}!JudgeStun@{JudgeStun}}
@@ -52,9 +48,31 @@ void \mbox{\hyperlink{class_judge_stun_a86e8eacf4e16cb2012229c991751de9c}{Start}
 void Judge\+Stun.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019\ \ \ \ \ \{}
+\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ TryGetComponent(out\ \mbox{\hyperlink{class_judge_stun_a05262f087731935abcd25c1250fa6c5c}{m\_ownerInfoTag}});}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ this.OnTriggerEnterAsObservable()}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ .Where(\_\ =>\ enabled\ \&\&\ \_.gameObject.isStatic)}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ .Subscribe(collider\ =>}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ conditionData\ =\ \mbox{\hyperlink{class_condition_data_base_manager}{ConditionDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetConditionData(\mbox{\hyperlink{namespace_condition_info_a15935a815783d67be27a154f45f16482}{ConditionID}}.Stun);}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conditionData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conditionData.ConditionPrefab\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ Transform\ managerObj\ =\ transform.root.Find(\textcolor{stringliteral}{"{}ConditionManager"{}});}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!managerObj.TryGetComponent(out\ \mbox{\hyperlink{class_condition_manager}{ConditionManager}}\ manager))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ manager.AddCondition(conditionData.ConditionPrefab);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ ).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{00040\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_judge_stun_8cs_source}{Judge\+Stun.\+cs}} の \mbox{\hyperlink{_judge_stun_8cs_source_l00018}{18}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -63,10 +81,6 @@ void Judge\+Stun.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hs
 \doxysubsubsection{\texorpdfstring{m\_ownerInfoTag}{m\_ownerInfoTag}}
 {\footnotesize\ttfamily \label{class_judge_stun_a05262f087731935abcd25c1250fa6c5c} 
 \mbox{\hyperlink{class_owner_info_tag}{Owner\+Info\+Tag}} Judge\+Stun.\+m\+\_\+owner\+Info\+Tag\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_judge_stun_8cs_source}{Judge\+Stun.\+cs}} の \mbox{\hyperlink{_judge_stun_8cs_source_l00016}{16}} 行目に定義があります。
 
 
 

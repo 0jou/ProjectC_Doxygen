@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -155,10 +155,7 @@ EnemySearchTarget 連携図</div>
 <tr class="memitem:a2d80c800b7a910094bf39b9cc2cbb6cd" id="r_a2d80c800b7a910094bf39b9cc2cbb6cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d2f/class_visual_field_judgment.html">VisualFieldJudgment</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2d80c800b7a910094bf39b9cc2cbb6cd">m_judgment</a> =new()</td></tr>
 <tr class="separator:a2d80c800b7a910094bf39b9cc2cbb6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock">
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00020">20</a> 行目に定義があります。</p>
-</div><h2 class="groupheader">メソッド詳解</h2>
+<h2 class="groupheader">メソッド詳解</h2>
 <a id="ae7a1408f16e1f01bf166c46f9acda894" name="ae7a1408f16e1f01bf166c46f9acda894"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae7a1408f16e1f01bf166c46f9acda894">&#9670;&#160;</a></span>OnAwake()</h2>
 
@@ -181,9 +178,16 @@ EnemySearchTarget 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00030">30</a> 行目に定義があります。</p>
-
+<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>        transform.root.TryGetComponent(out <a class="code hl_variable" href="#a8c60f39fc21941228165ddf3561d513e">m_myCollider</a>);</div>
+<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">if</span>(transform.root.TryGetComponent(out AgentController agent))</div>
+<div class="line"><span class="lineno">   34</span>        {</div>
+<div class="line"><span class="lineno">   35</span>            <a class="code hl_variable" href="#af503b59197e1bba722ec9a72b303acc5">m_startPos</a> = agent.StartPosition;</div>
+<div class="line"><span class="lineno">   36</span>        }</div>
+<div class="line"><span class="lineno">   37</span>    }</div>
+<div class="ttc" id="aclass_enemy_search_target_html_a8c60f39fc21941228165ddf3561d513e"><div class="ttname"><a href="#a8c60f39fc21941228165ddf3561d513e">EnemySearchTarget.m_myCollider</a></div><div class="ttdeci">Collider m_myCollider</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:26</div></div>
+<div class="ttc" id="aclass_enemy_search_target_html_af503b59197e1bba722ec9a72b303acc5"><div class="ttname"><a href="#af503b59197e1bba722ec9a72b303acc5">EnemySearchTarget.m_startPos</a></div><div class="ttdeci">Vector3 m_startPos</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:27</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="a356d179661f285bdaf4dd7598679e73a" name="a356d179661f285bdaf4dd7598679e73a"></a>
@@ -208,9 +212,73 @@ EnemySearchTarget 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00043">43</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   44</span>    {</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">if</span> (Vector3.Distance(transform.position, <a class="code hl_variable" href="#af503b59197e1bba722ec9a72b303acc5">m_startPos</a>) &gt;= <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value.DistAwayFromSpawnPos) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   46</span>       </div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordtype">float</span> nearestDist = <span class="keywordtype">float</span>.MaxValue;</div>
+<div class="line"><span class="lineno">   48</span>        <span class="keywordtype">bool</span> isFind = <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>        <span class="comment">// プレイヤーが範囲内にいるか調べる</span></div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">foreach</span> (var chara <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">   52</span>        {</div>
+<div class="line"><span class="lineno">   53</span>            <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#acba0c55638cbb9f33cdd5fd906fffa63">m_searchFlags</a>.value.searchTargets &amp; <a class="code hl_enumeration" href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a>.Player) == <a class="code hl_enumeration" href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a>.Player)</div>
+<div class="line"><span class="lineno">   54</span>            {</div>
+<div class="line"><span class="lineno">   55</span>                <span class="keywordflow">if</span> (chara.GroupNo == <a class="code hl_enumeration" href="../../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47">CharacterGroupNumber</a>.player)</div>
+<div class="line"><span class="lineno">   56</span>                {</div>
+<div class="line"><span class="lineno">   57</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a2d80c800b7a910094bf39b9cc2cbb6cd">m_judgment</a>.<a class="code hl_function" href="../../d1/d2f/class_visual_field_judgment.html#a728705e540b1d6b7c51eb072785faab3">SearchTargetNearSpawn</a>(chara.gameObject, <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value, <a class="code hl_variable" href="#a8c60f39fc21941228165ddf3561d513e">m_myCollider</a>, <a class="code hl_variable" href="#af503b59197e1bba722ec9a72b303acc5">m_startPos</a>, ref nearestDist, <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value.SearchCharacterDist))</div>
+<div class="line"><span class="lineno">   58</span>                    {</div>
+<div class="line"><span class="lineno">   59</span>                        <a class="code hl_variable" href="#ab372c01025432e17584ff84d04ffd346">m_targetParameter</a>.parameter.SetTransform(chara.transform);</div>
+<div class="line"><span class="lineno">   60</span>                        isFind = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   61</span>                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   62</span>                    }</div>
+<div class="line"><span class="lineno">   63</span>                }</div>
+<div class="line"><span class="lineno">   64</span>            }</div>
+<div class="line"><span class="lineno">   65</span>            <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#acba0c55638cbb9f33cdd5fd906fffa63">m_searchFlags</a>.value.searchTargets &amp; <a class="code hl_enumeration" href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a>.Enemy) == <a class="code hl_enumeration" href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a>.Enemy)</div>
+<div class="line"><span class="lineno">   66</span>            {</div>
+<div class="line"><span class="lineno">   67</span>                <span class="keywordflow">if</span> (chara.GroupNo == <a class="code hl_enumeration" href="../../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47">CharacterGroupNumber</a>.enemy)</div>
+<div class="line"><span class="lineno">   68</span>                {</div>
+<div class="line"><span class="lineno">   69</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a2d80c800b7a910094bf39b9cc2cbb6cd">m_judgment</a>.<a class="code hl_function" href="../../d1/d2f/class_visual_field_judgment.html#a728705e540b1d6b7c51eb072785faab3">SearchTargetNearSpawn</a>(chara.gameObject, <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value, <a class="code hl_variable" href="#a8c60f39fc21941228165ddf3561d513e">m_myCollider</a>, <a class="code hl_variable" href="#af503b59197e1bba722ec9a72b303acc5">m_startPos</a>, ref nearestDist, <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value.SearchCharacterDist))</div>
+<div class="line"><span class="lineno">   70</span>                    {</div>
+<div class="line"><span class="lineno">   71</span>                        <a class="code hl_variable" href="#ab372c01025432e17584ff84d04ffd346">m_targetParameter</a>.parameter.SetTransform(chara.transform);</div>
+<div class="line"><span class="lineno">   72</span>                        isFind = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   73</span>                        <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   74</span>                    }</div>
+<div class="line"><span class="lineno">   75</span>                }</div>
+<div class="line"><span class="lineno">   76</span>            }</div>
+<div class="line"><span class="lineno">   77</span>        }</div>
+<div class="line"><span class="lineno">   78</span> </div>
+<div class="line"><span class="lineno">   79</span>        <span class="comment">// 罠ごはんが範囲内にあるか調べる　より正面にあればそちらを優先で使用</span></div>
+<div class="line"><span class="lineno">   80</span>        <span class="keywordflow">if</span> ((<a class="code hl_variable" href="#acba0c55638cbb9f33cdd5fd906fffa63">m_searchFlags</a>.value.searchTargets &amp; <a class="code hl_enumeration" href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a>.FoodItem) == <a class="code hl_enumeration" href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a>.FoodItem)</div>
+<div class="line"><span class="lineno">   81</span>        {</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">foreach</span> (var item <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;AssignItemID&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><span class="lineno">   83</span>            {</div>
+<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">if</span> (item.ItemTypeID != <a class="code hl_namespace" href="../../d6/db8/namespace_item_info.html">ItemInfo</a>.ItemTypeID.Food) <span class="keywordflow">continue</span>;</div>
+<div class="line"><span class="lineno">   85</span> </div>
+<div class="line"><span class="lineno">   86</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="#a2d80c800b7a910094bf39b9cc2cbb6cd">m_judgment</a>.<a class="code hl_function" href="../../d1/d2f/class_visual_field_judgment.html#a728705e540b1d6b7c51eb072785faab3">SearchTargetNearSpawn</a>(item.gameObject, <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value, <a class="code hl_variable" href="#a8c60f39fc21941228165ddf3561d513e">m_myCollider</a>, <a class="code hl_variable" href="#af503b59197e1bba722ec9a72b303acc5">m_startPos</a>, ref nearestDist, <a class="code hl_variable" href="#a89234527c142f6151c5d166a6e4b41ba">m_chaseParameters</a>.value.SearchCharacterDist))</div>
+<div class="line"><span class="lineno">   87</span>                {</div>
+<div class="line"><span class="lineno">   88</span>                    <a class="code hl_variable" href="#ab372c01025432e17584ff84d04ffd346">m_targetParameter</a>.parameter.SetTransform(item.transform);</div>
+<div class="line"><span class="lineno">   89</span>                    isFind = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   90</span>                }</div>
+<div class="line"><span class="lineno">   91</span>            }</div>
+<div class="line"><span class="lineno">   92</span>        }</div>
+<div class="line"><span class="lineno">   93</span> </div>
+<div class="line"><span class="lineno">   94</span>        <span class="keywordflow">if</span> (isFind)</div>
+<div class="line"><span class="lineno">   95</span>        {</div>
+<div class="line"><span class="lineno">   96</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   97</span>        }</div>
+<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">   99</span>    }</div>
+<div class="ttc" id="a_enemy_search_target_8cs_html_a8d7ae986e1bb8a74af43cb23e7b4311b"><div class="ttname"><a href="../../d2/d96/_enemy_search_target_8cs.html#a8d7ae986e1bb8a74af43cb23e7b4311b">SearchTargets</a></div><div class="ttdeci">SearchTargets</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:10</div></div>
+<div class="ttc" id="a_i_damageable_8cs_html_ae72376123e0488a173f6626e9fc0ba47"><div class="ttname"><a href="../../d1/dee/_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47">CharacterGroupNumber</a></div><div class="ttdeci">CharacterGroupNumber</div><div class="ttdef"><b>Definition</b> IDamageable.cs:8</div></div>
+<div class="ttc" id="aclass_enemy_search_target_html_a2d80c800b7a910094bf39b9cc2cbb6cd"><div class="ttname"><a href="#a2d80c800b7a910094bf39b9cc2cbb6cd">EnemySearchTarget.m_judgment</a></div><div class="ttdeci">VisualFieldJudgment m_judgment</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:28</div></div>
+<div class="ttc" id="aclass_enemy_search_target_html_a89234527c142f6151c5d166a6e4b41ba"><div class="ttname"><a href="#a89234527c142f6151c5d166a6e4b41ba">EnemySearchTarget.m_chaseParameters</a></div><div class="ttdeci">FlexibleChaseParameters m_chaseParameters</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:24</div></div>
+<div class="ttc" id="aclass_enemy_search_target_html_ab372c01025432e17584ff84d04ffd346"><div class="ttname"><a href="#ab372c01025432e17584ff84d04ffd346">EnemySearchTarget.m_targetParameter</a></div><div class="ttdeci">FlexibleTransform m_targetParameter</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:23</div></div>
+<div class="ttc" id="aclass_enemy_search_target_html_acba0c55638cbb9f33cdd5fd906fffa63"><div class="ttname"><a href="#acba0c55638cbb9f33cdd5fd906fffa63">EnemySearchTarget.m_searchFlags</a></div><div class="ttdeci">FlexibleSearchType m_searchFlags</div><div class="ttdef"><b>Definition</b> EnemySearchTarget.cs:22</div></div>
+<div class="ttc" id="aclass_visual_field_judgment_html_a728705e540b1d6b7c51eb072785faab3"><div class="ttname"><a href="../../d1/d2f/class_visual_field_judgment.html#a728705e540b1d6b7c51eb072785faab3">VisualFieldJudgment.SearchTargetNearSpawn</a></div><div class="ttdeci">bool SearchTargetNearSpawn(GameObject _target, ChaseParameters _chaseParameters, Collider _myCollider, Vector3 _startPos, ref float _nearestDist, float _searchDist)</div><div class="ttdef"><b>Definition</b> VisualFieldJudgment.cs:80</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> MetaAI.cs:12</div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a5538533e130a7a180b806f1937f65447"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">IMetaAI.ObjectList</a></div><div class="ttdeci">HashSet&lt; T &gt; ObjectList</div><div class="ttdef"><b>Definition</b> MetaAI.cs:16</div></div>
+<div class="ttc" id="anamespace_item_info_html"><div class="ttname"><a href="../../d6/db8/namespace_item_info.html">ItemInfo</a></div><div class="ttdef"><b>Definition</b> ItemTypeID.cs:3</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d1/d0e/class_enemy_search_target_a356d179661f285bdaf4dd7598679e73a_cgraph.png" border="0" usemap="#ad1/d0e/class_enemy_search_target_a356d179661f285bdaf4dd7598679e73a_cgraph" alt=""/></div>
@@ -224,78 +292,6 @@ EnemySearchTarget 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a89234527c142f6151c5d166a6e4b41ba" name="a89234527c142f6151c5d166a6e4b41ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89234527c142f6151c5d166a6e4b41ba">&#9670;&#160;</a></span>m_chaseParameters</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d8/dd3/class_flexible_chase_parameters.html">FlexibleChaseParameters</a> EnemySearchTarget.m_chaseParameters</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a2d80c800b7a910094bf39b9cc2cbb6cd" name="a2d80c800b7a910094bf39b9cc2cbb6cd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2d80c800b7a910094bf39b9cc2cbb6cd">&#9670;&#160;</a></span>m_judgment</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../d1/d2f/class_visual_field_judgment.html">VisualFieldJudgment</a> EnemySearchTarget.m_judgment =new()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00028">28</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="a8c60f39fc21941228165ddf3561d513e" name="a8c60f39fc21941228165ddf3561d513e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c60f39fc21941228165ddf3561d513e">&#9670;&#160;</a></span>m_myCollider</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Collider EnemySearchTarget.m_myCollider</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00026">26</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="acba0c55638cbb9f33cdd5fd906fffa63" name="acba0c55638cbb9f33cdd5fd906fffa63"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acba0c55638cbb9f33cdd5fd906fffa63">&#9670;&#160;</a></span>m_searchFlags</h2>
 
@@ -315,32 +311,6 @@ EnemySearchTarget 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00022">22</a> 行目に定義があります。</p>
-
-</div>
-</div>
-<a id="af503b59197e1bba722ec9a72b303acc5" name="af503b59197e1bba722ec9a72b303acc5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af503b59197e1bba722ec9a72b303acc5">&#9670;&#160;</a></span>m_startPos</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Vector3 EnemySearchTarget.m_startPos</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00027">27</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -364,12 +334,98 @@ EnemySearchTarget 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a> の <a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html#l00023">23</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a89234527c142f6151c5d166a6e4b41ba" name="a89234527c142f6151c5d166a6e4b41ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a89234527c142f6151c5d166a6e4b41ba">&#9670;&#160;</a></span>m_chaseParameters</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d8/dd3/class_flexible_chase_parameters.html">FlexibleChaseParameters</a> EnemySearchTarget.m_chaseParameters</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c60f39fc21941228165ddf3561d513e" name="a8c60f39fc21941228165ddf3561d513e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c60f39fc21941228165ddf3561d513e">&#9670;&#160;</a></span>m_myCollider</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Collider EnemySearchTarget.m_myCollider</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af503b59197e1bba722ec9a72b303acc5" name="af503b59197e1bba722ec9a72b303acc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af503b59197e1bba722ec9a72b303acc5">&#9670;&#160;</a></span>m_startPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Vector3 EnemySearchTarget.m_startPos</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2d80c800b7a910094bf39b9cc2cbb6cd" name="a2d80c800b7a910094bf39b9cc2cbb6cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d80c800b7a910094bf39b9cc2cbb6cd">&#9670;&#160;</a></span>m_judgment</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d1/d2f/class_visual_field_judgment.html">VisualFieldJudgment</a> EnemySearchTarget.m_judgment =new()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/CommonBehaviorTree/BehaviourScripts/<a class="el" href="../../d2/d96/_enemy_search_target_8cs_source.html">EnemySearchTarget.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/004_Character/Enemy/CommonBehaviorTree/BehaviourScripts/<a class="el" href="../../d2/d96/_enemy_search_target_8cs.html">EnemySearchTarget.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

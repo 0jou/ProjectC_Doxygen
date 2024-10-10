@@ -27,7 +27,7 @@
  <tbody>
  <tr id="projectrow">
   <td id="projectalign">
-   <div id="projectname">ProjectC_Doxygen
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241010</span>
    </div>
   </td>
  </tr>
@@ -161,8 +161,6 @@ AnyActionUIController 連携図</div>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>アイテムを拾ったり、インタラクトする際のUI表示を制御するクラス </p>
-
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00017">17</a> 行目に定義があります。</p>
 </div><h2 class="groupheader">メソッド詳解</h2>
 <a id="aec5c205f1a5f8c5334d234892e6f7148" name="aec5c205f1a5f8c5334d234892e6f7148"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec5c205f1a5f8c5334d234892e6f7148">&#9670;&#160;</a></span>ChangeNowStateUI()</h2>
@@ -188,9 +186,12 @@ AnyActionUIController 連携図</div>
 </div><div class="memdoc">
 
 <p>m_nowActionState に応じたUIを表示する </p>
-
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00054">54</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   55</span>    {</div>
+<div class="line"><span class="lineno">   56</span>        <a class="code hl_function" href="#a5b7e6ba0d8bc871ac0cdf084bb32666e">ChangeStateUI</a>(<a class="code hl_variable" href="#a3632e6919f088240583ec2634f6a2d17">m_nowActionState</a>);</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="ttc" id="aclass_any_action_u_i_controller_html_a3632e6919f088240583ec2634f6a2d17"><div class="ttname"><a href="#a3632e6919f088240583ec2634f6a2d17">AnyActionUIController.m_nowActionState</a></div><div class="ttdeci">ActionUIState m_nowActionState</div><div class="ttdef"><b>Definition</b> AnyActionUIController.cs:48</div></div>
+<div class="ttc" id="aclass_any_action_u_i_controller_html_a5b7e6ba0d8bc871ac0cdf084bb32666e"><div class="ttname"><a href="#a5b7e6ba0d8bc871ac0cdf084bb32666e">AnyActionUIController.ChangeStateUI</a></div><div class="ttdeci">void ChangeStateUI(ActionUIState _actionState)</div><div class="ttdoc">アクション状態を変更する</div><div class="ttdef"><b>Definition</b> AnyActionUIController.cs:63</div></div>
+</div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d11/class_any_action_u_i_controller_aec5c205f1a5f8c5334d234892e6f7148_cgraph.png" border="0" usemap="#ad7/d11/class_any_action_u_i_controller_aec5c205f1a5f8c5334d234892e6f7148_cgraph" alt=""/></div>
@@ -225,9 +226,49 @@ AnyActionUIController 連携図</div>
   </table>
   </dd>
 </dl>
-
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00063">63</a> 行目に定義があります。</p>
-<div class="dynheader">
+<div class="fragment"><div class="line"><span class="lineno">   64</span>    {</div>
+<div class="line"><span class="lineno">   65</span>        <span class="keywordflow">if</span>(_actionState == ActionUIState.None)</div>
+<div class="line"><span class="lineno">   66</span>        {</div>
+<div class="line"><span class="lineno">   67</span>            <a class="code hl_variable" href="#a9aa5223dcb0b1c9184a54b65a6935f11">m_anyActionUI</a>.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   68</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   69</span>        }</div>
+<div class="line"><span class="lineno">   70</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   71</span>        {</div>
+<div class="line"><span class="lineno">   72</span>            <a class="code hl_variable" href="#a9aa5223dcb0b1c9184a54b65a6935f11">m_anyActionUI</a>.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><span class="lineno">   73</span>        }</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a9aa5223dcb0b1c9184a54b65a6935f11">m_anyActionUI</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   76</span>        {</div>
+<div class="line"><span class="lineno">   77</span>            Debug.LogError(<span class="stringliteral">&quot;m_anyActionUIが設定されていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   78</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   79</span>        }</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6">m_anyActionUIText</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   82</span>        {</div>
+<div class="line"><span class="lineno">   83</span>            <a class="code hl_variable" href="#a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6">m_anyActionUIText</a> = <a class="code hl_variable" href="#a9aa5223dcb0b1c9184a54b65a6935f11">m_anyActionUI</a>.GetComponentInChildren&lt;TextMeshProUGUI&gt;();</div>
+<div class="line"><span class="lineno">   84</span>            <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6">m_anyActionUIText</a> == <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   85</span>            {</div>
+<div class="line"><span class="lineno">   86</span>                Debug.LogError(<span class="stringliteral">&quot;m_anyActionUITextが設定されていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   87</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   88</span>            }</div>
+<div class="line"><span class="lineno">   89</span>        }</div>
+<div class="line"><span class="lineno">   90</span> </div>
+<div class="line"><span class="lineno">   91</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="#a013378a98c94233c92428d5f4730572a">m_actionInfoList</a>.ContainsKey(_actionState))</div>
+<div class="line"><span class="lineno">   92</span>        {</div>
+<div class="line"><span class="lineno">   93</span>            m_anyActionUIText.text = <a class="code hl_variable" href="#a013378a98c94233c92428d5f4730572a">m_actionInfoList</a>[_actionState].ActionText;</div>
+<div class="line"><span class="lineno">   94</span>        }</div>
+<div class="line"><span class="lineno">   95</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   96</span>        {</div>
+<div class="line"><span class="lineno">   97</span>            Debug.LogError(<span class="stringliteral">&quot;m_actionInfoListに&quot;</span> + _actionState + <span class="stringliteral">&quot;が設定されていません&quot;</span>);</div>
+<div class="line"><span class="lineno">   98</span>        }</div>
+<div class="line"><span class="lineno">   99</span> </div>
+<div class="line"><span class="lineno">  100</span>        <a class="code hl_variable" href="#a3632e6919f088240583ec2634f6a2d17">m_nowActionState</a> = _actionState;</div>
+<div class="line"><span class="lineno">  101</span> </div>
+<div class="line"><span class="lineno">  102</span>    }</div>
+<div class="ttc" id="aclass_any_action_u_i_controller_html_a013378a98c94233c92428d5f4730572a"><div class="ttname"><a href="#a013378a98c94233c92428d5f4730572a">AnyActionUIController.m_actionInfoList</a></div><div class="ttdeci">SerializableDictionary&lt; ActionUIState, AnyActionInfo &gt; m_actionInfoList</div><div class="ttdef"><b>Definition</b> AnyActionUIController.cs:44</div></div>
+<div class="ttc" id="aclass_any_action_u_i_controller_html_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6"><div class="ttname"><a href="#a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6">AnyActionUIController.m_anyActionUIText</a></div><div class="ttdeci">TextMeshProUGUI m_anyActionUIText</div><div class="ttdef"><b>Definition</b> AnyActionUIController.cs:24</div></div>
+<div class="ttc" id="aclass_any_action_u_i_controller_html_a9aa5223dcb0b1c9184a54b65a6935f11"><div class="ttname"><a href="#a9aa5223dcb0b1c9184a54b65a6935f11">AnyActionUIController.m_anyActionUI</a></div><div class="ttdeci">GameObject m_anyActionUI</div><div class="ttdef"><b>Definition</b> AnyActionUIController.cs:21</div></div>
+</div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d7/d11/class_any_action_u_i_controller_a5b7e6ba0d8bc871ac0cdf084bb32666e_icgraph.png" border="0" usemap="#ad7/d11/class_any_action_u_i_controller_a5b7e6ba0d8bc871ac0cdf084bb32666e_icgraph" alt=""/></div>
@@ -245,30 +286,6 @@ AnyActionUIController 連携図</div>
 </div>
 </div>
 <h2 class="groupheader">フィールド詳解</h2>
-<a id="a013378a98c94233c92428d5f4730572a" name="a013378a98c94233c92428d5f4730572a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a013378a98c94233c92428d5f4730572a">&#9670;&#160;</a></span>m_actionInfoList</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../dd/d60/class_serializable_dictionary.html">SerializableDictionary</a>&lt;ActionUIState, <a class="el" href="../../d7/d99/struct_any_action_u_i_controller_1_1_any_action_info.html">AnyActionInfo</a>&gt; AnyActionUIController.m_actionInfoList = new()</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00044">44</a> 行目に定義があります。</p>
-
-</div>
-</div>
 <a id="a9aa5223dcb0b1c9184a54b65a6935f11" name="a9aa5223dcb0b1c9184a54b65a6935f11"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a9aa5223dcb0b1c9184a54b65a6935f11">&#9670;&#160;</a></span>m_anyActionUI</h2>
 
@@ -288,8 +305,6 @@ AnyActionUIController 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00021">21</a> 行目に定義があります。</p>
 
 </div>
 </div>
@@ -313,7 +328,27 @@ AnyActionUIController 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00024">24</a> 行目に定義があります。</p>
+</div>
+</div>
+<a id="a013378a98c94233c92428d5f4730572a" name="a013378a98c94233c92428d5f4730572a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a013378a98c94233c92428d5f4730572a">&#9670;&#160;</a></span>m_actionInfoList</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../dd/d60/class_serializable_dictionary.html">SerializableDictionary</a>&lt;ActionUIState, <a class="el" href="../../d7/d99/struct_any_action_u_i_controller_1_1_any_action_info.html">AnyActionInfo</a>&gt; AnyActionUIController.m_actionInfoList = new()</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -337,12 +372,10 @@ AnyActionUIController 連携図</div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition"> <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a> の <a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html#l00048">48</a> 行目に定義があります。</p>
-
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Prefab/View/CharactorAction/Player/Action/NewLayout/AnyAction/<a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs_source.html">AnyActionUIController.cs</a></li>
+<li>C:/3D_prac/_ProjectC/Assets/ProjectC/002_UI/Prefab/View/CharactorAction/Player/Action/NewLayout/AnyAction/<a class="el" href="../../dd/d30/_any_action_u_i_controller_8cs.html">AnyActionUIController.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

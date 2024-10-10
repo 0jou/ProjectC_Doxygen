@@ -2,8 +2,7 @@
 \hypertarget{class_select_stage_window}{}\label{class_select_stage_window}\index{SelectStageWindow@{SelectStageWindow}}
 
 
-Select\+Stage\+Window の継承関係図
-\nopagebreak
+Select\+Stage\+Window の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -12,8 +11,7 @@ Select\+Stage\+Window の継承関係図
 \end{figure}
 
 
-Select\+Stage\+Window 連携図
-\nopagebreak
+Select\+Stage\+Window 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -131,13 +129,6 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00008}{8}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_select_stage_window_ad362ab73225450e03c1eb81e8bd93d60}\index{SelectStageWindow@{SelectStageWindow}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!SelectStageWindow@{SelectStageWindow}}
@@ -150,9 +141,33 @@ override async Uni\+Task Select\+Stage\+Window.\+On\+Initialize (\begin{DoxyPara
 \mbox{\hyperlink{class_base_window_a20cbaa0d7aa0d1224e85a0c07b88d6cf}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnInitialize();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9}{m\_changeSelectStageDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}説明文がシリアライズされていません"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文の初期化}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9}{m\_changeSelectStageDescription}}.\mbox{\hyperlink{class_change_select_stage_description_ad7e16efa46d9e0ec3a8342e2b5ec0645}{OnInitialize}}();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00031}{31}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -171,11 +186,78 @@ override async Uni\+Task Select\+Stage\+Window.\+On\+Update (\begin{DoxyParamCap
 \mbox{\hyperlink{class_base_window_a7dbb4bd0d8326442b7ad896895fd2995}{Base\+Window}}を再実装しています。
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058\ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ボタンを押すまで}}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectUIControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_a41ed65d224009b4b057beeb7f4a86687}{m\_selectStageController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectStageControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9}{m\_changeSelectStageDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeSelectStageDescriptionがシリアライズされていません"{}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI選択の更新}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a807f9c965bdc2f43f19da12e4afa49e3}{OnUpdate}}();}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ステージ選択の更新}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_window_a41ed65d224009b4b057beeb7f4a86687}{m\_selectStageController}}.\mbox{\hyperlink{class_select_stage_controller_a65700719303fb5efa3e0bfd7d10b2da4}{OnUpdate}}();}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文の更新}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9}{m\_changeSelectStageDescription}}.\mbox{\hyperlink{class_change_select_stage_description_a811fe880c24bb9120286494eac17e350}{OnUpdate}}();}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シーン遷移}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_a8812b525b90f12f9d3f601c79d5f8b26}{Transion}}())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択UIの後処理}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_a4c693b99fa30040236b1b5cccf671e4b}{OnLateUpdate}}();}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ステージ選択の更新}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_window_a41ed65d224009b4b057beeb7f4a86687}{m\_selectStageController}}.\mbox{\hyperlink{class_select_stage_controller_ac7ef0c60a0306cf14eb4a65099b0f396}{OnLateUpdate}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャンセル}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Cancel"{}}))}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE追加（山本）}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Cancel"{}});}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00124\ }
+\DoxyCodeLine{00125\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00057}{57}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -189,11 +271,43 @@ override async Uni\+Task Select\+Stage\+Window.\+On\+Update (\begin{DoxyParamCap
 bool Select\+Stage\+Window.\+Transion (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00131\ \ \ \ \ \{}
+\DoxyCodeLine{00132\ }
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック }}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_a6c8b49e2e397389d7f9241b40a96166e}{m\_sceneTransitionManager}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}シーン変更クラスがシリアライズされていません"{}});}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}{m\_selectUIController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}UI選択コントローラーがシリアライズされていません"{}});}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ var\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}{m\_selectUIController}}.\mbox{\hyperlink{class_select_u_i_controller_ada35550ac0a4899a09d5f563cde41891}{IsPressButton}}();}
+\DoxyCodeLine{00147\ }
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\textcolor{keywordtype}{id})}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_button_info_ad4fc19fa9db4c92112d549c75644273e}{ButtonID}}.Start:}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_select_stage_window_a41ed65d224009b4b057beeb7f4a86687}{m\_selectStageController}}.\mbox{\hyperlink{class_select_stage_controller_ac58bfcab9d0d3a633aeec76230c0f71b}{GetCurrentSelectStageData}}();}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_sceneTransitionManager.m\_sceneName\ =\ data.\mbox{\hyperlink{class_stage_data_aa0e80bed27f92fdbc741410149267098}{SceneName}};}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\ =\ \mbox{\hyperlink{class_select_stage_window_a6c8b49e2e397389d7f9241b40a96166e}{m\_sceneTransitionManager}}.\mbox{\hyperlink{class_scene_transition_manager_a57a46b1860572b2f20db95dc3ca6f2ec}{SceneChange}}();}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ }
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00162\ }
+\DoxyCodeLine{00163\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00130}{130}} 行目に定義があります。
-
-呼び出し関係図\+:
-\nopagebreak
+\end{DoxyCode}
+呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -210,25 +324,11 @@ bool Select\+Stage\+Window.\+Transion (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9}\index{SelectStageWindow@{SelectStageWindow}!m\_changeSelectStageDescription@{m\_changeSelectStageDescription}}
-\index{m\_changeSelectStageDescription@{m\_changeSelectStageDescription}!SelectStageWindow@{SelectStageWindow}}
-\doxysubsubsection{\texorpdfstring{m\_changeSelectStageDescription}{m\_changeSelectStageDescription}}
-{\footnotesize\ttfamily \label{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9} 
-\mbox{\hyperlink{class_change_select_stage_description}{Change\+Select\+Stage\+Description}} Select\+Stage\+Window.\+m\+\_\+change\+Select\+Stage\+Description = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00023}{23}} 行目に定義があります。
-
-\Hypertarget{class_select_stage_window_a6c8b49e2e397389d7f9241b40a96166e}\index{SelectStageWindow@{SelectStageWindow}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
-\index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!SelectStageWindow@{SelectStageWindow}}
-\doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
-{\footnotesize\ttfamily \label{class_select_stage_window_a6c8b49e2e397389d7f9241b40a96166e} 
-\mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Select\+Stage\+Window.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00027}{27}} 行目に定義があります。
+\Hypertarget{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}\index{SelectStageWindow@{SelectStageWindow}!m\_selectUIController@{m\_selectUIController}}
+\index{m\_selectUIController@{m\_selectUIController}!SelectStageWindow@{SelectStageWindow}}
+\doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
+{\footnotesize\ttfamily \label{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b} 
+\mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Select\+Stage\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
 
 \Hypertarget{class_select_stage_window_a41ed65d224009b4b057beeb7f4a86687}\index{SelectStageWindow@{SelectStageWindow}!m\_selectStageController@{m\_selectStageController}}
 \index{m\_selectStageController@{m\_selectStageController}!SelectStageWindow@{SelectStageWindow}}
@@ -236,19 +336,17 @@ bool Select\+Stage\+Window.\+Transion (\begin{DoxyParamCaption}{}{}\end{DoxyPara
 {\footnotesize\ttfamily \label{class_select_stage_window_a41ed65d224009b4b057beeb7f4a86687} 
 \mbox{\hyperlink{class_select_stage_controller}{Select\+Stage\+Controller}} Select\+Stage\+Window.\+m\+\_\+select\+Stage\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9}\index{SelectStageWindow@{SelectStageWindow}!m\_changeSelectStageDescription@{m\_changeSelectStageDescription}}
+\index{m\_changeSelectStageDescription@{m\_changeSelectStageDescription}!SelectStageWindow@{SelectStageWindow}}
+\doxysubsubsection{\texorpdfstring{m\_changeSelectStageDescription}{m\_changeSelectStageDescription}}
+{\footnotesize\ttfamily \label{class_select_stage_window_a80abd277635a9cec3ed5e338f15123b9} 
+\mbox{\hyperlink{class_change_select_stage_description}{Change\+Select\+Stage\+Description}} Select\+Stage\+Window.\+m\+\_\+change\+Select\+Stage\+Description = null\hspace{0.3cm}{\ttfamily [private]}}
 
-
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00019}{19}} 行目に定義があります。
-
-\Hypertarget{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b}\index{SelectStageWindow@{SelectStageWindow}!m\_selectUIController@{m\_selectUIController}}
-\index{m\_selectUIController@{m\_selectUIController}!SelectStageWindow@{SelectStageWindow}}
-\doxysubsubsection{\texorpdfstring{m\_selectUIController}{m\_selectUIController}}
-{\footnotesize\ttfamily \label{class_select_stage_window_afe4ae47e169f50ecb1b56dab4e8cd53b} 
-\mbox{\hyperlink{class_select_u_i_controller}{Select\+UIController}} Select\+Stage\+Window.\+m\+\_\+select\+UIController = null\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_select_stage_window_8cs_source}{Select\+Stage\+Window.\+cs}} の \mbox{\hyperlink{_select_stage_window_8cs_source_l00015}{15}} 行目に定義があります。
+\Hypertarget{class_select_stage_window_a6c8b49e2e397389d7f9241b40a96166e}\index{SelectStageWindow@{SelectStageWindow}!m\_sceneTransitionManager@{m\_sceneTransitionManager}}
+\index{m\_sceneTransitionManager@{m\_sceneTransitionManager}!SelectStageWindow@{SelectStageWindow}}
+\doxysubsubsection{\texorpdfstring{m\_sceneTransitionManager}{m\_sceneTransitionManager}}
+{\footnotesize\ttfamily \label{class_select_stage_window_a6c8b49e2e397389d7f9241b40a96166e} 
+\mbox{\hyperlink{class_scene_transition_manager}{Scene\+Transition\+Manager}} Select\+Stage\+Window.\+m\+\_\+scene\+Transition\+Manager = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

@@ -50,13 +50,6 @@ Output\+Slot\+Vector3 \mbox{\hyperlink{class_base_chef_calclator_a2834473ed800d5
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source}{Base\+Chef\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source_l00007}{7}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_base_chef_rotation_calculator_af4d8d406b88089e3e6329fa66cc0876c}\index{BaseChefRotationCalculator@{BaseChefRotationCalculator}!GetTargetPosition@{GetTargetPosition}}
 \index{GetTargetPosition@{GetTargetPosition}!BaseChefRotationCalculator@{BaseChefRotationCalculator}}
@@ -65,9 +58,12 @@ Output\+Slot\+Vector3 \mbox{\hyperlink{class_base_chef_calclator_a2834473ed800d5
 virtual void Base\+Chef\+Rotation\+Calculator.\+Get\+Target\+Position (\begin{DoxyParamCaption}\item[{ref Vector3}]{\+\_\+target\+Pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}オーバーライドして書き換えてください"{}});}
+\DoxyCodeLine{00022\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source}{Base\+Chef\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source_l00019}{19}} 行目に定義があります。
-
+\end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -82,9 +78,29 @@ virtual void Base\+Chef\+Rotation\+Calculator.\+Get\+Target\+Position (\begin{Do
 override void Base\+Chef\+Rotation\+Calculator.\+On\+Calculate (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ var\ obj\ =\ \mbox{\hyperlink{class_base_chef_calclator_a61052933e1c662d48c761861d8ed12e6}{GetRootGameObject}}();}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ var\ pos\ =\ obj.transform.position;}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ var\ targetPos\ =\ obj.transform.position;}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_chef_rotation_calculator_af4d8d406b88089e3e6329fa66cc0876c}{GetTargetPosition}}(ref\ targetPos);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 角度}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ targetPos\ -\/\ pos;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ dir.y\ =\ 0.0f;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ dir.Normalize();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ pos\ =\ pos\ +\ (dir\ *\ \mbox{\hyperlink{class_base_chef_rotation_calculator_ac6981860adf7474827d1dfc212110f8b}{m\_moveDistance}});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_chef_calclator_a2834473ed800d514955bb5a38a3c65e4}{m\_outputPos}}.SetValue(pos);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \}}
 
- \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source}{Base\+Chef\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source_l00025}{25}} 行目に定義があります。
-
+\end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -100,10 +116,6 @@ override void Base\+Chef\+Rotation\+Calculator.\+On\+Calculate (\begin{DoxyParam
 \doxysubsubsection{\texorpdfstring{m\_moveDistance}{m\_moveDistance}}
 {\footnotesize\ttfamily \label{class_base_chef_rotation_calculator_ac6981860adf7474827d1dfc212110f8b} 
 float Base\+Chef\+Rotation\+Calculator.\+m\+\_\+move\+Distance = 0.\+1f\hspace{0.3cm}{\ttfamily [private]}}
-
-
-
- \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source}{Base\+Chef\+Rotation\+Calculator.\+cs}} の \mbox{\hyperlink{_base_chef_rotation_calculator_8cs_source_l00016}{16}} 行目に定義があります。
 
 
 

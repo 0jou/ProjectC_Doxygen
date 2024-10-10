@@ -16,13 +16,6 @@ static \mbox{\hyperlink{class_base_pocket_item_data_controller}{Base\+Pocket\+It
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{詳解}
-
-
- \mbox{\hyperlink{_pocket_item_data_controller_8cs_source}{Pocket\+Item\+Data\+Controller.\+cs}} の \mbox{\hyperlink{_pocket_item_data_controller_8cs_source_l00018}{18}} 行目に定義があります。
-
-
-
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_pocket_item_data_info_1_1_pocket_item_data_info_extensions_ae710367833a5f152e722374332949065}\index{PocketItemDataInfo.PocketItemDataInfoExtensions@{PocketItemDataInfo.PocketItemDataInfoExtensions}!GetPocketItemDataManager@{GetPocketItemDataManager}}
 \index{GetPocketItemDataManager@{GetPocketItemDataManager}!PocketItemDataInfo.PocketItemDataInfoExtensions@{PocketItemDataInfo.PocketItemDataInfoExtensions}}
@@ -31,9 +24,35 @@ static \mbox{\hyperlink{class_base_pocket_item_data_controller}{Base\+Pocket\+It
 static \mbox{\hyperlink{class_base_pocket_item_data_controller}{Base\+Pocket\+Item\+Data\+Controller}} Pocket\+Item\+Data\+Info.\+Pocket\+Item\+Data\+Info\+Extensions.\+Get\+Pocket\+Item\+Data\+Manager (\begin{DoxyParamCaption}\item[{this \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{Pocket\+Type}}}]{\+\_\+pocket\+Type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_pocketType)}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.Inventory:}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}};}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.Storehouse:}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_storehouse_manager}{StorehouseManager}}.\mbox{\hyperlink{class_storehouse_manager_a22ffb2d9f0f9b005b98dee0bc957eb37}{instance}};}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.NewItem:}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_new_item_manager}{NewItemManager}}.\mbox{\hyperlink{class_new_item_manager_a0a97ac0f3442615ef14ddc9beb4b1b54}{instance}};}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.ManagementStorage:}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_management_storage_manager}{ManagementStorageManager}}.\mbox{\hyperlink{class_management_storage_manager_a5eb1d2213c6aa9611778a88ed2267fbd}{instance}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\_pocketType\ +\ \textcolor{stringliteral}{"{}に対するマネージャーが存在しません"{}});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
 
- \mbox{\hyperlink{_pocket_item_data_controller_8cs_source}{Pocket\+Item\+Data\+Controller.\+cs}} の \mbox{\hyperlink{_pocket_item_data_controller_8cs_source_l00020}{20}} 行目に定義があります。
-
+\end{DoxyCode}
 
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}

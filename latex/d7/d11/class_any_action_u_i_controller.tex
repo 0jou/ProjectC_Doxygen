@@ -7,7 +7,8 @@
 
 
 
-Any\+Action\+UIController の継承関係図\nopagebreak
+Any\+Action\+UIController の継承関係図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,7 +17,8 @@ Any\+Action\+UIController の継承関係図\nopagebreak
 \end{figure}
 
 
-Any\+Action\+UIController 連携図\nopagebreak
+Any\+Action\+UIController 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -45,6 +47,8 @@ Game\+Object \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c918
 \item 
 Text\+Mesh\+Pro\+UGUI \mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\+\_\+any\+Action\+UIText}} = null
 \item 
+\mbox{\hyperlink{class_input_action_button___change_input_action_reference}{Input\+Action\+Button\+\_\+\+Change\+Input\+Action\+Reference}} \mbox{\hyperlink{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}{m\+\_\+input\+Action}} = null
+\item 
 \mbox{\hyperlink{class_serializable_dictionary}{Serializable\+Dictionary}}$<$ Action\+UIState, \mbox{\hyperlink{struct_any_action_u_i_controller_1_1_any_action_info}{Any\+Action\+Info}} $>$ \mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\+\_\+action\+Info\+List}} = new()
 \item 
 Action\+UIState \mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\+\_\+now\+Action\+State}}
@@ -67,12 +71,13 @@ m\+\_\+now\+Action\+State に応じた\+UIを表示する
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00055\ \ \ \ \ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a5b7e6ba0d8bc871ac0cdf084bb32666e}{ChangeStateUI}}(\mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\_nowActionState}});}
-\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a5b7e6ba0d8bc871ac0cdf084bb32666e}{ChangeStateUI}}(\mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\_nowActionState}});}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
 \end{DoxyCode}
-呼び出し関係図\+:\nopagebreak
+呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -96,47 +101,70 @@ void Any\+Action\+UIController.\+Change\+State\+UI (\begin{DoxyParamCaption}\ite
 \end{DoxyParams}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00064\ \ \ \ \ \{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_actionState\ ==\ ActionUIState.None)}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.SetActive(\textcolor{keyword}{false});}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_actionState\ ==\ ActionUIState.None)}
 \DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.SetActive(\textcolor{keyword}{true});}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00074\ }
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
 \DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_anyActionUIが設定されていません"{}});}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00080\ }
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.GetComponentInChildren<TextMeshProUGUI>();}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_anyActionUITextが設定されていません"{}});}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}.ContainsKey(\_actionState))}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ m\_anyActionUIText.text\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}[\_actionState].ActionText;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_anyActionUIが設定されていません"{}});}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}{m\_inputAction}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}{m\_inputAction}}\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.GetComponentInChildren<\mbox{\hyperlink{class_input_action_button___change_input_action_reference}{InputActionButton\_ChangeInputActionReference}}>();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}{m\_inputAction}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_inputActionが設定されていません"{}});}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_actionInfoListに"{}}\ +\ \_actionState\ +\ \textcolor{stringliteral}{"{}が設定されていません"{}});}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\_nowActionState}}\ =\ \_actionState;}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a9aa5223dcb0b1c9184a54b65a6935f11}{m\_anyActionUI}}.GetComponentInChildren<TextMeshProUGUI>();}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6}{m\_anyActionUIText}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_anyActionUITextが設定されていません"{}});}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}.ContainsKey(\_actionState))}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ m\_anyActionUIText.text\ =\ \mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}[\_actionState].ActionText;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_actionInfoListに"{}}\ +\ \_actionState\ +\ \textcolor{stringliteral}{"{}が設定されていません"{}});}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}{m\_inputAction}}.\mbox{\hyperlink{class_input_action_button_a07bd06d93a37b0e1ee0f277d10d39cc1}{InputActionReference}}\ !=\ \mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}[\_actionState].InputActionReference)}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}{m\_inputAction}}.\mbox{\hyperlink{class_input_action_button___change_input_action_reference_acdd8b7129a8835115935b5cb2c115386}{ChangeInputActionReference}}(\mbox{\hyperlink{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}{m\_actionInfoList}}[\_actionState].InputActionReference);}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_any_action_u_i_controller_a3632e6919f088240583ec2634f6a2d17}{m\_nowActionState}}\ =\ \_actionState;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \}}
 
 \end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d7/d11/class_any_action_u_i_controller_a5b7e6ba0d8bc871ac0cdf084bb32666e_cgraph}
+\end{center}
+\end{figure}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -159,6 +187,12 @@ Game\+Object Any\+Action\+UIController.\+m\+\_\+any\+Action\+UI = null\hspace{0.
 {\footnotesize\ttfamily \label{class_any_action_u_i_controller_a0d2cb969fcbcdd49aa7c8ffcb2f4d8b6} 
 Text\+Mesh\+Pro\+UGUI Any\+Action\+UIController.\+m\+\_\+any\+Action\+UIText = null\hspace{0.3cm}{\ttfamily [private]}}
 
+\Hypertarget{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789}\index{AnyActionUIController@{AnyActionUIController}!m\_inputAction@{m\_inputAction}}
+\index{m\_inputAction@{m\_inputAction}!AnyActionUIController@{AnyActionUIController}}
+\doxysubsubsection{\texorpdfstring{m\_inputAction}{m\_inputAction}}
+{\footnotesize\ttfamily \label{class_any_action_u_i_controller_a40dd8a00971ba41bb1c1b7dc48b6f789} 
+\mbox{\hyperlink{class_input_action_button___change_input_action_reference}{Input\+Action\+Button\+\_\+\+Change\+Input\+Action\+Reference}} Any\+Action\+UIController.\+m\+\_\+input\+Action = null\hspace{0.3cm}{\ttfamily [private]}}
+
 \Hypertarget{class_any_action_u_i_controller_a013378a98c94233c92428d5f4730572a}\index{AnyActionUIController@{AnyActionUIController}!m\_actionInfoList@{m\_actionInfoList}}
 \index{m\_actionInfoList@{m\_actionInfoList}!AnyActionUIController@{AnyActionUIController}}
 \doxysubsubsection{\texorpdfstring{m\_actionInfoList}{m\_actionInfoList}}
@@ -175,4 +209,4 @@ Action\+UIState Any\+Action\+UIController.\+m\+\_\+now\+Action\+State\hspace{0.3
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/002\+\_\+\+UI/\+Prefab/\+View/\+Charactor\+Action/\+Player/\+Action/\+New\+Layout/\+Any\+Action/\mbox{\hyperlink{_any_action_u_i_controller_8cs}{Any\+Action\+UIController.\+cs}}\end{DoxyCompactItemize}
+C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/002\+\_\+\+UI/\+Prefab/\+View/\+Charactor\+Action/\+Player/\+Action/\+New\+Layout/\+Action\+UI Center/\mbox{\hyperlink{_any_action_u_i_controller_8cs}{Any\+Action\+UIController.\+cs}}\end{DoxyCompactItemize}

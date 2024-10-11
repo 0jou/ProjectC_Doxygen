@@ -26,6 +26,6 @@ var searchData=
   ['domove_23',['DoMove',['../df/dfe/class_change_scroll_view_position.html#ade48cf2c0a7b9cb71bebf8f9dac0ef9d',1,'ChangeScrollViewPosition']]],
   ['domovexposition_24',['DOMoveXPosition',['../d8/d12/class_change_action_item_list_position.html#a9088396f768359e16f3cf25cf2bcb8ae',1,'ChangeActionItemListPosition']]],
   ['doscale_25',['DoScale',['../d5/de6/class_select_u_i_controller.html#af1ae4e44022e59cb3bfbbb8f68b6d081',1,'SelectUIController']]],
-  ['down_26',['Down',['../d5/de6/class_select_u_i_controller.html#a3e210dcd4b2a8c70ff995342f24779d2',1,'SelectUIController.Down()'],['../da/de1/class_select_item_num_controller.html#aa54dcb4101a4b9f19cc035d7576e68a0',1,'SelectItemNumController.Down()'],['../d1/d60/class_window_u_i_controller.html#abaa8718eb853414736d27c4d55c2f2c6',1,'WindowUIController.Down()']]],
+  ['down_26',['Down',['../d5/de6/class_select_u_i_controller.html#a3e210dcd4b2a8c70ff995342f24779d2',1,'SelectUIController.Down()'],['../d1/d60/class_window_u_i_controller.html#abaa8718eb853414736d27c4d55c2f2c6',1,'WindowUIController.Down()']]],
   ['dropitem_27',['DropItem',['../df/d06/class_enemy_parameters.html#a5749892147e54dde7fea10619515a1f0',1,'EnemyParameters']]]
 ];

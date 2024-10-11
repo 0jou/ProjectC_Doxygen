@@ -4,6 +4,7 @@ var class_base_game_state_update_controller =
     [ "IsState", "d2/db4/class_base_game_state_update_controller.html#afa8f58d09067315c60bd30ca61bef8c8", null ],
     [ "StartStateUpdate", "d2/db4/class_base_game_state_update_controller.html#af4bf36b83c98ee2acd91961eb412fba1", null ],
     [ "SetInitializeState", "d2/db4/class_base_game_state_update_controller.html#aae93e9706e50e78966ee24b7dba8a040", null ],
+    [ "SetState", "d2/db4/class_base_game_state_update_controller.html#a1a9cb1c7dfc91bcb8c637c90d9490816", null ],
     [ "ChangeState", "d2/db4/class_base_game_state_update_controller.html#abcd7947453631492d6f0cc44e634a5cf", null ],
     [ "InitializeState", "d2/db4/class_base_game_state_update_controller.html#a2ea12d88833f18b348dfc2e375eb6dbd", null ],
     [ "UpdateState", "d2/db4/class_base_game_state_update_controller.html#a56f075ca7839ac92c8a3d6948477bdf8", null ],

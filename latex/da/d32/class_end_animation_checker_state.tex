@@ -80,20 +80,20 @@ Animator End\+Animation\+Checker\+State.\+Get\+Animator (\begin{DoxyParamCaption
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00038\ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\_animator}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
-\DoxyCodeLine{00040\ }
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\_animator}}.value\ is\ Animator)}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ var\ animator\ =\ m\_animator.value\ as\ Animator;}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ animator;}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\_animator}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\_animator}}.value\ is\ Animator)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ var\ animator\ =\ m\_animator.value\ as\ Animator;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ animator;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -111,32 +111,32 @@ void End\+Animation\+Checker\+State.\+Check (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00054\ \ \ \ \ \{}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ var\ animator\ =\ \mbox{\hyperlink{class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9}{GetAnimator}}();}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator\ !=\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ AnimatorStateInfo\ stateInfo\ =\ animator.GetCurrentAnimatorStateInfo(0);}
-\DoxyCodeLine{00059\ }
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.IsName(\mbox{\hyperlink{class_end_animation_checker_state_a4a01ffd34500f93c7b8d6e6b480bcdc5}{m\_animationName}}))}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーションの終了を確認}}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.normalizedTime\ >=\ 1.0f)}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{SetTransition}}();}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\_successAnimationHash}}\ =\ stateInfo.shortNameHash;}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーションが指定のものから変更されたタイミング\ 上甲}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\_successAnimationHash}}\ ==\ \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\_backAnimationHash}})}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{SetTransition}}();}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\_backAnimationHash}}\ =\ stateInfo.shortNameHash;}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ var\ animator\ =\ \mbox{\hyperlink{class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9}{GetAnimator}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ AnimatorStateInfo\ stateInfo\ =\ animator.GetCurrentAnimatorStateInfo(0);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.IsName(\mbox{\hyperlink{class_end_animation_checker_state_a4a01ffd34500f93c7b8d6e6b480bcdc5}{m\_animationName}}))}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーションの終了を確認}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.normalizedTime\ >=\ 1.0f)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{SetTransition}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\_successAnimationHash}}\ =\ stateInfo.shortNameHash;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーションが指定のものから変更されたタイミング\ 上甲}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\_successAnimationHash}}\ ==\ \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\_backAnimationHash}})}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{SetTransition}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\_backAnimationHash}}\ =\ stateInfo.shortNameHash;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -161,15 +161,15 @@ void End\+Animation\+Checker\+State.\+Set\+Transition (\begin{DoxyParamCaption}{
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00082\ \ \ \ \ \{}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\_successLink}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}リンク先が存在しません"{}});}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ Transition(\mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\_successLink}});}
-\DoxyCodeLine{00090\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\_successLink}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}リンク先が存在しません"{}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ Transition(\mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\_successLink}});}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -187,9 +187,9 @@ void End\+Animation\+Checker\+State.\+Start (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00095\ \ \ \ \ \{}
-\DoxyCodeLine{00096\ }
-\DoxyCodeLine{00097\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_end_animation_checker_state_a795c6c036b9c121b6c5184f11ca242f5}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateAwake@{OnStateAwake}}
@@ -200,8 +200,8 @@ override void End\+Animation\+Checker\+State.\+On\+State\+Awake (\begin{DoxyPara
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00101\ \ \ \ \ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_end_animation_checker_state_a59242e8c2a62f47a3405b5611cd184df}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateBegin@{OnStateBegin}}
@@ -212,8 +212,8 @@ override void End\+Animation\+Checker\+State.\+On\+State\+Begin (\begin{DoxyPara
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00106\ \ \ \ \ \{}
-\DoxyCodeLine{00107\ \ \ \ \ \}}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_end_animation_checker_state_a6a5b2f24164f4bb0aa69932fe868faeb}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateEnd@{OnStateEnd}}
@@ -224,8 +224,8 @@ override void End\+Animation\+Checker\+State.\+On\+State\+End (\begin{DoxyParamC
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00111\ \ \ \ \ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_end_animation_checker_state_a6bafea6c5ac667c53229c2a21e8cb428}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateUpdate@{OnStateUpdate}}
@@ -236,9 +236,9 @@ override void End\+Animation\+Checker\+State.\+On\+State\+Update (\begin{DoxyPar
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00116\ \ \ \ \ \{}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9}{Check}}();}
-\DoxyCodeLine{00118\ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9}{Check}}();}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -256,8 +256,8 @@ override void End\+Animation\+Checker\+State.\+On\+State\+Late\+Update (\begin{D
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00122\ \ \ \ \ \{}
-\DoxyCodeLine{00123\ \ \ \ \ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
 
 \end{DoxyCode}
 

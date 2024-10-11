@@ -97,6 +97,7 @@ $(function(){initNavTree('d2/df3/class_volume_save_loader.html','../../'); initR
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">データ構造</a> &#124;
 <a href="#pub-methods">公開メンバ関数</a> &#124;
 <a href="#pri-methods">非公開メンバ関数</a> &#124;
 <a href="#pri-attribs">非公開変数類</a>  </div>
@@ -108,7 +109,7 @@ VolumeSaveLoader の継承関係図</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dd/d4f/class_volume_save_loader__inherit__graph.png" border="0" usemap="#a_volume_save_loader_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_volume_save_loader_inherit__map" id="a_volume_save_loader_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,123,153,320"/>
+<area shape="rect" title=" " alt="" coords="5,123,153,341"/>
 <area shape="rect" title=" " alt="" coords="28,5,131,75"/>
 <area shape="poly" title=" " alt="" coords="82,90,82,123,77,123,77,90"/>
 </map>
@@ -118,12 +119,19 @@ VolumeSaveLoader 連携図</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/de3/class_volume_save_loader__coll__graph.png" border="0" usemap="#a_volume_save_loader_coll__map" alt="Collaboration graph"/></div>
 <map name="a_volume_save_loader_coll__map" id="a_volume_save_loader_coll__map">
-<area shape="rect" title=" " alt="" coords="5,123,153,320"/>
-<area shape="rect" title=" " alt="" coords="28,5,131,75"/>
-<area shape="poly" title=" " alt="" coords="82,90,82,123,77,123,77,90"/>
+<area shape="rect" title=" " alt="" coords="77,288,225,485"/>
+<area shape="rect" title=" " alt="" coords="5,80,108,149"/>
+<area shape="poly" title=" " alt="" coords="76,163,120,287,115,289,71,164"/>
+<area shape="rect" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html" title=" " alt="" coords="133,5,362,224"/>
+<area shape="poly" title=" " alt="" coords="211,225,194,273,189,271,206,223"/>
 </map>
 </div>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+データ構造</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html">VolumeSaveLoad</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
 <tr class="memitem:a3c2804d71524bca16c3c064179b2042c" id="r_a3c2804d71524bca16c3c064179b2042c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3c2804d71524bca16c3c064179b2042c">LoadVolume</a> ()</td></tr>
@@ -151,6 +159,8 @@ VolumeSaveLoader 連携図</div>
 <tr class="separator:a986130bffe90a788661c3e3c605f0bc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ba8b7ace41add4ca5b5317c1025a90a" id="r_a6ba8b7ace41add4ca5b5317c1025a90a"><td class="memItemLeft" align="right" valign="top">Slider&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6ba8b7ace41add4ca5b5317c1025a90a">m_uiVolSlider</a> = null</td></tr>
 <tr class="separator:a6ba8b7ace41add4ca5b5317c1025a90a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0488fb795c532522eccb5596f9608575" id="r_a0488fb795c532522eccb5596f9608575"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html">VolumeSaveLoad</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a> = new <a class="el" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html">VolumeSaveLoad</a>()</td></tr>
+<tr class="separator:a0488fb795c532522eccb5596f9608575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
 <div class="textblock"><p>各カテゴリ(Master,Music,SFX.UI)の音量を外部ファイルに保存しつつスライダーで調整するクラス スライダー側での値の変更の適用はAudioPlayVolumeTest.csで行われている。 各スライダーは設定しなくても動作する(セーブロードのみが可能。) </p>
@@ -172,33 +182,36 @@ VolumeSaveLoader 連携図</div>
 
 <p>各カテゴリの音量を外部ファイルから読み込む。 </p>
 <p>セーブデータが存在しない場合はエラーを出力する。 保存先:Assets/ProjectC/998_DebugSaveData/QuickSave/Volume.json ビルド時:Application.persistentDataPath/Volume.json </p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>    {</div>
-<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">if</span> (!QuickSaveReader.RootExists(<span class="stringliteral">&quot;Volume&quot;</span>))</div>
-<div class="line"><span class="lineno">   30</span>        {</div>
-<div class="line"><span class="lineno">   31</span>            Debug.LogError(<span class="stringliteral">&quot;セーブデータがありません:Volume&quot;</span>); <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   32</span>        }</div>
-<div class="line"><span class="lineno">   33</span>        QuickSaveReader reader = QuickSaveReader.Create(<span class="stringliteral">&quot;Volume&quot;</span>);</div>
-<div class="line"><span class="lineno">   34</span> </div>
-<div class="line"><span class="lineno">   35</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;Master&quot;</span>, reader.Read&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;Master&quot;</span>), <a class="code hl_variable" href="#a38a688be1e3cc6eb7d5514aa2b7b3684">m_masterVolSlider</a>);</div>
-<div class="line"><span class="lineno">   36</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;Music&quot;</span>, reader.Read&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;MusicVol&quot;</span>), <a class="code hl_variable" href="#a5e2fe65745e2b19bc0f270362018cc57">m_musicVolSlider</a>);</div>
-<div class="line"><span class="lineno">   37</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;SFX&quot;</span>, reader.Read&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;SFXVol&quot;</span>), <a class="code hl_variable" href="#a986130bffe90a788661c3e3c605f0bc0">m_sfxVolSlider</a>);</div>
-<div class="line"><span class="lineno">   38</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;UI&quot;</span>, reader.Read&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;UIVol&quot;</span>), <a class="code hl_variable" href="#a6ba8b7ace41add4ca5b5317c1025a90a">m_uiVolSlider</a>);</div>
-<div class="line"><span class="lineno">   39</span> </div>
-<div class="line"><span class="lineno">   40</span>        Debug.Log(<span class="stringliteral">&quot;Volume Loaded&quot;</span>);</div>
-<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        <a class="code hl_variable" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a>.<a class="code hl_function" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a242af6c13c79e68920684d5517d61bf8">LoadVolume</a>();</div>
+<div class="line"><span class="lineno">   32</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;Master&quot;</span>, <a class="code hl_variable" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a>.<a class="code hl_variable" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#adf5d447492760cab260bd082844acafa">MasterVolume</a>, <a class="code hl_variable" href="#a38a688be1e3cc6eb7d5514aa2b7b3684">m_masterVolSlider</a>);</div>
+<div class="line"><span class="lineno">   33</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;Music&quot;</span>, <a class="code hl_variable" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a>.<a class="code hl_variable" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a2cd6557b3f479f11272ee6f47c0ee4ae">MusicVolume</a>, <a class="code hl_variable" href="#a5e2fe65745e2b19bc0f270362018cc57">m_musicVolSlider</a>);</div>
+<div class="line"><span class="lineno">   34</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;SFX&quot;</span>, <a class="code hl_variable" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a>.<a class="code hl_variable" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#abe3e1e1e6b8386e957285e153da100f1">SFXVolume</a>, <a class="code hl_variable" href="#a986130bffe90a788661c3e3c605f0bc0">m_sfxVolSlider</a>);</div>
+<div class="line"><span class="lineno">   35</span>        <a class="code hl_function" href="#afd1c8af70f1a25ac3472e7c45039b0b9">SetCategoryVolume</a>(<span class="stringliteral">&quot;UI&quot;</span>, <a class="code hl_variable" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a>.<a class="code hl_variable" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a2a8e26b6e749445ed915cd5129b10843">UIVolume</a>, <a class="code hl_variable" href="#a6ba8b7ace41add4ca5b5317c1025a90a">m_uiVolSlider</a>);</div>
+<div class="line"><span class="lineno">   36</span> </div>
+<div class="line"><span class="lineno">   37</span>        Debug.Log(<span class="stringliteral">&quot;Volume Loaded&quot;</span>);</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="ttc" id="aclass_volume_save_loader_html_a0488fb795c532522eccb5596f9608575"><div class="ttname"><a href="#a0488fb795c532522eccb5596f9608575">VolumeSaveLoader.m_volumeSaveLoad</a></div><div class="ttdeci">VolumeSaveLoad m_volumeSaveLoad</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:21</div></div>
 <div class="ttc" id="aclass_volume_save_loader_html_a38a688be1e3cc6eb7d5514aa2b7b3684"><div class="ttname"><a href="#a38a688be1e3cc6eb7d5514aa2b7b3684">VolumeSaveLoader.m_masterVolSlider</a></div><div class="ttdeci">Slider m_masterVolSlider</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:16</div></div>
 <div class="ttc" id="aclass_volume_save_loader_html_a5e2fe65745e2b19bc0f270362018cc57"><div class="ttname"><a href="#a5e2fe65745e2b19bc0f270362018cc57">VolumeSaveLoader.m_musicVolSlider</a></div><div class="ttdeci">Slider m_musicVolSlider</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:17</div></div>
 <div class="ttc" id="aclass_volume_save_loader_html_a6ba8b7ace41add4ca5b5317c1025a90a"><div class="ttname"><a href="#a6ba8b7ace41add4ca5b5317c1025a90a">VolumeSaveLoader.m_uiVolSlider</a></div><div class="ttdeci">Slider m_uiVolSlider</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:19</div></div>
 <div class="ttc" id="aclass_volume_save_loader_html_a986130bffe90a788661c3e3c605f0bc0"><div class="ttname"><a href="#a986130bffe90a788661c3e3c605f0bc0">VolumeSaveLoader.m_sfxVolSlider</a></div><div class="ttdeci">Slider m_sfxVolSlider</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:18</div></div>
-<div class="ttc" id="aclass_volume_save_loader_html_afd1c8af70f1a25ac3472e7c45039b0b9"><div class="ttname"><a href="#afd1c8af70f1a25ac3472e7c45039b0b9">VolumeSaveLoader.SetCategoryVolume</a></div><div class="ttdeci">void SetCategoryVolume(string a_categoryName, float a_vol, Slider a_slider)</div><div class="ttdoc">カテゴリの音量を設定する。</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:76</div></div>
+<div class="ttc" id="aclass_volume_save_loader_html_afd1c8af70f1a25ac3472e7c45039b0b9"><div class="ttname"><a href="#afd1c8af70f1a25ac3472e7c45039b0b9">VolumeSaveLoader.SetCategoryVolume</a></div><div class="ttdeci">void SetCategoryVolume(string a_categoryName, float a_vol, Slider a_slider)</div><div class="ttdoc">カテゴリの音量を設定する。</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:67</div></div>
+<div class="ttc" id="astruct_volume_save_loader_1_1_volume_save_load_html_a242af6c13c79e68920684d5517d61bf8"><div class="ttname"><a href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a242af6c13c79e68920684d5517d61bf8">VolumeSaveLoader.VolumeSaveLoad.LoadVolume</a></div><div class="ttdeci">void LoadVolume()</div><div class="ttdoc">各カテゴリの音量を外部ファイルから読み込む。</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:89</div></div>
+<div class="ttc" id="astruct_volume_save_loader_1_1_volume_save_load_html_a2a8e26b6e749445ed915cd5129b10843"><div class="ttname"><a href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a2a8e26b6e749445ed915cd5129b10843">VolumeSaveLoader.VolumeSaveLoad.UIVolume</a></div><div class="ttdeci">float UIVolume</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:82</div></div>
+<div class="ttc" id="astruct_volume_save_loader_1_1_volume_save_load_html_a2cd6557b3f479f11272ee6f47c0ee4ae"><div class="ttname"><a href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a2cd6557b3f479f11272ee6f47c0ee4ae">VolumeSaveLoader.VolumeSaveLoad.MusicVolume</a></div><div class="ttdeci">float MusicVolume</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:80</div></div>
+<div class="ttc" id="astruct_volume_save_loader_1_1_volume_save_load_html_abe3e1e1e6b8386e957285e153da100f1"><div class="ttname"><a href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#abe3e1e1e6b8386e957285e153da100f1">VolumeSaveLoader.VolumeSaveLoad.SFXVolume</a></div><div class="ttdeci">float SFXVolume</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:81</div></div>
+<div class="ttc" id="astruct_volume_save_loader_1_1_volume_save_load_html_adf5d447492760cab260bd082844acafa"><div class="ttname"><a href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#adf5d447492760cab260bd082844acafa">VolumeSaveLoader.VolumeSaveLoad.MasterVolume</a></div><div class="ttdeci">float MasterVolume</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:79</div></div>
 </div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/df3/class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c_cgraph.png" border="0" usemap="#ad2/df3/class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c_cgraph" alt=""/></div>
 <map name="ad2/df3/class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c_cgraph" id="ad2/df3/class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c_cgraph">
-<area shape="rect" title="各カテゴリの音量を外部ファイルから読み込む。" alt="" coords="5,13,214,40"/>
-<area shape="rect" href="../../d2/df3/class_volume_save_loader.html#afd1c8af70f1a25ac3472e7c45039b0b9" title="カテゴリの音量を設定する。" alt="" coords="262,5,472,48"/>
-<area shape="poly" title=" " alt="" coords="214,24,246,24,246,29,214,29"/>
+<area shape="rect" title="各カテゴリの音量を外部ファイルから読み込む。" alt="" coords="5,47,214,73"/>
+<area shape="rect" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a242af6c13c79e68920684d5517d61bf8" title="各カテゴリの音量を外部ファイルから読み込む。" alt="" coords="262,5,472,48"/>
+<area shape="poly" title=" " alt="" coords="214,44,246,40,247,45,214,49"/>
+<area shape="rect" href="../../d2/df3/class_volume_save_loader.html#afd1c8af70f1a25ac3472e7c45039b0b9" title="カテゴリの音量を設定する。" alt="" coords="262,72,472,115"/>
+<area shape="poly" title=" " alt="" coords="214,71,247,75,246,80,214,76"/>
 </map>
 </div>
 <div class="dynheader">
@@ -231,18 +244,23 @@ VolumeSaveLoader 連携図</div>
 
 <p>各カテゴリの音量を外部ファイルに保存する。 </p>
 <p>セーブデータが存在しない場合は新規作成する。 保存先:Assets/ProjectC/998_DebugSaveData/QuickSave/Volume.json ビルド時:Application.persistentDataPath/Volume.json </p>
-<div class="fragment"><div class="line"><span class="lineno">   50</span>    {</div>
-<div class="line"><span class="lineno">   51</span>        var writer = QuickSaveWriter.Create(<span class="stringliteral">&quot;Volume&quot;</span>);</div>
-<div class="line"><span class="lineno">   52</span> </div>
-<div class="line"><span class="lineno">   53</span>        writer.Write&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;Master&quot;</span>, CriAtom.GetCategoryVolume(<span class="stringliteral">&quot;Master&quot;</span>));</div>
-<div class="line"><span class="lineno">   54</span>        writer.Write&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;MusicVol&quot;</span>, CriAtom.GetCategoryVolume(<span class="stringliteral">&quot;Music&quot;</span>));</div>
-<div class="line"><span class="lineno">   55</span>        writer.Write&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;SFXVol&quot;</span>, CriAtom.GetCategoryVolume(<span class="stringliteral">&quot;SFX&quot;</span>));</div>
-<div class="line"><span class="lineno">   56</span>        writer.Write&lt;<span class="keywordtype">float</span>&gt;(<span class="stringliteral">&quot;UIVol&quot;</span>, CriAtom.GetCategoryVolume(<span class="stringliteral">&quot;UI&quot;</span>));</div>
-<div class="line"><span class="lineno">   57</span>        writer.Commit();</div>
-<div class="line"><span class="lineno">   58</span> </div>
-<div class="line"><span class="lineno">   59</span>        Debug.Log(<span class="stringliteral">&quot;Volume Saved&quot;</span>);</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-</div><!-- fragment -->
+<div class="fragment"><div class="line"><span class="lineno">   47</span>    {</div>
+<div class="line"><span class="lineno">   48</span>        <a class="code hl_variable" href="#a0488fb795c532522eccb5596f9608575">m_volumeSaveLoad</a>.<a class="code hl_function" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#af9a4181ef8e7e953eb17bd6fc4043818">SaveVolumeCriCategory</a>();</div>
+<div class="line"><span class="lineno">   49</span> </div>
+<div class="line"><span class="lineno">   50</span>        Debug.Log(<span class="stringliteral">&quot;Volume Saved&quot;</span>);</div>
+<div class="line"><span class="lineno">   51</span>    }</div>
+<div class="ttc" id="astruct_volume_save_loader_1_1_volume_save_load_html_af9a4181ef8e7e953eb17bd6fc4043818"><div class="ttname"><a href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#af9a4181ef8e7e953eb17bd6fc4043818">VolumeSaveLoader.VolumeSaveLoad.SaveVolumeCriCategory</a></div><div class="ttdeci">void SaveVolumeCriCategory()</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:137</div></div>
+</div><!-- fragment --><div class="dynheader">
+呼び出し関係図:</div>
+<div class="dyncontent">
+<div class="center"><img src="../../d2/df3/class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5_cgraph.png" border="0" usemap="#ad2/df3/class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5_cgraph" alt=""/></div>
+<map name="ad2/df3/class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5_cgraph" id="ad2/df3/class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5_cgraph">
+<area shape="rect" title="各カテゴリの音量を外部ファイルに保存する。" alt="" coords="5,13,216,40"/>
+<area shape="rect" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#af9a4181ef8e7e953eb17bd6fc4043818" title=" " alt="" coords="264,5,474,48"/>
+<area shape="poly" title=" " alt="" coords="216,24,248,24,248,29,216,29"/>
+</map>
+</div>
+
 </div>
 </div>
 <a id="aac8a572247a30b45a626e9d41e954abf" name="aac8a572247a30b45a626e9d41e954abf"></a>
@@ -267,20 +285,22 @@ VolumeSaveLoader 連携図</div>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   64</span>    {</div>
-<div class="line"><span class="lineno">   65</span>        <a class="code hl_function" href="#a3c2804d71524bca16c3c064179b2042c">LoadVolume</a>();</div>
-<div class="line"><span class="lineno">   66</span>    }</div>
-<div class="ttc" id="aclass_volume_save_loader_html_a3c2804d71524bca16c3c064179b2042c"><div class="ttname"><a href="#a3c2804d71524bca16c3c064179b2042c">VolumeSaveLoader.LoadVolume</a></div><div class="ttdeci">void LoadVolume()</div><div class="ttdoc">各カテゴリの音量を外部ファイルから読み込む。</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:27</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>    {</div>
+<div class="line"><span class="lineno">   56</span>        <a class="code hl_function" href="#a3c2804d71524bca16c3c064179b2042c">LoadVolume</a>();</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="ttc" id="aclass_volume_save_loader_html_a3c2804d71524bca16c3c064179b2042c"><div class="ttname"><a href="#a3c2804d71524bca16c3c064179b2042c">VolumeSaveLoader.LoadVolume</a></div><div class="ttdeci">void LoadVolume()</div><div class="ttdoc">各カテゴリの音量を外部ファイルから読み込む。</div><div class="ttdef"><b>Definition</b> VolumeSaveLoader.cs:29</div></div>
 </div><!-- fragment --><div class="dynheader">
 呼び出し関係図:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d2/df3/class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf_cgraph.png" border="0" usemap="#ad2/df3/class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf_cgraph" alt=""/></div>
 <map name="ad2/df3/class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf_cgraph" id="ad2/df3/class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf_cgraph">
-<area shape="rect" title=" " alt="" coords="5,13,171,40"/>
-<area shape="rect" href="../../d2/df3/class_volume_save_loader.html#a3c2804d71524bca16c3c064179b2042c" title="各カテゴリの音量を外部ファイルから読み込む。" alt="" coords="219,13,427,40"/>
-<area shape="poly" title=" " alt="" coords="171,24,203,24,203,29,171,29"/>
-<area shape="rect" href="../../d2/df3/class_volume_save_loader.html#afd1c8af70f1a25ac3472e7c45039b0b9" title="カテゴリの音量を設定する。" alt="" coords="475,5,685,48"/>
-<area shape="poly" title=" " alt="" coords="427,24,460,24,460,29,427,29"/>
+<area shape="rect" title=" " alt="" coords="5,47,171,73"/>
+<area shape="rect" href="../../d2/df3/class_volume_save_loader.html#a3c2804d71524bca16c3c064179b2042c" title="各カテゴリの音量を外部ファイルから読み込む。" alt="" coords="219,47,427,73"/>
+<area shape="poly" title=" " alt="" coords="171,57,203,57,203,63,171,63"/>
+<area shape="rect" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a242af6c13c79e68920684d5517d61bf8" title="各カテゴリの音量を外部ファイルから読み込む。" alt="" coords="475,5,685,48"/>
+<area shape="poly" title=" " alt="" coords="427,44,459,40,460,45,428,49"/>
+<area shape="rect" href="../../d2/df3/class_volume_save_loader.html#afd1c8af70f1a25ac3472e7c45039b0b9" title="カテゴリの音量を設定する。" alt="" coords="475,72,685,115"/>
+<area shape="poly" title=" " alt="" coords="428,71,460,75,459,80,427,76"/>
 </map>
 </div>
 
@@ -328,13 +348,13 @@ VolumeSaveLoader 連携図</div>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   77</span>    {</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">if</span> (a_slider!=<span class="keyword">null</span>)</div>
-<div class="line"><span class="lineno">   79</span>        {</div>
-<div class="line"><span class="lineno">   80</span>            a_slider.value = a_vol;</div>
-<div class="line"><span class="lineno">   81</span>        }</div>
-<div class="line"><span class="lineno">   82</span>        CriAtom.SetCategoryVolume(a_categoryName, a_vol);</div>
-<div class="line"><span class="lineno">   83</span>    }</div>
+<div class="fragment"><div class="line"><span class="lineno">   68</span>    {</div>
+<div class="line"><span class="lineno">   69</span>        <span class="keywordflow">if</span> (a_slider != <span class="keyword">null</span>)</div>
+<div class="line"><span class="lineno">   70</span>        {</div>
+<div class="line"><span class="lineno">   71</span>            a_slider.value = a_vol;</div>
+<div class="line"><span class="lineno">   72</span>        }</div>
+<div class="line"><span class="lineno">   73</span>        CriAtom.SetCategoryVolume(a_categoryName, a_vol);</div>
+<div class="line"><span class="lineno">   74</span>    }</div>
 </div><!-- fragment --><div class="dynheader">
 被呼び出し関係図:</div>
 <div class="dyncontent">
@@ -428,6 +448,28 @@ VolumeSaveLoader 連携図</div>
       <table class="memname">
         <tr>
           <td class="memname">Slider VolumeSaveLoader.m_uiVolSlider = null</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0488fb795c532522eccb5596f9608575" name="a0488fb795c532522eccb5596f9608575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0488fb795c532522eccb5596f9608575">&#9670;&#160;</a></span>m_volumeSaveLoad</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html">VolumeSaveLoad</a> VolumeSaveLoader.m_volumeSaveLoad = new <a class="el" href="../../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html">VolumeSaveLoad</a>()</td>
         </tr>
       </table>
   </td>

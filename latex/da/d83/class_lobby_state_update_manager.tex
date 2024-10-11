@@ -2,7 +2,8 @@
 \hypertarget{class_lobby_state_update_manager}{}\label{class_lobby_state_update_manager}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}}
 
 
-Lobby\+State\+Update\+Manager の継承関係図\nopagebreak
+Lobby\+State\+Update\+Manager の継承関係図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,13 +12,19 @@ Lobby\+State\+Update\+Manager の継承関係図\nopagebreak
 \end{figure}
 
 
-Lobby\+State\+Update\+Manager 連携図\nopagebreak
+Lobby\+State\+Update\+Manager 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=550pt]{d4/dc1/class_lobby_state_update_manager__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_lobby_state_update_manager_1_1_initilize_state}{Initilize\+State}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,21 +45,27 @@ static \mbox{\hyperlink{class_lobby_state_update_manager}{Lobby\+State\+Update\+
 \item 
 virtual void \mbox{\hyperlink{class_lobby_state_update_manager_a386ae3d3af473bafda886af150ecc0b3}{Awake}} ()
 \item 
-override async Uni\+Task \mbox{\hyperlink{class_lobby_state_update_manager_a576fa5794164df70b811c61b5c4e3bd4}{Start\+State\+Update}} ()
-\item 
 override void \mbox{\hyperlink{class_lobby_state_update_manager_adb97d3ca0686c08b87938d0528e8c4db}{Set\+Initialize\+State}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_base_game_state_update_controller}{Base\+Game\+State\+Update\+Controller}} に属する継承限定公開メンバ関数}
 \begin{DoxyCompactItemize}
+\item 
+virtual async Uni\+Task \mbox{\hyperlink{class_base_game_state_update_controller_af4bf36b83c98ee2acd91961eb412fba1}{Start\+State\+Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_base_game_state_update_controller_a1a9cb1c7dfc91bcb8c637c90d9490816}{Set\+State}} (string \+\_\+scene\+Name, int \+\_\+state)
 \item 
 async Uni\+Task \mbox{\hyperlink{class_base_game_state_update_controller_a1833195d83859b7c31481bfc412e4a06}{Set\+State\+Update}} ()
 \begin{DoxyCompactList}\small\item\em 一致するステートの処理をセット \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
 \begin{DoxyCompactItemize}
 \item 
+bool \mbox{\hyperlink{class_lobby_state_update_manager_ab9b3debc27e2198d1199f57498abadc9}{m\+\_\+dont\+Destroy\+On\+Load}} = true
+\item 
 \mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{Lobby\+State}} \mbox{\hyperlink{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c}{m\+\_\+lobby\+State}} = Lobby\+State.\+Normal
 \item 
-bool \mbox{\hyperlink{class_lobby_state_update_manager_ab9b3debc27e2198d1199f57498abadc9}{m\+\_\+dont\+Destroy\+On\+Load}} = true
+List$<$ \mbox{\hyperlink{class_lobby_state_update_manager_1_1_initilize_state}{Initilize\+State}} $>$ \mbox{\hyperlink{class_lobby_state_update_manager_a4691add3aa031042f98d4193b857a9f6}{m\+\_\+initilize\+State\+List}} = new()
+\item 
+\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{Lobby\+State}} \mbox{\hyperlink{class_lobby_state_update_manager_a1496a72a7f2978ff58a53c7ad57812cb}{m\+\_\+initilize\+State}} = Lobby\+State.\+Normal
 \end{DoxyCompactItemize}
 \doxysubsubsection*{その他の継承メンバ}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_base_game_state_update_controller}{Base\+Game\+State\+Update\+Controller}} に属する継承限定公開変数類}
@@ -71,22 +84,22 @@ virtual void Lobby\+State\+Update\+Manager.\+Awake (\begin{DoxyParamCaption}{}{}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00040\ \ \ \ \ \{}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスがなければ作成}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ =\ (\mbox{\hyperlink{class_lobby_state_update_manager}{LobbyStateUpdateManager}})FindObjectOfType(typeof(\mbox{\hyperlink{class_lobby_state_update_manager}{LobbyStateUpdateManager}}));}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update_manager_ab9b3debc27e2198d1199f57498abadc9}{m\_dontDestroyOnLoad}})}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ あれば作成しない}}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00055\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスがなければ作成}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ =\ (\mbox{\hyperlink{class_lobby_state_update_manager}{LobbyStateUpdateManager}})FindObjectOfType(typeof(\mbox{\hyperlink{class_lobby_state_update_manager}{LobbyStateUpdateManager}}));}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update_manager_ab9b3debc27e2198d1199f57498abadc9}{m\_dontDestroyOnLoad}})}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ あれば作成しない}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_lobby_state_update_manager_a296110900c14edd4185a8b27c4cd70d3}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!DeleteInstance@{DeleteInstance}}
@@ -97,33 +110,13 @@ void Lobby\+State\+Update\+Manager.\+Delete\+Instance (\begin{DoxyParamCaption}{
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00058\ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ !=\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}});}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00064\ \ \ \ \ \}}
-
-\end{DoxyCode}
-\Hypertarget{class_lobby_state_update_manager_a576fa5794164df70b811c61b5c4e3bd4}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!StartStateUpdate@{StartStateUpdate}}
-\index{StartStateUpdate@{StartStateUpdate}!LobbyStateUpdateManager@{LobbyStateUpdateManager}}
-\doxysubsubsection{\texorpdfstring{StartStateUpdate()}{StartStateUpdate()}}
-{\footnotesize\ttfamily \label{class_lobby_state_update_manager_a576fa5794164df70b811c61b5c4e3bd4} 
-override async Uni\+Task Lobby\+State\+Update\+Manager.\+Start\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_base_game_state_update_controller_af4bf36b83c98ee2acd91961eb412fba1}{Base\+Game\+State\+Update\+Controller}}を再実装しています。
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00070\ \ \ \ \ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期の値をセット}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c}{m\_lobbyState}};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ await\ base.StartStateUpdate();}
-\DoxyCodeLine{00075\ \ \ \ \ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}});}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}{instance}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_lobby_state_update_manager_adb97d3ca0686c08b87938d0528e8c4db}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!SetInitializeState@{SetInitializeState}}
@@ -138,65 +131,37 @@ override void Lobby\+State\+Update\+Manager.\+Set\+Initialize\+State (\begin{Dox
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00080\ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ TEMPLATE }}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ どのシーンからきたか}}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ var\ beforeName\ =\ \mbox{\hyperlink{class_scene_name_manager}{SceneNameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.BeforeSceneName;}
-\DoxyCodeLine{00084\ }
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ このシーンから開始した場合は確認用なので無視する}}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (beforeName\ ==\ \textcolor{stringliteral}{"{}None"{}})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
-\DoxyCodeLine{00088\ }
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ }
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (beforeName)}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームシーンから来た場合}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}GameScene"{}}:}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アクションから帰ってきた状態}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{LobbyState}}.ReturnAction;}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00101\ }
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ タイトルから来た場合}}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}TitleScene"{}}:}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アクションに促す状態}}
-\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{LobbyState}}.GoToManagementTutorial;}
-\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 経営から来た場合}}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{stringliteral}{"{}ManagementScene"{}}:}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アクションに促す状態}}
-\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{LobbyState}}.TrialSession;}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00117\ }
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ それ以外であれば}}
-\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 通常}}
-\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{LobbyState}}.Normal;}
-\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00127\ \ \ \ \ \}}
+\DoxyCodeLine{00109\ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ どのシーンからきたか}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ var\ beforeSceneName\ =\ \mbox{\hyperlink{class_scene_name_manager}{SceneNameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.BeforeSceneName;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (beforeSceneName\ ==\ \textcolor{stringliteral}{"{}None"{}})}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期の値をセット}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c}{m\_lobbyState}};}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一致するシーン名を取得}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ state\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_lobby_state_update_manager_a4691add3aa031042f98d4193b857a9f6}{m\_initilizeStateList}})}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (beforeSceneName\ ==\ state.SceneName)}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 更新}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)state.LobbyState;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 何もなければ}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{class_lobby_state_update_manager_a1496a72a7f2978ff58a53c7ad57812cb}{m\_initilizeState}};}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
-\Hypertarget{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!m\_lobbyState@{m\_lobbyState}}
-\index{m\_lobbyState@{m\_lobbyState}!LobbyStateUpdateManager@{LobbyStateUpdateManager}}
-\doxysubsubsection{\texorpdfstring{m\_lobbyState}{m\_lobbyState}}
-{\footnotesize\ttfamily \label{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c} 
-\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{Lobby\+State}} Lobby\+State\+Update\+Manager.\+m\+\_\+lobby\+State = Lobby\+State.\+Normal\hspace{0.3cm}{\ttfamily [private]}}
-
 \Hypertarget{class_lobby_state_update_manager_afb2639fe3b54cc7478c90e07ec5ec048}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!instance@{instance}}
 \index{instance@{instance}!LobbyStateUpdateManager@{LobbyStateUpdateManager}}
 \doxysubsubsection{\texorpdfstring{instance}{instance}}
@@ -208,6 +173,24 @@ override void Lobby\+State\+Update\+Manager.\+Set\+Initialize\+State (\begin{Dox
 \doxysubsubsection{\texorpdfstring{m\_dontDestroyOnLoad}{m\_dontDestroyOnLoad}}
 {\footnotesize\ttfamily \label{class_lobby_state_update_manager_ab9b3debc27e2198d1199f57498abadc9} 
 bool Lobby\+State\+Update\+Manager.\+m\+\_\+dont\+Destroy\+On\+Load = true\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!m\_lobbyState@{m\_lobbyState}}
+\index{m\_lobbyState@{m\_lobbyState}!LobbyStateUpdateManager@{LobbyStateUpdateManager}}
+\doxysubsubsection{\texorpdfstring{m\_lobbyState}{m\_lobbyState}}
+{\footnotesize\ttfamily \label{class_lobby_state_update_manager_a45768493a104d1c7ecec5699a1f7f31c} 
+\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{Lobby\+State}} Lobby\+State\+Update\+Manager.\+m\+\_\+lobby\+State = Lobby\+State.\+Normal\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lobby_state_update_manager_a4691add3aa031042f98d4193b857a9f6}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!m\_initilizeStateList@{m\_initilizeStateList}}
+\index{m\_initilizeStateList@{m\_initilizeStateList}!LobbyStateUpdateManager@{LobbyStateUpdateManager}}
+\doxysubsubsection{\texorpdfstring{m\_initilizeStateList}{m\_initilizeStateList}}
+{\footnotesize\ttfamily \label{class_lobby_state_update_manager_a4691add3aa031042f98d4193b857a9f6} 
+List$<$\mbox{\hyperlink{class_lobby_state_update_manager_1_1_initilize_state}{Initilize\+State}}$>$ Lobby\+State\+Update\+Manager.\+m\+\_\+initilize\+State\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_lobby_state_update_manager_a1496a72a7f2978ff58a53c7ad57812cb}\index{LobbyStateUpdateManager@{LobbyStateUpdateManager}!m\_initilizeState@{m\_initilizeState}}
+\index{m\_initilizeState@{m\_initilizeState}!LobbyStateUpdateManager@{LobbyStateUpdateManager}}
+\doxysubsubsection{\texorpdfstring{m\_initilizeState}{m\_initilizeState}}
+{\footnotesize\ttfamily \label{class_lobby_state_update_manager_a1496a72a7f2978ff58a53c7ad57812cb} 
+\mbox{\hyperlink{namespace_lobby_state_info_a321e7223422827a42165274a86b7c431}{Lobby\+State}} Lobby\+State\+Update\+Manager.\+m\+\_\+initilize\+State = Lobby\+State.\+Normal\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

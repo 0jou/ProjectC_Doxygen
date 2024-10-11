@@ -5,7 +5,7 @@ var class_recipe_window =
     [ "CreateJudgeWindow", "d4/dfd/class_recipe_window.html#a7c9e7d7330d1251a53c895b44ed8864a", null ],
     [ "CreateConfirmationWindowWindow", "d4/dfd/class_recipe_window.html#a2987fa9ea8841eee23574ad14b166da9", null ],
     [ "m_createRecipeSlotList", "d4/dfd/class_recipe_window.html#ac8738b605be05a8fc50838e7bc96592a", null ],
-    [ "m_changeRecipeDescription", "d4/dfd/class_recipe_window.html#ad000d0e33155688d0a1ba756cdb19dbd", null ],
+    [ "m_changeItemDescription", "d4/dfd/class_recipe_window.html#a87b77338c96d7e2493e555d4e4ae239b", null ],
     [ "m_changeScrollViewPosition", "d4/dfd/class_recipe_window.html#ab05d7b84e987b846d4fab418bfd620ea", null ],
     [ "m_createJudgeWindow", "d4/dfd/class_recipe_window.html#a262065d515c91bc20e6570765bb56350", null ],
     [ "m_createToUpdateConfirmationWindow", "d4/dfd/class_recipe_window.html#a8006bb642af3ffa70d13eb61d3d7db15", null ],

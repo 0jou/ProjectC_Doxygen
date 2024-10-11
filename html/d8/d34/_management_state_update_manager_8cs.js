@@ -1,6 +1,7 @@
 var _management_state_update_manager_8cs =
 [
     [ "ManagementStateUpdateManager", "d4/d89/class_management_state_update_manager.html", "d4/d89/class_management_state_update_manager" ],
+    [ "ManagementStateUpdateManager.InitilizeState", "da/d2c/class_management_state_update_manager_1_1_initilize_state.html", "da/d2c/class_management_state_update_manager_1_1_initilize_state" ],
     [ "ManagementState", "d8/d34/_management_state_update_manager_8cs.html#a1571eca22d8d22cc4fc653e865a6c2ff", [
       [ "Start", "d8/d34/_management_state_update_manager_8cs.html#a1571eca22d8d22cc4fc653e865a6c2ffaa6122a65eaa676f700ae68d393054a37", null ],
       [ "Update", "d8/d34/_management_state_update_manager_8cs.html#a1571eca22d8d22cc4fc653e865a6c2ffa06933067aafd48425d67bcb01bba5cb6", null ],

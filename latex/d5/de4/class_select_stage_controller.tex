@@ -2,7 +2,8 @@
 \hypertarget{class_select_stage_controller}{}\label{class_select_stage_controller}\index{SelectStageController@{SelectStageController}}
 
 
-Select\+Stage\+Controller の継承関係図\nopagebreak
+Select\+Stage\+Controller の継承関係図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,11 +12,12 @@ Select\+Stage\+Controller の継承関係図\nopagebreak
 \end{figure}
 
 
-Select\+Stage\+Controller 連携図\nopagebreak
+Select\+Stage\+Controller 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=226pt]{de/df9/class_select_stage_controller__coll__graph}
+\includegraphics[height=550pt]{de/df9/class_select_stage_controller__coll__graph}
 \end{center}
 \end{figure}
 \doxysubsubsection*{公開メンバ関数}
@@ -26,6 +28,14 @@ void \mbox{\hyperlink{class_select_stage_controller_a65700719303fb5efa3e0bfd7d10
 void \mbox{\hyperlink{class_select_stage_controller_ac7ef0c60a0306cf14eb4a65099b0f396}{On\+Late\+Update}} ()
 \item 
 \mbox{\hyperlink{class_stage_data}{Stage\+Data}} \mbox{\hyperlink{class_select_stage_controller_ac58bfcab9d0d3a633aeec76230c0f71b}{Get\+Current\+Select\+Stage\+Data}} ()
+\item 
+bool \mbox{\hyperlink{class_select_stage_controller_a043b6e8a93b4e6a63ffff79e62be7d42}{Is\+Start}} ()
+\item 
+bool \mbox{\hyperlink{class_select_stage_controller_a5c0921353656813d212026722fd57d97}{Is\+Go\+Next}} ()
+\item 
+bool \mbox{\hyperlink{class_select_stage_controller_a4f56ee4fc63fa8d1c5fb6e1046f0abc5}{Is\+Go\+Back}} ()
+\item 
+bool \mbox{\hyperlink{class_select_stage_controller_a1caf5f00b69a94064a99ce2f6736640c}{Is\+Go\+Start}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{プロパティ}
 \begin{DoxyCompactItemize}
@@ -33,15 +43,15 @@ void \mbox{\hyperlink{class_select_stage_controller_ac7ef0c60a0306cf14eb4a65099b
 \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{Stage\+ID}} \mbox{\hyperlink{class_select_stage_controller_afb41775098eddfdc09aa7afa6e4b5925}{Current\+Select\+Stage\+ID}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
 \item 
 bool \mbox{\hyperlink{class_select_stage_controller_af372aabdda255eead7f95d9dd13b7051}{Is\+Select\+Change\+Flg}}\hspace{0.3cm}{\ttfamily  \mbox{[}get\mbox{]}}
-\begin{DoxyCompactList}\small\item\em 現在選択しているステージが変更されたかどうか確認する、読み取り専用プロパティ \end{DoxyCompactList}\item 
-bool \mbox{\hyperlink{class_select_stage_controller_a78861f087ab4af66010a9929bee13075}{Is\+Press}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 現在選択しているステージが変更されたかどうか確認する、読み取り専用プロパティ \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{非公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}{Select}} ()
 \item 
-void \mbox{\hyperlink{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539}{On\+Press}} ()
+void \mbox{\hyperlink{class_select_stage_controller_a49b32181213712d16724f45dd80587e4}{Next}} ()
+\item 
+void \mbox{\hyperlink{class_select_stage_controller_aa8d39826d866dbc485f978aaf2c93ba6}{Back}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
 \begin{DoxyCompactItemize}
@@ -50,7 +60,11 @@ void \mbox{\hyperlink{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6
 \item 
 bool \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\+\_\+is\+Select\+Change\+Flg}} = false
 \item 
-bool \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\+\_\+is\+Press}} = false
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} \mbox{\hyperlink{class_select_stage_controller_a4605002c5dcbd17eb182467e64c996b9}{m\+\_\+next\+Input\+Action\+Button}} = null
+\item 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} \mbox{\hyperlink{class_select_stage_controller_ac732bb5d39248d50c8d003ac81a70054}{m\+\_\+back\+Input\+Action\+Button}} = null
+\item 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} \mbox{\hyperlink{class_select_stage_controller_aeffa4da8153dea0c73386a5413889138}{m\+\_\+start\+Input\+Action\+Button}} = null
 \end{DoxyCompactItemize}
 
 
@@ -63,13 +77,13 @@ void Select\+Stage\+Controller.\+On\+Update (\begin{DoxyParamCaption}{}{}\end{Do
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00049\ \ \ \ \ \{}
-\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}{Select}}();}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539}{OnPress}}();}
-\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}{Select}}();}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
 
 \end{DoxyCode}
-呼び出し関係図\+:\nopagebreak
+呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -91,9 +105,9 @@ void Select\+Stage\+Controller.\+On\+Late\+Update (\begin{DoxyParamCaption}{}{}\
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00055\ \ \ \ \ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00057\ \ \ \ \ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00072\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -111,10 +125,10 @@ void Select\+Stage\+Controller.\+On\+Late\+Update (\begin{DoxyParamCaption}{}{}\
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00061\ \ \ \ \ \{}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stage_data}{StageData}}\ stageData\ =\ \mbox{\hyperlink{class_stage_data_base_manager}{StageDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetStageData(\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}});}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ stageData;}
-\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_stage_data}{StageData}}\ stageData\ =\ \mbox{\hyperlink{class_stage_data_base_manager}{StageDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetStageData(\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}});}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ stageData;}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -122,6 +136,40 @@ void Select\+Stage\+Controller.\+On\+Late\+Update (\begin{DoxyParamCaption}{}{}\
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{d5/de4/class_select_stage_controller_ac58bfcab9d0d3a633aeec76230c0f71b_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_stage_controller_a043b6e8a93b4e6a63ffff79e62be7d42}\index{SelectStageController@{SelectStageController}!IsStart@{IsStart}}
+\index{IsStart@{IsStart}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{IsStart()}{IsStart()}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_a043b6e8a93b4e6a63ffff79e62be7d42} 
+bool Select\+Stage\+Controller.\+Is\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082\ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a1caf5f00b69a94064a99ce2f6736640c}{IsGoStart}}())}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_aeffa4da8153dea0c73386a5413889138}{m\_startInputActionButton}}.\mbox{\hyperlink{class_input_action_button_a847c561b8a3deeea260be80e698bd342}{IsInputActionTrriger}}();}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a043b6e8a93b4e6a63ffff79e62be7d42_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a043b6e8a93b4e6a63ffff79e62be7d42_icgraph}
 \end{center}
 \end{figure}
 \Hypertarget{class_select_stage_controller_a21357a787ee44f06a76e1760fc119612}\index{SelectStageController@{SelectStageController}!Select@{Select}}
@@ -132,46 +180,17 @@ void Select\+Stage\+Controller.\+Select (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00068\ \ \ \ \ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Keyboard.current?.anyKey.wasPressedThisFrame\ ==\ \textcolor{keyword}{false}\ \&\&}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ Gamepad.current?.wasUpdatedThisFrame\ ==\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00071\ }
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flg\ =\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00073\ }
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 右に進む}}
-\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Right"{}}))}
-\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}\ <\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Max\ -\/\ 1)}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}++;}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00083\ }
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 左に進む}}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasPressed(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Left"{}}))}
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Min\ +\ 1\ <\ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}})}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}-\/-\/;}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00093\ }
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flg)}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00097\ }
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00099\ }
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE音追加（山本）}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Select"{}});}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00103\ }
-\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 次に進む}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a49b32181213712d16724f45dd80587e4}{Next}}();}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 前に戻る}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_aa8d39826d866dbc485f978aaf2c93ba6}{Back}}();}
+\DoxyCodeLine{00099\ \ \ \ \ \}}
 
 \end{DoxyCode}
-呼び出し関係図\+:\nopagebreak
+呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -185,45 +204,154 @@ void Select\+Stage\+Controller.\+Select (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 \includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a21357a787ee44f06a76e1760fc119612_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539}\index{SelectStageController@{SelectStageController}!OnPress@{OnPress}}
-\index{OnPress@{OnPress}!SelectStageController@{SelectStageController}}
-\doxysubsubsection{\texorpdfstring{OnPress()}{OnPress()}}
-{\footnotesize\ttfamily \label{class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539} 
-void Select\+Stage\+Controller.\+On\+Press (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_select_stage_controller_a49b32181213712d16724f45dd80587e4}\index{SelectStageController@{SelectStageController}!Next@{Next}}
+\index{Next@{Next}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{Next()}{Next()}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_a49b32181213712d16724f45dd80587e4} 
+void Select\+Stage\+Controller.\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00108\ \ \ \ \ \{}
-\DoxyCodeLine{00109\ }
-\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetInputAction(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Select"{}})\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}InputActionが存在しません"{}});}
-\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4605002c5dcbd17eb182467e64c996b9}{m\_nextInputActionButton}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4605002c5dcbd17eb182467e64c996b9}{m\_nextInputActionButton}}.\mbox{\hyperlink{class_input_action_button_a847c561b8a3deeea260be80e698bd342}{IsInputActionTrriger}}())}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a5c0921353656813d212026722fd57d97}{IsGoNext}}())}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}++;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00115\ }
-\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionTrigger(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}Select"{}})\ ==\ \textcolor{keyword}{true})}
-\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00118\ }
-\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Decide"{}});}
-\DoxyCodeLine{00120\ }
-\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}}\ =\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00123\ }
-\DoxyCodeLine{00124\ \ \ \ \ \}}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
 
 \end{DoxyCode}
-呼び出し関係図\+:\nopagebreak
+呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539_cgraph}
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a49b32181213712d16724f45dd80587e4_cgraph}
 \end{center}
 \end{figure}
-被呼び出し関係図\+:\nopagebreak
+被呼び出し関係図\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a777ebf27ae70c9caad91fc608e6fb539_icgraph}
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a49b32181213712d16724f45dd80587e4_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_stage_controller_aa8d39826d866dbc485f978aaf2c93ba6}\index{SelectStageController@{SelectStageController}!Back@{Back}}
+\index{Back@{Back}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{Back()}{Back()}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_aa8d39826d866dbc485f978aaf2c93ba6} 
+void Select\+Stage\+Controller.\+Back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_ac732bb5d39248d50c8d003ac81a70054}{m\_backInputActionButton}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_ac732bb5d39248d50c8d003ac81a70054}{m\_backInputActionButton}}.\mbox{\hyperlink{class_input_action_button_a847c561b8a3deeea260be80e698bd342}{IsInputActionTrriger}}())}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4f56ee4fc63fa8d1c5fb6e1046f0abc5}{IsGoBack}}())}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}-\/-\/;}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_aa8d39826d866dbc485f978aaf2c93ba6_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_aa8d39826d866dbc485f978aaf2c93ba6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_stage_controller_a5c0921353656813d212026722fd57d97}\index{SelectStageController@{SelectStageController}!IsGoNext@{IsGoNext}}
+\index{IsGoNext@{IsGoNext}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{IsGoNext()}{IsGoNext()}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_a5c0921353656813d212026722fd57d97} 
+bool Select\+Stage\+Controller.\+Is\+Go\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00137\ \ \ \ \ \{}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}}\ <\ \mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Max\ -\/\ 1)}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a5c0921353656813d212026722fd57d97_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_stage_controller_a4f56ee4fc63fa8d1c5fb6e1046f0abc5}\index{SelectStageController@{SelectStageController}!IsGoBack@{IsGoBack}}
+\index{IsGoBack@{IsGoBack}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{IsGoBack()}{IsGoBack()}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_a4f56ee4fc63fa8d1c5fb6e1046f0abc5} 
+bool Select\+Stage\+Controller.\+Is\+Go\+Back (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00150\ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{namespace_stage_info_a906febf9f62fea8d348f34323f7ba321}{StageID}}.Min\ +\ 1\ <\ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}})}
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00157\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a4f56ee4fc63fa8d1c5fb6e1046f0abc5_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_select_stage_controller_a1caf5f00b69a94064a99ce2f6736640c}\index{SelectStageController@{SelectStageController}!IsGoStart@{IsGoStart}}
+\index{IsGoStart@{IsGoStart}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{IsGoStart()}{IsGoStart()}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_a1caf5f00b69a94064a99ce2f6736640c} 
+bool Select\+Stage\+Controller.\+Is\+Go\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00162\ \ \ \ \ \{}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00164\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d5/de4/class_select_stage_controller_a1caf5f00b69a94064a99ce2f6736640c_icgraph}
 \end{center}
 \end{figure}
 
@@ -241,11 +369,23 @@ void Select\+Stage\+Controller.\+On\+Press (\begin{DoxyParamCaption}{}{}\end{Dox
 {\footnotesize\ttfamily \label{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba} 
 bool Select\+Stage\+Controller.\+m\+\_\+is\+Select\+Change\+Flg = false\hspace{0.3cm}{\ttfamily [private]}}
 
-\Hypertarget{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}\index{SelectStageController@{SelectStageController}!m\_isPress@{m\_isPress}}
-\index{m\_isPress@{m\_isPress}!SelectStageController@{SelectStageController}}
-\doxysubsubsection{\texorpdfstring{m\_isPress}{m\_isPress}}
-{\footnotesize\ttfamily \label{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54} 
-bool Select\+Stage\+Controller.\+m\+\_\+is\+Press = false\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_select_stage_controller_a4605002c5dcbd17eb182467e64c996b9}\index{SelectStageController@{SelectStageController}!m\_nextInputActionButton@{m\_nextInputActionButton}}
+\index{m\_nextInputActionButton@{m\_nextInputActionButton}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{m\_nextInputActionButton}{m\_nextInputActionButton}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_a4605002c5dcbd17eb182467e64c996b9} 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Select\+Stage\+Controller.\+m\+\_\+next\+Input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_select_stage_controller_ac732bb5d39248d50c8d003ac81a70054}\index{SelectStageController@{SelectStageController}!m\_backInputActionButton@{m\_backInputActionButton}}
+\index{m\_backInputActionButton@{m\_backInputActionButton}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{m\_backInputActionButton}{m\_backInputActionButton}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_ac732bb5d39248d50c8d003ac81a70054} 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Select\+Stage\+Controller.\+m\+\_\+back\+Input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_select_stage_controller_aeffa4da8153dea0c73386a5413889138}\index{SelectStageController@{SelectStageController}!m\_startInputActionButton@{m\_startInputActionButton}}
+\index{m\_startInputActionButton@{m\_startInputActionButton}!SelectStageController@{SelectStageController}}
+\doxysubsubsection{\texorpdfstring{m\_startInputActionButton}{m\_startInputActionButton}}
+{\footnotesize\ttfamily \label{class_select_stage_controller_aeffa4da8153dea0c73386a5413889138} 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} Select\+Stage\+Controller.\+m\+\_\+start\+Input\+Action\+Button = null\hspace{0.3cm}{\ttfamily [private]}}
 
 
 
@@ -258,7 +398,7 @@ bool Select\+Stage\+Controller.\+m\+\_\+is\+Press = false\hspace{0.3cm}{\ttfamil
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00018\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}};\ \}\ \}}
+\DoxyCodeLine{00021\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_a4524cb04de92b43b4a61da2622dd2a0a}{m\_currentSelectStageID}};\ \}\ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_select_stage_controller_af372aabdda255eead7f95d9dd13b7051}\index{SelectStageController@{SelectStageController}!IsSelectChangeFlg@{IsSelectChangeFlg}}
@@ -272,22 +412,11 @@ bool Select\+Stage\+Controller.\+Is\+Select\+Change\+Flg\hspace{0.3cm}{\ttfamily
 現在選択しているステージが変更されたかどうか確認する、読み取り専用プロパティ 
 
 \DoxyHorRuler{0}
- \hypertarget{class_select_stage_controller_autotoc_md79}{}\doxysubsubsection{\texorpdfstring{}{}}\label{class_select_stage_controller_autotoc_md79}
-$<$return$>$ true -\/ 変更された false -\/ 変更されていない \hypertarget{class_select_stage_controller_autotoc_md80}{}\doxysubsubsection{\texorpdfstring{$<$/return$>$}{$<$/return$>$}}\label{class_select_stage_controller_autotoc_md80}
+ \hypertarget{class_select_stage_controller_autotoc_md69}{}\doxysubsubsection{\texorpdfstring{}{}}\label{class_select_stage_controller_autotoc_md69}
+$<$return$>$ true -\/ 変更された false -\/ 変更されていない \hypertarget{class_select_stage_controller_autotoc_md70}{}\doxysubsubsection{\texorpdfstring{$<$/return$>$}{$<$/return$>$}}\label{class_select_stage_controller_autotoc_md70}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00037\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}};\ \}\ \}}
-
-\end{DoxyCode}
-\Hypertarget{class_select_stage_controller_a78861f087ab4af66010a9929bee13075}\index{SelectStageController@{SelectStageController}!IsPress@{IsPress}}
-\index{IsPress@{IsPress}!SelectStageController@{SelectStageController}}
-\doxysubsubsection{\texorpdfstring{IsPress}{IsPress}}
-{\footnotesize\ttfamily \label{class_select_stage_controller_a78861f087ab4af66010a9929bee13075} 
-bool Select\+Stage\+Controller.\+Is\+Press\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00044\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}};\ \}\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_select_stage_controller_abf79b2788d5b3b0955f97fbb86b57f54}{m\_isPress}}\ =\ value;\ \}\ \}}
+\DoxyCodeLine{00041\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_select_stage_controller_a4e1ae1fddb3483e3bd8b48a6b42083ba}{m\_isSelectChangeFlg}};\ \}\ \}}
 
 \end{DoxyCode}
 

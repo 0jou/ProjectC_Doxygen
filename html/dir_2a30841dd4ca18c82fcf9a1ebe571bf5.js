@@ -15,6 +15,7 @@ var dir_2a30841dd4ca18c82fcf9a1ebe571bf5 =
     [ "ProximityCreateWindow", "dir_8645f68893d8313ea28f5d477ef50f8f.html", "dir_8645f68893d8313ea28f5d477ef50f8f" ],
     [ "Script", "dir_cac87807f7243e30019cf75612b04506.html", "dir_cac87807f7243e30019cf75612b04506" ],
     [ "SelectUIController", "dir_07c28d2a5b5cc6153ac2311575d75b74.html", "dir_07c28d2a5b5cc6153ac2311575d75b74" ],
+    [ "Slot", "dir_c325a56c179c94261d0e0652eb85b165.html", "dir_c325a56c179c94261d0e0652eb85b165" ],
     [ "SpeechBubble", "dir_198c80e25962610123f31faa85e87906.html", "dir_198c80e25962610123f31faa85e87906" ],
     [ "TargetOffScreenIndicator", "dir_9014d2d49810882e86004c0ca8941718.html", "dir_9014d2d49810882e86004c0ca8941718" ],
     [ "Text", "dir_36e532a2eac168e649597db9ec907bf8.html", "dir_36e532a2eac168e649597db9ec907bf8" ],

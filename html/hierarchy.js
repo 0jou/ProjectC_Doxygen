@@ -128,6 +128,7 @@ var hierarchy =
       ] ],
       [ "BaseStaffCalculator", "d7/d3d/class_base_staff_calculator.html", [
         [ "BaseStaffRotationCalculator", "db/d9c/class_base_staff_rotation_calculator.html", [
+          [ "CalcRotateBeenTargetObjectStaff", "dd/d20/class_calc_rotate_been_target_object_staff.html", null ],
           [ "CalcRotateOrderFoodStaff", "dc/dd3/class_calc_rotate_order_food_staff.html", null ]
         ] ],
         [ "CalcCarryPosStaff", "d1/dba/class_calc_carry_pos_staff.html", null ],
@@ -148,7 +149,6 @@ var hierarchy =
       [ "CinemachineExtentionLayerMask", "df/df7/class_cinemachine_extention_layer_mask.html", null ]
     ] ],
     [ "CounterPoint", "d4/da6/class_counter_point.html", null ],
-    [ "CreateToAddInventoryFoodData", "d6/d49/class_create_to_add_inventory_food_data.html", null ],
     [ "CustomerDataVariable", "d4/d2a/class_customer_data_variable.html", null ],
     [ "CheckStateCustomer.CustomerStateLink", "d1/d25/class_check_state_customer_1_1_customer_state_link.html", null ],
     [ "DamageNotification", "df/db9/class_damage_notification.html", null ],
@@ -249,6 +249,8 @@ var hierarchy =
     [ "IMetaAI< ProximityCreateWindow >", "df/d5b/interface_i_meta_a_i.html", [
       [ "ProximityCreateWindowMeta", "db/d9a/class_proximity_create_window_meta.html", null ]
     ] ],
+    [ "LobbyStateUpdateManager.InitilizeState", "d3/d51/class_lobby_state_update_manager_1_1_initilize_state.html", null ],
+    [ "ManagementStateUpdateManager.InitilizeState", "da/d2c/class_management_state_update_manager_1_1_initilize_state.html", null ],
     [ "InputSlot", null, [
       [ "InputSlotAttackData", "d8/dac/class_input_slot_attack_data.html", null ],
       [ "InputSlotChaseParameters", "db/d79/class_input_slot_chase_parameters.html", null ],
@@ -320,10 +322,10 @@ var hierarchy =
       ] ],
       [ "BaseCreateSlotList", "d0/d4c/class_base_create_slot_list.html", [
         [ "CreateActionItemSlotList", "d8/df8/class_create_action_item_slot_list.html", null ],
-        [ "CreateItemSlotList", "d2/d98/class_create_item_slot_list.html", null ],
         [ "CreateNeedIngredientSlot", "dd/d4c/class_create_need_ingredient_slot.html", [
           [ "ProvideFoodCreateNeedIngredientSlotList", "d0/d99/class_provide_food_create_need_ingredient_slot_list.html", null ]
         ] ],
+        [ "CreatePocketItemSlotList", "da/da8/class_create_pocket_item_slot_list.html", null ],
         [ "CreateProvideFoodSlotList", "d0/d0b/class_create_provide_food_slot_list.html", null ],
         [ "CreateProvideFoodUseIngredientSlotList", "da/d53/class_create_provide_food_use_ingredient_slot_list.html", null ],
         [ "CreateRecipeSlotList", "d2/dec/class_create_recipe_slot_list.html", [
@@ -394,14 +396,12 @@ var hierarchy =
         [ "NewItemWindow", "d6/d9e/class_new_item_window.html", null ],
         [ "PopUpWindow", "d9/d8f/class_pop_up_window.html", null ],
         [ "RecipeWindow", "d4/dfd/class_recipe_window.html", null ],
-        [ "SelectItemNumWindow", "dc/d34/class_select_item_num_window.html", null ],
         [ "SelectManagementWindow", "d6/dfe/class_select_management_window.html", null ],
         [ "SelectProvideFoodWindow", "d8/d59/class_select_provide_food_window.html", null ],
         [ "SelectStageWindow", "d4/d5c/class_select_stage_window.html", null ],
         [ "SelectUseItemWindow", "d5/d00/class_select_use_item_window.html", null ],
         [ "SelectUseItemWindow", "d5/d00/class_select_use_item_window.html", null ],
         [ "SelectUseItemWindow", "d5/d00/class_select_use_item_window.html", null ],
-        [ "StorehouseWindow", "dc/dc1/class_storehouse_window.html", null ],
         [ "TutorialWindow", "d6/d19/class_tutorial_window.html", null ]
       ] ],
       [ "BaseWindowUI", "dd/d98/class_base_window_u_i.html", [
@@ -427,9 +427,13 @@ var hierarchy =
       [ "ChangeColorListForValue", "df/d28/class_change_color_list_for_value.html", null ],
       [ "ChangeItemDescription", "d1/dde/class_change_item_description.html", [
         [ "ChangeConfirmationItemDescription", "d1/d3f/class_change_confirmation_item_description.html", null ],
-        [ "ChangeFoodItemDescription", "d0/d10/class_change_food_item_description.html", null ],
-        [ "ChangeInventoryDescription", "d5/d1f/class_change_inventory_description.html", null ]
+        [ "ChangeFoodItemDescription", "d0/d10/class_change_food_item_description.html", null ]
       ] ],
+      [ "ChangeItemDescription", "d1/dde/class_change_item_description.html", null ],
+      [ "ChangeItemDescription", "d1/dde/class_change_item_description.html", null ],
+      [ "ChangeItemDescription", "d1/dde/class_change_item_description.html", null ],
+      [ "ChangeItemDescription", "d1/dde/class_change_item_description.html", null ],
+      [ "ChangeItemDescription", "d1/dde/class_change_item_description.html", null ],
       [ "ChangeItemObjectNameText", "d4/dc9/class_change_item_object_name_text.html", null ],
       [ "ChangeResultDescription", "da/d87/class_change_result_description.html", null ],
       [ "ChangeScrollViewPosition", "df/dfe/class_change_scroll_view_position.html", null ],
@@ -494,6 +498,8 @@ var hierarchy =
       [ "ImageProgressController", "d7/d35/class_image_progress_controller.html", null ],
       [ "ImageUVScroll", "dd/daf/class_image_u_v_scroll.html", null ],
       [ "InputActionButton", "d5/dd8/class_input_action_button.html", [
+        [ "InputActionButton_ChangeInputActionReference", "d6/d71/class_input_action_button___change_input_action_reference.html", null ],
+        [ "SelectStageInputActionButton", "d5/d10/class_select_stage_input_action_button.html", null ],
         [ "StartManagementInputActionButton", "d6/d4b/class_start_management_input_action_button.html", null ],
         [ "TutorialInputActiomButton", "da/dca/class_tutorial_input_actiom_button.html", null ]
       ] ],
@@ -507,6 +513,7 @@ var hierarchy =
           [ "SelectProvideFoodSlotData", "d2/de3/class_select_provide_food_slot_data.html", null ]
         ] ],
         [ "NeedIngredientSlotData", "dc/d16/class_need_ingredient_slot_data.html", null ],
+        [ "PocketItemSlotData", "d1/d6f/class_pocket_item_slot_data.html", null ],
         [ "ProvideFoodUseIngredientSlotData", "db/dbb/class_provide_food_use_ingredient_slot_data.html", null ],
         [ "RecipeItemSlotData", "d0/d04/class_recipe_item_slot_data.html", [
           [ "ProvideFoodRecipeSlotData", "dd/da9/class_provide_food_recipe_slot_data.html", null ]
@@ -557,7 +564,6 @@ var hierarchy =
       [ "RotateBornInfo", "d9/d49/class_rotate_born_info.html", null ],
       [ "RotatePosition", "d2/d86/class_rotate_position.html", null ],
       [ "SceneTransitionManager", "d4/d9a/class_scene_transition_manager.html", null ],
-      [ "SelectItemNumController", "da/de1/class_select_item_num_controller.html", null ],
       [ "SelectStageController", "d5/de4/class_select_stage_controller.html", null ],
       [ "SelectTutorialController", "d8/d0a/class_select_tutorial_controller.html", null ],
       [ "SelectUIController", "d5/de6/class_select_u_i_controller.html", [
@@ -694,7 +700,6 @@ var hierarchy =
     [ "SearchType", "d5/deb/class_search_type.html", null ],
     [ "SerializableDictionary< ActionUIState, AnyActionUIController.AnyActionInfo >", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< CutSceneNumber, TimelineAsset >", "dd/d60/class_serializable_dictionary.html", null ],
-    [ "SerializableDictionary< PlayerAction, PressKeyEffectController >", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< string, GameObject[]>", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< string, LayerMask >", "dd/d60/class_serializable_dictionary.html", null ],
     [ "SerializableDictionary< string, Transform >", "dd/d60/class_serializable_dictionary.html", null ],
@@ -738,7 +743,8 @@ var hierarchy =
         [ "DeadGangster", "da/d1d/class_dead_gangster.html", null ],
         [ "FindTargetStaffGangster", "d1/dd8/class_find_target_staff_gangster.html", null ],
         [ "IsDeadGangster", "d0/d92/class_is_dead_gangster.html", null ],
-        [ "SetStaffStateGangster", "df/d96/class_set_staff_state_gangster.html", null ],
+        [ "RemoveBeenTargetObjectStaffGangster", "d9/d27/class_remove_been_target_object_staff_gangster.html", null ],
+        [ "SetBeenTargetObjectStaffGangster", "d8/d21/class_set_been_target_object_staff_gangster.html", null ],
         [ "SetStateGangster", "d6/d0f/class_set_state_gangster.html", null ]
       ] ],
       [ "BaseStaffStateBehaviour", "d6/d9c/class_base_staff_state_behaviour.html", [
@@ -797,6 +803,7 @@ var hierarchy =
       [ "StaffDataVariableListVariable", "de/dd6/class_staff_data_variable_list_variable.html", null ]
     ] ],
     [ "VisualFieldJudgment", "d1/d2f/class_visual_field_judgment.html", null ],
+    [ "VolumeSaveLoader.VolumeSaveLoad", "d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html", null ],
     [ "Decorator", null, [
       [ "BaseChefDecorator", "d3/d6f/class_base_chef_decorator.html", [
         [ "CookingDecoratorScript", "d5/da4/class_cooking_decorator_script.html", null ]
@@ -810,6 +817,7 @@ var hierarchy =
       ] ],
       [ "BaseStaffDecorator", "d6/d87/class_base_staff_decorator.html", [
         [ "DecNullCheckTargetOrderFoodStaff", "d1/dd1/class_dec_null_check_target_order_food_staff.html", null ],
+        [ "DecoBeenTargetObjectStaff", "d3/ddd/class_deco_been_target_object_staff.html", null ],
         [ "DecoCheckStateStaff", "d0/d60/class_deco_check_state_staff.html", null ]
       ] ],
       [ "BewareTarget", "d0/d77/class_beware_target.html", null ],

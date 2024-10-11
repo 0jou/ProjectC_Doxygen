@@ -18,5 +18,6 @@ var class_input_action_button =
     [ "m_gaugeImage", "d5/dd8/class_input_action_button.html#a031a86d1b3c90b6925a430038637642b", null ],
     [ "m_pressSE", "d5/dd8/class_input_action_button.html#a0120adf1a4144839cd5c9354faedfcfc", null ],
     [ "m_canvasGroup", "d5/dd8/class_input_action_button.html#abab1b53c57c878d5943c398d258ce1d4", null ],
-    [ "m_imPossibleAlpha", "d5/dd8/class_input_action_button.html#a680282b61528b40046cf82c9999a744a", null ]
+    [ "m_imPossibleAlpha", "d5/dd8/class_input_action_button.html#a680282b61528b40046cf82c9999a744a", null ],
+    [ "InputActionReference", "d5/dd8/class_input_action_button.html#a07bd06d93a37b0e1ee0f277d10d39cc1", null ]
 ];

@@ -2,7 +2,13 @@
 \hypertarget{class_check_is_order_customer}{}\label{class_check_is_order_customer}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}}
 
 
-Check\+Is\+Order\+Customer の継承関係図\nopagebreak
+料理が提供できない状態(在庫切れ)であればステートを遷移  
+
+
+
+
+Check\+Is\+Order\+Customer の継承関係図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,7 +17,8 @@ Check\+Is\+Order\+Customer の継承関係図\nopagebreak
 \end{figure}
 
 
-Check\+Is\+Order\+Customer 連携図\nopagebreak
+Check\+Is\+Order\+Customer 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -58,6 +65,9 @@ Game\+Object \mbox{\hyperlink{class_base_customer_state_behaviour_a6911eba8f0a18
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+料理が提供できない状態(在庫切れ)であればステートを遷移 
+
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!Check@{Check}}
 \index{Check@{Check}!CheckIsOrderCustomer@{CheckIsOrderCustomer}}
@@ -67,27 +77,27 @@ void Check\+Is\+Order\+Customer.\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyPa
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00021\ \ \ \ \ \{}
-\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00024\ }
-\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理が存在すれば}}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.TargetOrderFoodData\ !=\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00027\ }
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ この状態であれば}}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.WaitFood\ ||}
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Eat\ ||}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.AngryExit\ ||}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Exit)}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理が存在すれば}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.TargetOrderFoodData\ !=\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
 \DoxyCodeLine{00036\ }
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsOrder())}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_check_is_order_customer_accc764572917d36509291aaf96dbba62}{m\_stateLink}});}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ この状態であれば}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.WaitFood\ ||}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Eat\ ||}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.AngryExit\ ||}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Exit)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsOrder())}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_check_is_order_customer_accc764572917d36509291aaf96dbba62}{m\_stateLink}});}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -112,8 +122,8 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Awake (\begin{DoxyParamCap
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00047\ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_check_is_order_customer_aaf3f6d0ab838837ded9f2bdfa99ee65c}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateBegin@{OnStateBegin}}
@@ -124,8 +134,8 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Begin (\begin{DoxyParamCap
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00052\ \ \ \ \ \{}
-\DoxyCodeLine{00053\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_check_is_order_customer_ac9c6f66cec56314580e72a6ebd332e72}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateEnd@{OnStateEnd}}
@@ -136,8 +146,8 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+End (\begin{DoxyParamCapti
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00057\ \ \ \ \ \{}
-\DoxyCodeLine{00058\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_check_is_order_customer_a0620fbf2e2738e7280608c2fd4cabc8a}\index{CheckIsOrderCustomer@{CheckIsOrderCustomer}!OnStateUpdate@{OnStateUpdate}}
@@ -148,9 +158,9 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Update (\begin{DoxyParamCa
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00062\ \ \ \ \ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}{Check}}();}
-\DoxyCodeLine{00064\ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}{Check}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -168,8 +178,8 @@ override void Check\+Is\+Order\+Customer.\+On\+State\+Late\+Update (\begin{DoxyP
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00068\ \ \ \ \ \{}
-\DoxyCodeLine{00069\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \{}
+\DoxyCodeLine{00078\ \ \ \ \ \}}
 
 \end{DoxyCode}
 

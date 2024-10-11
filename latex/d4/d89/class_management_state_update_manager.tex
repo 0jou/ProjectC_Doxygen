@@ -2,7 +2,8 @@
 \hypertarget{class_management_state_update_manager}{}\label{class_management_state_update_manager}\index{ManagementStateUpdateManager@{ManagementStateUpdateManager}}
 
 
-Management\+State\+Update\+Manager の継承関係図\nopagebreak
+Management\+State\+Update\+Manager の継承関係図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -11,13 +12,19 @@ Management\+State\+Update\+Manager の継承関係図\nopagebreak
 \end{figure}
 
 
-Management\+State\+Update\+Manager 連携図\nopagebreak
+Management\+State\+Update\+Manager 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=550pt]{db/d1b/class_management_state_update_manager__coll__graph}
 \end{center}
 \end{figure}
+\doxysubsubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_management_state_update_manager_1_1_initilize_state}{Initilize\+State}}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,12 +45,14 @@ static \mbox{\hyperlink{class_management_state_update_manager}{Management\+State
 \item 
 virtual void \mbox{\hyperlink{class_management_state_update_manager_a68df2ecf3e2c4116f8ab8aa659e6dd75}{Awake}} ()
 \item 
-override async Uni\+Task \mbox{\hyperlink{class_management_state_update_manager_aff4c4436e2ba6b3d83de9c890ce4937d}{Start\+State\+Update}} ()
-\item 
 override void \mbox{\hyperlink{class_management_state_update_manager_ad2fad2b6d958573c1454ae333437da91}{Set\+Initialize\+State}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_base_game_state_update_controller}{Base\+Game\+State\+Update\+Controller}} に属する継承限定公開メンバ関数}
 \begin{DoxyCompactItemize}
+\item 
+virtual async Uni\+Task \mbox{\hyperlink{class_base_game_state_update_controller_af4bf36b83c98ee2acd91961eb412fba1}{Start\+State\+Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_base_game_state_update_controller_a1a9cb1c7dfc91bcb8c637c90d9490816}{Set\+State}} (string \+\_\+scene\+Name, int \+\_\+state)
 \item 
 async Uni\+Task \mbox{\hyperlink{class_base_game_state_update_controller_a1833195d83859b7c31481bfc412e4a06}{Set\+State\+Update}} ()
 \begin{DoxyCompactList}\small\item\em 一致するステートの処理をセット \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -53,6 +62,10 @@ async Uni\+Task \mbox{\hyperlink{class_base_game_state_update_controller_a183319
 bool \mbox{\hyperlink{class_management_state_update_manager_a6e832f1c332c3925066964b5524d2fe3}{m\+\_\+dont\+Destroy\+On\+Load}} = true
 \item 
 \mbox{\hyperlink{namespace_management_state_update_info_a1571eca22d8d22cc4fc653e865a6c2ff}{Management\+State}} \mbox{\hyperlink{class_management_state_update_manager_a3925b282ef88545a73ce7b2b61d624f4}{m\+\_\+management\+State}} = Management\+State.\+Start
+\item 
+List$<$ \mbox{\hyperlink{class_management_state_update_manager_1_1_initilize_state}{Initilize\+State}} $>$ \mbox{\hyperlink{class_management_state_update_manager_a4426d847169147371a1fbccb443bc2dd}{m\+\_\+initilize\+State\+List}} = new()
+\item 
+\mbox{\hyperlink{namespace_management_state_update_info_a1571eca22d8d22cc4fc653e865a6c2ff}{Management\+State}} \mbox{\hyperlink{class_management_state_update_manager_a9e6514bf81cee6857a66405bbf6da6e1}{m\+\_\+initilize\+State}} = Management\+State.\+Standby
 \end{DoxyCompactItemize}
 \doxysubsubsection*{その他の継承メンバ}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_base_game_state_update_controller}{Base\+Game\+State\+Update\+Controller}} に属する継承限定公開変数類}
@@ -71,22 +84,22 @@ virtual void Management\+State\+Update\+Manager.\+Awake (\begin{DoxyParamCaption
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00035\ \ \ \ \ \{}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスがなければ作成}}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ =\ (\mbox{\hyperlink{class_management_state_update_manager}{ManagementStateUpdateManager}})FindObjectOfType(typeof(\mbox{\hyperlink{class_management_state_update_manager}{ManagementStateUpdateManager}}));}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_state_update_manager_a6e832f1c332c3925066964b5524d2fe3}{m\_dontDestroyOnLoad}})}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ あれば作成しない}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスがなければ作成}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ =\ (\mbox{\hyperlink{class_management_state_update_manager}{ManagementStateUpdateManager}})FindObjectOfType(typeof(\mbox{\hyperlink{class_management_state_update_manager}{ManagementStateUpdateManager}}));}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_state_update_manager_a6e832f1c332c3925066964b5524d2fe3}{m\_dontDestroyOnLoad}})}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ DontDestroyOnLoad(gameObject);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ あれば作成しない}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_management_state_update_manager_ab3dd96ca67cc5ac5641b25c9aca10658}\index{ManagementStateUpdateManager@{ManagementStateUpdateManager}!DeleteInstance@{DeleteInstance}}
@@ -97,33 +110,13 @@ void Management\+State\+Update\+Manager.\+Delete\+Instance (\begin{DoxyParamCapt
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00053\ \ \ \ \ \{}
-\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ !=\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}});}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00059\ \ \ \ \ \}}
-
-\end{DoxyCode}
-\Hypertarget{class_management_state_update_manager_aff4c4436e2ba6b3d83de9c890ce4937d}\index{ManagementStateUpdateManager@{ManagementStateUpdateManager}!StartStateUpdate@{StartStateUpdate}}
-\index{StartStateUpdate@{StartStateUpdate}!ManagementStateUpdateManager@{ManagementStateUpdateManager}}
-\doxysubsubsection{\texorpdfstring{StartStateUpdate()}{StartStateUpdate()}}
-{\footnotesize\ttfamily \label{class_management_state_update_manager_aff4c4436e2ba6b3d83de9c890ce4937d} 
-override async Uni\+Task Management\+State\+Update\+Manager.\+Start\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
-
-
-
-\mbox{\hyperlink{class_base_game_state_update_controller_af4bf36b83c98ee2acd91961eb412fba1}{Base\+Game\+State\+Update\+Controller}}を再実装しています。
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00076\ \ \ \ \ \{}
-\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期の値をセット}}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{class_management_state_update_manager_a3925b282ef88545a73ce7b2b61d624f4}{m\_managementState}};}
-\DoxyCodeLine{00079\ }
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ await\ base.StartStateUpdate();}
-\DoxyCodeLine{00081\ \ \ \ \ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}});}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_state_update_manager_ad6e5ee8274824865a3d78cb98c59d638}{instance}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_management_state_update_manager_ad2fad2b6d958573c1454ae333437da91}\index{ManagementStateUpdateManager@{ManagementStateUpdateManager}!SetInitializeState@{SetInitializeState}}
@@ -138,26 +131,32 @@ override void Management\+State\+Update\+Manager.\+Set\+Initialize\+State (\begi
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00086\ \ \ \ \ \{}
-\DoxyCodeLine{00087\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ TEMPLATE }}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ どのシーンからきたか}}
-\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ var\ beforeName\ =\ \mbox{\hyperlink{class_scene_name_manager}{SceneNameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.BeforeSceneName;}
-\DoxyCodeLine{00090\ }
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ このシーンから開始した場合は確認用なので無視する}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (beforeName\ ==\ \textcolor{stringliteral}{"{}None"{}})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00093\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion }}
-\DoxyCodeLine{00094\ }
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (beforeName)}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ それ以外であれば}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 通常}}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{namespace_management_state_update_info_a1571eca22d8d22cc4fc653e865a6c2ff}{ManagementState}}.Standby;}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00105\ \ \ \ \ \}}
+\DoxyCodeLine{00106\ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ どのシーンからきたか}}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ var\ beforeSceneName\ =\ \mbox{\hyperlink{class_scene_name_manager}{SceneNameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.BeforeSceneName;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (beforeSceneName\ ==\ \textcolor{stringliteral}{"{}None"{}})}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期の値をセット}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{class_management_state_update_manager_a3925b282ef88545a73ce7b2b61d624f4}{m\_managementState}};}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一致するシーン名を取得}}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ state\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_management_state_update_manager_a4426d847169147371a1fbccb443bc2dd}{m\_initilizeStateList}})}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (beforeSceneName\ ==\ state.SceneName)}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 更新}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)state.ManagementState;}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 何もなければ}}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_controller_acf65b556b99762888dd12acc4d64500a}{m\_currentState}}\ =\ (int)\mbox{\hyperlink{class_management_state_update_manager_a9e6514bf81cee6857a66405bbf6da6e1}{m\_initilizeState}};}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -180,6 +179,18 @@ bool Management\+State\+Update\+Manager.\+m\+\_\+dont\+Destroy\+On\+Load = true\
 \doxysubsubsection{\texorpdfstring{m\_managementState}{m\_managementState}}
 {\footnotesize\ttfamily \label{class_management_state_update_manager_a3925b282ef88545a73ce7b2b61d624f4} 
 \mbox{\hyperlink{namespace_management_state_update_info_a1571eca22d8d22cc4fc653e865a6c2ff}{Management\+State}} Management\+State\+Update\+Manager.\+m\+\_\+management\+State = Management\+State.\+Start\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_management_state_update_manager_a4426d847169147371a1fbccb443bc2dd}\index{ManagementStateUpdateManager@{ManagementStateUpdateManager}!m\_initilizeStateList@{m\_initilizeStateList}}
+\index{m\_initilizeStateList@{m\_initilizeStateList}!ManagementStateUpdateManager@{ManagementStateUpdateManager}}
+\doxysubsubsection{\texorpdfstring{m\_initilizeStateList}{m\_initilizeStateList}}
+{\footnotesize\ttfamily \label{class_management_state_update_manager_a4426d847169147371a1fbccb443bc2dd} 
+List$<$\mbox{\hyperlink{class_management_state_update_manager_1_1_initilize_state}{Initilize\+State}}$>$ Management\+State\+Update\+Manager.\+m\+\_\+initilize\+State\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+\Hypertarget{class_management_state_update_manager_a9e6514bf81cee6857a66405bbf6da6e1}\index{ManagementStateUpdateManager@{ManagementStateUpdateManager}!m\_initilizeState@{m\_initilizeState}}
+\index{m\_initilizeState@{m\_initilizeState}!ManagementStateUpdateManager@{ManagementStateUpdateManager}}
+\doxysubsubsection{\texorpdfstring{m\_initilizeState}{m\_initilizeState}}
+{\footnotesize\ttfamily \label{class_management_state_update_manager_a9e6514bf81cee6857a66405bbf6da6e1} 
+\mbox{\hyperlink{namespace_management_state_update_info_a1571eca22d8d22cc4fc653e865a6c2ff}{Management\+State}} Management\+State\+Update\+Manager.\+m\+\_\+initilize\+State = Management\+State.\+Standby\hspace{0.3cm}{\ttfamily [private]}}
 
 
 

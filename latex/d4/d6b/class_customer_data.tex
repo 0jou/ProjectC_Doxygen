@@ -7,8 +7,7 @@
 
 
 
-Customer\+Data の継承関係図
-\nopagebreak
+Customer\+Data の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,8 +16,7 @@ Customer\+Data の継承関係図
 \end{figure}
 
 
-Customer\+Data 連携図
-\nopagebreak
+Customer\+Data 連携図\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -71,19 +69,19 @@ float \mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\
 float \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\+\_\+angry\+Count}} = 0.\+0f
 \begin{DoxyCompactList}\small\item\em 怒りゲージ経過時間(sec) \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\+\_\+eat\+Time}} = 10.\+0f
-\item 
+\begin{DoxyCompactList}\small\item\em 食べるきるまでの時間(sec) \end{DoxyCompactList}\item 
 float \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\+\_\+eat\+Count}} = 0.\+0f
-\item 
+\begin{DoxyCompactList}\small\item\em 食べ経過時間 \end{DoxyCompactList}\item 
 \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{Customer\+State}} \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\+\_\+current\+Customer\+State}} = Customer\+State.\+Normal
-\item 
+\begin{DoxyCompactList}\small\item\em 現在の客のステート情報 \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_order_food_data}{Order\+Food\+Data}} \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\+\_\+target\+Order\+Food\+Data}} = null
-\item 
+\begin{DoxyCompactList}\small\item\em ターゲットの料理情報 \end{DoxyCompactList}\item 
 Vector3 \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\+\_\+appear\+Pos}} = new()
-\item 
+\begin{DoxyCompactList}\small\item\em 出現/帰還 地点座標 \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_table_set_data}{Table\+Set\+Data}} \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\+\_\+target\+Table\+Set\+Data}} = null
 \item 
 \mbox{\hyperlink{class_queue_data}{Queue\+Data}} \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\+\_\+queue\+Data}} = null
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 待ち行列のデータ \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{詳解}
@@ -98,12 +96,12 @@ void Customer\+Data.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00148\ \ \ \ \ \{}
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ マネージャーに登録}}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_manager}{CustomerManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.AddCustomerData(\textcolor{keyword}{this});}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{Initialize}}();}
-\DoxyCodeLine{00153\ \ \ \ \ \}}
+\DoxyCodeLine{00153\ \ \ \ \ \{}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ マネージャーに登録}}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_manager}{CustomerManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.AddCustomerData(\textcolor{keyword}{this});}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_ad734a223a81e3c06c5087337aa098926}{Initialize}}();}
+\DoxyCodeLine{00158\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -121,10 +119,10 @@ void Customer\+Data.\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCapt
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00158\ \ \ \ \ \{}
-\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 出現した位置}}
-\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}}\ =\ transform.position;}
-\DoxyCodeLine{00161\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ \{}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 出現した位置}}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}}\ =\ transform.position;}
+\DoxyCodeLine{00166\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -149,16 +147,16 @@ true-\/怒る\+:false-\/まだ
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00169\ \ \ \ \ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}}\ +=\ Time.deltaTime;}
-\DoxyCodeLine{00171\ }
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\_angryTime}}\ <\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}})}
-\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00176\ }
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00178\ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \{}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\_angryTime}}\ <\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}})}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00180\ }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00182\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_aafc860df36824e4bc0488d4d4bc6465a}\index{CustomerData@{CustomerData}!CountEat@{CountEat}}
@@ -176,16 +174,16 @@ true-\/怒る\+:false-\/まだ
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00185\ \ \ \ \ \{}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}}\ +=\ Time.deltaTime;}
-\DoxyCodeLine{00187\ }
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}}\ <\ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}})}
-\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00192\ }
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00194\ \ \ \ \ \}}
+\DoxyCodeLine{00189\ \ \ \ \ \{}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}}\ <\ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}})}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -217,11 +215,19 @@ float Customer\+Data.\+m\+\_\+angry\+Count = 0.\+0f\hspace{0.3cm}{\ttfamily [pri
 {\footnotesize\ttfamily \label{class_customer_data_a73191c7c31ca206760c6c1f784df6c31} 
 float Customer\+Data.\+m\+\_\+eat\+Time = 10.\+0f\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+食べるきるまでの時間(sec) 
+
 \Hypertarget{class_customer_data_ade240216304b8e3d92e46956539d5f29}\index{CustomerData@{CustomerData}!m\_eatCount@{m\_eatCount}}
 \index{m\_eatCount@{m\_eatCount}!CustomerData@{CustomerData}}
 \doxysubsubsection{\texorpdfstring{m\_eatCount}{m\_eatCount}}
 {\footnotesize\ttfamily \label{class_customer_data_ade240216304b8e3d92e46956539d5f29} 
 float Customer\+Data.\+m\+\_\+eat\+Count = 0.\+0f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+食べ経過時間 
 
 \Hypertarget{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}\index{CustomerData@{CustomerData}!m\_currentCustomerState@{m\_currentCustomerState}}
 \index{m\_currentCustomerState@{m\_currentCustomerState}!CustomerData@{CustomerData}}
@@ -229,17 +235,29 @@ float Customer\+Data.\+m\+\_\+eat\+Count = 0.\+0f\hspace{0.3cm}{\ttfamily [priva
 {\footnotesize\ttfamily \label{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757} 
 \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{Customer\+State}} Customer\+Data.\+m\+\_\+current\+Customer\+State = Customer\+State.\+Normal\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+現在の客のステート情報 
+
 \Hypertarget{class_customer_data_a340c220405fac507df2b93854514b212}\index{CustomerData@{CustomerData}!m\_targetOrderFoodData@{m\_targetOrderFoodData}}
 \index{m\_targetOrderFoodData@{m\_targetOrderFoodData}!CustomerData@{CustomerData}}
 \doxysubsubsection{\texorpdfstring{m\_targetOrderFoodData}{m\_targetOrderFoodData}}
 {\footnotesize\ttfamily \label{class_customer_data_a340c220405fac507df2b93854514b212} 
 \mbox{\hyperlink{class_order_food_data}{Order\+Food\+Data}} Customer\+Data.\+m\+\_\+target\+Order\+Food\+Data = null\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ターゲットの料理情報 
+
 \Hypertarget{class_customer_data_adebd975225716130ddc4dc71df7db011}\index{CustomerData@{CustomerData}!m\_appearPos@{m\_appearPos}}
 \index{m\_appearPos@{m\_appearPos}!CustomerData@{CustomerData}}
 \doxysubsubsection{\texorpdfstring{m\_appearPos}{m\_appearPos}}
 {\footnotesize\ttfamily \label{class_customer_data_adebd975225716130ddc4dc71df7db011} 
 Vector3 Customer\+Data.\+m\+\_\+appear\+Pos = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+出現/帰還 地点座標 
 
 \Hypertarget{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}\index{CustomerData@{CustomerData}!m\_targetTableSetData@{m\_targetTableSetData}}
 \index{m\_targetTableSetData@{m\_targetTableSetData}!CustomerData@{CustomerData}}
@@ -255,6 +273,10 @@ Vector3 Customer\+Data.\+m\+\_\+appear\+Pos = new()\hspace{0.3cm}{\ttfamily [pri
 
 
 
+待ち行列のデータ 
+
+
+
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_customer_data_ad328190fa3e103f4fa0d851619dea745}\index{CustomerData@{CustomerData}!AngryTime@{AngryTime}}
 \index{AngryTime@{AngryTime}!CustomerData@{CustomerData}}
@@ -264,9 +286,9 @@ float Customer\+Data.\+Angry\+Time\hspace{0.3cm}{\ttfamily [get]}}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00050\ \ \ \ \ \{}
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\_angryTime}};\ \}}
-\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \{}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a798c7e858a288bc3c3d16183c6958681}{m\_angryTime}};\ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_a83bb8ec48584efbfa05c1264a95d798a}\index{CustomerData@{CustomerData}!AngryCount@{AngryCount}}
@@ -277,10 +299,10 @@ float Customer\+Data.\+Angry\+Count\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00058\ \ \ \ \ \{}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}};\ \}}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}}\ =\ value;\ \}}
-\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}};\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a7c3ea1d9f3ca55b03622189be234ea1f}{m\_angryCount}}\ =\ value;\ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_afe20201faf49a1fedb98bc6a388eeee4}\index{CustomerData@{CustomerData}!EatTime@{EatTime}}
@@ -291,9 +313,9 @@ float Customer\+Data.\+Eat\+Time\hspace{0.3cm}{\ttfamily [get]}}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00070\ \ \ \ \ \{}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}};\ \}}
-\DoxyCodeLine{00072\ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \{}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a73191c7c31ca206760c6c1f784df6c31}{m\_eatTime}};\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_adc5576479bd738972f53f75cb0399c55}\index{CustomerData@{CustomerData}!EatCount@{EatCount}}
@@ -304,10 +326,10 @@ float Customer\+Data.\+Eat\+Count\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [se
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00079\ \ \ \ \ \{}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}};\ \}}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}}\ =\ value;\ \}}
-\DoxyCodeLine{00082\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \{}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}};\ \}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_ade240216304b8e3d92e46956539d5f29}{m\_eatCount}}\ =\ value;\ \}}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_a68f778850194d56a9c0e8b4e1b743f1a}\index{CustomerData@{CustomerData}!CurrentCustomerState@{CurrentCustomerState}}
@@ -318,10 +340,10 @@ float Customer\+Data.\+Eat\+Count\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [se
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00090\ \ \ \ \ \{}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}};\ \}}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}}\ =\ value;\ \}}
-\DoxyCodeLine{00093\ \ \ \ \ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}};\ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_ac658895d03cb5a4c55fc4a5afc472757}{m\_currentCustomerState}}\ =\ value;\ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}\index{CustomerData@{CustomerData}!TargetOrderFoodData@{TargetOrderFoodData}}
@@ -332,10 +354,10 @@ float Customer\+Data.\+Eat\+Count\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [se
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00101\ \ \ \ \ \{}
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}};\ \}}
-\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}}\ =\ value;\ \}}
-\DoxyCodeLine{00104\ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}};\ \}}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a340c220405fac507df2b93854514b212}{m\_targetOrderFoodData}}\ =\ value;\ \}}
+\DoxyCodeLine{00108\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_adfb215ef738089e435a71a5dce09711e}\index{CustomerData@{CustomerData}!AppearPos@{AppearPos}}
@@ -346,9 +368,9 @@ Vector3 Customer\+Data.\+Appear\+Pos\hspace{0.3cm}{\ttfamily [get]}}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00114\ \ \ \ \ \{}
-\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}};\ \}}
-\DoxyCodeLine{00116\ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_adebd975225716130ddc4dc71df7db011}{m\_appearPos}};\ \}}
+\DoxyCodeLine{00120\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_aeba91a021970c8b8add88f5edbf70d7a}\index{CustomerData@{CustomerData}!TargetTableSetData@{TargetTableSetData}}
@@ -359,10 +381,10 @@ Vector3 Customer\+Data.\+Appear\+Pos\hspace{0.3cm}{\ttfamily [get]}}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00126\ \ \ \ \ \{}
-\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}};\ \}}
-\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}}\ =\ value;\ \}}
-\DoxyCodeLine{00129\ \ \ \ \ \}}
+\DoxyCodeLine{00130\ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}};\ \}}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a7335d9ebd66721392214d2c8a5153ac5}{m\_targetTableSetData}}\ =\ value;\ \}}
+\DoxyCodeLine{00133\ \ \ \ \ \}}
 
 \end{DoxyCode}
 \Hypertarget{class_customer_data_a767f6cc4f920630b37a5b5ca956ac0ac}\index{CustomerData@{CustomerData}!QueueData@{QueueData}}
@@ -373,10 +395,10 @@ Vector3 Customer\+Data.\+Appear\+Pos\hspace{0.3cm}{\ttfamily [get]}}
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00138\ \ \ \ \ \{}
-\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}};\ \}}
-\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}}\ =\ value;\ \}}
-\DoxyCodeLine{00141\ \ \ \ \ \}}
+\DoxyCodeLine{00143\ \ \ \ \ \{}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}};\ \}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_data_a06641e38f3c183a5f9f77bfa060f2cb8}{m\_queueData}}\ =\ value;\ \}}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
 
 \end{DoxyCode}
 

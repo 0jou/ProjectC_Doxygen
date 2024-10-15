@@ -1,0 +1,69 @@
+\doxysection{Generate\+Cleaning\+Event.\+cs}
+\hypertarget{_generate_cleaning_event_8cs_source}{}\label{_generate_cleaning_event_8cs_source}\index{ProjectC/108\_Management\_Event/Event/CleaningEvent/script/GenerateCleaningEvent.cs@{ProjectC/108\_Management\_Event/Event/CleaningEvent/script/GenerateCleaningEvent.cs}}
+\mbox{\hyperlink{_generate_cleaning_event_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Arbor.Calculators;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00015}\mbox{\hyperlink{class_generate_cleaning_event}{00015}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_generate_cleaning_event}{GenerateCleaningEvent}}\ :\ \mbox{\hyperlink{class_base_management_event}{BaseManagementEvent}}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00020}00020\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}汚れのプレハブ"{}})]}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00021}\mbox{\hyperlink{class_generate_cleaning_event_a6e7263bd0daba49bbe3b0b3bdddae70d}{00021}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_generate_cleaning_event_a6e7263bd0daba49bbe3b0b3bdddae70d}{m\_dirtPrefab}};}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00023}\mbox{\hyperlink{class_generate_cleaning_event_a258bff90b03599afbf45a822d43d032e}{00023}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_generate_cleaning_event_a258bff90b03599afbf45a822d43d032e}{m\_position}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{set};\ \}\ =\ \textcolor{keyword}{new}\ Vector3(0,\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00026}00026\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00027}\mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{00027}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{ｍ\_randomRange}}\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00029}\mbox{\hyperlink{class_generate_cleaning_event_a2125f7f2d3980675aeb5d89b516f995a}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_cleaning_event_a2125f7f2d3980675aeb5d89b516f995a}{SetRandomRange}}(\textcolor{keywordtype}{float}\ range)}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{ｍ\_randomRange}}\ =\ range;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00034}\mbox{\hyperlink{class_generate_cleaning_event_a02c8f4d9baa061e4da4c597fe9a51861}{00034}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_generate_cleaning_event_a02c8f4d9baa061e4da4c597fe9a51861}{m\_isPositionSet}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00038}\mbox{\hyperlink{class_generate_cleaning_event_a365c840ada079e49c6489f54f6225f6e}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_cleaning_event_a365c840ada079e49c6489f54f6225f6e}{OnStart}}()}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}CleaningEvent"{}});}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_cleaning_event_adbafe1be8e899f0d007b4c2d401b040b}{CreateDirt}}();}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00044}\mbox{\hyperlink{class_generate_cleaning_event_a7d0c77e47be73520df08c896e47f8ff1}{00044}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_cleaning_event_a7d0c77e47be73520df08c896e47f8ff1}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_management_event_ad07ba4fce3fd7ae3e1f45f3df9f5d2a2}{SetEventEnd}}();}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00049}\mbox{\hyperlink{class_generate_cleaning_event_a39ac33feeb6ffc286554f2abec21d6f8}{00049}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_cleaning_event_a39ac33feeb6ffc286554f2abec21d6f8}{SetPosition}}(Vector3\ position)}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_cleaning_event_a258bff90b03599afbf45a822d43d032e}{m\_position}}\ =\ position;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_generate_cleaning_event_a02c8f4d9baa061e4da4c597fe9a51861}{m\_isPositionSet}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00053}00053\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00060}\mbox{\hyperlink{class_generate_cleaning_event_adbafe1be8e899f0d007b4c2d401b040b}{00060}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_generate_cleaning_event_adbafe1be8e899f0d007b4c2d401b040b}{CreateDirt}}()}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_generate_cleaning_event_a6e7263bd0daba49bbe3b0b3bdddae70d}{m\_dirtPrefab}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}汚れプレハブがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ var\ obj\ =\ Instantiate(\mbox{\hyperlink{class_generate_cleaning_event_a6e7263bd0daba49bbe3b0b3bdddae70d}{m\_dirtPrefab}});}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \textcolor{comment}{//位置を設定}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_generate_cleaning_event_a02c8f4d9baa061e4da4c597fe9a51861}{m\_isPositionSet}})}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ obj.transform.position\ =\ \mbox{\hyperlink{class_generate_cleaning_event_a258bff90b03599afbf45a822d43d032e}{m\_position}};}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ランダムでずらす}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ var\ randomRange\ =\ \textcolor{keyword}{new}\ Vector3(Random.Range(-\/\mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{ｍ\_randomRange}},\ \mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{ｍ\_randomRange}}),\ 0,\ Random.Range(-\/\mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{ｍ\_randomRange}},\ \mbox{\hyperlink{class_generate_cleaning_event_a04b78197490ffa552e0f0961690155c7}{ｍ\_randomRange}}));}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ obj.transform.position\ +=\ randomRange;}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_generate_cleaning_event_8cs_source_l00079}00079\ \}}
+
+\end{DoxyCode}

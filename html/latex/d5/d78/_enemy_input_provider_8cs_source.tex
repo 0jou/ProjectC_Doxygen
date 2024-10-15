@@ -1,0 +1,105 @@
+\doxysection{Enemy\+Input\+Provider.\+cs}
+\hypertarget{_enemy_input_provider_8cs_source}{}\label{_enemy_input_provider_8cs_source}\index{ProjectC/001\_Common/Scripts/Input/EnemyInputProvider.cs@{ProjectC/001\_Common/Scripts/Input/EnemyInputProvider.cs}}
+\mbox{\hyperlink{_enemy_input_provider_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00006}00006\ \textcolor{comment}{//\ NavMeshAgentやArborから敵制御に必要な値を取得する(伊波)}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00008}\mbox{\hyperlink{class_enemy_input_provider}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_enemy_input_provider}{EnemyInputProvider}}\ :\ MonoBehaviour,\ \mbox{\hyperlink{interface_i_input_provider}{IInputProvider}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00010}\mbox{\hyperlink{class_enemy_input_provider_a78f5c8931d4b10239b63873da237d7bd}{00010}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_path_finding}{PathFinding}}\ \mbox{\hyperlink{class_enemy_input_provider_a78f5c8931d4b10239b63873da237d7bd}{m\_pathFinding}};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00011}\mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{00011}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ ParameterContainer\ \mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{m\_parameterContainer}};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00013}\mbox{\hyperlink{class_enemy_input_provider_ad625aaf1d685236299adeb7b1fc28491}{00013}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_enemy_input_provider_ad625aaf1d685236299adeb7b1fc28491}{Awake}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_enemy_input_provider_a78f5c8931d4b10239b63873da237d7bd}{m\_pathFinding}})}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}PathFindingがセットされていません。"{}});}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{m\_parameterContainer}})}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ParameterContainerがセットされていません。"{}});}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00025}\mbox{\hyperlink{class_enemy_input_provider_a15499e4ffc1a4db45248153348928b87}{00025}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a15499e4ffc1a4db45248153348928b87}{IsArrive}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_enemy_input_provider_a78f5c8931d4b10239b63873da237d7bd}{m\_pathFinding}}.\mbox{\hyperlink{class_path_finding_a4d92435051d44d011e1cc72e211f805c}{IsArrived}};\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00030}\mbox{\hyperlink{class_enemy_input_provider_ac129bf1d94b398b32d9372f0c24bd422}{00030}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_enemy_input_provider_ac129bf1d94b398b32d9372f0c24bd422}{m\_lookVector}};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00031}\mbox{\hyperlink{class_enemy_input_provider_ad6b49d54538d5627a51bd7ec83c49ae7}{00031}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_enemy_input_provider_ad6b49d54538d5627a51bd7ec83c49ae7}{LookVector}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00032}00032\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_enemy_input_provider_ac129bf1d94b398b32d9372f0c24bd422}{m\_lookVector}};\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_enemy_input_provider_ac129bf1d94b398b32d9372f0c24bd422}{m\_lookVector}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00037}\mbox{\hyperlink{class_enemy_input_provider_a14202fa1dac7055a9eb1c9e70ecd0e65}{00037}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_enemy_input_provider_a14202fa1dac7055a9eb1c9e70ecd0e65}{MoveVector}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v\ =\ \mbox{\hyperlink{class_enemy_input_provider_a78f5c8931d4b10239b63873da237d7bd}{m\_pathFinding}}.\mbox{\hyperlink{class_path_finding_a2002c4a8306db2a42f889dacc899d611}{DesiredVelocity}};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ v.y\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ v.Normalize();}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ v;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00046}00046\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00047}\mbox{\hyperlink{class_enemy_input_provider_a3287fbe44cd89809e4a6444c7ddab8e9}{00047}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector3\ \mbox{\hyperlink{class_enemy_input_provider_a3287fbe44cd89809e4a6444c7ddab8e9}{Destination}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_enemy_input_provider_a78f5c8931d4b10239b63873da237d7bd}{m\_pathFinding}}.\mbox{\hyperlink{class_path_finding_a4c9e1f7bf68f0ef0f7835815bf3119e8}{Destination}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00049}\mbox{\hyperlink{class_enemy_input_provider_a996fe12e75776eb78882825333be13b5}{00049}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_enemy_input_provider_a996fe12e75776eb78882825333be13b5}{AttackType}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00050}00050\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ type;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{m\_parameterContainer}}.TryGetInt(\textcolor{stringliteral}{"{}DoAttackType"{}},\ out\ type);}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ type;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{m\_parameterContainer}}.SetInt(\textcolor{stringliteral}{"{}DoAttackType"{}},\ value);}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00061}00061\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//public\ bool\ DoAttack\ \{\ get\ \{\ return\ PlayerInputManager.Instance.PlayerAM["{}Attack"{}].triggered;\ \}\ \}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00064}\mbox{\hyperlink{class_enemy_input_provider_ae5a29ef094cb8eee7d41e65c83aa5821}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_ae5a29ef094cb8eee7d41e65c83aa5821}{DoDush}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00065}\mbox{\hyperlink{class_enemy_input_provider_a858e799f06da9f958e829c0a7487abe2}{00065}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a858e799f06da9f958e829c0a7487abe2}{OnPressedDush}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00066}\mbox{\hyperlink{class_enemy_input_provider_ad4805beb9b51d959ee7b42ad1bc1458f}{00066}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_ad4805beb9b51d959ee7b42ad1bc1458f}{OnReleasedDush}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//追加（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00070}\mbox{\hyperlink{class_enemy_input_provider_a962747bf035a58361cb596e30a2a2943}{00070}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a962747bf035a58361cb596e30a2a2943}{DoRolling}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00072}\mbox{\hyperlink{class_enemy_input_provider_a14334aac25cd34adb6e412c9283067ad}{00072}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a14334aac25cd34adb6e412c9283067ad}{SelectLeftItem}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00073}\mbox{\hyperlink{class_enemy_input_provider_a1eb066559c01ba8dd1a2463147cd4046}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a1eb066559c01ba8dd1a2463147cd4046}{SelectRightItem}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00074}\mbox{\hyperlink{class_enemy_input_provider_ab31617e541e88e1c605932cf25aa1c1b}{00074}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_ab31617e541e88e1c605932cf25aa1c1b}{UseItem}}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00075}00075\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ use;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{m\_parameterContainer}}.TryGetBool(\textcolor{stringliteral}{"{}UseItem"{}},\ out\ use);}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_enemy_input_provider_a3367542a8c4d5e942e80b4574beefa67}{m\_parameterContainer}}.SetBool(\textcolor{stringliteral}{"{}UseItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ use;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//追加（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00086}\mbox{\hyperlink{class_enemy_input_provider_a8b6dbde8ea43e98794473b5b94f71a59}{00086}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a8b6dbde8ea43e98794473b5b94f71a59}{UseStorySkill\_1}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00088}00088\ \ \ \ \ \textcolor{comment}{//追加（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00089}\mbox{\hyperlink{class_enemy_input_provider_a483f843ad3206755acefd18281ef1fdb}{00089}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a483f843ad3206755acefd18281ef1fdb}{UseStorySkill\_2}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00091}\mbox{\hyperlink{class_enemy_input_provider_aabcbe09baec30a35c5c2845c79c84705}{00091}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_aabcbe09baec30a35c5c2845c79c84705}{Gathering}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00092}\mbox{\hyperlink{class_enemy_input_provider_a96bbe71fcf1ee6991adf686f66776398}{00092}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a96bbe71fcf1ee6991adf686f66776398}{PutItem}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00093}\mbox{\hyperlink{class_enemy_input_provider_a480fd7c5471a4f9662eab80736d2100f}{00093}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a480fd7c5471a4f9662eab80736d2100f}{ReadyThrowItem}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00094}\mbox{\hyperlink{class_enemy_input_provider_a85c4c42671b8de455092f90eeb33c063}{00094}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a85c4c42671b8de455092f90eeb33c063}{ThrowItem}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00095}\mbox{\hyperlink{class_enemy_input_provider_a8a8e9e42ddd85184c93d7ac5936203a5}{00095}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a8a8e9e42ddd85184c93d7ac5936203a5}{Cancel}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00096}\mbox{\hyperlink{class_enemy_input_provider_a396632124a98a3ae7f417c47765348d0}{00096}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_enemy_input_provider_a396632124a98a3ae7f417c47765348d0}{Eat}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00097}\mbox{\hyperlink{class_enemy_input_provider_a6c6cb468d81add5ce0ce2848965cf2ea}{00097}}\ \ \ \ \ \textcolor{keyword}{public}\ Vector2\ \mbox{\hyperlink{class_enemy_input_provider_a6c6cb468d81add5ce0ce2848965cf2ea}{ThrowAim}}\ \{\ \textcolor{keyword}{get};\ \}\ =\ Vector2.zero;}
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_enemy_input_provider_8cs_source_l00099}00099\ \}}
+
+\end{DoxyCode}

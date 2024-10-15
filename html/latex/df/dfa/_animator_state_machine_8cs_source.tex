@@ -1,0 +1,60 @@
+\doxysection{Animator\+State\+Machine.\+cs}
+\hypertarget{_animator_state_machine_8cs_source}{}\label{_animator_state_machine_8cs_source}\index{ProjectC/001\_Common/Scripts/AnimatorStateMachine/AnimatorStateMachine.cs@{ProjectC/001\_Common/Scripts/AnimatorStateMachine/AnimatorStateMachine.cs}}
+\mbox{\hyperlink{_animator_state_machine_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }Unity.VisualScripting;}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00006}\mbox{\hyperlink{class_animator_state_machine}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_animator_state_machine}{AnimatorStateMachine}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00008}\mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{00008}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{ActionStateBase}}\ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}};}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00010}\mbox{\hyperlink{class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542}{00010}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542}{ChangeState}}(\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{ActionStateBase}}\ \_state)}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在のStateのExitを実行}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{OnExit}}();}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ State入れ替え}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}\ =\ \_state;}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 新しいStateのEnterを実行}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a1ecf97fe245aba660a4c33240e16af4e}{OnEnter}}();}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00020}00020\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00023}\mbox{\hyperlink{class_animator_state_machine_ab38a5bccb6dc56fb263bfb75ae3d1dc3}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_ab38a5bccb6dc56fb263bfb75ae3d1dc3}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00024}00024\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00028}\mbox{\hyperlink{class_animator_state_machine_acc9346d3a47aa955b5547df03415259d}{00028}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_acc9346d3a47aa955b5547df03415259d}{FixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{OnFixedUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00031}00031\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00033}00033\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00034}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{00034}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{ActionStateBase}}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00036}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abbc7c1d71f53366c3107d4f4658bc706}{00036}}\ \ \ \ \ \ \ \ \ [SerializeField]\textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abbc7c1d71f53366c3107d4f4658bc706}{m\_stateName}};}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00039}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a5c2fa58c15fa5a7e8137f8d9002b2b1e}{00039}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_animator_state_machine}{AnimatorStateMachine}}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a5c2fa58c15fa5a7e8137f8d9002b2b1e}{StateMachine}}\ \{\ \textcolor{keyword}{get};\ \textcolor{keyword}{private}\ \textcolor{keyword}{set};\ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00042}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a066e69d5e0edc35957dec5641bacb9c3}{00042}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a066e69d5e0edc35957dec5641bacb9c3}{Initialize}}(\mbox{\hyperlink{class_animator_state_machine}{AnimatorStateMachine}}\ \_stateMachine)}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a5c2fa58c15fa5a7e8137f8d9002b2b1e}{StateMachine}}\ =\ \_stateMachine;}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00047}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a1ecf97fe245aba660a4c33240e16af4e}{00047}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a1ecf97fe245aba660a4c33240e16af4e}{OnEnter}}()\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00048}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{00048}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{OnExit}}()\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00049}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{00049}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{OnUpdate}}()\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00050}\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{00050}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{OnFixedUpdate}}()\ \{\ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_animator_state_machine_8cs_source_l00054}00054\ \}}
+
+\end{DoxyCode}

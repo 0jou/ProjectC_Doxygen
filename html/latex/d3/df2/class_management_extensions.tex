@@ -1,0 +1,119 @@
+\doxysection{Management\+Extensions クラス}
+\hypertarget{class_management_extensions}{}\label{class_management_extensions}\index{ManagementExtensions@{ManagementExtensions}}
+
+
+Management\+Extensions 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{dd/d09/class_management_extensions__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{静的公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+static List$<$ T $>$ \mbox{\hyperlink{class_management_extensions_a9fd0fdf9d38c708acf45f06c55ebeb2d}{Random\+List$<$ T $>$}} (this List$<$ T $>$ \+\_\+list)
+\begin{DoxyCompactList}\small\item\em リストをランダムにする \end{DoxyCompactList}\item 
+static T \mbox{\hyperlink{class_management_extensions_a33b6b6dbdb890fd0c683d50575171b18}{Random$<$ T $>$}} (this List$<$ T $>$ \+\_\+list)
+\begin{DoxyCompactList}\small\item\em リストからランダムで値を取得 \end{DoxyCompactList}\item 
+static Hash\+Set$<$ T $>$ \mbox{\hyperlink{class_management_extensions_a13d56f9e95ebf4ddc344f56c4874eb71}{Random\+Hash\+Set$<$ T $>$}} (this Hash\+Set$<$ T $>$ \+\_\+hash\+Set)
+\begin{DoxyCompactList}\small\item\em ハッシュセットをランダムにする \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_management_extensions_8cs_source}{Management\+Extensions.\+cs}} の \mbox{\hyperlink{_management_extensions_8cs_source_l00005}{5}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_management_extensions_a9fd0fdf9d38c708acf45f06c55ebeb2d}\index{ManagementExtensions@{ManagementExtensions}!RandomList$<$ T $>$@{RandomList$<$ T $>$}}
+\index{RandomList$<$ T $>$@{RandomList$<$ T $>$}!ManagementExtensions@{ManagementExtensions}}
+\doxysubsubsection{\texorpdfstring{RandomList$<$ T $>$()}{RandomList< T >()}}
+{\footnotesize\ttfamily \label{class_management_extensions_a9fd0fdf9d38c708acf45f06c55ebeb2d} 
+static List$<$ T $>$ Management\+Extensions.\+Random\+List$<$ T $>$ (\begin{DoxyParamCaption}\item[{this List$<$ T $>$}]{\+\_\+list}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+リストをランダムにする 
+
+
+
+ \mbox{\hyperlink{_management_extensions_8cs_source}{Management\+Extensions.\+cs}} の \mbox{\hyperlink{_management_extensions_8cs_source_l00013}{13}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00014\ \ \ \ \ \{}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ランダムインスタンスを作成}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ System.Random\ random\ =\ \textcolor{keyword}{new}\ System.Random();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Listの要素をランダムに並び替える}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ List<T>\ shuffleList\ =\ \_list.OrderBy(x\ =>\ random.Next()).ToList();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shuffleList;}
+\DoxyCodeLine{00023\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_management_extensions_a33b6b6dbdb890fd0c683d50575171b18}\index{ManagementExtensions@{ManagementExtensions}!Random$<$ T $>$@{Random$<$ T $>$}}
+\index{Random$<$ T $>$@{Random$<$ T $>$}!ManagementExtensions@{ManagementExtensions}}
+\doxysubsubsection{\texorpdfstring{Random$<$ T $>$()}{Random< T >()}}
+{\footnotesize\ttfamily \label{class_management_extensions_a33b6b6dbdb890fd0c683d50575171b18} 
+static T Management\+Extensions.\+Random$<$ T $>$ (\begin{DoxyParamCaption}\item[{this List$<$ T $>$}]{\+\_\+list}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+リストからランダムで値を取得 
+
+
+
+ \mbox{\hyperlink{_management_extensions_8cs_source}{Management\+Extensions.\+cs}} の \mbox{\hyperlink{_management_extensions_8cs_source_l00028}{28}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_list\ ==\ \textcolor{keyword}{null}\ ||\ \_list.Count\ ==\ 0)}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ System.Random\ random\ =\ \textcolor{keyword}{new}\ System.Random();}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\ =\ random.Next(\_list.Count);}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \_list[index];}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_management_extensions_a13d56f9e95ebf4ddc344f56c4874eb71}\index{ManagementExtensions@{ManagementExtensions}!RandomHashSet$<$ T $>$@{RandomHashSet$<$ T $>$}}
+\index{RandomHashSet$<$ T $>$@{RandomHashSet$<$ T $>$}!ManagementExtensions@{ManagementExtensions}}
+\doxysubsubsection{\texorpdfstring{RandomHashSet$<$ T $>$()}{RandomHashSet< T >()}}
+{\footnotesize\ttfamily \label{class_management_extensions_a13d56f9e95ebf4ddc344f56c4874eb71} 
+static Hash\+Set$<$ T $>$ Management\+Extensions.\+Random\+Hash\+Set$<$ T $>$ (\begin{DoxyParamCaption}\item[{this Hash\+Set$<$ T $>$}]{\+\_\+hash\+Set}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+ハッシュセットをランダムにする 
+
+
+
+ \mbox{\hyperlink{_management_extensions_8cs_source}{Management\+Extensions.\+cs}} の \mbox{\hyperlink{_management_extensions_8cs_source_l00044}{44}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ランダムインスタンスを作成}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ System.Random\ random\ =\ \textcolor{keyword}{new}\ System.Random();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HashSetの要素をランダムに並び替える}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ HashSet<T>\ shuffleHashSet\ =\ \_hashSet.OrderBy(x\ =>\ random.Next()).ToHashSet();}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ shuffleHashSet;}
+\DoxyCodeLine{00053\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/101\+\_\+\+Management\+\_\+\+Common/\+Extension/\mbox{\hyperlink{_management_extensions_8cs}{Management\+Extensions.\+cs}}\end{DoxyCompactItemize}

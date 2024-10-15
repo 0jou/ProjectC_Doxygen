@@ -1,0 +1,958 @@
+\doxysection{Player\+State.\+cs}
+\hypertarget{_player_state_8cs_source}{}\label{_player_state_8cs_source}\index{ProjectC/004\_Character/Scripts/State/PlayerState.cs@{ProjectC/004\_Character/Scripts/State/PlayerState.cs}}
+\mbox{\hyperlink{_player_state_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }KinematicCharacterController;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Unity.VisualScripting;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.Playables;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.Timeline;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }UnityEngine.UIElements;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }UnityEditor;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00014}00014\ \textcolor{comment}{//\ キャラクターの基盤クラス}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00015}00015\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }\mbox{\hyperlink{class_character_core}{CharacterCore}}\ :\ MonoBehaviour,\ \mbox{\hyperlink{interface_i_damageable}{IDamageable}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00016}00016\ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ 回避用ステート(倉田　側だけ作った)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//中身作成(山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00020}00020\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00021}00021\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/Rolling"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00022}\mbox{\hyperlink{class_character_core_1_1_action_state___rolling}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___rolling}{ActionState\_Rolling}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00024}\mbox{\hyperlink{class_character_core_1_1_action_state___rolling_a534e9468594fc54843dd03ebd5016f94}{00024}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___rolling_a534e9468594fc54843dd03ebd5016f94}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetFloat(\textcolor{stringliteral}{"{}RollingSpeed"{}},\ Core.PlayerParameters.m\_rollingAnimeSpeed);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoDamage\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_characterStatus.m\_stamina.Value\ -\/=\ Core.m\_characterStatus.m\_rollingStaminaCost;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 回避SE\ 上甲}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Rolling"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00037}\mbox{\hyperlink{class_character_core_1_1_action_state___rolling_a47683b1b21874c1c738366e8a879a177}{00037}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___rolling_a47683b1b21874c1c738366e8a879a177}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ var\ input\ =\ Core.m\_inputProvider.MoveVector;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//方向キーの入力があったら、その向きにキャラクターを回転させる（回避時すぐにキーの方向に向く処理）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input.magnitude\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ playerDir\ =\ new\ Vector3(input.x,\ 0,\ input.y);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ v\ =\ Vector3.RotateTowards(Core.transform.forward,\ input,\ 10000.0f,\ 0);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(v);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00050}\mbox{\hyperlink{class_character_core_1_1_action_state___rolling_a32f61a77d62548c13824448cf2113541}{00050}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___rolling_a32f61a77d62548c13824448cf2113541}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ AnimatorStateInfo\ stateInfo\ =\ Core.m\_animator.GetCurrentAnimatorStateInfo(0);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(Core.PlayerParameters.m\_rollingPow\ /\ stateInfo.length);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00056}\mbox{\hyperlink{class_character_core_1_1_action_state___rolling_ad0834d66cb92635b9e8f1c4d6e92aeb0}{00056}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___rolling_ad0834d66cb92635b9e8f1c4d6e92aeb0}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoDamage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00063}00063\ \ \ \ \ \textcolor{comment}{//童話スキル詠唱状態(山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00064}00064\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00065}00065\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/UseStorySkill"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00066}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill}{00066}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill}{ActionState\_UseStorySkill}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00067}00067\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00068}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a86e5be406d3e499092ece8ebbde1c910}{00068}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a86e5be406d3e499092ece8ebbde1c910}{m\_playerDist}}\ =\ -\/3.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00069}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_afc2bb7ba37f4af8a0e1d06ca287d0b3f}{00069}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_afc2bb7ba37f4af8a0e1d06ca287d0b3f}{m\_rayStartHeisght}}\ =\ 20.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00071}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_add13bfb9215847e8f2dafbe4b4a0b420}{00071}}\ \ \ \ \ \ \ \ \ GameObject\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_add13bfb9215847e8f2dafbe4b4a0b420}{m\_gameObject}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{comment}{//緊急用}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//詠唱中にキャンセルされるとフラグON}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00075}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a2a3e497ae7a08c9280950015fa3e1012}{00075}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a2a3e497ae7a08c9280950015fa3e1012}{m\_isCanserFlg}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \textcolor{comment}{//童話スキルのデータ}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00078}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a187de2fccdc66bd7e8f57f2fe9257613}{00078}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_story_skill_data}{StorySkillData}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a187de2fccdc66bd7e8f57f2fe9257613}{m\_storySkillData}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//童話スキルの現在のキャストタイム(値が1秒ごとに1引かれていき、0になったらキャスト完了)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00081}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a17ac48a898642bfde76c463bf1b32300}{00081}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a17ac48a898642bfde76c463bf1b32300}{m\_castTime}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//童話スキルの設定キャストタイム（データベース上で設定したキャストタイムを保存する変数）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00084}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a5c0dc396067b107794d924f7bf48595c}{00084}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a5c0dc396067b107794d924f7bf48595c}{m\_maxCastTime}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00086}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a79a8765424f65a70d90d550fed7c623f}{00086}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a79a8765424f65a70d90d550fed7c623f}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//キャストタイム初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ m\_castTime\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ m\_maxCastTime\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//スキルパラメーター側のキャストタイムを初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.CastTimeProgress.Value\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//falseで初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ m\_isCanserFlg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//StorySkill初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ m\_storySkillData\ =\ ScriptableObject.CreateInstance<\mbox{\hyperlink{class_story_skill_data}{StorySkillData}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ spellEffect\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//第1スキルが使用されたか第２スキルが使用されたかチェック}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.TriggerStorySkill\_1)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//対応の詠唱エフェクト発動}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_storySkillData\ =\ StorySkillDataBaseManager.instance.GetStorySkillData}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Core.PlayerParameters.StorySkill1\_ID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.TriggerStorySkill\_2)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_storySkillData\ =\ StorySkillDataBaseManager.instance.GetStorySkillData}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Core.PlayerParameters.StorySkill2\_ID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_storySkillData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//データベースからキャストタイムを取得しセット}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ m\_castTime\ =\ m\_storySkillData.\mbox{\hyperlink{class_story_skill_data_afbf40d13b8bf508afa82623bf56ffb79}{CastTime}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ m\_maxCastTime\ =\ m\_castTime;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//UI側に詠唱状態だということを伝える処理}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//データベースから召喚エフェクトを取得}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ spellEffect\ =\ m\_storySkillData.\mbox{\hyperlink{class_story_skill_data_a890bfe78ad2bd0d23de1b4d1a5394ea0}{SpellEffectPrefab}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (spellEffect)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//詠唱エフェクト出現と記憶}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_gameObject\ =\ Instantiate(spellEffect,\ Core.transform);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(m\_gameObject.TryGetComponent(out\ EffectController\ effectController))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ effectController.EndEffectTime\ =\ m\_storySkillData.\mbox{\hyperlink{class_story_skill_data_afbf40d13b8bf508afa82623bf56ffb79}{CastTime}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00146}00146\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00148}00148\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00149}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a3251e49a6b67c0ea63f72db72ce8fabc}{00149}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a3251e49a6b67c0ea63f72db72ce8fabc}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//回避ボタン押したら、回避にすぐに遷移（山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//詠唱中にローリング状態へと移行するように}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.DoRolling)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スタミナが消費できるか確認}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_characterStatus.m\_stamina.Value\ >=\ Core.m\_characterStatus.m\_rollingStaminaCost)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}Rolling"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_isCanserFlg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00162}00162\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//キャストタイムが０以下になったら詠唱完了しアニメーション移動}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_castTime\ <=\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}CastingEnd"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_castTime\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//CharacterCoreのキャストタイムの進捗度に値をセット}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ progress\ =\ 1.0f\ -\/\ (m\_castTime\ /\ m\_maxCastTime);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ progress\ =\ Math.Clamp(progress,\ 0.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.CastTimeProgress.Value\ =\ progress;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00179}00179\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00180}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a4e3f26d2de92a73b364a2bd19b148477}{00180}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a4e3f26d2de92a73b364a2bd19b148477}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00184}00184\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00185}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a6c840dd97460ab8b9dbf11bb37a3e981}{00185}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a6c840dd97460ab8b9dbf11bb37a3e981}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//m\_isCanserFlgがONでなければ=回避されなければ⇒詠唱完了!!（山本）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_isCanserFlg\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//童話スキル発動（プレハブ生成）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00191}00191\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//童話スキルのデータなければリターン}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_storySkillData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}童話スキルデータが空でした。"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00198}00198\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ rayHitPos\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//レイの開始位置セット(童話スキルプレハブの場所設定)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Quaternion\ quo\ =\ Quaternion.LookRotation(Core.transform.forward);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ rayStartPos\ =\ Core.transform.position}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ Core.transform.forward\ *\ m\_storySkillData.Distance}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ +\ Vector3.up\ *\ m\_rayStartHeisght;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00206}00206\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a3c1104fe25d2d7fdd41723cf9932c9ea}{RayHitPosition}}(rayStartPos,\ out\ RaycastHit\ hit))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rayHitPos\ =\ hit.point;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}設置場所が見つかりませんでした。"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//データに対応した童話スキルのプレハブ生成}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ skill\ =\ Instantiate(m\_storySkillData.\mbox{\hyperlink{class_story_skill_data_a642feefc74142b2addd71c2f8eb9a2ca}{StorySkillPrefab}},\ rayHitPos,\ quo);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00222}00222\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ChildrenMenberコンポーネントあればSetPosition呼ぶ}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//(子オブジェクトに位置座標を指定する際に使用するコンポーネント)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (skill.TryGetComponent(out\ \mbox{\hyperlink{class_children_member}{ChildrenMember}}\ children))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ children.SetPosition();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00228}00228\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SetPositionCharacterControllerコンポーネントがあれば呼ぶ}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//（特定のCharacterContorllerに位置座標を設定するコンポーネント）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (skill.TryGetComponent(out\ \mbox{\hyperlink{class_set_position_character_controller}{SetPositionCharacterController}}\ setPosition))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ setPosition.SetCharacterCore();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00237}00237\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//監視用変数に代入(Skill1、Skill2で分ける)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.TriggerStorySkill\_1)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.ObserbSkill1\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.ObserbSkill1\ =\ skill;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ StorySkill\_1のBP消費}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_characterStatus.m\_bpSkill\_1.Value\ -\/=\ m\_storySkillData.\mbox{\hyperlink{class_story_skill_data_ad79d35f3ffedcb7e2d4d3ca195d7a183}{PayBP}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.TriggerStorySkill\_2)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.ObserbSkill2\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.ObserbSkill2\ =\ skill;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00256}00256\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ StorySkill\_2のBP消費}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_characterStatus.m\_bpSkill\_2.Value\ -\/=\ m\_storySkillData.\mbox{\hyperlink{class_story_skill_data_ad79d35f3ffedcb7e2d4d3ca195d7a183}{PayBP}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//詠唱用のエフェクトの破壊}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Destroy(m\_gameObject);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00263}00263\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}童話スキルプレハブ生成"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00265}00265\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//武器消失時にイベントを再生し武器を出現する}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AppearWeapon(Core.m\_animator);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00268}00268\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//タイムライン再生あれば再生}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (skill.TryGetComponent(out\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ characterCore))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ characterCore.PlayerSkillsParameters.StorySkillAppear();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00273}00273\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00276}00276\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_gameObject)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//詠唱用のエフェクトの破壊}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_gameObject);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//どちらのスキルを使用したのかのフラグ（TriggerStorySkillをfalseにセット）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.TriggerStorySkill\_1)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.TriggerStorySkill\_1\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.TriggerStorySkill\_2)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.TriggerStorySkill\_2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00296}00296\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00297}00297\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00299}00299\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00301}00301\ \ \ \ \ \ \ \ \ \textcolor{comment}{//レイを飛ばして場所を童話スキルを設置する場所特定する}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00302}\mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a3c1104fe25d2d7fdd41723cf9932c9ea}{00302}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_story_skill_a3c1104fe25d2d7fdd41723cf9932c9ea}{RayHitPosition}}(Vector3\ \_startPos,\ out\ RaycastHit\ \_hit)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00303}00303\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 方向}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ Vector3.down;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00306}00306\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レイ作成}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ var\ ray\ =\ \textcolor{keyword}{new}\ Ray(\_startPos,\ dir);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00309}00309\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ layermask\ =\ 1\ <<\ 32;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Physics.Raycast(ray,\ out\ \_hit,\ 100.0f,\ layermask))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00321}00321\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00322}00322\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00323}00323\ \ \ \ \ \textcolor{comment}{//\ 採取用ステート(吉田)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00324}00324\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00325}00325\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/Gathering"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00326}\mbox{\hyperlink{class_character_core_1_1_action_state___gathering}{00326}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___gathering}{ActionState\_Gathering}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00327}00327\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00328}\mbox{\hyperlink{class_character_core_1_1_action_state___gathering_a42c493c292c5b4b202c9ccd7bca5ffad}{00328}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_assign_item_i_d}{AssignItemID}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___gathering_a42c493c292c5b4b202c9ccd7bca5ffad}{m\_gatheringItem}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00329}00329\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00330}\mbox{\hyperlink{class_character_core_1_1_action_state___gathering_a2079f6ca0cc31a803db2777d4f9ebdb4}{00330}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___gathering_a2079f6ca0cc31a803db2777d4f9ebdb4}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}採取開始"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ m\_gatheringItem\ =\ Core.PlayerParameters.m\_ableGatheringItem;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00335}00335\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00337}\mbox{\hyperlink{class_character_core_1_1_action_state___gathering_a2790c664c3d526721dac74049f4ca234}{00337}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___gathering_a2790c664c3d526721dac74049f4ca234}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00340}00340\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00341}00341\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00342}\mbox{\hyperlink{class_character_core_1_1_action_state___gathering_acc5268975f8ed1734d9a62544db6bb51}{00342}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___gathering_acc5268975f8ed1734d9a62544db6bb51}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_gatheringItem\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_get_item_object}{GetItemObject}}\ getItemObject\ =\ m\_gatheringItem.GetComponent<\mbox{\hyperlink{class_get_item_object}{GetItemObject}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (getItemObject\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}GetItemObjectコンポーネントが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ getItemObject.\mbox{\hyperlink{class_get_item_object_add9486ad28696c343442d7a88574dc61}{GetItem}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}採取終了"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00356}00356\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00357}00357\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00358}00358\ \ \ \ \ \textcolor{comment}{//\ 設置用ステート(吉田)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00359}00359\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00360}00360\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/PutItem"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00361}\mbox{\hyperlink{class_character_core_1_1_action_state___put_item}{00361}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___put_item}{ActionState\_PutItem}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00362}00362\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00363}\mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a56b50ef309ca6c58e51072fb6a1b6916}{00363}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_put_item_instance}{PutItemInstance}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a56b50ef309ca6c58e51072fb6a1b6916}{m\_putItemInstance}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00365}\mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a8c0aa2993af269cf7f18763883546e20}{00365}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a8c0aa2993af269cf7f18763883546e20}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00366}00366\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00368}00368\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}設置開始"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 設置設定（アニメーション中に変更されないように）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ m\_putItemInstance\ =\ Core.AddComponent<\mbox{\hyperlink{class_put_item_instance}{PutItemInstance}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ m\_putItemInstance.\mbox{\hyperlink{class_put_item_instance_a3f1f89bb7353b66b19f4a636ae258390}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,\ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00373}00373\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 追加　上甲　効果音}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}PutItem"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00376}00376\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00377}00377\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00378}\mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a29ecab9463193b2be079445b46eb98b4}{00378}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a29ecab9463193b2be079445b46eb98b4}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00379}00379\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//移動量を減らす}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00382}00382\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00384}\mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf}{00384}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___put_item_a0e842e096f9869dad6402de5e1a874cf}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00385}00385\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_putItemInstance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00388}00388\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_putItemInstance.\mbox{\hyperlink{class_put_item_instance_a617e7045b93e4fdd4b092bd643a8fb4b}{Craft}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_putItemInstance);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 未設定状態にする}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//フラグをfalseに（山本）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsPutItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00397}00397\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.Attack);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00401}00401\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Debug.Log("{}設置終了"{});}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00403}00403\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00404}00404\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00406}00406\ \ \ \ \ \textcolor{comment}{//\ 投げる準備用ステート(吉田)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00407}00407\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00408}00408\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/ReadyToThrow"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00409}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw}{00409}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw}{ActionState\_ReadyToThrow}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00410}00410\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00411}00411\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 放物線描画用}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00412}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_aed328c63725f897d27c23fb45189fae7}{00412}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_draw_throw_item_arc}{DrawThrowItemArc}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_aed328c63725f897d27c23fb45189fae7}{m\_drawArc}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00414}00414\ \ \ \ \ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00415}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a643d3f8385bc1ecfca14170e9e97415b}{00415}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a643d3f8385bc1ecfca14170e9e97415b}{m\_playerMoveSpeed}}\ =\ 0.1f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00416}00416\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00417}00417\ \ \ \ \ \ \ \ \ [SerializeField,\ Header(\textcolor{stringliteral}{"{}到着時間　放物線の高さが決まる"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00418}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ab42aa04a5b7739c524ae7250392737b6}{00418}}\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ab42aa04a5b7739c524ae7250392737b6}{m\_arrivalTime}}\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00419}00419\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00420}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a8bb51b7b155db80c672cbde828f196ed}{00420}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a8bb51b7b155db80c672cbde828f196ed}{m\_cancelFlg}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00421}00421\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00422}00422\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 放物線計算用\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00423}00423\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00424}00424\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カメラ}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00425}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a019b3bf272000f5d9ab8185c40e95431}{00425}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b}{Camera}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a019b3bf272000f5d9ab8185c40e95431}{m\_mainCamera}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00426}00426\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00427}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ab325ffe6a4329627595e1a37e7ed5362}{00427}}\ \ \ \ \ \ \ \ \ GameObject\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ab325ffe6a4329627595e1a37e7ed5362}{m\_lunchObj}}\ =\ \textcolor{keyword}{null};\textcolor{comment}{//\ 空のオブジェクト}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00428}00428\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00429}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a03045f448dd23e5bfe3fb8b938f9ed74}{00429}}\ \ \ \ \ \ \ \ \ GameObject\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a03045f448dd23e5bfe3fb8b938f9ed74}{m\_mousePosObj}}\ =\ \textcolor{keyword}{null};\textcolor{comment}{//\ マウスの位置を示すオブジェクト}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00430}00430\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00431}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ac89e0568e9249b2477a8c80d4b2ce30b}{00431}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller}{AimCameraController}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ac89e0568e9249b2477a8c80d4b2ce30b}{m\_aimCameraController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00433}00433\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00434}00434\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00435}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a7597c20ee3f619cac70f4d0ef24ab9a4}{00435}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a7597c20ee3f619cac70f4d0ef24ab9a4}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00436}00436\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetFloat(\textcolor{stringliteral}{"{}Speed"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 放物線描画用の初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ m\_drawArc\ =\ Core.AddComponent<\mbox{\hyperlink{class_draw_throw_item_arc}{DrawThrowItemArc}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00442}00442\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 放物線計算用の初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ m\_mainCamera\ =\ \mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b}{Camera}}.main;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lunchObj\ =\ \textcolor{keyword}{new}\ GameObject(\textcolor{stringliteral}{"{}LunchObj"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ マウスの位置を示すオブジェクトの初期化}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ m\_mousePosObj\ =\ Instantiate(Core.PlayerParameters.m\_mouseThrowAim);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ m\_mousePosObj.name\ =\ \textcolor{stringliteral}{"{}MousePos"{}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,\ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_mousePosObj.transform.localScale\ =}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{new}\ Vector3(data.ThrowRange,\ m\_mousePosObj.transform.localScale.y,\ data.ThrowRange);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00457}00457\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00458}00458\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//カメラの切り替え}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_af167a89d98aebe1ff49e7dcd3acbf0e6}{SwitchCamera}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00461}00461\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.m\_throwAimCamera\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_aimCameraController\ =}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_throwAimCamera.GetComponent<\mbox{\hyperlink{class_aim_camera_controller}{AimCameraController}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.ReadyToThrow);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddAnyActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.ReadyToThrow,0.0f);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00471}00471\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00472}00472\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00474}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ad5716bbed4215465e1e3fa4cdbd8d1d0}{00474}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ad5716bbed4215465e1e3fa4cdbd8d1d0}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00475}00475\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//投げ状態を解除（山本）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.Cancel)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00478}00478\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}CancelThrow"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_cancelFlg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00483}00483\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsInputActionWasReleased(\mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43ac}{InputActionMapTypes}}.UI,\ \textcolor{stringliteral}{"{}ThrowItem"{}}))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}ThrowItem"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetFloat(\textcolor{stringliteral}{"{}Speed"{}},\ 1);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00488}00488\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00491}00491\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a156f93050a7b3b6d95284c4a58a92532}{HitRay}}(out\ RaycastHit\ raycastHit))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_drawArc.ShowArc\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_mousePosObj.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00498}00498\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レイが当たっている場合\ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00500}00500\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ m\_drawArc.ShowArc\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ m\_mousePosObj.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00503}00503\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a1b909aaf30cf05f9cc41d155ba7069d2}{CalculateThrowPower}}(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_startpos:\ Core.PlayerParameters.m\_handTrans.position,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_endPos:\ raycastHit.point);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ m\_drawArc.ThrowPower\ =\ Core.PlayerParameters.m\_throwPower;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ m\_drawArc.StartPos\ =\ Core.PlayerParameters.m\_handTrans.position;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ m\_mousePosObj.transform.position\ =\ raycastHit.point;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lunchObj.transform.position\ =\ Core.PlayerParameters.m\_handTrans.position;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00511}00511\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00512}00512\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00513}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ac9d0fe0d40565a73db2c74603cbd8d4d}{00513}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_ac9d0fe0d40565a73db2c74603cbd8d4d}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00514}00514\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ プレイヤーの移動}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a96d1759a8db804fe91c58f2ee523c5a2}{MovePlayer}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a2bb890371ae55b28244d61aebec37ce4}{RotatePlayer}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00518}00518\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00519}00519\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00520}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a9de19d4ab7838acdd9e858ad8fa3ac21}{00520}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a9de19d4ab7838acdd9e858ad8fa3ac21}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00521}00521\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_drawArc\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_drawArc);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00526}00526\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_lunchObj);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_mousePosObj);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00529}00529\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_af167a89d98aebe1ff49e7dcd3acbf0e6}{SwitchCamera}}(\_aimCamera:\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00531}00531\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UI非表示}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.RemoveActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.ReadyToThrow);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.RemoveAnyActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.ReadyToThrow);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00535}00535\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//キャンセルされたら}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_cancelFlg)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsThrow"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_cancelFlg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00543}00543\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00544}00544\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00545}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a96d1759a8db804fe91c58f2ee523c5a2}{00545}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a96d1759a8db804fe91c58f2ee523c5a2}{MovePlayer}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00546}00546\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ var\ input\ =\ Core.m\_inputProvider.MoveVector;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00548}00548\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input.magnitude\ !=\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetMoveVec(input);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00552}00552\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(input.magnitude\ *\ m\_playerMoveSpeed);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00554}00554\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00555}00555\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00556}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a2bb890371ae55b28244d61aebec37ce4}{00556}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a2bb890371ae55b28244d61aebec37ce4}{RotatePlayer}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00557}00557\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ \ \ var\ horizontalRotation\ =\ Quaternion.AngleAxis(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_aimCameraController.\mbox{\hyperlink{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645}{Horizontal}}.Value,\ Vector3.up);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00560}00560\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ dir\ =\ horizontalRotation\ *\ Vector3.forward;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(dir);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00563}00563\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00564}00564\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00565}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a1b909aaf30cf05f9cc41d155ba7069d2}{00565}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a1b909aaf30cf05f9cc41d155ba7069d2}{CalculateThrowPower}}(Vector3\ \_startpos,\ Vector3\ \_endPos)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00566}00566\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　開始位置と到着位置の長さを計算}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00568}00568\ \ \ \ \ \ \ \ \ \ \ \ \ var\ adjacent\ =\ Vector3.Distance(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_startpos,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_endPos);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00571}00571\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00572}00572\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　落下距離を計算}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　0.5\ *\ 重力\ *\ 到達時間の2乗}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ var\ opposite\ =\ Mathf.Abs(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0.5f\ *\ Physics.gravity.y\ *\ m\_arrivalTime\ *\ m\_arrivalTime);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00576}00576\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　到達点＋上向きに落下距離\ 放物線の頂点}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ var\ upPos\ =\ \_endPos\ +\ Vector3.up\ *\ opposite;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　斜辺の長さを計算}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ var\ hypotenuse\ =\ Vector3.Distance(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_startpos,\ upPos);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00583}00583\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　角度を計算}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00585}00585\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　余弦定理}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ theta\ =\ -\/Mathf.Acos(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Mathf.Pow(hypotenuse,\ 2)\ +\ Mathf.Pow(adjacent,\ 2)\ -\/\ Mathf.Pow(opposite,\ 2))}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ /\ (2\ *\ hypotenuse\ *\ adjacent));}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00589}00589\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　横軸のspeedから斜め方向の速さを計算}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ hypotenuseSpeed\ =\ hypotenuse\ /\ m\_arrivalTime;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00592}00592\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//　一旦攻撃対象の方を見る}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lunchObj.transform.LookAt(\_endPos);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00596}00596\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lunchObj.transform.Rotate(}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3.right,\ theta\ *\ Mathf.Rad2Deg,\ Space.Self);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00598}00598\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00599}00599\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_throwPower\ =}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_lunchObj.transform.forward\ *\ hypotenuseSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00601}00601\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00602}00602\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00603}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a156f93050a7b3b6d95284c4a58a92532}{00603}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_a156f93050a7b3b6d95284c4a58a92532}{HitRay}}(out\ RaycastHit\ \_hit)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00604}00604\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ var\ mouse\ =\ \textcolor{keyword}{new}\ Vector2(Screen.width\ /\ 2.0f,\ Screen.height\ /\ 2.0f);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ var\ ray\ =\ m\_mainCamera.ScreenPointToRay(mouse);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ Physics.Raycast(ray,\ out\ \_hit,\ Mathf.Infinity);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00608}00608\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00609}00609\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00610}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_af167a89d98aebe1ff49e7dcd3acbf0e6}{00610}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_to_throw_af167a89d98aebe1ff49e7dcd3acbf0e6}{SwitchCamera}}(\textcolor{keywordtype}{bool}\ \_aimCamera)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00611}00611\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//カメラの切り替え}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.m\_throwAimCamera\ !=\ \textcolor{keyword}{null}\ \&\&\ Core.PlayerParameters.m\_playerfollowCamera\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_throwAimCamera.SetActive(\_aimCamera);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_playerfollowCamera.SetActive(!\_aimCamera);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00618}00618\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00619}00619\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00620}00620\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00621}00621\ \ \ \ \ \textcolor{comment}{//\ 投げる用ステート(吉田)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00622}00622\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00623}00623\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/ThrowItem"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00624}\mbox{\hyperlink{class_character_core_1_1_action_state___throw_item}{00624}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___throw_item}{ActionState\_ThrowItem}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00625}00625\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00626}\mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_ab191dc1c50747816da4b89805e6f31a6}{00626}}\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_item_instance}{ThrowItemInstance}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_ab191dc1c50747816da4b89805e6f31a6}{m\_throwItemInstance}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00627}\mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_a64473bc43145cbc1fb7d5417b66d1f58}{00627}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_a64473bc43145cbc1fb7d5417b66d1f58}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00628}00628\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ m\_throwItemInstance\ =\ Core.AddComponent<\mbox{\hyperlink{class_throw_item_instance}{ThrowItemInstance}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ m\_throwItemInstance.\mbox{\hyperlink{class_throw_item_instance_a64e24905a052efaecf2a98c58b9ab403}{SetHandTrans}}(Core.PlayerParameters.m\_handTrans);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ m\_throwItemInstance.\mbox{\hyperlink{class_throw_item_instance_ada4150b3e8e9780997dff649bdf473c6}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,\ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ m\_throwItemInstance.ThrowPower\ =\ Core.PlayerParameters.m\_throwPower;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00634}00634\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_throwItemInstance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_throwItemInstance.\mbox{\hyperlink{class_throw_item_instance_acae4faaa5d8550a8dfe10753c1ff633b}{Throw}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00638}00638\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_throwItemInstance);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00641}00641\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00642}00642\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00643}00643\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00644}\mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_ae74a62dca14f662c3b1c30eb850f29a8}{00644}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_ae74a62dca14f662c3b1c30eb850f29a8}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00645}00645\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (Core.m\_animator.GetBool("{}IsThrow"{})\ ==\ true)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00647}00647\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (m\_throwItemInstance\ !=\ null)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ m\_throwItemInstance.Throw();}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00651}00651\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ Destroy(m\_throwItemInstance);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00655}00655\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00656}00656\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00657}00657\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00658}\mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_a866ee4ec4d60d256d1a28a376ece142f}{00658}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___throw_item_a866ee4ec4d60d256d1a28a376ece142f}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00659}00659\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_throwItemInstance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_throwItemInstance.\mbox{\hyperlink{class_throw_item_instance_acae4faaa5d8550a8dfe10753c1ff633b}{Throw}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_throwItemInstance);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00665}00665\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 未設定状態にする}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00668}00668\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//falseにする}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsThrow"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00671}00671\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00672}00672\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00673}00673\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00674}00674\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00675}00675\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00676}00676\ \ \ \ \ \textcolor{comment}{//武器しまい状態(山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00677}00677\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00678}00678\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/SheathWeapon"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00679}\mbox{\hyperlink{class_character_core_1_1_action_state___sheath_weapon}{00679}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___sheath_weapon}{ActionState\_SheathWeapon}}\ :\ \mbox{\hyperlink{class_character_core}{CharacterCore}}.\mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00680}00680\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00681}\mbox{\hyperlink{class_character_core_1_1_action_state___sheath_weapon_ac1bea96419fb79f6c496151b45353d0f}{00681}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___sheath_weapon_ac1bea96419fb79f6c496151b45353d0f}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00682}00682\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_animator.GetBool(\textcolor{stringliteral}{"{}IsSheath"{}})\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00684}00684\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsSheath"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00687}00687\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00688}00688\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00689}00689\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00690}00690\ \ \ \ \ \textcolor{comment}{//武器持ち状態(山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00691}00691\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00692}00692\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/UnSheathWeapon"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00693}\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon}{00693}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon}{ActionState\_UnSheathWeapon}}\ :\ \mbox{\hyperlink{class_character_core}{CharacterCore}}.\mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00694}00694\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00695}\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_ab4729f8999b439823f4691c646bf11a6}{00695}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_ab4729f8999b439823f4691c646bf11a6}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00696}00696\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00697}00697\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_animator.GetBool(\textcolor{stringliteral}{"{}IsSheath"{}})\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00698}00698\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00699}00699\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsSheath"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00700}00700\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00701}00701\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00702}00702\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00703}00703\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 設置用ステート(吉田)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00704}00704\ \ \ \ \ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00705}\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_1_1_action_state___proximity_create_window}{00705}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_1_1_action_state___proximity_create_window}{ActionState\_ProximityCreateWindow}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00706}00706\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00707}\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_1_1_action_state___proximity_create_window_a3063345982a3c24d453fc3d93df33234}{00707}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_1_1_action_state___proximity_create_window_a3063345982a3c24d453fc3d93df33234}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00708}00708\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00709}00709\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00710}00710\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ obj\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{interface_i_meta_a_i}{IMetaAI<ProximityCreateWindow>}}.Instance.\mbox{\hyperlink{interface_i_meta_a_i_a5538533e130a7a180b806f1937f65447}{ObjectList}})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00711}00711\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00712}00712\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (obj.IsCreate\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00713}00713\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00714}00714\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ obj.CreateWindow();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00715}00715\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00718}\mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_1_1_action_state___proximity_create_window_a9b405cdd25b5110d1fc1185bba7cc988}{00718}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___un_sheath_weapon_1_1_action_state___proximity_create_window_a9b405cdd25b5110d1fc1185bba7cc988}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00720}00720\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//foreach\ (var\ obj\ in\ IMetaAI<ProximityCreateWindow>.Instance.ObjectList)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (obj.IsCreate\ ==\ true)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00724}00724\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ obj.CreateWindow();}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00725}00725\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00728}00728\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00729}00729\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00730}00730\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00731}00731\ \ \ \ \ \textcolor{comment}{//\ アイテム持ち状態(山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00732}00732\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00733}00733\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/HoldItem"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00734}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item}{00734}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item}{ActionState\_HoldItem}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00735}00735\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00737}00737\ \ \ \ \ \ \ \ \ \textcolor{comment}{//private\ bool\ m\_isSkipFlg\ =\ false;}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00738}00738\ \ \ \ \ \ \ \ \ \textcolor{comment}{//選択したアイテムを出現させるクラス}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00739}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{00739}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_hold_item_instance}{HoldItemInstance}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_ab2ae0d44613d3ecf0197baa784f3ca0c}{m\_holdItemInstance}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00740}00740\ \ \ \ \ \ \ \ \ \textcolor{comment}{//食べられるかどうか}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00741}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_adefd6d5ac93c20a075d4f901c03134b5}{00741}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_adefd6d5ac93c20a075d4f901c03134b5}{m\_isEat}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00742}00742\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00743}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a2f05122c262b5177093b055c6fc3a029}{00743}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a2f05122c262b5177093b055c6fc3a029}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00744}00744\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsHoldItem"{}},\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00747}00747\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//武器が存在する場合は消す}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.HideWeapon(Core.m\_animator);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00750}00750\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00751}00751\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//選択アイテムを出現させる}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00752}00752\ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance\ =\ Core.AddComponent<\mbox{\hyperlink{class_hold_item_instance}{HoldItemInstance}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_ad0b9e8619b19ff2aea7f69c6e724c0df}{SetHoldPoint}}(Core.PlayerParameters.m\_holdTrans);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_a62f0f1c1c169ecf807553bb7ddcf45ee}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_ac55e636301903dc4b83bba20ea861102}{Craft}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00757}00757\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//料理データにアクセスし、食べられものかどうかをチェック}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00762}00762\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00763}00763\ \ \ \ \ \ \ \ \ \ \ \ \ m\_isEat\ =\ data.\mbox{\hyperlink{class_base_edible_item_a09ea4ffb82e0c724467b0572ba3e87da}{IsEat}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00764}00764\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.Attack);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.AddActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00769}00769\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00770}00770\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00771}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a564ae6358df0b8342b44bcbb10e038e5}{00771}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a564ae6358df0b8342b44bcbb10e038e5}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00772}00772\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//選択アイテムが変更されたらコンポーネントを変更}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_a735768a9d7fd540a3ef6445107ad0939}{ItemID}}\ !=\ Core.PlayerParameters.m\_putItemInfo.m\_itemID)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00776}00776\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_a4c019e28246688a65de0702be2de82b5}{DestroyPrefab}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_ad0b9e8619b19ff2aea7f69c6e724c0df}{SetHoldPoint}}(Core.PlayerParameters.m\_holdTrans);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_a62f0f1c1c169ecf807553bb7ddcf45ee}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00780}00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_holdItemInstance.\mbox{\hyperlink{class_hold_item_instance_ac55e636301903dc4b83bba20ea861102}{Craft}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00781}00781\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//料理データにアクセスし、食べられものかどうかをチェック}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00785}00785\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00786}00786\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_isEat\ =\ data.\mbox{\hyperlink{class_base_edible_item_a09ea4ffb82e0c724467b0572ba3e87da}{IsEat}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00788}00788\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00790}00790\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00791}00791\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 指定のボタンの入力で設置状態へ（吉田）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00792}00792\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.PutItem)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムの設定されていたらState変更可}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.m\_putItemInfo.m\_itemID\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00797}00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}PutItem"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00798}00798\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00800}00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00801}00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00802}00802\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00803}00803\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00804}00804\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//指定のボタン入力かつ食べられる料理の場合、食事状態に移行}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00805}00805\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.Eat\ \&\&\ m\_isEat)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00806}00806\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00807}00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}IsEat"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00808}00808\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00810}00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00811}00811\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00812}00812\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 指定のボタンの入力で投げ準備状態へ（吉田）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00814}00814\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.ReadyThrowItem)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00815}00815\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00816}00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムの設定されていたらState変更可}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.PlayerParameters.m\_putItemInfo.m\_itemID\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00818}00818\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00819}00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}ReadyToThrow"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00820}00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00821}00821\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00822}00822\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//キャンセルボタンを押すことでMoveに戻る}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00824}00824\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_inputProvider.Cancel)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsHoldItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00827}00827\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.PlayerParameters.RemoveActionUIState(ActionUIController.ActionUIState.HoldItem);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00831}00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.Attack);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00832}00832\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00834}00834\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00835}00835\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00836}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a8988d23b8cb7321e8db87ab7a1a7347e}{00836}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a8988d23b8cb7321e8db87ab7a1a7347e}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00837}00837\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//移動処理}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ var\ input\ =\ Core.m\_inputProvider.MoveVector;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00840}00840\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 方向キーの入力があったら、その向きにキャラクターを回転させる}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00842}00842\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (input.magnitude\ !=\ 0)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00843}00843\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00844}00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(input);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00846}00846\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 移動速度の計算}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00848}00848\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ speedByStick\ =\ input.magnitude;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00849}00849\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ finalSpeed;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00850}00850\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_isRun)\ finalSpeed\ =\ Core.m\_dushSpeed\ *\ speedByStick;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00851}00851\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ finalSpeed\ =\ Core.m\_walkSpeed\ *\ speedByStick;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00852}00852\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00853}00853\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(finalSpeed);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00854}00854\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00855}00855\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00856}00856\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00857}00857\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00858}\mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a4fb6d22ed05b721192dcb991cb4241c0}{00858}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___hold_item_a4fb6d22ed05b721192dcb991cb4241c0}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00859}00859\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00860}00860\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00861}00861\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsHoldItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00862}00862\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00863}00863\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//コンポーネントを削除}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00864}00864\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_holdItemInstance\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00865}00865\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00866}00866\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_holdItemInstance);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00867}00867\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00868}00868\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00869}00869\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00870}00870\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00871}00871\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00872}00872\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00873}00873\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00874}00874\ \ \ \ \ \textcolor{comment}{//アイテム食事状態(山本)}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00875}00875\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00876}00876\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/UseItem"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00877}\mbox{\hyperlink{class_character_core_1_1_action_state___use_item}{00877}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___use_item}{ActionState\_UseItem}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00878}00878\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00879}00879\ \ \ \ \ \ \ \ \ \textcolor{comment}{//料理食事コンポーネント}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00880}\mbox{\hyperlink{class_character_core_1_1_action_state___use_item_a6956969340d03db07d0d02dbeb4e1309}{00880}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_use_item_instance}{UseItemInstance}}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_item_a6956969340d03db07d0d02dbeb4e1309}{m\_useItemInstance}};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00881}00881\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00882}\mbox{\hyperlink{class_character_core_1_1_action_state___use_item_a9c665dea45658965099102b8876578ee}{00882}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_item_a9c665dea45658965099102b8876578ee}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00883}00883\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00885}00885\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00886}00886\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//アイテム使用}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00887}00887\ \ \ \ \ \ \ \ \ \ \ \ \ m\_useItemInstance\ =\ Core.AddComponent<\mbox{\hyperlink{class_use_item_instance}{UseItemInstance}}>();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00888}00888\ \ \ \ \ \ \ \ \ \ \ \ \ m\_useItemInstance.\mbox{\hyperlink{class_use_item_instance_a35831854764bb8def7c7714b45103205}{SetItemID}}(Core.PlayerParameters.m\_putItemInfo.m\_itemTypeID,}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00889}00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.m\_putItemInfo.m\_itemID);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00890}00890\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ m\_useItemInstance.\mbox{\hyperlink{class_use_item_instance_ad3e2112321c08b004b9a9b675981387a}{UseItem}}();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00892}00892\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00893}00893\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00894}\mbox{\hyperlink{class_character_core_1_1_action_state___use_item_aa6ac3b4db5c722aec7b53738eea54057}{00894}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___use_item_aa6ac3b4db5c722aec7b53738eea54057}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00895}00895\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00896}00896\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnExit();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00897}00897\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_useItemInstance)}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00898}00898\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00899}00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(m\_useItemInstance);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00900}00900\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00901}00901\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00902}00902\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//フラグをfalseに（山本）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetBool(\textcolor{stringliteral}{"{}IsEatItem"{}},\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00904}00904\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00905}00905\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIの表示}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00906}00906\ \ \ \ \ \ \ \ \ \ \ \ \ Core.PlayerParameters.AddActionUIState(\mbox{\hyperlink{class_action_u_i_controller}{ActionUIController}}.\mbox{\hyperlink{class_action_u_i_controller_abc8005cedbe73e7e76027add0612b708}{ActionUIState}}.Attack);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00907}00907\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00908}00908\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00909}00909\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00910}00910\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00911}00911\ \ \ \ \ \textcolor{comment}{//復活状態（山本）}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00912}00912\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00913}00913\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Player/Continue"{}})]}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00914}\mbox{\hyperlink{class_character_core_1_1_action_state___player_continue}{00914}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___player_continue}{ActionState\_PlayerContinue}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00915}00915\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00916}00916\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00917}\mbox{\hyperlink{class_character_core_1_1_action_state___player_continue_a37c4fea5e1a8e79970757df34a8c6c7d}{00917}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___player_continue_a37c4fea5e1a8e79970757df34a8c6c7d}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00918}00918\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00919}00919\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00920}00920\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ position\ =\ Core.PlayerParameters.PlayerRestartPosition;}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00921}00921\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Core.CharaCtrl.SetPositionMotor(position);}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00922}00922\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00923}00923\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00924}00924\ \ \ \ \ \ \ \ \ \ \ \ \ var\ forward\ =\ Core.PlayerParameters.PlayerRestartForward;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00925}00925\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ v\ =\ Vector3.RotateTowards(Core.transform.forward,\ forward,\ 10000.0f,\ 0);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00926}00926\ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(v);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00927}00927\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00928}00928\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00929}00929\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//体力を満タンで回復}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00930}00930\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Status.m\_hp.Value\ =\ Core.Status.MaxHP;}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00931}00931\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00932}00932\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//コンティニュー用カットシーン再生}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00933}00933\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_cut_scene_manager}{CutSceneManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.PlayCutScene(\mbox{\hyperlink{_cut_scene_manager_8cs_a1415b3106c1e3a742a597b3185fdd31f}{CutSceneNumber}}.reStart);}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00934}00934\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00935}00935\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ノーダメージフラグ立てる}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00936}00936\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoDamage\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00937}00937\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00938}00938\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00939}\mbox{\hyperlink{class_character_core_1_1_action_state___player_continue_ae8f9f677ab30091a02db6094bf72db95}{00939}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___player_continue_ae8f9f677ab30091a02db6094bf72db95}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00940}00940\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00941}00941\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00942}00942\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00943}00943\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_cut_scene_manager}{CutSceneManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsCutScenePlay()\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00944}00944\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00945}00945\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}RePlay"{}});}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00946}00946\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00947}00947\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00948}00948\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00949}00949\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00950}\mbox{\hyperlink{class_character_core_1_1_action_state___player_continue_a8d35e9dce1c74123dd5890ce35099651}{00950}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___player_continue_a8d35e9dce1c74123dd5890ce35099651}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00951}00951\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00952}00952\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnExit();}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00953}00953\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00954}00954\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoDamage\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00955}00955\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00956}00956\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00957}00957\ }
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00958}00958\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_player_state_8cs_source_l00959}00959\ \}}
+
+\end{DoxyCode}

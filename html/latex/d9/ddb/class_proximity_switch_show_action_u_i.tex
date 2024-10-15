@@ -1,0 +1,179 @@
+\doxysection{Proximity\+Switch\+Show\+Action\+UI クラス}
+\hypertarget{class_proximity_switch_show_action_u_i}{}\label{class_proximity_switch_show_action_u_i}\index{ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}}
+
+
+Proximity\+Switch\+Show\+Action\+UI の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=224pt]{d0/ddb/class_proximity_switch_show_action_u_i__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Proximity\+Switch\+Show\+Action\+UI 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{d3/d43/class_proximity_switch_show_action_u_i__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a5d1f6394608ea1760ca1d2071dae4467}{On\+Trigger\+Enter}} (Collider other)
+\item 
+void \mbox{\hyperlink{class_proximity_switch_show_action_u_i_ae4b38854ffa06ddd1749b098c62edb02}{On\+Trigger\+Exit}} (Collider other)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+Action\+UIController.\+Action\+UIState \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\+\_\+show\+Action\+UI}} = Action\+UIController.\+Action\+UIState.\+Able\+To\+Cooking
+\item 
+string \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{m\+\_\+tag}} = "{}Player"{}
+\item 
+\mbox{\hyperlink{class_character_core}{Character\+Core}} \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\+\_\+character\+Core}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source}{Proximity\+Switch\+Show\+Action\+UI.\+cs}} の \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source_l00009}{9}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_proximity_switch_show_action_u_i_a5d1f6394608ea1760ca1d2071dae4467}\index{ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}!OnTriggerEnter@{OnTriggerEnter}}
+\index{OnTriggerEnter@{OnTriggerEnter}!ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}}
+\doxysubsubsection{\texorpdfstring{OnTriggerEnter()}{OnTriggerEnter()}}
+{\footnotesize\ttfamily \label{class_proximity_switch_show_action_u_i_a5d1f6394608ea1760ca1d2071dae4467} 
+void Proximity\+Switch\+Show\+Action\+UI.\+On\+Trigger\+Enter (\begin{DoxyParamCaption}\item[{Collider}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source}{Proximity\+Switch\+Show\+Action\+UI.\+cs}} の \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source_l00027}{27}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.transform.CompareTag(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{m\_tag}}))}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターコアからActionUIを表示する}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.TryGetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>(out\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ characterCore))}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ =\ characterCore;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが見つかりませんでした"{}});}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distance\ =\ Vector3.Distance(other.transform.position,\ transform.position);}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}.\mbox{\hyperlink{class_player_parameters_a400e5751567234909eb10055d477ae61}{AddAnyActionUIState}}(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}},\ distance);}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}.\mbox{\hyperlink{class_player_parameters_a86c2e8d47ffe1441f094c6ce6a1510f0}{AddActionUIState}}(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}});}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/ddb/class_proximity_switch_show_action_u_i_a5d1f6394608ea1760ca1d2071dae4467_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_proximity_switch_show_action_u_i_ae4b38854ffa06ddd1749b098c62edb02}\index{ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}!OnTriggerExit@{OnTriggerExit}}
+\index{OnTriggerExit@{OnTriggerExit}!ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}}
+\doxysubsubsection{\texorpdfstring{OnTriggerExit()}{OnTriggerExit()}}
+{\footnotesize\ttfamily \label{class_proximity_switch_show_action_u_i_ae4b38854ffa06ddd1749b098c62edb02} 
+void Proximity\+Switch\+Show\+Action\+UI.\+On\+Trigger\+Exit (\begin{DoxyParamCaption}\item[{Collider}]{other}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source}{Proximity\+Switch\+Show\+Action\+UI.\+cs}} の \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source_l00055}{55}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00056\ \ \ \ \ \{}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.transform.CompareTag(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}{m\_tag}}))}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キャラクターコアからActionUIを表示する}}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (other.TryGetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>(out\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ characterCore))}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}\ =\ characterCore;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが見つかりませんでした"{}});}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}.\mbox{\hyperlink{class_player_parameters_a0ca6aca55f2a66687ba296928eea0292}{RemoveAnyActionUIState}}(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}});}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_ab5bf6b6f900839c44b44eb63938f3664}{PlayerParameters}}.\mbox{\hyperlink{class_player_parameters_a9e7696b4818f8fb9289b153463b44f97}{RemoveActionUIState}}(\mbox{\hyperlink{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}{m\_showActionUI}});}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/ddb/class_proximity_switch_show_action_u_i_ae4b38854ffa06ddd1749b098c62edb02_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc}\index{ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}!m\_showActionUI@{m\_showActionUI}}
+\index{m\_showActionUI@{m\_showActionUI}!ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}}
+\doxysubsubsection{\texorpdfstring{m\_showActionUI}{m\_showActionUI}}
+{\footnotesize\ttfamily \label{class_proximity_switch_show_action_u_i_a2024d0e3e8fe3dda5928eb3cbbd264fc} 
+Action\+UIController.\+Action\+UIState Proximity\+Switch\+Show\+Action\+UI.\+m\+\_\+show\+Action\+UI = Action\+UIController.\+Action\+UIState.\+Able\+To\+Cooking\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source}{Proximity\+Switch\+Show\+Action\+UI.\+cs}} の \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source_l00019}{19}} 行目に定義があります。
+
+\Hypertarget{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570}\index{ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}!m\_tag@{m\_tag}}
+\index{m\_tag@{m\_tag}!ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}}
+\doxysubsubsection{\texorpdfstring{m\_tag}{m\_tag}}
+{\footnotesize\ttfamily \label{class_proximity_switch_show_action_u_i_a0bb168c5a48acfdc499dab0e71765570} 
+string Proximity\+Switch\+Show\+Action\+UI.\+m\+\_\+tag = "{}Player"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source}{Proximity\+Switch\+Show\+Action\+UI.\+cs}} の \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source_l00023}{23}} 行目に定義があります。
+
+\Hypertarget{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3}\index{ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}!m\_characterCore@{m\_characterCore}}
+\index{m\_characterCore@{m\_characterCore}!ProximitySwitchShowActionUI@{ProximitySwitchShowActionUI}}
+\doxysubsubsection{\texorpdfstring{m\_characterCore}{m\_characterCore}}
+{\footnotesize\ttfamily \label{class_proximity_switch_show_action_u_i_a4594f55acb827104de3937bab05d56d3} 
+\mbox{\hyperlink{class_character_core}{Character\+Core}} Proximity\+Switch\+Show\+Action\+UI.\+m\+\_\+character\+Core = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source}{Proximity\+Switch\+Show\+Action\+UI.\+cs}} の \mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs_source_l00025}{25}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/002\+\_\+\+UI/\+Script/\+Model/\mbox{\hyperlink{_proximity_switch_show_action_u_i_8cs}{Proximity\+Switch\+Show\+Action\+UI.\+cs}}\end{DoxyCompactItemize}

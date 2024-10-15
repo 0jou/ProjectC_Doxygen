@@ -1,0 +1,231 @@
+\doxysection{Volume\+Save\+Loader.\+Volume\+Save\+Load 構造体}
+\hypertarget{struct_volume_save_loader_1_1_volume_save_load}{}\label{struct_volume_save_loader_1_1_volume_save_load}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+
+
+Volume\+Save\+Loader.\+Volume\+Save\+Load 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=252pt]{d8/ddc/struct_volume_save_loader_1_1_volume_save_load__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a242af6c13c79e68920684d5517d61bf8}{Load\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em 各カテゴリの音量を外部ファイルから読み込む。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a73e5454bb29099be2f6d31462b5c2bfe}{Load\+Volume\+Cri\+Category}} ()
+\item 
+void \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a0e437c43d1ad00382f22e527323350e5}{Save\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em 各カテゴリの音量を外部ファイルに保存する。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_ae8896c4b0a18046219923ed7cbc0f0c2}{Set\+Cri\+Category\+Volume}} ()
+\item 
+void \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_af9a4181ef8e7e953eb17bd6fc4043818}{Save\+Volume\+Cri\+Category}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{フィールド}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}{Master\+Volume}}
+\item 
+float \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}{Music\+Volume}}
+\item 
+float \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}{SFXVolume}}
+\item 
+float \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}{UIVolume}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00077}{77}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_a242af6c13c79e68920684d5517d61bf8}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!LoadVolume@{LoadVolume}}
+\index{LoadVolume@{LoadVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{LoadVolume()}{LoadVolume()}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_a242af6c13c79e68920684d5517d61bf8} 
+void Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Load\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+各カテゴリの音量を外部ファイルから読み込む。 
+
+セーブデータが存在しない場合はエラーを出力する。 保存先\+:Assets/\+Project\+C/998\+\_\+\+Debug\+Save\+Data/\+Quick\+Save/\+Volume.\+json ビルド時\+:Application.\+persistent\+Data\+Path/\+Volume.json 
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00089}{89}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!QuickSaveReader.RootExists(\textcolor{stringliteral}{"{}Volume"{}}))}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}セーブデータがありません:Volume"{}});\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ QuickSaveReader\ reader\ =\ QuickSaveReader.Create(\textcolor{stringliteral}{"{}Volume"{}});}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}{MasterVolume}}\ =\ reader.Read<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}Master"{}});}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}{MusicVolume}}\ =\ reader.Read<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}MusicVol"{}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}{SFXVolume}}\ =\ reader.Read<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}SFXVol"{}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}{UIVolume}}\ =\ reader.Read<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}UIVol"{}});}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d1e/struct_volume_save_loader_1_1_volume_save_load_a242af6c13c79e68920684d5517d61bf8_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_a73e5454bb29099be2f6d31462b5c2bfe}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!LoadVolumeCriCategory@{LoadVolumeCriCategory}}
+\index{LoadVolumeCriCategory@{LoadVolumeCriCategory}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{LoadVolumeCriCategory()}{LoadVolumeCriCategory()}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_a73e5454bb29099be2f6d31462b5c2bfe} 
+void Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Load\+Volume\+Cri\+Category (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00103}{103}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}{MasterVolume}}\ =\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}Master"{}});}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}{MusicVolume}}\ =\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}Music"{}});}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}{SFXVolume}}\ =\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}SFX"{}});}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}{UIVolume}}\ =\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}UI"{}});}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_a0e437c43d1ad00382f22e527323350e5}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!SaveVolume@{SaveVolume}}
+\index{SaveVolume@{SaveVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{SaveVolume()}{SaveVolume()}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_a0e437c43d1ad00382f22e527323350e5} 
+void Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Save\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+各カテゴリの音量を外部ファイルに保存する。 
+
+セーブデータが存在しない場合は新規作成する。 保存先\+:Assets/\+Project\+C/998\+\_\+\+Debug\+Save\+Data/\+Quick\+Save/\+Volume.\+json ビルド時\+:Application.\+persistent\+Data\+Path/\+Volume.json 
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00117}{117}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \ \ \ \ var\ writer\ =\ QuickSaveWriter.Create(\textcolor{stringliteral}{"{}Volume"{}});}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}Master"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}{MasterVolume}});}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}MusicVol"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}{MusicVolume}});}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}SFXVol"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}{SFXVolume}});}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}UIVol"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}{UIVolume}});}
+\DoxyCodeLine{00125\ }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Commit();}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_ae8896c4b0a18046219923ed7cbc0f0c2}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!SetCriCategoryVolume@{SetCriCategoryVolume}}
+\index{SetCriCategoryVolume@{SetCriCategoryVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{SetCriCategoryVolume()}{SetCriCategoryVolume()}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_ae8896c4b0a18046219923ed7cbc0f0c2} 
+void Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Set\+Cri\+Category\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00129}{129}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \ \ \ \ CriAtom.SetCategoryVolume(\textcolor{stringliteral}{"{}Master"{}},\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}{MasterVolume}});}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \ \ \ \ CriAtom.SetCategoryVolume(\textcolor{stringliteral}{"{}Music"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}{MusicVolume}});}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ CriAtom.SetCategoryVolume(\textcolor{stringliteral}{"{}SFX"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}{SFXVolume}});}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ CriAtom.SetCategoryVolume(\textcolor{stringliteral}{"{}UI"{}},\ \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}{UIVolume}});}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_af9a4181ef8e7e953eb17bd6fc4043818}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!SaveVolumeCriCategory@{SaveVolumeCriCategory}}
+\index{SaveVolumeCriCategory@{SaveVolumeCriCategory}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{SaveVolumeCriCategory()}{SaveVolumeCriCategory()}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_af9a4181ef8e7e953eb17bd6fc4043818} 
+void Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Save\+Volume\+Cri\+Category (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00137}{137}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ var\ writer\ =\ QuickSaveWriter.Create(\textcolor{stringliteral}{"{}Volume"{}});}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}Master"{}},\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}Master"{}}));}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}MusicVol"{}},\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}Music"{}}));}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}SFXVol"{}},\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}SFX"{}}));}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Write<\textcolor{keywordtype}{float}>(\textcolor{stringliteral}{"{}UIVol"{}},\ CriAtom.GetCategoryVolume(\textcolor{stringliteral}{"{}UI"{}}));}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ writer.Commit();}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d1e/struct_volume_save_loader_1_1_volume_save_load_af9a4181ef8e7e953eb17bd6fc4043818_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!MasterVolume@{MasterVolume}}
+\index{MasterVolume@{MasterVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{MasterVolume}{MasterVolume}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa} 
+float Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Master\+Volume}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00079}{79}} 行目に定義があります。
+
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!MusicVolume@{MusicVolume}}
+\index{MusicVolume@{MusicVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{MusicVolume}{MusicVolume}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae} 
+float Volume\+Save\+Loader.\+Volume\+Save\+Load.\+Music\+Volume}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00080}{80}} 行目に定義があります。
+
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!SFXVolume@{SFXVolume}}
+\index{SFXVolume@{SFXVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{SFXVolume}{SFXVolume}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1} 
+float Volume\+Save\+Loader.\+Volume\+Save\+Load.\+SFXVolume}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00081}{81}} 行目に定義があります。
+
+\Hypertarget{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}\index{VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}!UIVolume@{UIVolume}}
+\index{UIVolume@{UIVolume}!VolumeSaveLoader.VolumeSaveLoad@{VolumeSaveLoader.VolumeSaveLoad}}
+\doxysubsubsection{\texorpdfstring{UIVolume}{UIVolume}}
+{\footnotesize\ttfamily \label{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843} 
+float Volume\+Save\+Loader.\+Volume\+Save\+Load.\+UIVolume}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00082}{82}} 行目に定義があります。
+
+
+
+この構造体詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/011\+\_\+\+Sound/\mbox{\hyperlink{_volume_save_loader_8cs}{Volume\+Save\+Loader.\+cs}}\end{DoxyCompactItemize}

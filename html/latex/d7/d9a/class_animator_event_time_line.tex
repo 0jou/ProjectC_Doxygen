@@ -1,0 +1,108 @@
+\doxysection{Animator\+Event\+Time\+Line クラス}
+\hypertarget{class_animator_event_time_line}{}\label{class_animator_event_time_line}\index{AnimatorEventTimeLine@{AnimatorEventTimeLine}}
+
+
+Animator\+Event\+Time\+Line の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{d9/d61/class_animator_event_time_line__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Animator\+Event\+Time\+Line 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=237pt]{de/dfa/class_animator_event_time_line__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_animator_event_time_line_a28c9298e7756a60624a594a91b4d58a6}{On\+Event}} (Animator animator)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+Timeline\+Asset \mbox{\hyperlink{class_animator_event_time_line_a7b72420b22487a9df4841efe548947e4}{timeline}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_animator_event_time_line_8cs_source}{Animator\+Event\+Time\+Line.\+cs}} の \mbox{\hyperlink{_animator_event_time_line_8cs_source_l00009}{9}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_animator_event_time_line_a28c9298e7756a60624a594a91b4d58a6}\index{AnimatorEventTimeLine@{AnimatorEventTimeLine}!OnEvent@{OnEvent}}
+\index{OnEvent@{OnEvent}!AnimatorEventTimeLine@{AnimatorEventTimeLine}}
+\doxysubsubsection{\texorpdfstring{OnEvent()}{OnEvent()}}
+{\footnotesize\ttfamily \label{class_animator_event_time_line_a28c9298e7756a60624a594a91b4d58a6} 
+override void Animator\+Event\+Time\+Line.\+On\+Event (\begin{DoxyParamCaption}\item[{Animator}]{animator}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animator_event_time_line_8cs_source}{Animator\+Event\+Time\+Line.\+cs}} の \mbox{\hyperlink{_animator_event_time_line_8cs_source_l00014}{14}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015\ \ \ \ \ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_animator_event_time_line_a7b72420b22487a9df4841efe548947e4}{timeline}}==\textcolor{keyword}{null})}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (animator.transform.root.TryGetComponent(out\ ShareNodes\ nodes))}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (nodes.Nodes.TryGetValue(m\_parent,\ out\ Transform\ parent))}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ m\_createdInstance\ =\ GameObject.Instantiate(m\_object,\ parent);}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ else}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ Debug.LogError("{}攻撃当たり判定の親オブジェクトが見つかりませんでした。"{}\ +}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ "{}登録名が間違っているか、ShareNodeに追加されていません。"{});}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//else\ Debug.LogError("{}ShareNodesコンポーネントが見つかりませんでした"{});}}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator.transform.TryGetComponent(out\ PlayableDirector\ director))}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//指定したタイムラインを再生}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ director.Play(\mbox{\hyperlink{class_animator_event_time_line_a7b72420b22487a9df4841efe548947e4}{timeline}});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}PlayableDirectorコンポーネントが見つかりませんでした"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_animator_event_time_line_a7b72420b22487a9df4841efe548947e4}\index{AnimatorEventTimeLine@{AnimatorEventTimeLine}!timeline@{timeline}}
+\index{timeline@{timeline}!AnimatorEventTimeLine@{AnimatorEventTimeLine}}
+\doxysubsubsection{\texorpdfstring{timeline}{timeline}}
+{\footnotesize\ttfamily \label{class_animator_event_time_line_a7b72420b22487a9df4841efe548947e4} 
+Timeline\+Asset Animator\+Event\+Time\+Line.\+timeline\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animator_event_time_line_8cs_source}{Animator\+Event\+Time\+Line.\+cs}} の \mbox{\hyperlink{_animator_event_time_line_8cs_source_l00012}{12}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/001\+\_\+\+Common/\+Scripts/\+Animator\+Event/\mbox{\hyperlink{_animator_event_time_line_8cs}{Animator\+Event\+Time\+Line.\+cs}}\end{DoxyCompactItemize}

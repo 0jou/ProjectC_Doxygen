@@ -1,0 +1,532 @@
+\doxysection{Window\+UIController クラス}
+\hypertarget{class_window_u_i_controller}{}\label{class_window_u_i_controller}\index{WindowUIController@{WindowUIController}}
+
+
+Window\+UIController の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{df/d8e/class_window_u_i_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Window\+UIController 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{da/d8b/class_window_u_i_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+async Uni\+Task \mbox{\hyperlink{class_window_u_i_controller_a74c822fe466c483d97399d4df75d5fd6}{On\+Initialize}} ()
+\begin{DoxyCompactList}\small\item\em 初期化処理 \end{DoxyCompactList}\item 
+async Uni\+Task \mbox{\hyperlink{class_window_u_i_controller_a883d549975cad2ed0e98c77dc39b0a5f}{On\+Update}} ()
+\begin{DoxyCompactList}\small\item\em 実行処理 \end{DoxyCompactList}\item 
+async Uni\+Task \mbox{\hyperlink{class_window_u_i_controller_a91a324323a9923b5fc18c32519c36663}{On\+Late\+Update}} ()
+\begin{DoxyCompactList}\small\item\em 後実行処理 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{限定公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+async Uni\+Task \mbox{\hyperlink{class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb}{Set\+UI}} ()
+\begin{DoxyCompactList}\small\item\em UIをセットする \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_window_u_i_controller_adb9ea4f5b6c3f24b5167839e6a0f3f31}{Set\+Alpha}} ()
+\begin{DoxyCompactList}\small\item\em 色をセット \end{DoxyCompactList}\item 
+async Uni\+Task \mbox{\hyperlink{class_window_u_i_controller_acaedd3b56c31e4eb070a5fc9c2242b12}{Select}} ()
+\item 
+bool \mbox{\hyperlink{class_window_u_i_controller_a5fe6a09ff8e65958f16b546f147da4e2}{Up}} ()
+\item 
+bool \mbox{\hyperlink{class_window_u_i_controller_abaa8718eb853414736d27c4d55c2f2c6}{Down}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_base_window_u_i}{Base\+Window\+UI}} $>$ \mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\+\_\+base\+Window\+UIList}} = new()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_window_u_i}{Base\+Window\+UI}} \mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\+\_\+current\+Update\+Base\+Window\+UI}} = null
+\item 
+int \mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\+\_\+current\+Base\+Window\+UICount}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00008}{8}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_window_u_i_controller_a74c822fe466c483d97399d4df75d5fd6}\index{WindowUIController@{WindowUIController}!OnInitialize@{OnInitialize}}
+\index{OnInitialize@{OnInitialize}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{OnInitialize()}{OnInitialize()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a74c822fe466c483d97399d4df75d5fd6} 
+async Uni\+Task Window\+UIController.\+On\+Initialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+初期化処理 
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00039}{39}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040\ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}}.Count\ <\ 1)}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}UIが一つもセットされていません"{}});}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度全て初期化}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ ui\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}})}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ui\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ ui.OnInitialize();}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択UIをセット}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb}{SetUI}}();}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a74c822fe466c483d97399d4df75d5fd6_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a74c822fe466c483d97399d4df75d5fd6_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_a883d549975cad2ed0e98c77dc39b0a5f}\index{WindowUIController@{WindowUIController}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a883d549975cad2ed0e98c77dc39b0a5f} 
+async Uni\+Task Window\+UIController.\+On\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+実行処理 
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00077}{77}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078\ \ \ \ \ \{}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIを選択}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_window_u_i_controller_acaedd3b56c31e4eb070a5fc9c2242b12}{Select}}();}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択中のUIのUpdate処理}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}.\mbox{\hyperlink{class_base_window_u_i_a85f33d9bbcbe1ad75e1ea81b88083913}{OnSelectUpdate}}();}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 全てのUpdate処理}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ ui\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}})}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ui\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ ui.OnUpdate();}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a883d549975cad2ed0e98c77dc39b0a5f_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a883d549975cad2ed0e98c77dc39b0a5f_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_a91a324323a9923b5fc18c32519c36663}\index{WindowUIController@{WindowUIController}!OnLateUpdate@{OnLateUpdate}}
+\index{OnLateUpdate@{OnLateUpdate}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{OnLateUpdate()}{OnLateUpdate()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a91a324323a9923b5fc18c32519c36663} 
+async Uni\+Task Window\+UIController.\+On\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+後実行処理 
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00115}{115}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00116\ \ \ \ \ \{}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 全てのUpdate後処理}}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ ui\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}})}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ui\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ ui.OnLateUpdate();}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00135\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a91a324323a9923b5fc18c32519c36663_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb}\index{WindowUIController@{WindowUIController}!SetUI@{SetUI}}
+\index{SetUI@{SetUI}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{SetUI()}{SetUI()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb} 
+async Uni\+Task Window\+UIController.\+Set\+UI (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+UIをセットする 
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00141}{141}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00142\ \ \ \ \ \{}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 終了処理実行}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}.\mbox{\hyperlink{class_base_window_u_i_a853dcb23f481627b661a6085d83f6d46}{OnSelectExit}}();}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 実行するUIを変更}}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}\ =\ \mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}}[\mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}}];}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 透明度をセット}}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_u_i_controller_adb9ea4f5b6c3f24b5167839e6a0f3f31}{SetAlpha}}();}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期処理実行}}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}.\mbox{\hyperlink{class_base_window_u_i_ac560873fe6a8724838c9bfaaf0d35b0f}{OnSelectInitialize}}();}
+\DoxyCodeLine{00166\ }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_adb9ea4f5b6c3f24b5167839e6a0f3f31}\index{WindowUIController@{WindowUIController}!SetAlpha@{SetAlpha}}
+\index{SetAlpha@{SetAlpha}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{SetAlpha()}{SetAlpha()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_adb9ea4f5b6c3f24b5167839e6a0f3f31} 
+void Window\+UIController.\+Set\+Alpha (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+色をセット 
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00183}{183}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00184\ \ \ \ \ \{}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ ui\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}})}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ui\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一致していれば}}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}{m\_currentUpdateBaseWindowUI}}\ ==\ ui)}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ ui.SetAlpha(flg);}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_adb9ea4f5b6c3f24b5167839e6a0f3f31_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_acaedd3b56c31e4eb070a5fc9c2242b12}\index{WindowUIController@{WindowUIController}!Select@{Select}}
+\index{Select@{Select}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{Select()}{Select()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_acaedd3b56c31e4eb070a5fc9c2242b12} 
+async Uni\+Task Window\+UIController.\+Select (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00201}{201}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00202\ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ToDO:選択キーassign修正}}
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Keyboard.current?.anyKey.wasPressedThisFrame\ ==\ \textcolor{keyword}{false}\ \&\&\ Gamepad.current?.wasUpdatedThisFrame\ ==\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00207\ }
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}}.Count\ <=\ 0)}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00213\ }
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ flg\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00215\ }
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 後ろに進む}}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Keyboard.current.oKey.wasPressedThisFrame)}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \mbox{\hyperlink{class_window_u_i_controller_abaa8718eb853414736d27c4d55c2f2c6}{Down}}();}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ }
+\DoxyCodeLine{00222\ }
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 前に進む}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Keyboard.current.pKey.wasPressedThisFrame)}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ flg\ =\ \mbox{\hyperlink{class_window_u_i_controller_a5fe6a09ff8e65958f16b546f147da4e2}{Up}}();}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ }
+\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (flg)}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00232\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_window_u_i_controller_a04ec023bd90edffc015c967aaf942ebb}{SetUI}}();}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE音追加（山本）}}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}Select"{}});}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_acaedd3b56c31e4eb070a5fc9c2242b12_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_acaedd3b56c31e4eb070a5fc9c2242b12_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_a5fe6a09ff8e65958f16b546f147da4e2}\index{WindowUIController@{WindowUIController}!Up@{Up}}
+\index{Up@{Up}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{Up()}{Up()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a5fe6a09ff8e65958f16b546f147da4e2} 
+bool Window\+UIController.\+Up (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00241}{241}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00242\ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 前へ移動}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}}++;}
+\DoxyCodeLine{00245\ }
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}{m\_baseWindowUIList}}.Count\ <=\ \mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}})}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}}\ =\ m\_baseWindowUIList.Count\ -\/\ 1;}
+\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00251\ }
+\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 変更が加われば}}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00254\ }
+\DoxyCodeLine{00255\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_a5fe6a09ff8e65958f16b546f147da4e2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_window_u_i_controller_abaa8718eb853414736d27c4d55c2f2c6}\index{WindowUIController@{WindowUIController}!Down@{Down}}
+\index{Down@{Down}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{Down()}{Down()}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_abaa8718eb853414736d27c4d55c2f2c6} 
+bool Window\+UIController.\+Down (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00257}{257}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00258\ \ \ \ \ \{}
+\DoxyCodeLine{00259\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 後ろへ移動}}
+\DoxyCodeLine{00260\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}}-\/-\/;}
+\DoxyCodeLine{00261\ }
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}}\ <\ 0)}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}{m\_currentBaseWindowUICount}}\ =\ 0;}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00267\ }
+\DoxyCodeLine{00268\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 変更が加われば}}
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00270\ }
+\DoxyCodeLine{00271\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/d60/class_window_u_i_controller_abaa8718eb853414736d27c4d55c2f2c6_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef}\index{WindowUIController@{WindowUIController}!m\_baseWindowUIList@{m\_baseWindowUIList}}
+\index{m\_baseWindowUIList@{m\_baseWindowUIList}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{m\_baseWindowUIList}{m\_baseWindowUIList}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a05cd58b73a2ccb15650f2d7d61a206ef} 
+List$<$\mbox{\hyperlink{class_base_window_u_i}{Base\+Window\+UI}}$>$ Window\+UIController.\+m\+\_\+base\+Window\+UIList = new()\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00015}{15}} 行目に定義があります。
+
+\Hypertarget{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573}\index{WindowUIController@{WindowUIController}!m\_currentUpdateBaseWindowUI@{m\_currentUpdateBaseWindowUI}}
+\index{m\_currentUpdateBaseWindowUI@{m\_currentUpdateBaseWindowUI}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{m\_currentUpdateBaseWindowUI}{m\_currentUpdateBaseWindowUI}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a9dc69fa9ecbb652f8b7e9029b99c6573} 
+\mbox{\hyperlink{class_base_window_u_i}{Base\+Window\+UI}} Window\+UIController.\+m\+\_\+current\+Update\+Base\+Window\+UI = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00020}{20}} 行目に定義があります。
+
+\Hypertarget{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6}\index{WindowUIController@{WindowUIController}!m\_currentBaseWindowUICount@{m\_currentBaseWindowUICount}}
+\index{m\_currentBaseWindowUICount@{m\_currentBaseWindowUICount}!WindowUIController@{WindowUIController}}
+\doxysubsubsection{\texorpdfstring{m\_currentBaseWindowUICount}{m\_currentBaseWindowUICount}}
+{\footnotesize\ttfamily \label{class_window_u_i_controller_a1ecee4d52c12976cf0c1f66d211130b6} 
+int Window\+UIController.\+m\+\_\+current\+Base\+Window\+UICount = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_window_u_i_controller_8cs_source}{Window\+UIController.\+cs}} の \mbox{\hyperlink{_window_u_i_controller_8cs_source_l00026}{26}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/202\+\_\+\+Lobby\+\_\+\+UI/\+Window/\+Select\+Provide\+Window/\+Prefab/\+UI/\mbox{\hyperlink{_window_u_i_controller_8cs}{Window\+UIController.\+cs}}\end{DoxyCompactItemize}

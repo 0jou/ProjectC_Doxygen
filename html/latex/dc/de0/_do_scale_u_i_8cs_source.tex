@@ -1,0 +1,79 @@
+\doxysection{Do\+Scale\+UI.\+cs}
+\hypertarget{_do_scale_u_i_8cs_source}{}\label{_do_scale_u_i_8cs_source}\index{ProjectC/002\_UI/DoTween/DoScaleUI.cs@{ProjectC/002\_UI/DoTween/DoScaleUI.cs}}
+\mbox{\hyperlink{_do_scale_u_i_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }NaughtyAttributes;}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00008}\mbox{\hyperlink{class_do_scale_u_i}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_do_scale_u_i}{DoScaleUI}}\ :\ \mbox{\hyperlink{class_base_do_tween_u_i}{BaseDoTweenUI}}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ UIを拡縮する}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}UIRectTransform"{}})]}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00015}\mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ RectTransform\ \mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}初期の大きさ"{}})]}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00019}\mbox{\hyperlink{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297}{m\_initializeScale}}\ =\ \textcolor{keyword}{new}\ Vector3(1.0f,\ 1.0f,\ 1.0f);}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}目標の大きさ"{}})]}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00023}\mbox{\hyperlink{class_do_scale_u_i_a91f3f38d1a354d53be0820fad88ebe17}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ List<Vector3>\ \mbox{\hyperlink{class_do_scale_u_i_a91f3f38d1a354d53be0820fad88ebe17}{m\_targetScaleList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//========================================================}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//========================================================}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00030}\mbox{\hyperlink{class_do_scale_u_i_ad3125a641b4a69d4634932cb33f9ef7b}{00030}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_do_scale_u_i_ad3125a641b4a69d4634932cb33f9ef7b}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00031}00031\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RectTransformがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 初期のサイズをセット}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ m\_rectTransform.localScale\ =\ \mbox{\hyperlink{class_do_scale_u_i_a17711517920368e9c7aad4cbf98e6297}{m\_initializeScale}};}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00043}\mbox{\hyperlink{class_do_scale_u_i_a0318eb1eea1fdff79a769efabed5fb95}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_do_scale_u_i_a0318eb1eea1fdff79a769efabed5fb95}{StartDoTween}}()}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RectTransformがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一度初期化}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{KillSequence}}();}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 開始}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ =\ DOTween.Sequence();}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ scale\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_do_scale_u_i_a91f3f38d1a354d53be0820fad88ebe17}{m\_targetScaleList}})}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.Append(}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_do_scale_u_i_a816d7aade560e2e712bc4e0977a911bf}{m\_rectTransform}}.DOScale(scale,\ \mbox{\hyperlink{class_base_do_tween_u_i_afac415f8cc86bb6c0d498ef420dd73dc}{m\_duration}}).}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ SetDelay(\mbox{\hyperlink{class_base_do_tween_u_i_add825ea273bddeceb6366b843650c092}{m\_delay}}).}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ SetEase(\mbox{\hyperlink{class_base_do_tween_u_i_a28c42ac637a0a1545bbd1068ec2b60f7}{m\_ease}}).}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ SetLink(gameObject)).}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetLoops(\mbox{\hyperlink{class_base_do_tween_u_i_a0981dac4174fa204a80ea78ccb9376b7}{m\_loopCount}},\ \mbox{\hyperlink{class_base_do_tween_u_i_a3b9ae474f7cc59876265db492de02f3a}{m\_loopType}});}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.SetUpdate(\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}});}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_do_scale_u_i_8cs_source_l00073}00073\ \}}
+
+\end{DoxyCode}

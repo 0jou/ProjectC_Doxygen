@@ -1,0 +1,62 @@
+\doxysection{Action\+UIGroup\+Controller.\+cs}
+\hypertarget{_action_u_i_group_controller_8cs_source}{}\label{_action_u_i_group_controller_8cs_source}\index{ProjectC/002\_UI/Script/View/Action/Group/ActionUIGroupController.cs@{ProjectC/002\_UI/Script/View/Action/Group/ActionUIGroupController.cs}}
+\mbox{\hyperlink{_action_u_i_group_controller_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00007}\mbox{\hyperlink{class_action_u_i_group_controller}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_action_u_i_group_controller}{ActionUIGroupController}}\ :\ \mbox{\hyperlink{class_action_u_i_base_controller}{ActionUIBaseController}}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 制作者(吉田)}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00011}\mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{00011}}\ \ \ \ \ \textcolor{keyword}{private}\ Vector3\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}\ =\ Vector3.zero;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//[Header("{}DOスピード"{})]}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//[SerializeField]}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00015}\mbox{\hyperlink{class_action_u_i_group_controller_a048b99a50c108f4a882f72a8fe0fd821}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_action_u_i_group_controller_a048b99a50c108f4a882f72a8fe0fd821}{m\_doSpead}}\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00017}\mbox{\hyperlink{class_action_u_i_group_controller_abcc33ecac5f1522af4f2d98430504d41}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_action_u_i_group_controller_abcc33ecac5f1522af4f2d98430504d41}{m\_hidePosX}}\ =\ 300;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ 初期設定(非表示の状態)}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00020}\mbox{\hyperlink{class_action_u_i_group_controller_a2d3a1e678734375bf37dba0ab31b0307}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ UniTask\ \mbox{\hyperlink{class_action_u_i_group_controller_a2d3a1e678734375bf37dba0ab31b0307}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}\ =\ transform.localPosition;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ m\_initPos.z\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ 表示時}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00028}\mbox{\hyperlink{class_action_u_i_group_controller_aaa321b35b71f07d38f6d049cfeed86f9}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_action_u_i_group_controller_aaa321b35b71f07d38f6d049cfeed86f9}{OnShow}}()}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_action_u_i_base_controller_a7dbfc4bce9271953dfdddfd6cd34618b}{m\_isShowPlay}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ await\ base.OnShow();}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ transform.localPosition\ =\ \textcolor{keyword}{new}\ Vector3(\mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.x\ +\ \mbox{\hyperlink{class_action_u_i_group_controller_abcc33ecac5f1522af4f2d98430504d41}{m\_hidePosX}},\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.y,\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.z);}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ await\ transform.DOLocalMoveX(}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ endValue:\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.x,\ duration:\ \mbox{\hyperlink{class_action_u_i_group_controller_a048b99a50c108f4a882f72a8fe0fd821}{m\_doSpead}})}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{false})\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームストップ中は動かない}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ .SetLink(gameObject);}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_u_i_base_controller_a7dbfc4bce9271953dfdddfd6cd34618b}{m\_isShowPlay}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ 閉じる直前}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00043}\mbox{\hyperlink{class_action_u_i_group_controller_a07d2abd133ad36993226f93b5e4f9af7}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_action_u_i_group_controller_a07d2abd133ad36993226f93b5e4f9af7}{OnClose}}()}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_action_u_i_base_controller_a3943c4c3728f3c486ec26d19a96299d0}{m\_isClosePlay}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_action_u_i_base_controller_a3943c4c3728f3c486ec26d19a96299d0}{m\_isClosePlay}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ transform.localPosition\ =\ \textcolor{keyword}{new}\ Vector3(\mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.x,\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.y,\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.z);}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ await\ transform.DOLocalMoveX(}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ endValue:\ \mbox{\hyperlink{class_action_u_i_group_controller_a61f62bc808889ee9327fdbbb1b39e37f}{m\_initPos}}.x\ +\ \mbox{\hyperlink{class_action_u_i_group_controller_abcc33ecac5f1522af4f2d98430504d41}{m\_hidePosX}},\ duration:\ \mbox{\hyperlink{class_action_u_i_group_controller_a048b99a50c108f4a882f72a8fe0fd821}{m\_doSpead}})}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ .SetUpdate(\textcolor{keyword}{false})\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームストップ中は動かない}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ .SetLink(gameObject);}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ await\ base.OnClose();}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_action_u_i_group_controller_8cs_source_l00056}00056\ \}}
+
+\end{DoxyCode}

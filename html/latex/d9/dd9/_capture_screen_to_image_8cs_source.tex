@@ -1,0 +1,62 @@
+\doxysection{Capture\+Screen\+To\+Image.\+cs}
+\hypertarget{_capture_screen_to_image_8cs_source}{}\label{_capture_screen_to_image_8cs_source}\index{ProjectC/001\_Common/Scripts/TitleScene/CaptureScreenToImage.cs@{ProjectC/001\_Common/Scripts/TitleScene/CaptureScreenToImage.cs}}
+\mbox{\hyperlink{_capture_screen_to_image_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Unity.VisualScripting;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00009}\mbox{\hyperlink{class_capture_screen_to_image}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_capture_screen_to_image}{CaptureScreenToImage}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00011}\mbox{\hyperlink{class_capture_screen_to_image_a4e69f12bd619819af26ff8811536b566}{00011}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ Image\ \mbox{\hyperlink{class_capture_screen_to_image_a4e69f12bd619819af26ff8811536b566}{m\_image}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00014}00014\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}Capture"{}})]}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00015}\mbox{\hyperlink{class_capture_screen_to_image_a54863429f1703904ae76b31ffa9170bc}{00015}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_capture_screen_to_image_a54863429f1703904ae76b31ffa9170bc}{Button}}()}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f}{Capture}}().Forget();}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00020}\mbox{\hyperlink{class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f}{Capture}}()}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ReadPixelsがこの後でないと使えないので必ず書く}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ var\ runner\ =\ \textcolor{keyword}{new}\ GameObject(\textcolor{stringliteral}{"{}runner"{}}).AddComponent<CoroutineRunner>();}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ await\ UniTask.WaitForEndOfFrame(runner);}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクリーンの大きさのSpriteを作る}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ var\ texture\ =\ \textcolor{keyword}{new}\ Texture2D(Screen.width,\ Screen.height);}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクリーンを取得する}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ texture.ReadPixels(\textcolor{keyword}{new}\ Rect(0,\ 0,\ Screen.width,\ Screen.height),\ 0,\ 0);}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 適応する}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ texture.Apply();}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 取得した画像をSpriteに入るように変換する}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{byte}[]\ pngdata\ =\ texture.EncodeToPNG();}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ texture.LoadImage(pngdata);}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ texture.name\ =\ \textcolor{stringliteral}{"{}CapturedImage"{}};}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 先ほど作ったSpriteに画像をいれる}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ Sprite\ sprite\ =\ Sprite.Create(texture,\ \textcolor{keyword}{new}\ Rect(0,\ 0,\ texture.width,\ texture.height),\ \textcolor{keyword}{new}\ Vector2(0.5f,\ 0.5f));}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Captured"{}});}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Spriteを使用するオブジェクトに指定する}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 今回はUIのImage}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ SceneCaptureManager.m\_capturedImage\ =\ sprite;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ サイズ変更}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ SceneCaptureManager.m\_sizeDelta\ =\ \textcolor{keyword}{new}\ Vector2(texture.width,\ texture.height);}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_capture_screen_to_image_a4e69f12bd619819af26ff8811536b566}{m\_image}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ m\_image.sprite\ =\ sprite;}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ Destroy(runner.gameObject);}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00055}00055\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_capture_screen_to_image_8cs_source_l00056}00056\ \}}
+
+\end{DoxyCode}

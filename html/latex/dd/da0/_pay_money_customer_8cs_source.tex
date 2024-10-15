@@ -1,0 +1,49 @@
+\doxysection{Pay\+Money\+Customer.\+cs}
+\hypertarget{_pay_money_customer_8cs_source}{}\label{_pay_money_customer_8cs_source}\index{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/PayMoneyCustomer.cs@{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/PayMoneyCustomer.cs}}
+\mbox{\hyperlink{_pay_money_customer_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00006}00006\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Customer/PayMoneyCustomer"{}})]}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00007}00007\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00008}\mbox{\hyperlink{class_pay_money_customer}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pay_money_customer}{PayMoneyCustomer}}\ :\ \mbox{\hyperlink{class_base_customer_state_behaviour}{BaseCustomerStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 頼んだ料理の金額を払う}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//===================================================================================================================}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00017}\mbox{\hyperlink{class_pay_money_customer_a7edf6a18544def5f13fa92cda85519d6}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pay_money_customer_a7edf6a18544def5f13fa92cda85519d6}{Pay}}()}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00018}00018\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ var\ targetFood\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFood\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ var\ foodData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info}{ItemInfo}}.ItemTypeID.Food,\ (uint)targetFood.FoodID);}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (foodData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ お金を払う}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_game_manager}{ManagementGameManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.AddEarnedMoney(foodData.Price);}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 提供した数を足す}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_provide_food_manager}{ManagementProvideFoodManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.SoldFood(targetFood.FoodID);}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00034}00034\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00038}\mbox{\hyperlink{class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_pay_money_customer_ab7d2e89ce8dfb5bc891a9ee63ee467e0}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pay_money_customer_a7edf6a18544def5f13fa92cda85519d6}{Pay}}();}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_pay_money_customer_8cs_source_l00043}00043\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,241 @@
+\doxysection{Have\+Food\+Staff クラス}
+\hypertarget{class_have_food_staff}{}\label{class_have_food_staff}\index{HaveFoodStaff@{HaveFoodStaff}}
+
+
+Have\+Food\+Staff の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=217pt]{dc/dd8/class_have_food_staff__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Have\+Food\+Staff 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{d0/d03/class_have_food_staff__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_have_food_staff_a0774cb71abda90f916124449903708fc}{On\+State\+Awake}} ()
+\item 
+override void \mbox{\hyperlink{class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09}{On\+State\+Begin}} ()
+\item 
+override void \mbox{\hyperlink{class_have_food_staff_ac7ce440afe766626dec190ad52d32ae5}{On\+State\+End}} ()
+\item 
+override void \mbox{\hyperlink{class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba}{On\+State\+Update}} ()
+\item 
+override void \mbox{\hyperlink{class_have_food_staff_a8916d2092738354efdff67a57114e901}{On\+State\+Late\+Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976}{Have}} ()
+\item 
+void \mbox{\hyperlink{class_have_food_staff_ad681a88c8f58ea4cb21e4347c7bcd703}{Start}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{その他の継承メンバ}
+\doxysubsection*{基底クラス \mbox{\hyperlink{class_base_staff_state_behaviour}{Base\+Staff\+State\+Behaviour}} に属する継承限定公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_staff_data}{Staff\+Data}} \mbox{\hyperlink{class_base_staff_state_behaviour_aecf7aba8c57332905715f924eacef811}{Get\+Staff\+Data}} ()
+\begin{DoxyCompactList}\small\item\em スタッフ情報が存在するかのチェック \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_base_staff_state_behaviour_acbf91c03b7085441d9873e1b3ab87e71}{Set\+Transition}} (State\+Link \+\_\+link)
+\item 
+Game\+Object \mbox{\hyperlink{class_base_staff_state_behaviour_aaa66ad72545afd977397ea77353d6f19}{Get\+Root\+Game\+Object}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{基底クラス \mbox{\hyperlink{class_base_staff_state_behaviour}{Base\+Staff\+State\+Behaviour}} に属する継承限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_flexible_staff_data_variable}{Flexible\+Staff\+Data\+Variable}} \mbox{\hyperlink{class_base_staff_state_behaviour_aed961e5db883c46e1719ce2a07385b58}{m\+\_\+flexible\+Staff\+Data\+Variable}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00010}{10}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976}\index{HaveFoodStaff@{HaveFoodStaff}!Have@{Have}}
+\index{Have@{Have}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{Have()}{Have()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976} 
+void Have\+Food\+Staff.\+Have (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00019}{19}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020\ \ \ \ \ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スタッフデータが存在するか確認}}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_staff_state_behaviour_aecf7aba8c57332905715f924eacef811}{GetStaffData}}();}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データが存在するか確認}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ var\ targetFoodData\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFoodData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ターゲット料理の座標を持つ座標に更新}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ Vector3\ pos\ =\ data.GetHavePos();}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ targetFoodData.transform.position\ =\ pos;}
+\DoxyCodeLine{00032\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d36/class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d36/class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_have_food_staff_ad681a88c8f58ea4cb21e4347c7bcd703}\index{HaveFoodStaff@{HaveFoodStaff}!Start@{Start}}
+\index{Start@{Start}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_ad681a88c8f58ea4cb21e4347c7bcd703} 
+void Have\+Food\+Staff.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00035}{35}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_have_food_staff_a0774cb71abda90f916124449903708fc}\index{HaveFoodStaff@{HaveFoodStaff}!OnStateAwake@{OnStateAwake}}
+\index{OnStateAwake@{OnStateAwake}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{OnStateAwake()}{OnStateAwake()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_a0774cb71abda90f916124449903708fc} 
+override void Have\+Food\+Staff.\+On\+State\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00041}{41}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09}\index{HaveFoodStaff@{HaveFoodStaff}!OnStateBegin@{OnStateBegin}}
+\index{OnStateBegin@{OnStateBegin}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09} 
+override void Have\+Food\+Staff.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00046}{46}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スタッフデータが存在するか確認}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_staff_state_behaviour_aecf7aba8c57332905715f924eacef811}{GetStaffData}}();}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理データが存在するか確認}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ var\ targetFoodData\ =\ data.TargetOrderFoodData;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetFoodData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 移動状態に変更}}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ targetFoodData.CurrentOrderFoodState\ =\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.Carry;}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d36/class_have_food_staff_aa51674d29511982ddbd693cc3dc59b09_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_have_food_staff_ac7ce440afe766626dec190ad52d32ae5}\index{HaveFoodStaff@{HaveFoodStaff}!OnStateEnd@{OnStateEnd}}
+\index{OnStateEnd@{OnStateEnd}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{OnStateEnd()}{OnStateEnd()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_ac7ce440afe766626dec190ad52d32ae5} 
+override void Have\+Food\+Staff.\+On\+State\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00061}{61}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062\ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba}\index{HaveFoodStaff@{HaveFoodStaff}!OnStateUpdate@{OnStateUpdate}}
+\index{OnStateUpdate@{OnStateUpdate}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba} 
+override void Have\+Food\+Staff.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00066}{66}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00067\ \ \ \ \ \{}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を持つ}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_have_food_staff_ad7e72cc357533ab02f5bbc6906536976}{Have}}();}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d36/class_have_food_staff_a26c7d51c53b57f550cfda157c18f6dba_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_have_food_staff_a8916d2092738354efdff67a57114e901}\index{HaveFoodStaff@{HaveFoodStaff}!OnStateLateUpdate@{OnStateLateUpdate}}
+\index{OnStateLateUpdate@{OnStateLateUpdate}!HaveFoodStaff@{HaveFoodStaff}}
+\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
+{\footnotesize\ttfamily \label{class_have_food_staff_a8916d2092738354efdff67a57114e901} 
+override void Have\+Food\+Staff.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_have_food_staff_8cs_source}{Have\+Food\+Staff.\+cs}} の \mbox{\hyperlink{_have_food_staff_8cs_source_l00074}{74}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/103\+\_\+\+Management\+\_\+\+Character/\+Staff/\+Scripts/\+Arbor3/\+State/\mbox{\hyperlink{_have_food_staff_8cs}{Have\+Food\+Staff.\+cs}}\end{DoxyCompactItemize}

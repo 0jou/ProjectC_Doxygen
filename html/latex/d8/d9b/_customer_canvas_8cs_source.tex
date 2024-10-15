@@ -1,0 +1,122 @@
+\doxysection{Customer\+Canvas.\+cs}
+\hypertarget{_customer_canvas_8cs_source}{}\label{_customer_canvas_8cs_source}\index{ProjectC/102\_Management\_UI/Customer/CustomerCanvas.cs@{ProjectC/102\_Management\_UI/Customer/CustomerCanvas.cs}}
+\mbox{\hyperlink{_customer_canvas_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_customer_state_info}{CustomerStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00019}\mbox{\hyperlink{class_customer_canvas}{00019}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_customer_canvas}{CustomerCanvas}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00022}00022\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}怒りゲージ確認"{}})]}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00023}00023\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00024}\mbox{\hyperlink{class_customer_canvas_af0a64af6cd2c6e440c82452e2e78fb16}{00024}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_image_progress_controller}{ImageProgressController}}\ \mbox{\hyperlink{class_customer_canvas_af0a64af6cd2c6e440c82452e2e78fb16}{m\_imageProgressController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00027}00027\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}求めている料理画像"{}})]}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00028}00028\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00029}\mbox{\hyperlink{class_customer_canvas_afbf3fa6c6ba88f26cc365c3734eab9ce}{00029}}\ \ \ \ \ \textcolor{keyword}{private}\ Image\ \mbox{\hyperlink{class_customer_canvas_afbf3fa6c6ba88f26cc365c3734eab9ce}{m\_foodImage}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00032}\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{00032}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_customer_data}{CustomerData}}\ \mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00034}\mbox{\hyperlink{class_customer_canvas_a37cd2cf6c32ad1adffa90c566a599f86}{00034}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_customer_data}{CustomerData}}\ \mbox{\hyperlink{class_customer_canvas_a37cd2cf6c32ad1adffa90c566a599f86}{TargetCustomerData}}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00035}00035\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}};\ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00038}00038\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00042}00042\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00045}\mbox{\hyperlink{class_customer_canvas_a4533a4d3cc2776e957e68c4e61d891d8}{00045}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_canvas_a4533a4d3cc2776e957e68c4e61d891d8}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ =\ GetComponentInParent<CustomerData>();}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}客コンポーネントが存在しません。親オブジェクトは客ですか？"{}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_canvas_a24ac5f72b7195d1094f73345205c6ed9}{SetFoodImage}}();}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00059}\mbox{\hyperlink{class_customer_canvas_a0d34d7886ad102b23763d69c6debbe41}{00059}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_canvas_a0d34d7886ad102b23763d69c6debbe41}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00060}00060\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_canvas_aefdc92b0dd34986c4985d1c46943dec3}{Angry}}();}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_customer_canvas_a4352dbf4714722c41e526b72d9a20563}{Check}}();}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00065}\mbox{\hyperlink{class_customer_canvas_a24ac5f72b7195d1094f73345205c6ed9}{00065}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_canvas_a24ac5f72b7195d1094f73345205c6ed9}{SetFoodImage}}()}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00067}00067\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ターゲットの客が存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_afbf3fa6c6ba88f26cc365c3734eab9ce}{m\_foodImage}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}Imageがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00079}00079\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ターゲットにしている料理が無ければ無視}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}.\mbox{\hyperlink{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}{TargetOrderFoodData}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\mbox{\hyperlink{namespace_item_info}{ItemInfo}}.ItemTypeID.Food,\ (uint)\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}.\mbox{\hyperlink{class_customer_data_aed894844f46ebbdab4889c47225c1cdd}{TargetOrderFoodData}}.\mbox{\hyperlink{class_order_food_data_a2b5d38990323c9847396a16dffaa7d9c}{FoodID}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ m\_foodImage.sprite\ =\ data.ItemSprite;}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00089}00089\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00094}\mbox{\hyperlink{class_customer_canvas_aefdc92b0dd34986c4985d1c46943dec3}{00094}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_canvas_aefdc92b0dd34986c4985d1c46943dec3}{Angry}}()}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00095}00095\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00096}00096\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ターゲットの客が存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_af0a64af6cd2c6e440c82452e2e78fb16}{m\_imageProgressController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ImageProgressControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00108}00108\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angryTime\ =\ \mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}.\mbox{\hyperlink{class_customer_data_ad328190fa3e103f4fa0d851619dea745}{AngryTime}};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ angryCount\ =\ \mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}.\mbox{\hyperlink{class_customer_data_a83bb8ec48584efbfa05c1264a95d798a}{AngryCount}};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ m\_imageProgressController.Progress\ =\ angryCount\ /\ angryTime;}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00114}00114\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00119}\mbox{\hyperlink{class_customer_canvas_a4352dbf4714722c41e526b72d9a20563}{00119}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_customer_canvas_a4352dbf4714722c41e526b72d9a20563}{Check}}()}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00120}00120\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00121}00121\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ターゲットの客が存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00127}00127\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_customer_canvas_aa98099df30834aeaf5e7919757e6eefd}{m\_targetCustomerData}}.\mbox{\hyperlink{class_customer_data_a68f778850194d56a9c0e8b4e1b743f1a}{CurrentCustomerState}}!=\mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.WaitFood)}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00133}00133\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{_customer_canvas_8cs_source_l00135}00135\ \}}
+
+\end{DoxyCode}

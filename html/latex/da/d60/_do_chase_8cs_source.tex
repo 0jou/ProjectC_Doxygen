@@ -1,0 +1,45 @@
+\doxysection{Do\+Chase.\+cs}
+\hypertarget{_do_chase_8cs_source}{}\label{_do_chase_8cs_source}\index{ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/DoChase.cs@{ProjectC/004\_Character/Enemy/CommonBehaviorTree/BehaviourScripts/DoChase.cs}}
+\mbox{\hyperlink{_do_chase_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor_1_1_behaviour_tree}{Arbor.BehaviourTree}};}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00014}00014\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00015}00015\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Enemy/DoChase"{}})]}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00016}00016\ [BehaviourTitle(\textcolor{stringliteral}{"{}Enemy/DoChase"{}})]}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00017}\mbox{\hyperlink{class_do_chase}{00017}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_do_chase}{DoChase}}\ :\ Decorator\ \{}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00020}00020\ \ \ \ \ [SlotType(typeof(AgentController))]}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00021}\mbox{\hyperlink{class_do_chase_a0340f368f8fb06c9991bf44ae1d12cb2}{00021}}\ \ \ \ \ \textcolor{keyword}{private}\ FlexibleComponent\ \mbox{\hyperlink{class_do_chase_a0340f368f8fb06c9991bf44ae1d12cb2}{\_agent}}\ =\ \textcolor{keyword}{new}\ FlexibleComponent(FlexibleHierarchyType.RootGraph);}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00022}\mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{00022}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ FlexibleTransform\ \mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}};}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00023}\mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{00023}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_flexible_chase_parameters}{FlexibleChaseParameters}}\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}};}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//protected\ override\ void\ OnAwake()\ \{}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00029}00029\ \ \ \ \ \textcolor{comment}{//protected\ override\ void\ OnStart()\ \{}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//\ プレイヤーとの距離が遠くなりすぎた\ or\ プレイヤーが自身のスポーン地から遠くに行ったら諦める}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00034}\mbox{\hyperlink{class_do_chase_a83f6660c9d237c73d39bf89f24ced945}{00034}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_do_chase_a83f6660c9d237c73d39bf89f24ced945}{OnConditionCheck}}()\ \{}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ Vector2\ myPos\ =\ \textcolor{keyword}{new}\ Vector2(transform.position.x,\ transform.position.z);}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ Vector2\ targetPos\ =\ \textcolor{keyword}{new}\ Vector2(\mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position.x,\ \mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position.z);}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distToTarget\ =\ Vector2.Distance(myPos,\ targetPos);}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distToSpawn\ =\ Vector3.Distance(\mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position,\ (\mbox{\hyperlink{class_do_chase_a0340f368f8fb06c9991bf44ae1d12cb2}{\_agent}}.value\ as\ AgentController).StartPosition);}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isChase\ =\ (distToTarget\ <=\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}}.value.ChaseDistFromTarget)}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (distToSpawn\ <=\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}}.value.DistAwayFromSpawnPos);}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isChase;}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00043}00043\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00045}00045\ \ \textcolor{comment}{//\ \ \ protected\ override\ void\ OnEnd()\ \{}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00046}00046\ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_do_chase_8cs_source_l00047}00047\ \}}
+
+\end{DoxyCode}

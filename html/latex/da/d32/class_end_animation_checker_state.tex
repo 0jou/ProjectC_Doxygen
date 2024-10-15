@@ -1,0 +1,367 @@
+\doxysection{End\+Animation\+Checker\+State クラス}
+\hypertarget{class_end_animation_checker_state}{}\label{class_end_animation_checker_state}\index{EndAnimationCheckerState@{EndAnimationCheckerState}}
+
+
+アニメーションが終了したか/前のアニメーションから変更されたかを確認するステート  
+
+
+
+
+End\+Animation\+Checker\+State の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{d5/d6c/class_end_animation_checker_state__inherit__graph}
+\end{center}
+\end{figure}
+
+
+End\+Animation\+Checker\+State 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{db/dbb/class_end_animation_checker_state__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_end_animation_checker_state_a795c6c036b9c121b6c5184f11ca242f5}{On\+State\+Awake}} ()
+\item 
+override void \mbox{\hyperlink{class_end_animation_checker_state_a59242e8c2a62f47a3405b5611cd184df}{On\+State\+Begin}} ()
+\item 
+override void \mbox{\hyperlink{class_end_animation_checker_state_a6a5b2f24164f4bb0aa69932fe868faeb}{On\+State\+End}} ()
+\item 
+override void \mbox{\hyperlink{class_end_animation_checker_state_a6bafea6c5ac667c53229c2a21e8cb428}{On\+State\+Update}} ()
+\item 
+override void \mbox{\hyperlink{class_end_animation_checker_state_a75d34bfe9297dced588924e9ba691530}{On\+State\+Late\+Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+Animator \mbox{\hyperlink{class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9}{Get\+Animator}} ()
+\item 
+void \mbox{\hyperlink{class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9}{Check}} ()
+\item 
+void \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{Set\+Transition}} ()
+\item 
+void \mbox{\hyperlink{class_end_animation_checker_state_aa74ccd5fab4847e148ba84e6ab6b9ca5}{Start}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+Flexible\+Component \mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\+\_\+animator}} = new Flexible\+Component(Flexible\+Hierarchy\+Type.\+Self)
+\item 
+string \mbox{\hyperlink{class_end_animation_checker_state_a4a01ffd34500f93c7b8d6e6b480bcdc5}{m\+\_\+animation\+Name}} = "{}"{}
+\item 
+State\+Link \mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\+\_\+success\+Link}} = null
+\item 
+int \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\+\_\+back\+Animation\+Hash}} = -\/1
+\item 
+int \mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\+\_\+success\+Animation\+Hash}} = -\/2
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+アニメーションが終了したか/前のアニメーションから変更されたかを確認するステート 
+
+
+\begin{DoxyItemize}
+\item アニメーションが終了し指定のアニメーションに変更されたらリンク先に遷移
+\item アニメーションが指定のものから変更されたタイミングでリンク先に遷移 上甲 
+\end{DoxyItemize}
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00020}{20}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!GetAnimator@{GetAnimator}}
+\index{GetAnimator@{GetAnimator}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{GetAnimator()}{GetAnimator()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9} 
+Animator End\+Animation\+Checker\+State.\+Get\+Animator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00035}{35}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\_animator}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}{m\_animator}}.value\ is\ Animator)}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ var\ animator\ =\ m\_animator.value\ as\ Animator;}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ animator;}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d32/class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!Check@{Check}}
+\index{Check@{Check}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{Check()}{Check()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9} 
+void End\+Animation\+Checker\+State.\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00051}{51}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ var\ animator\ =\ \mbox{\hyperlink{class_end_animation_checker_state_a30996d3392d3b4ad4e3b5ef8b8a57aa9}{GetAnimator}}();}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (animator\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ AnimatorStateInfo\ stateInfo\ =\ animator.GetCurrentAnimatorStateInfo(0);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.IsName(\mbox{\hyperlink{class_end_animation_checker_state_a4a01ffd34500f93c7b8d6e6b480bcdc5}{m\_animationName}}))}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーションの終了を確認}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (stateInfo.normalizedTime\ >=\ 1.0f)}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{SetTransition}}();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\_successAnimationHash}}\ =\ stateInfo.shortNameHash;}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーションが指定のものから変更されたタイミング\ 上甲}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}{m\_successAnimationHash}}\ ==\ \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\_backAnimationHash}})}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}{SetTransition}}();}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}{m\_backAnimationHash}}\ =\ stateInfo.shortNameHash;}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d32/class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d32/class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!SetTransition@{SetTransition}}
+\index{SetTransition@{SetTransition}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{SetTransition()}{SetTransition()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79} 
+void End\+Animation\+Checker\+State.\+Set\+Transition (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00079}{79}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00080\ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\_successLink}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}リンク先が存在しません"{}});}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ Transition(\mbox{\hyperlink{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}{m\_successLink}});}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d32/class_end_animation_checker_state_a521c67c581d443d2c0c1bbe77856bf79_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_end_animation_checker_state_aa74ccd5fab4847e148ba84e6ab6b9ca5}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!Start@{Start}}
+\index{Start@{Start}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_aa74ccd5fab4847e148ba84e6ab6b9ca5} 
+void End\+Animation\+Checker\+State.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00092}{92}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_end_animation_checker_state_a795c6c036b9c121b6c5184f11ca242f5}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateAwake@{OnStateAwake}}
+\index{OnStateAwake@{OnStateAwake}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{OnStateAwake()}{OnStateAwake()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a795c6c036b9c121b6c5184f11ca242f5} 
+override void End\+Animation\+Checker\+State.\+On\+State\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00098}{98}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00099\ \ \ \ \ \{}
+\DoxyCodeLine{00100\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_end_animation_checker_state_a59242e8c2a62f47a3405b5611cd184df}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateBegin@{OnStateBegin}}
+\index{OnStateBegin@{OnStateBegin}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a59242e8c2a62f47a3405b5611cd184df} 
+override void End\+Animation\+Checker\+State.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00103}{103}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104\ \ \ \ \ \{}
+\DoxyCodeLine{00105\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_end_animation_checker_state_a6a5b2f24164f4bb0aa69932fe868faeb}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateEnd@{OnStateEnd}}
+\index{OnStateEnd@{OnStateEnd}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{OnStateEnd()}{OnStateEnd()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a6a5b2f24164f4bb0aa69932fe868faeb} 
+override void End\+Animation\+Checker\+State.\+On\+State\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00108}{108}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109\ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_end_animation_checker_state_a6bafea6c5ac667c53229c2a21e8cb428}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateUpdate@{OnStateUpdate}}
+\index{OnStateUpdate@{OnStateUpdate}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a6bafea6c5ac667c53229c2a21e8cb428} 
+override void End\+Animation\+Checker\+State.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00113}{113}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00114\ \ \ \ \ \{}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_end_animation_checker_state_a7f4b82d914effba2de74feba29c4e1f9}{Check}}();}
+\DoxyCodeLine{00116\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/d32/class_end_animation_checker_state_a6bafea6c5ac667c53229c2a21e8cb428_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_end_animation_checker_state_a75d34bfe9297dced588924e9ba691530}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!OnStateLateUpdate@{OnStateLateUpdate}}
+\index{OnStateLateUpdate@{OnStateLateUpdate}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a75d34bfe9297dced588924e9ba691530} 
+override void End\+Animation\+Checker\+State.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00119}{119}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!m\_animator@{m\_animator}}
+\index{m\_animator@{m\_animator}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{m\_animator}{m\_animator}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a3cc51163c113cd709e48f6384c9ae307} 
+Flexible\+Component End\+Animation\+Checker\+State.\+m\+\_\+animator = new Flexible\+Component(Flexible\+Hierarchy\+Type.\+Self)\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00024}{24}} 行目に定義があります。
+
+\Hypertarget{class_end_animation_checker_state_a4a01ffd34500f93c7b8d6e6b480bcdc5}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!m\_animationName@{m\_animationName}}
+\index{m\_animationName@{m\_animationName}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{m\_animationName}{m\_animationName}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a4a01ffd34500f93c7b8d6e6b480bcdc5} 
+string End\+Animation\+Checker\+State.\+m\+\_\+animation\+Name = "{}"{}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00027}{27}} 行目に定義があります。
+
+\Hypertarget{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!m\_successLink@{m\_successLink}}
+\index{m\_successLink@{m\_successLink}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{m\_successLink}{m\_successLink}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_ad8de63a53e062e7c2cec11a1f1b66535} 
+State\+Link End\+Animation\+Checker\+State.\+m\+\_\+success\+Link = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00030}{30}} 行目に定義があります。
+
+\Hypertarget{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!m\_backAnimationHash@{m\_backAnimationHash}}
+\index{m\_backAnimationHash@{m\_backAnimationHash}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{m\_backAnimationHash}{m\_backAnimationHash}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_acf967f79d01db4bb40d37266ae9bb6c6} 
+int End\+Animation\+Checker\+State.\+m\+\_\+back\+Animation\+Hash = -\/1\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00033}{33}} 行目に定義があります。
+
+\Hypertarget{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028}\index{EndAnimationCheckerState@{EndAnimationCheckerState}!m\_successAnimationHash@{m\_successAnimationHash}}
+\index{m\_successAnimationHash@{m\_successAnimationHash}!EndAnimationCheckerState@{EndAnimationCheckerState}}
+\doxysubsubsection{\texorpdfstring{m\_successAnimationHash}{m\_successAnimationHash}}
+{\footnotesize\ttfamily \label{class_end_animation_checker_state_a4996769413c8dcad491fb7669641e028} 
+int End\+Animation\+Checker\+State.\+m\+\_\+success\+Animation\+Hash = -\/2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animation_checker_state_8cs_source}{Animation\+Checker\+State.\+cs}} の \mbox{\hyperlink{_animation_checker_state_8cs_source_l00034}{34}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/103\+\_\+\+Management\+\_\+\+Character/\+Base/\mbox{\hyperlink{_animation_checker_state_8cs}{Animation\+Checker\+State.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/004_Character/Enemy/CommonBehaviorTree/BehaviourScripts/BewareTarget.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241016</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('db/d58/_beware_target_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">BewareTarget.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../db/d58/_beware_target_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d4/dca/namespace_arbor.html">Arbor</a>;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d2/d06/namespace_arbor_1_1_behaviour_tree.html">Arbor.BehaviourTree</a>;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// 敵の警戒状態の処理(伊波)</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>[AddComponentMenu(<span class="stringliteral">&quot;&quot;</span>)]</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>[AddBehaviourMenu(<span class="stringliteral">&quot;Enemy/BewareTarget&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html">   11</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d0/d77/class_beware_target.html">BewareTarget</a> : Decorator {</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#a42c5ab3a840e0f9ce8a04a42dc3f1687">   13</a></span>    [SerializeField] <span class="keyword">private</span> FlexibleTransform <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a42c5ab3a840e0f9ce8a04a42dc3f1687">m_target</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">   14</a></span>    [SerializeField] <span class="keyword">private</span> <a class="code hl_class" href="../../d8/dd3/class_flexible_chase_parameters.html">FlexibleChaseParameters</a> <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">m_chaseParameters</a>;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#af2066e76211e554fc867630b4d495740">   16</a></span>    <span class="keyword">private</span> Collider <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#af2066e76211e554fc867630b4d495740">m_myCollider</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#a77df78042871f35a35629294b27f7348">   17</a></span>    <span class="keyword">private</span> <a class="code hl_class" href="../../db/dc6/class_enemy_input_provider.html">EnemyInputProvider</a> <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a77df78042871f35a35629294b27f7348">m_input</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#affc0107d1b2c8b6c4830d005619920f1">   18</a></span>    <span class="keyword">private</span> Vector3 <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#affc0107d1b2c8b6c4830d005619920f1">m_startPos</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#a0963ca19d31377a707acc15f07cb76e7">   19</a></span>    <span class="keyword">private</span> readonly <a class="code hl_class" href="../../d1/d2f/class_visual_field_judgment.html">VisualFieldJudgment</a> <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a0963ca19d31377a707acc15f07cb76e7">m_judgement</a> = <span class="keyword">new</span>();</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="}">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#af2705f5b721f312454a17560d4886cfc">   21</a></span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d77/class_beware_target.html#af2705f5b721f312454a17560d4886cfc">OnAwake</a>()</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        transform.root.TryGetComponent(out <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#af2066e76211e554fc867630b4d495740">m_myCollider</a>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a77df78042871f35a35629294b27f7348">m_input</a> = transform.root.GetComponentInChildren&lt;<a class="code hl_class" href="../../db/dc6/class_enemy_input_provider.html">EnemyInputProvider</a>&gt;();</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">if</span> (transform.root.TryGetComponent(out AgentController agent))</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>            <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#affc0107d1b2c8b6c4830d005619920f1">m_startPos</a> = agent.StartPosition;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    }</div>
+</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#affc922a99d76af808ed85c1971311a74">   31</a></span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d77/class_beware_target.html#affc922a99d76af808ed85c1971311a74">OnStart</a>()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keywordflow">if</span> (transform.root.TryGetComponent(out AgentController agent))</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>            <span class="comment">//agent.Stop();</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            Vector3 targetPos = m_target.value.position - transform.position;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            targetPos = targetPos.normalized * 0.5f;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            targetPos += transform.position;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            agent.MoveTo(0.1f, 1.0f, targetPos);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        }</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#a6f33c75fc48bbb65f8d4f359a13520ab">   43</a></span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="../../d0/d77/class_beware_target.html#a6f33c75fc48bbb65f8d4f359a13520ab">OnConditionCheck</a>() {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a42c5ab3a840e0f9ce8a04a42dc3f1687">m_target</a>.value) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">if</span> (Vector3.Distance(transform.position, <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#affc0107d1b2c8b6c4830d005619920f1">m_startPos</a>) &gt;= <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">m_chaseParameters</a>.value.DistAwayFromSpawnPos) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">float</span> searchDist = <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">m_chaseParameters</a>.value.SearchCharacterDist;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a0963ca19d31377a707acc15f07cb76e7">m_judgement</a>.<a class="code hl_function" href="../../d1/d2f/class_visual_field_judgment.html#a728705e540b1d6b7c51eb072785faab3">SearchTargetNearSpawn</a>(<a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a42c5ab3a840e0f9ce8a04a42dc3f1687">m_target</a>.value.gameObject, <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">m_chaseParameters</a>.value, </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#af2066e76211e554fc867630b4d495740">m_myCollider</a>, <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#affc0107d1b2c8b6c4830d005619920f1">m_startPos</a>, ref searchDist, <a class="code hl_variable" href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">m_chaseParameters</a>.value.SearchCharacterDist))</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>           m_input.LookVector = m_target.value.position - transform.position;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="../../d0/d77/class_beware_target.html#a834eb36e96a888b75f173181bb2c0367">   59</a></span>    <span class="keyword">protected</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d0/d77/class_beware_target.html#a834eb36e96a888b75f173181bb2c0367">OnEnd</a>()</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        m_input.LookVector = Vector3.zero;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+</div>
+<div class="ttc" id="aclass_beware_target_html"><div class="ttname"><a href="../../d0/d77/class_beware_target.html">BewareTarget</a></div><div class="ttdef"><b>Definition</b> <a href="#l00011">BewareTarget.cs:11</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_a0963ca19d31377a707acc15f07cb76e7"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#a0963ca19d31377a707acc15f07cb76e7">BewareTarget.m_judgement</a></div><div class="ttdeci">readonly VisualFieldJudgment m_judgement</div><div class="ttdef"><b>Definition</b> <a href="#l00019">BewareTarget.cs:19</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_a42c5ab3a840e0f9ce8a04a42dc3f1687"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#a42c5ab3a840e0f9ce8a04a42dc3f1687">BewareTarget.m_target</a></div><div class="ttdeci">FlexibleTransform m_target</div><div class="ttdef"><b>Definition</b> <a href="#l00013">BewareTarget.cs:13</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_a6f33c75fc48bbb65f8d4f359a13520ab"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#a6f33c75fc48bbb65f8d4f359a13520ab">BewareTarget.OnConditionCheck</a></div><div class="ttdeci">override bool OnConditionCheck()</div><div class="ttdef"><b>Definition</b> <a href="#l00043">BewareTarget.cs:43</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_a77df78042871f35a35629294b27f7348"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#a77df78042871f35a35629294b27f7348">BewareTarget.m_input</a></div><div class="ttdeci">EnemyInputProvider m_input</div><div class="ttdef"><b>Definition</b> <a href="#l00017">BewareTarget.cs:17</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_a823f458c526e30e86fb7d862e568e258"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#a823f458c526e30e86fb7d862e568e258">BewareTarget.m_chaseParameters</a></div><div class="ttdeci">FlexibleChaseParameters m_chaseParameters</div><div class="ttdef"><b>Definition</b> <a href="#l00014">BewareTarget.cs:14</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_a834eb36e96a888b75f173181bb2c0367"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#a834eb36e96a888b75f173181bb2c0367">BewareTarget.OnEnd</a></div><div class="ttdeci">override void OnEnd()</div><div class="ttdef"><b>Definition</b> <a href="#l00059">BewareTarget.cs:59</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_af2066e76211e554fc867630b4d495740"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#af2066e76211e554fc867630b4d495740">BewareTarget.m_myCollider</a></div><div class="ttdeci">Collider m_myCollider</div><div class="ttdef"><b>Definition</b> <a href="#l00016">BewareTarget.cs:16</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_af2705f5b721f312454a17560d4886cfc"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#af2705f5b721f312454a17560d4886cfc">BewareTarget.OnAwake</a></div><div class="ttdeci">override void OnAwake()</div><div class="ttdef"><b>Definition</b> <a href="#l00021">BewareTarget.cs:21</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_affc0107d1b2c8b6c4830d005619920f1"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#affc0107d1b2c8b6c4830d005619920f1">BewareTarget.m_startPos</a></div><div class="ttdeci">Vector3 m_startPos</div><div class="ttdef"><b>Definition</b> <a href="#l00018">BewareTarget.cs:18</a></div></div>
+<div class="ttc" id="aclass_beware_target_html_affc922a99d76af808ed85c1971311a74"><div class="ttname"><a href="../../d0/d77/class_beware_target.html#affc922a99d76af808ed85c1971311a74">BewareTarget.OnStart</a></div><div class="ttdeci">override void OnStart()</div><div class="ttdef"><b>Definition</b> <a href="#l00031">BewareTarget.cs:31</a></div></div>
+<div class="ttc" id="aclass_enemy_input_provider_html"><div class="ttname"><a href="../../db/dc6/class_enemy_input_provider.html">EnemyInputProvider</a></div><div class="ttdef"><b>Definition</b> <a href="../../d5/d78/_enemy_input_provider_8cs_source.html#l00008">EnemyInputProvider.cs:9</a></div></div>
+<div class="ttc" id="aclass_flexible_chase_parameters_html"><div class="ttname"><a href="../../d8/dd3/class_flexible_chase_parameters.html">FlexibleChaseParameters</a></div><div class="ttdef"><b>Definition</b> <a href="../../dc/d9d/_chase_parameters_variable_8cs_source.html#l00039">ChaseParametersVariable.cs:40</a></div></div>
+<div class="ttc" id="aclass_visual_field_judgment_html"><div class="ttname"><a href="../../d1/d2f/class_visual_field_judgment.html">VisualFieldJudgment</a></div><div class="ttdef"><b>Definition</b> <a href="../../d9/d5a/_visual_field_judgment_8cs_source.html#l00007">VisualFieldJudgment.cs:8</a></div></div>
+<div class="ttc" id="aclass_visual_field_judgment_html_a728705e540b1d6b7c51eb072785faab3"><div class="ttname"><a href="../../d1/d2f/class_visual_field_judgment.html#a728705e540b1d6b7c51eb072785faab3">VisualFieldJudgment.SearchTargetNearSpawn</a></div><div class="ttdeci">bool SearchTargetNearSpawn(GameObject _target, ChaseParameters _chaseParameters, Collider _myCollider, Vector3 _startPos, ref float _nearestDist, float _searchDist)</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d5a/_visual_field_judgment_8cs_source.html#l00080">VisualFieldJudgment.cs:80</a></div></div>
+<div class="ttc" id="anamespace_arbor_1_1_behaviour_tree_html"><div class="ttname"><a href="../../d2/d06/namespace_arbor_1_1_behaviour_tree.html">Arbor.BehaviourTree</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/db5/_agent_chase_to_target_8cs_source.html#l00008">AgentChaseToTarget.cs:9</a></div></div>
+<div class="ttc" id="anamespace_arbor_html"><div class="ttname"><a href="../../d4/dca/namespace_arbor.html">Arbor</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/db5/_agent_chase_to_target_8cs_source.html#l00008">AgentChaseToTarget.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_44632b20317e1c9661437bb5b44fd48c.html">004_Character</a></li><li class="navelem"><a class="el" href="../../dir_383ca8ad570f4fc21745b4e9f08fe94e.html">Enemy</a></li><li class="navelem"><a class="el" href="../../dir_057e6fc09ff9b79434aacf07c09265e3.html">CommonBehaviorTree</a></li><li class="navelem"><a class="el" href="../../dir_f9a6b4b29f94ec8ee673310cfecdfa6d.html">BehaviourScripts</a></li><li class="navelem"><a class="el" href="../../db/d58/_beware_target_8cs.html">BewareTarget.cs</a></li>
+    <li class="footer">2024年10月16日(水) 01時52分22秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+\doxysection{Check\+State\+Customer.\+cs}
+\hypertarget{_check_state_customer_8cs_source}{}\label{_check_state_customer_8cs_source}\index{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/CheckStateCustomer.cs@{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/CheckStateCustomer.cs}}
+\mbox{\hyperlink{_check_state_customer_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_customer_state_info}{CustomerStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00016}00016\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00017}\mbox{\hyperlink{class_check_state_customer}{00017}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_state_customer}{CheckStateCustomer}}\ :\ \mbox{\hyperlink{class_base_customer_state_behaviour}{BaseCustomerStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00018}00018\ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00021}00021\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00022}\mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link}{00022}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link}{CustomerStateLink}}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00025}\mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link_a0e7df140a6e8ee9e2906ce18ecf36a42}{00025}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}\ \mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link_a0e7df140a6e8ee9e2906ce18ecf36a42}{State}}\ =\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Normal;}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00027}\mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link_a7a4323a17f81d7bf8f4d5a4975b3aa6d}{00027}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link_a7a4323a17f81d7bf8f4d5a4975b3aa6d}{StateLink}}\ \mbox{\hyperlink{class_check_state_customer_1_1_customer_state_link_a7a4323a17f81d7bf8f4d5a4975b3aa6d}{StateLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00029}00029\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00031}00031\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00032}\mbox{\hyperlink{class_check_state_customer_aa5909d62fccdaa51c2d6c98854bdadff}{00032}}\ \ \ \ \ \textcolor{keyword}{private}\ List<CustomerStateLink>\ \mbox{\hyperlink{class_check_state_customer_aa5909d62fccdaa51c2d6c98854bdadff}{m\_linkList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00035}\mbox{\hyperlink{class_check_state_customer_aed56eaae07add91346f2408bc72e73c0}{00035}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_aed56eaae07add91346f2408bc72e73c0}{Transition}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ link\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_check_state_customer_aa5909d62fccdaa51c2d6c98854bdadff}{m\_linkList}})}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (link.State\ ==\ data.CurrentCustomerState)}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(link.StateLink);}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ initialization}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00054}\mbox{\hyperlink{class_check_state_customer_a26342cbe4ce211eb8ae432a176fe57a0}{00054}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_a26342cbe4ce211eb8ae432a176fe57a0}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00060}\mbox{\hyperlink{class_check_state_customer_a7f4ff5fc9222f3a5b64b0d1606561551}{00060}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_a7f4ff5fc9222f3a5b64b0d1606561551}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00065}\mbox{\hyperlink{class_check_state_customer_a69de4a11fad8e99119a56c3b183e4f64}{00065}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_a69de4a11fad8e99119a56c3b183e4f64}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00071}\mbox{\hyperlink{class_check_state_customer_ac81b89919856db10fe7e73985965a768}{00071}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_ac81b89919856db10fe7e73985965a768}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00072}00072\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00076}\mbox{\hyperlink{class_check_state_customer_ae781af07344825ca3cfc89ca58dd63e5}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_ae781af07344825ca3cfc89ca58dd63e5}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_state_customer_aed56eaae07add91346f2408bc72e73c0}{Transition}}();}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00079}00079\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00082}\mbox{\hyperlink{class_check_state_customer_a508fb8f277bc93e6e16b035ff24434e1}{00082}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_state_customer_a508fb8f277bc93e6e16b035ff24434e1}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00083}00083\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00084}00084\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_state_customer_8cs_source_l00085}00085\ \}}
+
+\end{DoxyCode}

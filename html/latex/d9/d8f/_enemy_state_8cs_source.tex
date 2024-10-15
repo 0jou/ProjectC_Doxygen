@@ -1,0 +1,265 @@
+\doxysection{Enemy\+State.\+cs}
+\hypertarget{_enemy_state_8cs_source}{}\label{_enemy_state_8cs_source}\index{ProjectC/004\_Character/Scripts/State/EnemyState.cs@{ProjectC/004\_Character/Scripts/State/EnemyState.cs}}
+\mbox{\hyperlink{_enemy_state_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UniRx;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.VFX;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00008}00008\ \textcolor{comment}{//\ キャラクターの基盤クラス}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00009}00009\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }\mbox{\hyperlink{class_character_core}{CharacterCore}}\ :\ MonoBehaviour,\ \mbox{\hyperlink{interface_i_damageable}{IDamageable}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//===================================}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 敵側ステート}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//===================================}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ 各基本State（伊波）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//タックル攻撃用のオブジェクトを指定（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}タックル攻撃用のエフェクト"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00018}\mbox{\hyperlink{class_character_core_a0f609cfe0b0230c0210e67a38c01dcd7}{00018}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_character_core_a0f609cfe0b0230c0210e67a38c01dcd7}{m\_rushAttackEffect}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00020}00020\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00021}00021\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Enemy/ReadyAttack"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00022}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack}{00022}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack}{ActionState\_EnemyReadyAttack}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00024}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_a17f5f7857045b3fb82fe497d99af8202}{00024}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_a17f5f7857045b3fb82fe497d99af8202}{m\_isNotKnockBack}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00025}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_a6617776d8f62f5c92bd0329e83832b24}{00025}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_a6617776d8f62f5c92bd0329e83832b24}{m\_isShowDushEffect}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00027}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_adc8bb673c7ddf806e617a928d8f9d3fb}{00027}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_adc8bb673c7ddf806e617a928d8f9d3fb}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoKnockBack\ =\ m\_isNotKnockBack;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//突進選択時、ダッシュエフェクトを発生させる（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_isShowDushEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_dashEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ダッシュエフェクトを再生}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_dashEffect?.Play();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_rushAttackEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ラッシュエフェクトをアクティブ化(山本)}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_rushAttackEffect.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//数値を0.0fに}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_rushAttackEffect.GetComponent<VisualEffect>()?.SetFloat(\textcolor{stringliteral}{"{}UVAlphaClippingValue"{}},\ 0.0f);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_inputProvider.AttackType\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetInteger(\textcolor{stringliteral}{"{}DoAttackType"{}},\ 0);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00055}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_aeb2efb082388f526423dbf7c202dc916}{00055}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_ready_attack_aeb2efb082388f526423dbf7c202dc916}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(Core.m\_inputProvider.Destination\ -\/\ Core.transform.position);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00062}00062\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00063}00063\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Enemy/UseItem"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00064}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_use_item}{00064}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_use_item}{ActionState\_EnemyUseItem}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00065}00065\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00066}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_use_item_af70a253a1ade9de249fa7a92762a833a}{00066}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_use_item_af70a253a1ade9de249fa7a92762a833a}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnFixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00071}00071\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00073}00073\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00074}00074\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Enemy/Rush"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00075}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush}{00075}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush}{ActionState\_EnemyRush}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00076}00076\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}突進時間"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00078}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_ab5de0a7fa084de0fe3d6676d7c4d8bed}{00078}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_ab5de0a7fa084de0fe3d6676d7c4d8bed}{m\_rushTime}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}追尾時間"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00080}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a248fe9bc6c60eba2323529ee8a233510}{00080}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a248fe9bc6c60eba2323529ee8a233510}{m\_maxHomingTime}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}追尾の強さ"{}}),\ Range(0.0f,\ 1.0f)]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00082}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a0ca856cc2b3613654465920156062fad}{00082}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a0ca856cc2b3613654465920156062fad}{m\_rateHoming}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}CharactorCoreのdushSpeed基準にしたspeed補正値"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00085}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a333f5ec7fc5875c8e02bc898e4b699d1}{00085}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a333f5ec7fc5875c8e02bc898e4b699d1}{m\_magnificationSpeed}}\ =\ 1f;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00086}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a3c316de7f3090a912a9dce5d656af091}{00086}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a3c316de7f3090a912a9dce5d656af091}{m\_remainingTime}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00087}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_ae1842e7f3d2b7e313465c59881a73daf}{00087}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_ae1842e7f3d2b7e313465c59881a73daf}{m\_homingTime}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00088}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a35f5d91b9f480908075451e4705f58ce}{00088}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ Collider\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a35f5d91b9f480908075451e4705f58ce}{m\_collider}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{//[Header("{}ラッシュエフェクトの消失スピード"{})]}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{comment}{//[SerializeField]\ private\ float\ m\_rushEffectAppearSpeed\ =\ 0.1f;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \textcolor{comment}{//ラッシュエフェクトの現在の進捗状況}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00094}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_adf6b9a4e52b4ea75ae40b84bf6c71071}{00094}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_adf6b9a4e52b4ea75ae40b84bf6c71071}{m\_rushEffectApearProgress}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00097}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_ab5a8ca30c2e9df807bd11502832d09b5}{00097}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_ab5a8ca30c2e9df807bd11502832d09b5}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00098}00098\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ m\_remainingTime\ =\ m\_rushTime;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ m\_homingTime\ =\ m\_maxHomingTime;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ m\_rushEffectApearProgress\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoKnockBack\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00107}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a586b92c8e7f52f5d862e198fa550a656}{00107}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a586b92c8e7f52f5d862e198fa550a656}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ m\_remainingTime\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ m\_homingTime\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ラッシュエフェクトの進捗度に合わせて表示（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_rushAttackEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ダッシュ時間に合わせて進捗度が0=>1=>0になるように調整}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_rushEffectApearProgress\ =\ (float)Math.Sin((1.0f\ -\/\ (m\_remainingTime\ /\ m\_rushTime))\ *\ Math.PI);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//進捗度をセット}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_rushAttackEffect.GetComponent<VisualEffect>().SetFloat(\textcolor{stringliteral}{"{}UVAlphaClippingValue"{}},\ m\_rushEffectApearProgress);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_remainingTime\ <=\ 0f)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_animator.SetTrigger(\textcolor{stringliteral}{"{}EndAttack"{}});}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_dashEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ダッシュエフェクトを止める（山本）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_dashEffect?.Stop();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00132}00132\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_rushAttackEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ラッシュ攻撃エフェクトを非アクティブにする}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_rushAttackEffect?.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00140}00140\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00142}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a142eab81fc2c0528e580bcc06346268f}{00142}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a142eab81fc2c0528e580bcc06346268f}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00144}00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_homingTime\ >\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ rotVec\ =\ Core.m\_inputProvider.Destination\ -\/\ Core.transform.position;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotVec.y\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotVec.Normalize();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotVec\ =\ Core.transform.forward\ +\ rotVec\ *\ m\_rateHoming;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(rotVec);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(Core.m\_dushSpeed\ *\ m\_magnificationSpeed);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00154}00154\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00155}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a7632f11563c02a818a4ef4a8b18856b6}{00155}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_rush_a7632f11563c02a818a4ef4a8b18856b6}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00156}00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnExit();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_rushAttackEffect)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//ラッシュ攻撃エフェクトを非アクティブにする}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_rushAttackEffect?.SetActive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00163}00163\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00164}00164\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00165}00165\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00166}00166\ \ \ \ \ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00167}00167\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Enemy/ReadyThrowRock"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00168}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock}{00168}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock}{ActionState\_ReadyThrowRock}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00169}00169\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00170}00170\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}追尾開始タイミング"{}}),\ Range(0.0f,\ 1.0f)]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00171}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a4719460ca80ff7d62ba3d8e1946365af}{00171}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a4719460ca80ff7d62ba3d8e1946365af}{m\_startHomingProgress}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ [Header(\textcolor{stringliteral}{"{}追尾の強さ"{}}),\ Range(0.0f,\ 1.0f)]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00173}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a8d7bf02eb2fd6ffd549b3aa20466a953}{00173}}\ \ \ \ \ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a8d7bf02eb2fd6ffd549b3aa20466a953}{m\_rateHoming}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00174}00174\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00175}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_aab46ab3912932a9ad689a8c693b01ad0}{00175}}\ \ \ \ \ \ \ \ \ Transform\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_aab46ab3912932a9ad689a8c693b01ad0}{m\_target}};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00177}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a37751cbab3af37816ac1c6e6dbc8aca5}{00177}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a37751cbab3af37816ac1c6e6dbc8aca5}{OnEnter}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00178}00178\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnEnter();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ Core.m\_isNoKnockBack\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.transform.TryGetComponent(out\ ArborFSM\ arbor))}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_target\ =\ arbor.parameterContainer.GetTransform(\textcolor{stringliteral}{"{}Target"{}});}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00188}\mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a52e98158f170afe2625d31fe8903e1a9}{00188}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___ready_throw_rock_a52e98158f170afe2625d31fe8903e1a9}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnFixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (Core.m\_animator.GetCurrentAnimatorStateInfo(0).normalizedTime\ >\ m\_startHomingProgress)}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!m\_target)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ rotVec\ =\ m\_target.transform.position\ -\/\ Core.transform.position;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotVec.y\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotVec.Normalize();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rotVec\ =\ Core.transform.forward\ +\ rotVec\ *\ m\_rateHoming;}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Core.SetRotateToTarget(rotVec);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00205}00205\ \ \ \ \ [Serializable]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00206}00206\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Enemy/Discover"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00207}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_discover}{00207}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_discover}{ActionState\_EnemyDiscover}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00208}00208\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00209}00209\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 以下の処理はEnemyIconElementに移行（伊波）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//[SerializeField]\ private\ float\ m\_iconShowTime\ =\ 2f;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00212}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_discover_a06184708bd9eaff7ffde573bb3d2c292}{00212}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_discover_a06184708bd9eaff7ffde573bb3d2c292}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00213}00213\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnFixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00216}00216\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00218}00218\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{comment}{//public\ override\ async\ void\ OnEnter()}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00221}00221\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ base.OnEnter();}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ Transform\ canvas\ =\ Core.transform.Find("{}EnemyCanvas"{});}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00223}00223\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (!canvas)\ return;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (!canvas.TryGetComponent(out\ EnemyIconController\ iconController))\ return;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00225}00225\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ iconController.ShowIcon(EnemyIconController.EnemyIconType.DiscoverIcon);}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00226}00226\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ await\ UniTask.Delay(TimeSpan.FromSeconds(m\_iconShowTime));}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (iconController)}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ iconController.HideIcon(EnemyIconController.EnemyIconType.DiscoverIcon);}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00230}00230\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00232}00232\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00234}00234\ \ \ \ \ [Serializable]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00235}00235\ \ \ \ \ [AddTypeMenu(\textcolor{stringliteral}{"{}Enemy/LostSight"{}})]}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00236}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_lost_sight}{00236}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_lost_sight}{ActionState\_EnemyLostSight}}\ :\ \mbox{\hyperlink{class_character_core_1_1_action_state___base}{ActionState\_Base}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00237}00237\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00238}00238\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 以下の処理はEnemyIconElementに移行（伊波）}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00239}00239\ \ \ \ \ \ \ \ \ \textcolor{comment}{//[SerializeField]\ private\ float\ m\_iconShowTime\ =\ 5f;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00240}\mbox{\hyperlink{class_character_core_1_1_action_state___enemy_lost_sight_ae5914c027881b35583c1414f66820417}{00240}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_character_core_1_1_action_state___enemy_lost_sight_ae5914c027881b35583c1414f66820417}{OnFixedUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00241}00241\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ base.OnFixedUpdate();}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ Core.Move(0.0f);}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00244}00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00246}00246\ \ \ \ \ \ \ \ \ \textcolor{comment}{//public\ override\ async\ void\ OnEnter()}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00247}00247\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00248}00248\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ base.OnEnter();}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00249}00249\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ Transform\ canvas\ =\ Core.transform.Find("{}EnemyCanvas"{});}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00250}00250\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (!canvas)\ return;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00251}00251\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (!canvas.TryGetComponent(out\ EnemyIconController\ iconController))\ return;}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00252}00252\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ iconController.ShowIcon(EnemyIconController.EnemyIconType.LostSightIcon);}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00253}00253\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ await\ UniTask.Delay(TimeSpan.FromSeconds(m\_iconShowTime));}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00254}00254\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ if\ (iconController)}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00255}00255\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \{}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00256}00256\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ iconController.HideIcon(EnemyIconController.EnemyIconType.LostSightIcon);}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00257}00257\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00258}00258\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00259}00259\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_enemy_state_8cs_source_l00260}00260\ \}}
+
+\end{DoxyCode}

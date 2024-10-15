@@ -1,0 +1,53 @@
+\doxysection{Order\+Food\+Customer.\+cs}
+\hypertarget{_order_food_customer_8cs_source}{}\label{_order_food_customer_8cs_source}\index{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/OrderFoodCustomer.cs@{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/TargetOrderFood/OrderFoodCustomer.cs}}
+\mbox{\hyperlink{_order_food_customer_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_customer_state_info}{CustomerStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00008}00008\ [AddBehaviourMenu(\textcolor{stringliteral}{"{}Customer/OrderFoodCustomer"{}})]}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00009}00009\ [AddComponentMenu(\textcolor{stringliteral}{"{}"{}})]}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00010}\mbox{\hyperlink{class_order_food_customer}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order_food_customer}{OrderFoodCustomer}}\ :\ \mbox{\hyperlink{class_base_customer_state_behaviour}{BaseCustomerStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 料理を注文する}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//==================================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ 料理を注文する}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00018}\mbox{\hyperlink{class_order_food_customer_a5d12a9502ee6c14a5dfb958e0ea5fa60}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_food_customer_a5d12a9502ee6c14a5dfb958e0ea5fa60}{Order}}()}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ var\ controller\ =\ \mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}};}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (controller\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理をオーダーする}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ data.TargetOrderFoodData\ =\ controller.OrderFood(data);}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.TargetOrderFoodData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}注文できませんでした"{}});}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00035}00035\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//===========================================================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00041}00041\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00042}\mbox{\hyperlink{class_order_food_customer_ad5dec3e7a897caa2b7b175df657e9df0}{00042}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_food_customer_ad5dec3e7a897caa2b7b175df657e9df0}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00043}00043\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_order_food_customer_a5d12a9502ee6c14a5dfb958e0ea5fa60}{Order}}();}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00045}00045\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_order_food_customer_8cs_source_l00047}00047\ \}}
+
+\end{DoxyCode}

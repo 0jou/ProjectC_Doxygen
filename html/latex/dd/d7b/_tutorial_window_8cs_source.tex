@@ -1,0 +1,119 @@
+\doxysection{Tutorial\+Window.\+cs}
+\hypertarget{_tutorial_window_8cs_source}{}\label{_tutorial_window_8cs_source}\index{ProjectC/002\_UI/TutorialWindow/TutorialWindow.cs@{ProjectC/002\_UI/TutorialWindow/TutorialWindow.cs}}
+\mbox{\hyperlink{_tutorial_window_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00007}\mbox{\hyperlink{class_tutorial_window}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_tutorial_window}{TutorialWindow}}\ :\ \mbox{\hyperlink{class_base_window}{BaseWindow}}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ チュートリアルウィンドウ}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}チュートリアルコントローラー"{}})]}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00015}\mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_select_tutorial_controller}{SelectTutorialController}}\ \mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{m\_selectTutorialController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}チュートリアル説明文"{}})]}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00018}00018\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00019}\mbox{\hyperlink{class_tutorial_window_ac677db2ce332677aad5b565d71123231}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_change_tutorial_description}{ChangeTutorialDescription}}\ \mbox{\hyperlink{class_tutorial_window_ac677db2ce332677aad5b565d71123231}{m\_changeTutorialDescription}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00021}00021\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00027}\mbox{\hyperlink{class_tutorial_window_a743c91b5a84d5df1bd4dcdd76480158c}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_tutorial_window_a743c91b5a84d5df1bd4dcdd76480158c}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00029}00029\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_tutorial_window_ac677db2ce332677aad5b565d71123231}{m\_changeTutorialDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeTutorialDescriptionがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00035}00035\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnInitialize();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_window_ac677db2ce332677aad5b565d71123231}{m\_changeTutorialDescription}}.\mbox{\hyperlink{class_change_tutorial_description_a7494da1930a22c49ab2ffce0ea54e5e7}{OnInitialize}}();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00052}\mbox{\hyperlink{class_tutorial_window_a98db55f5bea25b5317765f310fb89ee4}{00052}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_tutorial_window_a98db55f5bea25b5317765f310fb89ee4}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00053}00053\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00054}00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{m\_selectTutorialController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectTutorialControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_tutorial_window_ac677db2ce332677aad5b565d71123231}{m\_changeTutorialDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeTutorialDescriptionがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00065}00065\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (cancelToken.IsCancellationRequested\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ コントローラー処理}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{m\_selectTutorialController}}.\mbox{\hyperlink{class_select_tutorial_controller_ab9107be475a165eba4557e7af9458326}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文を更新}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_window_ac677db2ce332677aad5b565d71123231}{m\_changeTutorialDescription}}.\mbox{\hyperlink{class_change_tutorial_description_a3389ad3710fc2ec27e786a92b9c5a6fc}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ チュートリアルが終了すれば}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_tutorial_window_a444b8742fcdd4b62064534dfd9293505}{IsCloseTutorial}}())\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ コントローラー後処理}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{m\_selectTutorialController}}.\mbox{\hyperlink{class_select_tutorial_controller_a8f81eb3e6b7eb2f5711daa157f420b8e}{OnLateUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ UniTask.DelayFrame(1);}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00099}\mbox{\hyperlink{class_tutorial_window_a444b8742fcdd4b62064534dfd9293505}{00099}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_tutorial_window_a444b8742fcdd4b62064534dfd9293505}{IsCloseTutorial}}()}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00100}00100\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00101}00101\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{m\_selectTutorialController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}SelectTutorialControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00107}00107\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_tutorial_window_a58009064fad26ca34a205a35cfa4aeb9}{m\_selectTutorialController}}.\mbox{\hyperlink{class_select_tutorial_controller_a0d06bf8bdbeb65f491a73c2fc31de156}{IsClose}}();}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00110}00110\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_tutorial_window_8cs_source_l00113}00113\ \}}
+
+\end{DoxyCode}

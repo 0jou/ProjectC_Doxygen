@@ -1,0 +1,87 @@
+\doxysection{Localize\+Tips\+Controller.\+cs}
+\hypertarget{_localize_tips_controller_8cs_source}{}\label{_localize_tips_controller_8cs_source}\index{ProjectC/999\_PersonalScene/JOKO\_SceneTest/scripts/LocalizeTipsController.cs@{ProjectC/999\_PersonalScene/JOKO\_SceneTest/scripts/LocalizeTipsController.cs}}
+\mbox{\hyperlink{_localize_tips_controller_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine.UIElements;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.Localization;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.Localization.Tables;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }TMPro;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }UnityEngine.Rendering;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }UnityEngine.Localization.Settings;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00012}\mbox{\hyperlink{class_localize_tips_controller}{00012}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_localize_tips_controller}{LocalizeTipsController}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00013}00013\ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00014}\mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{00014}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ =\ 0;\ \textcolor{comment}{//\ 選ばれているインデックス}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00015}\mbox{\hyperlink{class_localize_tips_controller_a43ab7c46d6c2524e96f865f4d908bf02}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_localize_tips_controller_a43ab7c46d6c2524e96f865f4d908bf02}{m\_maxIndex}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00017}\mbox{\hyperlink{class_localize_tips_controller_a05f10814fc0a8551b5c9d1b11161138b}{00017}}\ \ \ \ \ [SerializeField]\ LocalizedStringTable\ \mbox{\hyperlink{class_localize_tips_controller_a05f10814fc0a8551b5c9d1b11161138b}{m\_localizedSpriteTable}};\ \textcolor{comment}{//\ 参照するテーブル}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00019}\mbox{\hyperlink{class_localize_tips_controller_a1e8532834df2214dd6947d0eaf66ab64}{00019}}\ \ \ \ \ [SerializeField]\ TextMeshProUGUI\ \mbox{\hyperlink{class_localize_tips_controller_a1e8532834df2214dd6947d0eaf66ab64}{m\_textUI}};\ \textcolor{comment}{//\ テキストUI}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00022}\mbox{\hyperlink{class_localize_tips_controller_ab4abec4bd11ffef2c9c17692392f857e}{00022}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_localize_tips_controller_ab4abec4bd11ffef2c9c17692392f857e}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00023}00023\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a43ab7c46d6c2524e96f865f4d908bf02}{m\_maxIndex}}\ =\ \mbox{\hyperlink{class_localize_tips_controller_a05f10814fc0a8551b5c9d1b11161138b}{m\_localizedSpriteTable}}.GetTable().Count;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00026}00026\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00028}00028\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}Increment"{}})]}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00029}\mbox{\hyperlink{class_localize_tips_controller_a4b67b5b0e9ed512978efe5e0ec12f847}{00029}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_localize_tips_controller_a4b67b5b0e9ed512978efe5e0ec12f847}{Increment}}()}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_aee3985adee2570597f16ab9e196880b5}{AddIndex}}(1);}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a9cbd6256e8889b8332b37ca54578096a}{ChangeText}}();}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00034}00034\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}Decrement"{}})]}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00035}\mbox{\hyperlink{class_localize_tips_controller_a55ebbd216a76cf4e984eba5a22027aa5}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_localize_tips_controller_a55ebbd216a76cf4e984eba5a22027aa5}{Decrement}}()}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_aee3985adee2570597f16ab9e196880b5}{AddIndex}}(-\/1);}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a9cbd6256e8889b8332b37ca54578096a}{ChangeText}}();}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00044}\mbox{\hyperlink{class_localize_tips_controller_a886f18e2d7f36e527e2fb527f6b750f1}{00044}}\ \ \ \ \ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_localize_tips_controller_a886f18e2d7f36e527e2fb527f6b750f1}{GetTableString}}(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00045}00045\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ var\ table=\mbox{\hyperlink{class_localize_tips_controller_a05f10814fc0a8551b5c9d1b11161138b}{m\_localizedSpriteTable}}.GetTable();}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ var\ entry\ =\ table.GetEntry(index.ToString(\textcolor{stringliteral}{"{}000"{}}));}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ entry.LocalizedValue;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00051}00051\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00053}\mbox{\hyperlink{class_localize_tips_controller_a9cbd6256e8889b8332b37ca54578096a}{00053}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_localize_tips_controller_a9cbd6256e8889b8332b37ca54578096a}{ChangeText}}()}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00054}00054\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_localize_tips_controller_a1e8532834df2214dd6947d0eaf66ab64}{m\_textUI}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ m\_textUI.text\ =\ \mbox{\hyperlink{class_localize_tips_controller_a886f18e2d7f36e527e2fb527f6b750f1}{GetTableString}}(\mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}});}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ Debug.Log(\mbox{\hyperlink{class_localize_tips_controller_a1e8532834df2214dd6947d0eaf66ab64}{m\_textUI}}.text);}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00065}\mbox{\hyperlink{class_localize_tips_controller_aee3985adee2570597f16ab9e196880b5}{00065}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_localize_tips_controller_aee3985adee2570597f16ab9e196880b5}{AddIndex}}(\textcolor{keywordtype}{int}\ index)}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a43ab7c46d6c2524e96f865f4d908bf02}{m\_maxIndex}}\ =\ \mbox{\hyperlink{class_localize_tips_controller_a05f10814fc0a8551b5c9d1b11161138b}{m\_localizedSpriteTable}}.GetTable().Count;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ +=\ index;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ >=\ \mbox{\hyperlink{class_localize_tips_controller_a43ab7c46d6c2524e96f865f4d908bf02}{m\_maxIndex}})}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ <\ 0)}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_localize_tips_controller_a9e0d57e72f796c72829124bb2be16442}{m\_currentIndex}}\ =\ \mbox{\hyperlink{class_localize_tips_controller_a43ab7c46d6c2524e96f865f4d908bf02}{m\_maxIndex}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00080}00080\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_localize_tips_controller_8cs_source_l00081}00081\ \}}
+
+\end{DoxyCode}

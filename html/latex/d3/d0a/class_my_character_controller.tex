@@ -1,0 +1,903 @@
+\doxysection{My\+Character\+Controller クラス}
+\hypertarget{class_my_character_controller}{}\label{class_my_character_controller}\index{MyCharacterController@{MyCharacterController}}
+
+
+My\+Character\+Controller の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{d3/d1f/class_my_character_controller__inherit__graph}
+\end{center}
+\end{figure}
+
+
+My\+Character\+Controller 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{d0/dcc/class_my_character_controller__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_my_character_controller_adf64fd18f5e9cfd6ae373591202d0421}{Before\+Character\+Update}} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em (Called by Kinematic\+Character\+Motor during its update cycle) This is called before the character begins its movement update \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_my_character_controller_addda837fc0521a70664ebfc1930846a9}{Update\+Rotation}} (ref Quaternion current\+Rotation, float delta\+Time)
+\begin{DoxyCompactList}\small\item\em (Called by Kinematic\+Character\+Motor during its update cycle) This is where you tell your character what its rotation should be right now. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11}{Update\+Velocity}} (ref Vector3 current\+Velocity, float delta\+Time)
+\begin{DoxyCompactList}\small\item\em (Called by Kinematic\+Character\+Motor during its update cycle) This is where you tell your character what its velocity should be right now. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f}{After\+Character\+Update}} (float delta\+Time)
+\begin{DoxyCompactList}\small\item\em (Called by Kinematic\+Character\+Motor during its update cycle) This is called after the character has finished its movement update \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea}{Is\+Collider\+Valid\+For\+Collisions}} (Collider coll)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66}{On\+Ground\+Hit}} (Collider hit\+Collider, Vector3 hit\+Normal, Vector3 hit\+Point, ref Hit\+Stability\+Report hit\+Stability\+Report)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f}{On\+Movement\+Hit}} (Collider hit\+Collider, Vector3 hit\+Normal, Vector3 hit\+Point, ref Hit\+Stability\+Report hit\+Stability\+Report)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec}{Post\+Grounding\+Update}} (float delta\+Time)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{Add\+Velocity}} (Vector3 velocity)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032}{Process\+Hit\+Stability\+Report}} (Collider hit\+Collider, Vector3 hit\+Normal, Vector3 hit\+Point, Vector3 at\+Character\+Position, Quaternion at\+Character\+Rotation, ref Hit\+Stability\+Report hit\+Stability\+Report)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_a426432b115fc711b9b708ae576e8e137}{On\+Discrete\+Collision\+Detected}} (Collider hit\+Collider)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3}{Jump}} (float \+\_\+jump\+Power)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}{Set\+Position\+Motor}} (Vector3 \+\_\+pos, bool \+\_\+bypass\+Interpolation=true)
+\item 
+void \mbox{\hyperlink{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d}{Add\+No\+Hit\+Tag}} (string \+\_\+tag\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{フィールド}
+\begin{DoxyCompactItemize}
+\item 
+Kinematic\+Character\+Motor \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_ac7e8aec87788f26b79755e23ff4184bb}{Max\+Stable\+Move\+Speed}} = 10f
+\item 
+float \mbox{\hyperlink{class_my_character_controller_af959b5778bd6582b2b4721330c23dbba}{Stable\+Movement\+Sharpness}} = 15
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a43556f5bc1f5591faff8f5e0b192afae}{Orientation\+Sharpness}} = 10
+\item 
+bool \mbox{\hyperlink{class_my_character_controller_aa70e23f8bd4c1ac256617621a66aec33}{Rotation\+Obstruction}}
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}} = new Vector3(0, -\/30f, 0)
+\item 
+Transform \mbox{\hyperlink{class_my_character_controller_a826e55ea74c6a6adf4dd70b8a9193783}{Mesh\+Root}}
+\item 
+Animator \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{Character\+Animator}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a99d58a5f067e8241f15c21fba85e5737}{Forward\+Axis\+Sharpness}} = 10
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a918c2f607dc21348092cb538dba8020f}{Turn\+Axis\+Sharpness}} = 5
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\+\_\+move\+Vec}} = new Vector3(0, 0, 0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{プロパティ}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_my_character_controller_a38f276d2a920d6b29b2f9c868e8327fc}{Is\+Root\+Motion}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a024ded67dc2d475cff4b07cc93534f17}{Move\+Speed}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_adaf5c86efb9606629a9cab2a2fe18337}{Move\+Vec}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_a8464a261f4390f326ca62ee7a025060a}{Look\+Vector}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_afce73e3ed04c9ae8a1b54df9f6d8549c}{Speed\+Rate}}\hspace{0.3cm}{\ttfamily  \mbox{[}get, set\mbox{]}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_my_character_controller_a990d3f6afaf070e68adaf393ee914d34}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_my_character_controller_a9400e3c314c4b046fcb10b9d96c22fbb}{Update}} ()
+\item 
+bool \mbox{\hyperlink{class_my_character_controller_a2adde22a934ae7963f757f797386c7ad}{Find\+Parameter}} (string name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ string $>$ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\+\_\+tag\+List}} = new()
+\item 
+bool \mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\+\_\+is\+Root\+Motion}} = true
+\item 
+float \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\+\_\+move\+Speed}}
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\+\_\+look\+Vector}}
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\+\_\+internal\+Velocity\+Add}} = Vector3.\+zero
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\+\_\+speed\+Rate}}
+\item 
+Vector3 \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\+\_\+root\+Motion\+Position\+Delta}}
+\item 
+Quaternion \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\+\_\+root\+Motion\+Rotation\+Delta}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a512c37081df543d4afa3dcbf287f6b69}{\+\_\+target\+Forward\+Axis}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_ae8e7afcb013bacffd018a5245eac766b}{\+\_\+target\+Right\+Axis}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\+\_\+forward\+Axis}}
+\item 
+float \mbox{\hyperlink{class_my_character_controller_a5045c562943be25d3a8c0e32d69d1c24}{\+\_\+right\+Axis}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00019}{19}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_my_character_controller_a990d3f6afaf070e68adaf393ee914d34}\index{MyCharacterController@{MyCharacterController}!Start@{Start}}
+\index{Start@{Start}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a990d3f6afaf070e68adaf393ee914d34} 
+void My\+Character\+Controller.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00072}{72}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00073\ \ \ \ \ \{}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Assign\ to\ motor}}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ Motor.CharacterController\ =\ \textcolor{keyword}{this};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{CharacterAnimator}}.gameObject.OnAnimatorMoveAsObservable()}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ .Where(\_\ =>\ enabled)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ .Subscribe(\_\ =>}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}})}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ +=\ \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{CharacterAnimator}}.deltaPosition;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}}\ =\ CharacterAnimator.deltaRotation\ *\ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}};}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a9400e3c314c4b046fcb10b9d96c22fbb}\index{MyCharacterController@{MyCharacterController}!Update@{Update}}
+\index{Update@{Update}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a9400e3c314c4b046fcb10b9d96c22fbb} 
+void My\+Character\+Controller.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00090}{90}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00091\ \ \ \ \ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}})}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーション関連}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ =\ Mathf.Lerp(\mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}},\ \mbox{\hyperlink{class_my_character_controller_a512c37081df543d4afa3dcbf287f6b69}{\_targetForwardAxis}},\ 1f\ -\/\ Mathf.Exp(-\/\mbox{\hyperlink{class_my_character_controller_a99d58a5f067e8241f15c21fba85e5737}{ForwardAxisSharpness}}\ *\ Time.deltaTime));}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a5045c562943be25d3a8c0e32d69d1c24}{\_rightAxis}}\ =\ Mathf.Lerp(\mbox{\hyperlink{class_my_character_controller_a5045c562943be25d3a8c0e32d69d1c24}{\_rightAxis}},\ \mbox{\hyperlink{class_my_character_controller_ae8e7afcb013bacffd018a5245eac766b}{\_targetRightAxis}},\ 1f\ -\/\ Mathf.Exp(-\/\mbox{\hyperlink{class_my_character_controller_a918c2f607dc21348092cb538dba8020f}{TurnAxisSharpness}}\ *\ Time.deltaTime));}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a2adde22a934ae7963f757f797386c7ad}{FindParameter}}(\textcolor{stringliteral}{"{}Forward"{}}))\ \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{CharacterAnimator}}.SetFloat(\textcolor{stringliteral}{"{}Forward"{}},\ \mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}});}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a2adde22a934ae7963f757f797386c7ad}{FindParameter}}(\textcolor{stringliteral}{"{}Turn"{}}))\ \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{CharacterAnimator}}.SetFloat(\textcolor{stringliteral}{"{}Turn"{}},\ \mbox{\hyperlink{class_my_character_controller_a5045c562943be25d3a8c0e32d69d1c24}{\_rightAxis}});}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a2adde22a934ae7963f757f797386c7ad}{FindParameter}}(\textcolor{stringliteral}{"{}OnGround"{}}))\ \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{CharacterAnimator}}.SetBool(\textcolor{stringliteral}{"{}OnGround"{}},\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.IsStableOnGround);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00102\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/class_my_character_controller_a9400e3c314c4b046fcb10b9d96c22fbb_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_my_character_controller_a2adde22a934ae7963f757f797386c7ad}\index{MyCharacterController@{MyCharacterController}!FindParameter@{FindParameter}}
+\index{FindParameter@{FindParameter}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{FindParameter()}{FindParameter()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a2adde22a934ae7963f757f797386c7ad} 
+bool My\+Character\+Controller.\+Find\+Parameter (\begin{DoxyParamCaption}\item[{string}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00104}{104}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105\ \ \ \ \ \{}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (AnimatorControllerParameter\ parameter\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}{CharacterAnimator}}.parameters)}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (parameter.name\ ==\ name)}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00114\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/class_my_character_controller_a2adde22a934ae7963f757f797386c7ad_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_my_character_controller_adf64fd18f5e9cfd6ae373591202d0421}\index{MyCharacterController@{MyCharacterController}!BeforeCharacterUpdate@{BeforeCharacterUpdate}}
+\index{BeforeCharacterUpdate@{BeforeCharacterUpdate}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{BeforeCharacterUpdate()}{BeforeCharacterUpdate()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_adf64fd18f5e9cfd6ae373591202d0421} 
+void My\+Character\+Controller.\+Before\+Character\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+(Called by Kinematic\+Character\+Motor during its update cycle) This is called before the character begins its movement update 
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00120}{120}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \ \ \ \ \{}
+\DoxyCodeLine{00122\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_addda837fc0521a70664ebfc1930846a9}\index{MyCharacterController@{MyCharacterController}!UpdateRotation@{UpdateRotation}}
+\index{UpdateRotation@{UpdateRotation}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{UpdateRotation()}{UpdateRotation()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_addda837fc0521a70664ebfc1930846a9} 
+void My\+Character\+Controller.\+Update\+Rotation (\begin{DoxyParamCaption}\item[{ref Quaternion}]{current\+Rotation}{, }\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+(Called by Kinematic\+Character\+Motor during its update cycle) This is where you tell your character what its rotation should be right now. 
+
+This is the ONLY place where you should set the character\textquotesingle{}s rotation 
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00129}{129}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00130\ \ \ \ \ \{}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}}\ !=\ Vector3.zero\ \&\&\ \mbox{\hyperlink{class_my_character_controller_a43556f5bc1f5591faff8f5e0b192afae}{OrientationSharpness}}\ >\ 0f)}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ \ \ \ \ m\_lookVector.y\ =\ 0f;}
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}}.Normalize();}
+\DoxyCodeLine{00135\ }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Smoothly\ interpolate\ from\ current\ to\ target\ look\ direction}}
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ smoothedLookInputDirection\ =\ Vector3.Slerp(\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.CharacterForward,\ \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}},\ 1\ -\/\ Mathf.Exp(-\/\mbox{\hyperlink{class_my_character_controller_a43556f5bc1f5591faff8f5e0b192afae}{OrientationSharpness}}\ *\ deltaTime)).normalized;}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ the\ current\ rotation\ (which\ will\ be\ used\ by\ the\ KinematicCharacterMotor)}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ \ \ \ \ currentRotation\ =\ Quaternion.LookRotation(smoothedLookInputDirection,\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.CharacterUp);}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーション}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ currentRotation\ =\ currentRotation*\ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}}\ =\ Vector3.zero;}
+\DoxyCodeLine{00146\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11}\index{MyCharacterController@{MyCharacterController}!UpdateVelocity@{UpdateVelocity}}
+\index{UpdateVelocity@{UpdateVelocity}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{UpdateVelocity()}{UpdateVelocity()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a2c0b76fc7e389f679ba47283a5b71e11} 
+void My\+Character\+Controller.\+Update\+Velocity (\begin{DoxyParamCaption}\item[{ref Vector3}]{current\+Velocity}{, }\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+(Called by Kinematic\+Character\+Motor during its update cycle) This is where you tell your character what its velocity should be right now. 
+
+This is the ONLY place where you can set the character\textquotesingle{}s velocity 
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00153}{153}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00154\ \ \ \ \ \{}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.IsStableOnGround)}
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00157\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Reorient\ source\ velocity\ on\ current\ ground\ slope\ (this\ is\ because\ we\ don't\ want\ our\ smoothing\ to\ cause\ any\ velocity\ losses\ in\ slope\ changes)}}
+\DoxyCodeLine{00158\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//currentVelocity\ =\ Motor.GetDirectionTangentToSurface(currentVelocity,\ Motor.GroundingStatus.GroundNormal)\ *\ currentVelocity.magnitude;}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ target\ velocity}}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector3\ inputRight\ =\ Vector3.Cross(\_moveInputVector,\ Motor.CharacterUp);}}
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector3\ reorientedInput\ =\ Vector3.Cross(Motor.GroundingStatus.GroundNormal,\ inputRight).normalized\ *\ \_moveInputVector.magnitude;}}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}})}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetMovementVelocity;}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}.magnitude\ ==\ 0.0f)\ targetMovementVelocity\ =\ Motor.CharacterForward\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ targetMovementVelocity\ =\ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Smooth\ movement\ Velocity}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ =\ Vector3.Lerp(currentVelocity,\ targetMovementVelocity,\ 1\ -\/\ Mathf.Exp(-\/\mbox{\hyperlink{class_my_character_controller_af959b5778bd6582b2b4721330c23dbba}{StableMovementSharpness}}\ *\ deltaTime));}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーションの移動}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (deltaTime\ >\ 0)}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ The\ final\ velocity\ is\ the\ velocity\ from\ root\ motion\ reoriented\ on\ the\ ground\ plane}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ Velocity\ =\ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ /\ deltaTime;}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ =\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GetDirectionTangentToSurface(Velocity,\ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.GroundingStatus.GroundNormal)\ *\ Velocity.magnitude;}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//currentVelocity\ *=\ 3.0f;}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ >\ 0f)}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ If\ we\ want\ to\ move,\ add\ an\ acceleration\ to\ the\ velocity}}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ targetMovementVelocity\ =\ Motor.CharacterForward\ *\ \mbox{\hyperlink{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}{\_forwardAxis}}\ *\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ *\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Vector3\ velocityDiff\ =\ Vector3.ProjectOnPlane(targetMovementVelocity\ -\/\ currentVelocity,\ \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}});}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ velocityDiff\ *\ deltaTime;}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00191\ }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Gravity}}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ \mbox{\hyperlink{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}{Gravity}}\ *\ deltaTime;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}.sqrMagnitude\ >\ 0f)}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ currentVelocity\ +=\ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}};}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}\ =\ Vector3.zero;}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00201\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ =\ Vector3.zero;}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}}\ =\ 1.0f;}
+\DoxyCodeLine{00204\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f}\index{MyCharacterController@{MyCharacterController}!AfterCharacterUpdate@{AfterCharacterUpdate}}
+\index{AfterCharacterUpdate@{AfterCharacterUpdate}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{AfterCharacterUpdate()}{AfterCharacterUpdate()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a58e2a58e81c457c505abf44f5672c45f} 
+void My\+Character\+Controller.\+After\+Character\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+(Called by Kinematic\+Character\+Motor during its update cycle) This is called after the character has finished its movement update 
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00210}{210}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00211\ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ルートモーション関連\ Updateでためたルートモーションの移動量をリセット}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}{\_rootMotionPositionDelta}}\ =\ Vector3.zero;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}{\_rootMotionRotationDelta}}\ =\ Quaternion.identity;}
+\DoxyCodeLine{00215\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea}\index{MyCharacterController@{MyCharacterController}!IsColliderValidForCollisions@{IsColliderValidForCollisions}}
+\index{IsColliderValidForCollisions@{IsColliderValidForCollisions}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{IsColliderValidForCollisions()}{IsColliderValidForCollisions()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a8b2f30bc0c29635e62098467f8635dea} 
+bool My\+Character\+Controller.\+Is\+Collider\+Valid\+For\+Collisions (\begin{DoxyParamCaption}\item[{Collider}]{coll}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00217}{217}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00218\ \ \ \ \ \{}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ tag\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\_tagList}})}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (coll.CompareTag(tag))\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ }
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66}\index{MyCharacterController@{MyCharacterController}!OnGroundHit@{OnGroundHit}}
+\index{OnGroundHit@{OnGroundHit}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{OnGroundHit()}{OnGroundHit()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ac7e0195d2701b73d688e19b145613a66} 
+void My\+Character\+Controller.\+On\+Ground\+Hit (\begin{DoxyParamCaption}\item[{Collider}]{hit\+Collider}{, }\item[{Vector3}]{hit\+Normal}{, }\item[{Vector3}]{hit\+Point}{, }\item[{ref Hit\+Stability\+Report}]{hit\+Stability\+Report}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00228}{228}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00229\ \ \ \ \ \{}
+\DoxyCodeLine{00230\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f}\index{MyCharacterController@{MyCharacterController}!OnMovementHit@{OnMovementHit}}
+\index{OnMovementHit@{OnMovementHit}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{OnMovementHit()}{OnMovementHit()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_abdddf7f24dcc5c3266c89a7d30dd739f} 
+void My\+Character\+Controller.\+On\+Movement\+Hit (\begin{DoxyParamCaption}\item[{Collider}]{hit\+Collider}{, }\item[{Vector3}]{hit\+Normal}{, }\item[{Vector3}]{hit\+Point}{, }\item[{ref Hit\+Stability\+Report}]{hit\+Stability\+Report}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00232}{232}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00233\ \ \ \ \ \{}
+\DoxyCodeLine{00234\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec}\index{MyCharacterController@{MyCharacterController}!PostGroundingUpdate@{PostGroundingUpdate}}
+\index{PostGroundingUpdate@{PostGroundingUpdate}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{PostGroundingUpdate()}{PostGroundingUpdate()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ac948d9a3a5758da4ae75a8133f4978ec} 
+void My\+Character\+Controller.\+Post\+Grounding\+Update (\begin{DoxyParamCaption}\item[{float}]{delta\+Time}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00236}{236}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00237\ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}\index{MyCharacterController@{MyCharacterController}!AddVelocity@{AddVelocity}}
+\index{AddVelocity@{AddVelocity}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{AddVelocity()}{AddVelocity()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2} 
+void My\+Character\+Controller.\+Add\+Velocity (\begin{DoxyParamCaption}\item[{Vector3}]{velocity}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00240}{240}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00241\ \ \ \ \ \{}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}{\_internalVelocityAdd}}\ +=\ velocity;}
+\DoxyCodeLine{00243\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032}\index{MyCharacterController@{MyCharacterController}!ProcessHitStabilityReport@{ProcessHitStabilityReport}}
+\index{ProcessHitStabilityReport@{ProcessHitStabilityReport}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{ProcessHitStabilityReport()}{ProcessHitStabilityReport()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a3461b7977b581ed44263f2a01a97d032} 
+void My\+Character\+Controller.\+Process\+Hit\+Stability\+Report (\begin{DoxyParamCaption}\item[{Collider}]{hit\+Collider}{, }\item[{Vector3}]{hit\+Normal}{, }\item[{Vector3}]{hit\+Point}{, }\item[{Vector3}]{at\+Character\+Position}{, }\item[{Quaternion}]{at\+Character\+Rotation}{, }\item[{ref Hit\+Stability\+Report}]{hit\+Stability\+Report}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00245}{245}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00246\ \ \ \ \ \{}
+\DoxyCodeLine{00247\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a426432b115fc711b9b708ae576e8e137}\index{MyCharacterController@{MyCharacterController}!OnDiscreteCollisionDetected@{OnDiscreteCollisionDetected}}
+\index{OnDiscreteCollisionDetected@{OnDiscreteCollisionDetected}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{OnDiscreteCollisionDetected()}{OnDiscreteCollisionDetected()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a426432b115fc711b9b708ae576e8e137} 
+void My\+Character\+Controller.\+On\+Discrete\+Collision\+Detected (\begin{DoxyParamCaption}\item[{Collider}]{hit\+Collider}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00249}{249}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00250\ \ \ \ \ \{}
+\DoxyCodeLine{00251\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3}\index{MyCharacterController@{MyCharacterController}!Jump@{Jump}}
+\index{Jump@{Jump}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{Jump()}{Jump()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3} 
+void My\+Character\+Controller.\+Jump (\begin{DoxyParamCaption}\item[{float}]{\+\_\+jump\+Power}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00254}{254}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00255\ \ \ \ \ \{}
+\DoxyCodeLine{00256\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.ForceUnground(0.1f);}
+\DoxyCodeLine{00257\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_aff53d43b677adcb6354dea7672f1d4c2}{AddVelocity}}(\textcolor{keyword}{new}\ Vector3(0f,\ \_jumpPower,\ 0f));}
+\DoxyCodeLine{00258\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/class_my_character_controller_a828f224494547eb13b8e07b86fb0fdb3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb}\index{MyCharacterController@{MyCharacterController}!SetPositionMotor@{SetPositionMotor}}
+\index{SetPositionMotor@{SetPositionMotor}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{SetPositionMotor()}{SetPositionMotor()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb} 
+void My\+Character\+Controller.\+Set\+Position\+Motor (\begin{DoxyParamCaption}\item[{Vector3}]{\+\_\+pos}{, }\item[{bool}]{\+\_\+bypass\+Interpolation}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00261}{261}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00262\ \ \ \ \ \{}
+\DoxyCodeLine{00263\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00264\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00265\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}モーターがシリアライズされていません"{}});}
+\DoxyCodeLine{00266\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00268\ }
+\DoxyCodeLine{00269\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}{Motor}}.SetPosition(\_pos,\ \_bypassInterpolation);}
+\DoxyCodeLine{00270\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d0a/class_my_character_controller_ae75dc4895fde6a5bc8cc24c1a794aedb_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d}\index{MyCharacterController@{MyCharacterController}!AddNoHitTag@{AddNoHitTag}}
+\index{AddNoHitTag@{AddNoHitTag}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{AddNoHitTag()}{AddNoHitTag()}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a577b30a38b2db4ac071670f6cf84764d} 
+void My\+Character\+Controller.\+Add\+No\+Hit\+Tag (\begin{DoxyParamCaption}\item[{string}]{\+\_\+tag\+Name}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00272}{272}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00273\ \ \ \ \ \{}
+\DoxyCodeLine{00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\_tagName.Length==0)}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00276\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00277\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00278\ }
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}{m\_tagList}}.Add(\_tagName);}
+\DoxyCodeLine{00280\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800}\index{MyCharacterController@{MyCharacterController}!Motor@{Motor}}
+\index{Motor@{Motor}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{Motor}{Motor}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ad7fc8a6656d76efa97bdbbb4125a0800} 
+Kinematic\+Character\+Motor My\+Character\+Controller.\+Motor}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00021}{21}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38}\index{MyCharacterController@{MyCharacterController}!m\_tagList@{m\_tagList}}
+\index{m\_tagList@{m\_tagList}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{m\_tagList}{m\_tagList}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a2022e013bb49646422f1942a3a0d6d38} 
+List$<$string$>$ My\+Character\+Controller.\+m\+\_\+tag\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00026}{26}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_ac7e8aec87788f26b79755e23ff4184bb}\index{MyCharacterController@{MyCharacterController}!MaxStableMoveSpeed@{MaxStableMoveSpeed}}
+\index{MaxStableMoveSpeed@{MaxStableMoveSpeed}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{MaxStableMoveSpeed}{MaxStableMoveSpeed}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ac7e8aec87788f26b79755e23ff4184bb} 
+float My\+Character\+Controller.\+Max\+Stable\+Move\+Speed = 10f}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00029}{29}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_af959b5778bd6582b2b4721330c23dbba}\index{MyCharacterController@{MyCharacterController}!StableMovementSharpness@{StableMovementSharpness}}
+\index{StableMovementSharpness@{StableMovementSharpness}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{StableMovementSharpness}{StableMovementSharpness}}
+{\footnotesize\ttfamily \label{class_my_character_controller_af959b5778bd6582b2b4721330c23dbba} 
+float My\+Character\+Controller.\+Stable\+Movement\+Sharpness = 15}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00030}{30}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a43556f5bc1f5591faff8f5e0b192afae}\index{MyCharacterController@{MyCharacterController}!OrientationSharpness@{OrientationSharpness}}
+\index{OrientationSharpness@{OrientationSharpness}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{OrientationSharpness}{OrientationSharpness}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a43556f5bc1f5591faff8f5e0b192afae} 
+float My\+Character\+Controller.\+Orientation\+Sharpness = 10}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00031}{31}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_aa70e23f8bd4c1ac256617621a66aec33}\index{MyCharacterController@{MyCharacterController}!RotationObstruction@{RotationObstruction}}
+\index{RotationObstruction@{RotationObstruction}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{RotationObstruction}{RotationObstruction}}
+{\footnotesize\ttfamily \label{class_my_character_controller_aa70e23f8bd4c1ac256617621a66aec33} 
+bool My\+Character\+Controller.\+Rotation\+Obstruction}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00034}{34}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0}\index{MyCharacterController@{MyCharacterController}!Gravity@{Gravity}}
+\index{Gravity@{Gravity}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{Gravity}{Gravity}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ae507c57c6d18ec3275a8e84767fff8e0} 
+Vector3 My\+Character\+Controller.\+Gravity = new Vector3(0, -\/30f, 0)}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00035}{35}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a826e55ea74c6a6adf4dd70b8a9193783}\index{MyCharacterController@{MyCharacterController}!MeshRoot@{MeshRoot}}
+\index{MeshRoot@{MeshRoot}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{MeshRoot}{MeshRoot}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a826e55ea74c6a6adf4dd70b8a9193783} 
+Transform My\+Character\+Controller.\+Mesh\+Root}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00036}{36}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1}\index{MyCharacterController@{MyCharacterController}!CharacterAnimator@{CharacterAnimator}}
+\index{CharacterAnimator@{CharacterAnimator}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{CharacterAnimator}{CharacterAnimator}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a11f6ec9a897577f451fcfe38cb98f1a1} 
+Animator My\+Character\+Controller.\+Character\+Animator}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00039}{39}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a99d58a5f067e8241f15c21fba85e5737}\index{MyCharacterController@{MyCharacterController}!ForwardAxisSharpness@{ForwardAxisSharpness}}
+\index{ForwardAxisSharpness@{ForwardAxisSharpness}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{ForwardAxisSharpness}{ForwardAxisSharpness}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a99d58a5f067e8241f15c21fba85e5737} 
+float My\+Character\+Controller.\+Forward\+Axis\+Sharpness = 10}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00040}{40}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a918c2f607dc21348092cb538dba8020f}\index{MyCharacterController@{MyCharacterController}!TurnAxisSharpness@{TurnAxisSharpness}}
+\index{TurnAxisSharpness@{TurnAxisSharpness}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{TurnAxisSharpness}{TurnAxisSharpness}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a918c2f607dc21348092cb538dba8020f} 
+float My\+Character\+Controller.\+Turn\+Axis\+Sharpness = 5}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00041}{41}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}\index{MyCharacterController@{MyCharacterController}!m\_isRootMotion@{m\_isRootMotion}}
+\index{m\_isRootMotion@{m\_isRootMotion}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{m\_isRootMotion}{m\_isRootMotion}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9} 
+bool My\+Character\+Controller.\+m\+\_\+is\+Root\+Motion = true\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00043}{43}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_af194deb3d473763cad5d338d2f071356}\index{MyCharacterController@{MyCharacterController}!m\_moveSpeed@{m\_moveSpeed}}
+\index{m\_moveSpeed@{m\_moveSpeed}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{m\_moveSpeed}{m\_moveSpeed}}
+{\footnotesize\ttfamily \label{class_my_character_controller_af194deb3d473763cad5d338d2f071356} 
+float My\+Character\+Controller.\+m\+\_\+move\+Speed\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00046}{46}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}\index{MyCharacterController@{MyCharacterController}!m\_moveVec@{m\_moveVec}}
+\index{m\_moveVec@{m\_moveVec}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{m\_moveVec}{m\_moveVec}}
+{\footnotesize\ttfamily \label{class_my_character_controller_af887b93be713e19b6839061b49d27a3b} 
+Vector3 My\+Character\+Controller.\+m\+\_\+move\+Vec = new Vector3(0, 0, 0)}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00049}{49}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}\index{MyCharacterController@{MyCharacterController}!m\_lookVector@{m\_lookVector}}
+\index{m\_lookVector@{m\_lookVector}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{m\_lookVector}{m\_lookVector}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd} 
+Vector3 My\+Character\+Controller.\+m\+\_\+look\+Vector\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00052}{52}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334}\index{MyCharacterController@{MyCharacterController}!\_internalVelocityAdd@{\_internalVelocityAdd}}
+\index{\_internalVelocityAdd@{\_internalVelocityAdd}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_internalVelocityAdd}{\_internalVelocityAdd}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ad6ea957c48ffc7074efbabd7c8f4c334} 
+Vector3 My\+Character\+Controller.\+\_\+internal\+Velocity\+Add = Vector3.\+zero\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00058}{58}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}\index{MyCharacterController@{MyCharacterController}!m\_speedRate@{m\_speedRate}}
+\index{m\_speedRate@{m\_speedRate}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{m\_speedRate}{m\_speedRate}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a} 
+float My\+Character\+Controller.\+m\+\_\+speed\+Rate\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00060}{60}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1}\index{MyCharacterController@{MyCharacterController}!\_rootMotionPositionDelta@{\_rootMotionPositionDelta}}
+\index{\_rootMotionPositionDelta@{\_rootMotionPositionDelta}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_rootMotionPositionDelta}{\_rootMotionPositionDelta}}
+{\footnotesize\ttfamily \label{class_my_character_controller_aa133878026e968a9b7de0af66f417bc1} 
+Vector3 My\+Character\+Controller.\+\_\+root\+Motion\+Position\+Delta\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00064}{64}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f}\index{MyCharacterController@{MyCharacterController}!\_rootMotionRotationDelta@{\_rootMotionRotationDelta}}
+\index{\_rootMotionRotationDelta@{\_rootMotionRotationDelta}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_rootMotionRotationDelta}{\_rootMotionRotationDelta}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ae96de5a8144a7450589f147f996e4d6f} 
+Quaternion My\+Character\+Controller.\+\_\+root\+Motion\+Rotation\+Delta\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00065}{65}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a512c37081df543d4afa3dcbf287f6b69}\index{MyCharacterController@{MyCharacterController}!\_targetForwardAxis@{\_targetForwardAxis}}
+\index{\_targetForwardAxis@{\_targetForwardAxis}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_targetForwardAxis}{\_targetForwardAxis}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a512c37081df543d4afa3dcbf287f6b69} 
+float My\+Character\+Controller.\+\_\+target\+Forward\+Axis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00066}{66}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_ae8e7afcb013bacffd018a5245eac766b}\index{MyCharacterController@{MyCharacterController}!\_targetRightAxis@{\_targetRightAxis}}
+\index{\_targetRightAxis@{\_targetRightAxis}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_targetRightAxis}{\_targetRightAxis}}
+{\footnotesize\ttfamily \label{class_my_character_controller_ae8e7afcb013bacffd018a5245eac766b} 
+float My\+Character\+Controller.\+\_\+target\+Right\+Axis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00067}{67}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce}\index{MyCharacterController@{MyCharacterController}!\_forwardAxis@{\_forwardAxis}}
+\index{\_forwardAxis@{\_forwardAxis}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_forwardAxis}{\_forwardAxis}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a5bb3cf8827024afda6165a5a31eb6fce} 
+float My\+Character\+Controller.\+\_\+forward\+Axis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00068}{68}} 行目に定義があります。
+
+\Hypertarget{class_my_character_controller_a5045c562943be25d3a8c0e32d69d1c24}\index{MyCharacterController@{MyCharacterController}!\_rightAxis@{\_rightAxis}}
+\index{\_rightAxis@{\_rightAxis}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{\_rightAxis}{\_rightAxis}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a5045c562943be25d3a8c0e32d69d1c24} 
+float My\+Character\+Controller.\+\_\+right\+Axis\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00069}{69}} 行目に定義があります。
+
+
+
+\doxysubsection{プロパティ詳解}
+\Hypertarget{class_my_character_controller_a38f276d2a920d6b29b2f9c868e8327fc}\index{MyCharacterController@{MyCharacterController}!IsRootMotion@{IsRootMotion}}
+\index{IsRootMotion@{IsRootMotion}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{IsRootMotion}{IsRootMotion}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a38f276d2a920d6b29b2f9c868e8327fc} 
+bool My\+Character\+Controller.\+Is\+Root\+Motion\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00044}{44}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}};\ \}\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_my_character_controller_a8a206beafc5f306c5b07437b09045ae9}{m\_isRootMotion}}\ =\ value;\ \}\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a024ded67dc2d475cff4b07cc93534f17}\index{MyCharacterController@{MyCharacterController}!MoveSpeed@{MoveSpeed}}
+\index{MoveSpeed@{MoveSpeed}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{MoveSpeed}{MoveSpeed}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a024ded67dc2d475cff4b07cc93534f17} 
+float My\+Character\+Controller.\+Move\+Speed\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00047}{47}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}}\ =\ value;\ \}\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_my_character_controller_af194deb3d473763cad5d338d2f071356}{m\_moveSpeed}};\ \}\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_adaf5c86efb9606629a9cab2a2fe18337}\index{MyCharacterController@{MyCharacterController}!MoveVec@{MoveVec}}
+\index{MoveVec@{MoveVec}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{MoveVec}{MoveVec}}
+{\footnotesize\ttfamily \label{class_my_character_controller_adaf5c86efb9606629a9cab2a2fe18337} 
+Vector3 My\+Character\+Controller.\+Move\+Vec\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00050}{50}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}}\ =\ value;\ \}\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_my_character_controller_af887b93be713e19b6839061b49d27a3b}{m\_moveVec}};\ \}\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_a8464a261f4390f326ca62ee7a025060a}\index{MyCharacterController@{MyCharacterController}!LookVector@{LookVector}}
+\index{LookVector@{LookVector}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{LookVector}{LookVector}}
+{\footnotesize\ttfamily \label{class_my_character_controller_a8464a261f4390f326ca62ee7a025060a} 
+Vector3 My\+Character\+Controller.\+Look\+Vector\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00053}{53}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00053\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}}\ =\ value;\ \}\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_my_character_controller_a8bccb5295b0dfd28cb13b3c3d65496bd}{m\_lookVector}};\ \}\ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_my_character_controller_afce73e3ed04c9ae8a1b54df9f6d8549c}\index{MyCharacterController@{MyCharacterController}!SpeedRate@{SpeedRate}}
+\index{SpeedRate@{SpeedRate}!MyCharacterController@{MyCharacterController}}
+\doxysubsubsection{\texorpdfstring{SpeedRate}{SpeedRate}}
+{\footnotesize\ttfamily \label{class_my_character_controller_afce73e3ed04c9ae8a1b54df9f6d8549c} 
+float My\+Character\+Controller.\+Speed\+Rate\hspace{0.3cm}{\ttfamily [get]}, {\ttfamily [set]}}
+
+
+
+ \mbox{\hyperlink{_my_character_controller_8cs_source}{My\+Character\+Controller.\+cs}} の \mbox{\hyperlink{_my_character_controller_8cs_source_l00061}{61}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}};\ \}\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_my_character_controller_a5d7b91e771ee48035d847f20d7e6649a}{m\_speedRate}}\ =\ value;\ \}\ \}}
+
+\end{DoxyCode}
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/004\+\_\+\+Character/\+Scripts/\mbox{\hyperlink{_my_character_controller_8cs}{My\+Character\+Controller.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,178 @@
+\doxysection{Throw\+Poison クラス}
+\hypertarget{class_throw_poison}{}\label{class_throw_poison}\index{ThrowPoison@{ThrowPoison}}
+
+
+Throw\+Poison の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{d6/d28/class_throw_poison__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Throw\+Poison 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{d4/dfc/class_throw_poison__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_throw_poison_1_1_hit_data}{Hit\+Data}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_throw_poison_aee68b3358de27f885757e176eb7a7340}{On\+Trigger\+Stay}} (Collider other)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_throw_poison_ad885d335d967c20aef12c8940cfa959d}{Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{m\+\_\+time}}
+\item 
+float \mbox{\hyperlink{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28}{m\+\_\+rate\+Speed}} = 0.\+5f
+\item 
+float \mbox{\hyperlink{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5}{m\+\_\+poisoned\+Time}}
+\item 
+Game\+Object \mbox{\hyperlink{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5}{m\+\_\+poison\+Prefab}}
+\item 
+List$<$ \mbox{\hyperlink{class_throw_poison_1_1_hit_data}{Hit\+Data}} $>$ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\+\_\+hit\+Condition\+Managers}} = new List$<$\mbox{\hyperlink{class_throw_poison_1_1_hit_data}{Hit\+Data}}$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00010}{10}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_throw_poison_ad885d335d967c20aef12c8940cfa959d}\index{ThrowPoison@{ThrowPoison}!Update@{Update}}
+\index{Update@{Update}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_throw_poison_ad885d335d967c20aef12c8940cfa959d} 
+void Throw\+Poison.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00032}{32}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{m\_time}}\ -\/=\ Time.deltaTime;}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}{m\_time}}\ <=\ 0.0f)}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_throw_poison_aee68b3358de27f885757e176eb7a7340}\index{ThrowPoison@{ThrowPoison}!OnTriggerStay@{OnTriggerStay}}
+\index{OnTriggerStay@{OnTriggerStay}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{OnTriggerStay()}{OnTriggerStay()}}
+{\footnotesize\ttfamily \label{class_throw_poison_aee68b3358de27f885757e176eb7a7340} 
+void Throw\+Poison.\+On\+Trigger\+Stay (\begin{DoxyParamCaption}\item[{Collider}]{other}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00041}{41}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}.Count;\ ++i)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_conditionManager.transform.root\ ==\ other.transform.root)}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_characterController.SpeedRate\ =\ \mbox{\hyperlink{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28}{m\_rateSpeed}};}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_hitTime\ +=\ Time.deltaTime;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_hitTime\ >\ \mbox{\hyperlink{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5}{m\_poisonedTime}})}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}[i].m\_conditionManager.AddCondition(\mbox{\hyperlink{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5}{m\_poisonPrefab}});}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_condition_manager}{ConditionManager}}\ conditionmanager\ =\ other.GetComponentInChildren<\mbox{\hyperlink{class_condition_manager}{ConditionManager}}>();}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (conditionmanager\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}\ controller\ =\ other.GetComponentInChildren<\mbox{\hyperlink{class_my_character_controller}{MyCharacterController}}>();}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (controller\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ HitData\ hitData\ =\ \textcolor{keyword}{new}\ HitData();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ hitData.m\_conditionManager\ =\ conditionmanager;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ hitData.m\_characterController\ =\ controller;}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}{m\_hitConditionManagers}}.Add(hitData);}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f}\index{ThrowPoison@{ThrowPoison}!m\_time@{m\_time}}
+\index{m\_time@{m\_time}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{m\_time}{m\_time}}
+{\footnotesize\ttfamily \label{class_throw_poison_aa34428fd65c4c7817c379bf8cd1bff9f} 
+float Throw\+Poison.\+m\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00013}{13}} 行目に定義があります。
+
+\Hypertarget{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28}\index{ThrowPoison@{ThrowPoison}!m\_rateSpeed@{m\_rateSpeed}}
+\index{m\_rateSpeed@{m\_rateSpeed}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{m\_rateSpeed}{m\_rateSpeed}}
+{\footnotesize\ttfamily \label{class_throw_poison_aa0db3a5c7c6269be5f4fbe5bbba62c28} 
+float Throw\+Poison.\+m\+\_\+rate\+Speed = 0.\+5f\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00016}{16}} 行目に定義があります。
+
+\Hypertarget{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5}\index{ThrowPoison@{ThrowPoison}!m\_poisonedTime@{m\_poisonedTime}}
+\index{m\_poisonedTime@{m\_poisonedTime}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{m\_poisonedTime}{m\_poisonedTime}}
+{\footnotesize\ttfamily \label{class_throw_poison_af2a3945903a3c3a0ee10d5b577a659d5} 
+float Throw\+Poison.\+m\+\_\+poisoned\+Time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00019}{19}} 行目に定義があります。
+
+\Hypertarget{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5}\index{ThrowPoison@{ThrowPoison}!m\_poisonPrefab@{m\_poisonPrefab}}
+\index{m\_poisonPrefab@{m\_poisonPrefab}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{m\_poisonPrefab}{m\_poisonPrefab}}
+{\footnotesize\ttfamily \label{class_throw_poison_a879edc0de49b33bebff02c91d36e1ae5} 
+Game\+Object Throw\+Poison.\+m\+\_\+poison\+Prefab\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00022}{22}} 行目に定義があります。
+
+\Hypertarget{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5}\index{ThrowPoison@{ThrowPoison}!m\_hitConditionManagers@{m\_hitConditionManagers}}
+\index{m\_hitConditionManagers@{m\_hitConditionManagers}!ThrowPoison@{ThrowPoison}}
+\doxysubsubsection{\texorpdfstring{m\_hitConditionManagers}{m\_hitConditionManagers}}
+{\footnotesize\ttfamily \label{class_throw_poison_a2c7d1299a4ab9e6f102b62d90bbea8d5} 
+List$<$\mbox{\hyperlink{class_throw_poison_1_1_hit_data}{Hit\+Data}}$>$ Throw\+Poison.\+m\+\_\+hit\+Condition\+Managers = new List$<$\mbox{\hyperlink{class_throw_poison_1_1_hit_data}{Hit\+Data}}$>$()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_throw_poison_8cs_source}{Throw\+Poison.\+cs}} の \mbox{\hyperlink{_throw_poison_8cs_source_l00030}{30}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/006\+\_\+\+Condition/\+Scripts/\mbox{\hyperlink{_throw_poison_8cs}{Throw\+Poison.\+cs}}\end{DoxyCompactItemize}

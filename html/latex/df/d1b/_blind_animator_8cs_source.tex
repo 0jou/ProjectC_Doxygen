@@ -1,0 +1,115 @@
+\doxysection{Blind\+Animator.\+cs}
+\hypertarget{_blind_animator_8cs_source}{}\label{_blind_animator_8cs_source}\index{ProjectC/999\_PersonalScene/JOKO\_SceneTest/scripts/BlindAnimator.cs@{ProjectC/999\_PersonalScene/JOKO\_SceneTest/scripts/BlindAnimator.cs}}
+\mbox{\hyperlink{_blind_animator_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00007}\mbox{\hyperlink{class_blind_animator}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_blind_animator}{BlindAnimator}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00009}00009\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}DoAnimation"{}})]}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00010}\mbox{\hyperlink{class_blind_animator_ad7f76aefed420166eaf0d8830f19491d}{00010}}\ \ \ \ \ \textcolor{keyword}{private}\ UniTask\ \mbox{\hyperlink{class_blind_animator_ad7f76aefed420166eaf0d8830f19491d}{Method}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00011}00011\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_blind_animator_aa9009c1f3af507daba239d08f38288d7}{CutIn}}();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00013}00013\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00014}00014\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}In"{}})]}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00015}\mbox{\hyperlink{class_blind_animator_a00975bcfc96d4bbb71952aa6f342adaa}{00015}}\ \ \ \ \ \textcolor{keyword}{private}\ UniTask\ \mbox{\hyperlink{class_blind_animator_a00975bcfc96d4bbb71952aa6f342adaa}{INN}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_blind_animator_a5762a7c4ed26951b48ab1d23c31e01d2}{In}}();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00019}00019\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}Out"{}})]}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00020}\mbox{\hyperlink{class_blind_animator_aa40e758da886d243255e63132faf1ffc}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ UniTask\ \mbox{\hyperlink{class_blind_animator_aa40e758da886d243255e63132faf1ffc}{OUTT}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_blind_animator_aebc49a5cca9293630d921e75a88722e1}{Out}}();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00023}00023\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ カットイン関連のUI}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00026}\mbox{\hyperlink{class_blind_animator_a06144267d809f3d74630ebf41dbccfc7}{00026}}\ \ \ \ \ [SerializeField]\ CanvasGroup\ \mbox{\hyperlink{class_blind_animator_a06144267d809f3d74630ebf41dbccfc7}{m\_cutInCanvas}};}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ カットインの位置}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00029}\mbox{\hyperlink{class_blind_animator_a28ab274d30c7fa34b064bc2a05cf92bb}{00029}}\ \ \ \ \ [SerializeField]\ RectTransform\ \mbox{\hyperlink{class_blind_animator_a28ab274d30c7fa34b064bc2a05cf92bb}{m\_rectTrans}};}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ シェーダーグラフが適用されたマテリアル}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00032}\mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{00032}}\ \ \ \ \ [SerializeField]\ Material\ \mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{m\_material}};}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ 操作するプロパティのID}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00035}\mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{00035}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{m\_blindID}};}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00037}00037\ \ \ \ \ \textcolor{comment}{//\ 定数の定義}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00038}\mbox{\hyperlink{class_blind_animator_a4104e68eccd48fc3b40e5358951b0e28}{00038}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_a4104e68eccd48fc3b40e5358951b0e28}{m\_cutInFadeDuration}}\ =\ 0.4f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00039}\mbox{\hyperlink{class_blind_animator_a766102095f6e8314f2e177251e5f3308}{00039}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_a766102095f6e8314f2e177251e5f3308}{m\_cutInDisplayDuration}}\ =\ 1.5f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00040}\mbox{\hyperlink{class_blind_animator_aaa27d7500a37cf014029f0ab45b80063}{00040}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_aaa27d7500a37cf014029f0ab45b80063}{m\_blindFadeDuration}}\ =\ 0.5f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00041}\mbox{\hyperlink{class_blind_animator_a311a39cbf792a891c1fea66f66ac3e7d}{00041}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_a311a39cbf792a891c1fea66f66ac3e7d}{m\_cutInFadeOutDelay}}\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00042}\mbox{\hyperlink{class_blind_animator_acb6947a087cb7b2b56ce79c3fb24d9b9}{00042}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_acb6947a087cb7b2b56ce79c3fb24d9b9}{m\_cutInFadeOutDuration}}\ =\ 0.3f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00043}\mbox{\hyperlink{class_blind_animator_a9f8ebf445651e2f5a11fd1d9468514eb}{00043}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_a9f8ebf445651e2f5a11fd1d9468514eb}{m\_initialPositionX}}\ =\ 500f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00044}\mbox{\hyperlink{class_blind_animator_af569b83ca0dc3630b8c37f766262bfc5}{00044}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_af569b83ca0dc3630b8c37f766262bfc5}{m\_finalPositionX}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00046}\mbox{\hyperlink{class_blind_animator_ad8e17464c8f44bf6a4d50a3c4c12e817}{00046}}\ \ \ \ \ [SerializeField]\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_blind_animator_ad8e17464c8f44bf6a4d50a3c4c12e817}{m\_propertyName}}\ =\ \textcolor{stringliteral}{"{}\_BlindValue"{}};}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00048}\mbox{\hyperlink{class_blind_animator_a2fa8be1da456cdb479a83c7497078109}{00048}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_blind_animator_a2fa8be1da456cdb479a83c7497078109}{m\_startUpValue}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Start\ is\ called\ before\ the\ first\ frame\ update}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00051}\mbox{\hyperlink{class_blind_animator_aea99133f2a55419353e48b7f79e1497e}{00051}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_blind_animator_aea99133f2a55419353e48b7f79e1497e}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ outlineLength\ =\ \mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{m\_material}}.GetFloat(Shader.PropertyToID(\textcolor{stringliteral}{"{}\_OutLineLength"{}}));}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_a2fa8be1da456cdb479a83c7497078109}{m\_startUpValue}}\ =\ 0.0f\ -\/\ outlineLength;}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{m\_blindID}}\ =\ Shader.PropertyToID(\mbox{\hyperlink{class_blind_animator_ad8e17464c8f44bf6a4d50a3c4c12e817}{m\_propertyName}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{m\_material}}.SetFloat(\mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{m\_blindID}},\ \mbox{\hyperlink{class_blind_animator_a2fa8be1da456cdb479a83c7497078109}{m\_startUpValue}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00062}\mbox{\hyperlink{class_blind_animator_a86ca53985b27fcc071e64a1b16c58f6f}{00062}}\ \ \ \ \ \textcolor{keyword}{private}\ UniTask\ \mbox{\hyperlink{class_blind_animator_a86ca53985b27fcc071e64a1b16c58f6f}{InSequence}}(Sequence\ seq)}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カットインを表示(画面中央まで移動)}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ seq.Append(\mbox{\hyperlink{class_blind_animator_a06144267d809f3d74630ebf41dbccfc7}{m\_cutInCanvas}}.DOFade(1.0f,\ \mbox{\hyperlink{class_blind_animator_a4104e68eccd48fc3b40e5358951b0e28}{m\_cutInFadeDuration}}))}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ .Join(\mbox{\hyperlink{class_blind_animator_a28ab274d30c7fa34b064bc2a05cf92bb}{m\_rectTrans}}.DOAnchorPosX(\mbox{\hyperlink{class_blind_animator_af569b83ca0dc3630b8c37f766262bfc5}{m\_finalPositionX}},\ \mbox{\hyperlink{class_blind_animator_a4104e68eccd48fc3b40e5358951b0e28}{m\_cutInFadeDuration}}))}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ .AppendInterval(\mbox{\hyperlink{class_blind_animator_a766102095f6e8314f2e177251e5f3308}{m\_cutInDisplayDuration}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ seq.Play().ToUniTask();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00070}\mbox{\hyperlink{class_blind_animator_aeaf5a3a1227a80097f4a0c43fb9359e0}{00070}}\ \ \ \ \ \textcolor{keyword}{private}\ UniTask\ \mbox{\hyperlink{class_blind_animator_aeaf5a3a1227a80097f4a0c43fb9359e0}{OutSequence}}(Sequence\ seq)}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カットインを表示(画面中央まで移動)}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ seq.Append(\mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{m\_material}}.DOFloat(1.0f,\ \mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{m\_blindID}},\ \mbox{\hyperlink{class_blind_animator_aaa27d7500a37cf014029f0ab45b80063}{m\_blindFadeDuration}}))}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ .Join(\mbox{\hyperlink{class_blind_animator_a06144267d809f3d74630ebf41dbccfc7}{m\_cutInCanvas}}.DOFade(0.0f,\ \mbox{\hyperlink{class_blind_animator_acb6947a087cb7b2b56ce79c3fb24d9b9}{m\_cutInFadeOutDuration}})).SetDelay(\mbox{\hyperlink{class_blind_animator_a311a39cbf792a891c1fea66f66ac3e7d}{m\_cutInFadeOutDelay}})}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ .Append(\mbox{\hyperlink{class_blind_animator_a28ab274d30c7fa34b064bc2a05cf92bb}{m\_rectTrans}}.DOAnchorPosX(\mbox{\hyperlink{class_blind_animator_a9f8ebf445651e2f5a11fd1d9468514eb}{m\_initialPositionX}},\ \mbox{\hyperlink{class_blind_animator_acb6947a087cb7b2b56ce79c3fb24d9b9}{m\_cutInFadeOutDuration}}));}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ seq.Play().ToUniTask();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00077}00077\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00079}\mbox{\hyperlink{class_blind_animator_a5762a7c4ed26951b48ab1d23c31e01d2}{00079}}\ \ \ \ \ \textcolor{keyword}{public}\ UniTask\ \mbox{\hyperlink{class_blind_animator_a5762a7c4ed26951b48ab1d23c31e01d2}{In}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}In"{}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シェーダーグラフのパラメーターを初期化}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{m\_material}}.SetFloat(\mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{m\_blindID}},\ \mbox{\hyperlink{class_blind_animator_a2fa8be1da456cdb479a83c7497078109}{m\_startUpValue}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ var\ sequence\ =\ DOTween.Sequence();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_blind_animator_a86ca53985b27fcc071e64a1b16c58f6f}{InSequence}}(sequence);}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00088}00088\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00090}00090\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00091}\mbox{\hyperlink{class_blind_animator_aebc49a5cca9293630d921e75a88722e1}{00091}}\ \ \ \ \ \textcolor{keyword}{public}\ UniTask\ \mbox{\hyperlink{class_blind_animator_aebc49a5cca9293630d921e75a88722e1}{Out}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00092}00092\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Out"{}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ var\ sequence\ =\ DOTween.Sequence();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_blind_animator_aeaf5a3a1227a80097f4a0c43fb9359e0}{OutSequence}}(sequence);}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00098}\mbox{\hyperlink{class_blind_animator_aa9009c1f3af507daba239d08f38288d7}{00098}}\ \ \ \ \ \textcolor{keyword}{public}\ UniTask\ \mbox{\hyperlink{class_blind_animator_aa9009c1f3af507daba239d08f38288d7}{CutIn}}()}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00099}00099\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}CutIn"{}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シェーダーグラフのパラメーターを初期化}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_a9a5ae432cff20ab1744fd56364ef47e6}{m\_material}}.SetFloat(\mbox{\hyperlink{class_blind_animator_aa05b2b10a790971c9fd405af9edcd143}{m\_blindID}},\ \mbox{\hyperlink{class_blind_animator_a2fa8be1da456cdb479a83c7497078109}{m\_startUpValue}});}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ var\ sequence\ =\ DOTween.Sequence();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00104}00104\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_a86ca53985b27fcc071e64a1b16c58f6f}{InSequence}}(sequence);}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00105}00105\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_blind_animator_aeaf5a3a1227a80097f4a0c43fb9359e0}{OutSequence}}(sequence);}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sequence.ToUniTask();}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_blind_animator_8cs_source_l00109}00109\ \}}
+
+\end{DoxyCode}

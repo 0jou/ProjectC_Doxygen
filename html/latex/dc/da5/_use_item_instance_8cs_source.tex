@@ -1,0 +1,114 @@
+\doxysection{Use\+Item\+Instance.\+cs}
+\hypertarget{_use_item_instance_8cs_source}{}\label{_use_item_instance_8cs_source}\index{ProjectC/003\_Item/Item/Script/UseItemInstance.cs@{ProjectC/003\_Item/Item/Script/UseItemInstance.cs}}
+\mbox{\hyperlink{_use_item_instance_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00006}\mbox{\hyperlink{class_use_item_instance}{00006}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_use_item_instance}{UseItemInstance}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00007}00007\ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00008}00008\ \ \ \ \ \textcolor{comment}{//作成者　山本}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//アイテム食事状態時に選んだアイテムのインスタンス生成とプレイヤーに食事効果を付与する}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//参考→PutItemInstance.cs,ThrowItemInstance.cs}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//===================================================================================}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00014}00014\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}アイテムのインスタンスを作成するタグ"{}})]}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00015}00015\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00016}\mbox{\hyperlink{class_use_item_instance_a909d33b7dfa20400db92e12e3f318b2d}{00016}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{string}\ \mbox{\hyperlink{class_use_item_instance_a909d33b7dfa20400db92e12e3f318b2d}{m\_tag}}\ =\ \textcolor{stringliteral}{"{}Player"{}};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00018}\mbox{\hyperlink{class_use_item_instance_a84173c719cc41c07ec26d574b7a7ae88}{00018}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_use_item_instance_a84173c719cc41c07ec26d574b7a7ae88}{m\_targetObject}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00019}\mbox{\hyperlink{class_use_item_instance_aabde3f35dd666280f6644a68f3b9673f}{00019}}\ \ \ \ \ \textcolor{keyword}{private}\ Transform\ \mbox{\hyperlink{class_use_item_instance_aabde3f35dd666280f6644a68f3b9673f}{m\_holdPointTrans}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00020}00020\ \ \ \ \ \textcolor{comment}{//キャッシュ用}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//private\ GameObject\ m\_itemObj\ =\ null;}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//===================================================================================}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00026}\mbox{\hyperlink{class_use_item_instance_aaa60257cf6ae5a882ae7cf76a859ac23}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \mbox{\hyperlink{class_use_item_instance_aaa60257cf6ae5a882ae7cf76a859ac23}{m\_itemTypeID}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00028}\mbox{\hyperlink{class_use_item_instance_a033de6e3e6cdedc279f6ad6ecddf0ad4}{00028}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_use_item_instance_aaa60257cf6ae5a882ae7cf76a859ac23}{m\_itemTypeID}}\ =\ value;\ \}\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_use_item_instance_aaa60257cf6ae5a882ae7cf76a859ac23}{m\_itemTypeID}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00031}\mbox{\hyperlink{class_use_item_instance_a56e1caaed5ea162a69115dd96a9df53c}{00031}}\ \ \ \ \ \textcolor{keyword}{private}\ uint\ \mbox{\hyperlink{class_use_item_instance_a56e1caaed5ea162a69115dd96a9df53c}{m\_itemID}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00033}\mbox{\hyperlink{class_use_item_instance_afecd85f28dd07ac1e2cc1a78c494c855}{00033}}\ \ \ \ \ \textcolor{keyword}{public}\ uint\ \mbox{\hyperlink{class_use_item_instance_afecd85f28dd07ac1e2cc1a78c494c855}{ItemID}}\ \{\ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_use_item_instance_a56e1caaed5ea162a69115dd96a9df53c}{m\_itemID}}\ =\ value;\ \}\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_use_item_instance_a56e1caaed5ea162a69115dd96a9df53c}{m\_itemID}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//===================================================================================}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00037}\mbox{\hyperlink{class_use_item_instance_a370312b5decb8464e2b228755d1f6343}{00037}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_use_item_instance_a370312b5decb8464e2b228755d1f6343}{Awake}}()}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00038}00038\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Playerを探す}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ GameObject[]\ getObj\ =\ GameObject.FindGameObjectsWithTag(\mbox{\hyperlink{class_use_item_instance_a909d33b7dfa20400db92e12e3f318b2d}{m\_tag}});}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ obj\ \textcolor{keywordflow}{in}\ getObj)}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_use_item_instance_a84173c719cc41c07ec26d574b7a7ae88}{m\_targetObject}}\ =\ obj;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00050}\mbox{\hyperlink{class_use_item_instance_a35831854764bb8def7c7714b45103205}{00050}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_use_item_instance_a35831854764bb8def7c7714b45103205}{SetItemID}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_itemTypeID,\ uint\ \_itemID)}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00051}00051\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_use_item_instance_aaa60257cf6ae5a882ae7cf76a859ac23}{m\_itemTypeID}}\ =\ \_itemTypeID;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_use_item_instance_a56e1caaed5ea162a69115dd96a9df53c}{m\_itemID}}\ =\ \_itemID;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00056}\mbox{\hyperlink{class_use_item_instance_ab698b609e89c589ef0c3d889aa9dbe58}{00056}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_use_item_instance_ab698b609e89c589ef0c3d889aa9dbe58}{SetHoldPoint}}(Transform\ \_holdPointTrans)}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00057}00057\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_use_item_instance_aabde3f35dd666280f6644a68f3b9673f}{m\_holdPointTrans}}\ =\ \_holdPointTrans;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00059}00059\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00061}00061\ \ \ \ \ \textcolor{comment}{//\ アイテムのインスタンスをHoldPointに作成する}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00062}\mbox{\hyperlink{class_use_item_instance_ad3e2112321c08b004b9a9b675981387a}{00062}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_use_item_instance_ad3e2112321c08b004b9a9b675981387a}{UseItem}}()}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{class_use_item_instance_aaa60257cf6ae5a882ae7cf76a859ac23}{m\_itemTypeID}},\ \mbox{\hyperlink{class_use_item_instance_a56e1caaed5ea162a69115dd96a9df53c}{m\_itemID}});}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}この料理データは存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ var\ prefab\ =\ data.\mbox{\hyperlink{class_base_item_data_a6d4a32e0bc60321192dd81c9399aea11}{ItemPrefab}};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (prefab\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}プレハブが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//食べられないなら早期リターン}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!data.IsEat)}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00082}00082\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}食べられません"{}});}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \textcolor{comment}{//プレイヤーのHPを回復}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.HealingValue\ !=\ 0.0f)}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_use_item_instance_a84173c719cc41c07ec26d574b7a7ae88}{m\_targetObject}}.TryGetComponent(out\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ core))}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ hp\ =\ core.Status.m\_hp.Value\ +=\ data.HealingValue;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//最大値以上回復するなら最大値にする}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hp\ >\ core.Status.MaxHP)}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ core.Status.m\_hp.Value\ =\ core.Status.MaxHP;}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00100}00100\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 使用したアイテムを手持ちから削除する}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00103}00103\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}}.\mbox{\hyperlink{class_inventory_manager_a646b12789b3abe1580efeb77809d7965}{RemoveItem}}(data.ItemTypeID,\ data.ItemID);}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00105}00105\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00106}00106\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{_use_item_instance_8cs_source_l00108}00108\ \}}
+
+\end{DoxyCode}

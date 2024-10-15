@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/002_UI/DoTween/BaseDoTweenUI.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241016</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('dc/da7/_base_do_tween_u_i_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">BaseDoTweenUI.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../dc/da7/_base_do_tween_u_i_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>DG.Tweening;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>NaughtyAttributes;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>[DefaultExecutionOrder(0)]</div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html">   10</a></span><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class </span><a class="code hl_class" href="../../d9/dc9/class_base_do_tween_u_i.html">BaseDoTweenUI</a> : MonoBehaviour</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// 制作者 田内</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">// UIDoTweenの基底クラス</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>   </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">//===================================</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// イージングの種類</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    [BoxGroup(<span class="stringliteral">&quot;イージング&quot;</span>)]</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    [Header(<span class="stringliteral">&quot;EaseType&quot;</span>)]</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    [SerializeField]</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a28c42ac637a0a1545bbd1068ec2b60f7">   22</a></span>    <span class="keyword">protected</span> Ease <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a28c42ac637a0a1545bbd1068ec2b60f7">m_ease</a> = Ease.InSine;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    [BoxGroup(<span class="stringliteral">&quot;イージング&quot;</span>)]</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    [Header(<span class="stringliteral">&quot;間隔&quot;</span>)]</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    [SerializeField]</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#afac415f8cc86bb6c0d498ef420dd73dc">   27</a></span>    <span class="keyword">protected</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#afac415f8cc86bb6c0d498ef420dd73dc">m_duration</a> = 1.0f;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    [BoxGroup(<span class="stringliteral">&quot;イージング&quot;</span>)]</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    [Header(<span class="stringliteral">&quot;待機時間&quot;</span>)]</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    [SerializeField]</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#add825ea273bddeceb6366b843650c092">   32</a></span>    <span class="keyword">protected</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#add825ea273bddeceb6366b843650c092">m_delay</a> = 0.0f;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="comment">//====================================</span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="comment">// 処理の種類</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    [BoxGroup(<span class="stringliteral">&quot;処理&quot;</span>)]</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    [Header(<span class="stringliteral">&quot;GameStopMove&quot;</span>)]</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    [SerializeField]</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#aee3fa5c8322eb2f87b13120485ee6542">   42</a></span>    <span class="keyword">protected</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#aee3fa5c8322eb2f87b13120485ee6542">m_isGameStopMove</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="foldopen" id="foldopen00045" data-start="{" data-end="};">
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">   45</a></span>    <span class="keyword">protected</span> <span class="keyword">enum</span> <a class="code hl_enumeration" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">UpdateType</a></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_enumvalue" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1a06b9281e396db002010bde1de57262eb">Auto</a>,</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_enumvalue" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1aad6e7652b1bdfb38783486c2c3d5e806">Self</a>,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    [BoxGroup(<span class="stringliteral">&quot;処理&quot;</span>)]</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    [Header(<span class="stringliteral">&quot;UpdateType&quot;</span>)]</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    [SerializeField]</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#ae76b0e805291669e1a46a6df96fc45a4">   55</a></span>    <span class="keyword">protected</span> <a class="code hl_enumeration" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">UpdateType</a> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#ae76b0e805291669e1a46a6df96fc45a4">m_updateType</a> = <a class="code hl_enumeration" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">UpdateType</a>.Auto;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">//====================================</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// ループの種類</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    [BoxGroup(<span class="stringliteral">&quot;ループ&quot;</span>)]</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    [Header(<span class="stringliteral">&quot;ループ回数(無限ループは-1)&quot;</span>)]</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    [SerializeField]</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a0981dac4174fa204a80ea78ccb9376b7">   63</a></span>    <span class="keyword">protected</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a0981dac4174fa204a80ea78ccb9376b7">m_loopCount</a> = 0;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    [BoxGroup(<span class="stringliteral">&quot;ループ&quot;</span>)]</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    [Header(<span class="stringliteral">&quot;LoopType&quot;</span>)]</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    [SerializeField]</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a3b9ae474f7cc59876265db492de02f3a">   68</a></span>    <span class="keyword">protected</span> LoopType <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a3b9ae474f7cc59876265db492de02f3a">m_loopType</a> = LoopType.Yoyo;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">//====================================</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// 実行中のDoTween</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">   74</a></span>    <span class="keyword">protected</span> <a class="code hl_property" href="../../d9/dc9/class_base_do_tween_u_i.html#a9eacc79c5bdd8de5530291eaae455bab">Sequence</a> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">m_sequence</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="};">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a9eacc79c5bdd8de5530291eaae455bab">   79</a></span>    <span class="keyword">public</span> <a class="code hl_property" href="../../d9/dc9/class_base_do_tween_u_i.html#a9eacc79c5bdd8de5530291eaae455bab">Sequence</a> <a class="code hl_property" href="../../d9/dc9/class_base_do_tween_u_i.html#a9eacc79c5bdd8de5530291eaae455bab">Sequence</a></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">m_sequence</a>; }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">//========================================================</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="comment">//                       実行処理</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">//========================================================</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="{" data-end="}">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a6ac67cc9aa071a70a59970f63de520f1">   89</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a6ac67cc9aa071a70a59970f63de520f1">Start</a>()</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    {</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#ae76b0e805291669e1a46a6df96fc45a4">m_updateType</a> == <a class="code hl_enumeration" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">UpdateType</a>.Self) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a6a623674f87a15b0c8b5fc0a2903acf5">OnInitialize</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a8fd57d0cf13f36b6fc02e210d7dcba5d">StartDoTween</a>();</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a9e2894104501eadd915ea868f5b62339">   97</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a9e2894104501eadd915ea868f5b62339">Update</a>()</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#ae76b0e805291669e1a46a6df96fc45a4">m_updateType</a> == <a class="code hl_enumeration" href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">UpdateType</a>.Self) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#ab94476854df8a2aafb5af66fdb2011f2">OnUpdate</a>();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="foldopen" id="foldopen00104" data-start="{" data-end="}">
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a0dbae14d13d6e73c73c05b8635ce46b1">  104</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a0dbae14d13d6e73c73c05b8635ce46b1">OnDestroy</a>()</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="comment">// メモリリーク対策</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a1577262c2f5c66245c40a8ede168198f">KillSequence</a>();</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a1577262c2f5c66245c40a8ede168198f">  110</a></span>    <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a1577262c2f5c66245c40a8ede168198f">KillSequence</a>()</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">m_sequence</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">m_sequence</a>.Kill();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            <a class="code hl_variable" href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">m_sequence</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>    }</div>
+</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a6a623674f87a15b0c8b5fc0a2903acf5">  120</a></span>    <span class="keyword">virtual</span> <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a6a623674f87a15b0c8b5fc0a2903acf5">OnInitialize</a>()</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
+</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span> </div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00126" data-start="{" data-end="}">
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#ab94476854df8a2aafb5af66fdb2011f2">  126</a></span>    <span class="keyword">virtual</span> <span class="keyword">protected</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#ab94476854df8a2aafb5af66fdb2011f2">OnUpdate</a>()</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    {</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="../../d9/dc9/class_base_do_tween_u_i.html#a8fd57d0cf13f36b6fc02e210d7dcba5d">  134</a></span>    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d9/dc9/class_base_do_tween_u_i.html#a8fd57d0cf13f36b6fc02e210d7dcba5d">StartDoTween</a>();</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>}</div>
+</div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html">BaseDoTweenUI</a></div><div class="ttdef"><b>Definition</b> <a href="#l00010">BaseDoTweenUI.cs:11</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a00eecae103df9aaf4a73f22ef2c6f8ca"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a00eecae103df9aaf4a73f22ef2c6f8ca">BaseDoTweenUI.m_sequence</a></div><div class="ttdeci">Sequence m_sequence</div><div class="ttdef"><b>Definition</b> <a href="#l00074">BaseDoTweenUI.cs:74</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a0981dac4174fa204a80ea78ccb9376b7"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a0981dac4174fa204a80ea78ccb9376b7">BaseDoTweenUI.m_loopCount</a></div><div class="ttdeci">int m_loopCount</div><div class="ttdef"><b>Definition</b> <a href="#l00063">BaseDoTweenUI.cs:63</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a0dbae14d13d6e73c73c05b8635ce46b1"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a0dbae14d13d6e73c73c05b8635ce46b1">BaseDoTweenUI.OnDestroy</a></div><div class="ttdeci">void OnDestroy()</div><div class="ttdef"><b>Definition</b> <a href="#l00104">BaseDoTweenUI.cs:104</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a1577262c2f5c66245c40a8ede168198f"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a1577262c2f5c66245c40a8ede168198f">BaseDoTweenUI.KillSequence</a></div><div class="ttdeci">void KillSequence()</div><div class="ttdef"><b>Definition</b> <a href="#l00110">BaseDoTweenUI.cs:110</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a28c42ac637a0a1545bbd1068ec2b60f7"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a28c42ac637a0a1545bbd1068ec2b60f7">BaseDoTweenUI.m_ease</a></div><div class="ttdeci">Ease m_ease</div><div class="ttdef"><b>Definition</b> <a href="#l00022">BaseDoTweenUI.cs:22</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a3b9ae474f7cc59876265db492de02f3a"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a3b9ae474f7cc59876265db492de02f3a">BaseDoTweenUI.m_loopType</a></div><div class="ttdeci">LoopType m_loopType</div><div class="ttdef"><b>Definition</b> <a href="#l00068">BaseDoTweenUI.cs:68</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a6a623674f87a15b0c8b5fc0a2903acf5"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a6a623674f87a15b0c8b5fc0a2903acf5">BaseDoTweenUI.OnInitialize</a></div><div class="ttdeci">virtual void OnInitialize()</div><div class="ttdef"><b>Definition</b> <a href="#l00120">BaseDoTweenUI.cs:120</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a6ac67cc9aa071a70a59970f63de520f1"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a6ac67cc9aa071a70a59970f63de520f1">BaseDoTweenUI.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00089">BaseDoTweenUI.cs:89</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a8fd57d0cf13f36b6fc02e210d7dcba5d"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a8fd57d0cf13f36b6fc02e210d7dcba5d">BaseDoTweenUI.StartDoTween</a></div><div class="ttdeci">void StartDoTween()</div><div class="ttdoc">DOTweenを再生開始する</div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a9e2894104501eadd915ea868f5b62339"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a9e2894104501eadd915ea868f5b62339">BaseDoTweenUI.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition</b> <a href="#l00097">BaseDoTweenUI.cs:97</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_a9eacc79c5bdd8de5530291eaae455bab"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#a9eacc79c5bdd8de5530291eaae455bab">BaseDoTweenUI.Sequence</a></div><div class="ttdeci">Sequence Sequence</div><div class="ttdoc">実行中のSequence</div><div class="ttdef"><b>Definition</b> <a href="#l00079">BaseDoTweenUI.cs:80</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_ab94476854df8a2aafb5af66fdb2011f2"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#ab94476854df8a2aafb5af66fdb2011f2">BaseDoTweenUI.OnUpdate</a></div><div class="ttdeci">virtual void OnUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00126">BaseDoTweenUI.cs:126</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_abcddcdd526a06c5ac315b2dda8f351b1"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1">BaseDoTweenUI.UpdateType</a></div><div class="ttdeci">UpdateType</div><div class="ttdef"><b>Definition</b> <a href="#l00045">BaseDoTweenUI.cs:46</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_abcddcdd526a06c5ac315b2dda8f351b1a06b9281e396db002010bde1de57262eb"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1a06b9281e396db002010bde1de57262eb">BaseDoTweenUI.UpdateType.Auto</a></div><div class="ttdeci">@ Auto</div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_abcddcdd526a06c5ac315b2dda8f351b1aad6e7652b1bdfb38783486c2c3d5e806"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#abcddcdd526a06c5ac315b2dda8f351b1aad6e7652b1bdfb38783486c2c3d5e806">BaseDoTweenUI.UpdateType.Self</a></div><div class="ttdeci">@ Self</div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_add825ea273bddeceb6366b843650c092"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#add825ea273bddeceb6366b843650c092">BaseDoTweenUI.m_delay</a></div><div class="ttdeci">float m_delay</div><div class="ttdef"><b>Definition</b> <a href="#l00032">BaseDoTweenUI.cs:32</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_ae76b0e805291669e1a46a6df96fc45a4"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#ae76b0e805291669e1a46a6df96fc45a4">BaseDoTweenUI.m_updateType</a></div><div class="ttdeci">UpdateType m_updateType</div><div class="ttdef"><b>Definition</b> <a href="#l00055">BaseDoTweenUI.cs:55</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_aee3fa5c8322eb2f87b13120485ee6542"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#aee3fa5c8322eb2f87b13120485ee6542">BaseDoTweenUI.m_isGameStopMove</a></div><div class="ttdeci">bool m_isGameStopMove</div><div class="ttdef"><b>Definition</b> <a href="#l00042">BaseDoTweenUI.cs:42</a></div></div>
+<div class="ttc" id="aclass_base_do_tween_u_i_html_afac415f8cc86bb6c0d498ef420dd73dc"><div class="ttname"><a href="../../d9/dc9/class_base_do_tween_u_i.html#afac415f8cc86bb6c0d498ef420dd73dc">BaseDoTweenUI.m_duration</a></div><div class="ttdeci">float m_duration</div><div class="ttdef"><b>Definition</b> <a href="#l00027">BaseDoTweenUI.cs:27</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_3a86b2e82be465261626392c6c683e3c.html">002_UI</a></li><li class="navelem"><a class="el" href="../../dir_8e465af9b75a05cffe549938206a4ddd.html">DoTween</a></li><li class="navelem"><a class="el" href="../../dc/da7/_base_do_tween_u_i_8cs.html">BaseDoTweenUI.cs</a></li>
+    <li class="footer">2024年10月16日(水) 01時52分22秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

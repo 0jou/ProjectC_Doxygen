@@ -1,0 +1,265 @@
+\doxysection{Volume\+Save\+Loader クラス}
+\hypertarget{class_volume_save_loader}{}\label{class_volume_save_loader}\index{VolumeSaveLoader@{VolumeSaveLoader}}
+
+
+Volume\+Save\+Loader の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{dd/d4f/class_volume_save_loader__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Volume\+Save\+Loader 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{d5/de3/class_volume_save_loader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load}{Volume\+Save\+Load}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c}{Load\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em 各カテゴリの音量を外部ファイルから読み込む。 \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5}{Save\+Volume}} ()
+\begin{DoxyCompactList}\small\item\em 各カテゴリの音量を外部ファイルに保存する。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf}{Start}} ()
+\item 
+void \mbox{\hyperlink{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9}{Set\+Category\+Volume}} (string a\+\_\+category\+Name, float a\+\_\+vol, Slider a\+\_\+slider)
+\begin{DoxyCompactList}\small\item\em カテゴリの音量を設定する。 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+Slider \mbox{\hyperlink{class_volume_save_loader_a38a688be1e3cc6eb7d5514aa2b7b3684}{m\+\_\+master\+Vol\+Slider}} = null
+\item 
+Slider \mbox{\hyperlink{class_volume_save_loader_a5e2fe65745e2b19bc0f270362018cc57}{m\+\_\+music\+Vol\+Slider}} = null
+\item 
+Slider \mbox{\hyperlink{class_volume_save_loader_a986130bffe90a788661c3e3c605f0bc0}{m\+\_\+sfx\+Vol\+Slider}} = null
+\item 
+Slider \mbox{\hyperlink{class_volume_save_loader_a6ba8b7ace41add4ca5b5317c1025a90a}{m\+\_\+ui\+Vol\+Slider}} = null
+\item 
+\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load}{Volume\+Save\+Load}} \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\+\_\+volume\+Save\+Load}} = new \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load}{Volume\+Save\+Load}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+各カテゴリ(Master,Music,SFX.\+UI)の音量を外部ファイルに保存しつつスライダーで調整するクラス スライダー側での値の変更の適用は\+Audio\+Play\+Volume\+Test.\+csで行われている。 各スライダーは設定しなくても動作する(セーブロードのみが可能。) 
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00011}{11}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c}\index{VolumeSaveLoader@{VolumeSaveLoader}!LoadVolume@{LoadVolume}}
+\index{LoadVolume@{LoadVolume}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{LoadVolume()}{LoadVolume()}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c} 
+void Volume\+Save\+Loader.\+Load\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+各カテゴリの音量を外部ファイルから読み込む。 
+
+セーブデータが存在しない場合はエラーを出力する。 保存先\+:Assets/\+Project\+C/998\+\_\+\+Debug\+Save\+Data/\+Quick\+Save/\+Volume.\+json ビルド時\+:Application.\+persistent\+Data\+Path/\+Volume.json 
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00029}{29}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030\ \ \ \ \ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\_volumeSaveLoad}}.\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a242af6c13c79e68920684d5517d61bf8}{LoadVolume}}();}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9}{SetCategoryVolume}}(\textcolor{stringliteral}{"{}Master"{}},\ \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\_volumeSaveLoad}}.\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_adf5d447492760cab260bd082844acafa}{MasterVolume}},\ \mbox{\hyperlink{class_volume_save_loader_a38a688be1e3cc6eb7d5514aa2b7b3684}{m\_masterVolSlider}});}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9}{SetCategoryVolume}}(\textcolor{stringliteral}{"{}Music"{}},\ \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\_volumeSaveLoad}}.\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2cd6557b3f479f11272ee6f47c0ee4ae}{MusicVolume}},\ \mbox{\hyperlink{class_volume_save_loader_a5e2fe65745e2b19bc0f270362018cc57}{m\_musicVolSlider}});}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9}{SetCategoryVolume}}(\textcolor{stringliteral}{"{}SFX"{}},\ \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\_volumeSaveLoad}}.\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_abe3e1e1e6b8386e957285e153da100f1}{SFXVolume}},\ \mbox{\hyperlink{class_volume_save_loader_a986130bffe90a788661c3e3c605f0bc0}{m\_sfxVolSlider}});}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9}{SetCategoryVolume}}(\textcolor{stringliteral}{"{}UI"{}},\ \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\_volumeSaveLoad}}.\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_a2a8e26b6e749445ed915cd5129b10843}{UIVolume}},\ \mbox{\hyperlink{class_volume_save_loader_a6ba8b7ace41add4ca5b5317c1025a90a}{m\_uiVolSlider}});}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Volume\ Loaded"{}});}
+\DoxyCodeLine{00038\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df3/class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df3/class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5}\index{VolumeSaveLoader@{VolumeSaveLoader}!SaveVolume@{SaveVolume}}
+\index{SaveVolume@{SaveVolume}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{SaveVolume()}{SaveVolume()}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5} 
+void Volume\+Save\+Loader.\+Save\+Volume (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+各カテゴリの音量を外部ファイルに保存する。 
+
+セーブデータが存在しない場合は新規作成する。 保存先\+:Assets/\+Project\+C/998\+\_\+\+Debug\+Save\+Data/\+Quick\+Save/\+Volume.\+json ビルド時\+:Application.\+persistent\+Data\+Path/\+Volume.json 
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00046}{46}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047\ \ \ \ \ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}{m\_volumeSaveLoad}}.\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load_af9a4181ef8e7e953eb17bd6fc4043818}{SaveVolumeCriCategory}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}Volume\ Saved"{}});}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df3/class_volume_save_loader_ab7dce76fc3910cac7dacf58aa677a7c5_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf}\index{VolumeSaveLoader@{VolumeSaveLoader}!Start@{Start}}
+\index{Start@{Start}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf} 
+void Volume\+Save\+Loader.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00054}{54}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_volume_save_loader_a3c2804d71524bca16c3c064179b2042c}{LoadVolume}}();}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df3/class_volume_save_loader_aac8a572247a30b45a626e9d41e954abf_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9}\index{VolumeSaveLoader@{VolumeSaveLoader}!SetCategoryVolume@{SetCategoryVolume}}
+\index{SetCategoryVolume@{SetCategoryVolume}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{SetCategoryVolume()}{SetCategoryVolume()}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9} 
+void Volume\+Save\+Loader.\+Set\+Category\+Volume (\begin{DoxyParamCaption}\item[{string}]{a\+\_\+category\+Name}{, }\item[{float}]{a\+\_\+vol}{, }\item[{Slider}]{a\+\_\+slider}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+カテゴリの音量を設定する。 
+
+スライダーが設定されている場合はスライダーにも適用する。
+
+
+\begin{DoxyParams}{引数}
+{\em a\+\_\+category\+Name} & \\
+\hline
+{\em a\+\_\+vol} & \\
+\hline
+{\em a\+\_\+slider} & \\
+\hline
+\end{DoxyParams}
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00067}{67}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00068\ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (a\_slider\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ a\_slider.value\ =\ a\_vol;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ CriAtom.SetCategoryVolume(a\_categoryName,\ a\_vol);}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/df3/class_volume_save_loader_afd1c8af70f1a25ac3472e7c45039b0b9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_volume_save_loader_a38a688be1e3cc6eb7d5514aa2b7b3684}\index{VolumeSaveLoader@{VolumeSaveLoader}!m\_masterVolSlider@{m\_masterVolSlider}}
+\index{m\_masterVolSlider@{m\_masterVolSlider}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{m\_masterVolSlider}{m\_masterVolSlider}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_a38a688be1e3cc6eb7d5514aa2b7b3684} 
+Slider Volume\+Save\+Loader.\+m\+\_\+master\+Vol\+Slider = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00016}{16}} 行目に定義があります。
+
+\Hypertarget{class_volume_save_loader_a5e2fe65745e2b19bc0f270362018cc57}\index{VolumeSaveLoader@{VolumeSaveLoader}!m\_musicVolSlider@{m\_musicVolSlider}}
+\index{m\_musicVolSlider@{m\_musicVolSlider}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{m\_musicVolSlider}{m\_musicVolSlider}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_a5e2fe65745e2b19bc0f270362018cc57} 
+Slider Volume\+Save\+Loader.\+m\+\_\+music\+Vol\+Slider = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00017}{17}} 行目に定義があります。
+
+\Hypertarget{class_volume_save_loader_a986130bffe90a788661c3e3c605f0bc0}\index{VolumeSaveLoader@{VolumeSaveLoader}!m\_sfxVolSlider@{m\_sfxVolSlider}}
+\index{m\_sfxVolSlider@{m\_sfxVolSlider}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{m\_sfxVolSlider}{m\_sfxVolSlider}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_a986130bffe90a788661c3e3c605f0bc0} 
+Slider Volume\+Save\+Loader.\+m\+\_\+sfx\+Vol\+Slider = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00018}{18}} 行目に定義があります。
+
+\Hypertarget{class_volume_save_loader_a6ba8b7ace41add4ca5b5317c1025a90a}\index{VolumeSaveLoader@{VolumeSaveLoader}!m\_uiVolSlider@{m\_uiVolSlider}}
+\index{m\_uiVolSlider@{m\_uiVolSlider}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{m\_uiVolSlider}{m\_uiVolSlider}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_a6ba8b7ace41add4ca5b5317c1025a90a} 
+Slider Volume\+Save\+Loader.\+m\+\_\+ui\+Vol\+Slider = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00019}{19}} 行目に定義があります。
+
+\Hypertarget{class_volume_save_loader_a0488fb795c532522eccb5596f9608575}\index{VolumeSaveLoader@{VolumeSaveLoader}!m\_volumeSaveLoad@{m\_volumeSaveLoad}}
+\index{m\_volumeSaveLoad@{m\_volumeSaveLoad}!VolumeSaveLoader@{VolumeSaveLoader}}
+\doxysubsubsection{\texorpdfstring{m\_volumeSaveLoad}{m\_volumeSaveLoad}}
+{\footnotesize\ttfamily \label{class_volume_save_loader_a0488fb795c532522eccb5596f9608575} 
+\mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load}{Volume\+Save\+Load}} Volume\+Save\+Loader.\+m\+\_\+volume\+Save\+Load = new \mbox{\hyperlink{struct_volume_save_loader_1_1_volume_save_load}{Volume\+Save\+Load}}()\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_volume_save_loader_8cs_source}{Volume\+Save\+Loader.\+cs}} の \mbox{\hyperlink{_volume_save_loader_8cs_source_l00021}{21}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/011\+\_\+\+Sound/\mbox{\hyperlink{_volume_save_loader_8cs}{Volume\+Save\+Loader.\+cs}}\end{DoxyCompactItemize}

@@ -1,0 +1,349 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/002_UI/Script/View/HPBar/HPBarController.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241016</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('de/d6a/_h_p_bar_controller_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">HPBarController.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../de/d6a/_h_p_bar_controller_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d4/dca/namespace_arbor.html">Arbor</a>;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>NaughtyAttributes;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>System;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>TMPro;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>UnityEngine.UI;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html">   16</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d8/d3f/class_h_p_bar_controller.html">HPBarController</a> : MonoBehaviour, ISerializationCallbackReceiver</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>{</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    [Tooltip(<span class="stringliteral">&quot;値変えると長さ変わる&quot;</span>)]</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    [Range(0.0f, 1.0f)]</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">   20</a></span>    [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> = <span class="keyword">new</span>();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">   22</a></span>    [SerializeField] <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">m_isCalc</a> = <span class="keyword">true</span>;</div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#ae8e283ae027e4324c9599139bd7b623a">   23</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d8/d3f/class_h_p_bar_controller.html#ae8e283ae027e4324c9599139bd7b623a">IsCalc</a></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">m_isCalc</a>; }</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        <span class="keyword">set</span> { <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">m_isCalc</a> = value; }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    [ShowIf(nameof(<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">m_isCalc</a>))]</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">   29</a></span>    [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">m_maxHealth</a> = 50.0f;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    [Tooltip(<span class="stringliteral">&quot;色や長さ変更するImageを設定&quot;</span>)]</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#ad702eecb89c0be8a40b79693dd97b50e">   32</a></span>    [SerializeField] <span class="keyword">private</span> Image <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ad702eecb89c0be8a40b79693dd97b50e">m_image</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    [Tooltip(<span class="stringliteral">&quot;HPの値を表示するテキスト(TMP)を設定する　表示しない場合はNoneで可&quot;</span>)]</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a98ca2ef4f0f44201de0bf9cde0ddc1d4">   35</a></span>    [SerializeField] <span class="keyword">private</span> TextMeshProUGUI <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a98ca2ef4f0f44201de0bf9cde0ddc1d4">m_text</a>;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// TODO:色の変化などは別のクラスに移動</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    [Tooltip(<span class="stringliteral">&quot;色の変化の設定&quot;</span>)]</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563">   39</a></span>    [SerializeField] <span class="keyword">private</span> List&lt;HPBarColor&gt; <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563">m_barColorList</a> = <span class="keyword">new</span> List&lt;HPBarColor&gt;();</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">// 接敵時の表示切替用　伊波</span></div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">   43</a></span>    <span class="keyword">private</span> ArborFSM <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">m_arborFSM</a>;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a739b8bce056e6fd4a3b3b487e197bf72">   44</a></span>    <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a739b8bce056e6fd4a3b3b487e197bf72">m_isShow</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="};">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#aaedf8ff8630c1693dc196cde8de258cf">   46</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d8/d3f/class_h_p_bar_controller.html#aaedf8ff8630c1693dc196cde8de258cf">IsSetHealthValue</a></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">get</span> { <span class="keywordflow">return</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a98ca2ef4f0f44201de0bf9cde0ddc1d4">m_text</a> != <span class="keyword">null</span>); }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keyword">private</span> <span class="keyword">set</span> { }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
+</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="comment">// 現在のHP、最大値、最小値もセット</span></div>
+<div class="foldopen" id="foldopen00054" data-start="{" data-end="}">
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#af71e8b438f7ce4bf32dbf28f6a96cc3a">   54</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#af71e8b438f7ce4bf32dbf28f6a96cc3a">SetHealth</a>(<span class="keywordtype">float</span> _current, <span class="keywordtype">float</span> _max)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">m_maxHealth</a> = _max;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a9504be975f305e3ed4b9ca422ac8809e">SetHealthValue</a>(_current);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    }</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="comment">// 現在のHPをセット</span></div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a9504be975f305e3ed4b9ca422ac8809e">   61</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a9504be975f305e3ed4b9ca422ac8809e">SetHealthValue</a>(<span class="keywordtype">float</span> _currentHealth)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">m_isCalc</a>)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> = _currentHealth / <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">m_maxHealth</a>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> = _currentHealth;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="comment">// テキストへ反映</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a3e1d194fa9ca6daba74ca05d441d4af4">SetHealthText</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="comment">// HPバーの更新</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a8f7015e8dfa9da469bff77dbcbb3e826">UpdateFillAmount</a>();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Start is called before the first frame update</span></div>
+<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a1455c186978a53d6db4aecc9578117f7">   81</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a1455c186978a53d6db4aecc9578117f7">Start</a>()</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ad702eecb89c0be8a40b79693dd97b50e">m_image</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            Debug.LogError(<span class="stringliteral">&quot;HPBarController Imageが設定されていません&quot;</span>);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="keywordflow">if</span> (!transform.root.TryGetComponent(out <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">m_arborFSM</a>))</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        {</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            Debug.Log(<span class="stringliteral">&quot;HPBarControllerがArborを見つけられませんでした&quot;</span>, gameObject);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> child = 0; child &lt; transform.childCount; ++child)</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            transform.GetChild(child).gameObject.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+</div>
+<div class="foldopen" id="foldopen00101" data-start="{" data-end="}">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#abeda8e7ef430d3b2a9db8760aa035cc9">  101</a></span>    <span class="keywordtype">void</span> ISerializationCallbackReceiver.OnBeforeSerialize()</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    {</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a8f7015e8dfa9da469bff77dbcbb3e826">UpdateFillAmount</a>();</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a3e1d194fa9ca6daba74ca05d441d4af4">SetHealthText</a>();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a8a0e23f0c2e26057e7dd952eba665472">  110</a></span>    <span class="keywordtype">void</span> ISerializationCallbackReceiver.OnAfterDeserialize()</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
+<div class="foldopen" id="foldopen00114" data-start="{" data-end="}">
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a8f7015e8dfa9da469bff77dbcbb3e826">  114</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a8f7015e8dfa9da469bff77dbcbb3e826">UpdateFillAmount</a>()</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ad702eecb89c0be8a40b79693dd97b50e">m_image</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="comment">// 値→長さ</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        m_image.fillAmount = <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">// 値→色</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563">m_barColorList</a>.Count; i++)</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> &gt; <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563">m_barColorList</a>[i].<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>            m_image.color = <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563">m_barColorList</a>[i].m_color;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    }</div>
+</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="foldopen" id="foldopen00131" data-start="{" data-end="}">
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a3e1d194fa9ca6daba74ca05d441d4af4">  131</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a3e1d194fa9ca6daba74ca05d441d4af4">SetHealthText</a>()</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a98ca2ef4f0f44201de0bf9cde0ddc1d4">m_text</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordtype">float</span> currentHealth = <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">m_maxHealth</a> * <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a>;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordtype">int</span> intCurrent = (int)currentHealth;</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordtype">int</span> intMax = (int)<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">m_maxHealth</a>;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="comment">// 切り捨てで0になってしまった時</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">if</span> (intCurrent == 0 &amp;&amp; <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> &gt; 0)</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>            intCurrent = 1;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        }</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        m_text.text = intCurrent + <span class="stringliteral">&quot; / &quot;</span> + intMax;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    }</div>
+</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="}">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a866dffa068b40637fc51a2d1b463e740">  148</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a866dffa068b40637fc51a2d1b463e740">Update</a>()</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    {</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="comment">// 敵のHPバー表示非表示切り替え</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">m_arborFSM</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a739b8bce056e6fd4a3b3b487e197bf72">m_isShow</a>)</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> &lt; 1.0f) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span> </div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            Transform target = <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">m_arborFSM</a>.parameterContainer.GetTransform(<span class="stringliteral">&quot;Target&quot;</span>);</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            <span class="keywordflow">if</span> (target == <span class="keyword">null</span>) <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a2266e03fe7a63dee3da45469c572d010">ShowHP</a>(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        }</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        {</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">m_value</a> &lt; 1.0f)</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            {</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>                <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a2266e03fe7a63dee3da45469c572d010">ShowHP</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>            }</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            Transform target = <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">m_arborFSM</a>.parameterContainer.GetTransform(<span class="stringliteral">&quot;Target&quot;</span>);</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordflow">if</span> (target != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            {</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                <span class="keywordflow">foreach</span> (<a class="code hl_class" href="../../d7/d2e/class_character_core.html">CharacterCore</a> chara <span class="keywordflow">in</span> <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.Instance.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">ObjectList</a>)</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>                {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>                    <span class="keywordflow">if</span> (chara.<a class="code hl_property" href="../../d7/d2e/class_character_core.html#acf2243cb582f2f4b7ecab75c8fe367e1">InputType</a> == <a class="code hl_class" href="../../d7/d2e/class_character_core.html">CharacterCore</a>.<a class="code hl_enumeration" href="../../d7/d2e/class_character_core.html#a974033ff7d3f365c3a688ff15aa91f57">InputTypes</a>.Player)</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>                    {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>                        <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a2266e03fe7a63dee3da45469c572d010">ShowHP</a>(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>                    }</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>                }</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>            }</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        }</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    }</div>
+</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="foldopen" id="foldopen00181" data-start="{" data-end="}">
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno"><a class="line" href="../../d8/d3f/class_h_p_bar_controller.html#a2266e03fe7a63dee3da45469c572d010">  181</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d8/d3f/class_h_p_bar_controller.html#a2266e03fe7a63dee3da45469c572d010">ShowHP</a>(<span class="keywordtype">bool</span> _isShow)</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> child = 0; child &lt; transform.childCount; ++child)</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>        {</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            transform.GetChild(child).gameObject.SetActive(_isShow);</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        }</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <a class="code hl_variable" href="../../d8/d3f/class_h_p_bar_controller.html#a739b8bce056e6fd4a3b3b487e197bf72">m_isShow</a> = _isShow;</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    }</div>
+</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>}</div>
+</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>[System.Serializable]</div>
+<div class="foldopen" id="foldopen00192" data-start="{" data-end="};">
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="../../d2/d1d/class_h_p_bar_color.html">  192</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d2/d1d/class_h_p_bar_color.html">HPBarColor</a></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>{</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno"><a class="line" href="../../d2/d1d/class_h_p_bar_color.html#a816bde7d4552eab18836cfa51b1d6793">  194</a></span>    <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d2/d1d/class_h_p_bar_color.html#a816bde7d4552eab18836cfa51b1d6793">m_value</a>;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno"><a class="line" href="../../d2/d1d/class_h_p_bar_color.html#a3d850d89113677b875bf5c5dcd0a397d">  195</a></span>    <span class="keyword">public</span> Color <a class="code hl_variable" href="../../d2/d1d/class_h_p_bar_color.html#a3d850d89113677b875bf5c5dcd0a397d">m_color</a>;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>}</div>
+</div>
+<div class="ttc" id="aclass_character_core_html"><div class="ttname"><a href="../../d7/d2e/class_character_core.html">CharacterCore</a></div><div class="ttdef"><b>Definition</b> <a href="../../d9/d21/_character_core_8cs_source.html#l00012">CharacterCore.cs:13</a></div></div>
+<div class="ttc" id="aclass_character_core_html_a974033ff7d3f365c3a688ff15aa91f57"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#a974033ff7d3f365c3a688ff15aa91f57">CharacterCore.InputTypes</a></div><div class="ttdeci">InputTypes</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d21/_character_core_8cs_source.html#l00029">CharacterCore.cs:30</a></div></div>
+<div class="ttc" id="aclass_character_core_html_acf2243cb582f2f4b7ecab75c8fe367e1"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#acf2243cb582f2f4b7ecab75c8fe367e1">CharacterCore.InputType</a></div><div class="ttdeci">InputTypes InputType</div><div class="ttdef"><b>Definition</b> <a href="../../d9/d21/_character_core_8cs_source.html#l00038">CharacterCore.cs:38</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_color_html"><div class="ttname"><a href="../../d2/d1d/class_h_p_bar_color.html">HPBarColor</a></div><div class="ttdef"><b>Definition</b> <a href="#l00192">HPBarController.cs:193</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_color_html_a3d850d89113677b875bf5c5dcd0a397d"><div class="ttname"><a href="../../d2/d1d/class_h_p_bar_color.html#a3d850d89113677b875bf5c5dcd0a397d">HPBarColor.m_color</a></div><div class="ttdeci">Color m_color</div><div class="ttdef"><b>Definition</b> <a href="#l00195">HPBarController.cs:195</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_color_html_a816bde7d4552eab18836cfa51b1d6793"><div class="ttname"><a href="../../d2/d1d/class_h_p_bar_color.html#a816bde7d4552eab18836cfa51b1d6793">HPBarColor.m_value</a></div><div class="ttdeci">float m_value</div><div class="ttdef"><b>Definition</b> <a href="#l00194">HPBarController.cs:194</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html">HPBarController</a></div><div class="ttdoc">進捗率に応じて imageのfillAmountを変更することでimageの長さを変更する　コンポーネント</div><div class="ttdef"><b>Definition</b> <a href="#l00016">HPBarController.cs:17</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a1455c186978a53d6db4aecc9578117f7"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a1455c186978a53d6db4aecc9578117f7">HPBarController.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00081">HPBarController.cs:81</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a2266e03fe7a63dee3da45469c572d010"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a2266e03fe7a63dee3da45469c572d010">HPBarController.ShowHP</a></div><div class="ttdeci">void ShowHP(bool _isShow)</div><div class="ttdef"><b>Definition</b> <a href="#l00181">HPBarController.cs:181</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a36c8ee729023dab32e0edd831e91554e"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a36c8ee729023dab32e0edd831e91554e">HPBarController.m_isCalc</a></div><div class="ttdeci">bool m_isCalc</div><div class="ttdef"><b>Definition</b> <a href="#l00022">HPBarController.cs:22</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a3e1d194fa9ca6daba74ca05d441d4af4"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a3e1d194fa9ca6daba74ca05d441d4af4">HPBarController.SetHealthText</a></div><div class="ttdeci">void SetHealthText()</div><div class="ttdef"><b>Definition</b> <a href="#l00131">HPBarController.cs:131</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a72c8bdb467d9af184037c50fe9500ef8"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a72c8bdb467d9af184037c50fe9500ef8">HPBarController.m_value</a></div><div class="ttdeci">float m_value</div><div class="ttdef"><b>Definition</b> <a href="#l00020">HPBarController.cs:20</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a739b8bce056e6fd4a3b3b487e197bf72"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a739b8bce056e6fd4a3b3b487e197bf72">HPBarController.m_isShow</a></div><div class="ttdeci">bool m_isShow</div><div class="ttdef"><b>Definition</b> <a href="#l00044">HPBarController.cs:44</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a866dffa068b40637fc51a2d1b463e740"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a866dffa068b40637fc51a2d1b463e740">HPBarController.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition</b> <a href="#l00148">HPBarController.cs:148</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a8f7015e8dfa9da469bff77dbcbb3e826"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a8f7015e8dfa9da469bff77dbcbb3e826">HPBarController.UpdateFillAmount</a></div><div class="ttdeci">void UpdateFillAmount()</div><div class="ttdef"><b>Definition</b> <a href="#l00114">HPBarController.cs:114</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a9504be975f305e3ed4b9ca422ac8809e"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a9504be975f305e3ed4b9ca422ac8809e">HPBarController.SetHealthValue</a></div><div class="ttdeci">void SetHealthValue(float _currentHealth)</div><div class="ttdef"><b>Definition</b> <a href="#l00061">HPBarController.cs:61</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_a98ca2ef4f0f44201de0bf9cde0ddc1d4"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#a98ca2ef4f0f44201de0bf9cde0ddc1d4">HPBarController.m_text</a></div><div class="ttdeci">TextMeshProUGUI m_text</div><div class="ttdef"><b>Definition</b> <a href="#l00035">HPBarController.cs:35</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_aa5672425cc6b1d3ebfcd681b69b9fcf0"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#aa5672425cc6b1d3ebfcd681b69b9fcf0">HPBarController.m_maxHealth</a></div><div class="ttdeci">float m_maxHealth</div><div class="ttdef"><b>Definition</b> <a href="#l00029">HPBarController.cs:29</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_aaedf8ff8630c1693dc196cde8de258cf"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#aaedf8ff8630c1693dc196cde8de258cf">HPBarController.IsSetHealthValue</a></div><div class="ttdeci">bool IsSetHealthValue</div><div class="ttdef"><b>Definition</b> <a href="#l00046">HPBarController.cs:47</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_ab7eada1b02fec2d829ad558f8247a417"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#ab7eada1b02fec2d829ad558f8247a417">HPBarController.m_arborFSM</a></div><div class="ttdeci">ArborFSM m_arborFSM</div><div class="ttdef"><b>Definition</b> <a href="#l00043">HPBarController.cs:43</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_ad702eecb89c0be8a40b79693dd97b50e"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#ad702eecb89c0be8a40b79693dd97b50e">HPBarController.m_image</a></div><div class="ttdeci">Image m_image</div><div class="ttdef"><b>Definition</b> <a href="#l00032">HPBarController.cs:32</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_ae8e283ae027e4324c9599139bd7b623a"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#ae8e283ae027e4324c9599139bd7b623a">HPBarController.IsCalc</a></div><div class="ttdeci">bool IsCalc</div><div class="ttdef"><b>Definition</b> <a href="#l00023">HPBarController.cs:24</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_af71e8b438f7ce4bf32dbf28f6a96cc3a"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#af71e8b438f7ce4bf32dbf28f6a96cc3a">HPBarController.SetHealth</a></div><div class="ttdeci">void SetHealth(float _current, float _max)</div><div class="ttdef"><b>Definition</b> <a href="#l00054">HPBarController.cs:54</a></div></div>
+<div class="ttc" id="aclass_h_p_bar_controller_html_afb989f2dabe320d3fa8dd9180270f563"><div class="ttname"><a href="../../d8/d3f/class_h_p_bar_controller.html#afb989f2dabe320d3fa8dd9180270f563">HPBarController.m_barColorList</a></div><div class="ttdeci">List&lt; HPBarColor &gt; m_barColorList</div><div class="ttdef"><b>Definition</b> <a href="#l00039">HPBarController.cs:39</a></div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> <a href="../../d9/dcb/_meta_a_i_8cs_source.html#l00011">MetaAI.cs:12</a></div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a5538533e130a7a180b806f1937f65447"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a5538533e130a7a180b806f1937f65447">IMetaAI.ObjectList</a></div><div class="ttdeci">HashSet&lt; T &gt; ObjectList</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dcb/_meta_a_i_8cs_source.html#l00016">MetaAI.cs:16</a></div></div>
+<div class="ttc" id="anamespace_arbor_html"><div class="ttname"><a href="../../d4/dca/namespace_arbor.html">Arbor</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/db5/_agent_chase_to_target_8cs_source.html#l00008">AgentChaseToTarget.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_3a86b2e82be465261626392c6c683e3c.html">002_UI</a></li><li class="navelem"><a class="el" href="../../dir_005c17eada1b46a6ee6fb407927d708a.html">Script</a></li><li class="navelem"><a class="el" href="../../dir_4d612598fd3f4eaadedaa60377cb0b47.html">View</a></li><li class="navelem"><a class="el" href="../../dir_e69fdf076a5a1a165462fc8dfcb4913c.html">HPBar</a></li><li class="navelem"><a class="el" href="../../de/d6a/_h_p_bar_controller_8cs.html">HPBarController.cs</a></li>
+    <li class="footer">2024年10月16日(水) 01時52分22秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

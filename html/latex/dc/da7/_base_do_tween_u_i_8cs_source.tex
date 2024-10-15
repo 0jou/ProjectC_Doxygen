@@ -1,0 +1,136 @@
+\doxysection{Base\+Do\+Tween\+UI.\+cs}
+\hypertarget{_base_do_tween_u_i_8cs_source}{}\label{_base_do_tween_u_i_8cs_source}\index{ProjectC/002\_UI/DoTween/BaseDoTweenUI.cs@{ProjectC/002\_UI/DoTween/BaseDoTweenUI.cs}}
+\mbox{\hyperlink{_base_do_tween_u_i_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }DG.Tweening;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }NaughtyAttributes;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00009}00009\ [DefaultExecutionOrder(0)]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00010}\mbox{\hyperlink{class_base_do_tween_u_i}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_base_do_tween_u_i}{BaseDoTweenUI}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ UIDoTweenの基底クラス}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00015}00015\ \ \ \ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//===================================}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//\ イージングの種類}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00019}00019\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}イージング"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00020}00020\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}EaseType"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00021}00021\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00022}\mbox{\hyperlink{class_base_do_tween_u_i_a28c42ac637a0a1545bbd1068ec2b60f7}{00022}}\ \ \ \ \ \textcolor{keyword}{protected}\ Ease\ \mbox{\hyperlink{class_base_do_tween_u_i_a28c42ac637a0a1545bbd1068ec2b60f7}{m\_ease}}\ =\ Ease.InSine;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00024}00024\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}イージング"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00025}00025\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}間隔"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00026}00026\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00027}\mbox{\hyperlink{class_base_do_tween_u_i_afac415f8cc86bb6c0d498ef420dd73dc}{00027}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_base_do_tween_u_i_afac415f8cc86bb6c0d498ef420dd73dc}{m\_duration}}\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00029}00029\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}イージング"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00030}00030\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}待機時間"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00031}00031\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00032}\mbox{\hyperlink{class_base_do_tween_u_i_add825ea273bddeceb6366b843650c092}{00032}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_base_do_tween_u_i_add825ea273bddeceb6366b843650c092}{m\_delay}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00035}00035\ \ \ \ \ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00036}00036\ \ \ \ \ \textcolor{comment}{//\ 処理の種類}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00039}00039\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}処理"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00040}00040\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}GameStopMove"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00041}00041\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00042}\mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{00042}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_do_tween_u_i_aee3fa5c8322eb2f87b13120485ee6542}{m\_isGameStopMove}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00045}\mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1}{00045}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1}{UpdateType}}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1a06b9281e396db002010bde1de57262eb}{Auto}},}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1aad6e7652b1bdfb38783486c2c3d5e806}{Self}},}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00049}00049\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00052}00052\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}処理"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00053}00053\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}UpdateType"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00054}00054\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00055}\mbox{\hyperlink{class_base_do_tween_u_i_ae76b0e805291669e1a46a6df96fc45a4}{00055}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1}{UpdateType}}\ \mbox{\hyperlink{class_base_do_tween_u_i_ae76b0e805291669e1a46a6df96fc45a4}{m\_updateType}}\ =\ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1}{UpdateType}}.Auto;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00058}00058\ \ \ \ \ \textcolor{comment}{//\ ループの種類}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00060}00060\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}ループ"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00061}00061\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}ループ回数(無限ループは-\/1)"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00062}00062\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00063}\mbox{\hyperlink{class_base_do_tween_u_i_a0981dac4174fa204a80ea78ccb9376b7}{00063}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_base_do_tween_u_i_a0981dac4174fa204a80ea78ccb9376b7}{m\_loopCount}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00065}00065\ \ \ \ \ [BoxGroup(\textcolor{stringliteral}{"{}ループ"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00066}00066\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}LoopType"{}})]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00067}00067\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00068}\mbox{\hyperlink{class_base_do_tween_u_i_a3b9ae474f7cc59876265db492de02f3a}{00068}}\ \ \ \ \ \textcolor{keyword}{protected}\ LoopType\ \mbox{\hyperlink{class_base_do_tween_u_i_a3b9ae474f7cc59876265db492de02f3a}{m\_loopType}}\ =\ LoopType.Yoyo;}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00071}00071\ \ \ \ \ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00072}00072\ \ \ \ \ \textcolor{comment}{//\ 実行中のDoTween}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00074}\mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{00074}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455bab}{Sequence}}\ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00075}00075\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00079}\mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455bab}{00079}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455bab}{Sequence}}\ \mbox{\hyperlink{class_base_do_tween_u_i_a9eacc79c5bdd8de5530291eaae455bab}{Sequence}}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00080}00080\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}};\ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//========================================================}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//========================================================}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00089}\mbox{\hyperlink{class_base_do_tween_u_i_a6ac67cc9aa071a70a59970f63de520f1}{00089}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_a6ac67cc9aa071a70a59970f63de520f1}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00090}00090\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_do_tween_u_i_ae76b0e805291669e1a46a6df96fc45a4}{m\_updateType}}\ ==\ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1}{UpdateType}}.Self)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a6a623674f87a15b0c8b5fc0a2903acf5}{OnInitialize}}();}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a8fd57d0cf13f36b6fc02e210d7dcba5d}{StartDoTween}}();}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00097}\mbox{\hyperlink{class_base_do_tween_u_i_a9e2894104501eadd915ea868f5b62339}{00097}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_a9e2894104501eadd915ea868f5b62339}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00098}00098\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_do_tween_u_i_ae76b0e805291669e1a46a6df96fc45a4}{m\_updateType}}\ ==\ \mbox{\hyperlink{class_base_do_tween_u_i_abcddcdd526a06c5ac315b2dda8f351b1}{UpdateType}}.Self)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00101}00101\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_ab94476854df8a2aafb5af66fdb2011f2}{OnUpdate}}();}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00102}00102\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00104}\mbox{\hyperlink{class_base_do_tween_u_i_a0dbae14d13d6e73c73c05b8635ce46b1}{00104}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_a0dbae14d13d6e73c73c05b8635ce46b1}{OnDestroy}}()}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00105}00105\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ メモリリーク対策}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{KillSequence}}();}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00108}00108\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00110}\mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{00110}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_a1577262c2f5c66245c40a8ede168198f}{KillSequence}}()}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}.Kill();}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_do_tween_u_i_a00eecae103df9aaf4a73f22ef2c6f8ca}{m\_sequence}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00120}\mbox{\hyperlink{class_base_do_tween_u_i_a6a623674f87a15b0c8b5fc0a2903acf5}{00120}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_a6a623674f87a15b0c8b5fc0a2903acf5}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00121}00121\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00123}00123\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00126}\mbox{\hyperlink{class_base_do_tween_u_i_ab94476854df8a2aafb5af66fdb2011f2}{00126}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_ab94476854df8a2aafb5af66fdb2011f2}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00127}00127\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00134}\mbox{\hyperlink{class_base_do_tween_u_i_a8fd57d0cf13f36b6fc02e210d7dcba5d}{00134}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{abstract}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_do_tween_u_i_a8fd57d0cf13f36b6fc02e210d7dcba5d}{StartDoTween}}();}
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{_base_do_tween_u_i_8cs_source_l00136}00136\ \}}
+
+\end{DoxyCode}

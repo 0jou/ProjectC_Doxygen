@@ -1,0 +1,117 @@
+\doxysection{Serializable\+Dictionary\texorpdfstring{$<$}{<} TKey, TValue \texorpdfstring{$>$}{>} クラステンプレート}
+\hypertarget{class_serializable_dictionary}{}\label{class_serializable_dictionary}\index{SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}}
+
+
+Serializable\+Dictionary\texorpdfstring{$<$}{<} TKey, TValue \texorpdfstring{$>$}{>} の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/d33/class_serializable_dictionary__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Serializable\+Dictionary\texorpdfstring{$<$}{<} TKey, TValue \texorpdfstring{$>$}{>} 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d9/dae/class_serializable_dictionary__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_serializable_dictionary_1_1_pair}{Pair}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void ISerialization\+Callback\+Receiver. \mbox{\hyperlink{class_serializable_dictionary_ae297159bc47e42823bc6c99a9f3f8fb1}{On\+After\+Deserialize}} ()
+\begin{DoxyCompactList}\small\item\em On\+After\+Deserialize \end{DoxyCompactList}\item 
+void ISerialization\+Callback\+Receiver. \mbox{\hyperlink{class_serializable_dictionary_a8068fc4ab1fdf72dd5ecc4261fc534a9}{On\+Before\+Serialize}} ()
+\begin{DoxyCompactList}\small\item\em On\+Before\+Serialize \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+List$<$ \mbox{\hyperlink{class_serializable_dictionary_1_1_pair}{Pair}} $>$ \mbox{\hyperlink{class_serializable_dictionary_a8f9a0c871815a54f1cf7678ce23a78c1}{\+\_\+list}} = null
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_serializable_dictionary_8cs_source}{Serializable\+Dictionary.\+cs}} の \mbox{\hyperlink{_serializable_dictionary_8cs_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_serializable_dictionary_ae297159bc47e42823bc6c99a9f3f8fb1}\index{SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}!OnAfterDeserialize@{OnAfterDeserialize}}
+\index{OnAfterDeserialize@{OnAfterDeserialize}!SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}}
+\doxysubsubsection{\texorpdfstring{OnAfterDeserialize()}{OnAfterDeserialize()}}
+{\footnotesize\ttfamily \label{class_serializable_dictionary_ae297159bc47e42823bc6c99a9f3f8fb1} 
+void ISerialization\+Callback\+Receiver. \mbox{\hyperlink{class_serializable_dictionary}{Serializable\+Dictionary}}$<$ TKey, TValue $>$.On\+After\+Deserialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+On\+After\+Deserialize 
+
+
+
+ \mbox{\hyperlink{_serializable_dictionary_8cs_source}{Serializable\+Dictionary.\+cs}} の \mbox{\hyperlink{_serializable_dictionary_8cs_source_l00032}{32}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ Clear();}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (Pair\ pair\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_serializable_dictionary_a8f9a0c871815a54f1cf7678ce23a78c1}{\_list}})}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ContainsKey(pair.key))}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Add(pair.key,\ pair.value);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
+
+\end{DoxyCode}
+\Hypertarget{class_serializable_dictionary_a8068fc4ab1fdf72dd5ecc4261fc534a9}\index{SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}!OnBeforeSerialize@{OnBeforeSerialize}}
+\index{OnBeforeSerialize@{OnBeforeSerialize}!SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}}
+\doxysubsubsection{\texorpdfstring{OnBeforeSerialize()}{OnBeforeSerialize()}}
+{\footnotesize\ttfamily \label{class_serializable_dictionary_a8068fc4ab1fdf72dd5ecc4261fc534a9} 
+void ISerialization\+Callback\+Receiver. \mbox{\hyperlink{class_serializable_dictionary}{Serializable\+Dictionary}}$<$ TKey, TValue $>$.On\+Before\+Serialize (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+On\+Before\+Serialize 
+
+
+
+ \mbox{\hyperlink{_serializable_dictionary_8cs_source}{Serializable\+Dictionary.\+cs}} の \mbox{\hyperlink{_serializable_dictionary_8cs_source_l00048}{48}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049\ \ \ \ \ \{}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 処理なし}}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_serializable_dictionary_a8f9a0c871815a54f1cf7678ce23a78c1}\index{SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}!\_list@{\_list}}
+\index{\_list@{\_list}!SerializableDictionary$<$ TKey, TValue $>$@{SerializableDictionary$<$ TKey, TValue $>$}}
+\doxysubsubsection{\texorpdfstring{\_list}{\_list}}
+{\footnotesize\ttfamily \label{class_serializable_dictionary_a8f9a0c871815a54f1cf7678ce23a78c1} 
+List$<$\mbox{\hyperlink{class_serializable_dictionary_1_1_pair}{Pair}}$>$ \mbox{\hyperlink{class_serializable_dictionary}{Serializable\+Dictionary}}$<$ TKey, TValue $>$.\+\_\+list = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_serializable_dictionary_8cs_source}{Serializable\+Dictionary.\+cs}} の \mbox{\hyperlink{_serializable_dictionary_8cs_source_l00027}{27}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/001\+\_\+\+Common/\+Scripts/\mbox{\hyperlink{_serializable_dictionary_8cs}{Serializable\+Dictionary.\+cs}}\end{DoxyCompactItemize}

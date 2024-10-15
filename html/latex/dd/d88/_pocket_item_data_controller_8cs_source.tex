@@ -1,0 +1,305 @@
+\doxysection{Pocket\+Item\+Data\+Controller.\+cs}
+\hypertarget{_pocket_item_data_controller_8cs_source}{}\label{_pocket_item_data_controller_8cs_source}\index{ProjectC/003\_Item/PocketItem/PocketItemDataController.cs@{ProjectC/003\_Item/PocketItem/PocketItemDataController.cs}}
+\mbox{\hyperlink{_pocket_item_data_controller_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00007}\mbox{\hyperlink{namespace_pocket_item_data_info}{00007}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_pocket_item_data_info}{PocketItemDataInfo}}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00009}\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{00009}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00010}00010\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00011}00011\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4a4d604dd8f008145471dc845683399189}{Inventory}}\ =\ 0,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インベントリ}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00012}00012\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4a9ac14919f65fcff18716fda0e4d9ea42}{Storehouse}}\ =\ 1,\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 倉庫}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00013}00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4ab53d392a0b4eab7538aecb5680125657}{NewItem}}\ =\ 2,\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 新規アイテム}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4ad2fcece34856d4157fcf23ffeef9e3bf}{ManagementStorage}}\ =\ 3,\ \ \ \ \ \ \textcolor{comment}{//\ 経営用ストレージ}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00015}00015\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00018}\mbox{\hyperlink{class_pocket_item_data_info_1_1_pocket_item_data_info_extensions}{00018}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_pocket_item_data_info_1_1_pocket_item_data_info_extensions}{PocketItemDataInfoExtensions}}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00019}00019\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00020}\mbox{\hyperlink{class_pocket_item_data_info_1_1_pocket_item_data_info_extensions_ae710367833a5f152e722374332949065}{00020}}\ \ \ \ \ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_base_pocket_item_data_controller}{BasePocketItemDataController}}\ \mbox{\hyperlink{class_pocket_item_data_info_1_1_pocket_item_data_info_extensions_ae710367833a5f152e722374332949065}{GetPocketItemDataManager}}(\textcolor{keyword}{this}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}\ \_pocketType)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\_pocketType)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.Inventory:}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_inventory_manager}{InventoryManager}}.\mbox{\hyperlink{class_inventory_manager_ace602d33ec272f5ff5248e0a28db890c}{instance}};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.Storehouse:}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_storehouse_manager}{StorehouseManager}}.\mbox{\hyperlink{class_storehouse_manager_a22ffb2d9f0f9b005b98dee0bc957eb37}{instance}};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.NewItem:}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_new_item_manager}{NewItemManager}}.\mbox{\hyperlink{class_new_item_manager_a0a97ac0f3442615ef14ddc9beb4b1b54}{instance}};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.ManagementStorage:}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_management_storage_manager}{ManagementStorageManager}}.\mbox{\hyperlink{class_management_storage_manager_a5eb1d2213c6aa9611778a88ed2267fbd}{instance}};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\_pocketType\ +\ \textcolor{stringliteral}{"{}に対するマネージャーが存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00047}00047\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00049}00049\ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00051}\mbox{\hyperlink{class_base_pocket_item_data_controller}{00051}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }\mbox{\hyperlink{class_base_pocket_item_data_controller}{BasePocketItemDataController}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00052}00052\ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ アイテムの管理を行うコントローラー}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ 制作者(田内)}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//========================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ 合計で所持できる数}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00060}00060\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}材料や料理を含めた、合計所持数"{}})]}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00061}00061\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00062}\mbox{\hyperlink{class_base_pocket_item_data_controller_ab9655aab1f4bddd0810991b5c0abfa34}{00062}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_ab9655aab1f4bddd0810991b5c0abfa34}{m\_listMaxSize}}\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00065}\mbox{\hyperlink{class_base_pocket_item_data_controller_a0e501fb383e43e802c9a9ed036307673}{00065}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a0e501fb383e43e802c9a9ed036307673}{ListMaxSize}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_ab9655aab1f4bddd0810991b5c0abfa34}{m\_listMaxSize}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//=========================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ 所持している料理}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00071}\mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{00071}}\ \ \ \ \ \textcolor{keyword}{protected}\ List<PocketItemData>\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00073}\mbox{\hyperlink{class_base_pocket_item_data_controller_a62296c0ecff56e8e4af60480b687611e}{00073}}\ \ \ \ \ \textcolor{keyword}{public}\ List<PocketItemData>\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a62296c0ecff56e8e4af60480b687611e}{ItemDataList}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//==================================================================================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00078}\mbox{\hyperlink{class_base_pocket_item_data_controller_af65bb1cf2b9474f28ee4a5490a9bf627}{00078}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_af65bb1cf2b9474f28ee4a5490a9bf627}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00079}00079\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デフォルトのデータをリストに追加}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_pocket_item_data_controller_a8976ea94159ccc6785371582e4a69145}{AddDefaultItemData}}();}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00085}00085\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00086}00086\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00089}00089\ \textcolor{preprocessor}{\ \ \ \ \#region\ メソッド説明}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00108}00108\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ アイテムリストに引数料理を追加する}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00110}\mbox{\hyperlink{class_base_pocket_item_data_controller_a5ab16844f7e6447b94f61dd6369d49a2}{00110}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a5ab16844f7e6447b94f61dd6369d49a2}{AddItem}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_itemTypeID,\ uint\ \_itemID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00111}00111\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00113}00113\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\_itemTypeID,\ \_itemID);}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00116}00116\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在所持しているアイテムから探す}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ItemTypeID\ !=\ \_itemTypeID\ ||\ list.ItemID\ !=\ \_itemID)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.MaxNum\ <=\ list.Num)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00122}00122\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数を追加}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \ \ \ \ list.Num++;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00125}00125\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00129}00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持しているアイテムに追加できなければ新規作成}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_pocket_item_data_controller_a43c662d00d00b34570fdf965fa70a970}{IsInList}}())}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00131}00131\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムデータを作成して追加}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ var\ pocketItemData\ =\ \mbox{\hyperlink{class_pocket_item_data}{PocketItemData}}.\mbox{\hyperlink{class_pocket_item_data_a71242a159ba5815655935371c9b5f5ea}{CreateItemData}}(\_itemTypeID,\ \_itemID,\ 1);}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}}.Add(pocketItemData);}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00136}00136\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00137}00137\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 追加できなければ}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00140}00140\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00143}00143\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00144}00144\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00145}00145\ \textcolor{preprocessor}{\ \ \ \ \#region\ メソッド説明}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00158}00158\ \ \ \ \ 　}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00168}00168\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00169}\mbox{\hyperlink{class_base_pocket_item_data_controller_ae2288f88afd8a41455c69514c8cdd594}{00169}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_ae2288f88afd8a41455c69514c8cdd594}{RemoveItem}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_itemTypeID,\ uint\ \_itemID,\ \textcolor{keywordtype}{int}\ \_removeNum\ =\ 1)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00170}00170\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00172}00172\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_pocket_item_data}{PocketItemData}}\ targetData\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00173}00173\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00174}00174\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 検索}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00176}00176\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.ItemTypeID\ !=\ \_itemTypeID\ ||\ data.ItemID\ !=\ \_itemID)\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00178}00178\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ targetData\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一番所持数が少ないものから取り除く}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00187}00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.Num\ <=\ targetData.Num)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ targetData\ =\ data;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00194}00194\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00195}00195\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ターゲットデータの所持数を減らす}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00198}00198\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetData\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00199}00199\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 減算}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ targetData.Num\ -\/=\ \_removeNum;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00202}00202\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ もし手持ちが0になれば取り除く}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (targetData.Num\ <=\ 0)\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}}.Remove(targetData);}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00205}00205\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00207}00207\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00208}00208\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00209}00209\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00210}00210\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除できなかった場合}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00211}00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00212}00212\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00213}00213\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00214}00214\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00215}00215\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00216}00216\ \textcolor{preprocessor}{\ \ \ \ \#region\ メソッド説明}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00227}00227\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00228}\mbox{\hyperlink{class_base_pocket_item_data_controller_a43c662d00d00b34570fdf965fa70a970}{00228}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a43c662d00d00b34570fdf965fa70a970}{IsInList}}()}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00229}00229\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00230}00230\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00231}00231\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_pocket_item_data_controller_ab9655aab1f4bddd0810991b5c0abfa34}{m\_listMaxSize}}\ <=\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}}.Count)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00232}00232\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(\textcolor{stringliteral}{"{}リストの最大数を超えているため、所持できません"{}});}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00235}00235\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00237}00237\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00238}00238\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00239}00239\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00241}00241\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00242}00242\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00245}00245\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00246}00246\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00247}00247\ \ \ \ \ \textcolor{comment}{//=====================================================================================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00248}00248\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 取得用メソッド}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00249}00249\ \ \ \ \ \textcolor{comment}{//=====================================================================================}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00251}00251\ \textcolor{preprocessor}{\ \ \ \ \#region\ メソッド説明}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00269}00269\ \textcolor{preprocessor}{\ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00270}00270\ \ \ \ \ \textcolor{comment}{//\ 引数IDのアイテム所持数を取得}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00271}\mbox{\hyperlink{class_base_pocket_item_data_controller_abbc406febf6d70e5653180c5343f7087}{00271}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_abbc406febf6d70e5653180c5343f7087}{GetItemNum}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_itemTypeID,\ uint\ \_itemID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00272}00272\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00273}00273\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 検索}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00277}00277\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00278}00278\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00279}00279\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ItemTypeID\ !=\ \_itemTypeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00284}00284\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list.ItemID\ !=\ \_itemID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ num\ +=\ list.Num;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00291}00291\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00292}00292\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00293}00293\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 当てはまったデータを返す}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ num;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00296}00296\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00297}00297\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00298}00298\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00300}00300\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00301}\mbox{\hyperlink{class_base_pocket_item_data_controller_a20aab7d3701a55455e2834a7eff7245c}{00301}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ List<PocketItemData>\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a20aab7d3701a55455e2834a7eff7245c}{GetItemList}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_typeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00302}00302\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00304}00304\ \ \ \ \ \ \ \ \ List<PocketItemData>\ itemList\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00305}00305\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00307}00307\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_typeID\ ==\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.ALL\ ||\ list.ItemTypeID\ ==\ \_typeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ itemList.Add(list);}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00312}00312\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00313}00313\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00314}00314\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ itemList;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00315}00315\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00316}00316\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00317}00317\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00318}\mbox{\hyperlink{class_base_pocket_item_data_controller_a094908d61b5e3d1d9c55481c92d9bbb6}{00318}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a094908d61b5e3d1d9c55481c92d9bbb6}{IsHave}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_itemTypeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00319}00319\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00320}00320\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}})}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00321}00321\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00323}00323\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 保持していれば}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.ItemTypeID\ ==\ \_itemTypeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00329}00329\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 保持していなければ}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00332}00332\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00333}00333\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00335}00335\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00336}\mbox{\hyperlink{class_base_pocket_item_data_controller_a9391223545c9fad6a30e7a009107901a}{00336}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_pocket_item_data}{PocketItemData}}\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a9391223545c9fad6a30e7a009107901a}{GetRandomItemData}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_itemTypeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00337}00337\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ リストを用意}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00339}00339\ \ \ \ \ \ \ \ \ var\ itemList\ =\ \mbox{\hyperlink{class_base_pocket_item_data_controller_a04d050c79c5a52f7087aceefd9ff4fc9}{m\_itemDataList}};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00340}00340\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シャッフル}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00342}00342\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ itemList.Count\ -\/\ 1;\ i\ >\ 0;\ i-\/-\/)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00343}00343\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00344}00344\ \ \ \ \ \ \ \ \ \ \ \ \ var\ j\ =\ Random.Range(0,\ i\ +\ 1);}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ var\ temp\ =\ itemList[i];}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ itemList[i]\ =\ itemList[j];}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ itemList[j]\ =\ temp;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00348}00348\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00349}00349\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00350}00350\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ data\ \textcolor{keywordflow}{in}\ itemList)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00351}00351\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 一致するものがあれば返す}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.ItemTypeID\ ==\ \_itemTypeID)}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ data;}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00357}00357\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00358}00358\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00359}00359\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 存在しなければnull}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00360}00360\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00361}00361\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00362}00362\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00363}00363\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00364}00364\ }
+\DoxyCodeLine{\Hypertarget{_pocket_item_data_controller_8cs_source_l00365}00365\ \}}
+
+\end{DoxyCode}

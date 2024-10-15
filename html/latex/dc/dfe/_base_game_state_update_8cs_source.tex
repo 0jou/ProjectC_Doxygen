@@ -1,0 +1,81 @@
+\doxysection{Base\+Game\+State\+Update.\+cs}
+\hypertarget{_base_game_state_update_8cs_source}{}\label{_base_game_state_update_8cs_source}\index{ProjectC/201\_Lobby\_Common/Manager/LobbyState/BaseGameStateUpdate.cs@{ProjectC/201\_Lobby\_Common/Manager/LobbyState/BaseGameStateUpdate.cs}}
+\mbox{\hyperlink{_base_game_state_update_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00007}\mbox{\hyperlink{class_base_game_state_update}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_base_game_state_update}{BaseGameStateUpdate}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00009}00009\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ ゲームの進行処理の基底クラス}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//===========================================}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ ステート}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00015}\mbox{\hyperlink{class_base_game_state_update_aa352a0772eefe6bc3f87258abf387643}{00015}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_base_game_state_update_aa352a0772eefe6bc3f87258abf387643}{GetState}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00016}00016\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}オーバーライドしてください"{}});}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00019}00019\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ 次に進むステート}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00024}\mbox{\hyperlink{class_base_game_state_update_a4792dfbf84933a34846215d98c63be0e}{00024}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_base_game_state_update_a4792dfbf84933a34846215d98c63be0e}{GetNextState}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}オーバーライドしてください"{}});}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00028}00028\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00030}00030\ \ \ \ \ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//\ 終了したか}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00033}\mbox{\hyperlink{class_base_game_state_update_adc5162c1c9bc4b514b9e95e2143fafa3}{00033}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_game_state_update_adc5162c1c9bc4b514b9e95e2143fafa3}{m\_isEnd}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00038}\mbox{\hyperlink{class_base_game_state_update_a9103b014caf28d5c79f45855eee5cc1a}{00038}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_base_game_state_update_a9103b014caf28d5c79f45855eee5cc1a}{IsEnd}}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00039}00039\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_base_game_state_update_adc5162c1c9bc4b514b9e95e2143fafa3}{m\_isEnd}};\ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00041}00041\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00043}00043\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00045}00045\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00051}\mbox{\hyperlink{class_base_game_state_update_ac37dedf53d7486cb313a368771151692}{00051}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_base_game_state_update_ac37dedf53d7486cb313a368771151692}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00060}\mbox{\hyperlink{class_base_game_state_update_a64faee560d5b5935c9f5319fab295a88}{00060}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_base_game_state_update_a64faee560d5b5935c9f5319fab295a88}{OnUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00063}00063\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00069}\mbox{\hyperlink{class_base_game_state_update_a52d22e733ca2b52b0f09443ac9bbb3cd}{00069}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_base_game_state_update_a52d22e733ca2b52b0f09443ac9bbb3cd}{OnExit}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00070}00070\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00072}00072\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00073}00073\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00078}\mbox{\hyperlink{class_base_game_state_update_aceca064639711a62078500c5496ee999}{00078}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{public}\ async\ UniTask\ \mbox{\hyperlink{class_base_game_state_update_aceca064639711a62078500c5496ee999}{OnDestroy}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00079}00079\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ Destroy(gameObject);}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00082}00082\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00088}\mbox{\hyperlink{class_base_game_state_update_af32b8da037e8dafd960482722bb50cb0}{00088}}\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keyword}{protected}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_base_game_state_update_af32b8da037e8dafd960482722bb50cb0}{SetEnd}}()}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00089}00089\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_adc5162c1c9bc4b514b9e95e2143fafa3}{m\_isEnd}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00091}00091\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{_base_game_state_update_8cs_source_l00093}00093\ \}}
+
+\end{DoxyCode}

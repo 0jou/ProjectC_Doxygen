@@ -1,0 +1,146 @@
+\doxysection{Order\+Food\+Data.\+cs}
+\hypertarget{_order_food_data_8cs_source}{}\label{_order_food_data_8cs_source}\index{ProjectC/106\_CounterFood/CounterFood/OrderFoodData.cs@{ProjectC/106\_CounterFood/CounterFood/OrderFoodData.cs}}
+\mbox{\hyperlink{_order_food_data_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_order_food_info}{OrderFoodInfo}};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_food_info}{FoodInfo}};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00009}\mbox{\hyperlink{namespace_order_food_info}{00009}}\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_order_food_info}{OrderFoodInfo}}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00010}00010\ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00012}\mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{00012}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{enum}\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00013}00013\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00014}00014\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31faac7bc9ff7d278d40fd2ec34bffd9d158b}{FindStaff}},\ \ \ \ \ \textcolor{comment}{//\ スタッフに探され待ち状態}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31faa7a879679e1b40fb547bd6513f8646e3c}{WaitCounter}},\ \ \textcolor{comment}{//\ 受け取り待ち状態}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31faa8b18d3d3cab61b0fc56db2a973160bee}{Carry}},\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 運ばれている状態}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31faa5d5b78699e57104f2fa03bbdf7b9197b}{Set}},\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ テーブルにセットされた状態}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00018}00018\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00019}00019\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00021}\mbox{\hyperlink{class_order_food_data}{00021}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{partial\ class\ }\mbox{\hyperlink{class_order_food_data}{OrderFoodData}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00022}00022\ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ カウンターが作成した料理データ}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//======================================================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ ステート}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00030}\mbox{\hyperlink{class_order_food_data_acbcd8cea772d2519af00ddcae3614af6}{00030}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}\ \mbox{\hyperlink{class_order_food_data_acbcd8cea772d2519af00ddcae3614af6}{m\_currentOrderFoodState}}\ =\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.FindStaff;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00032}\mbox{\hyperlink{class_order_food_data_aa4092ac2ae6579f346451c9750f60534}{00032}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}\ \mbox{\hyperlink{class_order_food_data_aa4092ac2ae6579f346451c9750f60534}{CurrentOrderFoodState}}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00033}00033\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_order_food_data_acbcd8cea772d2519af00ddcae3614af6}{m\_currentOrderFoodState}};\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_order_food_data_acbcd8cea772d2519af00ddcae3614af6}{m\_currentOrderFoodState}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00036}00036\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ 料理ID}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00041}\mbox{\hyperlink{class_order_food_data_a7f2379043520906bf7d7935d5dfaaac2}{00041}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}\ \mbox{\hyperlink{class_order_food_data_a7f2379043520906bf7d7935d5dfaaac2}{m\_foodID}}\ =\ \mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}.Omelette;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00043}\mbox{\hyperlink{class_order_food_data_a2b5d38990323c9847396a16dffaa7d9c}{00043}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}\ \mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00044}00044\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_order_food_data_a7f2379043520906bf7d7935d5dfaaac2}{m\_foodID}};\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_order_food_data_a7f2379043520906bf7d7935d5dfaaac2}{m\_foodID}}\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成時間をセット}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\mbox{\hyperlink{class_order_food_data_a7f2379043520906bf7d7935d5dfaaac2}{m\_foodID}});}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ !=\ \textcolor{keyword}{null})\ \mbox{\hyperlink{class_order_food_data_a31aa8b12b1e92b6606da6ec5944bd76d}{m\_createDelay}}\ =\ data.\mbox{\hyperlink{class_food_data_abeb5fb30e0592892e4c86b39b9be0970}{CreateDelay}};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00054}00054\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00057}00057\ \ \ \ \ \textcolor{comment}{//\ 目標のテーブル情報}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00059}\mbox{\hyperlink{class_order_food_data_ad9b173cd31ff3ff739cf02a24d8c6089}{00059}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_table_set_data}{TableSetData}}\ \mbox{\hyperlink{class_order_food_data_ad9b173cd31ff3ff739cf02a24d8c6089}{m\_targetTabelSetData}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00061}\mbox{\hyperlink{class_order_food_data_ab4dcb1882750d41d96475113dfd2e006}{00061}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_table_set_data}{TableSetData}}\ \mbox{\hyperlink{class_order_food_data_ab4dcb1882750d41d96475113dfd2e006}{TargetTableSetData}}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00062}00062\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_order_food_data_ad9b173cd31ff3ff739cf02a24d8c6089}{m\_targetTabelSetData}};\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}\ \{\ \mbox{\hyperlink{class_order_food_data_ad9b173cd31ff3ff739cf02a24d8c6089}{m\_targetTabelSetData}}\ =\ value;\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00065}00065\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00067}00067\ \ \ \ \ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00068}00068\ \ \ \ \ \textcolor{comment}{//\ 設置されているカウンターポイント}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00069}\mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{00069}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_counter_point_data}{CounterPointData}}\ \mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00070}\mbox{\hyperlink{class_order_food_data_abe4849adfd754394c752ae50a99445d2}{00070}}\ \ \ \ \ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_counter_point_data}{CounterPointData}}\ \mbox{\hyperlink{class_counter_point_data}{CounterPointData}}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}};\ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \textcolor{keyword}{set}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セットを解除}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_counterPointData.IsSet\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}}\ =\ value;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}}?.SetPoint\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00085}00085\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_counterPointData.IsSet\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 座標更新}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameObject.transform.position\ =\ \mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}}.\mbox{\hyperlink{class_counter_point_data_ad4211cefeb3a338e7055384bbb3dd43b}{SetPoint}}.position;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gameObject.transform.rotation\ =\ \mbox{\hyperlink{class_order_food_data_a4c1758a56cb1250a52c4a673154c0664}{m\_counterPointData}}.\mbox{\hyperlink{class_counter_point_data_ad4211cefeb3a338e7055384bbb3dd43b}{SetPoint}}.rotation;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00095}00095\ \ \ \ \ \textcolor{comment}{//==================================}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00096}00096\ \ \ \ \ \textcolor{comment}{//\ 作成にかかる時間}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00097}\mbox{\hyperlink{class_order_food_data_a31aa8b12b1e92b6606da6ec5944bd76d}{00097}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_order_food_data_a31aa8b12b1e92b6606da6ec5944bd76d}{m\_createDelay}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00099}00099\ \ \ \ \ \textcolor{comment}{//\ 現在の作成度合}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00100}\mbox{\hyperlink{class_order_food_data_aa2f3021f0b3136dd810ba03a1414612a}{00100}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_order_food_data_aa2f3021f0b3136dd810ba03a1414612a}{m\_currentCreateDelayCount}}\ =\ 0.0f;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00101}00101\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00104}00104\ \ \ \ \ \textcolor{comment}{//\ 削除後に通る処理}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00105}\mbox{\hyperlink{class_order_food_data_a100f1e7d0308665de116e741758f7c97}{00105}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_food_data_a100f1e7d0308665de116e741758f7c97}{OnDestroy}}()}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ポイントを手放す}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00108}00108\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_counter_point_data}{CounterPointData}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00109}00109\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00111}00111\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00112}00112\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00116}\mbox{\hyperlink{class_order_food_data_a94aa39945a124ec059ca797991a11c0d}{00116}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_order_food_data_a94aa39945a124ec059ca797991a11c0d}{CreatCount}}()}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00117}00117\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成中の料理を更新}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00119}00119\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_order_food_data_a31aa8b12b1e92b6606da6ec5944bd76d}{m\_createDelay}}\ <\ \mbox{\hyperlink{class_order_food_data_aa2f3021f0b3136dd810ba03a1414612a}{m\_currentCreateDelayCount}})}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00120}00120\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00122}00122\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00124}00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00125}00125\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 更新する}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_order_food_data_aa2f3021f0b3136dd810ba03a1414612a}{m\_currentCreateDelayCount}}\ +=\ Time.deltaTime;}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00128}00128\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00129}00129\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00130}00130\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00131}00131\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00135}\mbox{\hyperlink{class_order_food_data_af948ffe3c8fdb2ad23363228dd3149ad}{00135}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_order_food_data_af948ffe3c8fdb2ad23363228dd3149ad}{IsFindStaff}}()}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00136}00136\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00137}00137\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (gameObject.activeSelf\ \&\&}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00138}00138\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_order_food_data_acbcd8cea772d2519af00ddcae3614af6}{m\_currentOrderFoodState}}\ ==\ \mbox{\hyperlink{namespace_order_food_info_a09ddb2386d4c25716e924f4a3a6e31fa}{OrderFoodState}}.FindStaff)}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00139}00139\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00141}00141\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00144}00144\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00145}00145\ }
+\DoxyCodeLine{\Hypertarget{_order_food_data_8cs_source_l00146}00146\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,46 @@
+\doxysection{HPBar\+Presenter.\+cs}
+\hypertarget{_h_p_bar_presenter_8cs_source}{}\label{_h_p_bar_presenter_8cs_source}\index{ProjectC/002\_UI/Script/Presenter/HPBarPresenter.cs@{ProjectC/002\_UI/Script/Presenter/HPBarPresenter.cs}}
+\mbox{\hyperlink{_h_p_bar_presenter_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }UniRx;}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00003}00003\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00008}\mbox{\hyperlink{class_h_p_bar_presenter}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_h_p_bar_presenter}{HPBarPresenter}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00010}\mbox{\hyperlink{class_h_p_bar_presenter_a034aae99258dc3d63b9dc6e1b89cc783}{00010}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ \mbox{\hyperlink{class_h_p_bar_presenter_a034aae99258dc3d63b9dc6e1b89cc783}{characterCore}};}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00011}\mbox{\hyperlink{class_h_p_bar_presenter_af3e41845cfe4f948310f4aed0f0ff32d}{00011}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_h_p_bar_controller}{HPBarController}}\ \mbox{\hyperlink{class_h_p_bar_presenter_af3e41845cfe4f948310f4aed0f0ff32d}{barController}};}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00013}\mbox{\hyperlink{class_h_p_bar_presenter_ae5c611669cd341ac0660512f01a7c447}{00013}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_h_p_bar_presenter_ae5c611669cd341ac0660512f01a7c447}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00014}00014\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00015}00015\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_h_p_bar_presenter_af3e41845cfe4f948310f4aed0f0ff32d}{barController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00016}00016\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_af3e41845cfe4f948310f4aed0f0ff32d}{barController}}\ =\ GetComponent<HPBarController>();}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HPの初期設定}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_a95f91c6a16562454cc4f3fd40460ce2f}{BarSetting}}();}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 変わったら実行する処理を登録}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_a034aae99258dc3d63b9dc6e1b89cc783}{characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a1e09217558dc93616afb4661d2242309}{m\_hp}}.Subscribe(x\ =>\ \mbox{\hyperlink{class_h_p_bar_presenter_a42a9e62da12308036c0ee98b17f2dee3}{BarUpdate}}());}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00025}00025\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00027}\mbox{\hyperlink{class_h_p_bar_presenter_a42a9e62da12308036c0ee98b17f2dee3}{00027}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_h_p_bar_presenter_a42a9e62da12308036c0ee98b17f2dee3}{BarUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_af3e41845cfe4f948310f4aed0f0ff32d}{barController}}.\mbox{\hyperlink{class_h_p_bar_controller_a9504be975f305e3ed4b9ca422ac8809e}{SetHealthValue}}(\mbox{\hyperlink{class_h_p_bar_presenter_a034aae99258dc3d63b9dc6e1b89cc783}{characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a1e09217558dc93616afb4661d2242309}{m\_hp}}.Value);}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デバッグ用}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Debug.Log("{}HealthUpdate"{});}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00035}00035\ \ \ \ \ [ContextMenu(\textcolor{stringliteral}{"{}BarSetting"{}})]}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00036}\mbox{\hyperlink{class_h_p_bar_presenter_a95f91c6a16562454cc4f3fd40460ce2f}{00036}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_h_p_bar_presenter_a95f91c6a16562454cc4f3fd40460ce2f}{BarSetting}}()}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HPの初期値を設定}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_af3e41845cfe4f948310f4aed0f0ff32d}{barController}}.\mbox{\hyperlink{class_h_p_bar_controller_af71e8b438f7ce4bf32dbf28f6a96cc3a}{SetHealth}}(}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_a034aae99258dc3d63b9dc6e1b89cc783}{characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a1e09217558dc93616afb4661d2242309}{m\_hp}}.Value,}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_h_p_bar_presenter_a034aae99258dc3d63b9dc6e1b89cc783}{characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a28cb5f6b2acfa2b95ab7a49e55c68a2a}{MaxHP}});}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00042}00042\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_h_p_bar_presenter_8cs_source_l00044}00044\ \}}
+
+\end{DoxyCode}

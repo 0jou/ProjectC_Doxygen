@@ -1,0 +1,76 @@
+\doxysection{Aim\+Camera\+Controller.\+cs}
+\hypertarget{_aim_camera_controller_8cs_source}{}\label{_aim_camera_controller_8cs_source}\index{ProjectC/005\_Camera/AimCamera/Script/AimCameraController.cs@{ProjectC/005\_Camera/AimCamera/Script/AimCameraController.cs}}
+\mbox{\hyperlink{_aim_camera_controller_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }Cinemachine;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }Unity.Mathematics;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEditor.Rendering;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00010}\mbox{\hyperlink{class_aim_camera_controller}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_aim_camera_controller}{AimCameraController}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00013}\mbox{\hyperlink{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09}{00013}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{interface_i_input_provider}{IInputProvider}}\ \mbox{\hyperlink{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09}{m\_inputProvider}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00014}\mbox{\hyperlink{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}{00014}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ CinemachineInputProvider\ \mbox{\hyperlink{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}{m\_cinemachineInputProvider}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00017}\mbox{\hyperlink{class_aim_camera_controller_aae1fc0f10ee2177dce323fa57cc24066}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ Transform\ \mbox{\hyperlink{class_aim_camera_controller_aae1fc0f10ee2177dce323fa57cc24066}{m\_verticalTarget}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00020}\mbox{\hyperlink{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ Transform\ \mbox{\hyperlink{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2}{m\_horizontalTarget}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00022}00022\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00023}\mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ AxisState\ \mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00024}\mbox{\hyperlink{class_aim_camera_controller_a49c8633411ce87464d4e85ba5f1931a9}{00024}}\ \ \ \ \ \textcolor{keyword}{public}\ AxisState\ \mbox{\hyperlink{class_aim_camera_controller_a49c8633411ce87464d4e85ba5f1931a9}{Vertical}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00025}00025\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00026}\mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ AxisState\ \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}};}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00027}\mbox{\hyperlink{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ AxisState\ \mbox{\hyperlink{class_aim_camera_controller_ae13d345760ccff81cf37ece55e4c2645}{Horizontal}}\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}};\ \}\ \}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00029}\mbox{\hyperlink{class_aim_camera_controller_afdcf058944dbd86544dbe594adf77265}{00029}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_camera_controller_afdcf058944dbd86544dbe594adf77265}{Awake}}()}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a3a69942318dc63a4c13f0b429cdf4b09}{m\_inputProvider}}\ =\ \textcolor{keyword}{new}\ \mbox{\hyperlink{class_player_input_provider}{PlayerInputProvider}}();}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00032}00032\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00034}00034\ \ \ \ \ \textcolor{comment}{//\ Update\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00035}\mbox{\hyperlink{class_aim_camera_controller_a07dd729cea8fb561a1e035b319c107fe}{00035}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_camera_controller_a07dd729cea8fb561a1e035b319c107fe}{Update}}()}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ Vector2\ inputVec\ =\textcolor{keyword}{new}(}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}{m\_cinemachineInputProvider}}.GetAxisValue(0)\ *\ -\/1.0f,\textcolor{comment}{//\ リバースしているので-\/1をかける}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a14044d10beea3da0bb6157cd8b6a6844}{m\_cinemachineInputProvider}}.GetAxisValue(1));}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{comment}{//Vector2\ inputVec\ =\ m\_inputProvider.ThrowAim;}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ m\_vertical.m\_InputAxisValue\ =\ inputVec.y;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ m\_horizontal.m\_InputAxisValue\ =\ inputVec.x;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}}.Update(Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}}.Update(Time.deltaTime);}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ var\ horizontalRotation\ =\ Quaternion.AngleAxis(\mbox{\hyperlink{class_aim_camera_controller_a52d31c695d7eb1be6052055a7e06e7ee}{m\_horizontal}}.Value,\ Vector3.up);}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ var\ verticalRotation\ =\ Quaternion.AngleAxis(\mbox{\hyperlink{class_aim_camera_controller_ac7c07697d104098851a6404898956dd3}{m\_vertical}}.Value,\ Vector3.right);}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ m\_horizontalTarget.rotation\ =\ horizontalRotation;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ m\_verticalTarget.localRotation\ =\ verticalRotation;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00054}\mbox{\hyperlink{class_aim_camera_controller_a3b21102ff5572a9859bcf49e5efb8a63}{00054}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_camera_controller_a3b21102ff5572a9859bcf49e5efb8a63}{OnDisable}}()}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ m\_verticalTarget.localRotation\ =\ Quaternion.identity;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ m\_horizontalTarget.rotation\ =\ Quaternion.identity;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ m\_vertical.Value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ m\_horizontal.Value\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00060}00060\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00062}\mbox{\hyperlink{class_aim_camera_controller_a4f7834b7ecb8ba7dca7ac8f2b28bfbb0}{00062}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_aim_camera_controller_a4f7834b7ecb8ba7dca7ac8f2b28bfbb0}{OnEnable}}()}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00063}00063\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ Vector3\ angle\ =\ \mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b}{Camera}}.main.transform.localRotation.eulerAngles;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ m\_horizontalTarget.eulerAngles\ =\ \textcolor{keyword}{new}\ Vector3(0,angle.y,0);}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ Vector3\ horizonVec\ =\ \mbox{\hyperlink{class_aim_camera_controller_ad9eb513bc59a533f48ee09e2647146a2}{m\_horizontalTarget}}.rotation.eulerAngles;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ m\_horizontal.Value\ =\ horizonVec.y;}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_aim_camera_controller_8cs_source_l00070}00070\ \}}
+
+\end{DoxyCode}

@@ -1,0 +1,198 @@
+\doxysection{Add\+Probability\+Event クラス}
+\hypertarget{class_add_probability_event}{}\label{class_add_probability_event}\index{AddProbabilityEvent@{AddProbabilityEvent}}
+
+
+Arbor経由でイベントを発生させる Arborのステートにアタッチして使用 内部インスペクターに \doxylink{_base_management_event_8cs}{Base\+Management\+Event.\+cs} を継承したコンポーネントをセットしたオブジェクトのprefabをセットする 確率も指定できる 0の場合はprefab側の設定が使用される  
+
+
+
+
+Add\+Probability\+Event の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{d3/d80/class_add_probability_event__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Add\+Probability\+Event 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=289pt]{de/d2a/class_add_probability_event__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+override void \mbox{\hyperlink{class_add_probability_event_a24dd822dadeb1f5ec77dd50895a1e9ff}{On\+State\+Begin}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{限定公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_add_probability_event_a957117d94c311394b0c24491ebae3600}{Event\+Initialize\+Process}} ()
+\begin{DoxyCompactList}\small\item\em 継承先での情報設定用処理 \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{限定公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_base_management_event}{Base\+Management\+Event}} \mbox{\hyperlink{class_add_probability_event_ad4ecb3ee4715071918e7023af840ca3f}{m\+\_\+management\+Event}} = null
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39}{Add\+Event}} ()
+\begin{DoxyCompactList}\small\item\em イベントを追加する @detail 確率が0超の場合は確率を設定する \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_add_probability_event_aa9e6359c045c6a2ac6ae43772e8acfe2}{m\+\_\+probability}} = 50
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+Arbor経由でイベントを発生させる Arborのステートにアタッチして使用 内部インスペクターに \doxylink{_base_management_event_8cs}{Base\+Management\+Event.\+cs} を継承したコンポーネントをセットしたオブジェクトのprefabをセットする 確率も指定できる 0の場合はprefab側の設定が使用される 
+
+ \mbox{\hyperlink{_add_probability_event_8cs_source}{Add\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_probability_event_8cs_source_l00019}{19}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39}\index{AddProbabilityEvent@{AddProbabilityEvent}!AddEvent@{AddEvent}}
+\index{AddEvent@{AddEvent}!AddProbabilityEvent@{AddProbabilityEvent}}
+\doxysubsubsection{\texorpdfstring{AddEvent()}{AddEvent()}}
+{\footnotesize\ttfamily \label{class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39} 
+void Add\+Probability\+Event.\+Add\+Event (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+イベントを追加する @detail 確率が0超の場合は確率を設定する 
+
+
+
+ \mbox{\hyperlink{_add_probability_event_8cs_source}{Add\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_probability_event_8cs_source_l00035}{35}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_add_probability_event_ad4ecb3ee4715071918e7023af840ca3f}{m\_managementEvent}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ UnityEngine.Debug.LogError(\textcolor{stringliteral}{"{}イベントがセットできていません"{}});}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_add_probability_event_aa9e6359c045c6a2ac6ae43772e8acfe2}{m\_probability}}\ >\ 0)}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ m\_managementEvent.Probability\ =\ \mbox{\hyperlink{class_add_probability_event_aa9e6359c045c6a2ac6ae43772e8acfe2}{m\_probability}};}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 継承先での専用処理実行}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_add_probability_event_a957117d94c311394b0c24491ebae3600}{EventInitializeProcess}}();}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_management_event_manager}{ManagementEventManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.AddProbabilityEventList(\mbox{\hyperlink{class_add_probability_event_ad4ecb3ee4715071918e7023af840ca3f}{m\_managementEvent}});}
+\DoxyCodeLine{00052\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d6c/class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d6c/class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_add_probability_event_a957117d94c311394b0c24491ebae3600}\index{AddProbabilityEvent@{AddProbabilityEvent}!EventInitializeProcess@{EventInitializeProcess}}
+\index{EventInitializeProcess@{EventInitializeProcess}!AddProbabilityEvent@{AddProbabilityEvent}}
+\doxysubsubsection{\texorpdfstring{EventInitializeProcess()}{EventInitializeProcess()}}
+{\footnotesize\ttfamily \label{class_add_probability_event_a957117d94c311394b0c24491ebae3600} 
+virtual void Add\+Probability\+Event.\+Event\+Initialize\+Process (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+継承先での情報設定用処理 
+
+
+
+\mbox{\hyperlink{class_add_cleaning_probability_event_a2c1e6379d19e8b11fd893b8a84e31c3e}{Add\+Cleaning\+Probability\+Event}}で再実装されています。
+
+
+
+ \mbox{\hyperlink{_add_probability_event_8cs_source}{Add\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_probability_event_8cs_source_l00056}{56}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00057\ \ \ \ \ \{}
+\DoxyCodeLine{00058\ \ \ \ \ \}}
+
+\end{DoxyCode}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d6c/class_add_probability_event_a957117d94c311394b0c24491ebae3600_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_add_probability_event_a24dd822dadeb1f5ec77dd50895a1e9ff}\index{AddProbabilityEvent@{AddProbabilityEvent}!OnStateBegin@{OnStateBegin}}
+\index{OnStateBegin@{OnStateBegin}!AddProbabilityEvent@{AddProbabilityEvent}}
+\doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
+{\footnotesize\ttfamily \label{class_add_probability_event_a24dd822dadeb1f5ec77dd50895a1e9ff} 
+override void Add\+Probability\+Event.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_add_probability_event_8cs_source}{Add\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_probability_event_8cs_source_l00062}{62}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063\ \ \ \ \ \{}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_add_probability_event_ab1e7e2f6c6fd5ba5bdd3dc945e756d39}{AddEvent}}();}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{db/d6c/class_add_probability_event_a24dd822dadeb1f5ec77dd50895a1e9ff_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_add_probability_event_ad4ecb3ee4715071918e7023af840ca3f}\index{AddProbabilityEvent@{AddProbabilityEvent}!m\_managementEvent@{m\_managementEvent}}
+\index{m\_managementEvent@{m\_managementEvent}!AddProbabilityEvent@{AddProbabilityEvent}}
+\doxysubsubsection{\texorpdfstring{m\_managementEvent}{m\_managementEvent}}
+{\footnotesize\ttfamily \label{class_add_probability_event_ad4ecb3ee4715071918e7023af840ca3f} 
+\mbox{\hyperlink{class_base_management_event}{Base\+Management\+Event}} Add\+Probability\+Event.\+m\+\_\+management\+Event = null\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+ \mbox{\hyperlink{_add_probability_event_8cs_source}{Add\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_probability_event_8cs_source_l00023}{23}} 行目に定義があります。
+
+\Hypertarget{class_add_probability_event_aa9e6359c045c6a2ac6ae43772e8acfe2}\index{AddProbabilityEvent@{AddProbabilityEvent}!m\_probability@{m\_probability}}
+\index{m\_probability@{m\_probability}!AddProbabilityEvent@{AddProbabilityEvent}}
+\doxysubsubsection{\texorpdfstring{m\_probability}{m\_probability}}
+{\footnotesize\ttfamily \label{class_add_probability_event_aa9e6359c045c6a2ac6ae43772e8acfe2} 
+int Add\+Probability\+Event.\+m\+\_\+probability = 50\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_add_probability_event_8cs_source}{Add\+Probability\+Event.\+cs}} の \mbox{\hyperlink{_add_probability_event_8cs_source_l00028}{28}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/103\+\_\+\+Management\+\_\+\+Character/\+Base/\mbox{\hyperlink{_add_probability_event_8cs}{Add\+Probability\+Event.\+cs}}\end{DoxyCompactItemize}

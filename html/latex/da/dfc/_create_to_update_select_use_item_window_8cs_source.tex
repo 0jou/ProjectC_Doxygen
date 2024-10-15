@@ -1,0 +1,112 @@
+\doxysection{Create\+To\+Update\+Select\+Use\+Item\+Window.\+cs}
+\hypertarget{_create_to_update_select_use_item_window_8cs_source}{}\label{_create_to_update_select_use_item_window_8cs_source}\index{ProjectC/003\_Item/Window/SelectUseItemWindow/Create/CreateToUpdateSelectUseItemWindow.cs@{ProjectC/003\_Item/Window/SelectUseItemWindow/Create/CreateToUpdateSelectUseItemWindow.cs}}
+\mbox{\hyperlink{_create_to_update_select_use_item_window_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_select_use_item_info}{SelectUseItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00010}\mbox{\hyperlink{class_create_to_update_select_use_item_window}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_create_to_update_select_use_item_window}{CreateToUpdateSelectUseItemWindow}}\ :\ MonoBehaviour}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00012}00012\ \ \ \ \ \textcolor{comment}{//\ アイテムの使用用途を選択するウィンドウを作成・結果確認を行うスクリプト}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 制作者　田内}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00014}00014\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00015}00015\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}SelectUseItemWindowコントローラー"{}})]}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00016}00016\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00017}\mbox{\hyperlink{class_create_to_update_select_use_item_window_aff169f208aa4c989b087da16b2dd27b8}{00017}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_create_to_update_select_use_item_window_aff169f208aa4c989b087da16b2dd27b8}{m\_createSelectUseItemWindowController}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00018}00018\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00020}\mbox{\hyperlink{class_create_to_update_select_use_item_window_af50c0bb61a5d04b5b1365e6d06708571}{00020}}\ \ \ \ \ \textcolor{keyword}{public}\ async\ UniTask<SelectUseItemID>\ \mbox{\hyperlink{class_create_to_update_select_use_item_window_af50c0bb61a5d04b5b1365e6d06708571}{Create<WindowType>}}(\mbox{\hyperlink{namespace_select_use_item_info_a66d67d87622727fdcfd064502774f021}{SelectUseItemWindowType}}\ \_windowTypeID,\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_typeID,\ uint\ \_id,\ System.Func<WindowType,\ UniTask>\ onBeforeInitialize\ =\ \textcolor{keyword}{null})\ where\ WindowType\ :\ \mbox{\hyperlink{class_select_use_item_window}{SelectUseItemWindow}}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00021}00021\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_create_to_update_select_use_item_window_aff169f208aa4c989b087da16b2dd27b8}{m\_createSelectUseItemWindowController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00025}00025\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}m\_createSelectUseItemWindowControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00029}00029\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インスタンスを作成}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ var\ window\ =\ Instantiate(\mbox{\hyperlink{class_create_to_update_select_use_item_window_aff169f208aa4c989b087da16b2dd27b8}{m\_createSelectUseItemWindowController}});}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ コントローラーを取得}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ var\ windowController\ =\ window.GetComponent<\mbox{\hyperlink{class_window_controller}{WindowController}}>();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (windowController\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerコンポーネントが登録されていません"{}});}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (window)\ Destroy(window);}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デフォルト値を入れる}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (onBeforeInitialize\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ onBeforeInitialize\ =\ (async\ wnd\ =>}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デフォルトの処理}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wnd.SetData(\_windowTypeID,\ \_typeID,\ \_id);}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \});}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{comment}{//SE音追加（山本）}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_sound_manager}{SoundManager}}.\mbox{\hyperlink{class_sound_manager_a4ceb176bb67059b35136a96fd9221824}{Instance}}.\mbox{\hyperlink{class_sound_manager_a10bc60ca27342f6574923712ef9028c5}{StartPlayback}}(\textcolor{stringliteral}{"{}SceneChange"{}});}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成したウィンドウのアップデート}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ var\ selectUseWindow\ =\ await\ windowController.CreateWindow<WindowType>(\textcolor{keyword}{true},\ onBeforeInitialize);}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ selectUseWindow.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}\ \textcolor{keywordtype}{id}\ =\ \mbox{\hyperlink{namespace_select_use_item_info_a1afa9da7334368b026385efc0c369a2d}{SelectUseItemID}}.Exit;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウの処理}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{id}\ =\ await\ selectUseWindow.OnUpdate();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 動作を決める}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウを閉じる}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ await\ selectUseWindow.OnClose();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウを削除}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ await\ selectUseWindow.OnDestroy();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00083}00083\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00084}00084\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00085}00085\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00087}00087\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00090}00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウGameObjectを削除}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (window)}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00092}00092\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(window);}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00094}00094\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00097}00097\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00099}00099\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ id;}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00101}00101\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{_create_to_update_select_use_item_window_8cs_source_l00106}00106\ \}}
+
+\end{DoxyCode}

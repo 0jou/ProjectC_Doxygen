@@ -1,0 +1,81 @@
+\doxysection{Test\+Noting\+Entry\+Point.\+cs}
+\hypertarget{_test_noting_entry_point_8cs_source}{}\label{_test_noting_entry_point_8cs_source}\index{ProjectC/999\_PersonalScene/JOKO\_SceneTest/scripts/TestNotingEntryPoint.cs@{ProjectC/999\_PersonalScene/JOKO\_SceneTest/scripts/TestNotingEntryPoint.cs}}
+\mbox{\hyperlink{_test_noting_entry_point_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }MackySoft.Navigathena;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }MackySoft.Navigathena.SceneManagement;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }System;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }System.Threading;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00010}\mbox{\hyperlink{class_test_noting_entry_point}{00010}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_test_noting_entry_point}{TestNotingEntryPoint}}\ :\ \mbox{\hyperlink{class_entry_point_base}{EntryPointBase}}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00012}\mbox{\hyperlink{class_test_noting_entry_point_a2fa7d0dabceeebc6696d6da6e432fd72}{00012}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_capture_screen_to_image}{CaptureScreenToImage}}\ \mbox{\hyperlink{class_test_noting_entry_point_a2fa7d0dabceeebc6696d6da6e432fd72}{m\_capture}};}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00014}00014\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}設定すれば遷移時カメラを無効にする"{}})]}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00015}\mbox{\hyperlink{class_test_noting_entry_point_a66a5ae575bf183437c972d0a925c4215}{00015}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ \mbox{\hyperlink{_player_input_manager_8cs_acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b}{Camera}}\ \mbox{\hyperlink{class_test_noting_entry_point_a66a5ae575bf183437c972d0a925c4215}{m\_camera}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00017}00017\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}遷移時削除するオブジェクト"{}})]}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00018}\mbox{\hyperlink{class_test_noting_entry_point_a0c42d3a241765334fd85746a085cf65e}{00018}}\ \ \ \ \ [SerializeField,\ NonReorderable]\ \textcolor{keyword}{private}\ List<UnityEngine.Object>\ \mbox{\hyperlink{class_test_noting_entry_point_a0c42d3a241765334fd85746a085cf65e}{m\_deleteObjects}}\ =\ \textcolor{keyword}{new}\ List<UnityEngine.Object>();}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00021}00021\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}アクティブをtrueにするリスト"{}})]}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00022}00022\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}※シリアライズするオブジェクトはアクティブをfalseにすること"{}})]}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00023}\mbox{\hyperlink{class_test_noting_entry_point_aba3115d16cda762c97fd8fbd1b415e95}{00023}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ List<GameObject>\ \mbox{\hyperlink{class_test_noting_entry_point_aba3115d16cda762c97fd8fbd1b415e95}{m\_objList}}\ =\ \textcolor{keyword}{new}();}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00025}\mbox{\hyperlink{class_test_noting_entry_point_a0fbcff41582c9a498d2f82c6f096191e}{00025}}\ \ \ \ \ [SerializeField]\ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_test_noting_entry_point_a0fbcff41582c9a498d2f82c6f096191e}{pagePrefab}}=\textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//\ 遷移演出の終了後に呼び出されます。}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00028}\mbox{\hyperlink{class_test_noting_entry_point_a9268629267682aa31a82913013e6254d}{00028}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_test_noting_entry_point_a9268629267682aa31a82913013e6254d}{OnEnter}}(ISceneDataReader\ reader,\ CancellationToken\ cancellationToken)}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00029}00029\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ リストで更新(田内)}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}(var\ obj\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_test_noting_entry_point_aba3115d16cda762c97fd8fbd1b415e95}{m\_objList}})}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ obj.SetActive(\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_test_noting_entry_point_a0fbcff41582c9a498d2f82c6f096191e}{pagePrefab}})}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ GameObject\ instance\ =\ Instantiate(\mbox{\hyperlink{class_test_noting_entry_point_a0fbcff41582c9a498d2f82c6f096191e}{pagePrefab}});}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_next_page_transition_behaviour}{NextPageTransitionBehaviour}}\ nextPageTransitionBehaviour\ =\ instance.GetComponentInChildren<\mbox{\hyperlink{class_next_page_transition_behaviour}{NextPageTransitionBehaviour}}>();}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (nextPageTransitionBehaviour)}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ await\ nextPageTransitionBehaviour.\mbox{\hyperlink{class_next_page_transition_behaviour_a3f21ba0702fd629e6c2a3841fd3d5b5b}{NextPage}}();}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(instance);}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00048}00048\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ タイトル画面は一番最初に実行されるものとして、ビルド時にも同様の必須初期化処理を実行させるための処理}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00052}00052\ \textcolor{preprocessor}{\#if\ UNITY\_EDITOR}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00053}00053\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00054}\mbox{\hyperlink{class_test_noting_entry_point_a2fcc817d20e93fbece1872123017b21b}{00054}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_test_noting_entry_point_a2fcc817d20e93fbece1872123017b21b}{OnInitialize}}(ISceneDataReader\ reader,\ IProgress<IProgressDataStore>\ transitionProgress,\ CancellationToken\ cancellationToken)}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00056}00056\ \ \ \ \ await\ \mbox{\hyperlink{class_entry_point_base_a5c38968b11c36dd770814afaa088a268}{OnFirstPreInitializeFunc}}();}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00059}00059\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00062}00062\ \ \ \ \ \textcolor{comment}{//\ 遷移演出の開始前に呼び出されます。}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00063}\mbox{\hyperlink{class_test_noting_entry_point_acd5cc50017885fd98239f74e19b2ef49}{00063}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_test_noting_entry_point_acd5cc50017885fd98239f74e19b2ef49}{OnExit}}(ISceneDataWriter\ writer,\ CancellationToken\ cancellationToken)}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00064}00064\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_test_noting_entry_point_a2fa7d0dabceeebc6696d6da6e432fd72}{m\_capture}}.\mbox{\hyperlink{class_capture_screen_to_image_abd2da869578f7d67fd1f07987c90735f}{Capture}}();}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_test_noting_entry_point_a66a5ae575bf183437c972d0a925c4215}{m\_camera}})}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ m\_camera.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ obj\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_test_noting_entry_point_a0c42d3a241765334fd85746a085cf65e}{m\_deleteObjects}})}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(obj);}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00074}00074\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_test_noting_entry_point_8cs_source_l00075}00075\ \}}
+
+\end{DoxyCode}

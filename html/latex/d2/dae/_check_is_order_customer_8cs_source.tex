@@ -1,0 +1,77 @@
+\doxysection{Check\+Is\+Order\+Customer.\+cs}
+\hypertarget{_check_is_order_customer_8cs_source}{}\label{_check_is_order_customer_8cs_source}\index{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/Find/CheckIsOrderCustomer.cs@{ProjectC/103\_Management\_Character/Customer/Scripts/Arbor3/State/Find/CheckIsOrderCustomer.cs}}
+\mbox{\hyperlink{_check_is_order_customer_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00001}00001\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_customer_state_info}{CustomerStateInfo}};}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00017}00017\ [AddComponentMenu(\textcolor{stringliteral}{"{}Customer/CheckIsOrderCustomer"{}})]}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00018}\mbox{\hyperlink{class_check_is_order_customer}{00018}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_check_is_order_customer}{CheckIsOrderCustomer}}\ :\ \mbox{\hyperlink{class_base_customer_state_behaviour}{BaseCustomerStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00019}00019\ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//\ 料理が提供できない状態になれば帰る}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00024}00024\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00025}\mbox{\hyperlink{class_check_is_order_customer_accc764572917d36509291aaf96dbba62}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ StateLink\ \mbox{\hyperlink{class_check_is_order_customer_accc764572917d36509291aaf96dbba62}{m\_stateLink}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00027}00027\ \ \ \ \ \textcolor{comment}{//==================================================================}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00029}\mbox{\hyperlink{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}{00029}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}{Check}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00030}00030\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_customer_state_behaviour_a32567768b2bf7e9e2901117de1ec359c}{GetCustomerData}}();}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理が存在すれば}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.TargetOrderFoodData\ !=\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ この状態であれば}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.WaitFood\ ||}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Eat\ ||}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.AngryExit\ ||}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \ \ \ \ data.CurrentCustomerState\ ==\ \mbox{\hyperlink{namespace_customer_state_info_a76c8f9846f3b512edbff3ea766391987}{CustomerState}}.Exit)}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_counter_manager}{CounterManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.IsOrder())}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_customer_state_behaviour_a811dd08072f5b967a2260cd67d17e95d}{SetTransition}}(\mbox{\hyperlink{class_check_is_order_customer_accc764572917d36509291aaf96dbba62}{m\_stateLink}});}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00050}00050\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00052}00052\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00054}00054\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ awake\ state}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00055}\mbox{\hyperlink{class_check_is_order_customer_af1f0d4b49cfe42d2ff41960e6173f8f9}{00055}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_order_customer_af1f0d4b49cfe42d2ff41960e6173f8f9}{OnStateAwake}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00056}00056\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00059}00059\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ enter\ state}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00060}\mbox{\hyperlink{class_check_is_order_customer_aaf3f6d0ab838837ded9f2bdfa99ee65c}{00060}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_order_customer_aaf3f6d0ab838837ded9f2bdfa99ee65c}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00061}00061\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00062}00062\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00064}00064\ \ \ \ \ \textcolor{comment}{//\ Use\ this\ for\ exit\ state}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00065}\mbox{\hyperlink{class_check_is_order_customer_ac9c6f66cec56314580e72a6ebd332e72}{00065}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_order_customer_ac9c6f66cec56314580e72a6ebd332e72}{OnStateEnd}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00066}00066\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00067}00067\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00069}00069\ \ \ \ \ \textcolor{comment}{//\ OnStateUpdate\ is\ called\ once\ per\ frame}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00070}\mbox{\hyperlink{class_check_is_order_customer_a0620fbf2e2738e7280608c2fd4cabc8a}{00070}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_order_customer_a0620fbf2e2738e7280608c2fd4cabc8a}{OnStateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00071}00071\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_check_is_order_customer_a8826eaedc471b880789c0b9dc221c807}{Check}}();}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00073}00073\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00075}00075\ \ \ \ \ \textcolor{comment}{//\ OnStateLateUpdate\ is\ called\ once\ per\ frame,\ after\ Update\ has\ finished.}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00076}\mbox{\hyperlink{class_check_is_order_customer_a85c52f067afd2a295c346c051f20c9df}{00076}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_check_is_order_customer_a85c52f067afd2a295c346c051f20c9df}{OnStateLateUpdate}}()}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00077}00077\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00078}00078\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_check_is_order_customer_8cs_source_l00079}00079\ \}}
+
+\end{DoxyCode}

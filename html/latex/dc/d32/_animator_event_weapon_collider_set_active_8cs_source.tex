@@ -1,0 +1,77 @@
+\doxysection{Animator\+Event\+Weapon\+Collider\+Set\+Active.\+cs}
+\hypertarget{_animator_event_weapon_collider_set_active_8cs_source}{}\label{_animator_event_weapon_collider_set_active_8cs_source}\index{ProjectC/001\_Common/Scripts/AnimatorEvent/AnimatorEventWeaponColliderSetActive.cs@{ProjectC/001\_Common/Scripts/AnimatorEvent/AnimatorEventWeaponColliderSetActive.cs}}
+\mbox{\hyperlink{_animator_event_weapon_collider_set_active_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEditor;}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00005}00005\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00006}00006\ \textcolor{comment}{//アニメーションの任意のタイミングで武器のコライダーをアクティブにする（山本）}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00007}00007\ [System.Serializable]}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00008}\mbox{\hyperlink{class_animator_event_weapon}{00008}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_animator_event_weapon}{AnimatorEventWeapon}}\ :\ AnimatorEvents.EventNodeBase}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00009}00009\ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00010}\mbox{\hyperlink{class_animator_event_weapon_a10ad13940577d159b3e44bf747699591}{00010}}\ \ \ \ \ \textcolor{keyword}{private}\ GameObject\ \mbox{\hyperlink{class_animator_event_weapon_a10ad13940577d159b3e44bf747699591}{m\_weapon}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00012}00012\ \ \ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00013}00013\ \ \ \ \ \textcolor{comment}{//\ 時間が来たときに実行}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00014}\mbox{\hyperlink{class_animator_event_weapon_ab2a66d4efbd8ea2496ca9a47a33d8d33}{00014}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_event_weapon_ab2a66d4efbd8ea2496ca9a47a33d8d33}{OnEvent}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00015}00015\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00017}00017\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_event_weapon_a10ad13940577d159b3e44bf747699591}{m\_weapon}}\ =\ GameObject.FindGameObjectWithTag(\textcolor{stringliteral}{"{}Weapon"{}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_animator_event_weapon_a10ad13940577d159b3e44bf747699591}{m\_weapon}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00019}00019\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}武器を装備していません"{}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{comment}{//var\ charaCore\ =\ animator.transform.GetComponentInParent<CharacterCore>();}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00027}00027\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00028}00028\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{comment}{//if\ (m\_weapon.GetComponent<OwnerInfoTag>()\ ==\ false)}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\{}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ //\ 作成者情報を記憶}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ var\ ownerInfo\ =\ m\_weapon.AddComponent<OwnerInfoTag>();}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00033}00033\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ ownerInfo.GroupNo\ =\ charaCore.GroupNo;}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00034}00034\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ ownerInfo.Characore\ =\ charaCore;}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00035}00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\}}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ var\ boxCollider\ =\ \mbox{\hyperlink{class_animator_event_weapon_a10ad13940577d159b3e44bf747699591}{m\_weapon}}.GetComponent<BoxCollider>();}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boxCollider\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}BoxColliderついてないよ"{}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boxCollider.enabled\ ==\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00048}00048\ \ \ \ \ \ \ \ \ \ \ \ \ boxCollider.enabled\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00052}00052\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00054}\mbox{\hyperlink{class_animator_event_weapon_a754819ed503168cccfc4e9a16105a08c}{00054}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_animator_event_weapon_a754819ed503168cccfc4e9a16105a08c}{OnExit}}(Animator\ animator)}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00055}00055\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ var\ boxCollider\ =\ \mbox{\hyperlink{class_animator_event_weapon_a10ad13940577d159b3e44bf747699591}{m\_weapon}}.GetComponent<BoxCollider>();}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boxCollider\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}BoxColliderついてないよ"{}});}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (boxCollider.enabled\ ==\ \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ boxCollider.enabled\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00068}00068\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00070}00070\ }
+\DoxyCodeLine{\Hypertarget{_animator_event_weapon_collider_set_active_8cs_source_l00071}00071\ \}}
+
+\end{DoxyCode}

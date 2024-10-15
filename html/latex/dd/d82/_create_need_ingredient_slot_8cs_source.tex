@@ -1,0 +1,91 @@
+\doxysection{Create\+Need\+Ingredient\+Slot.\+cs}
+\hypertarget{_create_need_ingredient_slot_8cs_source}{}\label{_create_need_ingredient_slot_8cs_source}\index{ProjectC/003\_Item/Window/RecipeWindow/Prefab/Description/NeedIngredientList/CreateNeedIngredientSlot.cs@{ProjectC/003\_Item/Window/RecipeWindow/Prefab/Description/NeedIngredientList/CreateNeedIngredientSlot.cs}}
+\mbox{\hyperlink{_create_need_ingredient_slot_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00004}00004\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_pocket_item_data_info}{PocketItemDataInfo}};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_food_info}{FoodInfo}};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00006}00006\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00007}\mbox{\hyperlink{class_create_need_ingredient_slot}{00007}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_create_need_ingredient_slot}{CreateNeedIngredientSlot}}\ :\ \mbox{\hyperlink{class_base_create_slot_list}{BaseCreateSlotList}}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00008}00008\ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00010}00010\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00011}00011\ \ \ \ \ \textcolor{comment}{//\ 料理に必要な材料のスロットを作成する}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00013}00013\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}ポケットマネージャーの種類"{}})]}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00014}00014\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00015}\mbox{\hyperlink{class_create_need_ingredient_slot_aa518a3f0a5c997c7db60eb8589a9ae60}{00015}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}\ \mbox{\hyperlink{class_create_need_ingredient_slot_aa518a3f0a5c997c7db60eb8589a9ae60}{m\_pocketType}}\ =\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.Inventory;}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00016}00016\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//===============================}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ 必要な材料を確認したい料理ID}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00020}\mbox{\hyperlink{class_create_need_ingredient_slot_adee37d44952e822bc70742c9fd1be99e}{00020}}\ \ \ \ \ \textcolor{keyword}{protected}\ \mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}\ \mbox{\hyperlink{class_create_need_ingredient_slot_adee37d44952e822bc70742c9fd1be99e}{m\_foodID}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00023}00023\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00024}00024\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//======================================================}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00027}\mbox{\hyperlink{class_create_need_ingredient_slot_a07b497e7e83156ede8e35f3085997f6c}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_create_need_ingredient_slot_a07b497e7e83156ede8e35f3085997f6c}{SetFoodID}}(\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{FoodID}}\ \_id)}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_create_need_ingredient_slot_adee37d44952e822bc70742c9fd1be99e}{m\_foodID}}\ =\ \_id;}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00030}00030\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00033}\mbox{\hyperlink{class_create_need_ingredient_slot_a978f5c743d6d2fe72867de1b66c53a22}{00033}}\ \ \ \ \ \textcolor{keyword}{protected}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_create_need_ingredient_slot_a978f5c743d6d2fe72867de1b66c53a22}{CreateSlotInstance}}()}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00034}00034\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00036}00036\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成するスロットが登録されていません"{}});}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00040}00040\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ IDにあった料理を取得}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ var\ foodData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\mbox{\hyperlink{class_create_need_ingredient_slot_adee37d44952e822bc70742c9fd1be99e}{m\_foodID}});}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (foodData\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 既存のスロットを削除}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_af4cfc071eb90b0a7738a35af4b6039b0}{DestroySlotList}}();}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な材料オブジェクトリスト}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ needItem\ \textcolor{keywordflow}{in}\ foodData.NeedIngredientObjectList)}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (needItem\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)needItem.IngredientID);}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemData\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}このアイテムのデータは存在しません"{}});}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00060}00060\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 子オブジェクトにスロットを追加}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ var\ slot\ =\ Instantiate(\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}},\ transform);}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00063}00063\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slot.TryGetComponent<\mbox{\hyperlink{class_need_ingredient_slot_data}{NeedIngredientSlotData}}>(out\ var\ slotData))}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要素材用データセット}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.SetNeedIngredientData(needItem);}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.SetItemSlotData(itemData,\ \mbox{\hyperlink{class_create_need_ingredient_slot_aa518a3f0a5c997c7db60eb8589a9ae60}{m\_pocketType}});}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ リストに追加}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}}.Add(slotData);}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}スロットにNeedIngredientSlotDataコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIcontrollerに追加}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_a6d53b2ee37d87dd253e3743208052040}{AddSelectUIControler}}(slot);}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00080}00080\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00081}00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00083}00083\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{_create_need_ingredient_slot_8cs_source_l00085}00085\ \}}
+
+\end{DoxyCode}

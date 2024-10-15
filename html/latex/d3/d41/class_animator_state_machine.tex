@@ -1,0 +1,162 @@
+\doxysection{Animator\+State\+Machine クラス}
+\hypertarget{class_animator_state_machine}{}\label{class_animator_state_machine}\index{AnimatorStateMachine@{AnimatorStateMachine}}
+
+
+Animator\+State\+Machine の継承関係図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{df/d57/class_animator_state_machine__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Animator\+State\+Machine 連携図
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=314pt]{dc/d9b/class_animator_state_machine__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{データ構造}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{Action\+State\+Base}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542}{Change\+State}} (\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{Action\+State\+Base}} \+\_\+state)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開メンバ関数}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_animator_state_machine_ab38a5bccb6dc56fb263bfb75ae3d1dc3}{Update}} ()
+\item 
+void \mbox{\hyperlink{class_animator_state_machine_acc9346d3a47aa955b5547df03415259d}{Fixed\+Update}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{非公開変数類}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{Action\+State\+Base}} \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\+\_\+now\+State}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_animator_state_machine_8cs_source}{Animator\+State\+Machine.\+cs}} の \mbox{\hyperlink{_animator_state_machine_8cs_source_l00006}{6}} 行目に定義があります。
+
+
+
+\doxysubsection{メソッド詳解}
+\Hypertarget{class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542}\index{AnimatorStateMachine@{AnimatorStateMachine}!ChangeState@{ChangeState}}
+\index{ChangeState@{ChangeState}!AnimatorStateMachine@{AnimatorStateMachine}}
+\doxysubsubsection{\texorpdfstring{ChangeState()}{ChangeState()}}
+{\footnotesize\ttfamily \label{class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542} 
+void Animator\+State\+Machine.\+Change\+State (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{Action\+State\+Base}}}]{\+\_\+state}{}\end{DoxyParamCaption})}
+
+
+
+ \mbox{\hyperlink{_animator_state_machine_8cs_source}{Animator\+State\+Machine.\+cs}} の \mbox{\hyperlink{_animator_state_machine_8cs_source_l00010}{10}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011\ \ \ \ \ \{}
+\DoxyCodeLine{00012\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在のStateのExitを実行}}
+\DoxyCodeLine{00013\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a3495ba0fe498efaec9fc69ed71a9076b}{OnExit}}();}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ State入れ替え}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}\ =\ \_state;}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 新しいStateのEnterを実行}}
+\DoxyCodeLine{00019\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a1ecf97fe245aba660a4c33240e16af4e}{OnEnter}}();}
+\DoxyCodeLine{00020\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d41/class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d41/class_animator_state_machine_a5fa1e8f26572b99d4d0dbc4dc08a1542_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_animator_state_machine_ab38a5bccb6dc56fb263bfb75ae3d1dc3}\index{AnimatorStateMachine@{AnimatorStateMachine}!Update@{Update}}
+\index{Update@{Update}!AnimatorStateMachine@{AnimatorStateMachine}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_animator_state_machine_ab38a5bccb6dc56fb263bfb75ae3d1dc3} 
+void Animator\+State\+Machine.\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animator_state_machine_8cs_source}{Animator\+State\+Machine.\+cs}} の \mbox{\hyperlink{_animator_state_machine_8cs_source_l00023}{23}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_abd0a7d1992675f10146a3d2839d136fe}{OnUpdate}}();}
+\DoxyCodeLine{00026\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d41/class_animator_state_machine_ab38a5bccb6dc56fb263bfb75ae3d1dc3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_animator_state_machine_acc9346d3a47aa955b5547df03415259d}\index{AnimatorStateMachine@{AnimatorStateMachine}!FixedUpdate@{FixedUpdate}}
+\index{FixedUpdate@{FixedUpdate}!AnimatorStateMachine@{AnimatorStateMachine}}
+\doxysubsubsection{\texorpdfstring{FixedUpdate()}{FixedUpdate()}}
+{\footnotesize\ttfamily \label{class_animator_state_machine_acc9346d3a47aa955b5547df03415259d} 
+void Animator\+State\+Machine.\+Fixed\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animator_state_machine_8cs_source}{Animator\+State\+Machine.\+cs}} の \mbox{\hyperlink{_animator_state_machine_8cs_source_l00028}{28}} 行目に定義があります。
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029\ \ \ \ \ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}{m\_nowState}}?.\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base_a36303f7283e2c933da78c49d64749720}{OnFixedUpdate}}();}
+\DoxyCodeLine{00031\ \ \ \ \ \}}
+
+\end{DoxyCode}
+呼び出し関係図\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d3/d41/class_animator_state_machine_acc9346d3a47aa955b5547df03415259d_cgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{フィールド詳解}
+\Hypertarget{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4}\index{AnimatorStateMachine@{AnimatorStateMachine}!m\_nowState@{m\_nowState}}
+\index{m\_nowState@{m\_nowState}!AnimatorStateMachine@{AnimatorStateMachine}}
+\doxysubsubsection{\texorpdfstring{m\_nowState}{m\_nowState}}
+{\footnotesize\ttfamily \label{class_animator_state_machine_aa64a1416d24a33300bf1544d5bd50fa4} 
+\mbox{\hyperlink{class_animator_state_machine_1_1_action_state_base}{Action\+State\+Base}} Animator\+State\+Machine.\+m\+\_\+now\+State\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_animator_state_machine_8cs_source}{Animator\+State\+Machine.\+cs}} の \mbox{\hyperlink{_animator_state_machine_8cs_source_l00008}{8}} 行目に定義があります。
+
+
+
+このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
+\item 
+Project\+C/001\+\_\+\+Common/\+Scripts/\+Animator\+State\+Machine/\mbox{\hyperlink{_animator_state_machine_8cs}{Animator\+State\+Machine.\+cs}}\end{DoxyCompactItemize}

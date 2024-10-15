@@ -53,7 +53,8 @@ var namespaces_dup =
         [ "AngryExit", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a2ef72c33a6c49b6c15461a60b7313d5d", null ],
         [ "Eat", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987abd26b44bdadb13511edfa8e95455a43f", null ],
         [ "Exit", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987afef46e5063ce3dc78b8ae64fa474241d", null ],
-        [ "WaitQueue", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a1077133704641a4d88aee56a50431b70", null ]
+        [ "WaitQueue", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987a1077133704641a4d88aee56a50431b70", null ],
+        [ "DineDashExit", "d1/dd8/namespace_customer_state_info.html#a76c8f9846f3b512edbff3ea766391987abd41764136a0815b9b525ac2101cd7c9", null ]
       ] ]
     ] ],
     [ "FoodInfo", "db/d67/namespace_food_info.html", [
@@ -68,7 +69,8 @@ var namespaces_dup =
         [ "SpicyMushroomOmelette", "db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6a86f04d1c6663f8e2f9579c1ff2689292", null ],
         [ "SleepApplePie", "db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6ae119bfb775cb980c5f737db623ede86d", null ],
         [ "Steak", "db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6ae6a0ec03e2438e4b0d269f90a2d43e8b", null ],
-        [ "GoldenPudding", "db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6aa27c4c758f36ccbc0e4929f191750d2c", null ]
+        [ "GoldenPudding", "db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6aa27c4c758f36ccbc0e4929f191750d2c", null ],
+        [ "WolfRoastBeef", "db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6a12f8648cb29e1e6623168852b53fcf53", null ]
       ] ]
     ] ],
     [ "GangsterStateInfo", "d4/d13/namespace_gangster_state_info.html", [
@@ -89,7 +91,8 @@ var namespaces_dup =
         [ "SleepApple", "d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215aed3c7e6df935e64f3f0ea6458313f8b5", null ],
         [ "Egg", "d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215af04ba3c635d301c987d90fc75c71775b", null ],
         [ "Meat", "d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215ae4b662d3892f8c0c86801919f979467f", null ],
-        [ "GoldenEgg", "d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215ae555eb80936ce9b2f254dda6a7c53d07", null ]
+        [ "GoldenEgg", "d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215ae555eb80936ce9b2f254dda6a7c53d07", null ],
+        [ "WolfBoneMeat", "d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215adeeba82f99bfb394d606b5eaa1d3ee71", null ]
       ] ]
     ] ],
     [ "ItemIDEditor", "d9/dba/namespace_item_i_d_editor.html", "d9/dba/namespace_item_i_d_editor" ],

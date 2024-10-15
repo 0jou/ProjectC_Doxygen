@@ -10,7 +10,7 @@ var searchData=
   ['lefthandmatcher_2ecs_7',['LeftHandMatcher.cs',['../df/d8b/_left_hand_matcher_8cs.html',1,'']]],
   ['linerenderers_8',['lineRenderers',['../da/d09/class_draw_throw_item_arc.html#ae85cca2ec9949a9f958f205984c3f33b',1,'DrawThrowItemArc']]],
   ['list_9',['List',['../dd/d3f/class_select_u_i_controller_1_1_u_i_data_list.html#abd0c3aba5b87c3ff5e3963ea9a550901',1,'SelectUIController::UIDataList']]],
-  ['listcanvasgroup_10',['ListCanvasGroup',['../d1/d40/class_create_non_pro_xi_window.html#af8f92c9ae0df1bb1c9070f78e3ae171b',1,'CreateNonProXiWindow.ListCanvasGroup()'],['../da/d9b/class_proximity_create_window.html#a2d76cea1619a6301b747c6755baca124',1,'ProximityCreateWindow.ListCanvasGroup()']]],
+  ['listcanvasgroup_10',['ListCanvasGroup',['../d1/d40/class_create_non_pro_xi_window.html#af8f92c9ae0df1bb1c9070f78e3ae171b',1,'CreateNonProXiWindow']]],
   ['listmaxsize_11',['ListMaxSize',['../d3/da8/class_base_pocket_item_data_controller.html#a0e501fb383e43e802c9a9ed036307673',1,'BasePocketItemDataController']]],
   ['loadtexture_12',['LoadTexture',['../d8/d3a/class_next_page_transition_behaviour.html#ac9541315fdeaeac95576ede70e7b8538',1,'NextPageTransitionBehaviour']]],
   ['loadvolume_13',['LoadVolume',['../d2/df3/class_volume_save_loader.html#a3c2804d71524bca16c3c064179b2042c',1,'VolumeSaveLoader.LoadVolume()'],['../d0/d1e/struct_volume_save_loader_1_1_volume_save_load.html#a242af6c13c79e68920684d5517d61bf8',1,'VolumeSaveLoader.VolumeSaveLoad.LoadVolume()']]],

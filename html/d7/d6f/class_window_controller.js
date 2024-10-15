@@ -10,7 +10,6 @@ var class_window_controller =
     [ "CreateWindow< WindowType >", "d7/d6f/class_window_controller.html#a909a128c2737884f6398cf2c3a87f9ca", null ],
     [ "UpdateStart", "d7/d6f/class_window_controller.html#a5a7e331011ee966c3fef67c20dba9f08", null ],
     [ "UpdateInput", "d7/d6f/class_window_controller.html#a85b1d86be14a4886d117a716461dc4e6", null ],
-    [ "UpdateSelf", "d7/d6f/class_window_controller.html#a13c7ac6f517eab0cbb7ff29894dfa9ed", null ],
     [ "DestroyWindow", "d7/d6f/class_window_controller.html#a2abe736377575234fd5ff5d5db248ad5", null ],
     [ "m_createWindowType", "d7/d6f/class_window_controller.html#a52e21a4ef65f6181969cf17f49a77066", null ],
     [ "m_window", "d7/d6f/class_window_controller.html#af70f99d7a0720194310299805d7b452c", null ],

@@ -1,0 +1,44 @@
+\doxysection{Set\+Status\+Character\+Core.\+cs}
+\hypertarget{_set_status_character_core_8cs_source}{}\label{_set_status_character_core_8cs_source}\index{ProjectC/103\_Management\_Character/Gangster/Scripts/Arbor3/State/SetStatusCharacterCore.cs@{ProjectC/103\_Management\_Character/Gangster/Scripts/Arbor3/State/SetStatusCharacterCore.cs}}
+\mbox{\hyperlink{_set_status_character_core_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ SetStatusCharacterCore.cs}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00003}00003\ \textcolor{comment}{\ *\ @brief\ CharatcerStatus\ の\ 任意の値を設定するステート}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00004}00004\ \textcolor{comment}{\ *\ 現在はHPの設定のみ対応}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00005}00005\ \textcolor{comment}{\ *\ @author\ 上甲}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00006}00006\ \textcolor{comment}{\ *\ @todo\ 他のステータスの設定に対応する}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00007}00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_arbor}{Arbor}};}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00010}00010\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00011}00011\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00012}00012\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00013}00013\ \textcolor{keyword}{using\ }Arbor.Extensions;}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00014}00014\ \textcolor{keyword}{using\ }Newtonsoft.Json.Bson;}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00019}\mbox{\hyperlink{class_set_status_character_core}{00019}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_set_status_character_core}{SetStatusCharacterCore}}\ :\ \mbox{\hyperlink{class_base_gangster_state_behaviour}{BaseGangsterStateBehaviour}}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00020}00020\ \{}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00021}\mbox{\hyperlink{class_set_status_character_core_a41464427d0f107593b98a54a7b666886}{00021}}\ \ \ \ \ [SerializeField]\ FlexibleFloat\ \mbox{\hyperlink{class_set_status_character_core_a41464427d0f107593b98a54a7b666886}{m\_hpValue}};}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00023}\mbox{\hyperlink{class_set_status_character_core_af9ca09b54554518e2f43d156d73dd8a3}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_character_core}{CharacterCore}}\ \mbox{\hyperlink{class_set_status_character_core_af9ca09b54554518e2f43d156d73dd8a3}{m\_characterCore}};}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00025}\mbox{\hyperlink{class_set_status_character_core_a22e360b2362275a4b05bbfb8a7b8ff15}{00025}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_set_status_character_core_a22e360b2362275a4b05bbfb8a7b8ff15}{SetValue}}()}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00026}00026\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00027}00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_set_status_character_core_af9ca09b54554518e2f43d156d73dd8a3}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00028}00028\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCore\ is\ null"{}});}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00030}00030\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ m\_characterCore.Status.m\_hp.Value\ =\ \mbox{\hyperlink{class_set_status_character_core_a41464427d0f107593b98a54a7b666886}{m\_hpValue}}.value;}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00035}\mbox{\hyperlink{class_set_status_character_core_aa5ac6164653a212415302c19af798abb}{00035}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_set_status_character_core_aa5ac6164653a212415302c19af798abb}{OnStateBegin}}()}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00036}00036\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00037}00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_set_status_character_core_af9ca09b54554518e2f43d156d73dd8a3}{m\_characterCore}}\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}().GetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00039}00039\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_set_status_character_core_a22e360b2362275a4b05bbfb8a7b8ff15}{SetValue}}();}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00040}00040\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_set_status_character_core_8cs_source_l00041}00041\ \}}
+
+\end{DoxyCode}

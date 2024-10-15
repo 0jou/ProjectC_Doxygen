@@ -19,5 +19,6 @@ var class_item_slot_data =
     [ "m_conditionBackColor", "dd/d23/class_item_slot_data.html#a7bd18d11ee55b80d5b0225cf76c4afa6", null ],
     [ "m_conditionBackAlpha", "dd/d23/class_item_slot_data.html#abd554f4961489cb6b0fa4d37d42fb122", null ],
     [ "ItemTypeID", "dd/d23/class_item_slot_data.html#a926183eb504c445b4f6c8fcbce3cefb2", null ],
-    [ "ItemID", "dd/d23/class_item_slot_data.html#a290b7d9e1c3fafab5fb7992d3e9d370b", null ]
+    [ "ItemID", "dd/d23/class_item_slot_data.html#a290b7d9e1c3fafab5fb7992d3e9d370b", null ],
+    [ "PocketType", "dd/d23/class_item_slot_data.html#a9ff319a3128cc0eb7a4a591de7211f93", null ]
 ];

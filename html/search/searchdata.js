@@ -9,7 +9,8 @@ var indexSectionsWithContent =
   6: "abcdefghilmoprstu",
   7: "abcdefghiklmnoprstuwx",
   8: "abcdefghilmnopqrstuvw",
-  9: "t"
+  9: "u",
+  10: "t"
 };
 
 var indexSectionNames =
@@ -23,7 +24,8 @@ var indexSectionNames =
   6: "enums",
   7: "enumvalues",
   8: "properties",
-  9: "pages"
+  9: "groups",
+  10: "pages"
 };
 
 var indexSectionLabels =
@@ -37,6 +39,7 @@ var indexSectionLabels =
   6: "列挙型",
   7: "列挙値",
   8: "プロパティ",
-  9: "ページ"
+  9: "グループ",
+  10: "ページ"
 };
 

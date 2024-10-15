@@ -11,6 +11,7 @@ var _food_i_d_8cs =
       [ "SpicyMushroomOmelette", "dd/d2e/_food_i_d_8cs.html#ac75bdaf2cc1a2865f0bca69c391487c6a86f04d1c6663f8e2f9579c1ff2689292", null ],
       [ "SleepApplePie", "dd/d2e/_food_i_d_8cs.html#ac75bdaf2cc1a2865f0bca69c391487c6ae119bfb775cb980c5f737db623ede86d", null ],
       [ "Steak", "dd/d2e/_food_i_d_8cs.html#ac75bdaf2cc1a2865f0bca69c391487c6ae6a0ec03e2438e4b0d269f90a2d43e8b", null ],
-      [ "GoldenPudding", "dd/d2e/_food_i_d_8cs.html#ac75bdaf2cc1a2865f0bca69c391487c6aa27c4c758f36ccbc0e4929f191750d2c", null ]
+      [ "GoldenPudding", "dd/d2e/_food_i_d_8cs.html#ac75bdaf2cc1a2865f0bca69c391487c6aa27c4c758f36ccbc0e4929f191750d2c", null ],
+      [ "WolfRoastBeef", "dd/d2e/_food_i_d_8cs.html#ac75bdaf2cc1a2865f0bca69c391487c6a12f8648cb29e1e6623168852b53fcf53", null ]
     ] ]
 ];

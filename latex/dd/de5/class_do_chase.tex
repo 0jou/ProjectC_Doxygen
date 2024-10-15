@@ -2,6 +2,11 @@
 \hypertarget{class_do_chase}{}\label{class_do_chase}\index{DoChase@{DoChase}}
 
 
+敵がチェイスを継続するか判断する\+Decorator　伊波  
+
+
+
+
 Do\+Chase の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -21,13 +26,7 @@ Do\+Chase 連携図\nopagebreak
 \doxysubsubsection*{限定公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
-override void \mbox{\hyperlink{class_do_chase_a5e4a361794ccd79c3d07355215ec688b}{On\+Awake}} ()
-\item 
-override void \mbox{\hyperlink{class_do_chase_a4e8b5fdae489c3702c9044a50f7d60e9}{On\+Start}} ()
-\item 
 override bool \mbox{\hyperlink{class_do_chase_a83f6660c9d237c73d39bf89f24ced945}{On\+Condition\+Check}} ()
-\item 
-override void \mbox{\hyperlink{class_do_chase_a26073d6a518e2da4470d3267c3db9dd2}{On\+End}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
 \begin{DoxyCompactItemize}
@@ -40,31 +39,16 @@ Flexible\+Transform \mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc882996
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+敵がチェイスを継続するか判断する\+Decorator　伊波 
+
+距離計算は高さを無視 
+
+ \mbox{\hyperlink{_do_chase_8cs_source}{Do\+Chase.\+cs}} の \mbox{\hyperlink{_do_chase_8cs_source_l00017}{17}} 行目に定義があります。
+
+
+
 \doxysubsection{メソッド詳解}
-\Hypertarget{class_do_chase_a5e4a361794ccd79c3d07355215ec688b}\index{DoChase@{DoChase}!OnAwake@{OnAwake}}
-\index{OnAwake@{OnAwake}!DoChase@{DoChase}}
-\doxysubsubsection{\texorpdfstring{OnAwake()}{OnAwake()}}
-{\footnotesize\ttfamily \label{class_do_chase_a5e4a361794ccd79c3d07355215ec688b} 
-override void Do\+Chase.\+On\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00020\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00021\ \ \ \ \ \}}
-
-\end{DoxyCode}
-\Hypertarget{class_do_chase_a4e8b5fdae489c3702c9044a50f7d60e9}\index{DoChase@{DoChase}!OnStart@{OnStart}}
-\index{OnStart@{OnStart}!DoChase@{DoChase}}
-\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
-{\footnotesize\ttfamily \label{class_do_chase_a4e8b5fdae489c3702c9044a50f7d60e9} 
-override void Do\+Chase.\+On\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00024\ \ \ \ \ \}}
-
-\end{DoxyCode}
 \Hypertarget{class_do_chase_a83f6660c9d237c73d39bf89f24ced945}\index{DoChase@{DoChase}!OnConditionCheck@{OnConditionCheck}}
 \index{OnConditionCheck@{OnConditionCheck}!DoChase@{DoChase}}
 \doxysubsubsection{\texorpdfstring{OnConditionCheck()}{OnConditionCheck()}}
@@ -72,30 +56,21 @@ override void Do\+Chase.\+On\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamC
 override bool Do\+Chase.\+On\+Condition\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
 
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ Vector2\ myPos\ =\ \textcolor{keyword}{new}\ Vector2(transform.position.x,\ transform.position.z);}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ Vector2\ targetPos\ =\ \textcolor{keyword}{new}\ Vector2(\mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position.x,\ \mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position.z);}
-\DoxyCodeLine{00029\ }
-\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distToTarget\ =\ Vector2.Distance(myPos,\ targetPos);}
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distToSpawn\ =\ Vector3.Distance(transform.position,\ (\mbox{\hyperlink{class_do_chase_a0340f368f8fb06c9991bf44ae1d12cb2}{\_agent}}.value\ as\ AgentController).StartPosition);}
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isChase\ =\ (distToTarget\ <=\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}}.value.ChaseDistFromTarget)}
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (distToSpawn\ <=\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}}.value.DistAwayFromSpawnPos);}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isChase;}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{comment}{//return\ (dist\ <=\ m\_chaseParameter.value.ChaseDistFromTarget);}}
-\DoxyCodeLine{00036\ \ \ \ \ \}}
 
-\end{DoxyCode}
-\Hypertarget{class_do_chase_a26073d6a518e2da4470d3267c3db9dd2}\index{DoChase@{DoChase}!OnEnd@{OnEnd}}
-\index{OnEnd@{OnEnd}!DoChase@{DoChase}}
-\doxysubsubsection{\texorpdfstring{OnEnd()}{OnEnd()}}
-{\footnotesize\ttfamily \label{class_do_chase_a26073d6a518e2da4470d3267c3db9dd2} 
-override void Do\+Chase.\+On\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+ \mbox{\hyperlink{_do_chase_8cs_source}{Do\+Chase.\+cs}} の \mbox{\hyperlink{_do_chase_8cs_source_l00034}{34}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ Vector2\ myPos\ =\ \textcolor{keyword}{new}\ Vector2(transform.position.x,\ transform.position.z);}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ Vector2\ targetPos\ =\ \textcolor{keyword}{new}\ Vector2(\mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position.x,\ \mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position.z);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distToTarget\ =\ Vector2.Distance(myPos,\ targetPos);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ distToSpawn\ =\ Vector3.Distance(\mbox{\hyperlink{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}{m\_target}}.value.position,\ (\mbox{\hyperlink{class_do_chase_a0340f368f8fb06c9991bf44ae1d12cb2}{\_agent}}.value\ as\ AgentController).StartPosition);}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isChase\ =\ (distToTarget\ <=\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}}.value.ChaseDistFromTarget)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \&\&\ (distToSpawn\ <=\ \mbox{\hyperlink{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}{m\_chaseParameter}}.value.DistAwayFromSpawnPos);}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ isChase;}
+\DoxyCodeLine{00043\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -107,11 +82,19 @@ override void Do\+Chase.\+On\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCap
 {\footnotesize\ttfamily \label{class_do_chase_a0340f368f8fb06c9991bf44ae1d12cb2} 
 Flexible\+Component Do\+Chase.\+\_\+agent = new Flexible\+Component(Flexible\+Hierarchy\+Type.\+Root\+Graph)\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ \mbox{\hyperlink{_do_chase_8cs_source}{Do\+Chase.\+cs}} の \mbox{\hyperlink{_do_chase_8cs_source_l00021}{21}} 行目に定義があります。
+
 \Hypertarget{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78}\index{DoChase@{DoChase}!m\_target@{m\_target}}
 \index{m\_target@{m\_target}!DoChase@{DoChase}}
 \doxysubsubsection{\texorpdfstring{m\_target}{m\_target}}
 {\footnotesize\ttfamily \label{class_do_chase_a86586a6322d3a50cf6ccc8829968ec78} 
 Flexible\+Transform Do\+Chase.\+m\+\_\+target\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_do_chase_8cs_source}{Do\+Chase.\+cs}} の \mbox{\hyperlink{_do_chase_8cs_source_l00022}{22}} 行目に定義があります。
 
 \Hypertarget{class_do_chase_a2b247c0ab81c303aa65089a9b3b173ae}\index{DoChase@{DoChase}!m\_chaseParameter@{m\_chaseParameter}}
 \index{m\_chaseParameter@{m\_chaseParameter}!DoChase@{DoChase}}
@@ -121,6 +104,10 @@ Flexible\+Transform Do\+Chase.\+m\+\_\+target\hspace{0.3cm}{\ttfamily [private]}
 
 
 
+ \mbox{\hyperlink{_do_chase_8cs_source}{Do\+Chase.\+cs}} の \mbox{\hyperlink{_do_chase_8cs_source_l00023}{23}} 行目に定義があります。
+
+
+
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/004\+\_\+\+Character/\+Enemy/\+Common\+Behavior\+Tree/\+Behaviour\+Scripts/\mbox{\hyperlink{_do_chase_8cs}{Do\+Chase.\+cs}}\end{DoxyCompactItemize}
+Project\+C/004\+\_\+\+Character/\+Enemy/\+Common\+Behavior\+Tree/\+Behaviour\+Scripts/\mbox{\hyperlink{_do_chase_8cs}{Do\+Chase.\+cs}}\end{DoxyCompactItemize}

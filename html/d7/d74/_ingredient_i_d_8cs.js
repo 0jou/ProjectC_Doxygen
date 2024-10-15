@@ -10,6 +10,7 @@ var _ingredient_i_d_8cs =
       [ "SleepApple", "d7/d74/_ingredient_i_d_8cs.html#ac9e88a71e148998ad2916b74e8be7215aed3c7e6df935e64f3f0ea6458313f8b5", null ],
       [ "Egg", "d7/d74/_ingredient_i_d_8cs.html#ac9e88a71e148998ad2916b74e8be7215af04ba3c635d301c987d90fc75c71775b", null ],
       [ "Meat", "d7/d74/_ingredient_i_d_8cs.html#ac9e88a71e148998ad2916b74e8be7215ae4b662d3892f8c0c86801919f979467f", null ],
-      [ "GoldenEgg", "d7/d74/_ingredient_i_d_8cs.html#ac9e88a71e148998ad2916b74e8be7215ae555eb80936ce9b2f254dda6a7c53d07", null ]
+      [ "GoldenEgg", "d7/d74/_ingredient_i_d_8cs.html#ac9e88a71e148998ad2916b74e8be7215ae555eb80936ce9b2f254dda6a7c53d07", null ],
+      [ "WolfBoneMeat", "d7/d74/_ingredient_i_d_8cs.html#ac9e88a71e148998ad2916b74e8be7215adeeba82f99bfb394d606b5eaa1d3ee71", null ]
     ] ]
 ];

@@ -46,6 +46,8 @@ var class_player_parameters =
     [ "SpeedStick", "d1/d07/class_player_parameters.html#aa3137e5f0f303f2623bf046cb64bbfb1", null ],
     [ "StorySkill1_ID", "d1/d07/class_player_parameters.html#a8ffc2077ebf70e6143f3af01bdcf92f5", null ],
     [ "StorySkill2_ID", "d1/d07/class_player_parameters.html#a5b36adb97edd9040aa8edb1fee9cf942", null ],
+    [ "ObserbSkill1", "d1/d07/class_player_parameters.html#a5dbcd0a69b48525290b511cf7fe76dfb", null ],
+    [ "ObserbSkill2", "d1/d07/class_player_parameters.html#ada7a9dfc88fcc495ba08e6c8ec20e8e0", null ],
     [ "UseSkill1Flg", "d1/d07/class_player_parameters.html#ad8c6199cb93151dbac931cc853336bc7", null ],
     [ "UseSkill2Flg", "d1/d07/class_player_parameters.html#a31e1b47cc895c7ba8470f8d118c8c008", null ],
     [ "TriggerStorySkill_1", "d1/d07/class_player_parameters.html#a28194b1b97be049e1fb0edfb17242b33", null ],

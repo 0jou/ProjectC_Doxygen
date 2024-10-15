@@ -6,11 +6,11 @@ var class_order_food_data =
     [ "m_currentOrderFoodState", "d2/d11/class_order_food_data.html#acbcd8cea772d2519af00ddcae3614af6", null ],
     [ "m_foodID", "d2/d11/class_order_food_data.html#a7f2379043520906bf7d7935d5dfaaac2", null ],
     [ "m_targetTabelSetData", "d2/d11/class_order_food_data.html#ad9b173cd31ff3ff739cf02a24d8c6089", null ],
-    [ "m_counterPoint", "d2/d11/class_order_food_data.html#ab6b50efabd718d85d646b60629f90737", null ],
+    [ "m_counterPointData", "d2/d11/class_order_food_data.html#a4c1758a56cb1250a52c4a673154c0664", null ],
     [ "m_createDelay", "d2/d11/class_order_food_data.html#a31aa8b12b1e92b6606da6ec5944bd76d", null ],
     [ "m_currentCreateDelayCount", "d2/d11/class_order_food_data.html#aa2f3021f0b3136dd810ba03a1414612a", null ],
     [ "CurrentOrderFoodState", "d2/d11/class_order_food_data.html#aa4092ac2ae6579f346451c9750f60534", null ],
     [ "FoodID", "d2/d11/class_order_food_data.html#a2b5d38990323c9847396a16dffaa7d9c", null ],
     [ "TargetTableSetData", "d2/d11/class_order_food_data.html#ab4dcb1882750d41d96475113dfd2e006", null ],
-    [ "CounterPoint", "d2/d11/class_order_food_data.html#a8b5b78b7b9cae5ac934bf41edef3181f", null ]
+    [ "CounterPointData", "d2/d11/class_order_food_data.html#abe4849adfd754394c752ae50a99445d2", null ]
 ];

@@ -8,7 +8,7 @@ var class_change_item_description =
     [ "OnUpdate", "d1/dde/class_change_item_description.html#add800bb5c8e841af0e1e9365272e371e", null ],
     [ "IsChangeDescription", "d1/dde/class_change_item_description.html#add57e8fa1aa1e868d4d2f7a871dc150c", null ],
     [ "ChangeDesctiptionSelectUI", "d1/dde/class_change_item_description.html#a8ea36af0b54755cf79893a9faf794392", null ],
-    [ "ChangeDescription", "d1/dde/class_change_item_description.html#aa9873a7412ef2fc8cddfc13009b0ea24", null ],
+    [ "ChangeDescription", "d1/dde/class_change_item_description.html#a2b30636ef288a5a11353836e028378ed", null ],
     [ "SetDescription", "d1/dde/class_change_item_description.html#a80f1cb0c60ae117de04d58a221747612", null ],
     [ "InitDescription", "d1/dde/class_change_item_description.html#a8fea78d4ad9d25fed84d8b30b905ad88", null ],
     [ "SetActiveList", "d1/dde/class_change_item_description.html#a25731aff5117c8141b0f5daf41dd9988", null ],

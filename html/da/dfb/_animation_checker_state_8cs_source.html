@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.12.0"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ProjectC_Doxygen: C:/3D_prac/_ProjectC/Assets/ProjectC/103_Management_Character/Base/AnimationCheckerState.cs ソースファイル</title>
+<title>ProjectC_Doxygen: ProjectC/103_Management_Character/Base/AnimationCheckerState.cs ソースファイル</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -103,154 +103,155 @@ $(function(){initNavTree('da/dfb/_animation_checker_state_8cs_source.html','../.
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>UnityEngine;</div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>System.Collections;</div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">using </span>System.Collections.Generic;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using </span>Arbor;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d4/dca/namespace_arbor.html">Arbor</a>;</div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>[AddComponentMenu(<span class="stringliteral">&quot;Animator/EndAnimationCheckerState&quot;</span>)]</div>
-<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html">   21</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../da/d32/class_end_animation_checker_state.html">EndAnimationCheckerState</a> : StateBehaviour</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>{</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    [Header(<span class="stringliteral">&quot;アニメーター&quot;</span>)]</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    [SerializeField, SlotType(typeof(Animator))]</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">   26</a></span>    <span class="keyword">private</span> FlexibleComponent <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">m_animator</a> = <span class="keyword">new</span> FlexibleComponent(FlexibleHierarchyType.Self);</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    [SerializeField]</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">   29</a></span>    <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">m_animationName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    [SerializeField]</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">   32</a></span>    <span class="keyword">private</span> StateLink <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">m_successLink</a> = <span class="keyword">null</span>;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">   35</a></span>    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">m_backAnimationHash</a> = -1;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">   36</a></span>    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">m_successAnimationHash</a> = -2;</div>
-<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">   37</a></span>    <span class="keyword">private</span> Animator <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">GetAnimator</a>()</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">m_animator</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">m_animator</a>.value is Animator)</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            var animator = m_animator.value as Animator;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            <span class="keywordflow">return</span> animator;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>[AddComponentMenu(<span class="stringliteral">&quot;Animator/EndAnimationCheckerState&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="};">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html">   20</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../da/d32/class_end_animation_checker_state.html">EndAnimationCheckerState</a> : StateBehaviour</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    [Header(<span class="stringliteral">&quot;アニメーター&quot;</span>)]</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    [SerializeField, SlotType(typeof(Animator))]</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">   24</a></span>    <span class="keyword">private</span> FlexibleComponent <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">m_animator</a> = <span class="keyword">new</span> FlexibleComponent(FlexibleHierarchyType.Self);</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    [SerializeField]</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">   27</a></span>    <span class="keyword">private</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">m_animationName</a> = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    [SerializeField]</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">   30</a></span>    <span class="keyword">private</span> StateLink <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">m_successLink</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">   33</a></span>    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">m_backAnimationHash</a> = -1;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">   34</a></span>    <span class="keyword">private</span> <span class="keywordtype">int</span> <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">m_successAnimationHash</a> = -2;</div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">   35</a></span>    <span class="keyword">private</span> Animator <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">GetAnimator</a>()</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">m_animator</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">m_animator</a>.value is Animator)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            var animator = m_animator.value as Animator;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            <span class="keywordflow">return</span> animator;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keywordflow">return</span> <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+</div>
 <div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    }</div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">   51</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">Check</a>()</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        var animator = <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">GetAnimator</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">if</span> (animator != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">if</span> (stateInfo.IsName(<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">m_animationName</a>))</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                <span class="comment">// アニメーションの終了を確認</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                <span class="keywordflow">if</span> (stateInfo.normalizedTime &gt;= 1.0f)</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                {</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">SetTransition</a>();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                }</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">m_successAnimationHash</a> = stateInfo.shortNameHash;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>                <span class="comment">// アニメーションが指定のものから変更されたタイミング 上甲</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">m_successAnimationHash</a> == <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">m_backAnimationHash</a>)</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                    <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">SetTransition</a>();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                }</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">m_backAnimationHash</a> = stateInfo.shortNameHash;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
 </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
-<div class="foldopen" id="foldopen00053" data-start="{" data-end="}">
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">   53</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">Check</a>()</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    {</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        var animator = <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">GetAnimator</a>();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> (animator != <span class="keyword">null</span>)</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="keywordflow">if</span> (stateInfo.IsName(<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">m_animationName</a>))</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            {</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                <span class="comment">// アニメーションの終了を確認</span></div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                <span class="keywordflow">if</span> (stateInfo.normalizedTime &gt;= 1.0f)</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                {</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                    <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">SetTransition</a>();</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                }</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">m_successAnimationHash</a> = stateInfo.shortNameHash;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            }</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            {</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                <span class="comment">// アニメーションが指定のものから変更されたタイミング 上甲</span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">m_successAnimationHash</a> == <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">m_backAnimationHash</a>)</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                {</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>                    <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">SetTransition</a>();</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            }</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">m_backAnimationHash</a> = stateInfo.shortNameHash;</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        }</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="foldopen" id="foldopen00079" data-start="{" data-end="}">
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">   79</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">SetTransition</a>()</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">m_successLink</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            Debug.LogError(<span class="stringliteral">&quot;リンク先が存在しません&quot;</span>);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        }</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        Transition(<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">m_successLink</a>);</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    }</div>
 </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">   81</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">SetTransition</a>()</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">m_successLink</a> == <span class="keyword">null</span>)</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        {</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            Debug.LogError(<span class="stringliteral">&quot;リンク先が存在しません&quot;</span>);</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        }</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span> </div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        Transition(<a class="code hl_variable" href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">m_successLink</a>);</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    <span class="comment">//=========================================================================</span></div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="comment">//=========================================================================</span></div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="foldopen" id="foldopen00094" data-start="{" data-end="}">
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5">   94</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5">Start</a>()</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    {</div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5">   92</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5">Start</a>()</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    }</div>
+</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="comment">// Use this for awake state</span></div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a795c6c036b9c121b6c5184f11ca242f5">   98</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a795c6c036b9c121b6c5184f11ca242f5">OnStateAwake</a>()</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    }</div>
 </div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// Use this for awake state</span></div>
-<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a795c6c036b9c121b6c5184f11ca242f5">  100</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a795c6c036b9c121b6c5184f11ca242f5">OnStateAwake</a>()</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    {</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="comment">// Use this for enter state</span></div>
+<div class="foldopen" id="foldopen00103" data-start="{" data-end="}">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a59242e8c2a62f47a3405b5611cd184df">  103</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a59242e8c2a62f47a3405b5611cd184df">OnStateBegin</a>()</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
 </div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="comment">// Use this for enter state</span></div>
-<div class="foldopen" id="foldopen00105" data-start="{" data-end="}">
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a59242e8c2a62f47a3405b5611cd184df">  105</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a59242e8c2a62f47a3405b5611cd184df">OnStateBegin</a>()</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    {</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    <span class="comment">// Use this for exit state</span></div>
+<div class="foldopen" id="foldopen00108" data-start="{" data-end="}">
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a6a5b2f24164f4bb0aa69932fe868faeb">  108</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a6a5b2f24164f4bb0aa69932fe868faeb">OnStateEnd</a>()</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    {</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>    }</div>
 </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>    <span class="comment">// Use this for exit state</span></div>
-<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a6a5b2f24164f4bb0aa69932fe868faeb">  110</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a6a5b2f24164f4bb0aa69932fe868faeb">OnStateEnd</a>()</div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="comment">// OnStateUpdate is called once per frame</span></div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="}">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a6bafea6c5ac667c53229c2a21e8cb428">  113</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a6bafea6c5ac667c53229c2a21e8cb428">OnStateUpdate</a>()</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    {</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">Check</a>();</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    }</div>
 </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span> </div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    <span class="comment">// OnStateUpdate is called once per frame</span></div>
-<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a6bafea6c5ac667c53229c2a21e8cb428">  115</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a6bafea6c5ac667c53229c2a21e8cb428">OnStateUpdate</a>()</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    {</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">Check</a>();</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    <span class="comment">// OnStateLateUpdate is called once per frame, after Update has finished.</span></div>
+<div class="foldopen" id="foldopen00119" data-start="{" data-end="}">
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a75d34bfe9297dced588924e9ba691530">  119</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a75d34bfe9297dced588924e9ba691530">OnStateLateUpdate</a>()</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    }</div>
 </div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="comment">// OnStateLateUpdate is called once per frame, after Update has finished.</span></div>
-<div class="foldopen" id="foldopen00121" data-start="{" data-end="}">
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno"><a class="line" href="../../da/d32/class_end_animation_checker_state.html#a75d34bfe9297dced588924e9ba691530">  121</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d32/class_end_animation_checker_state.html#a75d34bfe9297dced588924e9ba691530">OnStateLateUpdate</a>()</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>}</div>
 </div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>}</div>
-</div>
-<div class="ttc" id="aclass_end_animation_checker_state_html"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html">EndAnimationCheckerState</a></div><div class="ttdoc">アニメーションが終了したか/前のアニメーションから変更されたかを確認するステート</div><div class="ttdef"><b>Definition</b> <a href="#l00021">AnimationCheckerState.cs:22</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a30996d3392d3b4ad4e3b5ef8b8a57aa9"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">EndAnimationCheckerState.GetAnimator</a></div><div class="ttdeci">Animator GetAnimator()</div><div class="ttdef"><b>Definition</b> <a href="#l00037">AnimationCheckerState.cs:37</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a3cc51163c113cd709e48f6384c9ae307"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">EndAnimationCheckerState.m_animator</a></div><div class="ttdeci">FlexibleComponent m_animator</div><div class="ttdef"><b>Definition</b> <a href="#l00026">AnimationCheckerState.cs:26</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a4996769413c8dcad491fb7669641e028"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">EndAnimationCheckerState.m_successAnimationHash</a></div><div class="ttdeci">int m_successAnimationHash</div><div class="ttdef"><b>Definition</b> <a href="#l00036">AnimationCheckerState.cs:36</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a4a01ffd34500f93c7b8d6e6b480bcdc5"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">EndAnimationCheckerState.m_animationName</a></div><div class="ttdeci">string m_animationName</div><div class="ttdef"><b>Definition</b> <a href="#l00029">AnimationCheckerState.cs:29</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a521c67c581d443d2c0c1bbe77856bf79"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">EndAnimationCheckerState.SetTransition</a></div><div class="ttdeci">void SetTransition()</div><div class="ttdef"><b>Definition</b> <a href="#l00081">AnimationCheckerState.cs:81</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a59242e8c2a62f47a3405b5611cd184df"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a59242e8c2a62f47a3405b5611cd184df">EndAnimationCheckerState.OnStateBegin</a></div><div class="ttdeci">override void OnStateBegin()</div><div class="ttdef"><b>Definition</b> <a href="#l00105">AnimationCheckerState.cs:105</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a6a5b2f24164f4bb0aa69932fe868faeb"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a6a5b2f24164f4bb0aa69932fe868faeb">EndAnimationCheckerState.OnStateEnd</a></div><div class="ttdeci">override void OnStateEnd()</div><div class="ttdef"><b>Definition</b> <a href="#l00110">AnimationCheckerState.cs:110</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a6bafea6c5ac667c53229c2a21e8cb428"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a6bafea6c5ac667c53229c2a21e8cb428">EndAnimationCheckerState.OnStateUpdate</a></div><div class="ttdeci">override void OnStateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00115">AnimationCheckerState.cs:115</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a75d34bfe9297dced588924e9ba691530"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a75d34bfe9297dced588924e9ba691530">EndAnimationCheckerState.OnStateLateUpdate</a></div><div class="ttdeci">override void OnStateLateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00121">AnimationCheckerState.cs:121</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a795c6c036b9c121b6c5184f11ca242f5"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a795c6c036b9c121b6c5184f11ca242f5">EndAnimationCheckerState.OnStateAwake</a></div><div class="ttdeci">override void OnStateAwake()</div><div class="ttdef"><b>Definition</b> <a href="#l00100">AnimationCheckerState.cs:100</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_a7f4b82d914effba2de74feba29c4e1f9"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">EndAnimationCheckerState.Check</a></div><div class="ttdeci">void Check()</div><div class="ttdef"><b>Definition</b> <a href="#l00053">AnimationCheckerState.cs:53</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_aa74ccd5fab4847e148ba84e6ab6b9ca5"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5">EndAnimationCheckerState.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00094">AnimationCheckerState.cs:94</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_acf967f79d01db4bb40d37266ae9bb6c6"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">EndAnimationCheckerState.m_backAnimationHash</a></div><div class="ttdeci">int m_backAnimationHash</div><div class="ttdef"><b>Definition</b> <a href="#l00035">AnimationCheckerState.cs:35</a></div></div>
-<div class="ttc" id="aclass_end_animation_checker_state_html_ad8de63a53e062e7c2cec11a1f1b66535"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">EndAnimationCheckerState.m_successLink</a></div><div class="ttdeci">StateLink m_successLink</div><div class="ttdef"><b>Definition</b> <a href="#l00032">AnimationCheckerState.cs:32</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html">EndAnimationCheckerState</a></div><div class="ttdoc">アニメーションが終了したか/前のアニメーションから変更されたかを確認するステート</div><div class="ttdef"><b>Definition</b> <a href="#l00020">AnimationCheckerState.cs:21</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a30996d3392d3b4ad4e3b5ef8b8a57aa9"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a30996d3392d3b4ad4e3b5ef8b8a57aa9">EndAnimationCheckerState.GetAnimator</a></div><div class="ttdeci">Animator GetAnimator()</div><div class="ttdef"><b>Definition</b> <a href="#l00035">AnimationCheckerState.cs:35</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a3cc51163c113cd709e48f6384c9ae307"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a3cc51163c113cd709e48f6384c9ae307">EndAnimationCheckerState.m_animator</a></div><div class="ttdeci">FlexibleComponent m_animator</div><div class="ttdef"><b>Definition</b> <a href="#l00024">AnimationCheckerState.cs:24</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a4996769413c8dcad491fb7669641e028"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a4996769413c8dcad491fb7669641e028">EndAnimationCheckerState.m_successAnimationHash</a></div><div class="ttdeci">int m_successAnimationHash</div><div class="ttdef"><b>Definition</b> <a href="#l00034">AnimationCheckerState.cs:34</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a4a01ffd34500f93c7b8d6e6b480bcdc5"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a4a01ffd34500f93c7b8d6e6b480bcdc5">EndAnimationCheckerState.m_animationName</a></div><div class="ttdeci">string m_animationName</div><div class="ttdef"><b>Definition</b> <a href="#l00027">AnimationCheckerState.cs:27</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a521c67c581d443d2c0c1bbe77856bf79"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a521c67c581d443d2c0c1bbe77856bf79">EndAnimationCheckerState.SetTransition</a></div><div class="ttdeci">void SetTransition()</div><div class="ttdef"><b>Definition</b> <a href="#l00079">AnimationCheckerState.cs:79</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a59242e8c2a62f47a3405b5611cd184df"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a59242e8c2a62f47a3405b5611cd184df">EndAnimationCheckerState.OnStateBegin</a></div><div class="ttdeci">override void OnStateBegin()</div><div class="ttdef"><b>Definition</b> <a href="#l00103">AnimationCheckerState.cs:103</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a6a5b2f24164f4bb0aa69932fe868faeb"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a6a5b2f24164f4bb0aa69932fe868faeb">EndAnimationCheckerState.OnStateEnd</a></div><div class="ttdeci">override void OnStateEnd()</div><div class="ttdef"><b>Definition</b> <a href="#l00108">AnimationCheckerState.cs:108</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a6bafea6c5ac667c53229c2a21e8cb428"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a6bafea6c5ac667c53229c2a21e8cb428">EndAnimationCheckerState.OnStateUpdate</a></div><div class="ttdeci">override void OnStateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00113">AnimationCheckerState.cs:113</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a75d34bfe9297dced588924e9ba691530"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a75d34bfe9297dced588924e9ba691530">EndAnimationCheckerState.OnStateLateUpdate</a></div><div class="ttdeci">override void OnStateLateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00119">AnimationCheckerState.cs:119</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a795c6c036b9c121b6c5184f11ca242f5"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a795c6c036b9c121b6c5184f11ca242f5">EndAnimationCheckerState.OnStateAwake</a></div><div class="ttdeci">override void OnStateAwake()</div><div class="ttdef"><b>Definition</b> <a href="#l00098">AnimationCheckerState.cs:98</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_a7f4b82d914effba2de74feba29c4e1f9"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#a7f4b82d914effba2de74feba29c4e1f9">EndAnimationCheckerState.Check</a></div><div class="ttdeci">void Check()</div><div class="ttdef"><b>Definition</b> <a href="#l00051">AnimationCheckerState.cs:51</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_aa74ccd5fab4847e148ba84e6ab6b9ca5"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#aa74ccd5fab4847e148ba84e6ab6b9ca5">EndAnimationCheckerState.Start</a></div><div class="ttdeci">void Start()</div><div class="ttdef"><b>Definition</b> <a href="#l00092">AnimationCheckerState.cs:92</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_acf967f79d01db4bb40d37266ae9bb6c6"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#acf967f79d01db4bb40d37266ae9bb6c6">EndAnimationCheckerState.m_backAnimationHash</a></div><div class="ttdeci">int m_backAnimationHash</div><div class="ttdef"><b>Definition</b> <a href="#l00033">AnimationCheckerState.cs:33</a></div></div>
+<div class="ttc" id="aclass_end_animation_checker_state_html_ad8de63a53e062e7c2cec11a1f1b66535"><div class="ttname"><a href="../../da/d32/class_end_animation_checker_state.html#ad8de63a53e062e7c2cec11a1f1b66535">EndAnimationCheckerState.m_successLink</a></div><div class="ttdeci">StateLink m_successLink</div><div class="ttdef"><b>Definition</b> <a href="#l00030">AnimationCheckerState.cs:30</a></div></div>
+<div class="ttc" id="anamespace_arbor_html"><div class="ttname"><a href="../../d4/dca/namespace_arbor.html">Arbor</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/db5/_agent_chase_to_target_8cs_source.html#l00008">AgentChaseToTarget.cs:9</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="../../dir_a1654b9c2f0c1453edf9a37d7e840ad4.html">_ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_8b52b89de1dfe200da6cbf06c2dcd77f.html">Assets</a></li><li class="navelem"><a class="el" href="../../dir_b81ef1b6690caa420aae6d696fbbf389.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_7375f611d852802db09a50c742627890.html">103_Management_Character</a></li><li class="navelem"><a class="el" href="../../dir_ea1b28a879ea3c87375c24453513c1ed.html">Base</a></li><li class="navelem"><a class="el" href="../../da/dfb/_animation_checker_state_8cs.html">AnimationCheckerState.cs</a></li>
-    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_dba62a9654621f2d58947c55a8db5cb8.html">103_Management_Character</a></li><li class="navelem"><a class="el" href="../../dir_0ac2922e2c32b8b094c71880ee46574a.html">Base</a></li><li class="navelem"><a class="el" href="../../da/dfb/_animation_checker_state_8cs.html">AnimationCheckerState.cs</a></li>
+    <li class="footer">2024年10月16日(水) 01時04分49秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
   </ul>
 </div>
 </body>

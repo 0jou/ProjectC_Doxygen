@@ -1,0 +1,65 @@
+\doxysection{Input\+Action\+Button\+\_\+\+Change\+Input\+Action\+Reference.\+cs}
+\hypertarget{_input_action_button___change_input_action_reference_8cs_source}{}\label{_input_action_button___change_input_action_reference_8cs_source}\index{ProjectC/002\_UI/InputActionButton/InputActionButton\_ChangeInputActionReference.cs@{ProjectC/002\_UI/InputActionButton/InputActionButton\_ChangeInputActionReference.cs}}
+\mbox{\hyperlink{_input_action_button___change_input_action_reference_8cs}{\mbox{[}詳解\mbox{]}}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00002}00002\ \textcolor{keyword}{using\ }System.Collections.Generic;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }UnityEngine.UI;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }UnityEngine.InputSystem;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }NaughtyAttributes;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00009}00009\ \textcolor{keyword}{using\ }UniRx;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00012}00012\ [RequireComponent(typeof(CanvasGroup))]}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00013}\mbox{\hyperlink{class_input_action_button___change_input_action_reference}{00013}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_input_action_button___change_input_action_reference}{InputActionButton\_ChangeInputActionReference}}\ :\ \mbox{\hyperlink{class_input_action_button}{InputActionButton}}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ 制作者　吉田}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00016}00016\ \ \ \ \ \textcolor{comment}{//\ 画面中心に出るUI表示に使ってます。}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00017}00017\ \ \ \ \ \textcolor{comment}{//}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00018}00018\ \ \ \ \ \textcolor{comment}{//\ 一つのオブジェクトを使いまわしているので、}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ inputActionReferenceを変更するとImageが変わるようにしています。}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00021}00021\ \ \ \ \ \textcolor{comment}{//===============================================}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00023}\mbox{\hyperlink{class_input_action_button___change_input_action_reference_af68ac8c8ff51a0dd5415283d163cbe38}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ System.IDisposable\ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_af68ac8c8ff51a0dd5415283d163cbe38}{m\_disposable}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//===============================================}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00026}00026\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00027}\mbox{\hyperlink{class_input_action_button___change_input_action_reference_acdd8b7129a8835115935b5cb2c115386}{00027}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_acdd8b7129a8835115935b5cb2c115386}{ChangeInputActionReference}}(\mbox{\hyperlink{class_input_action_button_a07bd06d93a37b0e1ee0f277d10d39cc1}{InputActionReference}}\ \_nextInputAction)}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00028}00028\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_action_button_a1376be2a6b254d13b1f3f9a0e5080412}{m\_inputActionReference}}\ ==\ \_nextInputAction)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00031}00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button_a1376be2a6b254d13b1f3f9a0e5080412}{m\_inputActionReference}}\ =\ \_nextInputAction;}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00032}00032\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_a8a48d82d727a0b1b75a7aad43eb09717}{ChangeActionReference}}();}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00033}00033\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00036}\mbox{\hyperlink{class_input_action_button___change_input_action_reference_aa43f01913c19d7dbb800ce75702dbeef}{00036}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_aa43f01913c19d7dbb800ce75702dbeef}{Start}}()}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00037}00037\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00038}00038\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_a8a48d82d727a0b1b75a7aad43eb09717}{ChangeActionReference}}();}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00039}00039\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00041}\mbox{\hyperlink{class_input_action_button___change_input_action_reference_a8a48d82d727a0b1b75a7aad43eb09717}{00041}}\ \ \ \ \ \textcolor{keyword}{private}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_a8a48d82d727a0b1b75a7aad43eb09717}{ChangeActionReference}}()}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00042}00042\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_input_action_button___change_input_action_reference_af68ac8c8ff51a0dd5415283d163cbe38}{m\_disposable}}\ !=\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00044}00044\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_af68ac8c8ff51a0dd5415283d163cbe38}{m\_disposable}}.Dispose();}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_af68ac8c8ff51a0dd5415283d163cbe38}{m\_disposable}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00047}00047\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デバイスが変更時にボタン画像を更新\ }}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ InputActionReferenceが変更された時にも更新するため変数で保持}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button___change_input_action_reference_af68ac8c8ff51a0dd5415283d163cbe38}{m\_disposable}}\ =}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_player_input_manager}{PlayerInputManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.CurrentDevice.Subscribe(device\ =>}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00054}00054\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_input_action_button_a594bdf42edfa4eb5ba8c4bfa6fef33a6}{UpdateButtonImage}}(device);}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00055}00055\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ ).AddTo(\textcolor{keyword}{this});}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00057}00057\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{_input_action_button___change_input_action_reference_8cs_source_l00059}00059\ \}}
+
+\end{DoxyCode}

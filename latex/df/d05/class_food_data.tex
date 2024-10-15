@@ -123,6 +123,13 @@ Game\+Object \mbox{\hyperlink{class_base_item_data_a38c1ad5b71a39a037fcba1148baf
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00011}{11}} 行目に定義があります。
+
+
+
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_food_data_ad6dbbdcb0dc3a23b206abe0dde1fa6a5}\index{FoodData@{FoodData}!SetData@{SetData}}
 \index{SetData@{SetData}!FoodData@{FoodData}}
@@ -133,6 +140,10 @@ override void Food\+Data.\+Set\+Data (\begin{DoxyParamCaption}{}{}\end{DoxyParam
 
 
 \mbox{\hyperlink{class_base_item_data_a5770bb52beec7a3b128149b9dda381ee}{Base\+Item\+Data}}を再実装しています。
+
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00016}{16}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
@@ -160,26 +171,25 @@ static void Food\+Data.\+Create\+Food (\begin{DoxyParamCaption}\item[{\mbox{\hyp
 引数料理を作成後、ポケットに追加する 
 
 
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00139}{139}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00140\ \ \ \ \ \{}
-\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 食材を使用するなら}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成できるか確認}}
 \DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_removeFlg)}
 \DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能か確認}}
-\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!\mbox{\hyperlink{class_food_data_ae8403377fa7d3c4fe82ebb003d562a4f}{IsCreate}}(\_pocketType,\ \_foodID))\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_food_data_ae8403377fa7d3c4fe82ebb003d562a4f}{IsCreate}}(\_pocketType,\ \_foodID)\ ==\ \textcolor{keyword}{false})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \}}
 \DoxyCodeLine{00146\ }
-\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00148\ }
-\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を追加}}
-\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \_pocketType.GetPocketItemDataManager().AddItem(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
-\DoxyCodeLine{00151\ }
-\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 食材を使用するか}}
-\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_removeFlg)}
-\DoxyCodeLine{00154\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_food_data_aa50f42fc4328085ffb20d9adb2b64cd5}{RemoveNeedIngredient}}(\_pocketType,\ \_foodID);}
-\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00157\ }
-\DoxyCodeLine{00158\ \ \ \ \ \}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 料理を作成}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \_pocketType.GetPocketItemDataManager().AddItem(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 使用した食材を取り除く}}
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\_removeFlg)\ \mbox{\hyperlink{class_food_data_aa50f42fc4328085ffb20d9adb2b64cd5}{RemoveNeedIngredient}}(\_pocketType,\ \_foodID);}
+\DoxyCodeLine{00152\ }
+\DoxyCodeLine{00153\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -207,38 +217,42 @@ static bool Food\+Data.\+Is\+Create (\begin{DoxyParamCaption}\item[{\mbox{\hyper
 引数料理が作成できるか確認するメソッド 
 
 
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00159}{159}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00165\ \ \ \ \ \{}
-\DoxyCodeLine{00166\ }
-\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_id);}
-\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成しようとしている料理のデータは存在しません"{}});}
-\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00160\ \ \ \ \ \{}
+\DoxyCodeLine{00161\ }
+\DoxyCodeLine{00162\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_id);}
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成しようとしている料理のデータは存在しません"{}});}
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持しているか確認}}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
 \DoxyCodeLine{00174\ }
-\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持しているか確認}}
-\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
-\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00179\ }
-\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 対応するポケットから必要な材料があるか確認}}
-\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemNum=\ \_pocketType.GetPocketItemDataManager().GetItemNum(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)list.IngredientID);}
-\DoxyCodeLine{00182\ }
-\DoxyCodeLine{00183\ }
-\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemNum\ <\ list.Num)}
-\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数が必要数より少なければ}}
-\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
-\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 対応するポケットから必要な材料があるか確認}}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemNum\ =\ \_pocketType.GetPocketItemDataManager().GetItemNum(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)list.IngredientID);}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemNum\ <\ list.Num)}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 所持数が必要数より少なければ}}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00186\ }
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能であれば}}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00189\ }
-\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00191\ }
-\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能であれば}}
-\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
-\DoxyCodeLine{00194\ }
-\DoxyCodeLine{00195\ \ \ \ \ \}}
+\DoxyCodeLine{00190\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -259,38 +273,42 @@ static int Food\+Data.\+Get\+Create\+Num (\begin{DoxyParamCaption}\item[{\mbox{\
 引数料理が作成できる数を確認するメソッド 
 
 
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00196}{196}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00202\ \ \ \ \ \{}
-\DoxyCodeLine{00203\ }
-\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_id);}
-\DoxyCodeLine{00205\ }
-\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成しようとしている料理のデータは存在しません"{}});}
-\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00211\ }
-\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
-\DoxyCodeLine{00213\ }
-\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ループ}}
-\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
-\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材リスト}}
-\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ needIngredient\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
-\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (needIngredient\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00221\ }
-\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 対応するポケットから素材所持数}}
-\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemNum\ =\ \_pocketType.GetPocketItemDataManager().GetItemNum(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)needIngredient.IngredientID);}
-\DoxyCodeLine{00224\ }
-\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在の所持数が必要数を下回っていれば}}
-\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemNum\ <\ needIngredient.Num\ *\ (num\ +\ 1))\ \textcolor{keywordflow}{return}\ num;}
-\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00228\ }
-\DoxyCodeLine{00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能数を加算}}
-\DoxyCodeLine{00230\ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
-\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00232\ \ \ \ \ \}}
+\DoxyCodeLine{00197\ \ \ \ \ \{}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_id);}
+\DoxyCodeLine{00200\ }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}作成しようとしている料理のデータは存在しません"{}});}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00206\ }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ num\ =\ 0;}
+\DoxyCodeLine{00208\ }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ループ}}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材リスト}}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ needIngredient\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (needIngredient\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00216\ }
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 対応するポケットから素材所持数}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemNum\ =\ \_pocketType.GetPocketItemDataManager().GetItemNum(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)needIngredient.IngredientID);}
+\DoxyCodeLine{00219\ }
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在の所持数が必要数を下回っていれば}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (itemNum\ <\ needIngredient.Num\ *\ (num\ +\ 1))\ \textcolor{keywordflow}{return}\ num;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能数を加算}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \ \ \ \ num++;}
+\DoxyCodeLine{00226\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00227\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -307,24 +325,28 @@ static int Food\+Data.\+Get\+Create\+Num (\begin{DoxyParamCaption}\item[{\mbox{\
 static void Food\+Data.\+Remove\+Need\+Ingredient (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{Pocket\+Type}}}]{\+\_\+pocket\+Type}{, }\item[{\mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{Food\+ID}}}]{\+\_\+food\+ID}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
 
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00231}{231}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00237\ \ \ \ \ \{}
-\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
+\DoxyCodeLine{00232\ \ \ \ \ \{}
+\DoxyCodeLine{00233\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData<\mbox{\hyperlink{class_food_data}{FoodData}}>(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Food,\ (uint)\_foodID);}
+\DoxyCodeLine{00234\ }
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材リスト}}
+\DoxyCodeLine{00236\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
+\DoxyCodeLine{00237\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00238\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
 \DoxyCodeLine{00239\ }
-\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材リスト}}
-\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ list\ \textcolor{keywordflow}{in}\ data.NeedIngredientObjectList)}
-\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (list\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00244\ }
-\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材数分}}
-\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ list.Num;\ ++i)}
-\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材を取り除く}}
-\DoxyCodeLine{00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_pocketType.GetPocketItemDataManager().}
-\DoxyCodeLine{00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RemoveItem(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)list.IngredientID);}
-\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00252\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00253\ \ \ \ \ \}}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材数分}}
+\DoxyCodeLine{00241\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ list.Num;\ ++i)}
+\DoxyCodeLine{00242\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 必要な素材を取り除く}}
+\DoxyCodeLine{00244\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_pocketType.GetPocketItemDataManager().}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ RemoveItem(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient,\ (uint)list.IngredientID);}
+\DoxyCodeLine{00246\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00247\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00248\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
@@ -343,11 +365,19 @@ static void Food\+Data.\+Remove\+Need\+Ingredient (\begin{DoxyParamCaption}\item
 {\footnotesize\ttfamily \label{class_food_data_a057c011d0537ef8281f25e50cd87c982} 
 \mbox{\hyperlink{namespace_food_info_ac75bdaf2cc1a2865f0bca69c391487c6}{Food\+ID}} Food\+Data.\+m\+\_\+food\+ID = Food\+ID.\+Omelette\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00029}{29}} 行目に定義があります。
+
 \Hypertarget{class_food_data_a59bee7fba0cff9d1eae964225c75a59b}\index{FoodData@{FoodData}!m\_managementFoodPrefab@{m\_managementFoodPrefab}}
 \index{m\_managementFoodPrefab@{m\_managementFoodPrefab}!FoodData@{FoodData}}
 \doxysubsubsection{\texorpdfstring{m\_managementFoodPrefab}{m\_managementFoodPrefab}}
 {\footnotesize\ttfamily \label{class_food_data_a59bee7fba0cff9d1eae964225c75a59b} 
 Game\+Object Food\+Data.\+m\+\_\+management\+Food\+Prefab = null\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00038}{38}} 行目に定義があります。
 
 \Hypertarget{class_food_data_aee339b3595f7cafa96d359d15a00a9bc}\index{FoodData@{FoodData}!m\_needIngredientObjectList@{m\_needIngredientObjectList}}
 \index{m\_needIngredientObjectList@{m\_needIngredientObjectList}!FoodData@{FoodData}}
@@ -355,17 +385,29 @@ Game\+Object Food\+Data.\+m\+\_\+management\+Food\+Prefab = null\hspace{0.3cm}{\
 {\footnotesize\ttfamily \label{class_food_data_aee339b3595f7cafa96d359d15a00a9bc} 
 List$<$\mbox{\hyperlink{class_food_data_1_1_need_ingredient_object}{Need\+Ingredient\+Object}}$>$ Food\+Data.\+m\+\_\+need\+Ingredient\+Object\+List = new()\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00084}{84}} 行目に定義があります。
+
 \Hypertarget{class_food_data_a44ad0864bb0d4a2b53ab93c913aab7bc}\index{FoodData@{FoodData}!m\_createDelay@{m\_createDelay}}
 \index{m\_createDelay@{m\_createDelay}!FoodData@{FoodData}}
 \doxysubsubsection{\texorpdfstring{m\_createDelay}{m\_createDelay}}
 {\footnotesize\ttfamily \label{class_food_data_a44ad0864bb0d4a2b53ab93c913aab7bc} 
 int Food\+Data.\+m\+\_\+create\+Delay = 2\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00107}{107}} 行目に定義があります。
+
 \Hypertarget{class_food_data_a43342c2be0649a3c78ec0628ef9da5f4}\index{FoodData@{FoodData}!m\_price@{m\_price}}
 \index{m\_price@{m\_price}!FoodData@{FoodData}}
 \doxysubsubsection{\texorpdfstring{m\_price}{m\_price}}
 {\footnotesize\ttfamily \label{class_food_data_a43342c2be0649a3c78ec0628ef9da5f4} 
 uint Food\+Data.\+m\+\_\+price = 100\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00117}{117}} 行目に定義があります。
 
 \Hypertarget{class_food_data_a5080fc407899ed38ab0229edb4190202}\index{FoodData@{FoodData}!m\_throwRange@{m\_throwRange}}
 \index{m\_throwRange@{m\_throwRange}!FoodData@{FoodData}}
@@ -375,12 +417,20 @@ float Food\+Data.\+m\+\_\+throw\+Range = 4.\+0f\hspace{0.3cm}{\ttfamily [private
 
 
 
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00128}{128}} 行目に定義があります。
+
+
+
 \doxysubsection{プロパティ詳解}
 \Hypertarget{class_food_data_a07d442799ad31c94e70aa5c3022d8bb3}\index{FoodData@{FoodData}!ManagementFoodPrefab@{ManagementFoodPrefab}}
 \index{ManagementFoodPrefab@{ManagementFoodPrefab}!FoodData@{FoodData}}
 \doxysubsubsection{\texorpdfstring{ManagementFoodPrefab}{ManagementFoodPrefab}}
 {\footnotesize\ttfamily \label{class_food_data_a07d442799ad31c94e70aa5c3022d8bb3} 
 Game\+Object Food\+Data.\+Management\+Food\+Prefab\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00040}{40}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
@@ -408,12 +458,16 @@ List$<$\mbox{\hyperlink{class_food_data_1_1_need_ingredient_object}{Need\+Ingred
 この料理に必要な材料の種類をまとめたリストを返す、読み取り専用プロパティ 
 
 \DoxyHorRuler{0}
- \hypertarget{class_food_data_autotoc_md22}{}\doxysubsubsection{\texorpdfstring{}{}}\label{class_food_data_autotoc_md22}
+ \hypertarget{class_food_data_autotoc_md17}{}\doxysubsubsection{\texorpdfstring{}{}}\label{class_food_data_autotoc_md17}
 \begin{DoxyReturn}{戻り値}
 料理に必要な材料の種類をまとめたリスト 
 
 
 \end{DoxyReturn}
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00098}{98}} 行目に定義があります。
+
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00098\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_food_data_aee339b3595f7cafa96d359d15a00a9bc}{m\_needIngredientObjectList}};\ \}\ \}}
@@ -424,6 +478,10 @@ List$<$\mbox{\hyperlink{class_food_data_1_1_need_ingredient_object}{Need\+Ingred
 \doxysubsubsection{\texorpdfstring{CreateDelay}{CreateDelay}}
 {\footnotesize\ttfamily \label{class_food_data_abeb5fb30e0592892e4c86b39b9be0970} 
 int Food\+Data.\+Create\+Delay\hspace{0.3cm}{\ttfamily [get]}}
+
+
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00109}{109}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
@@ -437,6 +495,10 @@ int Food\+Data.\+Create\+Delay\hspace{0.3cm}{\ttfamily [get]}}
 uint Food\+Data.\+Price\hspace{0.3cm}{\ttfamily [get]}}
 
 
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00119}{119}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00119\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_food_data_a43342c2be0649a3c78ec0628ef9da5f4}{m\_price}};\ \}\ \}}
 
@@ -448,6 +510,10 @@ uint Food\+Data.\+Price\hspace{0.3cm}{\ttfamily [get]}}
 float Food\+Data.\+Throw\+Range\hspace{0.3cm}{\ttfamily [get]}}
 
 
+
+ \mbox{\hyperlink{_food_data_8cs_source}{Food\+Data.\+cs}} の \mbox{\hyperlink{_food_data_8cs_source_l00130}{130}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00130\ \{\ \textcolor{keyword}{get}\ \{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_food_data_a5080fc407899ed38ab0229edb4190202}{m\_throwRange}};\ \}\ \}}
 
@@ -456,4 +522,4 @@ float Food\+Data.\+Throw\+Range\hspace{0.3cm}{\ttfamily [get]}}
 
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/003\+\_\+\+Item/\+Item/\+Edible\+Item/\+Food/\+Data\+Base/\mbox{\hyperlink{_food_data_8cs}{Food\+Data.\+cs}}\end{DoxyCompactItemize}
+Project\+C/003\+\_\+\+Item/\+Item/\+Edible\+Item/\+Food/\+Data\+Base/\mbox{\hyperlink{_food_data_8cs}{Food\+Data.\+cs}}\end{DoxyCompactItemize}

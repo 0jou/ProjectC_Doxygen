@@ -18,7 +18,7 @@ var searchData=
   ['hideareaobjctdata_15',['HideAreaObjctData',['../dc/df0/class_hide_alpha_dither_area_object_1_1_hide_area_objct_data.html',1,'HideAlphaDitherAreaObject']]],
   ['hideicon_16',['HideIcon',['../da/d6f/class_enemy_icon_controller.html#a2c6bfdb471721068ec33b29f02b9a242',1,'EnemyIconController']]],
   ['hideobject_17',['HideObject',['../dc/df0/class_hide_alpha_dither_area_object_1_1_hide_area_objct_data.html#a375f79d1ebc932dbddfd19016ae1a203',1,'HideAlphaDitherAreaObject::HideAreaObjctData']]],
-  ['hideotherui_18',['HideOtherUI',['../d1/d40/class_create_non_pro_xi_window.html#a5b0c8ede7930b4f5c616044222566288',1,'CreateNonProXiWindow.HideOtherUI()'],['../da/d9b/class_proximity_create_window.html#a6704b0f2864a1e27e34d6ad26ac427ed',1,'ProximityCreateWindow.HideOtherUI()'],['../da/dc1/class_base_window.html#ae7b5a71489d7a4b4e5d3a400bfce1194',1,'BaseWindow.HideOtherUI()']]],
+  ['hideotherui_18',['HideOtherUI',['../d1/d40/class_create_non_pro_xi_window.html#a5b0c8ede7930b4f5c616044222566288',1,'CreateNonProXiWindow.HideOtherUI()'],['../da/dc1/class_base_window.html#ae7b5a71489d7a4b4e5d3a400bfce1194',1,'BaseWindow.HideOtherUI()']]],
   ['hideui_19',['HideUI',['../d2/d90/class_proximity_create_u_i.html#adbae3b8eddb2497a34eb0f01b74b7b72',1,'ProximityCreateUI.HideUI()'],['../dd/dd1/class_timeline_controller.html#a726ace188052995e53902248e7e3879b',1,'TimelineController.HideUI()']]],
   ['hideuitype_20',['HideUIType',['../da/dc1/class_base_window.html#a5da335be22d6dd33302ea44389a3a5f5',1,'BaseWindow']]],
   ['hideweapon_21',['HideWeapon',['../d1/d07/class_player_parameters.html#af2874d35e7fec25eed1d90047cdf4c2a',1,'PlayerParameters']]],

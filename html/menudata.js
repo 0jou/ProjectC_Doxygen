@@ -25,6 +25,7 @@
 var menudata={children:[
 {text:"総合概要",url:"index.html"},
 {text:"諸情報",url:"pages.html"},
+{text:"Topics",url:"topics.html"},
 {text:"パッケージ",url:"namespaces.html",children:[
 {text:"Package List",url:"namespaces.html"},
 {text:"パッケージ内のメンバ",url:"namespacemembers.html",children:[

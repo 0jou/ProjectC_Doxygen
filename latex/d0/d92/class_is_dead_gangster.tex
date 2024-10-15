@@ -2,6 +2,11 @@
 \hypertarget{class_is_dead_gangster}{}\label{class_is_dead_gangster}\index{IsDeadGangster@{IsDeadGangster}}
 
 
+コア又はステートが死亡状態であればステートを遷移させるステート  
+
+
+
+
 Is\+Dead\+Gangster の継承関係図\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -11,7 +16,8 @@ Is\+Dead\+Gangster の継承関係図\nopagebreak
 \end{figure}
 
 
-Is\+Dead\+Gangster 連携図\nopagebreak
+Is\+Dead\+Gangster 連携図
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,25 +27,21 @@ Is\+Dead\+Gangster 連携図\nopagebreak
 \doxysubsubsection*{公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
-override void \mbox{\hyperlink{class_is_dead_gangster_a0e06f60ab010c82150f9cc6c6a94cbce}{On\+State\+Awake}} ()
-\item 
 override void \mbox{\hyperlink{class_is_dead_gangster_a46844774f2741eeec54261c585535cac}{On\+State\+Begin}} ()
 \item 
-override void \mbox{\hyperlink{class_is_dead_gangster_a575ba29e6b4b993291ce1780b8b66c31}{On\+State\+End}} ()
-\item 
 override void \mbox{\hyperlink{class_is_dead_gangster_a3ce24698115cb282a97cf51894576ec3}{On\+State\+Update}} ()
-\item 
-override void \mbox{\hyperlink{class_is_dead_gangster_ac443c470b18bccee9d46e6dee36254ad}{On\+State\+Late\+Update}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{非公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}{Set\+Character\+Core}} ()
 \item 
-void \mbox{\hyperlink{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971}{Is\+Dead}} ()
-\item 
-void \mbox{\hyperlink{class_is_dead_gangster_a0cb1e8ccd093ccbebf792654702914c4}{Start}} ()
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_is_dead_gangster_aab6fa09afc748e31dba3a766bb1a04be}{Dead\+Check}} ()
+\begin{DoxyCompactList}\small\item\em 死亡状態か確認 Updateで回す \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_is_dead_gangster_a456742a4738806e6fd44f059adbd5583}{Is\+State\+Dead}} ()
+\begin{DoxyCompactList}\small\item\em ステート(\+Gangster\+State)が死亡状態か確認 \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_is_dead_gangster_aa14dd7d13c3804f96e28763833e977a0}{Is\+HPDead}} ()
+\begin{DoxyCompactList}\small\item\em HPが0以下か確認 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
 \begin{DoxyCompactItemize}
 \item 
@@ -64,6 +66,15 @@ Game\+Object \mbox{\hyperlink{class_base_gangster_state_behaviour_a57901b1d3322d
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+コア又はステートが死亡状態であればステートを遷移させるステート 
+
+Gangster\+State.\+Dead/\+HP0以下の条件下で遷移 
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00016}{16}} 行目に定義があります。
+
+
+
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}\index{IsDeadGangster@{IsDeadGangster}!SetCharacterCore@{SetCharacterCore}}
 \index{SetCharacterCore@{SetCharacterCore}!IsDeadGangster@{IsDeadGangster}}
@@ -72,20 +83,24 @@ Game\+Object \mbox{\hyperlink{class_base_gangster_state_behaviour_a57901b1d3322d
 void Is\+Dead\+Gangster.\+Set\+Character\+Core (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00035}{35}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00027\ \ \ \ \ \{}
-\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}();}
-\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00030\ }
-\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ =\ data.GetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
-\DoxyCodeLine{00032\ }
-\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが存在しません"{}});}
-\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}{SetTransition}}(\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}});}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}();}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ =\ data.GetComponent<\mbox{\hyperlink{class_character_core}{CharacterCore}}>();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}CharacterCoreが存在しません"{}});}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}{SetTransition}}(\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}});}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -102,64 +117,122 @@ void Is\+Dead\+Gangster.\+Set\+Character\+Core (\begin{DoxyParamCaption}{}{}\end
 \includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971}\index{IsDeadGangster@{IsDeadGangster}!IsDead@{IsDead}}
-\index{IsDead@{IsDead}!IsDeadGangster@{IsDeadGangster}}
-\doxysubsubsection{\texorpdfstring{IsDead()}{IsDead()}}
-{\footnotesize\ttfamily \label{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971} 
-void Is\+Dead\+Gangster.\+Is\+Dead (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_is_dead_gangster_aab6fa09afc748e31dba3a766bb1a04be}\index{IsDeadGangster@{IsDeadGangster}!DeadCheck@{DeadCheck}}
+\index{DeadCheck@{DeadCheck}!IsDeadGangster@{IsDeadGangster}}
+\doxysubsubsection{\texorpdfstring{DeadCheck()}{DeadCheck()}}
+{\footnotesize\ttfamily \label{class_is_dead_gangster_aab6fa09afc748e31dba3a766bb1a04be} 
+void Is\+Dead\+Gangster.\+Dead\+Check (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+死亡状態か確認 Updateで回す 
+
+
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00051}{51}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00042\ \ \ \ \ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00044\ }
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ HPが0を下回っていれば}}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a1e09217558dc93616afb4661d2242309}{m\_hp}}.Value\ <=\ 0.0f)}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}{SetTransition}}(\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}});}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_is_dead_gangster_a456742a4738806e6fd44f059adbd5583}{IsStateDead}}()||\ \mbox{\hyperlink{class_is_dead_gangster_aa14dd7d13c3804f96e28763833e977a0}{IsHPDead}}())}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_gangster_state_behaviour_ac530dbe6cb729f45fc127b5f775963e7}{SetTransition}}(\mbox{\hyperlink{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}{m\_deadLink}});}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971_cgraph}
+\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_aab6fa09afc748e31dba3a766bb1a04be_cgraph}
 \end{center}
 \end{figure}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971_icgraph}
+\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_aab6fa09afc748e31dba3a766bb1a04be_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_is_dead_gangster_a0cb1e8ccd093ccbebf792654702914c4}\index{IsDeadGangster@{IsDeadGangster}!Start@{Start}}
-\index{Start@{Start}!IsDeadGangster@{IsDeadGangster}}
-\doxysubsubsection{\texorpdfstring{Start()}{Start()}}
-{\footnotesize\ttfamily \label{class_is_dead_gangster_a0cb1e8ccd093ccbebf792654702914c4} 
-void Is\+Dead\+Gangster.\+Start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_is_dead_gangster_a456742a4738806e6fd44f059adbd5583}\index{IsDeadGangster@{IsDeadGangster}!IsStateDead@{IsStateDead}}
+\index{IsStateDead@{IsStateDead}!IsDeadGangster@{IsDeadGangster}}
+\doxysubsubsection{\texorpdfstring{IsStateDead()}{IsStateDead()}}
+{\footnotesize\ttfamily \label{class_is_dead_gangster_a456742a4738806e6fd44f059adbd5583} 
+bool Is\+Dead\+Gangster.\+Is\+State\+Dead (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ステート(\+Gangster\+State)が死亡状態か確認 
+
+
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00060}{60}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00054\ \ \ \ \ \{}
-\DoxyCodeLine{00055\ }
-\DoxyCodeLine{00056\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ var\ data\ =\ \mbox{\hyperlink{class_base_gangster_state_behaviour_a63287c9cd3b04561acd9b74689d9ac94}{GetGangsterData}}();}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data.CurrentGangsterState\ ==\ \mbox{\hyperlink{namespace_gangster_state_info}{GangsterStateInfo}}.GangsterState.Dead)}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00071\ \ \ \ \ \}}
 
 \end{DoxyCode}
-\Hypertarget{class_is_dead_gangster_a0e06f60ab010c82150f9cc6c6a94cbce}\index{IsDeadGangster@{IsDeadGangster}!OnStateAwake@{OnStateAwake}}
-\index{OnStateAwake@{OnStateAwake}!IsDeadGangster@{IsDeadGangster}}
-\doxysubsubsection{\texorpdfstring{OnStateAwake()}{OnStateAwake()}}
-{\footnotesize\ttfamily \label{class_is_dead_gangster_a0e06f60ab010c82150f9cc6c6a94cbce} 
-override void Is\+Dead\+Gangster.\+On\+State\+Awake (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_a456742a4738806e6fd44f059adbd5583_cgraph}
+\end{center}
+\end{figure}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_a456742a4738806e6fd44f059adbd5583_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_is_dead_gangster_aa14dd7d13c3804f96e28763833e977a0}\index{IsDeadGangster@{IsDeadGangster}!IsHPDead@{IsHPDead}}
+\index{IsHPDead@{IsHPDead}!IsDeadGangster@{IsDeadGangster}}
+\doxysubsubsection{\texorpdfstring{IsHPDead()}{IsHPDead()}}
+{\footnotesize\ttfamily \label{class_is_dead_gangster_aa14dd7d13c3804f96e28763833e977a0} 
+bool Is\+Dead\+Gangster.\+Is\+HPDead (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+HPが0以下か確認 
+
+
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00074}{74}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00060\ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \{}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d}{m\_characterCore}}.\mbox{\hyperlink{class_character_core_aa4fbd2c5ca05a49e198309470c4730d4}{Status}}.\mbox{\hyperlink{struct_character_core_1_1_charatcer_status_a1e09217558dc93616afb4661d2242309}{m\_hp}}.Value\ <=\ 0.0f)}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{00084\ \ \ \ \ \}}
 
 \end{DoxyCode}
+被呼び出し関係図\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_aa14dd7d13c3804f96e28763833e977a0_icgraph}
+\end{center}
+\end{figure}
 \Hypertarget{class_is_dead_gangster_a46844774f2741eeec54261c585535cac}\index{IsDeadGangster@{IsDeadGangster}!OnStateBegin@{OnStateBegin}}
 \index{OnStateBegin@{OnStateBegin}!IsDeadGangster@{IsDeadGangster}}
 \doxysubsubsection{\texorpdfstring{OnStateBegin()}{OnStateBegin()}}
@@ -167,11 +240,15 @@ override void Is\+Dead\+Gangster.\+On\+State\+Awake (\begin{DoxyParamCaption}{}{
 override void Is\+Dead\+Gangster.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00088}{88}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00065\ \ \ \ \ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セットする}}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}{SetCharacterCore}}();}
-\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \{}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セットする}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_ab82102a51d4ef9b2745baca4c523410d}{SetCharacterCore}}();}
+\DoxyCodeLine{00092\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -181,18 +258,6 @@ override void Is\+Dead\+Gangster.\+On\+State\+Begin (\begin{DoxyParamCaption}{}{
 \includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_a46844774f2741eeec54261c585535cac_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_is_dead_gangster_a575ba29e6b4b993291ce1780b8b66c31}\index{IsDeadGangster@{IsDeadGangster}!OnStateEnd@{OnStateEnd}}
-\index{OnStateEnd@{OnStateEnd}!IsDeadGangster@{IsDeadGangster}}
-\doxysubsubsection{\texorpdfstring{OnStateEnd()}{OnStateEnd()}}
-{\footnotesize\ttfamily \label{class_is_dead_gangster_a575ba29e6b4b993291ce1780b8b66c31} 
-override void Is\+Dead\+Gangster.\+On\+State\+End (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00072\ \ \ \ \ \{}
-\DoxyCodeLine{00073\ \ \ \ \ \}}
-
-\end{DoxyCode}
 \Hypertarget{class_is_dead_gangster_a3ce24698115cb282a97cf51894576ec3}\index{IsDeadGangster@{IsDeadGangster}!OnStateUpdate@{OnStateUpdate}}
 \index{OnStateUpdate@{OnStateUpdate}!IsDeadGangster@{IsDeadGangster}}
 \doxysubsubsection{\texorpdfstring{OnStateUpdate()}{OnStateUpdate()}}
@@ -200,10 +265,14 @@ override void Is\+Dead\+Gangster.\+On\+State\+End (\begin{DoxyParamCaption}{}{}\
 override void Is\+Dead\+Gangster.\+On\+State\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00095}{95}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00077\ \ \ \ \ \{}
-\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_ac6ce50024317dd0e68494556e2e8d971}{IsDead}}();}
-\DoxyCodeLine{00079\ \ \ \ \ \}}
+\DoxyCodeLine{00096\ \ \ \ \ \{}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_is_dead_gangster_aab6fa09afc748e31dba3a766bb1a04be}{DeadCheck}}();}
+\DoxyCodeLine{00098\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -213,18 +282,6 @@ override void Is\+Dead\+Gangster.\+On\+State\+Update (\begin{DoxyParamCaption}{}
 \includegraphics[width=350pt]{d0/d92/class_is_dead_gangster_a3ce24698115cb282a97cf51894576ec3_cgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_is_dead_gangster_ac443c470b18bccee9d46e6dee36254ad}\index{IsDeadGangster@{IsDeadGangster}!OnStateLateUpdate@{OnStateLateUpdate}}
-\index{OnStateLateUpdate@{OnStateLateUpdate}!IsDeadGangster@{IsDeadGangster}}
-\doxysubsubsection{\texorpdfstring{OnStateLateUpdate()}{OnStateLateUpdate()}}
-{\footnotesize\ttfamily \label{class_is_dead_gangster_ac443c470b18bccee9d46e6dee36254ad} 
-override void Is\+Dead\+Gangster.\+On\+State\+Late\+Update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
-
-
-\begin{DoxyCode}{0}
-\DoxyCodeLine{00083\ \ \ \ \ \{}
-\DoxyCodeLine{00084\ \ \ \ \ \}}
-
-\end{DoxyCode}
 
 
 \doxysubsection{フィールド詳解}
@@ -234,6 +291,10 @@ override void Is\+Dead\+Gangster.\+On\+State\+Late\+Update (\begin{DoxyParamCapt
 {\footnotesize\ttfamily \label{class_is_dead_gangster_af92c9308e628609962c25c47c21a139d} 
 \mbox{\hyperlink{class_character_core}{Character\+Core}} Is\+Dead\+Gangster.\+m\+\_\+character\+Core = null\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00024}{24}} 行目に定義があります。
+
 \Hypertarget{class_is_dead_gangster_a86b7ab2c4e8a6c8590c5accd980417ea}\index{IsDeadGangster@{IsDeadGangster}!m\_deadLink@{m\_deadLink}}
 \index{m\_deadLink@{m\_deadLink}!IsDeadGangster@{IsDeadGangster}}
 \doxysubsubsection{\texorpdfstring{m\_deadLink}{m\_deadLink}}
@@ -242,6 +303,10 @@ State\+Link Is\+Dead\+Gangster.\+m\+\_\+dead\+Link = null\hspace{0.3cm}{\ttfamil
 
 
 
+ \mbox{\hyperlink{_is_dead_gangster_8cs_source}{Is\+Dead\+Gangster.\+cs}} の \mbox{\hyperlink{_is_dead_gangster_8cs_source_l00030}{30}} 行目に定義があります。
+
+
+
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/103\+\_\+\+Management\+\_\+\+Character/\+Gangster/\+Scripts/\+Arbor3/\+State/\mbox{\hyperlink{_is_dead_gangster_8cs}{Is\+Dead\+Gangster.\+cs}}\end{DoxyCompactItemize}
+Project\+C/103\+\_\+\+Management\+\_\+\+Character/\+Gangster/\+Scripts/\+Arbor3/\+State/\mbox{\hyperlink{_is_dead_gangster_8cs}{Is\+Dead\+Gangster.\+cs}}\end{DoxyCompactItemize}

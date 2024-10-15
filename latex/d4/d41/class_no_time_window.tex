@@ -31,6 +31,8 @@ async Uni\+Task \mbox{\hyperlink{class_base_window_a01db64344c0f8f4c97a8678ea02e
 \item 
 async Uni\+Task \mbox{\hyperlink{class_base_window_ada6a48bce6e97ca1c72aa2dd0002548d}{On\+DOAlpha}} (float \+\_\+duration, bool \+\_\+from\+Flg, float \+\_\+end\+Value=0.\+0f)
 \item 
+virtual bool \mbox{\hyperlink{class_base_window_a963afa35622584163fdbe1b4a20790d4}{Is\+Close}} ()
+\item 
 void \mbox{\hyperlink{class_base_window_a649dc092245213ebfb46e9db28dfa5fd}{Set\+Global\+Volume}} ()
 \item 
 void \mbox{\hyperlink{class_base_window_ad74eda284bff9ce1afd3a56469323d75}{Set\+Depth\+Of\+Field}} (bool \+\_\+is\+Depth\+Of\+Field)
@@ -40,16 +42,7 @@ void \mbox{\hyperlink{class_base_window_a785cd5968c10a476229d1df761ccd3ae}{Set\+
 async Uni\+Task \mbox{\hyperlink{class_base_window_ae7b5a71489d7a4b4e5d3a400bfce1194}{Hide\+Other\+UI}} ()
 \item 
 async Uni\+Task \mbox{\hyperlink{class_base_window_acd2499f1b2e9d267a5e6e143ebc89dc5}{Show\+Other\+UI}} ()
-\item 
-async Uni\+Task \mbox{\hyperlink{class_base_window_a8959c475b9b595674ddc23ad72dfb582}{Create\+Window$<$ T $>$}} (\mbox{\hyperlink{class_window_controller}{Window\+Controller}} \+\_\+window\+Controller, bool \+\_\+is\+Set\+Type=true, System.\+Func$<$ T, Uni\+Task $>$ on\+Before\+Initialize=null)
-\begin{DoxyCompactList}\small\item\em 
-\begin{DoxyParams}{引数}
-{\em \+\_\+window\+Controller} & 作成するウィンドウコントローラーのプレハブ\\
-\hline
-{\em \+\_\+is\+Set\+Type} & 停止処理などを行うかどうか\\
-\hline
-\end{DoxyParams}
-\end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
 \begin{DoxyCompactItemize}
 \item 
@@ -73,11 +66,8 @@ virtual async Uni\+Task \mbox{\hyperlink{class_base_window_a1f66e4205b9bf4926870
 virtual async Uni\+Task \mbox{\hyperlink{class_base_window_a999c4076bebbfb7adcab0741128d4c6d}{On\+Close}} ()
 \item 
 virtual async Uni\+Task \mbox{\hyperlink{class_base_window_a2316c4503fbab028b06ec923adae2b5c}{On\+Destroy}} ()
-\end{DoxyCompactItemize}
-\doxysubsection*{基底クラス \mbox{\hyperlink{class_base_window}{Base\+Window}} に属する継承静的公開メンバ関数}
-\begin{DoxyCompactItemize}
 \item 
-static async Uni\+Task \mbox{\hyperlink{class_base_window_ae3e50355658e7b4d4152bf3fc6167cff}{Update$<$ Window\+Type $>$}} (\mbox{\hyperlink{class_window_controller}{Window\+Controller}} \+\_\+window\+Controller, System.\+Func$<$ Window\+Type, Uni\+Task $>$ on\+Before\+Initialize=null)
+async Uni\+Task$<$ Window\+Type $>$ \mbox{\hyperlink{class_base_window_a5b6c513c3c157f1d67419bf7ae604918}{Create\+To\+Update\+Window$<$ Window\+Type $>$}} (\mbox{\hyperlink{class_window_controller}{Window\+Controller}} \+\_\+window\+Controller, bool \+\_\+is\+Self, System.\+Func$<$ Window\+Type, Uni\+Task $>$ on\+Before\+Initialize=null)
 \begin{DoxyCompactList}\small\item\em ウィンドウコントローラーのインスタンスを生成して実行する \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_base_window}{Base\+Window}} に属する継承限定公開型}
 \begin{DoxyCompactItemize}
@@ -124,6 +114,8 @@ float \mbox{\hyperlink{class_base_window_a036d96f04c38b9e6338afb75d6e62db4}{m\+\
 \item 
 \mbox{\hyperlink{class_base_window_a5da335be22d6dd33302ea44389a3a5f5}{Hide\+UIType}} \mbox{\hyperlink{class_base_window_aaa7a7834e3fded952821fec41198b2fb}{m\+\_\+hide\+UIType}} = \mbox{\hyperlink{class_base_window_a5da335be22d6dd33302ea44389a3a5f5abcfaccebf745acfd5e75351095a5394a}{Hide\+UIType.\+Disable}}
 \item 
+\mbox{\hyperlink{class_input_action_button}{Input\+Action\+Button}} \mbox{\hyperlink{class_base_window_a5bff5cfef77b23c644bc4b395d73898b}{m\+\_\+close\+Input\+Action\+Button}} = null
+\item 
 Volume \mbox{\hyperlink{class_base_window_aeef4bff5448e3f2d6e90aada17df2e05}{m\+\_\+global\+Volume}} = null
 \item 
 List$<$ Canvas\+Group $>$ \mbox{\hyperlink{class_base_window_adbd7188782a7083bf44e0aa2092ea4b1}{m\+\_\+hide\+Canvas\+Group\+List}} = new()
@@ -137,6 +129,13 @@ Player\+Input \mbox{\hyperlink{class_base_window_aca92cddf024d4e19bdd003441678c3
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_no_time_window_8cs_source}{No\+Time\+Window.\+cs}} の \mbox{\hyperlink{_no_time_window_8cs_source_l00006}{6}} 行目に定義があります。
+
+
+
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_no_time_window_a52beadda51e7c97db6c709ae89c23562}\index{NoTimeWindow@{NoTimeWindow}!UpdateJudge@{UpdateJudge}}
 \index{UpdateJudge@{UpdateJudge}!NoTimeWindow@{NoTimeWindow}}
@@ -147,6 +146,10 @@ override async Uni\+Task No\+Time\+Window.\+Update\+Judge (\begin{DoxyParamCapti
 
 
 \mbox{\hyperlink{class_judge_window_a7a8a9d25c4f624ad61377dbfbff35d79}{Judge\+Window}}を再実装しています。
+
+
+
+ \mbox{\hyperlink{_no_time_window_8cs_source}{No\+Time\+Window.\+cs}} の \mbox{\hyperlink{_no_time_window_8cs_source_l00011}{11}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
@@ -197,6 +200,10 @@ override async Uni\+Task No\+Time\+Window.\+Update\+Judge (\begin{DoxyParamCapti
 
 
 
+ \mbox{\hyperlink{_no_time_window_8cs_source}{No\+Time\+Window.\+cs}} の \mbox{\hyperlink{_no_time_window_8cs_source_l00009}{9}} 行目に定義があります。
+
+
+
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/003\+\_\+\+Item/\+Window/\+No\+Time\+Window/\+Script/\mbox{\hyperlink{_no_time_window_8cs}{No\+Time\+Window.\+cs}}\end{DoxyCompactItemize}
+Project\+C/003\+\_\+\+Item/\+Window/\+No\+Time\+Window/\+Script/\mbox{\hyperlink{_no_time_window_8cs}{No\+Time\+Window.\+cs}}\end{DoxyCompactItemize}

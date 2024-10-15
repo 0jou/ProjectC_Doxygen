@@ -9,7 +9,6 @@ var class_action_item_controller_window =
     [ "m_createSlotList", "d4/d21/class_action_item_controller_window.html#adeaf87658357b9b474d6a474a3bb0393", null ],
     [ "m_selectUIController", "d4/d21/class_action_item_controller_window.html#a07f773d47c1514c7c11a11898a73319f", null ],
     [ "m_changeScrollViewPosition", "d4/d21/class_action_item_controller_window.html#a9a029fabb0fb0f4abd717b8062014ea6", null ],
-    [ "m_createSelectUseItemWindow", "d4/d21/class_action_item_controller_window.html#a6445c9b0c193c04b9dfaaf1833abbd9e", null ],
     [ "m_content", "d4/d21/class_action_item_controller_window.html#a722f3a29402afb38b9ed893e4e1ab187", null ],
     [ "CreateSlotList", "d4/d21/class_action_item_controller_window.html#a1b60ca113315e7fcb3ccca116dc9af04", null ],
     [ "ContentTrans", "d4/d21/class_action_item_controller_window.html#ac165d098f3cdfe2cbaa737b51927042a", null ]

@@ -13,9 +13,9 @@ var class_select_tutorial_controller =
     [ "m_tutorialDataList", "d8/d0a/class_select_tutorial_controller.html#ae00ac643469f822c62d1a90389fc5971", null ],
     [ "m_currentTutorial", "d8/d0a/class_select_tutorial_controller.html#ae43bb1dc0b28a5c72820676df1f47375", null ],
     [ "m_isSelectChangeFlg", "d8/d0a/class_select_tutorial_controller.html#a216c7932d68f62530a8e9f2ef60a0871", null ],
-    [ "m_nextInputActionButton", "d8/d0a/class_select_tutorial_controller.html#a577df5bde664b5ff54b38f6a20cfe995", null ],
-    [ "m_backInputActionButton", "d8/d0a/class_select_tutorial_controller.html#ae00d609aba4fae01053bbdd018cf85a9", null ],
-    [ "m_closeInputActionButton", "d8/d0a/class_select_tutorial_controller.html#ae2a5d01979f06d2e68d5fe8194f7ad73", null ],
+    [ "m_nextInputActionButton", "d8/d0a/class_select_tutorial_controller.html#ae6e4c7e081e92120bada6e0a0970d129", null ],
+    [ "m_backInputActionButton", "d8/d0a/class_select_tutorial_controller.html#a13bf204a6856fc50b8d75457600452b5", null ],
+    [ "m_closeInputActionButton", "d8/d0a/class_select_tutorial_controller.html#a4da69687d863085c9e654e9e422ce21e", null ],
     [ "TutorialDataList", "d8/d0a/class_select_tutorial_controller.html#a8bfb6899785074641b890fff80171945", null ],
     [ "CurrentTutorial", "d8/d0a/class_select_tutorial_controller.html#aaaa0fe5959bfc7103eb0888ddeb6c40a", null ],
     [ "IsSelectChangeFlg", "d8/d0a/class_select_tutorial_controller.html#ab0e0d934172342f657fe8d71e3101bfc", null ]

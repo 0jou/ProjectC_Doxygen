@@ -24,5 +24,7 @@ var searchData=
   ['windowcontroller_21',['WindowController',['../d7/d6f/class_window_controller.html',1,'']]],
   ['windowcontroller_2ecs_22',['WindowController.cs',['../dc/da2/_window_controller_8cs.html',1,'']]],
   ['windowuicontroller_23',['WindowUIController',['../d1/d60/class_window_u_i_controller.html',1,'']]],
-  ['windowuicontroller_2ecs_24',['WindowUIController.cs',['../d0/d79/_window_u_i_controller_8cs.html',1,'']]]
+  ['windowuicontroller_2ecs_24',['WindowUIController.cs',['../d0/d79/_window_u_i_controller_8cs.html',1,'']]],
+  ['wolfbonemeat_25',['WolfBoneMeat',['../d7/d75/namespace_ingredient_info.html#ac9e88a71e148998ad2916b74e8be7215adeeba82f99bfb394d606b5eaa1d3ee71',1,'IngredientInfo']]],
+  ['wolfroastbeef_26',['WolfRoastBeef',['../db/d67/namespace_food_info.html#ac75bdaf2cc1a2865f0bca69c391487c6a12f8648cb29e1e6623168852b53fcf53',1,'FoodInfo']]]
 ];

@@ -148,7 +148,6 @@ var hierarchy =
     [ "CinemachineExtension", null, [
       [ "CinemachineExtentionLayerMask", "df/df7/class_cinemachine_extention_layer_mask.html", null ]
     ] ],
-    [ "CounterPoint", "d4/da6/class_counter_point.html", null ],
     [ "CustomerDataVariable", "d4/d2a/class_customer_data_variable.html", null ],
     [ "CheckStateCustomer.CustomerStateLink", "d1/d25/class_check_state_customer_1_1_customer_state_link.html", null ],
     [ "DamageNotification", "df/db9/class_damage_notification.html", null ],
@@ -323,6 +322,7 @@ var hierarchy =
       [ "BaseCreateSlotList", "d0/d4c/class_base_create_slot_list.html", [
         [ "CreateActionItemSlotList", "d8/df8/class_create_action_item_slot_list.html", null ],
         [ "CreateNeedIngredientSlot", "dd/d4c/class_create_need_ingredient_slot.html", [
+          [ "CreateCreateFoodNeedIngredientSlotList", "db/d6d/class_create_create_food_need_ingredient_slot_list.html", null ],
           [ "ProvideFoodCreateNeedIngredientSlotList", "d0/d99/class_provide_food_create_need_ingredient_slot_list.html", null ]
         ] ],
         [ "CreatePocketItemSlotList", "da/da8/class_create_pocket_item_slot_list.html", null ],
@@ -385,6 +385,7 @@ var hierarchy =
           [ "ConfirmationItemWindow", "d5/db9/class_confirmation_item_window.html", null ],
           [ "TrialSessionWindow", "d9/d22/class_trial_session_window.html", null ]
         ] ],
+        [ "CreateFoodWindow", "d9/d3e/class_create_food_window.html", null ],
         [ "InventoryWindow", "d1/dee/class_inventory_window.html", null ],
         [ "JudgeWindow", "d4/d13/class_judge_window.html", [
           [ "GameOverWindow", "d5/de1/class_game_over_window.html", null ],
@@ -456,11 +457,11 @@ var hierarchy =
       [ "ConditionManager", "d4/dfe/class_condition_manager.html", null ],
       [ "Confusion", "da/d09/class_confusion.html", null ],
       [ "CountDownTimer", "d7/dd9/class_count_down_timer.html", null ],
+      [ "CounterPointData", "d3/d53/class_counter_point_data.html", null ],
       [ "CreateConditionImage", "d3/d97/class_create_condition_image.html", null ],
+      [ "CreateFoodController", "da/dc2/class_create_food_controller.html", null ],
       [ "CreateNonProXiWindow", "d1/d40/class_create_non_pro_xi_window.html", null ],
       [ "CreatePopUpWindow", "d2/db7/class_create_pop_up_window.html", null ],
-      [ "CreateToUpdateConfirmationWindow", "d3/d4e/class_create_to_update_confirmation_window.html", null ],
-      [ "CreateToUpdateJudgeWindow", "d4/dbb/class_create_to_update_judge_window.html", null ],
       [ "CreateToUpdateSelectUseItemWindow", "d8/d32/class_create_to_update_select_use_item_window.html", null ],
       [ "CuePlay", "d4/d94/class_cue_play.html", null ],
       [ "CursorLock", "d1/df9/class_cursor_lock.html", null ],
@@ -498,6 +499,8 @@ var hierarchy =
       [ "ImageProgressController", "d7/d35/class_image_progress_controller.html", null ],
       [ "ImageUVScroll", "dd/daf/class_image_u_v_scroll.html", null ],
       [ "InputActionButton", "d5/dd8/class_input_action_button.html", [
+        [ "CreateFoodControllerInputActionButton", "d9/d6f/class_create_food_controller_input_action_button.html", null ],
+        [ "CreateFoodInputActionButton", "d8/ddf/class_create_food_input_action_button.html", null ],
         [ "InputActionButton_ChangeInputActionReference", "d6/d71/class_input_action_button___change_input_action_reference.html", null ],
         [ "SelectStageInputActionButton", "d5/d10/class_select_stage_input_action_button.html", null ],
         [ "StartManagementInputActionButton", "d6/d4b/class_start_management_input_action_button.html", null ],
@@ -512,7 +515,9 @@ var hierarchy =
           ] ],
           [ "SelectProvideFoodSlotData", "d2/de3/class_select_provide_food_slot_data.html", null ]
         ] ],
-        [ "NeedIngredientSlotData", "dc/d16/class_need_ingredient_slot_data.html", null ],
+        [ "NeedIngredientSlotData", "dc/d16/class_need_ingredient_slot_data.html", [
+          [ "CreateFoodNeedIngredientSlotData", "d8/d78/class_create_food_need_ingredient_slot_data.html", null ]
+        ] ],
         [ "PocketItemSlotData", "d1/d6f/class_pocket_item_slot_data.html", null ],
         [ "ProvideFoodUseIngredientSlotData", "db/dbb/class_provide_food_use_ingredient_slot_data.html", null ],
         [ "RecipeItemSlotData", "d0/d04/class_recipe_item_slot_data.html", [
@@ -745,7 +750,8 @@ var hierarchy =
         [ "IsDeadGangster", "d0/d92/class_is_dead_gangster.html", null ],
         [ "RemoveBeenTargetObjectStaffGangster", "d9/d27/class_remove_been_target_object_staff_gangster.html", null ],
         [ "SetBeenTargetObjectStaffGangster", "d8/d21/class_set_been_target_object_staff_gangster.html", null ],
-        [ "SetStateGangster", "d6/d0f/class_set_state_gangster.html", null ]
+        [ "SetStateGangster", "d6/d0f/class_set_state_gangster.html", null ],
+        [ "SetStatusCharacterCore", "d1/d0c/class_set_status_character_core.html", null ]
       ] ],
       [ "BaseStaffStateBehaviour", "d6/d9c/class_base_staff_state_behaviour.html", [
         [ "CheckIsCarryStaff", "da/d72/class_check_is_carry_staff.html", null ],

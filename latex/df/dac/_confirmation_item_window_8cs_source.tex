@@ -1,5 +1,5 @@
 \doxysection{Confirmation\+Item\+Window.\+cs}
-\hypertarget{_confirmation_item_window_8cs_source}{}\label{_confirmation_item_window_8cs_source}\index{C:/3D\_prac/\_ProjectC/Assets/ProjectC/003\_Item/Window/ConfirmationWindow/Prefab/Item/ConfirmationItemWindow.cs@{C:/3D\_prac/\_ProjectC/Assets/ProjectC/003\_Item/Window/ConfirmationWindow/Prefab/Item/ConfirmationItemWindow.cs}}
+\hypertarget{_confirmation_item_window_8cs_source}{}\label{_confirmation_item_window_8cs_source}\index{ProjectC/003\_Item/Window/RecipeWindow/Prefab/Confirmation/ConfirmationItemWindow.cs@{ProjectC/003\_Item/Window/RecipeWindow/Prefab/Confirmation/ConfirmationItemWindow.cs}}
 \mbox{\hyperlink{_confirmation_item_window_8cs}{\mbox{[}詳解\mbox{]}}}
 \begin{DoxyCode}{0}
 \DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00001}00001\ \textcolor{keyword}{using\ }System.Collections;}
@@ -7,30 +7,68 @@
 \DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00003}00003\ \textcolor{keyword}{using\ }UnityEngine;}
 \DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00004}00004\ }
 \DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00005}00005\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_item_info}{ItemInfo}};}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00006}00006\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }UnityEngine.UI;}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00008}00008\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00009}\mbox{\hyperlink{class_confirmation_item_window}{00009}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_confirmation_item_window}{ConfirmationItemWindow}}\ :\ \mbox{\hyperlink{class_confirmation_window}{ConfirmationWindow}}}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00010}00010\ \{}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00011}00011\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00012}00012\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}説明文"{}})]}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00013}00013\ \ \ \ \ [SerializeField]}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00014}\mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{00014}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_change_confirmation_item_description}{ChangeConfirmationItemDescription}}\ \mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{m\_changeConfirmationItemDescription}}\ =\ \textcolor{keyword}{null};}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00006}00006\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_ingredient_info}{IngredientInfo}};}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00007}00007\ \textcolor{keyword}{using\ }\mbox{\hyperlink{namespace_pocket_item_data_info}{PocketItemDataInfo}};}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00008}00008\ \textcolor{keyword}{using\ }Cysharp.Threading.Tasks;}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00011}\mbox{\hyperlink{class_confirmation_item_window}{00011}}\ \textcolor{keyword}{public}\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_confirmation_item_window}{ConfirmationItemWindow}}\ :\ \mbox{\hyperlink{class_confirmation_window}{ConfirmationWindow}}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00012}00012\ \{}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00014}00014\ \ \ \ \ \textcolor{comment}{//\ 制作者\ 田内}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00015}00015\ \ \ \ \ \textcolor{comment}{//\ アイテムの説明文を表示する確認ウィンドウ}}
 \DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00016}00016\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00017}\mbox{\hyperlink{class_confirmation_item_window_a5729cb3feafe4d2698bef11514ccf48f}{00017}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_confirmation_item_window_a5729cb3feafe4d2698bef11514ccf48f}{SetDescription}}(\mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_typeID,uint\ \_id)}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00018}00018\ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00019}00019\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00020}00020\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(\mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{m\_changeConfirmationItemDescription}}==\textcolor{keyword}{null})}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00021}00021\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00022}00022\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}説明文を更新する"{}});}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00023}00023\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00024}00024\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00025}00025\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00026}00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{m\_changeConfirmationItemDescription}}.\mbox{\hyperlink{class_change_item_description_a39465c7eac4eeb08c1584153c2c32d4b}{ChangeDescription}}(\_typeID,\ \_id);}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00018}00018\ \ \ \ \ [Header(\textcolor{stringliteral}{"{}説明文"{}})]}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00019}00019\ \ \ \ \ [SerializeField]}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00020}\mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{00020}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{class_change_confirmation_item_description}{ChangeConfirmationItemDescription}}\ \mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{m\_changeConfirmationItemDescription}}\ =\ \textcolor{keyword}{null};}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00022}00022\ \ \ \ \ \textcolor{comment}{//\ 表示アイテム種類ID}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00023}\mbox{\hyperlink{class_confirmation_item_window_a51aa254516f80778514c40e7711cfd5f}{00023}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \mbox{\hyperlink{class_confirmation_item_window_a51aa254516f80778514c40e7711cfd5f}{m\_itemTypeID}}\ =\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}.Ingredient;}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00024}00024\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00025}00025\ \ \ \ \ \textcolor{comment}{//\ 表示アイテムID}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00026}\mbox{\hyperlink{class_confirmation_item_window_ab114472b3eb436786a83ac512965a456}{00026}}\ \ \ \ \ \textcolor{keyword}{private}\ uint\ \mbox{\hyperlink{class_confirmation_item_window_ab114472b3eb436786a83ac512965a456}{m\_itemID}}\ =\ (uint)\mbox{\hyperlink{namespace_ingredient_info_ac9e88a71e148998ad2916b74e8be7215}{IngredientID}}.Egg;}
 \DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00027}00027\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00028}00028\ \ \ \ \ \}}
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00029}00029\ }
-\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00030}00030\ \}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ ポケットタイプ}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00029}\mbox{\hyperlink{class_confirmation_item_window_a6b2eebd3c450f617fa04a8a975d61244}{00029}}\ \ \ \ \ \textcolor{keyword}{private}\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}\ \mbox{\hyperlink{class_confirmation_item_window_a6b2eebd3c450f617fa04a8a975d61244}{m\_pocketType}}\ =\ \mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}.Inventory;}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00031}00031\ \ \ \ \ \textcolor{comment}{//===============================================}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00032}00032\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ \ \ \ 実行処理}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00033}00033\ \ \ \ \ \textcolor{comment}{//===============================================}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00039}\mbox{\hyperlink{class_confirmation_item_window_aab95a8fe6fe116caf8800edf5597ff34}{00039}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_confirmation_item_window_aab95a8fe6fe116caf8800edf5597ff34}{SetDescription}}(\mbox{\hyperlink{namespace_pocket_item_data_info_a762bc5e4b59a392a8f292b8b1de9e3c4}{PocketType}}\ \_pocketType,\ \mbox{\hyperlink{namespace_item_info_af2c688442820f00ad8dcf540fc75fecb}{ItemTypeID}}\ \_typeID,\ uint\ \_id)}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00040}00040\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00041}00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_confirmation_item_window_a6b2eebd3c450f617fa04a8a975d61244}{m\_pocketType}}\ =\ \_pocketType;}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00042}00042\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_confirmation_item_window_a51aa254516f80778514c40e7711cfd5f}{m\_itemTypeID}}\ =\ \_typeID;}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00043}00043\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_confirmation_item_window_ab114472b3eb436786a83ac512965a456}{m\_itemID}}\ =\ \_id;}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00044}00044\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00046}\mbox{\hyperlink{class_confirmation_item_window_acdc82ef8e40455a38444fc8649679b33}{00046}}\ \ \ \ \ \textcolor{keyword}{public}\ \textcolor{keyword}{override}\ async\ UniTask\ \mbox{\hyperlink{class_confirmation_item_window_acdc82ef8e40455a38444fc8649679b33}{OnInitialize}}()}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00047}00047\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00048}00048\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#region\ nullチェック}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00049}00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{m\_changeConfirmationItemDescription}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00050}00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ChangeConfirmationItemDescriptionがシリアライズされていません"{}});}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00053}00053\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00054}00054\ \textcolor{preprocessor}{\ \ \ \ \ \ \ \ \#endregion}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00056}00056\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00057}00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00058}00058\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ await\ base.OnInitialize();}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 説明文更新}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_confirmation_item_window_adc597980b6879afee465815b5c4ba334}{m\_changeConfirmationItemDescription}}.\mbox{\hyperlink{class_change_item_description_a2b30636ef288a5a11353836e028378ed}{ChangeDescription}}(\mbox{\hyperlink{class_confirmation_item_window_a6b2eebd3c450f617fa04a8a975d61244}{m\_pocketType}},\ \mbox{\hyperlink{class_confirmation_item_window_a51aa254516f80778514c40e7711cfd5f}{m\_itemTypeID}},\ \mbox{\hyperlink{class_confirmation_item_window_ab114472b3eb436786a83ac512965a456}{m\_itemID}});}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00065}00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{catch}\ (System.OperationCanceledException\ ex)}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00067}00067\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ Debug.Log(ex);}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00069}00069\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00070}00070\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{_confirmation_item_window_8cs_source_l00072}00072\ \}}
 
 \end{DoxyCode}

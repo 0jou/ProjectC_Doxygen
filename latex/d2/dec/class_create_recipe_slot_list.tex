@@ -22,7 +22,7 @@ Create\+Recipe\+Slot\+List 連携図\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{class_create_recipe_slot_list_aa7d1f8fa388019c770da8763db9a8455}{Check\+Create}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em 料理が作成可能か確認 \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{基底クラス \mbox{\hyperlink{class_base_create_slot_list}{Base\+Create\+Slot\+List}} に属する継承公開メンバ関数}
 \begin{DoxyCompactItemize}
 \item 
@@ -81,6 +81,13 @@ List$<$ \mbox{\hyperlink{class_item_slot_data}{Item\+Slot\+Data}} $>$ \mbox{\hyp
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_create_recipe_slot_list_8cs_source}{Create\+Recipe\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_recipe_slot_list_8cs_source_l00005}{5}} 行目に定義があります。
+
+
+
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_create_recipe_slot_list_a6c609a72a748da44c929d4d23fb16568}\index{CreateRecipeSlotList@{CreateRecipeSlotList}!CreateSlotInstance@{CreateSlotInstance}}
 \index{CreateSlotInstance@{CreateSlotInstance}!CreateRecipeSlotList@{CreateRecipeSlotList}}
@@ -91,6 +98,10 @@ override void Create\+Recipe\+Slot\+List.\+Create\+Slot\+Instance (\begin{DoxyPa
 
 
 \mbox{\hyperlink{class_base_create_slot_list_a51b06cac02cad5cb1ecba94d423d7f41}{Base\+Create\+Slot\+List}}を再実装しています。
+
+
+
+ \mbox{\hyperlink{_create_recipe_slot_list_8cs_source}{Create\+Recipe\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_recipe_slot_list_8cs_source_l00014}{14}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
@@ -111,25 +122,24 @@ override void Create\+Recipe\+Slot\+List.\+Create\+Slot\+Instance (\begin{DoxyPa
 \DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 子オブジェクトにスロットを追加}}
 \DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ \ \ \ \ var\ slot\ =\ Instantiate(\mbox{\hyperlink{class_base_create_slot_list_af559b5d46e663ae96a37a9cb380b33fe}{m\_slot}},\ transform);}
 \DoxyCodeLine{00031\ }
-\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slot.TryGetComponent<\mbox{\hyperlink{class_item_slot_data}{ItemSlotData}}>(out\ var\ slotData))}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slot.TryGetComponent<\mbox{\hyperlink{class_recipe_item_slot_data}{RecipeItemSlotData}}>(out\ var\ slotData))}
 \DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムスロットのデータをセット}}
 \DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ var\ itemData\ =\ \mbox{\hyperlink{class_item_data_base_manager}{ItemDataBaseManager}}.\mbox{\hyperlink{class_base_manager_aa8c8aec87570694dda230cb2dfac79ac}{instance}}.GetItemData(list.ItemTypeID,\ list.ItemID);}
 \DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ slotData.SetItemSlotData(itemData,\ \mbox{\hyperlink{class_create_recipe_slot_list_af64f02175d370f1c70f70827d1a7d881}{m\_pocketType}});}
 \DoxyCodeLine{00037\ }
-\DoxyCodeLine{00038\ }
-\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}}.Add(slotData);}
-\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}ItemSlotDataコンポーネントがアタッチされていません"{}});}
-\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00045\ }
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIcontrollerに追加}}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_a6d53b2ee37d87dd253e3743208052040}{AddSelectUIControler}}(slot);}
-\DoxyCodeLine{00048\ }
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}}.Add(slotData);}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}RecipeItemSlotDataコンポーネントがアタッチされていません"{}});}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIcontrollerに追加}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_create_slot_list_a6d53b2ee37d87dd253e3743208052040}{AddSelectUIControler}}(slot);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -146,29 +156,29 @@ override void Create\+Recipe\+Slot\+List.\+Create\+Slot\+Instance (\begin{DoxyPa
 void Create\+Recipe\+Slot\+List.\+Check\+Create (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 
+
+料理が作成可能か確認 
+
+
+
+ \mbox{\hyperlink{_create_recipe_slot_list_8cs_source}{Create\+Recipe\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_recipe_slot_list_8cs_source_l00054}{54}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00055\ \ \ \ \ \{}
-\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 作成可能か確認}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レシピスロットを更新}}
 \DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{foreach}\ (var\ slot\ \textcolor{keywordflow}{in}\ \mbox{\hyperlink{class_base_create_slot_list_aaa435dcf5db0b0dd045bc4890efe4e88}{m\_slotList}})}
 \DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \{}
 \DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (slot\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
 \DoxyCodeLine{00060\ }
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ var\ data\ =\ slot.GetComponent<\mbox{\hyperlink{class_recipe_item_slot_data}{RecipeItemSlotData}}>();}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (data\ ==\ \textcolor{keyword}{null})\ \textcolor{keywordflow}{continue};}
-\DoxyCodeLine{00063\ }
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ data.\mbox{\hyperlink{class_recipe_item_slot_data_ac58cf30a9a738e7cf0c940a79df73482}{CheckCreate}}();}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00067\ \ \ \ \ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(slot.TryGetComponent<\mbox{\hyperlink{class_recipe_item_slot_data}{RecipeItemSlotData}}>(out\ var\ recipeSlot))}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ recipeSlot.CheckCreate();}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \}}
 
 \end{DoxyCode}
-呼び出し関係図\+:\nopagebreak
-\begin{figure}[H]
-\begin{center}
-\leavevmode
-\includegraphics[width=350pt]{d2/dec/class_create_recipe_slot_list_aa7d1f8fa388019c770da8763db9a8455_cgraph}
-\end{center}
-\end{figure}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -187,6 +197,10 @@ void Create\+Recipe\+Slot\+List.\+Check\+Create (\begin{DoxyParamCaption}{}{}\en
 
 
 
+ \mbox{\hyperlink{_create_recipe_slot_list_8cs_source}{Create\+Recipe\+Slot\+List.\+cs}} の \mbox{\hyperlink{_create_recipe_slot_list_8cs_source_l00012}{12}} 行目に定義があります。
+
+
+
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/003\+\_\+\+Item/\+Window/\+Recipe\+Window/\+Prefab/\+Recipe\+List/\mbox{\hyperlink{_create_recipe_slot_list_8cs}{Create\+Recipe\+Slot\+List.\+cs}}\end{DoxyCompactItemize}
+Project\+C/003\+\_\+\+Item/\+Window/\+Recipe\+Window/\+Prefab/\+Recipe\+List/\mbox{\hyperlink{_create_recipe_slot_list_8cs}{Create\+Recipe\+Slot\+List.\+cs}}\end{DoxyCompactItemize}

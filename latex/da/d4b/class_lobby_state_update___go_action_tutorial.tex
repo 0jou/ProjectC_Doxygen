@@ -44,7 +44,7 @@ virtual async Uni\+Task \mbox{\hyperlink{class_base_game_state_update_aceca06463
 \item 
 async Uni\+Task \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa7ca08c6779c21bbb91ce8e44db1ad73}{Create\+Window}} ()
 \item 
-void \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{Destory\+Window}} ()
+void \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aab895fb164304501605d5050622f2779}{Destory\+Controller\+Window}} ()
 \end{DoxyCompactItemize}
 \doxysubsubsection*{非公開変数類}
 \begin{DoxyCompactItemize}
@@ -66,6 +66,13 @@ bool \mbox{\hyperlink{class_base_game_state_update_a9103b014caf28d5c79f45855eee5
 \begin{DoxyCompactList}\small\item\em 終了したか \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{詳解}
+
+
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00007}{7}} 行目に定義があります。
+
+
+
 \doxysubsection{メソッド詳解}
 \Hypertarget{class_lobby_state_update___go_action_tutorial_a8e50f4cf1b414fcbf28adbe09bad9361}\index{LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}!OnInitialize@{OnInitialize}}
 \index{OnInitialize@{OnInitialize}!LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}}
@@ -80,6 +87,10 @@ override async Uni\+Task Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+On\+
 
 
 \mbox{\hyperlink{class_base_game_state_update_ac37dedf53d7486cb313a368771151692}{Base\+Game\+State\+Update}}を再実装しています。
+
+
+
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00025}{25}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
@@ -124,13 +135,16 @@ override async Uni\+Task Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+On\+
 \mbox{\hyperlink{class_base_game_state_update_a52d22e733ca2b52b0f09443ac9bbb3cd}{Base\+Game\+State\+Update}}を再実装しています。
 
 
+
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00046}{46}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00047\ \ \ \ \ \{}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ウィンドウを削除}}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{DestoryWindow}}();}
-\DoxyCodeLine{00050\ }
-\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
-\DoxyCodeLine{00052\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aab895fb164304501605d5050622f2779}{DestoryControllerWindow}}();}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ await\ UniTask.CompletedTask;}
+\DoxyCodeLine{00051\ \ \ \ \ \}}
 
 \end{DoxyCode}
 呼び出し関係図\+:\nopagebreak
@@ -147,26 +161,31 @@ override async Uni\+Task Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+On\+
 async Uni\+Task Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+Create\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
 
 
+
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00054}{54}} 行目に定義があります。
+
+
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00056\ \ \ \ \ \{}
-\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
-\DoxyCodeLine{00058\ }
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}}\ ==\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerがシリアライズされていません"{}});}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ var\ cancelToken\ =\ this.GetCancellationTokenOnDestroy();}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}}\ ==\ \textcolor{keyword}{null})}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Debug.LogError(\textcolor{stringliteral}{"{}WindowControllerがシリアライズされていません"{}});}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00065\ }
 \DoxyCodeLine{00066\ }
-\DoxyCodeLine{00067\ }
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}\ =\ Instantiate(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}});}
-\DoxyCodeLine{00069\ }
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 処理を行う}}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_base_window}{BaseWindow}}.Update<\mbox{\hyperlink{class_base_window}{BaseWindow}}>(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}});}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}\ =\ Instantiate(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c}{m\_windowController}});}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 処理を行う}}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ await\ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}.CreateWindow<\mbox{\hyperlink{class_base_window}{BaseWindow}}>();}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \ cancelToken.ThrowIfCancellationRequested();}
+\DoxyCodeLine{00072\ }
 \DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除}}
-\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}{DestoryWindow}}();}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_aab895fb164304501605d5050622f2779}{DestoryControllerWindow}}();}
 \DoxyCodeLine{00075\ }
 \DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 終了}}
 \DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_base_game_state_update_af32b8da037e8dafd960482722bb50cb0}{SetEnd}}();}
@@ -193,28 +212,29 @@ async Uni\+Task Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+Create\+Windo
 \includegraphics[width=350pt]{da/d4b/class_lobby_state_update___go_action_tutorial_aa7ca08c6779c21bbb91ce8e44db1ad73_icgraph}
 \end{center}
 \end{figure}
-\Hypertarget{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b}\index{LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}!DestoryWindow@{DestoryWindow}}
-\index{DestoryWindow@{DestoryWindow}!LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}}
-\doxysubsubsection{\texorpdfstring{DestoryWindow()}{DestoryWindow()}}
-{\footnotesize\ttfamily \label{class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b} 
-void Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+Destory\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+\Hypertarget{class_lobby_state_update___go_action_tutorial_aab895fb164304501605d5050622f2779}\index{LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}!DestoryControllerWindow@{DestoryControllerWindow}}
+\index{DestoryControllerWindow@{DestoryControllerWindow}!LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}}
+\doxysubsubsection{\texorpdfstring{DestoryControllerWindow()}{DestoryControllerWindow()}}
+{\footnotesize\ttfamily \label{class_lobby_state_update___go_action_tutorial_aab895fb164304501605d5050622f2779} 
+void Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+Destory\+Controller\+Window (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00087}{87}} 行目に定義があります。
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{00088\ \ \ \ \ \{}
 \DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 削除}}
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}\ !=\ \textcolor{keyword}{null})}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}});}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00094\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ Destroy(\mbox{\hyperlink{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}{m\_createWindowController}}.gameObject);}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
 
 \end{DoxyCode}
 被呼び出し関係図\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{da/d4b/class_lobby_state_update___go_action_tutorial_a6334e0f9f55111117a453e0155068d2b_icgraph}
+\includegraphics[width=350pt]{da/d4b/class_lobby_state_update___go_action_tutorial_aab895fb164304501605d5050622f2779_icgraph}
 \end{center}
 \end{figure}
 
@@ -226,6 +246,10 @@ void Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+Destory\+Window (\begin{
 {\footnotesize\ttfamily \label{class_lobby_state_update___go_action_tutorial_aa028a4a6db54db53abd90518c34aea9c} 
 \mbox{\hyperlink{class_window_controller}{Window\+Controller}} Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+m\+\_\+window\+Controller = null\hspace{0.3cm}{\ttfamily [private]}}
 
+
+
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00015}{15}} 行目に定義があります。
+
 \Hypertarget{class_lobby_state_update___go_action_tutorial_af8d547f1c72e6dfa8de45fd4ee9de437}\index{LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}!m\_createWindowController@{m\_createWindowController}}
 \index{m\_createWindowController@{m\_createWindowController}!LobbyStateUpdate\_GoActionTutorial@{LobbyStateUpdate\_GoActionTutorial}}
 \doxysubsubsection{\texorpdfstring{m\_createWindowController}{m\_createWindowController}}
@@ -234,6 +258,10 @@ void Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+Destory\+Window (\begin{
 
 
 
+ \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}} の \mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs_source_l00019}{19}} 行目に定義があります。
+
+
+
 このクラス詳解は次のファイルから抽出されました\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/3\+D\+\_\+prac/\+\_\+\+Project\+C/\+Assets/\+Project\+C/201\+\_\+\+Lobby\+\_\+\+Common/\+Manager/\+Lobby\+State/\+State\+Update/\+Go\+Action\+Tutorial/\mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}}\end{DoxyCompactItemize}
+Project\+C/201\+\_\+\+Lobby\+\_\+\+Common/\+Manager/\+Lobby\+State/\+State\+Update/\+Go\+Action\+Tutorial/\mbox{\hyperlink{_lobby_state_update___go_action_tutorial_8cs}{Lobby\+State\+Update\+\_\+\+Go\+Action\+Tutorial.\+cs}}\end{DoxyCompactItemize}

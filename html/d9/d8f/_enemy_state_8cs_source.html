@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/004_Character/Scripts/State/EnemyState.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241016</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d9/d8f/_enemy_state_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">EnemyState.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d9/d8f/_enemy_state_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d4/dca/namespace_arbor.html">Arbor</a>;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>Cysharp.Threading.Tasks;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>System;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>UniRx;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>UnityEngine.VFX;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// キャラクターの基盤クラス</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span> <span class="keyword">partial class </span><a class="code hl_class" href="../../d7/d2e/class_character_core.html">CharacterCore</a> : MonoBehaviour, <a class="code hl_interface" href="../../df/d15/interface_i_damageable.html">IDamageable</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="comment">//===================================</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// 敵側ステート</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">//===================================</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">// 各基本State（伊波）</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="comment">//タックル攻撃用のオブジェクトを指定（山本）</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    [Header(<span class="stringliteral">&quot;タックル攻撃用のエフェクト&quot;</span>)]</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d7/d2e/class_character_core.html#a0f609cfe0b0230c0210e67a38c01dcd7">   18</a></span>    [SerializeField] <span class="keyword">private</span> GameObject <a class="code hl_variable" href="../../d7/d2e/class_character_core.html#a0f609cfe0b0230c0210e67a38c01dcd7">m_rushAttackEffect</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    [System.Serializable]</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/ReadyAttack&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html">   22</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html">ActionState_EnemyReadyAttack</a> : <a class="code hl_class" href="../../dc/de8/class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#a17f5f7857045b3fb82fe497d99af8202">   24</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#a17f5f7857045b3fb82fe497d99af8202">m_isNotKnockBack</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#a6617776d8f62f5c92bd0329e83832b24">   25</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#a6617776d8f62f5c92bd0329e83832b24">m_isShowDushEffect</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00027" data-start="{" data-end="}">
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#adc8bb673c7ddf806e617a928d8f9d3fb">   27</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#adc8bb673c7ddf806e617a928d8f9d3fb">OnEnter</a>()</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        {</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            base.OnEnter();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            Core.m_isNoKnockBack = m_isNotKnockBack;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="comment">//突進選択時、ダッシュエフェクトを発生させる（山本）</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            <span class="keywordflow">if</span> (m_isShowDushEffect)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>                <span class="keywordflow">if</span> (Core.m_dashEffect)</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>                {</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>                    <span class="comment">//ダッシュエフェクトを再生</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>                    Core.m_dashEffect?.Play();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>                }</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <span class="keywordflow">if</span> (Core.m_rushAttackEffect)</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                    <span class="comment">//ラッシュエフェクトをアクティブ化(山本)</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    Core.m_rushAttackEffect.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    <span class="comment">//数値を0.0fに</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                    Core.m_rushAttackEffect.GetComponent&lt;VisualEffect&gt;()?.SetFloat(<span class="stringliteral">&quot;UVAlphaClippingValue&quot;</span>, 0.0f);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            Core.m_inputProvider.AttackType = 0;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            Core.m_animator.SetInteger(<span class="stringliteral">&quot;DoAttackType&quot;</span>, 0);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        }</div>
+</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#aeb2efb082388f526423dbf7c202dc916">   55</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#aeb2efb082388f526423dbf7c202dc916">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            Core.SetRotateToTarget(Core.m_inputProvider.Destination - Core.transform.position);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        }</div>
+</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    }</div>
+</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    [System.Serializable]</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/UseItem&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="};">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="../../d3/d49/class_character_core_1_1_action_state___enemy_use_item.html">   64</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d3/d49/class_character_core_1_1_action_state___enemy_use_item.html">ActionState_EnemyUseItem</a> : <a class="code hl_class" href="../../dc/de8/class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    {</div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d3/d49/class_character_core_1_1_action_state___enemy_use_item.html#af70a253a1ade9de249fa7a92762a833a">   66</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d3/d49/class_character_core_1_1_action_state___enemy_use_item.html#af70a253a1ade9de249fa7a92762a833a">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            base.OnFixedUpdate();</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            Core.Move(0.0f);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        }</div>
+</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    }</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    [System.Serializable]</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/Rush&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="};">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html">   75</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html">ActionState_EnemyRush</a> : <a class="code hl_class" href="../../dc/de8/class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    {</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        [Header(<span class="stringliteral">&quot;突進時間&quot;</span>)]</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ab5de0a7fa084de0fe3d6676d7c4d8bed">   78</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ab5de0a7fa084de0fe3d6676d7c4d8bed">m_rushTime</a>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        [Header(<span class="stringliteral">&quot;追尾時間&quot;</span>)]</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a248fe9bc6c60eba2323529ee8a233510">   80</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a248fe9bc6c60eba2323529ee8a233510">m_maxHomingTime</a>;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        [Header(<span class="stringliteral">&quot;追尾の強さ&quot;</span>), Range(0.0f, 1.0f)]</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a0ca856cc2b3613654465920156062fad">   82</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a0ca856cc2b3613654465920156062fad">m_rateHoming</a>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        [Header(<span class="stringliteral">&quot;CharactorCoreのdushSpeed基準にしたspeed補正値&quot;</span>)]</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a333f5ec7fc5875c8e02bc898e4b699d1">   85</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a333f5ec7fc5875c8e02bc898e4b699d1">m_magnificationSpeed</a> = 1f;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a3c316de7f3090a912a9dce5d656af091">   86</a></span>        <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a3c316de7f3090a912a9dce5d656af091">m_remainingTime</a>;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ae1842e7f3d2b7e313465c59881a73daf">   87</a></span>        <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ae1842e7f3d2b7e313465c59881a73daf">m_homingTime</a>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a35f5d91b9f480908075451e4705f58ce">   88</a></span>        <span class="keyword">private</span> Collider <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a35f5d91b9f480908075451e4705f58ce">m_collider</a>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="comment">//[Header(&quot;ラッシュエフェクトの消失スピード&quot;)]</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">//[SerializeField] private float m_rushEffectAppearSpeed = 0.1f;</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="comment">//ラッシュエフェクトの現在の進捗状況</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#adf6b9a4e52b4ea75ae40b84bf6c71071">   94</a></span>        <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#adf6b9a4e52b4ea75ae40b84bf6c71071">m_rushEffectApearProgress</a> = 0.0f;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ab5a8ca30c2e9df807bd11502832d09b5">   97</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ab5a8ca30c2e9df807bd11502832d09b5">OnEnter</a>()</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            base.OnEnter();</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            m_remainingTime = m_rushTime;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            m_homingTime = m_maxHomingTime;</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            m_rushEffectApearProgress = 0.0f;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            Core.m_isNoKnockBack = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        }</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00107" data-start="{" data-end="}">
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a586b92c8e7f52f5d862e198fa550a656">  107</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a586b92c8e7f52f5d862e198fa550a656">OnUpdate</a>()</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        {</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            base.OnUpdate();</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            m_remainingTime -= Time.deltaTime;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            m_homingTime -= Time.deltaTime;</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>            <span class="comment">//ラッシュエフェクトの進捗度に合わせて表示（山本）</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <span class="keywordflow">if</span> (Core.m_rushAttackEffect)</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>            {</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>                <span class="comment">//ダッシュ時間に合わせて進捗度が0=&gt;1=&gt;0になるように調整</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>                m_rushEffectApearProgress = (float)Math.Sin((1.0f - (m_remainingTime / m_rushTime)) * Math.PI);</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>                <span class="comment">//進捗度をセット</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                Core.m_rushAttackEffect.GetComponent&lt;VisualEffect&gt;().SetFloat(<span class="stringliteral">&quot;UVAlphaClippingValue&quot;</span>, m_rushEffectApearProgress);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            }</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">if</span> (m_remainingTime &lt;= 0f)</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            {</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>                Core.m_animator.SetTrigger(<span class="stringliteral">&quot;EndAttack&quot;</span>);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>                <span class="keywordflow">if</span> (Core.m_dashEffect)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>                    <span class="comment">//ダッシュエフェクトを止める（山本）</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>                    Core.m_dashEffect?.Stop();</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>                }</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>                <span class="keywordflow">if</span> (Core.m_rushAttackEffect)</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                    <span class="comment">//ラッシュ攻撃エフェクトを非アクティブにする</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>                    Core.m_rushAttackEffect?.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                }</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        }</div>
+</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="foldopen" id="foldopen00142" data-start="{" data-end="}">
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a142eab81fc2c0528e580bcc06346268f">  142</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a142eab81fc2c0528e580bcc06346268f">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            <span class="keywordflow">if</span> (m_homingTime &gt; 0.0f)</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            {</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>                Vector3 rotVec = Core.m_inputProvider.Destination - Core.transform.position;</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>                rotVec.y = 0.0f;</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>                rotVec.Normalize();</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>                rotVec = Core.transform.forward + rotVec * m_rateHoming;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>                Core.SetRotateToTarget(rotVec);</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>            }</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>            Core.Move(Core.m_dushSpeed * m_magnificationSpeed);</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        }</div>
+</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span> </div>
+<div class="foldopen" id="foldopen00155" data-start="{" data-end="}">
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno"><a class="line" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a7632f11563c02a818a4ef4a8b18856b6">  155</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a7632f11563c02a818a4ef4a8b18856b6">OnExit</a>()</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        {</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>            base.OnExit();</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            <span class="keywordflow">if</span> (Core.m_rushAttackEffect)</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                <span class="comment">//ラッシュ攻撃エフェクトを非アクティブにする</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                Core.m_rushAttackEffect?.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            }</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        }</div>
+</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    }</div>
+</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    [System.Serializable]</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/ReadyThrowRock&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00168" data-start="{" data-end="};">
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno"><a class="line" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html">  168</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html">ActionState_ReadyThrowRock</a> : <a class="code hl_class" href="../../dc/de8/class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    {</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        [Header(<span class="stringliteral">&quot;追尾開始タイミング&quot;</span>), Range(0.0f, 1.0f)]</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a4719460ca80ff7d62ba3d8e1946365af">  171</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a4719460ca80ff7d62ba3d8e1946365af">m_startHomingProgress</a>;</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        [Header(<span class="stringliteral">&quot;追尾の強さ&quot;</span>), Range(0.0f, 1.0f)]</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno"><a class="line" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a8d7bf02eb2fd6ffd549b3aa20466a953">  173</a></span>        [SerializeField] <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a8d7bf02eb2fd6ffd549b3aa20466a953">m_rateHoming</a>;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#aab46ab3912932a9ad689a8c693b01ad0">  175</a></span>        Transform <a class="code hl_variable" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#aab46ab3912932a9ad689a8c693b01ad0">m_target</a>;</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span> </div>
+<div class="foldopen" id="foldopen00177" data-start="{" data-end="}">
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno"><a class="line" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a37751cbab3af37816ac1c6e6dbc8aca5">  177</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a37751cbab3af37816ac1c6e6dbc8aca5">OnEnter</a>()</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        {</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>            base.OnEnter();</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>            Core.m_isNoKnockBack = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>            <span class="keywordflow">if</span> (Core.transform.TryGetComponent(out ArborFSM arbor))</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            {</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>                m_target = arbor.parameterContainer.GetTransform(<span class="stringliteral">&quot;Target&quot;</span>);</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            }</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        }</div>
+</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="foldopen" id="foldopen00188" data-start="{" data-end="}">
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno"><a class="line" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a52e98158f170afe2625d31fe8903e1a9">  188</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a52e98158f170afe2625d31fe8903e1a9">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>            base.OnFixedUpdate();</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            <span class="keywordflow">if</span> (Core.m_animator.GetCurrentAnimatorStateInfo(0).normalizedTime &gt; m_startHomingProgress)</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>            {</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>                <span class="keywordflow">if</span> (!m_target) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>                Vector3 rotVec = m_target.transform.position - Core.transform.position;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>                rotVec.y = 0.0f;</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>                rotVec.Normalize();</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>                rotVec = Core.transform.forward + rotVec * m_rateHoming;</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>                Core.SetRotateToTarget(rotVec);</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>            }</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            Core.Move(0.0f);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        }</div>
+</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>    }</div>
+</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span> </div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    [Serializable]</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/Discover&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00207" data-start="{" data-end="};">
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno"><a class="line" href="../../db/d58/class_character_core_1_1_action_state___enemy_discover.html">  207</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../db/d58/class_character_core_1_1_action_state___enemy_discover.html">ActionState_EnemyDiscover</a> : <a class="code hl_class" href="../../dc/de8/class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    {</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>        <span class="comment">// 以下の処理はEnemyIconElementに移行（伊波）</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>        <span class="comment">//[SerializeField] private float m_iconShowTime = 2f;</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
+<div class="foldopen" id="foldopen00212" data-start="{" data-end="}">
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno"><a class="line" href="../../db/d58/class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">  212</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../db/d58/class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>        {</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>            base.OnFixedUpdate();</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>            Core.Move(0.0f);</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        }</div>
+</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="comment">//public override async void OnEnter()</span></div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>        <span class="comment">//{</span></div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>        <span class="comment">//    base.OnEnter();</span></div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="comment">//    Transform canvas = Core.transform.Find(&quot;EnemyCanvas&quot;);</span></div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        <span class="comment">//    if (!canvas) return;</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>        <span class="comment">//    if (!canvas.TryGetComponent(out EnemyIconController iconController)) return;</span></div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="comment">//    iconController.ShowIcon(EnemyIconController.EnemyIconType.DiscoverIcon);</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <span class="comment">//    await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</span></div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>        <span class="comment">//    if (iconController)</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="comment">//    {</span></div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>        <span class="comment">//        iconController.HideIcon(EnemyIconController.EnemyIconType.DiscoverIcon);</span></div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        <span class="comment">//    }</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="comment">//}</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>    }</div>
+</div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span> </div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    [Serializable]</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    [AddTypeMenu(<span class="stringliteral">&quot;Enemy/LostSight&quot;</span>)]</div>
+<div class="foldopen" id="foldopen00236" data-start="{" data-end="};">
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno"><a class="line" href="../../d5/db0/class_character_core_1_1_action_state___enemy_lost_sight.html">  236</a></span>    <span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d5/db0/class_character_core_1_1_action_state___enemy_lost_sight.html">ActionState_EnemyLostSight</a> : <a class="code hl_class" href="../../dc/de8/class_character_core_1_1_action_state___base.html">ActionState_Base</a></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    {</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>        <span class="comment">// 以下の処理はEnemyIconElementに移行（伊波）</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        <span class="comment">//[SerializeField] private float m_iconShowTime = 5f;</span></div>
+<div class="foldopen" id="foldopen00240" data-start="{" data-end="}">
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno"><a class="line" href="../../d5/db0/class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">  240</a></span>        <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d5/db0/class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">OnFixedUpdate</a>()</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        {</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            base.OnFixedUpdate();</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>            Core.Move(0.0f);</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        }</div>
+</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <span class="comment">//public override async void OnEnter()</span></div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="comment">//{</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <span class="comment">//    base.OnEnter();</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="comment">//    Transform canvas = Core.transform.Find(&quot;EnemyCanvas&quot;);</span></div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        <span class="comment">//    if (!canvas) return;</span></div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="comment">//    if (!canvas.TryGetComponent(out EnemyIconController iconController)) return;</span></div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>        <span class="comment">//    iconController.ShowIcon(EnemyIconController.EnemyIconType.LostSightIcon);</span></div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>        <span class="comment">//    await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));</span></div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        <span class="comment">//    if (iconController)</span></div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="comment">//    {</span></div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>        <span class="comment">//        iconController.HideIcon(EnemyIconController.EnemyIconType.LostSightIcon);</span></div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>        <span class="comment">//    }</span></div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        <span class="comment">//}</span></div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    }</div>
+</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>}</div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___base_html"><div class="ttname"><a href="../../dc/de8/class_character_core_1_1_action_state___base.html">CharacterCore.ActionState_Base</a></div><div class="ttdef"><b>Definition</b> <a href="../../d9/d21/_character_core_8cs_source.html#l00416">CharacterCore.cs:417</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html"><div class="ttname"><a href="../../db/d58/class_character_core_1_1_action_state___enemy_discover.html">CharacterCore.ActionState_EnemyDiscover</a></div><div class="ttdef"><b>Definition</b> <a href="#l00207">EnemyState.cs:208</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_discover_html_a06184708bd9eaff7ffde573bb3d2c292"><div class="ttname"><a href="../../db/d58/class_character_core_1_1_action_state___enemy_discover.html#a06184708bd9eaff7ffde573bb3d2c292">CharacterCore.ActionState_EnemyDiscover.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00212">EnemyState.cs:212</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html"><div class="ttname"><a href="../../d5/db0/class_character_core_1_1_action_state___enemy_lost_sight.html">CharacterCore.ActionState_EnemyLostSight</a></div><div class="ttdef"><b>Definition</b> <a href="#l00236">EnemyState.cs:237</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_lost_sight_html_ae5914c027881b35583c1414f66820417"><div class="ttname"><a href="../../d5/db0/class_character_core_1_1_action_state___enemy_lost_sight.html#ae5914c027881b35583c1414f66820417">CharacterCore.ActionState_EnemyLostSight.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00240">EnemyState.cs:240</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html"><div class="ttname"><a href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html">CharacterCore.ActionState_EnemyReadyAttack</a></div><div class="ttdef"><b>Definition</b> <a href="#l00022">EnemyState.cs:23</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html_a17f5f7857045b3fb82fe497d99af8202"><div class="ttname"><a href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#a17f5f7857045b3fb82fe497d99af8202">CharacterCore.ActionState_EnemyReadyAttack.m_isNotKnockBack</a></div><div class="ttdeci">bool m_isNotKnockBack</div><div class="ttdef"><b>Definition</b> <a href="#l00024">EnemyState.cs:24</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html_a6617776d8f62f5c92bd0329e83832b24"><div class="ttname"><a href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#a6617776d8f62f5c92bd0329e83832b24">CharacterCore.ActionState_EnemyReadyAttack.m_isShowDushEffect</a></div><div class="ttdeci">bool m_isShowDushEffect</div><div class="ttdef"><b>Definition</b> <a href="#l00025">EnemyState.cs:25</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html_adc8bb673c7ddf806e617a928d8f9d3fb"><div class="ttname"><a href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#adc8bb673c7ddf806e617a928d8f9d3fb">CharacterCore.ActionState_EnemyReadyAttack.OnEnter</a></div><div class="ttdeci">override void OnEnter()</div><div class="ttdef"><b>Definition</b> <a href="#l00027">EnemyState.cs:27</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_ready_attack_html_aeb2efb082388f526423dbf7c202dc916"><div class="ttname"><a href="../../d7/d5f/class_character_core_1_1_action_state___enemy_ready_attack.html#aeb2efb082388f526423dbf7c202dc916">CharacterCore.ActionState_EnemyReadyAttack.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00055">EnemyState.cs:55</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html">CharacterCore.ActionState_EnemyRush</a></div><div class="ttdef"><b>Definition</b> <a href="#l00075">EnemyState.cs:76</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a0ca856cc2b3613654465920156062fad"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a0ca856cc2b3613654465920156062fad">CharacterCore.ActionState_EnemyRush.m_rateHoming</a></div><div class="ttdeci">float m_rateHoming</div><div class="ttdef"><b>Definition</b> <a href="#l00082">EnemyState.cs:82</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a142eab81fc2c0528e580bcc06346268f"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a142eab81fc2c0528e580bcc06346268f">CharacterCore.ActionState_EnemyRush.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00142">EnemyState.cs:142</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a248fe9bc6c60eba2323529ee8a233510"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a248fe9bc6c60eba2323529ee8a233510">CharacterCore.ActionState_EnemyRush.m_maxHomingTime</a></div><div class="ttdeci">float m_maxHomingTime</div><div class="ttdef"><b>Definition</b> <a href="#l00080">EnemyState.cs:80</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a333f5ec7fc5875c8e02bc898e4b699d1"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a333f5ec7fc5875c8e02bc898e4b699d1">CharacterCore.ActionState_EnemyRush.m_magnificationSpeed</a></div><div class="ttdeci">float m_magnificationSpeed</div><div class="ttdef"><b>Definition</b> <a href="#l00085">EnemyState.cs:85</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a35f5d91b9f480908075451e4705f58ce"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a35f5d91b9f480908075451e4705f58ce">CharacterCore.ActionState_EnemyRush.m_collider</a></div><div class="ttdeci">Collider m_collider</div><div class="ttdef"><b>Definition</b> <a href="#l00088">EnemyState.cs:88</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a3c316de7f3090a912a9dce5d656af091"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a3c316de7f3090a912a9dce5d656af091">CharacterCore.ActionState_EnemyRush.m_remainingTime</a></div><div class="ttdeci">float m_remainingTime</div><div class="ttdef"><b>Definition</b> <a href="#l00086">EnemyState.cs:86</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a586b92c8e7f52f5d862e198fa550a656"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a586b92c8e7f52f5d862e198fa550a656">CharacterCore.ActionState_EnemyRush.OnUpdate</a></div><div class="ttdeci">override void OnUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00107">EnemyState.cs:107</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_a7632f11563c02a818a4ef4a8b18856b6"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#a7632f11563c02a818a4ef4a8b18856b6">CharacterCore.ActionState_EnemyRush.OnExit</a></div><div class="ttdeci">override void OnExit()</div><div class="ttdef"><b>Definition</b> <a href="#l00155">EnemyState.cs:155</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_ab5a8ca30c2e9df807bd11502832d09b5"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ab5a8ca30c2e9df807bd11502832d09b5">CharacterCore.ActionState_EnemyRush.OnEnter</a></div><div class="ttdeci">override void OnEnter()</div><div class="ttdef"><b>Definition</b> <a href="#l00097">EnemyState.cs:97</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_ab5de0a7fa084de0fe3d6676d7c4d8bed"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ab5de0a7fa084de0fe3d6676d7c4d8bed">CharacterCore.ActionState_EnemyRush.m_rushTime</a></div><div class="ttdeci">float m_rushTime</div><div class="ttdef"><b>Definition</b> <a href="#l00078">EnemyState.cs:78</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_adf6b9a4e52b4ea75ae40b84bf6c71071"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#adf6b9a4e52b4ea75ae40b84bf6c71071">CharacterCore.ActionState_EnemyRush.m_rushEffectApearProgress</a></div><div class="ttdeci">float m_rushEffectApearProgress</div><div class="ttdef"><b>Definition</b> <a href="#l00094">EnemyState.cs:94</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_rush_html_ae1842e7f3d2b7e313465c59881a73daf"><div class="ttname"><a href="../../d7/d84/class_character_core_1_1_action_state___enemy_rush.html#ae1842e7f3d2b7e313465c59881a73daf">CharacterCore.ActionState_EnemyRush.m_homingTime</a></div><div class="ttdeci">float m_homingTime</div><div class="ttdef"><b>Definition</b> <a href="#l00087">EnemyState.cs:87</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_use_item_html"><div class="ttname"><a href="../../d3/d49/class_character_core_1_1_action_state___enemy_use_item.html">CharacterCore.ActionState_EnemyUseItem</a></div><div class="ttdef"><b>Definition</b> <a href="#l00064">EnemyState.cs:65</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___enemy_use_item_html_af70a253a1ade9de249fa7a92762a833a"><div class="ttname"><a href="../../d3/d49/class_character_core_1_1_action_state___enemy_use_item.html#af70a253a1ade9de249fa7a92762a833a">CharacterCore.ActionState_EnemyUseItem.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00066">EnemyState.cs:66</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html"><div class="ttname"><a href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html">CharacterCore.ActionState_ReadyThrowRock</a></div><div class="ttdef"><b>Definition</b> <a href="#l00168">EnemyState.cs:169</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_a37751cbab3af37816ac1c6e6dbc8aca5"><div class="ttname"><a href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a37751cbab3af37816ac1c6e6dbc8aca5">CharacterCore.ActionState_ReadyThrowRock.OnEnter</a></div><div class="ttdeci">override void OnEnter()</div><div class="ttdef"><b>Definition</b> <a href="#l00177">EnemyState.cs:177</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_a4719460ca80ff7d62ba3d8e1946365af"><div class="ttname"><a href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a4719460ca80ff7d62ba3d8e1946365af">CharacterCore.ActionState_ReadyThrowRock.m_startHomingProgress</a></div><div class="ttdeci">float m_startHomingProgress</div><div class="ttdef"><b>Definition</b> <a href="#l00171">EnemyState.cs:171</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_a52e98158f170afe2625d31fe8903e1a9"><div class="ttname"><a href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a52e98158f170afe2625d31fe8903e1a9">CharacterCore.ActionState_ReadyThrowRock.OnFixedUpdate</a></div><div class="ttdeci">override void OnFixedUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00188">EnemyState.cs:188</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_a8d7bf02eb2fd6ffd549b3aa20466a953"><div class="ttname"><a href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#a8d7bf02eb2fd6ffd549b3aa20466a953">CharacterCore.ActionState_ReadyThrowRock.m_rateHoming</a></div><div class="ttdeci">float m_rateHoming</div><div class="ttdef"><b>Definition</b> <a href="#l00173">EnemyState.cs:173</a></div></div>
+<div class="ttc" id="aclass_character_core_1_1_action_state___ready_throw_rock_html_aab46ab3912932a9ad689a8c693b01ad0"><div class="ttname"><a href="../../dd/da1/class_character_core_1_1_action_state___ready_throw_rock.html#aab46ab3912932a9ad689a8c693b01ad0">CharacterCore.ActionState_ReadyThrowRock.m_target</a></div><div class="ttdeci">Transform m_target</div><div class="ttdef"><b>Definition</b> <a href="#l00175">EnemyState.cs:175</a></div></div>
+<div class="ttc" id="aclass_character_core_html"><div class="ttname"><a href="../../d7/d2e/class_character_core.html">CharacterCore</a></div><div class="ttdef"><b>Definition</b> <a href="../../d9/d21/_character_core_8cs_source.html#l00012">CharacterCore.cs:13</a></div></div>
+<div class="ttc" id="aclass_character_core_html_a0f609cfe0b0230c0210e67a38c01dcd7"><div class="ttname"><a href="../../d7/d2e/class_character_core.html#a0f609cfe0b0230c0210e67a38c01dcd7">CharacterCore.m_rushAttackEffect</a></div><div class="ttdeci">GameObject m_rushAttackEffect</div><div class="ttdef"><b>Definition</b> <a href="#l00018">EnemyState.cs:18</a></div></div>
+<div class="ttc" id="ainterface_i_damageable_html"><div class="ttname"><a href="../../df/d15/interface_i_damageable.html">IDamageable</a></div><div class="ttdef"><b>Definition</b> <a href="../../d1/dee/_i_damageable_8cs_source.html#l00018">IDamageable.cs:19</a></div></div>
+<div class="ttc" id="anamespace_arbor_html"><div class="ttname"><a href="../../d4/dca/namespace_arbor.html">Arbor</a></div><div class="ttdef"><b>Definition</b> <a href="../../d8/db5/_agent_chase_to_target_8cs_source.html#l00008">AgentChaseToTarget.cs:9</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_44632b20317e1c9661437bb5b44fd48c.html">004_Character</a></li><li class="navelem"><a class="el" href="../../dir_a2c1e5652d14869552b004b83f25e7bc.html">Scripts</a></li><li class="navelem"><a class="el" href="../../dir_8d12b65b49783e656928831f5c6bc3c4.html">State</a></li><li class="navelem"><a class="el" href="../../d9/d8f/_enemy_state_8cs.html">EnemyState.cs</a></li>
+    <li class="footer">2024年10月16日(水) 09時36分51秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

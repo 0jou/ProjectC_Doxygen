@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/001_Common/Scripts/MetaAI/CharacterMeta.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241016</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d2/d83/_character_meta_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">CharacterMeta.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d2/d83/_character_meta_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>UniRx;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>UniRx.Triggers;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>UnityEngine.AI;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// キャラクターを監視できるMetaAI（伊波）</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="foldopen" id="foldopen00010" data-start="{" data-end="};">
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html">   10</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../df/dc7/class_character_meta.html">CharacterMeta</a> : MonoBehaviour, <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a>&lt;CharacterCore&gt;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html#ab2704e38b3d1bb783a0723ec89336667">   12</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/dc7/class_character_meta.html#ab2704e38b3d1bb783a0723ec89336667">Awake</a>()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        <span class="keywordflow">if</span> (<a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">Instance</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <a class="code hl_interface" href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI&lt;CharacterCore&gt;</a>.<a class="code hl_property" href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">Instance</a> = <span class="keyword">this</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            DontDestroyOnLoad(gameObject);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            Destroy(gameObject);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html#a212b7738b11aa1579d4057d151005f86">   26</a></span>    HashSet&lt;CharacterCore&gt; <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a212b7738b11aa1579d4057d151005f86">_characterList</a> = <span class="keyword">new</span>();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html#a45d15bcd0165639dc2f31fac30514af0">   28</a></span>    <span class="keyword">public</span> HashSet&lt;CharacterCore&gt; <a class="code hl_property" href="../../df/dc7/class_character_meta.html#a45d15bcd0165639dc2f31fac30514af0">ObjectList</a> =&gt; <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a212b7738b11aa1579d4057d151005f86">_characterList</a>;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">   30</a></span>    HashSet&lt;CharacterCore&gt; <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a> = <span class="keyword">new</span>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html#ab61bf3eee1aabbe43d6518226bccf453">   31</a></span>    <span class="keyword">public</span> HashSet&lt;CharacterCore&gt; <a class="code hl_property" href="../../df/dc7/class_character_meta.html#ab61bf3eee1aabbe43d6518226bccf453">BossList</a> =&gt; <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="foldopen" id="foldopen00033" data-start="{" data-end="}">
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="../../df/dc7/class_character_meta.html#aba1b962e3c09989c2c27383a3306c6da">   33</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../df/dc7/class_character_meta.html#aba1b962e3c09989c2c27383a3306c6da">RegisterObject</a>(CharacterCore chara)</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    {</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <span class="keywordflow">if</span> (chara == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a212b7738b11aa1579d4057d151005f86">_characterList</a>.Add(chara))</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="comment">// 敵の移動優先順位を決定 (伊波)</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="comment">// TODO:シーン切替時にpriorityリセットしたい</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            <span class="keywordflow">if</span> (chara.TryGetComponent(out NavMeshAgent agent))</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>            {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>                <span class="keywordflow">if</span> (chara.TryGetComponent(out EnemyParameters eParam))</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>                    <span class="keywordflow">if</span> (eParam.IsBoss)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                    {</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>                        <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a>.Add(chara);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>                        agent.avoidancePriority = <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a>.Count;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                    }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>                    {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                        <span class="comment">// priorityは0～99が有効</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                        <span class="keywordtype">int</span> priority = _characterList.Count + 10;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>                        <span class="keywordflow">while</span> (priority &gt;= 100) priority += -(100 - <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a>.Count);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                        agent.avoidancePriority = priority;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>                    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>                }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            chara.OnDestroyAsObservable()</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                .Subscribe(_ =&gt;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>                {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>                    <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a212b7738b11aa1579d4057d151005f86">_characterList</a>.Remove(chara);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>                    <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a>.Contains(chara)) <a class="code hl_variable" href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">_bossList</a>.Remove(chara);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>                }).AddTo(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    }</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+</div>
+<div class="ttc" id="aclass_character_meta_html"><div class="ttname"><a href="../../df/dc7/class_character_meta.html">CharacterMeta</a></div><div class="ttdef"><b>Definition</b> <a href="#l00010">CharacterMeta.cs:11</a></div></div>
+<div class="ttc" id="aclass_character_meta_html_a212b7738b11aa1579d4057d151005f86"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#a212b7738b11aa1579d4057d151005f86">CharacterMeta._characterList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; _characterList</div><div class="ttdef"><b>Definition</b> <a href="#l00026">CharacterMeta.cs:26</a></div></div>
+<div class="ttc" id="aclass_character_meta_html_a45d15bcd0165639dc2f31fac30514af0"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#a45d15bcd0165639dc2f31fac30514af0">CharacterMeta.ObjectList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; ObjectList</div><div class="ttdef"><b>Definition</b> <a href="#l00028">CharacterMeta.cs:28</a></div></div>
+<div class="ttc" id="aclass_character_meta_html_a902ab4d443992a88f4739504250a3495"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#a902ab4d443992a88f4739504250a3495">CharacterMeta._bossList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; _bossList</div><div class="ttdef"><b>Definition</b> <a href="#l00030">CharacterMeta.cs:30</a></div></div>
+<div class="ttc" id="aclass_character_meta_html_ab2704e38b3d1bb783a0723ec89336667"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#ab2704e38b3d1bb783a0723ec89336667">CharacterMeta.Awake</a></div><div class="ttdeci">void Awake()</div><div class="ttdef"><b>Definition</b> <a href="#l00012">CharacterMeta.cs:12</a></div></div>
+<div class="ttc" id="aclass_character_meta_html_ab61bf3eee1aabbe43d6518226bccf453"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#ab61bf3eee1aabbe43d6518226bccf453">CharacterMeta.BossList</a></div><div class="ttdeci">HashSet&lt; CharacterCore &gt; BossList</div><div class="ttdef"><b>Definition</b> <a href="#l00031">CharacterMeta.cs:31</a></div></div>
+<div class="ttc" id="aclass_character_meta_html_aba1b962e3c09989c2c27383a3306c6da"><div class="ttname"><a href="../../df/dc7/class_character_meta.html#aba1b962e3c09989c2c27383a3306c6da">CharacterMeta.RegisterObject</a></div><div class="ttdeci">void RegisterObject(CharacterCore chara)</div><div class="ttdef"><b>Definition</b> <a href="#l00033">CharacterMeta.cs:33</a></div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html">IMetaAI</a></div><div class="ttdef"><b>Definition</b> <a href="../../d9/dcb/_meta_a_i_8cs_source.html#l00011">MetaAI.cs:12</a></div></div>
+<div class="ttc" id="ainterface_i_meta_a_i_html_a81091acf9bf85e074a370e77b8bb3e16"><div class="ttname"><a href="../../df/d5b/interface_i_meta_a_i.html#a81091acf9bf85e074a370e77b8bb3e16">IMetaAI&lt; CharacterCore &gt;::Instance</a></div><div class="ttdeci">static IMetaAI&lt; T &gt; Instance</div><div class="ttdef"><b>Definition</b> <a href="../../d9/dcb/_meta_a_i_8cs_source.html#l00013">MetaAI.cs:13</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_f731fc98d37fad6acfa5be0e7658a68b.html">001_Common</a></li><li class="navelem"><a class="el" href="../../dir_4d37cc116eb89c75c3cec871092dfebc.html">Scripts</a></li><li class="navelem"><a class="el" href="../../dir_db67ae86fdc9a95ed59a72e631a52730.html">MetaAI</a></li><li class="navelem"><a class="el" href="../../d2/d83/_character_meta_8cs.html">CharacterMeta.cs</a></li>
+    <li class="footer">2024年10月16日(水) 09時47分24秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

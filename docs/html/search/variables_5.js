@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['proximitycretaewindowlist_0',['proximityCretaeWindowList',['../db/d9a/class_proximity_create_window_meta.html#ae60a874e49c15acc85224264ad6f2b1c',1,'ProximityCreateWindowMeta']]]
+  ['enemyparameters_0',['EnemyParameters',['../d7/d2e/class_character_core.html#ae122dd79bc296d917c1969788ee035f4',1,'CharacterCore']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['value_0',['value',['../d5/d14/class_serializable_dictionary_1_1_pair.html#ab00bd46e36dfb53f707e4911c6948d26',1,'SerializableDictionary::Pair']]]
+  ['globaltimespeed_0',['globalTimeSpeed',['../dc/d1e/class_shader___global___time_speed.html#a0bac4dc9351336640da8edebfc47d547',1,'Shader_Global_TimeSpeed']]],
+  ['gravity_1',['Gravity',['../d3/d0a/class_my_character_controller.html#ae507c57c6d18ec3275a8e84767fff8e0',1,'MyCharacterController']]]
 ];

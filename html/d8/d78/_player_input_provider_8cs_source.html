@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/001_Common/Scripts/Input/PlayerInputProvider.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241029</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d8/d78/_player_input_provider_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">PlayerInputProvider.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d8/d78/_player_input_provider_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>UnityEngine.InputSystem;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// PlayerInputProvider (濱口)</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// PlayerInputを使用した操作キャラクターへのInput処理</span></div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html">    9</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d3/d3e/class_player_input_provider.html">PlayerInputProvider</a> : <a class="code hl_interface" href="../../d8/d5c/interface_i_input_provider.html">IInputProvider</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a523838a37d5f66a1e2de276e28cc4601">   11</a></span>    <a class="code hl_enumvalue" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b">Camera</a> <a class="code hl_variable" href="../../d3/d3e/class_player_input_provider.html#a523838a37d5f66a1e2de276e28cc4601">m_camera</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a45367ddd15c774ae718464cf96b6a0a1">   13</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a45367ddd15c774ae718464cf96b6a0a1">LookVector</a> { <span class="keyword">get</span>; } = Vector3.zero;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">//　カメラの向きに合った方向を返す(倉田)</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="};">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a5c9ba17dd9e6aa4d6a05751a36a9798f">   16</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a5c9ba17dd9e6aa4d6a05751a36a9798f">MoveVector</a></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keyword">get</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d3/d3e/class_player_input_provider.html#a523838a37d5f66a1e2de276e28cc4601">m_camera</a> == <span class="keyword">null</span>) <a class="code hl_variable" href="../../d3/d3e/class_player_input_provider.html#a523838a37d5f66a1e2de276e28cc4601">m_camera</a> = <a class="code hl_enumvalue" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b">Camera</a>.main;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <span class="comment">// カメラの向き</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            Vector3 vForward = <a class="code hl_variable" href="../../d3/d3e/class_player_input_provider.html#a523838a37d5f66a1e2de276e28cc4601">m_camera</a>.transform.forward;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            vForward.y = 0;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>            <span class="comment">// 入力ベクトル</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            var axis = <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetInputAction(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Move&quot;</span>).ReadValue&lt;Vector2&gt;();</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            <span class="comment">//Normarizeしないように修正。（山本）</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keywordflow">return</span> Quaternion.LookRotation(vForward) *　new Vector3(axis.x, 0, axis.y);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    }</div>
+</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">// int型で、攻撃の種類を決定する</span></div>
+<div class="foldopen" id="foldopen00034" data-start="{" data-end="};">
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#ac3e7210c49fa1c86f771992903f3d105">   34</a></span>    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#ac3e7210c49fa1c86f771992903f3d105">AttackType</a></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keyword">get</span></div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="comment">//IsPressed-&gt;triggeredに変更(山本)</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Attack&quot;</span>))</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>            {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>                <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>            }</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keyword">set</span> { }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    }</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a3b096950a8df53835e9847984c7c04ce">   51</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a3b096950a8df53835e9847984c7c04ce">DoDush</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Dush&quot;</span>); } }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#adbd7aede2b0304c7a5c836cf1f52209c">   52</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#adbd7aede2b0304c7a5c836cf1f52209c">OnPressedDush</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Dush&quot;</span>); } }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a6bfa4e150e5e7fbbe433d919a0b16b06">   53</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a6bfa4e150e5e7fbbe433d919a0b16b06">OnReleasedDush</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasReleased(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Dush&quot;</span>); } }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="comment">//ローリングトリガー（山本）</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">//WasPressedThisFrameに変更（山本）</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a0920e46101e10ba8a988eb89819ac76f">   58</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a0920e46101e10ba8a988eb89819ac76f">DoRolling</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Rolling&quot;</span>); } }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a80b40467e3200967d0d2fb19bb0b68b5">   60</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a80b40467e3200967d0d2fb19bb0b68b5">SelectLeftItem</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;SelectLeftItem&quot;</span>); } }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a097dde67de8504387a67fcbfbcc68016">   61</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a097dde67de8504387a67fcbfbcc68016">SelectRightItem</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;SelectRightItem&quot;</span>); } }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a7a90e4ed8e9e8a2df3fc3d700b928040">   62</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a7a90e4ed8e9e8a2df3fc3d700b928040">UseItem</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;UseItem&quot;</span>); } }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">//童話スキル1使用トリガー</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="comment">//IsPressed-&gt;triggeredに変更(山本)</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a452ad0497b4d32d8fa761258793b015d">   66</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a452ad0497b4d32d8fa761258793b015d">UseStorySkill_1</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;UseStorySkill_1&quot;</span>); } }</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//童話スキル2使用トリガー</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a3804c25d427cdf9d932b4a12bf5f3483">   68</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a3804c25d427cdf9d932b4a12bf5f3483">UseStorySkill_2</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;UseStorySkill_2&quot;</span>); } }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">// アイテム採取</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a08161bfdc6b657677097549ffe1d7853">   72</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a08161bfdc6b657677097549ffe1d7853">Gathering</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Gathering&quot;</span>); } }</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="comment">// アイテム設置</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#ac05f04a6fca308d1ee8334af90fff317">   75</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#ac05f04a6fca308d1ee8334af90fff317">PutItem</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;PutItem&quot;</span>); } }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// アイテム投げる準備</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#ae8cd481f91f390b74d99426044f0fe97">   78</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#ae8cd481f91f390b74d99426044f0fe97">ReadyThrowItem</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;ReadyThrowItem&quot;</span>); } }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// アイテム投げる</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a37f244d1a88f011b0b445dfadede7829">   81</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a37f244d1a88f011b0b445dfadede7829">ThrowItem</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;ThrowItem&quot;</span>); } }</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// アイテム投げる準備時、投げる方向（マウス座標）</span></div>
+<div class="foldopen" id="foldopen00084" data-start="{" data-end="};">
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#afd23d6d0bdb73db8b820ffd23bbd15e1">   84</a></span>    <span class="keyword">public</span> Vector2 <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#afd23d6d0bdb73db8b820ffd23bbd15e1">ThrowAim</a></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keyword">get</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            var mouseAction = <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetInputAction(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;ThrowAim&quot;</span>);</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            <span class="keywordflow">return</span> mouseAction.ReadValue&lt;Vector2&gt;();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="comment">//キャンセル</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#acbf85b75679a3a0ed64514da1b82c797">   94</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#acbf85b75679a3a0ed64514da1b82c797">Cancel</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Cancel&quot;</span>); } }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="comment">//食べる</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#addc60858ec678a7cecdacdd397b0814e">   97</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#addc60858ec678a7cecdacdd397b0814e">Eat</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionTrigger(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.Player, <span class="stringliteral">&quot;Eat&quot;</span>); } }</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">// 敵側</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a02ec0b7b14779e4243f32eeba56c41d3">  100</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a02ec0b7b14779e4243f32eeba56c41d3">IsArrive</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="../../d3/d3e/class_player_input_provider.html#a682232f405bbec30cf9dae2dc4cdf901">  102</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="../../d3/d3e/class_player_input_provider.html#a682232f405bbec30cf9dae2dc4cdf901">Destination</a> { <span class="keyword">get</span>; } = Vector3.zero;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+</div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43ac"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a></div><div class="ttdeci">InputActionMapTypes</div><div class="ttdef"><b>Definition</b> <a href="../../d2/dfa/_player_input_manager_8cs_source.html#l00006">PlayerInputManager.cs:7</a></div></div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b">InputActionMapTypes.Camera</a></div><div class="ttdeci">@ Camera</div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d5a/_base_manager_8cs_source.html#l00006">BaseManager.cs:6</a></div></div>
+<div class="ttc" id="aclass_player_input_manager_html"><div class="ttname"><a href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/dfa/_player_input_manager_8cs_source.html#l00014">PlayerInputManager.cs:15</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html">PlayerInputProvider</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">PlayerInputProvider.cs:10</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a02ec0b7b14779e4243f32eeba56c41d3"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a02ec0b7b14779e4243f32eeba56c41d3">PlayerInputProvider.IsArrive</a></div><div class="ttdeci">bool IsArrive</div><div class="ttdef"><b>Definition</b> <a href="#l00100">PlayerInputProvider.cs:100</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a08161bfdc6b657677097549ffe1d7853"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a08161bfdc6b657677097549ffe1d7853">PlayerInputProvider.Gathering</a></div><div class="ttdeci">bool Gathering</div><div class="ttdef"><b>Definition</b> <a href="#l00072">PlayerInputProvider.cs:72</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a0920e46101e10ba8a988eb89819ac76f"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a0920e46101e10ba8a988eb89819ac76f">PlayerInputProvider.DoRolling</a></div><div class="ttdeci">bool DoRolling</div><div class="ttdef"><b>Definition</b> <a href="#l00058">PlayerInputProvider.cs:58</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a097dde67de8504387a67fcbfbcc68016"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a097dde67de8504387a67fcbfbcc68016">PlayerInputProvider.SelectRightItem</a></div><div class="ttdeci">bool SelectRightItem</div><div class="ttdef"><b>Definition</b> <a href="#l00061">PlayerInputProvider.cs:61</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a37f244d1a88f011b0b445dfadede7829"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a37f244d1a88f011b0b445dfadede7829">PlayerInputProvider.ThrowItem</a></div><div class="ttdeci">bool ThrowItem</div><div class="ttdef"><b>Definition</b> <a href="#l00081">PlayerInputProvider.cs:81</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a3804c25d427cdf9d932b4a12bf5f3483"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a3804c25d427cdf9d932b4a12bf5f3483">PlayerInputProvider.UseStorySkill_2</a></div><div class="ttdeci">bool UseStorySkill_2</div><div class="ttdoc">童話スキル2発動トリガー（山本）</div><div class="ttdef"><b>Definition</b> <a href="#l00068">PlayerInputProvider.cs:68</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a3b096950a8df53835e9847984c7c04ce"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a3b096950a8df53835e9847984c7c04ce">PlayerInputProvider.DoDush</a></div><div class="ttdeci">bool DoDush</div><div class="ttdef"><b>Definition</b> <a href="#l00051">PlayerInputProvider.cs:51</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a452ad0497b4d32d8fa761258793b015d"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a452ad0497b4d32d8fa761258793b015d">PlayerInputProvider.UseStorySkill_1</a></div><div class="ttdeci">bool UseStorySkill_1</div><div class="ttdef"><b>Definition</b> <a href="#l00066">PlayerInputProvider.cs:66</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a45367ddd15c774ae718464cf96b6a0a1"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a45367ddd15c774ae718464cf96b6a0a1">PlayerInputProvider.LookVector</a></div><div class="ttdeci">Vector3 LookVector</div><div class="ttdef"><b>Definition</b> <a href="#l00013">PlayerInputProvider.cs:13</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a523838a37d5f66a1e2de276e28cc4601"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a523838a37d5f66a1e2de276e28cc4601">PlayerInputProvider.m_camera</a></div><div class="ttdeci">Camera m_camera</div><div class="ttdef"><b>Definition</b> <a href="#l00011">PlayerInputProvider.cs:11</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a5c9ba17dd9e6aa4d6a05751a36a9798f"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a5c9ba17dd9e6aa4d6a05751a36a9798f">PlayerInputProvider.MoveVector</a></div><div class="ttdeci">Vector3 MoveVector</div><div class="ttdef"><b>Definition</b> <a href="#l00016">PlayerInputProvider.cs:17</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a682232f405bbec30cf9dae2dc4cdf901"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a682232f405bbec30cf9dae2dc4cdf901">PlayerInputProvider.Destination</a></div><div class="ttdeci">Vector3 Destination</div><div class="ttdef"><b>Definition</b> <a href="#l00102">PlayerInputProvider.cs:102</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a6bfa4e150e5e7fbbe433d919a0b16b06"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a6bfa4e150e5e7fbbe433d919a0b16b06">PlayerInputProvider.OnReleasedDush</a></div><div class="ttdeci">bool OnReleasedDush</div><div class="ttdef"><b>Definition</b> <a href="#l00053">PlayerInputProvider.cs:53</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a7a90e4ed8e9e8a2df3fc3d700b928040"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a7a90e4ed8e9e8a2df3fc3d700b928040">PlayerInputProvider.UseItem</a></div><div class="ttdeci">bool UseItem</div><div class="ttdef"><b>Definition</b> <a href="#l00062">PlayerInputProvider.cs:62</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_a80b40467e3200967d0d2fb19bb0b68b5"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#a80b40467e3200967d0d2fb19bb0b68b5">PlayerInputProvider.SelectLeftItem</a></div><div class="ttdeci">bool SelectLeftItem</div><div class="ttdef"><b>Definition</b> <a href="#l00060">PlayerInputProvider.cs:60</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_ac05f04a6fca308d1ee8334af90fff317"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#ac05f04a6fca308d1ee8334af90fff317">PlayerInputProvider.PutItem</a></div><div class="ttdeci">bool PutItem</div><div class="ttdef"><b>Definition</b> <a href="#l00075">PlayerInputProvider.cs:75</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_ac3e7210c49fa1c86f771992903f3d105"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#ac3e7210c49fa1c86f771992903f3d105">PlayerInputProvider.AttackType</a></div><div class="ttdeci">int AttackType</div><div class="ttdef"><b>Definition</b> <a href="#l00034">PlayerInputProvider.cs:35</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_acbf85b75679a3a0ed64514da1b82c797"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#acbf85b75679a3a0ed64514da1b82c797">PlayerInputProvider.Cancel</a></div><div class="ttdeci">bool Cancel</div><div class="ttdef"><b>Definition</b> <a href="#l00094">PlayerInputProvider.cs:94</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_adbd7aede2b0304c7a5c836cf1f52209c"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#adbd7aede2b0304c7a5c836cf1f52209c">PlayerInputProvider.OnPressedDush</a></div><div class="ttdeci">bool OnPressedDush</div><div class="ttdef"><b>Definition</b> <a href="#l00052">PlayerInputProvider.cs:52</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_addc60858ec678a7cecdacdd397b0814e"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#addc60858ec678a7cecdacdd397b0814e">PlayerInputProvider.Eat</a></div><div class="ttdeci">bool Eat</div><div class="ttdef"><b>Definition</b> <a href="#l00097">PlayerInputProvider.cs:97</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_ae8cd481f91f390b74d99426044f0fe97"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#ae8cd481f91f390b74d99426044f0fe97">PlayerInputProvider.ReadyThrowItem</a></div><div class="ttdeci">bool ReadyThrowItem</div><div class="ttdef"><b>Definition</b> <a href="#l00078">PlayerInputProvider.cs:78</a></div></div>
+<div class="ttc" id="aclass_player_input_provider_html_afd23d6d0bdb73db8b820ffd23bbd15e1"><div class="ttname"><a href="../../d3/d3e/class_player_input_provider.html#afd23d6d0bdb73db8b820ffd23bbd15e1">PlayerInputProvider.ThrowAim</a></div><div class="ttdeci">Vector2 ThrowAim</div><div class="ttdef"><b>Definition</b> <a href="#l00084">PlayerInputProvider.cs:85</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html"><div class="ttname"><a href="../../d8/d5c/interface_i_input_provider.html">IInputProvider</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/de6/_i_input_provider_8cs_source.html#l00011">IInputProvider.cs:12</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_f731fc98d37fad6acfa5be0e7658a68b.html">001_Common</a></li><li class="navelem"><a class="el" href="../../dir_4d37cc116eb89c75c3cec871092dfebc.html">Scripts</a></li><li class="navelem"><a class="el" href="../../dir_84a261afe6c6b2d8544c91c4bb6b3b58.html">Input</a></li><li class="navelem"><a class="el" href="../../d8/d78/_player_input_provider_8cs.html">PlayerInputProvider.cs</a></li>
+    <li class="footer">2024年10月29日(火) 10時44分20秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

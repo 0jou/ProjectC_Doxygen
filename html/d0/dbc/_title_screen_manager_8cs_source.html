@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/001_Common/Scripts/TitleScene/TitleScreenManager.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241029</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d0/dbc/_title_screen_manager_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">TitleScreenManager.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d0/dbc/_title_screen_manager_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>Cysharp.Threading.Tasks;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>UnityEngine.UI;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>DG.Tweening;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>UnityEngine.InputSystem;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>UnityEngine.SceneManagement;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>nTools.PrefabPainter;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html">   12</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../d6/d1e/class_title_screen_manager.html">TitleScreenManager</a> : MonoBehaviour</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">   15</a></span>    <span class="keyword">public</span> CanvasGroup <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">m_titleLogo</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">   16</a></span>    <span class="keyword">public</span> CanvasGroup <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">m_pushAnyKey</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a501b453dc3dbaacf3df4c5abd59f668c">   17</a></span>    <span class="keyword">public</span> GameObject <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a501b453dc3dbaacf3df4c5abd59f668c">m_mainMenuPanel</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#ab5e6d061d7b21b8c778f9faed32ae6cc">   18</a></span>    <span class="keyword">public</span> GameObject <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ab5e6d061d7b21b8c778f9faed32ae6cc">m_optionObject</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">   20</a></span>    <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">m_isAnyKeyPressed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">   22</a></span>    <span class="keyword">private</span> readonly InputAction <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">m_pressAnyKeyAction</a> =</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>                    <span class="keyword">new</span> InputAction(type: InputActionType.PassThrough, binding: <span class="stringliteral">&quot;*/&lt;Button&gt;&quot;</span>, interactions: <span class="stringliteral">&quot;Press&quot;</span>);</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">   26</a></span>    [SerializeField] <a class="code hl_class" href="../../d4/d9a/class_scene_transition_manager.html">SceneTransitionManager</a> <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">m_sceneChanger</a> = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a7529ca2730d3781ef45892668c82e8ca">   28</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#a7529ca2730d3781ef45892668c82e8ca">OnEnable</a>() =&gt; <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">m_pressAnyKeyAction</a>.Enable();</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#ae6491be11058ebf5e8b2a1f54b11c418">   29</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#ae6491be11058ebf5e8b2a1f54b11c418">OnDisable</a>() =&gt; <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">m_pressAnyKeyAction</a>.Disable();</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// Start is called before the first frame update</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#afe58fd9f302adefdda658627a4626172">   31</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#afe58fd9f302adefdda658627a4626172">StartUp</a>()</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        Debug.Log(<span class="stringliteral">&quot;StartUp&quot;</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">m_titleLogo</a>.gameObject.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">m_pushAnyKey</a>.gameObject.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a501b453dc3dbaacf3df4c5abd59f668c">m_mainMenuPanel</a>.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ab5e6d061d7b21b8c778f9faed32ae6cc">m_optionObject</a>.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">m_isAnyKeyPressed</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        _ = <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#ae04d598c68864e67ce4bc7c34247b9ca">ShowTitleLogo</a>();</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    }</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#ae04d598c68864e67ce4bc7c34247b9ca">   43</a></span>    async UniTask <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#ae04d598c68864e67ce4bc7c34247b9ca">ShowTitleLogo</a>()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span>(<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">m_titleLogo</a> == <span class="keyword">null</span>) { <span class="keywordflow">return</span>; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        await DOTween.To(() =&gt; <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">m_titleLogo</a>.alpha, x =&gt; <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">m_titleLogo</a>.alpha = x, 1, 1.0f);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">m_pushAnyKey</a>.gameObject.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    }</div>
+</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// Update is called once per frame</span></div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#aa6564ae4cbec32fd69b75a9e86e65ace">   51</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#aa6564ae4cbec32fd69b75a9e86e65ace">Update</a>()</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    {</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="comment">// 見にくかったので、過去のものコメントして修正してます。（吉田）</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="comment">/*// 20240822以前 -------</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="comment">        if (!m_isAnyKeyPressed &amp;&amp; m_pressAnyKeyAction.triggered)</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="comment">        {</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="comment">            Debug.Log(&quot;Any Key Pressed&quot;);</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span><span class="comment">            m_isAnyKeyPressed = true;</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="comment">            m_pushAnyKey.gameObject.SetActive(false);</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="comment">            if (m_nextActivateButton)</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="comment">            {</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="comment">                m_nextActivateButton.ActivateOrNotActivate(true);</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="comment">            }</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="comment">            m_mainMenuPanel.SetActive(true);</span></div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">            //無理くりシーン移動（山本）</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="comment">            // _ = m_sceneChanger.SceneChange();</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="comment">        }</span></div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="comment">        */</span><span class="comment">// -------</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span> (!<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">m_isAnyKeyPressed</a>)</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#a33f09bdc423e363f8ad2ffe0c77c561b">UpdateForWaitAnyKey</a>();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// 以下 Push Any Key が非表示のときの処理</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    }</div>
+</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="{" data-end="}">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#aed940befc55ff2820eaf7d22e5053496">   83</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#aed940befc55ff2820eaf7d22e5053496">OnNewGame</a>()</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="comment">// New Game ボタンが押されたときの処理</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">// 例えば、新しいシーンに遷移する</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">m_sceneChanger</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>            _ = <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">m_sceneChanger</a>.<a class="code hl_function" href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneChange</a>();</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+</div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a5abec3d6882f812f6a094f7a71f17737">   92</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#a5abec3d6882f812f6a094f7a71f17737">OnLoadGame</a>()</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="comment">// Load Game ボタンが押されたときの処理</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="comment">// セーブデータのロードなど</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">m_sceneChanger</a> != <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        {</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            _ = <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">m_sceneChanger</a>.<a class="code hl_function" href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneChange</a>();</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    }</div>
+</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span> </div>
+<div class="foldopen" id="foldopen00103" data-start="{" data-end="}">
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a77d0132feb0ff41d6a5cf7882f785be6">  103</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#a77d0132feb0ff41d6a5cf7882f785be6">OnOption</a>()</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="comment">// Option ボタンが押されたときの処理</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="comment">// オプション画面の表示など</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ab5e6d061d7b21b8c778f9faed32ae6cc">m_optionObject</a>.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    }</div>
+</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="foldopen" id="foldopen00110" data-start="{" data-end="}">
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a0b6e8b6cba176ab9e61f73ce7fc17e77">  110</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#a0b6e8b6cba176ab9e61f73ce7fc17e77">OnExit</a>()</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="comment">// Exit ボタンが押されたときの処理</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        Application.Quit();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    }</div>
+</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="../../d6/d1e/class_title_screen_manager.html#a33f09bdc423e363f8ad2ffe0c77c561b">  120</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../d6/d1e/class_title_screen_manager.html#a33f09bdc423e363f8ad2ffe0c77c561b">UpdateForWaitAnyKey</a>()</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">m_pressAnyKeyAction</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">m_pushAnyKey</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a501b453dc3dbaacf3df4c5abd59f668c">m_mainMenuPanel</a> == <span class="keyword">null</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">m_isAnyKeyPressed</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">m_pressAnyKeyAction</a>.triggered)</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        {</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>            Debug.Log(<span class="stringliteral">&quot;Any Key Pressed&quot;</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>            <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">m_isAnyKeyPressed</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="comment">// 表示切り替え</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>            <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">m_pushAnyKey</a>.gameObject.SetActive(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>            <a class="code hl_variable" href="../../d6/d1e/class_title_screen_manager.html#a501b453dc3dbaacf3df4c5abd59f668c">m_mainMenuPanel</a>.SetActive(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="comment">//無理くりシーン移動（山本）</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="comment">// _ = m_sceneChanger.SceneChange();</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        }</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    }</div>
+</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>}</div>
+</div>
+<div class="ttc" id="aclass_scene_transition_manager_html"><div class="ttname"><a href="../../d4/d9a/class_scene_transition_manager.html">SceneTransitionManager</a></div><div class="ttdef"><b>Definition</b> <a href="../../df/daf/_scene_transition_manager_8cs_source.html#l00010">SceneTransitionManager.cs:11</a></div></div>
+<div class="ttc" id="aclass_scene_transition_manager_html_a57a46b1860572b2f20db95dc3ca6f2ec"><div class="ttname"><a href="../../d4/d9a/class_scene_transition_manager.html#a57a46b1860572b2f20db95dc3ca6f2ec">SceneTransitionManager.SceneChange</a></div><div class="ttdeci">async UniTask SceneChange()</div><div class="ttdef"><b>Definition</b> <a href="../../df/daf/_scene_transition_manager_8cs_source.html#l00020">SceneTransitionManager.cs:20</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html">TitleScreenManager</a></div><div class="ttdef"><b>Definition</b> <a href="#l00012">TitleScreenManager.cs:13</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a0b6e8b6cba176ab9e61f73ce7fc17e77"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a0b6e8b6cba176ab9e61f73ce7fc17e77">TitleScreenManager.OnExit</a></div><div class="ttdeci">void OnExit()</div><div class="ttdef"><b>Definition</b> <a href="#l00110">TitleScreenManager.cs:110</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a33f09bdc423e363f8ad2ffe0c77c561b"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a33f09bdc423e363f8ad2ffe0c77c561b">TitleScreenManager.UpdateForWaitAnyKey</a></div><div class="ttdeci">void UpdateForWaitAnyKey()</div><div class="ttdoc">キーを押すまで の更新処理 pushAnyKeyが表示されているとき</div><div class="ttdef"><b>Definition</b> <a href="#l00120">TitleScreenManager.cs:120</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a501b453dc3dbaacf3df4c5abd59f668c"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a501b453dc3dbaacf3df4c5abd59f668c">TitleScreenManager.m_mainMenuPanel</a></div><div class="ttdeci">GameObject m_mainMenuPanel</div><div class="ttdef"><b>Definition</b> <a href="#l00017">TitleScreenManager.cs:17</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a5abec3d6882f812f6a094f7a71f17737"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a5abec3d6882f812f6a094f7a71f17737">TitleScreenManager.OnLoadGame</a></div><div class="ttdeci">void OnLoadGame()</div><div class="ttdef"><b>Definition</b> <a href="#l00092">TitleScreenManager.cs:92</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a6df0f9311ab08f48dc528320fb78657e"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a6df0f9311ab08f48dc528320fb78657e">TitleScreenManager.m_sceneChanger</a></div><div class="ttdeci">SceneTransitionManager m_sceneChanger</div><div class="ttdef"><b>Definition</b> <a href="#l00026">TitleScreenManager.cs:26</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a7354aefbcb787df9f55c883872567637"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a7354aefbcb787df9f55c883872567637">TitleScreenManager.m_isAnyKeyPressed</a></div><div class="ttdeci">bool m_isAnyKeyPressed</div><div class="ttdef"><b>Definition</b> <a href="#l00020">TitleScreenManager.cs:20</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a7529ca2730d3781ef45892668c82e8ca"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a7529ca2730d3781ef45892668c82e8ca">TitleScreenManager.OnEnable</a></div><div class="ttdeci">void OnEnable()</div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a77d0132feb0ff41d6a5cf7882f785be6"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a77d0132feb0ff41d6a5cf7882f785be6">TitleScreenManager.OnOption</a></div><div class="ttdeci">void OnOption()</div><div class="ttdef"><b>Definition</b> <a href="#l00103">TitleScreenManager.cs:103</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_a8c2a290a625043c5f568acb0350e2635"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#a8c2a290a625043c5f568acb0350e2635">TitleScreenManager.m_pressAnyKeyAction</a></div><div class="ttdeci">readonly InputAction m_pressAnyKeyAction</div><div class="ttdef"><b>Definition</b> <a href="#l00022">TitleScreenManager.cs:22</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_aa6564ae4cbec32fd69b75a9e86e65ace"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#aa6564ae4cbec32fd69b75a9e86e65ace">TitleScreenManager.Update</a></div><div class="ttdeci">void Update()</div><div class="ttdef"><b>Definition</b> <a href="#l00051">TitleScreenManager.cs:51</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_ab5e6d061d7b21b8c778f9faed32ae6cc"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#ab5e6d061d7b21b8c778f9faed32ae6cc">TitleScreenManager.m_optionObject</a></div><div class="ttdeci">GameObject m_optionObject</div><div class="ttdef"><b>Definition</b> <a href="#l00018">TitleScreenManager.cs:18</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_abdaf2412651a2a84f9a4c30142f840fd"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#abdaf2412651a2a84f9a4c30142f840fd">TitleScreenManager.m_titleLogo</a></div><div class="ttdeci">CanvasGroup m_titleLogo</div><div class="ttdef"><b>Definition</b> <a href="#l00015">TitleScreenManager.cs:15</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_ad3c33ed1f76f1689588cdebee787cd2a"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#ad3c33ed1f76f1689588cdebee787cd2a">TitleScreenManager.m_pushAnyKey</a></div><div class="ttdeci">CanvasGroup m_pushAnyKey</div><div class="ttdef"><b>Definition</b> <a href="#l00016">TitleScreenManager.cs:16</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_ae04d598c68864e67ce4bc7c34247b9ca"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#ae04d598c68864e67ce4bc7c34247b9ca">TitleScreenManager.ShowTitleLogo</a></div><div class="ttdeci">async UniTask ShowTitleLogo()</div><div class="ttdef"><b>Definition</b> <a href="#l00043">TitleScreenManager.cs:43</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_ae6491be11058ebf5e8b2a1f54b11c418"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#ae6491be11058ebf5e8b2a1f54b11c418">TitleScreenManager.OnDisable</a></div><div class="ttdeci">void OnDisable()</div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_aed940befc55ff2820eaf7d22e5053496"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#aed940befc55ff2820eaf7d22e5053496">TitleScreenManager.OnNewGame</a></div><div class="ttdeci">void OnNewGame()</div><div class="ttdef"><b>Definition</b> <a href="#l00083">TitleScreenManager.cs:83</a></div></div>
+<div class="ttc" id="aclass_title_screen_manager_html_afe58fd9f302adefdda658627a4626172"><div class="ttname"><a href="../../d6/d1e/class_title_screen_manager.html#afe58fd9f302adefdda658627a4626172">TitleScreenManager.StartUp</a></div><div class="ttdeci">void StartUp()</div><div class="ttdef"><b>Definition</b> <a href="#l00031">TitleScreenManager.cs:31</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_f731fc98d37fad6acfa5be0e7658a68b.html">001_Common</a></li><li class="navelem"><a class="el" href="../../dir_4d37cc116eb89c75c3cec871092dfebc.html">Scripts</a></li><li class="navelem"><a class="el" href="../../dir_83d934da23aba6d1b1109fc0e7dc8d8c.html">TitleScene</a></li><li class="navelem"><a class="el" href="../../d0/dbc/_title_screen_manager_8cs.html">TitleScreenManager.cs</a></li>
+    <li class="footer">2024年10月29日(火) 10時44分20秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

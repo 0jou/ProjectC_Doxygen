@@ -1,0 +1,376 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ProjectC_Doxygen: ProjectC/002_UI/SelectUIController/SelectUIActionWindowController.cs ソースファイル</title>
+<link href="../../tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../jquery.js"></script>
+<script type="text/javascript" src="../../dynsections.js"></script>
+<script type="text/javascript" src="../../clipboard.js"></script>
+<link href="../../navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../navtreedata.js"></script>
+<script type="text/javascript" src="../../navtree.js"></script>
+<script type="text/javascript" src="../../resize.js"></script>
+<script type="text/javascript" src="../../cookie.js"></script>
+<link href="../../search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="../../search/searchdata.js"></script>
+<script type="text/javascript" src="../../search/search.js"></script>
+<link href="../../doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ProjectC_Doxygen<span id="projectnumber">&#160;20241029</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "../../search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(1); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="../../menudata.js"></script>
+<script type="text/javascript" src="../../menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('../../',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('d1/d02/_select_u_i_action_window_controller_8cs_source.html','../../'); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">SelectUIActionWindowController.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="../../d1/d02/_select_u_i_action_window_controller_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>DG.Tweening;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="keyword">using </span>Unity.VisualScripting;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>UnityEngine.InputSystem;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span><a class="code hl_namespace" href="../../d3/d55/namespace_select_u_i_info.html">SelectUIInfo</a>;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html">    9</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="../../da/d50/class_select_u_i_action_window_controller.html">SelectUIActionWindowController</a> : <a class="code hl_class" href="../../d5/de6/class_select_u_i_controller.html">SelectUIController</a></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>{</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="comment">//========================================================</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="comment">//ActionItemUI用派生クラス（山本）</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">//========================================================</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="comment">// ボタンを押したか</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#aa58db54362f350d2905a20e151fc3eb2">   19</a></span>    <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#aa58db54362f350d2905a20e151fc3eb2">m_isPut</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a0700b4d611cfd9e285d5ccef1de91b5b">   20</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../da/d50/class_select_u_i_action_window_controller.html#a0700b4d611cfd9e285d5ccef1de91b5b">IsPut</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#aa58db54362f350d2905a20e151fc3eb2">m_isPut</a>; } }</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">   22</a></span>    <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">m_isUse</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#ad8ee403ed34dd04cb64e1c01618532e9">   23</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../da/d50/class_select_u_i_action_window_controller.html#ad8ee403ed34dd04cb64e1c01618532e9">IsUse</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">m_isUse</a>; } }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a19fa320c4f2c57110e381d63958852b5">   25</a></span>    <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a19fa320c4f2c57110e381d63958852b5">m_isThrow</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a0aee4de25518ad7d8f806ad87cd3322e">   26</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="../../da/d50/class_select_u_i_action_window_controller.html#a0aee4de25518ad7d8f806ad87cd3322e">IsThrow</a> { <span class="keyword">get</span> { <span class="keywordflow">return</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a19fa320c4f2c57110e381d63958852b5">m_isThrow</a>; } }</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">//ウィンドウのサイズ等</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    [Header(<span class="stringliteral">&quot;選択時のウィンドウのサイズ（Max）&quot;</span>)]</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    [SerializeField]</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a8e660216e91d83ec316f629ffe814963">   32</a></span>    <span class="keyword">private</span> Vector3 <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a8e660216e91d83ec316f629ffe814963">m_selectScale</a> = Vector3.one;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    [Header(<span class="stringliteral">&quot;選択外のウィンドウのサイズ（Min）&quot;</span>)]</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    [SerializeField]</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a99284593695fd3828b1dfa6faeecdf9a">   35</a></span>    <span class="keyword">private</span> Vector3 <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a99284593695fd3828b1dfa6faeecdf9a">m_notSelectScale</a> = Vector3.one * 0.7f;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    [Header(<span class="stringliteral">&quot;選択→選択外へサイズが変化するまでの期間&quot;</span>)]</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    [SerializeField]</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#ab0232bd9b1bfcb3ea69ddb2816530c24">   38</a></span>    <span class="keyword">private</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#ab0232bd9b1bfcb3ea69ddb2816530c24">m_duration</a> = 0.5f;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">//==========================================================</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="comment">//==========================================================</span></div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a9c761bbf204d0273a0be302937a67e7b">   43</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a9c761bbf204d0273a0be302937a67e7b">OnUpdate</a>()</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a7a503a392b11418195bff331df89e162">m_alwaysCreateType</a> == <a class="code hl_enumeration" href="../../d5/de6/class_select_u_i_controller.html#abe16f06ff23cac8cc64d764a08c03bbf">AlwaysCreateType</a>.Enable)</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#ae64d2a5c7113fc4ca014112fdc834421">NullCheck</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a147da3a4f9877fe1659987c8660342b7">SelectWindowUI</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a2f3cd1d3164909c62777e6c33c6455a8">SetSelectUIScale</a>();</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a715f7935518892814889768e7d8509f5">OnUse</a>();</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a4e42fde39acc088524d3abdc12690c99">OnPut</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a8ed7653111ca01b5e8b8116a086cda0f">OnThrow</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
+</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="foldopen" id="foldopen00058" data-start="{" data-end="}">
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a07046281d0addf06deff844689634198">   58</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a07046281d0addf06deff844689634198">OnLateUpdate</a>()</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        base.OnLateUpdate();</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#aa58db54362f350d2905a20e151fc3eb2">m_isPut</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a19fa320c4f2c57110e381d63958852b5">m_isThrow</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">m_isUse</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#acc79e17c9a67be573bec06b6425d7f3b">   67</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#acc79e17c9a67be573bec06b6425d7f3b">CheckWithChange</a>()</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a3f663f4e11608bbb7362f6b938713c4e">m_currentSelectUIData</a> == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#ac167a8f9b2ec9b9addb6b522cdb6bf6d">m_currentWidth</a>--;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#ac167a8f9b2ec9b9addb6b522cdb6bf6d">m_currentWidth</a> &lt;= 0)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>                <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#ac167a8f9b2ec9b9addb6b522cdb6bf6d">m_currentWidth</a> = 0;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="foldopen" id="foldopen00081" data-start="{" data-end="}">
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a147da3a4f9877fe1659987c8660342b7">   81</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a147da3a4f9877fe1659987c8660342b7">SelectWindowUI</a>()</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">if</span> (Keyboard.current?.anyKey.wasPressedThisFrame == <span class="keyword">false</span> &amp;&amp; Gamepad.current?.wasUpdatedThisFrame == <span class="keyword">false</span>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a0e08663c19fa44beb79b769ad81041e9">m_uiList</a>.Count &lt;= 0)</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        {</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordtype">bool</span> flg = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">// 左に進む</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;SelectLeftActionItem&quot;</span>))</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        {</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            flg = <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a8daa0f381d30e9890e6f9158e6769a86">Left</a>();</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        }</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="comment">// 右に進む</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;SelectRightActionItem&quot;</span>))</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            flg = <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a6d520da967f90239281f442f12beb604">Right</a>();</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        <span class="keywordflow">if</span> (flg)</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        {</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a3f663f4e11608bbb7362f6b938713c4e">m_currentSelectUIData</a> = <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a0e08663c19fa44beb79b769ad81041e9">m_uiList</a>[0].List[<a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#ac167a8f9b2ec9b9addb6b522cdb6bf6d">m_currentWidth</a>];</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a4c9d59c93356bf0f9e279873cf4351c2">m_isSelectChangeFlg</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>            <span class="comment">//SE音追加（山本）</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <a class="code hl_class" href="../../d5/dd9/class_sound_manager.html">SoundManager</a>.<a class="code hl_property" href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a>.<a class="code hl_function" href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="stringliteral">&quot;Select&quot;</span>);</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
+<div class="foldopen" id="foldopen00118" data-start="{" data-end="}">
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a4e42fde39acc088524d3abdc12690c99">  118</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a4e42fde39acc088524d3abdc12690c99">OnPut</a>()</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    {</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetInputAction(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;PutItem&quot;</span>) == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        {</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>            Debug.LogError(<span class="stringliteral">&quot;InputActionが存在しません&quot;</span>);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        }</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetInputAction(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;PutItem&quot;</span>).triggered == <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>            <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#aa58db54362f350d2905a20e151fc3eb2">m_isPut</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        }</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    }</div>
+</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="foldopen" id="foldopen00133" data-start="{" data-end="}">
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a715f7935518892814889768e7d8509f5">  133</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a715f7935518892814889768e7d8509f5">OnUse</a>()</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>    {</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetInputAction(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;UseItem&quot;</span>) == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        {</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>            Debug.LogError(<span class="stringliteral">&quot;InputActionが存在しません&quot;</span>);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        }</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span> </div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;UseItem&quot;</span>) == <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        {</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>            <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">m_isUse</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        }</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>            <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">m_isUse</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        }</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    }</div>
+</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="foldopen" id="foldopen00154" data-start="{" data-end="}">
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a8ed7653111ca01b5e8b8116a086cda0f">  154</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a8ed7653111ca01b5e8b8116a086cda0f">OnThrow</a>()</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    {</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.GetInputAction(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;ThrowItem&quot;</span>) == <span class="keyword">null</span>)</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        {</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>            Debug.LogError(<span class="stringliteral">&quot;InputActionが存在しません&quot;</span>);</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        }</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        <span class="keywordflow">if</span> (<a class="code hl_class" href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a>.<a class="code hl_variable" href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">instance</a>.IsInputActionWasPressed(<a class="code hl_enumeration" href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a>.UI, <span class="stringliteral">&quot;ThrowItem&quot;</span>) == <span class="keyword">true</span>)</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>            <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a19fa320c4f2c57110e381d63958852b5">m_isThrow</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        }</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>    }</div>
+</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    <span class="comment">//選択したUIのScale値を変更する(選択したものだけScale値を変更する)</span></div>
+<div class="foldopen" id="foldopen00171" data-start="{" data-end="}">
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a2f3cd1d3164909c62777e6c33c6455a8">  171</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a2f3cd1d3164909c62777e6c33c6455a8">SetSelectUIScale</a>()</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    {</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        <span class="comment">//UIリストなければ早期リターン</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a0e08663c19fa44beb79b769ad81041e9">m_uiList</a>.Count &lt;= 0.0f)</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        {</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        }</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        <span class="keywordflow">foreach</span> (var uiObj <span class="keywordflow">in</span> <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a0e08663c19fa44beb79b769ad81041e9">m_uiList</a>[0].List)</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        {</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>            <span class="keywordflow">if</span> (uiObj?.UI == <span class="keyword">null</span>) <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>            <span class="comment">//選択したUIObjをScale値1.0に</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>            <span class="keywordflow">if</span> (uiObj == <a class="code hl_variable" href="../../d5/de6/class_select_u_i_controller.html#a3f663f4e11608bbb7362f6b938713c4e">m_currentSelectUIData</a>)</div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>            {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>                uiObj.UI.transform.DOScale(<a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a8e660216e91d83ec316f629ffe814963">m_selectScale</a>, <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#ab0232bd9b1bfcb3ea69ddb2816530c24">m_duration</a>);</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>            }</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>            <span class="keywordflow">else</span><span class="comment">//選択した物以外を少し小さめに</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>            {</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>                uiObj.UI.transform.DOScale(<a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#a99284593695fd3828b1dfa6faeecdf9a">m_notSelectScale</a>, <a class="code hl_variable" href="../../da/d50/class_select_u_i_action_window_controller.html#ab0232bd9b1bfcb3ea69ddb2816530c24">m_duration</a>);</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>            }</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span> </div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        }</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    }</div>
+</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span> </div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span> </div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <span class="comment">//一個ずつ追加した際に横方向へと追加できるように改良した関数（山本）</span></div>
+<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="../../da/d50/class_select_u_i_action_window_controller.html#a80ec02ea7815d6cf09d5503cf46451a0">  198</a></span>    <span class="keyword">public</span> <span class="keyword">override</span> <span class="keywordtype">void</span> <a class="code hl_function" href="../../da/d50/class_select_u_i_action_window_controller.html#a80ec02ea7815d6cf09d5503cf46451a0">AddUI</a>(GameObject _ui, <a class="code hl_enumeration" href="../../d3/d55/namespace_select_u_i_info.html#a78ccac10f67d2bdf057b08c8961710ff">SelectUIType</a> _type, <span class="keywordtype">int</span> _lineBreak)</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    {</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        base.AddUI(_ui, _type, _lineBreak);</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_function" href="../../d5/de6/class_select_u_i_controller.html#a9617b52116948b9c348e1a53299f5c3b">SetUIActionWindowGameObject</a>();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span> </div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>}</div>
+</div>
+<div class="ttc" id="a_player_input_manager_8cs_html_acdce8ac9c9c49484e3c7c077687d43ac"><div class="ttname"><a href="../../d2/dfa/_player_input_manager_8cs.html#acdce8ac9c9c49484e3c7c077687d43ac">InputActionMapTypes</a></div><div class="ttdeci">InputActionMapTypes</div><div class="ttdef"><b>Definition</b> <a href="../../d2/dfa/_player_input_manager_8cs_source.html#l00006">PlayerInputManager.cs:7</a></div></div>
+<div class="ttc" id="aclass_base_manager_html_aa8c8aec87570694dda230cb2dfac79ac"><div class="ttname"><a href="../../d8/dc6/class_base_manager.html#aa8c8aec87570694dda230cb2dfac79ac">BaseManager.instance</a></div><div class="ttdeci">static T instance</div><div class="ttdef"><b>Definition</b> <a href="../../d1/d5a/_base_manager_8cs_source.html#l00006">BaseManager.cs:6</a></div></div>
+<div class="ttc" id="aclass_player_input_manager_html"><div class="ttname"><a href="../../da/d90/class_player_input_manager.html">PlayerInputManager</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/dfa/_player_input_manager_8cs_source.html#l00014">PlayerInputManager.cs:15</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html">SelectUIActionWindowController</a></div><div class="ttdef"><b>Definition</b> <a href="#l00009">SelectUIActionWindowController.cs:10</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a0700b4d611cfd9e285d5ccef1de91b5b"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a0700b4d611cfd9e285d5ccef1de91b5b">SelectUIActionWindowController.IsPut</a></div><div class="ttdeci">bool IsPut</div><div class="ttdef"><b>Definition</b> <a href="#l00020">SelectUIActionWindowController.cs:20</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a07046281d0addf06deff844689634198"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a07046281d0addf06deff844689634198">SelectUIActionWindowController.OnLateUpdate</a></div><div class="ttdeci">override void OnLateUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00058">SelectUIActionWindowController.cs:58</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a0aee4de25518ad7d8f806ad87cd3322e"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a0aee4de25518ad7d8f806ad87cd3322e">SelectUIActionWindowController.IsThrow</a></div><div class="ttdeci">bool IsThrow</div><div class="ttdef"><b>Definition</b> <a href="#l00026">SelectUIActionWindowController.cs:26</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a147da3a4f9877fe1659987c8660342b7"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a147da3a4f9877fe1659987c8660342b7">SelectUIActionWindowController.SelectWindowUI</a></div><div class="ttdeci">void SelectWindowUI()</div><div class="ttdef"><b>Definition</b> <a href="#l00081">SelectUIActionWindowController.cs:81</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a19fa320c4f2c57110e381d63958852b5"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a19fa320c4f2c57110e381d63958852b5">SelectUIActionWindowController.m_isThrow</a></div><div class="ttdeci">bool m_isThrow</div><div class="ttdef"><b>Definition</b> <a href="#l00025">SelectUIActionWindowController.cs:25</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a2f3cd1d3164909c62777e6c33c6455a8"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a2f3cd1d3164909c62777e6c33c6455a8">SelectUIActionWindowController.SetSelectUIScale</a></div><div class="ttdeci">void SetSelectUIScale()</div><div class="ttdef"><b>Definition</b> <a href="#l00171">SelectUIActionWindowController.cs:171</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a4e42fde39acc088524d3abdc12690c99"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a4e42fde39acc088524d3abdc12690c99">SelectUIActionWindowController.OnPut</a></div><div class="ttdeci">void OnPut()</div><div class="ttdef"><b>Definition</b> <a href="#l00118">SelectUIActionWindowController.cs:118</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a4faa484a72043a2c9c371a8d20bb6dea"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a4faa484a72043a2c9c371a8d20bb6dea">SelectUIActionWindowController.m_isUse</a></div><div class="ttdeci">bool m_isUse</div><div class="ttdef"><b>Definition</b> <a href="#l00022">SelectUIActionWindowController.cs:22</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a715f7935518892814889768e7d8509f5"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a715f7935518892814889768e7d8509f5">SelectUIActionWindowController.OnUse</a></div><div class="ttdeci">void OnUse()</div><div class="ttdef"><b>Definition</b> <a href="#l00133">SelectUIActionWindowController.cs:133</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a80ec02ea7815d6cf09d5503cf46451a0"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a80ec02ea7815d6cf09d5503cf46451a0">SelectUIActionWindowController.AddUI</a></div><div class="ttdeci">override void AddUI(GameObject _ui, SelectUIType _type, int _lineBreak)</div><div class="ttdoc">スロットリストに引数リストを追加する</div><div class="ttdef"><b>Definition</b> <a href="#l00198">SelectUIActionWindowController.cs:198</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a8e660216e91d83ec316f629ffe814963"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a8e660216e91d83ec316f629ffe814963">SelectUIActionWindowController.m_selectScale</a></div><div class="ttdeci">Vector3 m_selectScale</div><div class="ttdef"><b>Definition</b> <a href="#l00032">SelectUIActionWindowController.cs:32</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a8ed7653111ca01b5e8b8116a086cda0f"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a8ed7653111ca01b5e8b8116a086cda0f">SelectUIActionWindowController.OnThrow</a></div><div class="ttdeci">void OnThrow()</div><div class="ttdef"><b>Definition</b> <a href="#l00154">SelectUIActionWindowController.cs:154</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a99284593695fd3828b1dfa6faeecdf9a"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a99284593695fd3828b1dfa6faeecdf9a">SelectUIActionWindowController.m_notSelectScale</a></div><div class="ttdeci">Vector3 m_notSelectScale</div><div class="ttdef"><b>Definition</b> <a href="#l00035">SelectUIActionWindowController.cs:35</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_a9c761bbf204d0273a0be302937a67e7b"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#a9c761bbf204d0273a0be302937a67e7b">SelectUIActionWindowController.OnUpdate</a></div><div class="ttdeci">override void OnUpdate()</div><div class="ttdef"><b>Definition</b> <a href="#l00043">SelectUIActionWindowController.cs:43</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_aa58db54362f350d2905a20e151fc3eb2"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#aa58db54362f350d2905a20e151fc3eb2">SelectUIActionWindowController.m_isPut</a></div><div class="ttdeci">bool m_isPut</div><div class="ttdef"><b>Definition</b> <a href="#l00019">SelectUIActionWindowController.cs:19</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_ab0232bd9b1bfcb3ea69ddb2816530c24"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#ab0232bd9b1bfcb3ea69ddb2816530c24">SelectUIActionWindowController.m_duration</a></div><div class="ttdeci">float m_duration</div><div class="ttdef"><b>Definition</b> <a href="#l00038">SelectUIActionWindowController.cs:38</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_acc79e17c9a67be573bec06b6425d7f3b"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#acc79e17c9a67be573bec06b6425d7f3b">SelectUIActionWindowController.CheckWithChange</a></div><div class="ttdeci">void CheckWithChange()</div><div class="ttdef"><b>Definition</b> <a href="#l00067">SelectUIActionWindowController.cs:67</a></div></div>
+<div class="ttc" id="aclass_select_u_i_action_window_controller_html_ad8ee403ed34dd04cb64e1c01618532e9"><div class="ttname"><a href="../../da/d50/class_select_u_i_action_window_controller.html#ad8ee403ed34dd04cb64e1c01618532e9">SelectUIActionWindowController.IsUse</a></div><div class="ttdeci">bool IsUse</div><div class="ttdef"><b>Definition</b> <a href="#l00023">SelectUIActionWindowController.cs:23</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html">SelectUIController</a></div><div class="ttdef"><b>Definition</b> <a href="../../d3/d24/_select_u_i_conroller___scale_8cs_source.html#l00006">SelectUIConroller_Scale.cs:7</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a0e08663c19fa44beb79b769ad81041e9"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a0e08663c19fa44beb79b769ad81041e9">SelectUIController.m_uiList</a></div><div class="ttdeci">List&lt; UIDataList &gt; m_uiList</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00075">SelectUIController.cs:75</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a3f663f4e11608bbb7362f6b938713c4e"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a3f663f4e11608bbb7362f6b938713c4e">SelectUIController.m_currentSelectUIData</a></div><div class="ttdeci">UIData m_currentSelectUIData</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00116">SelectUIController.cs:116</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a4c9d59c93356bf0f9e279873cf4351c2"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a4c9d59c93356bf0f9e279873cf4351c2">SelectUIController.m_isSelectChangeFlg</a></div><div class="ttdeci">bool m_isSelectChangeFlg</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00148">SelectUIController.cs:148</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a6d520da967f90239281f442f12beb604"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a6d520da967f90239281f442f12beb604">SelectUIController.Right</a></div><div class="ttdeci">bool Right()</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d7e/_select_u_i_controller___move_8cs_source.html#l00152">SelectUIController_Move.cs:152</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a7a503a392b11418195bff331df89e162"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a7a503a392b11418195bff331df89e162">SelectUIController.m_alwaysCreateType</a></div><div class="ttdeci">AlwaysCreateType m_alwaysCreateType</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00110">SelectUIController.cs:110</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a8daa0f381d30e9890e6f9158e6769a86"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a8daa0f381d30e9890e6f9158e6769a86">SelectUIController.Left</a></div><div class="ttdeci">bool Left()</div><div class="ttdef"><b>Definition</b> <a href="../../dd/d7e/_select_u_i_controller___move_8cs_source.html#l00065">SelectUIController_Move.cs:65</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_a9617b52116948b9c348e1a53299f5c3b"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#a9617b52116948b9c348e1a53299f5c3b">SelectUIController.SetUIActionWindowGameObject</a></div><div class="ttdeci">void SetUIActionWindowGameObject()</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00301">SelectUIController.cs:301</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_abe16f06ff23cac8cc64d764a08c03bbf"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#abe16f06ff23cac8cc64d764a08c03bbf">SelectUIController.AlwaysCreateType</a></div><div class="ttdeci">AlwaysCreateType</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00101">SelectUIController.cs:102</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_ac167a8f9b2ec9b9addb6b522cdb6bf6d"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#ac167a8f9b2ec9b9addb6b522cdb6bf6d">SelectUIController.m_currentWidth</a></div><div class="ttdeci">int m_currentWidth</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00134">SelectUIController.cs:134</a></div></div>
+<div class="ttc" id="aclass_select_u_i_controller_html_ae64d2a5c7113fc4ca014112fdc834421"><div class="ttname"><a href="../../d5/de6/class_select_u_i_controller.html#ae64d2a5c7113fc4ca014112fdc834421">SelectUIController.NullCheck</a></div><div class="ttdeci">void NullCheck()</div><div class="ttdoc">nullのUIを取り除き、現在選択中のUIが配列外でないか確認する</div><div class="ttdef"><b>Definition</b> <a href="../../d5/d19/_select_u_i_controller_8cs_source.html#l00324">SelectUIController.cs:324</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> <a href="../../db/dc2/_sound_manager_8cs_source.html#l00023">SoundManager.cs:24</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> <a href="../../db/dc2/_sound_manager_8cs_source.html#l00043">SoundManager.cs:43</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="../../d5/dd9/class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> <a href="../../db/dc2/_sound_manager_8cs_source.html#l00025">SoundManager.cs:25</a></div></div>
+<div class="ttc" id="anamespace_select_u_i_info_html"><div class="ttname"><a href="../../d3/d55/namespace_select_u_i_info.html">SelectUIInfo</a></div><div class="ttdef"><b>Definition</b> <a href="../../d2/d0d/_select_u_i_controller___select_8cs_source.html#l00007">SelectUIController_Select.cs:8</a></div></div>
+<div class="ttc" id="anamespace_select_u_i_info_html_a78ccac10f67d2bdf057b08c8961710ff"><div class="ttname"><a href="../../d3/d55/namespace_select_u_i_info.html#a78ccac10f67d2bdf057b08c8961710ff">SelectUIInfo.SelectUIType</a></div><div class="ttdeci">SelectUIType</div><div class="ttdef"><b>Definition</b> <a href="../../d2/d0d/_select_u_i_controller___select_8cs_source.html#l00010">SelectUIController_Select.cs:11</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="../../dir_2dc46f714f62a169f70d946a0a61b1b5.html">ProjectC</a></li><li class="navelem"><a class="el" href="../../dir_3a86b2e82be465261626392c6c683e3c.html">002_UI</a></li><li class="navelem"><a class="el" href="../../dir_3d110dc666c02d7f3f46ba2a5c71ab45.html">SelectUIController</a></li><li class="navelem"><a class="el" href="../../d1/d02/_select_u_i_action_window_controller_8cs.html">SelectUIActionWindowController.cs</a></li>
+    <li class="footer">2024年10月29日(火) 10時44分20秒作成 - ProjectC_Doxygen / 構成:  <a href="https://www.doxygen.org/index.html"><img class="footer" src="../../doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

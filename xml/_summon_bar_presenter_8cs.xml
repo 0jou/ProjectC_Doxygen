@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_summon_bar_presenter_8cs" kind="file" language="C#">
+    <compoundname>SummonBarPresenter.cs</compoundname>
+    <innerclass refid="class_summon_bar_presenter" prot="public">SummonBarPresenter</innerclass>
+    <innernamespace refid="namespace_unity_engine_1_1_input_system_1_1_x_r">UnityEngine::InputSystem::XR</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal">NaughtyAttributes;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UniRx;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine.InputSystem.XR;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_summon_bar_presenter" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_summon_bar_presenter" kindref="compound">SummonBarPresenter</ref><sp/>:<sp/>MonoBehaviour</highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13" refid="class_summon_bar_presenter_1a6e4c76c9bfe89300a9e4cebbd55b46c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="class_character_core" kindref="compound">CharacterCore</ref><sp/><ref refid="class_summon_bar_presenter_1a6e4c76c9bfe89300a9e4cebbd55b46c7" kindref="member">m_characterCore</ref>;</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="class_summon_bar_presenter_1a56365042ab53bf294e57015c1ee2ceef" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="class_h_p_bar_controller" kindref="compound">HPBarController</ref><sp/><ref refid="class_summon_bar_presenter_1a56365042ab53bf294e57015c1ee2ceef" kindref="member">barController</ref>;</highlight></codeline>
+<codeline lineno="16" refid="class_summon_bar_presenter_1a6227b0dbf96dd89c694ceae1295cac96" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="class_show_and_hide_for_game_object" kindref="compound">ShowAndHideForGameObject</ref><sp/><ref refid="class_summon_bar_presenter_1a6227b0dbf96dd89c694ceae1295cac96" kindref="member">m_showAndHide</ref>;</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="class_summon_bar_presenter_1a8daafa13c091e2a8ef8b7cce753a6489" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_summon_bar_presenter_1a8daafa13c091e2a8ef8b7cce753a6489" kindref="member">Start</ref>()</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>初期化</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a69460673371136a099c67816d1e56b12" kindref="member">InitSetting</ref>();</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>変わったら実行する処理を登録</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a6e4c76c9bfe89300a9e4cebbd55b46c7" kindref="member">m_characterCore</ref>.<ref refid="class_character_core_1ab5bf6b6f900839c44b44eb63938f3664" kindref="member">PlayerParameters</ref>.<ref refid="class_player_parameters_1a3dfeb8736ceff4c7973a032577110c6a" kindref="member">CastTimeProgress</ref>.Subscribe(x<sp/>=&gt;<sp/><ref refid="class_summon_bar_presenter_1aad78cf05b4082120a0705ed6884c45e9" kindref="member">BarUpdate</ref>(x));</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="class_summon_bar_presenter_1aad78cf05b4082120a0705ed6884c45e9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_summon_bar_presenter_1aad78cf05b4082120a0705ed6884c45e9" kindref="member">BarUpdate</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>_value)</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a56365042ab53bf294e57015c1ee2ceef" kindref="member">barController</ref>.<ref refid="class_h_p_bar_controller_1a9504be975f305e3ed4b9ca422ac8809e" kindref="member">SetHealthValue</ref>(_value);</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(_value<sp/>&lt;=<sp/>0.0f<sp/>||<sp/>_value<sp/>&gt;=<sp/>1.0f<sp/>)</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a6227b0dbf96dd89c694ceae1295cac96" kindref="member">m_showAndHide</ref>.<ref refid="class_show_and_hide_for_game_object_1a684c47ea4221dc5d354abe2bd62b5c4b" kindref="member">OnHide</ref>();</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a6227b0dbf96dd89c694ceae1295cac96" kindref="member">m_showAndHide</ref>.<ref refid="class_show_and_hide_for_game_object_1af2caaacec180834f464fee6b2d24699f" kindref="member">OnShow</ref>();</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>[Button(</highlight><highlight class="stringliteral">&quot;Init<sp/>Setting&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="42" refid="class_summon_bar_presenter_1a69460673371136a099c67816d1e56b12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_summon_bar_presenter_1a69460673371136a099c67816d1e56b12" kindref="member">InitSetting</ref>()</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_summon_bar_presenter_1a56365042ab53bf294e57015c1ee2ceef" kindref="member">barController</ref><sp/>==<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a56365042ab53bf294e57015c1ee2ceef" kindref="member">barController</ref><sp/>=<sp/>GetComponent&lt;HPBarController&gt;();</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Controller側では計算しない</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>barController.IsCalc<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>初期値を設定</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a56365042ab53bf294e57015c1ee2ceef" kindref="member">barController</ref>.<ref refid="class_h_p_bar_controller_1a9504be975f305e3ed4b9ca422ac8809e" kindref="member">SetHealthValue</ref>(</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_summon_bar_presenter_1a6e4c76c9bfe89300a9e4cebbd55b46c7" kindref="member">m_characterCore</ref>.<ref refid="class_character_core_1ab5bf6b6f900839c44b44eb63938f3664" kindref="member">PlayerParameters</ref>.<ref refid="class_player_parameters_1a3dfeb8736ceff4c7973a032577110c6a" kindref="member">CastTimeProgress</ref>.Value);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="002_UI/Script/Presenter/StorySkill/SummonBarPresenter.cs"/>
+  </compounddef>
+</doxygen>

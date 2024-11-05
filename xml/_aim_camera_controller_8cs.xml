@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_aim_camera_controller_8cs" kind="file" language="C#">
+    <compoundname>AimCameraController.cs</compoundname>
+    <innerclass refid="class_aim_camera_controller" prot="public">AimCameraController</innerclass>
+    <innernamespace refid="namespace_unity_1_1_mathematics">Unity::Mathematics</innernamespace>
+    <innernamespace refid="namespace_unity_editor_1_1_rendering">UnityEditor::Rendering</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespace_arbor" kindref="compound">Arbor</ref>;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Cinemachine;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Unity.Mathematics;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEditor.Rendering;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="class_aim_camera_controller" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_aim_camera_controller" kindref="compound">AimCameraController</ref><sp/>:<sp/>MonoBehaviour</highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="class_aim_camera_controller_1a3a69942318dc63a4c13f0b429cdf4b09" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="interface_i_input_provider" kindref="compound">IInputProvider</ref><sp/><ref refid="class_aim_camera_controller_1a3a69942318dc63a4c13f0b429cdf4b09" kindref="member">m_inputProvider</ref><sp/>=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="14" refid="class_aim_camera_controller_1a14044d10beea3da0bb6157cd8b6a6844" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>CinemachineInputProvider<sp/><ref refid="class_aim_camera_controller_1a14044d10beea3da0bb6157cd8b6a6844" kindref="member">m_cinemachineInputProvider</ref><sp/>=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="17" refid="class_aim_camera_controller_1aae1fc0f10ee2177dce323fa57cc24066" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>Transform<sp/><ref refid="class_aim_camera_controller_1aae1fc0f10ee2177dce323fa57cc24066" kindref="member">m_verticalTarget</ref><sp/>=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="20" refid="class_aim_camera_controller_1ad9eb513bc59a533f48ee09e2647146a2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>Transform<sp/><ref refid="class_aim_camera_controller_1ad9eb513bc59a533f48ee09e2647146a2" kindref="member">m_horizontalTarget</ref><sp/>=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="23" refid="class_aim_camera_controller_1ac7c07697d104098851a6404898956dd3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>AxisState<sp/><ref refid="class_aim_camera_controller_1ac7c07697d104098851a6404898956dd3" kindref="member">m_vertical</ref>;</highlight></codeline>
+<codeline lineno="24" refid="class_aim_camera_controller_1a49c8633411ce87464d4e85ba5f1931a9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>AxisState<sp/><ref refid="class_aim_camera_controller_1a49c8633411ce87464d4e85ba5f1931a9" kindref="member">Vertical</ref><sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_aim_camera_controller_1ac7c07697d104098851a6404898956dd3" kindref="member">m_vertical</ref>;<sp/>}<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="26" refid="class_aim_camera_controller_1a52d31c695d7eb1be6052055a7e06e7ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>AxisState<sp/><ref refid="class_aim_camera_controller_1a52d31c695d7eb1be6052055a7e06e7ee" kindref="member">m_horizontal</ref>;</highlight></codeline>
+<codeline lineno="27" refid="class_aim_camera_controller_1ae13d345760ccff81cf37ece55e4c2645" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>AxisState<sp/><ref refid="class_aim_camera_controller_1ae13d345760ccff81cf37ece55e4c2645" kindref="member">Horizontal</ref><sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal"><sp/>{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="class_aim_camera_controller_1a52d31c695d7eb1be6052055a7e06e7ee" kindref="member">m_horizontal</ref>;<sp/>}<sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="class_aim_camera_controller_1afdcf058944dbd86544dbe594adf77265" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_aim_camera_controller_1afdcf058944dbd86544dbe594adf77265" kindref="member">Awake</ref>()</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_aim_camera_controller_1a3a69942318dc63a4c13f0b429cdf4b09" kindref="member">m_inputProvider</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="class_player_input_provider" kindref="compound">PlayerInputProvider</ref>();</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Update<sp/>is<sp/>called<sp/>once<sp/>per<sp/>frame</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35" refid="class_aim_camera_controller_1a07dd729cea8fb561a1e035b319c107fe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_aim_camera_controller_1a07dd729cea8fb561a1e035b319c107fe" kindref="member">Update</ref>()</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector2<sp/>inputVec<sp/>=</highlight><highlight class="keyword">new</highlight><highlight class="normal">(</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_aim_camera_controller_1a14044d10beea3da0bb6157cd8b6a6844" kindref="member">m_cinemachineInputProvider</ref>.GetAxisValue(0)<sp/>*<sp/>-1.0f,</highlight><highlight class="comment">//<sp/>リバースしているので-1をかける</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_aim_camera_controller_1a14044d10beea3da0bb6157cd8b6a6844" kindref="member">m_cinemachineInputProvider</ref>.GetAxisValue(1));</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//Vector2<sp/>inputVec<sp/>=<sp/>m_inputProvider.ThrowAim;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertical.m_InputAxisValue<sp/>=<sp/>inputVec.y;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_horizontal.m_InputAxisValue<sp/>=<sp/>inputVec.x;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_aim_camera_controller_1ac7c07697d104098851a6404898956dd3" kindref="member">m_vertical</ref>.Update(Time.deltaTime);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_aim_camera_controller_1a52d31c695d7eb1be6052055a7e06e7ee" kindref="member">m_horizontal</ref>.Update(Time.deltaTime);</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>horizontalRotation<sp/>=<sp/>Quaternion.AngleAxis(<ref refid="class_aim_camera_controller_1a52d31c695d7eb1be6052055a7e06e7ee" kindref="member">m_horizontal</ref>.Value,<sp/>Vector3.up);</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>verticalRotation<sp/>=<sp/>Quaternion.AngleAxis(<ref refid="class_aim_camera_controller_1ac7c07697d104098851a6404898956dd3" kindref="member">m_vertical</ref>.Value,<sp/>Vector3.right);</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_horizontalTarget.rotation<sp/>=<sp/>horizontalRotation;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_verticalTarget.localRotation<sp/>=<sp/>verticalRotation;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54" refid="class_aim_camera_controller_1a3b21102ff5572a9859bcf49e5efb8a63" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_aim_camera_controller_1a3b21102ff5572a9859bcf49e5efb8a63" kindref="member">OnDisable</ref>()</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_verticalTarget.localRotation<sp/>=<sp/>Quaternion.identity;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_horizontalTarget.rotation<sp/>=<sp/>Quaternion.identity;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_vertical.Value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_horizontal.Value<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62" refid="class_aim_camera_controller_1a4f7834b7ecb8ba7dca7ac8f2b28bfbb0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_aim_camera_controller_1a4f7834b7ecb8ba7dca7ac8f2b28bfbb0" kindref="member">OnEnable</ref>()</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector3<sp/>angle<sp/>=<sp/><ref refid="_player_input_manager_8cs_1acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b" kindref="member">Camera</ref>.main.transform.localRotation.eulerAngles;</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_horizontalTarget.eulerAngles<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Vector3(0,angle.y,0);</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Vector3<sp/>horizonVec<sp/>=<sp/><ref refid="class_aim_camera_controller_1ad9eb513bc59a533f48ee09e2647146a2" kindref="member">m_horizontalTarget</ref>.rotation.eulerAngles;</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_horizontal.Value<sp/>=<sp/>horizonVec.y;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="70"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="005_Camera/AimCamera/Script/AimCameraController.cs"/>
+  </compounddef>
+</doxygen>

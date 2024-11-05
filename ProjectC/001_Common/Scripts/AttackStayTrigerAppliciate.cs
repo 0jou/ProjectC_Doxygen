@@ -24,7 +24,7 @@ public class AttackStayTrigerAppliciate : MonoBehaviour
     [SerializeField] private bool m_doMultiHit = false;
 
     [Header("最大当たり判定")]
-    [SerializeField]private int m_MaxHitCount = 0;
+    [SerializeField] private int m_MaxHitCount = 0;
 
     [Header("回復するBPの倍率（ダメージにかける）")]
     [SerializeField] private float m_recoverBPMagni = 0.1f;
@@ -90,32 +90,32 @@ public class AttackStayTrigerAppliciate : MonoBehaviour
                     m_ownerInfoTag.Characore.HitStopRemainingTime = m_hitStopTime;
 
                     // SkillごとにBPを回復する（吉田）
+                    if (m_ownerInfoTag.Characore.PlayerParameters)
                     {
-
+                        PlayerStatus status = m_ownerInfoTag.Characore.PlayerParameters.PlayerStatus;
                         //BPを回復する(山本)
-                        if (m_ownerInfoTag.Characore.Status.m_bp.Value < m_ownerInfoTag.Characore.Status.MaxBP)
-                            m_ownerInfoTag.Characore.Status.m_bp.Value += damageNotification.m_damage * m_recoverBPMagni;
+                        if (status.m_bp.Value < status.MaxBP)
+                            status.m_bp.Value += damageNotification.m_damage * m_recoverBPMagni;
 
                         //Max超えてたらMaxに戻す
-                        if (m_ownerInfoTag.Characore.Status.m_bp.Value >= m_ownerInfoTag.Characore.Status.MaxBP)
+                        if (status.m_bp.Value >= status.MaxBP)
                         {
-                            m_ownerInfoTag.Characore.Status.m_bp.Value = m_ownerInfoTag.Characore.Status.MaxBP;
+                            status.m_bp.Value = status.MaxBP;
                         }
 
                         //スキルBPを回復する(吉田)
-                        m_ownerInfoTag.Characore.Status.m_bpSkill_1.Value += damageNotification.m_damage * m_recoverBPMagni;
-                        m_ownerInfoTag.Characore.Status.m_bpSkill_2.Value += damageNotification.m_damage * m_recoverBPMagni;
+                        status.m_bpSkill_1.Value += damageNotification.m_damage * m_recoverBPMagni;
+                        status.m_bpSkill_2.Value += damageNotification.m_damage * m_recoverBPMagni;
 
                         //Max超えてたらMaxに戻す（吉田）
-                        if (m_ownerInfoTag.Characore.Status.m_bpSkill_1.Value >= m_ownerInfoTag.Characore.Status.MaxBPSkill_1)
+                        if (status.m_bpSkill_1.Value >= status.MaxBPSkill_1)
                         {
-                            m_ownerInfoTag.Characore.Status.m_bpSkill_1.Value = m_ownerInfoTag.Characore.Status.MaxBPSkill_1;
+                            status.m_bpSkill_1.Value = status.MaxBPSkill_1;
                         }
-                        if (m_ownerInfoTag.Characore.Status.m_bpSkill_2.Value >= m_ownerInfoTag.Characore.Status.MaxBPSkill_2)
+                        if (status.m_bpSkill_2.Value >= status.MaxBPSkill_2)
                         {
-                            m_ownerInfoTag.Characore.Status.m_bpSkill_2.Value = m_ownerInfoTag.Characore.Status.MaxBPSkill_2;
+                            status.m_bpSkill_2.Value = status.MaxBPSkill_2;
                         }
-
                     }
 
                     // ヒットエフェクト表示
@@ -149,7 +149,7 @@ public class AttackStayTrigerAppliciate : MonoBehaviour
         Transform managerObj = _enemy.transform.Find("ConditionManager");
         if (!managerObj.TryGetComponent(out ConditionManager manager)) return;
 
-        manager.AddCondition(conditionData.ConditionPrefab);
+        manager.AddCondition(conditionData.ConditionPrefab, true);
 
     }
 

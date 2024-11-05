@@ -30,7 +30,7 @@ public class JudgeStun : MonoBehaviour
              Transform managerObj = transform.root.Find("ConditionManager");
              if (!managerObj.TryGetComponent(out ConditionManager manager)) return;
 
-             manager.AddCondition(conditionData.ConditionPrefab);
+             manager.AddCondition(conditionData.ConditionPrefab, false);
 
              Destroy(gameObject);
 

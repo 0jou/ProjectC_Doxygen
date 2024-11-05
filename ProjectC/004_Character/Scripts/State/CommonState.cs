@@ -52,7 +52,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
 
             // ダッシュ時の判定処理
             if (Core.m_inputProvider.DoDush &&
-            (Core.Status.m_stamina.Value >= Core.Status.m_dashStaminaCost) &&
+            (Core.PlayerParameters.PlayerStatus.m_stamina.Value >= Core.PlayerParameters.PlayerStatus.m_dashStaminaCost) &&
             (input.magnitude != 0.0f))
             {
                 if (Core.m_isNoStamina)
@@ -162,7 +162,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             if (Core.m_inputProvider.DoRolling)
             {
                 // スタミナが消費できるか確認
-                if (Core.m_characterStatus.m_stamina.Value >= Core.m_characterStatus.m_rollingStaminaCost)
+                if (Core.PlayerParameters.PlayerStatus.m_stamina.Value >= Core.PlayerParameters.PlayerStatus.m_rollingStaminaCost)
                 {
                     Core.m_animator.SetTrigger("Rolling");
                 }
@@ -277,8 +277,8 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                         Core.PlayerParameters.SpeedStick = speedByStick;
 
                         float finalSpeed;
-                        if (Core.m_isRun) finalSpeed = Core.m_dushSpeed;
-                        else finalSpeed = Core.m_walkSpeed * speedByStick;
+                        if (Core.m_isRun) finalSpeed = Core.Status.DushSpeed;
+                        else finalSpeed = Core.Status.WalkSpeed * speedByStick;
                         Core.Move(finalSpeed);
 
                         // 移動音速度調整(上甲) todo 仕様変更につき一時速度調整なし
@@ -320,16 +320,16 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                                 Transform target = Core.EnemyParameters.Arbor.parameterContainer.GetTransform("Target");
                                 if (target)
                                 {
-                                    Core.Move(Core.m_dushSpeed);
+                                    Core.Move(Core.Status.DushSpeed);
                                 }
                                 else
                                 {
-                                    Core.Move(Core.m_walkSpeed);
+                                    Core.Move(Core.Status.WalkSpeed);
                                 }
                             }
                             else
                             {
-                                Core.Move(Core.m_walkSpeed);
+                                Core.Move(Core.Status.WalkSpeed);
                             }
                         }
                         else
@@ -367,23 +367,23 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                             //童話スキルキャラが走る
                             if (playerDist >= Core.PlayerSkillsParameters.RunDist)
                             {
-                                Core.Move(Core.m_dushSpeed);
+                                Core.Move(Core.Status.DushSpeed);
                             }
                             else if (playerDist < Core.PlayerSkillsParameters.WalkDist)
                             {
 
-                                float walkSpeed = Core.m_walkSpeed * m_speedStick;
+                                float walkSpeed = Core.Status.WalkSpeed * m_speedStick;
                                 Core.Move(walkSpeed);
                             }
                             else
                             {
                                 if (!m_isRun)
                                 {
-                                    Core.Move(Core.m_walkSpeed);
+                                    Core.Move(Core.Status.WalkSpeed);
                                 }
                                 else
                                 {
-                                    float dushSpeed = Core.m_walkSpeed * 2.0f;
+                                    float dushSpeed = Core.Status.WalkSpeed * 2.0f;
                                     Core.Move(dushSpeed);
                                 }
                             }
@@ -440,15 +440,17 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
         // スタミナ回復（吉田）
         private void UpdateStamina()
         {
+            PlayerStatus status = Core.PlayerParameters.PlayerStatus;
+
             // ダッシュ時 ---------------
             if (Core.m_isRun)
             {
                 // スタミナ消費
-                Core.m_characterStatus.m_stamina.Value -= Core.m_characterStatus.m_dashStaminaCost;
-                if (Core.m_characterStatus.m_stamina.Value < 0)
+                status.m_stamina.Value -= status.m_dashStaminaCost;
+                if (status.m_stamina.Value < 0)
                 {
                     //スタミナなくなった
-                    Core.m_characterStatus.m_stamina.Value = 0;
+                    status.m_stamina.Value = 0;
                     if (Core.m_dashEffect != null)
                     {
                         Core.m_dashEffect.Stop();
@@ -462,14 +464,13 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
 
 
             // 回復 ---------------
-            if (Core.m_characterStatus.m_stamina.Value >= Core.m_characterStatus.MaxStamina) return;
+            if (status.m_stamina.Value >= status.MaxStamina) return;
 
-            Core.m_characterStatus.m_stamina.Value += Core.m_characterStatus.m_staminaSpeed * Time.deltaTime;
+            status.m_stamina.Value += status.m_staminaSpeed * Time.deltaTime;
 
-            if (Core.m_characterStatus.m_stamina.Value >= Core.m_characterStatus.MaxStamina)
+            if (status.m_stamina.Value >= status.MaxStamina)
             {
-                Core.m_characterStatus.m_stamina.Value = Core.m_characterStatus.MaxStamina;
-
+                status.m_stamina.Value = status.MaxStamina;
             }
         }
 
@@ -496,39 +497,25 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
 
             //それぞれのBPを回復する(吉田)
             {
+                PlayerStatus status = Core.PlayerParameters.PlayerStatus;
+
                 //スキルBPを回復する(吉田)
                 if (Core.PlayerParameters.ObserbSkill1 == null)
-                    Core.m_characterStatus.m_bpSkill_1.Value += Core.m_characterStatus.m_bpRecoverSpeed * Time.deltaTime;
+                    status.m_bpSkill_1.Value += status.m_bpRecoverSpeed * Time.deltaTime;
 
                 if (Core.PlayerParameters.ObserbSkill2 == null)
-                    Core.m_characterStatus.m_bpSkill_2.Value += Core.m_characterStatus.m_bpRecoverSpeed * Time.deltaTime;
+                    status.m_bpSkill_2.Value += status.m_bpRecoverSpeed * Time.deltaTime;
 
                 //Max超えてたらMaxに戻す（吉田）
-                if (Core.m_characterStatus.m_bpSkill_1.Value >= Core.m_characterStatus.MaxBPSkill_1)
+                if (status.m_bpSkill_1.Value >= status.MaxBPSkill_1)
                 {
-                    Core.m_characterStatus.m_bpSkill_1.Value = Core.m_characterStatus.MaxBPSkill_1;
+                    status.m_bpSkill_1.Value = status.MaxBPSkill_1;
                 }
-                if (Core.m_characterStatus.m_bpSkill_2.Value >= Core.m_characterStatus.MaxBPSkill_2)
+                if (status.m_bpSkill_2.Value >= status.MaxBPSkill_2)
                 {
-                    Core.m_characterStatus.m_bpSkill_2.Value = Core.m_characterStatus.MaxBPSkill_2;
+                    status.m_bpSkill_2.Value = status.MaxBPSkill_2;
                 }
-
             }
-
-
-            //if (Core.m_characterStatus.m_bp.Value >= Core.m_characterStatus.MaxBP)
-            //{
-            //    return;
-            //}
-
-            //Core.m_characterStatus.m_bp.Value += Core.m_characterStatus.m_bpRecoverSpeed * Time.deltaTime;
-
-
-            //if (Core.m_characterStatus.m_bp.Value >= Core.m_characterStatus.MaxBP)
-            //{
-            //    Core.m_characterStatus.m_bp.Value = Core.m_characterStatus.MaxBP;
-            //}
-
         }
 
 
@@ -550,11 +537,11 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                 var storySkillData = StorySkillDataBaseManager.instance.GetStorySkillData(_skillID);
 
                 //プレイヤーのBPがデータに登録された消費BP以上ならスキル使用可能（吉田）
-                if (_slot == 0 && storySkillData.PayBP <= Core.m_characterStatus.m_bpSkill_1.Value)
+                if (_slot == 0 && storySkillData.PayBP <= Core.PlayerParameters.PlayerStatus.m_bpSkill_1.Value)
                 {
                     useSkillFlg = true;
                 }
-                else if (_slot == 1 && storySkillData.PayBP <= Core.m_characterStatus.m_bpSkill_2.Value)
+                else if (_slot == 1 && storySkillData.PayBP <= Core.PlayerParameters.PlayerStatus.m_bpSkill_2.Value)
                 {
                     useSkillFlg = true;
                 }
@@ -671,7 +658,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                         if (Core.m_inputProvider.DoRolling)
                         {
                             // スタミナが消費できるか確認
-                            if (Core.m_characterStatus.m_stamina.Value >= Core.m_characterStatus.m_rollingStaminaCost)
+                            if (Core.PlayerParameters.PlayerStatus.m_stamina.Value >= Core.PlayerParameters.PlayerStatus.m_rollingStaminaCost)
                             {
                                 Core.m_animator.SetTrigger("Rolling");
                             }

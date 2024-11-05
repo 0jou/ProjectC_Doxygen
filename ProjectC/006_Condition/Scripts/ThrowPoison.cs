@@ -48,7 +48,7 @@ public class ThrowPoison : MonoBehaviour
                 m_hitConditionManagers[i].m_hitTime += Time.deltaTime;
                 if (m_hitConditionManagers[i].m_hitTime > m_poisonedTime)
                 {
-                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_poisonPrefab);
+                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_poisonPrefab, false);
                 }
                 return;
             }

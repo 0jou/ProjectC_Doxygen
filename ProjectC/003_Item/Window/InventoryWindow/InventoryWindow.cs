@@ -109,10 +109,6 @@ public class InventoryWindow : BaseWindow
                 await base.OnUpdate();
                 cancelToken.ThrowIfCancellationRequested();
 
-
-                // ゲームを常に停止する
-                SetTimeScale(0.0f);
-
                 // UI選択の更新
                 m_selectUIController.OnUpdate();
 

@@ -77,7 +77,7 @@ public class SelectManagementWindow : BaseWindow
             case ButtonID.ManagementStorage:
                 {
                     var controller = Instantiate(m_managementStorageWindowController);
-                    await CreateToUpdateWindow<BaseWindow>(controller, false);
+                    await controller.CreateWindow<BaseWindow>();
                     if (controller != null) Destroy(controller.gameObject);
                     break;
                 }
@@ -85,7 +85,7 @@ public class SelectManagementWindow : BaseWindow
             case ButtonID.ProvideFood:
                 {
                     var controller = Instantiate(m_provideFoodWindowController);
-                    await CreateToUpdateWindow<BaseWindow>(controller, false);
+                    await controller.CreateWindow<BaseWindow>();
                     if (controller != null) Destroy(controller.gameObject);
                     break;
                 }

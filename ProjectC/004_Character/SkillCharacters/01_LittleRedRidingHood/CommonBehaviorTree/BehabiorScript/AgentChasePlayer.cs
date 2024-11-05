@@ -23,8 +23,6 @@ namespace Arbor.BehaviourTree.Actions
         [SerializeField]
         private FlexibleFloat m_warpDistance = new FlexibleFloat();
         [SerializeField]
-        private FlexibleChaseParameters m_chaseParameters = new FlexibleChaseParameters();
-        [SerializeField]
         private OutputSlotBool m_outIsReach;
         
 

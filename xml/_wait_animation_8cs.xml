@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_wait_animation_8cs" kind="file" language="C#">
+    <compoundname>WaitAnimation.cs</compoundname>
+    <innerclass refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation" prot="public">Arbor::StateMachine::StateBehaviours::WaitAnimation</innerclass>
+    <innernamespace refid="namespace_arbor">Arbor</innernamespace>
+    <innernamespace refid="namespace_arbor_1_1_state_machine">Arbor::StateMachine</innernamespace>
+    <innernamespace refid="namespace_arbor_1_1_state_machine_1_1_state_behaviours">Arbor::StateMachine::StateBehaviours</innernamespace>
+    <innernamespace refid="namespace_unity_engine_1_1_serialization">UnityEngine::Serialization</innernamespace>
+    <innernamespace refid="namespace_arbor_1_1_utilities">Arbor::Utilities</innernamespace>
+    <briefdescription>
+<para>指定のアニメーションになるまで待機して次のステートに遷移するクラス </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>伊波 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine.Serialization;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="namespace_arbor_1_1_state_machine" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespace_arbor_1_1_state_machine_1_1_state_behaviours" kindref="compound">Arbor.StateMachine.StateBehaviours</ref></highlight></codeline>
+<codeline lineno="11"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Arbor.Utilities;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>指定のアニメーションになるまで待機する(伊波)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>[AddComponentMenu(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>[AddBehaviourMenu(</highlight><highlight class="stringliteral">&quot;WaitAnimation&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/>[BuiltInBehaviour]</highlight></codeline>
+<codeline lineno="19" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation" refkind="compound"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">sealed</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation" kindref="compound">WaitAnimation</ref><sp/>:<sp/>StateBehaviour</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#region<sp/>Serialize<sp/>fields</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[SlotType(typeof(Animator))]</highlight></codeline>
+<codeline lineno="24" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a9e00cfe2dd17deb4e15786474b96782b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>FlexibleComponent<sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a9e00cfe2dd17deb4e15786474b96782b" kindref="member">m_animator</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>FlexibleComponent(FlexibleHierarchyType.RootGraph);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="27" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a32d645ddd445daf7dd03dce63c0e873f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>FlexibleString<sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a32d645ddd445daf7dd03dce63c0e873f" kindref="member">m_layerName</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>FlexibleString(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Empty);</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="30" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a832066b22311dc0a8dbc922a37b5472a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>FlexibleString<sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a832066b22311dc0a8dbc922a37b5472a" kindref="member">m_stateName</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>FlexibleString(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal">.Empty);</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>[FormerlySerializedAs(</highlight><highlight class="stringliteral">&quot;nextState&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="34" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a7f2eab5bc1ad1ffdde0010b91c7668b0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>StateLink<sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a7f2eab5bc1ad1ffdde0010b91c7668b0" kindref="member">_NextState</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>StateLink();</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>#endregion</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a199f54ac1deef8b4b36afca6f8614eb9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a199f54ac1deef8b4b36afca6f8614eb9" kindref="member">CheckTransition</ref>()</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Animator<sp/>animator<sp/>=<sp/>m_animator.value<sp/>as<sp/>Animator;</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(animator<sp/>==<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>layerName<sp/>=<sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a32d645ddd445daf7dd03dce63c0e873f" kindref="member">m_layerName</ref>.value;</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>stateName<sp/>=<sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a832066b22311dc0a8dbc922a37b5472a" kindref="member">m_stateName</ref>.value;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>layerIndex<sp/>=<sp/>AnimatorUtility.GetLayerIndex(animator,<sp/>layerName);</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(layerIndex<sp/>&lt;<sp/>0)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Debug.LogError(</highlight><highlight class="stringliteral">&quot;指定のレイヤーが見つかりません。&quot;</highlight><highlight class="normal"><sp/>+<sp/>gameObject.name);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(animator.GetCurrentAnimatorStateInfo(layerIndex).IsName(stateName))</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!animator.IsInTransition(layerIndex))</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Transition(<ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a7f2eab5bc1ad1ffdde0010b91c7668b0" kindref="member">_NextState</ref>);</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1ac430e895b315f6ab73e5a96e7198ee15" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1ac430e895b315f6ab73e5a96e7198ee15" kindref="member">OnStateBegin</ref>()</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a199f54ac1deef8b4b36afca6f8614eb9" kindref="member">CheckTransition</ref>();</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a93ccc0674f61c0db95d50e000ac1d23e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a93ccc0674f61c0db95d50e000ac1d23e" kindref="member">OnStateUpdate</ref>()</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_arbor_1_1_state_machine_1_1_state_behaviours_1_1_wait_animation_1a199f54ac1deef8b4b36afca6f8614eb9" kindref="member">CheckTransition</ref>();</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="75"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="004_Character/Enemy/CommonBehaviorTree/BehaviourScripts/WaitAnimation.cs"/>
+  </compounddef>
+</doxygen>

@@ -15,28 +15,29 @@ public class BPBarPresenter : MonoBehaviour
             barController = GetComponent<HPBarController>();
         }
 
+        PlayerStatus status = m_characterCore.PlayerParameters.PlayerStatus;
         // HPの初期設定
-        BarSetting();
+        BarSetting(status);
 
         // 変わったら実行する処理を登録
-        m_characterCore.Status.m_bp.Subscribe(x => BarUpdate());
+        status.m_bp.Subscribe(x => BarUpdate(status));
     }
 
-    private void BarUpdate()
+    private void BarUpdate(PlayerStatus status)
     {
-        barController.SetHealthValue(m_characterCore.Status.m_bp.Value);
+        barController.SetHealthValue(status.m_bp.Value);
 
         // デバッグ用
         Debug.Log("HealthUpdate");
     }
 
     [ContextMenu("BarSetting")]
-    private void BarSetting()
+    private void BarSetting(PlayerStatus status)
     {
         // BPの初期値を設定
         barController.SetHealth(
-            m_characterCore.Status.m_bp.Value,
-            m_characterCore.Status.MaxBP);
+            status.m_bp.Value,
+            status.MaxBP);
     }
 
 }

@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_generate_cleaning_event_8cs" kind="file" language="C#">
+    <compoundname>GenerateCleaningEvent.cs</compoundname>
+    <innerclass refid="class_generate_cleaning_event" prot="public">GenerateCleaningEvent</innerclass>
+    <briefdescription>
+<para>汚れイベントオブジェクト出現させるイベント </para>
+    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="date"><para>24/09/18 10:00 汚れオブジェクトを出現させる処理を追加 </para>
+</simplesect>
+<simplesect kind="date"><para>24/10/2? 追加(田内) 汚れが無くなれば終了する処理を追加 </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">Arbor.Calculators;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="class_generate_cleaning_event" refkind="compound"><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_generate_cleaning_event" kindref="compound">GenerateCleaningEvent</ref><sp/>:<sp/><ref refid="class_base_management_event" kindref="compound">BaseManagementEvent</ref></highlight></codeline>
+<codeline lineno="17"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/>[Header(</highlight><highlight class="stringliteral">&quot;汚れのプレハブ&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="22" refid="class_generate_cleaning_event_1a6e7263bd0daba49bbe3b0b3bdddae70d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>GameObject<sp/><ref refid="class_generate_cleaning_event_1a6e7263bd0daba49bbe3b0b3bdddae70d" kindref="member">m_dirtPrefab</ref>;</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="class_generate_cleaning_event_1a258bff90b03599afbf45a822d43d032e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>Vector3<sp/><ref refid="class_generate_cleaning_event_1a258bff90b03599afbf45a822d43d032e" kindref="member">m_position</ref><sp/>{<sp/></highlight><highlight class="keyword">get</highlight><highlight class="normal">;<sp/></highlight><highlight class="keyword">set</highlight><highlight class="normal">;<sp/>}<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Vector3(0,<sp/>0,<sp/>0);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="28" refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" kindref="member">ｍ_randomRange</ref><sp/>=<sp/>0.3f;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>追加(田内)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/>[Header(</highlight><highlight class="stringliteral">&quot;自動終了時間&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="33" refid="class_generate_cleaning_event_1a4d63dab712f02f3e3c27a7321024911f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a4d63dab712f02f3e3c27a7321024911f" kindref="member">m_endTime</ref><sp/>=<sp/>20.0f;</highlight></codeline>
+<codeline lineno="34" refid="class_generate_cleaning_event_1aa6e7122b0c9b762765f98a05f993d458" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1aa6e7122b0c9b762765f98a05f993d458" kindref="member">m_currentEndCount</ref><sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="class_generate_cleaning_event_1a2eb84905252dae4c0eede48ac7879415" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>GameObject<sp/><ref refid="class_generate_cleaning_event_1a2eb84905252dae4c0eede48ac7879415" kindref="member">m_createDirt</ref><sp/>=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="40" refid="class_generate_cleaning_event_1a2125f7f2d3980675aeb5d89b516f995a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a2125f7f2d3980675aeb5d89b516f995a" kindref="member">SetRandomRange</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>range)</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" kindref="member">ｍ_randomRange</ref><sp/>=<sp/>range;</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="45" refid="class_generate_cleaning_event_1a02c8f4d9baa061e4da4c597fe9a51861" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a02c8f4d9baa061e4da4c597fe9a51861" kindref="member">m_isPositionSet</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="class_generate_cleaning_event_1a365c840ada079e49c6489f54f6225f6e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a365c840ada079e49c6489f54f6225f6e" kindref="member">OnStart</ref>()</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Debug.Log(</highlight><highlight class="stringliteral">&quot;CleaningEvent&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1adbafe1be8e899f0d007b4c2d401b040b" kindref="member">CreateDirt</ref>();</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55" refid="class_generate_cleaning_event_1a7d0c77e47be73520df08c896e47f8ff1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a7d0c77e47be73520df08c896e47f8ff1" kindref="member">OnUpdate</ref>()</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1ad8f51ecc9936849ad5e70fe9dd32fc8e" kindref="member">CheckDirt</ref>();</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1afbf78bf24160f7967b13bcfec2f3a0ee" kindref="member">CountEndTime</ref>();</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="class_generate_cleaning_event_1a7e6bee9b30b80ef4e0bcf38225f3e589" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a7e6bee9b30b80ef4e0bcf38225f3e589" kindref="member">OnExit</ref>()</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_generate_cleaning_event_1a2eb84905252dae4c0eede48ac7879415" kindref="member">m_createDirt</ref><sp/>!=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)<sp/>Destroy(<ref refid="class_generate_cleaning_event_1a2eb84905252dae4c0eede48ac7879415" kindref="member">m_createDirt</ref>);</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="class_generate_cleaning_event_1a39ac33feeb6ffc286554f2abec21d6f8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1a39ac33feeb6ffc286554f2abec21d6f8" kindref="member">SetPosition</ref>(Vector3<sp/>position)</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1a258bff90b03599afbf45a822d43d032e" kindref="member">m_position</ref><sp/>=<sp/>position;</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1a02c8f4d9baa061e4da4c597fe9a51861" kindref="member">m_isPositionSet</ref><sp/>=<sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="77" refid="class_generate_cleaning_event_1adbafe1be8e899f0d007b4c2d401b040b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1adbafe1be8e899f0d007b4c2d401b040b" kindref="member">CreateDirt</ref>()</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_generate_cleaning_event_1a6e7263bd0daba49bbe3b0b3bdddae70d" kindref="member">m_dirtPrefab</ref><sp/>==<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Debug.LogError(</highlight><highlight class="stringliteral">&quot;汚れプレハブがシリアライズされていません&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1a2eb84905252dae4c0eede48ac7879415" kindref="member">m_createDirt</ref><sp/>=<sp/>Instantiate(<ref refid="class_generate_cleaning_event_1a6e7263bd0daba49bbe3b0b3bdddae70d" kindref="member">m_dirtPrefab</ref>);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//位置を設定</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_generate_cleaning_event_1a02c8f4d9baa061e4da4c597fe9a51861" kindref="member">m_isPositionSet</ref>)</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_createDirt.transform.position<sp/>=<sp/><ref refid="class_generate_cleaning_event_1a258bff90b03599afbf45a822d43d032e" kindref="member">m_position</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//ランダムでずらす</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>randomRange<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>Vector3(Random.Range(-<ref refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" kindref="member">ｍ_randomRange</ref>,<sp/><ref refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" kindref="member">ｍ_randomRange</ref>),<sp/>0,<sp/>Random.Range(-<ref refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" kindref="member">ｍ_randomRange</ref>,<sp/><ref refid="class_generate_cleaning_event_1a04b78197490ffa552e0f0961690155c7" kindref="member">ｍ_randomRange</ref>));</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_createDirt.transform.position<sp/>+=<sp/>randomRange;</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>追加<sp/>田内</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>時間経過で自動的に終了</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102" refid="class_generate_cleaning_event_1afbf78bf24160f7967b13bcfec2f3a0ee" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1afbf78bf24160f7967b13bcfec2f3a0ee" kindref="member">CountEndTime</ref>()</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_generate_cleaning_event_1aa6e7122b0c9b762765f98a05f993d458" kindref="member">m_currentEndCount</ref><sp/>+=<sp/>Time.deltaTime;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_generate_cleaning_event_1a4d63dab712f02f3e3c27a7321024911f" kindref="member">m_endTime</ref><sp/>&lt;<sp/><ref refid="class_generate_cleaning_event_1aa6e7122b0c9b762765f98a05f993d458" kindref="member">m_currentEndCount</ref>)</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_base_management_event_1a2ad6093da5ea506264fc54a5dd7f03c0" kindref="member">SetEventEnd</ref>(<ref refid="namespace_management_game_info" kindref="compound">ManagementGameInfo</ref>.EventSolutionType.UnSolution);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>追加<sp/>田内</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>汚れが無くなれば終了</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="class_generate_cleaning_event_1ad8f51ecc9936849ad5e70fe9dd32fc8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_generate_cleaning_event_1ad8f51ecc9936849ad5e70fe9dd32fc8e" kindref="member">CheckDirt</ref>()</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_generate_cleaning_event_1a2eb84905252dae4c0eede48ac7879415" kindref="member">m_createDirt</ref><sp/>==<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_base_management_event_1a2ad6093da5ea506264fc54a5dd7f03c0" kindref="member">SetEventEnd</ref>(<ref refid="namespace_management_game_info" kindref="compound">ManagementGameInfo</ref>.EventSolutionType.Solution);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="108_Management_Event/Event/CleaningEvent/script/GenerateCleaningEvent.cs"/>
+  </compounddef>
+</doxygen>

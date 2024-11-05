@@ -80,7 +80,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             }
 
             m_delay -= Time.fixedDeltaTime;
-            Core.Move(Core.m_dushSpeed);
+            Core.Move(Core.Status.DushSpeed);
             if (m_isSpin)
             {
                 var RotateTowards = Quaternion.Euler(0, m_rotateDegAngSpeed, 0) * Core.transform.root.forward;

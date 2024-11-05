@@ -10,14 +10,17 @@ using Arbor.BehaviourTree;
 [AddBehaviourMenu("Enemy/BewareTarget")]
 public class BewareTarget : Decorator
 {
-
-    [SerializeField] private FlexibleTransform m_target;
-    [SerializeField] private FlexibleChaseParameters m_chaseParameters;
+    [SerializeField]
+    [SlotType(typeof(EnemyParameters))]
+    private FlexibleComponent m_enemyParameters;
 
     private Collider m_myCollider;
     private EnemyInputProvider m_input;
     private Vector3 m_startPos;
     private readonly VisualFieldJudgment m_judgement = new();
+    private CharacterCore m_characterCore;
+    private ChaseData m_chaseData;
+    private Transform m_target;
 
     protected override void OnAwake()
     {
@@ -27,37 +30,46 @@ public class BewareTarget : Decorator
         {
             m_startPos = agent.StartPosition;
         }
+
+        EnemyParameters parameters = m_enemyParameters.value as EnemyParameters;
+        m_chaseData = parameters.GetChaseData();
+        if (m_chaseData == null)
+        {
+            Debug.LogError("ChaseDataが取得できませんでした" + gameObject.name);
+        }
+        if (!parameters.transform.TryGetComponent(out m_characterCore))
+        {
+            Debug.LogError("CharacterCoreが取得できませんでした" + gameObject.name);
+        }
     }
 
     protected override void OnStart()
     {
-        //修正（山本）
-        if (m_target.value == false)
+        EnemyParameters parameters = m_enemyParameters.value as EnemyParameters;
+
+        if (parameters.Target == false)
         {
             return;
         }
-
-        if (transform.root.TryGetComponent(out AgentController agent))
+        m_target = parameters.Target;
+        if (m_characterCore)
         {
-            //agent.Stop();
-            Vector3 targetPos = m_target.value.position - transform.position;
-            targetPos = targetPos.normalized * 0.5f;
-            targetPos += transform.position;
-            agent.MoveTo(0.1f, 1.0f, targetPos);
+            Vector3 targetPos = m_target.position - transform.position;
+            m_characterCore.SetRotateToTarget(targetPos);
         }
     }
 
     protected override bool OnConditionCheck()
     {
-        if (!m_target.value) return false;
+        if (!m_target) return false;
 
-        if (Vector3.Distance(transform.position, m_startPos) >= m_chaseParameters.value.DistAwayFromSpawnPos) return false;
+        if (Vector3.Distance(transform.position, m_startPos) >= m_chaseData.DistAwayFromSpawnPos) return false;
 
-        float searchDist = m_chaseParameters.value.SearchCharacterDist;
-        if (m_judgement.SearchTargetNearSpawn(m_target.value.gameObject, m_chaseParameters.value,
-            m_myCollider, m_startPos, ref searchDist, m_chaseParameters.value.SearchCharacterDist))
+        float searchDist = m_chaseData.SearchCharacterDist;
+        if (m_judgement.SearchTargetNearSpawn(m_target.gameObject, m_chaseData,
+            m_myCollider, m_startPos, ref searchDist, m_chaseData.SearchCharacterDist))
         {
-            m_input.LookVector = m_target.value.position - transform.position;
+            m_input.LookVector = m_target.position - transform.position;
             return true;
         }
 

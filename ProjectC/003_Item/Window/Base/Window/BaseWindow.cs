@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.InputSystem;
-
 using Cysharp.Threading.Tasks;
 
 using UnityEngine.Rendering;
@@ -36,7 +35,7 @@ public class BaseWindow : MonoBehaviour
 
     protected enum DepthOfFieldType
     {
-        Enabled,    // 有効
+        Enable,    // 有効
         Disable     // 無効
     }
 
@@ -44,35 +43,40 @@ public class BaseWindow : MonoBehaviour
     [SerializeField]
     protected DepthOfFieldType m_depthOfFieldType = DepthOfFieldType.Disable;
 
+    private bool m_alreadyDepthOfField = false;
+
     //======================================
 
-    protected enum GameStopType
+    protected enum PauseGameType
     {
-        Enabled,    // 有効
+        Enable,    // 有効
         Disable     // 無効
     }
 
-    [Header("ゲームを停止")]
+    [Header("一時停止")]
     [SerializeField]
-    protected GameStopType m_gameStopType = GameStopType.Disable;
+    protected PauseGameType m_pauseGameType = PauseGameType.Enable;
+
+    private float m_alreadyPauseGameTimeScale = 1.0f;
 
     //================================================================
 
-    protected enum GameStopMoveType
+    protected enum PauseGameMoveType
     {
-        Enabled,    // 有効
+        Enable,     // 有効
         Disable     // 無効
     }
 
-    [Header("ゲーム停止中でも動く")]
+    [Header("一時停止動作")]
     [SerializeField]
-    protected GameStopMoveType m_gameStopMoveType = GameStopMoveType.Disable;
+    protected PauseGameMoveType m_pauseGameMoveType = PauseGameMoveType.Enable;
+
 
     //================================================================
 
     protected enum HideUIType
     {
-        Enabled,    // 有効
+        Enable,    // 有効
         Disable     // 無効
     }
 
@@ -124,34 +128,50 @@ public class BaseWindow : MonoBehaviour
 
     public PlayerInput Input { get { return m_input; } set { m_input = value; } }
 
-    //=======================================
+    //=================================================================================
+    //                               実行処理
+    //=================================================================================
 
-    // 初期設定(非表示の状態)
+    /// <summary>
+    /// 初期設定(非表示の状態)
+    /// </summary>
     public virtual async UniTask OnInitialize()
     {
+        var cancelToken = this.GetCancellationTokenOnDestroy();
 
-        // シェーダーをセット
-        SetGlobalVolume();
-
-        // ゲームを停止
-        SetTimeScale(0.0f);
-
-        // 隠すキャンバスリストをセット
-        SetCanvasGroupList();
-
-        // ボタンコントローラーの初期化
-        if (m_inputActionButtonController != null)
+        try
         {
-            m_inputActionButtonController.OnInitialize();
+            // シェーダーをセット
+            SetGlobalVolume();
+
+            // ゲームを停止
+            PauseGame();
+
+            // 隠すキャンバスリストをセット
+            SetCanvasGroupList();
+
+            // ボタンコントローラーの初期化
+            if (m_inputActionButtonController != null)
+            {
+                m_inputActionButtonController.OnInitialize();
+            }
+
+            // 他UIを非表示
+            await HideOtherUI();
+            cancelToken.ThrowIfCancellationRequested();
+
+            await UniTask.CompletedTask;
+
         }
-
-        // 他UIを非表示
-        await HideOtherUI();
-
-        await UniTask.CompletedTask;
+        catch (System.OperationCanceledException ex)
+        {
+            Debug.Log(ex);
+        }
     }
 
-    // 表示時
+    /// <summary>
+    /// 表示
+    /// </summary>
     public virtual async UniTask OnShow()
     {
 
@@ -163,10 +183,10 @@ public class BaseWindow : MonoBehaviour
             if (m_openSEName != "") SoundManager.Instance.StartPlayback(m_openSEName);
 
             // 被写界深度のセット
-            SetDepthOfField(true);
+            ActiveTrueDepthOfField();
 
-            // フェードイン
-            await OnDOAlpha(m_doSpead, true);
+            // ウィンドウ表示
+            await ShowDOAlpha();
             cancelToken.ThrowIfCancellationRequested();
 
         }
@@ -177,15 +197,11 @@ public class BaseWindow : MonoBehaviour
     }
 
 
-    // 処理時
+    /// <summary>
+    /// 処理
+    /// </summary>
     public virtual async UniTask OnUpdate()
     {
-        // ゲームを停止
-        SetTimeScale(0.0f);
-
-        // 被写界深度のセット
-        SetDepthOfField(true);
-
         // ボタンコントローラーの更新
         if (m_inputActionButtonController != null)
         {
@@ -195,26 +211,28 @@ public class BaseWindow : MonoBehaviour
         await UniTask.CompletedTask;
     }
 
-
-    // 閉じる直前
+    /// <summary>
+    /// 非表示
+    /// </summary>
     public virtual async UniTask OnClose()
     {
         var cancelToken = this.GetCancellationTokenOnDestroy();
 
         try
         {
-            // 被写界深度のセット
-            SetDepthOfField(false);
+            // 被写界深度を終了
+            ActiveFalseDepthOfField();
 
             // ゲームを再開
-            SetTimeScale(1.0f);
+            ResumeGame();
 
             // フェードイン
-            await OnDOAlpha(m_doSpead, false);
+            await CloseDOAlpha();
             cancelToken.ThrowIfCancellationRequested();
 
             // 他UIの表示
             await ShowOtherUI();
+            cancelToken.ThrowIfCancellationRequested();
 
         }
         catch (System.OperationCanceledException ex)
@@ -223,7 +241,10 @@ public class BaseWindow : MonoBehaviour
         }
     }
 
-    // ウィンドウを削除する
+
+    /// <summary>
+    /// 削除
+    /// </summary>
     public virtual async UniTask OnDestroy()
     {
         Destroy(gameObject);
@@ -232,65 +253,9 @@ public class BaseWindow : MonoBehaviour
     }
 
 
-
-    protected async UniTask OnDOScale(Ease _ease, float _duration, bool _fromFlg, Vector3 _endValue = default)
-    {
-        bool isUpdate = false;
-
-        // ゲームがストップ中でも動く
-        if (m_gameStopMoveType == GameStopMoveType.Enabled)
-        {
-            isUpdate = true;
-        }
-
-        if (_fromFlg == true)
-        {
-            await transform.DOScale(endValue: _endValue, duration: _duration).
-          From().
-          SetEase(_ease).
-          SetUpdate(isUpdate).
-          SetLink(gameObject);
-        }
-        else
-        {
-            await transform.DOScale(endValue: _endValue, duration: _duration).
-          SetEase(_ease).
-          SetUpdate(isUpdate).
-          SetLink(gameObject);
-        }
-    }
-
-
-    protected async UniTask OnDOAlpha(float _duration, bool _fromFlg, float _endValue = 0.0f)
-    {
-        if (m_canvasGroup == null)
-        {
-            Debug.LogError("CanvasGroupはnullです");
-            return;
-        }
-
-        bool isUpdate = false;
-
-        // ゲームがストップ中でも動く
-        if (m_gameStopMoveType == GameStopMoveType.Enabled)
-        {
-            isUpdate = true;
-        }
-
-        if (_fromFlg == true)
-        {
-            await m_canvasGroup.DOFade(endValue: _endValue, duration: _duration).
-                From().
-                SetUpdate(isUpdate).
-                 SetLink(gameObject);
-        }
-        else
-        {
-            await m_canvasGroup.DOFade(endValue: _endValue, duration: _duration).
-                SetUpdate(isUpdate).
-                 SetLink(gameObject);
-        }
-    }
+    //==================================================================================
+    //                               便利機能
+    //==================================================================================
 
 
     // ウィンドウを閉じるか確認する
@@ -312,10 +277,16 @@ public class BaseWindow : MonoBehaviour
         return false;
     }
 
+
+    //===============================================================================================
+    //                              GlobalVolume/DepthOfField
+    //===============================================================================================
+
+
     // 使用するGlobalVolumeをセット
     protected void SetGlobalVolume()
     {
-        if (m_depthOfFieldType != DepthOfFieldType.Enabled) return;
+        if (m_depthOfFieldType != DepthOfFieldType.Enable) return;
 
         // オブジェクトを取得
         var data = GameObject.Find("Global Volume");
@@ -335,40 +306,128 @@ public class BaseWindow : MonoBehaviour
     }
 
 
-    // 被写界深度をセット
-    protected void SetDepthOfField(bool _isDepthOfField)
+    /// <summary>
+    /// 被写界深度を開始
+    /// </summary>
+    protected void ActiveTrueDepthOfField()
     {
+        if (m_depthOfFieldType != DepthOfFieldType.Enable) return;
         if (m_globalVolume == null) return;
 
-        DepthOfField depthOfField = null;
-
-        m_globalVolume.profile.TryGet(out depthOfField);
-
-        if (depthOfField == null)
+        if (m_globalVolume.profile.TryGet<DepthOfField>(out var depthOfField))
         {
-            Debug.LogError("DepthOfFiledが存在しません");
-            return;
-        }
-
-        if (depthOfField.active != _isDepthOfField)
-        {
-            depthOfField.active = _isDepthOfField;
+            if (depthOfField.active == true)
+            {
+                // 既に被写界深度が設定されていたことをセット
+                m_alreadyDepthOfField = true;
+            }
+            else
+            {
+                // 被写界深度を開始
+                depthOfField.active = true;
+            }
         }
     }
 
-    // ゲームを停止
-    protected void SetTimeScale(float _timeScale)
+    /// <summary>
+    /// 被写界深度を終了
+    /// </summary>
+    protected void ActiveFalseDepthOfField()
     {
-        if (m_gameStopType != GameStopType.Enabled) return;
+        if (m_depthOfFieldType != DepthOfFieldType.Enable) return;
+        if (m_globalVolume == null) return;
+        if (m_alreadyDepthOfField == true) return;
 
-        Time.timeScale = _timeScale;
+        // 被写界深度を終了
+        if (m_globalVolume.profile.TryGet<DepthOfField>(out var depthOfField))
+        {
+            depthOfField.active = false;
+        }
+    }
+
+
+    //===============================================================================================
+    //                              ゲーム停止
+    //===============================================================================================
+
+
+    // ゲームを一時停止
+    protected void PauseGame()
+    {
+        if (m_pauseGameType != PauseGameType.Enable) return;
+
+        // タイムスケールをキープ
+        m_alreadyPauseGameTimeScale = Time.timeScale;
+
+        // 停止
+        Time.timeScale = 0.0f;
+    }
+
+
+    // ゲームを再開
+    protected void ResumeGame()
+    {
+        if (m_pauseGameType != PauseGameType.Enable) return;
+
+        // 基のタイムスケールに戻す
+        Time.timeScale = m_alreadyPauseGameTimeScale;
+    }
+
+
+    //===============================================================================================
+    //                                      UI非表示
+    //===============================================================================================
+
+    /// <summary>
+    /// ウィンドウの表示
+    /// </summary>
+    protected async UniTask ShowDOAlpha()
+    {
+        if (m_canvasGroup == null)
+        {
+            Debug.LogError("CanvasGroupはnullです");
+            return;
+        }
+
+        // ゲーム停止中でも動くか
+        bool isUpdate = false;
+        if (m_pauseGameMoveType == PauseGameMoveType.Enable) isUpdate = true;
+
+        // 表示を開始(0.0fから基の透明度に)
+        await m_canvasGroup.DOFade(endValue: 0.0f, duration: m_doSpead).
+            From().
+            SetUpdate(isUpdate).
+            SetLink(m_canvasGroup.gameObject);
+    }
+
+
+    /// <summary>
+    /// ウィンドウの非表示
+    /// </summary>
+    protected async UniTask CloseDOAlpha()
+    {
+        if (m_canvasGroup == null)
+        {
+            Debug.LogError("CanvasGroupはnullです");
+            return;
+        }
+
+        // ゲーム停止中でも動くか
+        bool isUpdate = false;
+        if (m_pauseGameMoveType == PauseGameMoveType.Enable) isUpdate = true;
+
+
+        // 表示を開始(基の透明度から0.0fに)
+        await m_canvasGroup.DOFade(endValue: 0.0f, duration: m_doSpead).
+            SetUpdate(isUpdate).
+            SetLink(m_canvasGroup.gameObject);
     }
 
 
     // 隠すUIListを非表示（吉田）
     protected async UniTask HideOtherUI()
     {
-        if (m_hideUIType != HideUIType.Enabled) return;
+        if (m_hideUIType != HideUIType.Enable) return;
 
         var cancelToken = this.GetCancellationTokenOnDestroy();
 
@@ -376,6 +435,7 @@ public class BaseWindow : MonoBehaviour
         {
             List<TweenerCore<float, float, FloatOptions>> tweenList = new();
 
+            // 隠し用UIリストを非表示
             foreach (var canvas in m_hideCanvasGroupList)
             {
                 if (canvas == null) continue;
@@ -388,6 +448,7 @@ public class BaseWindow : MonoBehaviour
                 tweenList.Add(fade);
             }
 
+            // 非表示が終了するまで待機
             foreach (var tween in tweenList)
             {
                 if (tween != null && tween.active)
@@ -398,9 +459,9 @@ public class BaseWindow : MonoBehaviour
                 cancelToken.ThrowIfCancellationRequested();
             }
         }
-        catch (System.Exception e)
+        catch (System.Exception ex)
         {
-            Debug.Log(e);
+            Debug.Log(ex);
         }
     }
 
@@ -408,7 +469,7 @@ public class BaseWindow : MonoBehaviour
     // 隠すUIListを表示（吉田）
     protected async UniTask ShowOtherUI()
     {
-        if (m_hideUIType != HideUIType.Enabled) return;
+        if (m_hideUIType != HideUIType.Enable) return;
 
         var cancelToken = this.GetCancellationTokenOnDestroy();
 
@@ -416,6 +477,7 @@ public class BaseWindow : MonoBehaviour
         {
             List<TweenerCore<float, float, FloatOptions>> tweenList = new();
 
+            // 隠し用UIリストを表示
             foreach (var canvas in m_hideCanvasGroupList)
             {
                 if (canvas == null) continue;
@@ -428,6 +490,7 @@ public class BaseWindow : MonoBehaviour
                 tweenList.Add(fade);
             }
 
+            // 表示が終了するまで待機
             foreach (var tween in tweenList)
             {
                 if (tween != null && tween.active)
@@ -437,11 +500,10 @@ public class BaseWindow : MonoBehaviour
                 cancelToken.ThrowIfCancellationRequested();
             }
         }
-        catch (System.Exception e)
+        catch (System.Exception ex)
         {
-            Debug.Log(e);
+            Debug.Log(ex);
         }
-
     }
 
 
@@ -476,68 +538,5 @@ public class BaseWindow : MonoBehaviour
             }
         }
     }
-
-
-    /// <summary>
-    /// 引数のウィンドウコントローラーを基に
-    /// ウィンドウのインスタンスを生成して実行する
-    /// 引数ウィンドウコントローラーは自身で作成して下さい
-    /// </summary>
-    public async UniTask<WindowType> CreateToUpdateWindow<WindowType>(WindowController _windowController, bool _isSelf, System.Func<WindowType, UniTask> onBeforeInitialize = null) where WindowType : BaseWindow
-    {
-        #region nullチェック
-        if (_windowController == null)
-        {
-            Debug.LogError("引数のWindowControllerがnullです");
-            return null;
-        }
-        #endregion
-
-        var cancelToken = _windowController.GetCancellationTokenOnDestroy();
-        try
-        {
-            // 作成したウィンドウのアップデート
-            var window = await _windowController.CreateWindow<WindowType>(_isSelf, async _ =>
-                  {
-                      // ゲームストップ・被写界深度を停止
-                      _.m_gameStopType = GameStopType.Disable;
-                      _.m_depthOfFieldType = DepthOfFieldType.Disable;
-
-                      // もし親ウィンドウがゲームをストップしていればストップ中でも動くようにする
-                      if (m_gameStopType == GameStopType.Enabled)
-                      {
-                          _.m_gameStopMoveType = GameStopMoveType.Enabled;
-                      }
-
-                      // 追加の外部処理の実行
-                      if (onBeforeInitialize != null)
-                      {
-                          // コンポーネントを取得し、動作を行う
-                          if (_.TryGetComponent<WindowType>(out var tCom))
-                          {
-                              await onBeforeInitialize(tCom);
-                              cancelToken.ThrowIfCancellationRequested();
-                          }
-                          else
-                          {
-                              Debug.LogError("コンポーネントが存在しませんでした。ジェネレートが合っているか確認してください");
-                          }
-                      }
-                  });
-            cancelToken.ThrowIfCancellationRequested();
-
-            return window;
-
-        }
-        catch (System.OperationCanceledException ex)
-        {
-            Debug.Log(ex);
-            return null;
-        }
-
-
-    }
-
-
 
 }

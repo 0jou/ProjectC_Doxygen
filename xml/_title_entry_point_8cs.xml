@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_title_entry_point_8cs" kind="file" language="C#">
+    <compoundname>TitleEntryPoint.cs</compoundname>
+    <innerclass refid="class_title_entry_point" prot="public">TitleEntryPoint</innerclass>
+    <innernamespace refid="namespace_macky_soft_1_1_navigathena">MackySoft::Navigathena</innernamespace>
+    <innernamespace refid="namespace_macky_soft_1_1_navigathena_1_1_scene_management">MackySoft::Navigathena::SceneManagement</innernamespace>
+    <innernamespace refid="namespace_system_1_1_threading">System::Threading</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal">Cysharp.Threading.Tasks;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">MackySoft.Navigathena;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">MackySoft.Navigathena.SceneManagement;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Linq;</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Threading;</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11" refid="class_title_entry_point" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_title_entry_point" kindref="compound">TitleEntryPoint</ref><sp/>:<sp/><ref refid="class_entry_point_base" kindref="compound">EntryPointBase</ref></highlight></codeline>
+<codeline lineno="12"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/>[Header(</highlight><highlight class="stringliteral">&quot;シーン遷移途中でカメラが重複しないよう制御する<sp/>登録しなくても可&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="14" refid="class_title_entry_point_1ab5e41f480a030b04e55ac9f2f4e2b235" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="_player_input_manager_8cs_1acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b" kindref="member">Camera</ref><sp/><ref refid="class_title_entry_point_1ab5e41f480a030b04e55ac9f2f4e2b235" kindref="member">m_camera</ref><sp/>=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>[Header(</highlight><highlight class="stringliteral">&quot;シーン遷移途中で削除するオブジェクト<sp/>遷移演出の直前に消される&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="17" refid="class_title_entry_point_1ac170d47474e829c6dd8163d63ead7bf5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField,<sp/>NonReorderable]<sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/>List&lt;UnityEngine.Object&gt;<sp/><ref refid="class_title_entry_point_1ac170d47474e829c6dd8163d63ead7bf5" kindref="member">m_deleteObjects</ref><sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/>List&lt;UnityEngine.Object&gt;();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="19" refid="class_title_entry_point_1afbd2d419a9e62d8885a7545160e4c9c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/><ref refid="class_title_entry_point_1afbd2d419a9e62d8885a7545160e4c9c0" kindref="member">m_musicName</ref>;</highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="class_title_entry_point_1a67ffd2529e860aa83af2999d135da3ae" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="class_title_screen_manager" kindref="compound">TitleScreenManager</ref><sp/><ref refid="class_title_entry_point_1a67ffd2529e860aa83af2999d135da3ae" kindref="member">titleScreenManager</ref>;</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>遷移演出の終了後に呼び出されます。</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24" refid="class_title_entry_point_1a48697121049b422caa388e81cb67e7d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>async<sp/>UniTask<sp/><ref refid="class_title_entry_point_1a48697121049b422caa388e81cb67e7d6" kindref="member">OnEnter</ref>(ISceneDataReader<sp/>reader,<sp/>CancellationToken<sp/>cancellationToken)</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_title_entry_point_1a67ffd2529e860aa83af2999d135da3ae" kindref="member">titleScreenManager</ref><sp/>!=<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_title_entry_point_1a67ffd2529e860aa83af2999d135da3ae" kindref="member">titleScreenManager</ref>.<ref refid="class_title_screen_manager_1afe58fd9f302adefdda658627a4626172" kindref="member">StartUp</ref>();</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_title_entry_point_1afbd2d419a9e62d8885a7545160e4c9c0" kindref="member">m_musicName</ref>.Any())</highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_sound_manager" kindref="compound">SoundManager</ref>.<ref refid="class_sound_manager_1a4ceb176bb67059b35136a96fd9221824" kindref="member">Instance</ref>.<ref refid="class_sound_manager_1a3af4898d444a764a272a2cb0050b2459" kindref="member">StartBGM</ref>(<ref refid="class_title_entry_point_1afbd2d419a9e62d8885a7545160e4c9c0" kindref="member">m_musicName</ref>);</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>遷移演出の開始前に呼び出されます。</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="class_title_entry_point_1a15b2ad433983b78cdbf1ee212d790eb2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>async<sp/>UniTask<sp/><ref refid="class_title_entry_point_1a15b2ad433983b78cdbf1ee212d790eb2" kindref="member">OnExit</ref>(ISceneDataWriter<sp/>writer,<sp/>CancellationToken<sp/>cancellationToken)</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_capture_screen_to_image" kindref="compound">CaptureScreenToImage</ref><sp/>capture<sp/>=<sp/>gameObject.AddComponent&lt;<ref refid="class_capture_screen_to_image" kindref="compound">CaptureScreenToImage</ref>&gt;();</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>await<sp/>capture.<ref refid="class_capture_screen_to_image_1abd2da869578f7d67fd1f07987c90735f" kindref="member">Capture</ref>();</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">foreach</highlight><highlight class="normal"><sp/>(var<sp/>obj<sp/></highlight><highlight class="keywordflow">in</highlight><highlight class="normal"><sp/><ref refid="class_title_entry_point_1ac170d47474e829c6dd8163d63ead7bf5" kindref="member">m_deleteObjects</ref>)</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Destroy(obj);</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_title_entry_point_1ab5e41f480a030b04e55ac9f2f4e2b235" kindref="member">m_camera</ref>)</highlight></codeline>
+<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="48"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>m_camera.enabled<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>遷移演出の開始後に呼び出されます。</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53" refid="class_title_entry_point_1adcacf1b4f536157a74414c6619a9bd73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/>async<sp/>UniTask<sp/><ref refid="class_title_entry_point_1adcacf1b4f536157a74414c6619a9bd73" kindref="member">OnFinalize</ref>(ISceneDataWriter<sp/>writer,<sp/>IProgress&lt;IProgressDataStore&gt;<sp/>transitionProgress,<sp/>CancellationToken<sp/>cancellationToken)</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_sound_manager" kindref="compound">SoundManager</ref>.<ref refid="class_sound_manager_1a4ceb176bb67059b35136a96fd9221824" kindref="member">Instance</ref>.<ref refid="class_sound_manager_1a330ace02b66a87c140a389e63fa8f7ff" kindref="member">StopBGM</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="57"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="001_Common/Scripts/TitleScene/TitleEntryPoint.cs"/>
+  </compounddef>
+</doxygen>

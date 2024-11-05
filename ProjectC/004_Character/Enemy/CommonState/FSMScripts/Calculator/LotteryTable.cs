@@ -17,81 +17,100 @@ using Unity.VisualScripting.FullSerializer;
 public class LotteryTable : Calculator
 {
     [SerializeField] private OutputSlotInt _Output = new();
-    [SerializeField] private OutputSlotAttackData _UseAttackData = new();
 
-    public FlexibleTransform _targetTrans = new();
-    public FlexibleAttackData _firstAttackData = new();
-    public FlexibleAttackData _secondAttackData = new();
+    [SerializeField]
+    [SlotType(typeof(EnemyParameters))]
+    private FlexibleComponent m_enemyParameters;
 
     private CharacterCore _characterCore;
+    private EnemyParameters _enemyParameter;
 
     public override void OnCalculate()
     {
-        if (_targetTrans.value == null)
+        if (_enemyParameter == null)
+        {
+            _enemyParameter = m_enemyParameters.value as EnemyParameters;
+            if (!_enemyParameter)
+            {
+                Debug.LogError("EnemyParametersがセットされていません" + gameObject.name);
+                return;
+            }
+        }
+
+        if (_enemyParameter.Target == null)
         {
             _Output.SetValue(1);
-            _UseAttackData.SetValue(_firstAttackData.value);
+            _enemyParameter.NowAttackData = _enemyParameter.GetFirstAttackData();
             return;
         }
 
 
-        if (_secondAttackData.value == null || _secondAttackData.value.LotteryData.value.Count == 0)
-        {
-            LotteryAttack(_firstAttackData);
-        }
-        else
+        if (_enemyParameter.ValidSecondAttack)
         {
             if (!_characterCore)
             {
-                if (!transform.root.TryGetComponent(out _characterCore))
+                if (!_enemyParameter.transform.TryGetComponent(out _characterCore))
                 {
                     _Output.SetValue(1);
-                    _UseAttackData.SetValue(_firstAttackData.value);
+                    _enemyParameter.NowAttackData = _enemyParameter.GetFirstAttackData();
                     return;
                 }
             }
 
-            if (_characterCore.Status.m_hp.Value / _characterCore.Status.MaxHP >= 0.5f)
+            if(_enemyParameter.NowAttackDataType==1)
             {
-                LotteryAttack(_firstAttackData);
+                if (_characterCore.Status.m_hp.Value / _characterCore.Status.MaxHP >= 0.5f)
+                {
+                    LotteryAttack(_enemyParameter.NowAttackData);
+                }
+                else
+                {
+                    _enemyParameter.NowAttackDataType = 2;
+                    _enemyParameter.NowAttackData= _enemyParameter.GetSecondAttackData();
+                    LotteryAttack(_enemyParameter.NowAttackData);
+                }
             }
             else
             {
-                LotteryAttack(_secondAttackData);
+                LotteryAttack(_enemyParameter.NowAttackData);
             }
+          
+        }
+        else
+        {
+            LotteryAttack(_enemyParameter.NowAttackData);
         }
     }
 
-    private void LotteryAttack(FlexibleAttackData useData)
+    private void LotteryAttack(EnemyAttackData useData)
     {
-        if (useData.value.LotteryData.value.Count == 0)
+        if (useData.LotteryData.Count == 0)
         {
             Debug.LogError("攻撃の抽選データが渡されていません" + transform.root.name);
         }
-        _UseAttackData.SetValue(useData.value);
 
         float sumWeight = 0;
         float weight;
         float distAttackPoint;
-        float toTargetDist = Vector3.Distance(transform.position, _targetTrans.value.position);
+        float toTargetDist = Vector3.Distance(transform.position, _enemyParameter.Target.position);
 
         // 各攻撃の抽選値を決定
-        foreach (var attackData in useData.value.LotteryData.value)
+        foreach (var attackData in useData.LotteryData)
         {
-            distAttackPoint = Mathf.Abs(toTargetDist - attackData.m_bestAttackDist.value);
+            distAttackPoint = Mathf.Abs(toTargetDist - attackData.m_bestAttackDist);
             distAttackPoint = Mathf.Clamp(distAttackPoint, 0.5f, 2.0f);
-            weight = attackData.m_defaultWeight.value
-                + attackData.m_weightInclude.value * attackData.LoseCount;
+            weight = attackData.m_defaultWeight
+                + attackData.m_weightInclude * attackData.LoseCount;
             weight /= distAttackPoint;
             sumWeight += weight;
             attackData.m_lotteryWeight = weight;
         }
 
-        AttackLotteryData data;
+        EnemyAttackData.AttackLotteryData data;
         float rand = Random.Range(0.0f, sumWeight);
-        for (int i = 0; i < useData.value.LotteryData.value.Count; ++i)
+        for (int i = 0; i < useData.LotteryData.Count; ++i)
         {
-            data = useData.value.LotteryData.value[i];
+            data = useData.LotteryData[i];
             data.LoseCount++;
             if (rand >= 0.0f && rand < data.m_lotteryWeight)
             {
@@ -99,7 +118,7 @@ public class LotteryTable : Calculator
                 data.LoseCount = 0;
             }
             rand -= data.m_lotteryWeight;
-            useData.value.LotteryData.value[i] = data;
+            useData.LotteryData[i] = data;
         }
     }
 }

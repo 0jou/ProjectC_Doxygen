@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_skill_anime_event_attck_8cs" kind="file" language="C#">
+    <compoundname>SkillAnimeEventAttck.cs</compoundname>
+    <innerclass refid="class_skill_anime_event_attck" prot="public">SkillAnimeEventAttck</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal">[System.Serializable]</highlight></codeline>
+<codeline lineno="6" refid="class_skill_anime_event_attck" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_skill_anime_event_attck" kindref="compound">SkillAnimeEventAttck</ref><sp/>:<sp/>AnimatorEvents.EventNodeBase</highlight></codeline>
+<codeline lineno="7"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//スキルアニメ用（山本作成）</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>発生させるプレハブ</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"><sp/><sp/><sp/><sp/>[Header(</highlight><highlight class="stringliteral">&quot;発生させるプレハブ&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="11" refid="class_skill_anime_event_attck_1a7362cf14d7765fe37db1a03eeadd8c34" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]<sp/>GameObject<sp/><ref refid="class_skill_anime_event_attck_1a7362cf14d7765fe37db1a03eeadd8c34" kindref="member">m_assetAttack</ref>;</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="14"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>時間が来たときに実行</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15" refid="class_skill_anime_event_attck_1a8d1d58435a0d6ea83b3e16cdbecf96c5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_skill_anime_event_attck_1a8d1d58435a0d6ea83b3e16cdbecf96c5" kindref="member">OnEvent</ref>(Animator<sp/>animator)</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>charaCore<sp/>=<sp/>animator.transform.GetComponentInParent&lt;<ref refid="class_character_core" kindref="compound">CharacterCore</ref>&gt;();</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>targetVec<sp/>=<sp/>charaCore.PlayerSkillsParameters.TargetPosition<sp/>-<sp/>charaCore.<ref refid="class_character_core_1affa19c52127edade08a6792773d357b9" kindref="member">PlayerSkillsParameters</ref>.<ref refid="class_player_skills_parameters_1ab8381971450bebe858f142b5e7e3fa29" kindref="member">StartSkillPos</ref>;</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Quaternion<sp/>targetQua<sp/>=<sp/>Quaternion.LookRotation(targetVec,<sp/>charaCore.transform.up);</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//新しいオブジェクトをシーン内に配置する（親子関係だと親の回転に影響してしまう）</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//登録したスキル開始地点から発射</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>newObj<sp/>=<sp/>GameObject.Instantiate(<ref refid="class_skill_anime_event_attck_1a7362cf14d7765fe37db1a03eeadd8c34" kindref="member">m_assetAttack</ref>,<sp/>charaCore.PlayerSkillsParameters.StartSkillPos,<sp/>targetQua);</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>作成者情報を記憶</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>ownerInfo<sp/>=<sp/>newObj.AddComponent&lt;<ref refid="class_owner_info_tag" kindref="compound">OwnerInfoTag</ref>&gt;();</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ownerInfo.GroupNo<sp/>=<sp/>charaCore.<ref refid="class_owner_info_tag_1a56a9ad5e93c0d771bd43700982edfd06" kindref="member">GroupNo</ref>;</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>ownerInfo.Characore<sp/>=<sp/>charaCore;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="class_skill_anime_event_attck_1af65cb8b44ec7fbbcd3e4f54b64d81b02" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_skill_anime_event_attck_1af65cb8b44ec7fbbcd3e4f54b64d81b02" kindref="member">OnExit</ref>(Animator<sp/>animator)</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="004_Character/SkillCharacters/01_LittleRedRidingHood/Huter&amp;LRRH/Scripts/SkillAnimeEventAttck.cs"/>
+  </compounddef>
+</doxygen>

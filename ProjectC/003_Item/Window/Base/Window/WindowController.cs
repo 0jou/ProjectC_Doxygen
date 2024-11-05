@@ -97,9 +97,6 @@ public class WindowController : MonoBehaviour
 
             var cancelToken = window.GetCancellationTokenOnDestroy();
 
-            //SE音追加（山本）
-            SoundManager.Instance.StartPlayback("SceneChange");
-
             // 非表示
             m_createWindowObject.SetActive(false);
 
@@ -165,7 +162,6 @@ public class WindowController : MonoBehaviour
     }
 
 
-
     private async UniTask UpdateStart()
     {
         if (m_createWindowType != CreateWindowType.Start) return;
@@ -175,6 +171,7 @@ public class WindowController : MonoBehaviour
 
         await UniTask.CompletedTask;
     }
+
 
     private async UniTask UpdateInput()
     {
@@ -193,9 +190,7 @@ public class WindowController : MonoBehaviour
 
             try
             {
-                //プレイヤーのInputsystemを停止
-                PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Player).Disable();
-
+                
                 // ウィンドウを作成
                 await CreateWindow<BaseWindow>();
                 cancelToken.ThrowIfCancellationRequested();
@@ -205,9 +200,6 @@ public class WindowController : MonoBehaviour
                     //プレイヤーのInputsystemを動かす
                     m_input.actions.FindActionMap("Player").Enable();
                 }
-
-                //プレイヤーのInputsystemを動かす
-                PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Player).Enable();
 
                 await UniTask.CompletedTask;
 

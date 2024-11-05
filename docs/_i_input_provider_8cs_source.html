@@ -1,0 +1,289 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>design_pattern_for_c: 001_Common/Scripts/Input/IInputProvider.cs ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">design_pattern_for_c<span id="projectnumber">&#160;for 1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_i_input_provider_8cs_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">IInputProvider.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_i_input_provider_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="keyword">using </span>System.Collections;</div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// InputProvider の interface スクリプト (濱口)</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// CharacterのInputProvider(略)CharacterIP</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="comment">//本体</span></div>
+<div class="foldopen" id="foldopen00011" data-start="{" data-end="};">
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html">   11</a></span><span class="keyword">public</span> <span class="keyword">interface </span><a class="code hl_interface" href="interface_i_input_provider.html">IInputProvider</a></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>{</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a1d266581deb5c1629e8e4c0ae38f51c9">   13</a></span>    Vector3 <a class="code hl_property" href="interface_i_input_provider.html#a1d266581deb5c1629e8e4c0ae38f51c9">LookVector</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// 進行方向</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a23cd59d426e50d46aacfce062f84a185">   16</a></span>    Vector3 <a class="code hl_property" href="interface_i_input_provider.html#a23cd59d426e50d46aacfce062f84a185">MoveVector</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <span class="comment">// Attackトリガー 攻撃種類によって変えるためintに変更(倉田)</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a00afde84b726947a42240136f43bdc38">   19</a></span>    <span class="keywordtype">int</span> <a class="code hl_property" href="interface_i_input_provider.html#a00afde84b726947a42240136f43bdc38">AttackType</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; }</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="comment">// dashトリガー</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a01330fd5f19fb0c6530dc63145e0932d">   22</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a01330fd5f19fb0c6530dc63145e0932d">DoDush</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a49a4741dda9a88e275707792ba05f64b">   23</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a49a4741dda9a88e275707792ba05f64b">OnPressedDush</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a99656bb260350bbf469e8c1a5cbbb735">   24</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a99656bb260350bbf469e8c1a5cbbb735">OnReleasedDush</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">//Rollingトリガー(山本海豪)</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a6cdde8be3f1d66d4cc7cdec0d5ab5731">   27</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a6cdde8be3f1d66d4cc7cdec0d5ab5731">DoRolling</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#abf0208fdaacbdfb2f7c7890c9824a2f3">   29</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#abf0208fdaacbdfb2f7c7890c9824a2f3">SelectLeftItem</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a0894605e882b9a4dcfee39faf6e7cfee">   30</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a0894605e882b9a4dcfee39faf6e7cfee">SelectRightItem</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#aa65c8cd4cdfdc3fd73ae4436284ed289">   31</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#aa65c8cd4cdfdc3fd73ae4436284ed289">UseItem</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="comment">//童話スキル1発動トリガー（山本）</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#aa6228b4e9a99493cad454b83a9188c25">   34</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#aa6228b4e9a99493cad454b83a9188c25">UseStorySkill_1</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a894a6800d9a706de5a9bed2baaa37c71">   38</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a894a6800d9a706de5a9bed2baaa37c71">UseStorySkill_2</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// アイテム採取</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#ae4cb70aaf9ddb555fd917529e8cc3de4">   41</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#ae4cb70aaf9ddb555fd917529e8cc3de4">Gathering</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="comment">// アイテム設置</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a580b1a0e93b83af9d118b8ac867a802c">   44</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a580b1a0e93b83af9d118b8ac867a802c">PutItem</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="comment">// アイテム投げる準備</span></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#ab49ce18b112d31c0af01ba6d3c85a509">   47</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#ab49ce18b112d31c0af01ba6d3c85a509">ReadyThrowItem</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="comment">// アイテム投げる</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#aac635ca151c17c91b43fcbda1bc11235">   50</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#aac635ca151c17c91b43fcbda1bc11235">ThrowItem</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">// アイテム投げる準備時、投げる方向（マウス座標）</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#ac169693bb81631e0735912e56d46b35c">   53</a></span>    Vector2 <a class="code hl_property" href="interface_i_input_provider.html#ac169693bb81631e0735912e56d46b35c">ThrowAim</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">//キャンセル</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#ab45128fa15d0d3f342c4c93e00a5b0d1">   56</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#ab45128fa15d0d3f342c4c93e00a5b0d1">Cancel</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">//食べる</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#aa092089ed847aa4c3e8c869556d0e580">   59</a></span>    <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#aa092089ed847aa4c3e8c869556d0e580">Eat</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">// 敵側</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a1600def3d8631996b2caa54703e61c8c">   62</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="interface_i_input_provider.html#a1600def3d8631996b2caa54703e61c8c">IsArrive</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="interface_i_input_provider.html#a82ecb43695634be4338cddde3ffced6c">   64</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="interface_i_input_provider.html#a82ecb43695634be4338cddde3ffced6c">Destination</a> { <span class="keyword">get</span>;}</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>}</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="comment">// PlayerIPの初期化用クラス</span></div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="};">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html">   67</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_null_character_i_p.html">NullCharacterIP</a> : <a class="code hl_interface" href="interface_i_input_provider.html">IInputProvider</a></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>{</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a8716652385d005e1313d3533529b2fd8">   69</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code hl_class" href="class_null_character_i_p.html">NullCharacterIP</a> <a class="code hl_variable" href="class_null_character_i_p.html#a8716652385d005e1313d3533529b2fd8">NullInstance</a> = <span class="keyword">new</span>();</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a5a7850e742417012719720206a4e3776">   71</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="class_null_character_i_p.html#a5a7850e742417012719720206a4e3776">LookVector</a> { <span class="keyword">get</span>; } = Vector3.zero;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a341468d804481e4c3ad1664c01a8b807">   72</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="class_null_character_i_p.html#a341468d804481e4c3ad1664c01a8b807">MoveVector</a> { <span class="keyword">get</span>;} = Vector3.zero;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#ae16412bc57bc2b92df88997671de73b8">   75</a></span>    <span class="keyword">public</span> <span class="keywordtype">int</span> <a class="code hl_property" href="class_null_character_i_p.html#ae16412bc57bc2b92df88997671de73b8">AttackType</a> { <span class="keyword">get</span>; <span class="keyword">set</span>; } = 0;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a6754f46559f5efe042007fe16484ade4">   77</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a6754f46559f5efe042007fe16484ade4">DoDush</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a6bc0de86ac1b113b9d549b57a314988d">   78</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a6bc0de86ac1b113b9d549b57a314988d">OnPressedDush</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#ada39397b3a78a922f1190327ea5fb17c">   79</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#ada39397b3a78a922f1190327ea5fb17c">OnReleasedDush</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a9a19895d7e65940d67882a82c8a4668f">   82</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a9a19895d7e65940d67882a82c8a4668f">DoRolling</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a588a1ef957d7ead5371b14d47678a46e">   84</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a588a1ef957d7ead5371b14d47678a46e">UseStorySkill_1</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a562da70efe6ff019f179bd4db0505c31">   88</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a562da70efe6ff019f179bd4db0505c31">UseStorySkill_2</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#ab129206c0a1c6967147bc78b9318cefd">   90</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#ab129206c0a1c6967147bc78b9318cefd">SelectLeftItem</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#aeeaf068d6a068ca355474c09cd414070">   91</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#aeeaf068d6a068ca355474c09cd414070">SelectRightItem</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a30451d313c280e111d3628f385a36648">   92</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a30451d313c280e111d3628f385a36648">UseItem</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#afaf3cc12f92b082918d99dd8898b015b">   94</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#afaf3cc12f92b082918d99dd8898b015b">Gathering</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a1304b5675c07c54a50c2c84dc68f200c">   95</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a1304b5675c07c54a50c2c84dc68f200c">PutItem</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a2d9c99b8c9d916800f73f3606c223734">   96</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#a2d9c99b8c9d916800f73f3606c223734">ReadyThrowItem</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#ac05bc4a4a9de7b7be41fa1d1a1f29833">   97</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#ac05bc4a4a9de7b7be41fa1d1a1f29833">ThrowItem</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#a94a482bdd16c48474e76e2bdf86624da">   98</a></span>    <span class="keyword">public</span> Vector2 <a class="code hl_property" href="class_null_character_i_p.html#a94a482bdd16c48474e76e2bdf86624da">ThrowAim</a> { <span class="keyword">get</span>; } = Vector2.zero;</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#aff26594a0cd0aac355e4d271271bb968">   99</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#aff26594a0cd0aac355e4d271271bb968">Cancel</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#ad54aef1f26d1f747a97e146504aea5cd">  100</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#ad54aef1f26d1f747a97e146504aea5cd">Eat</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">// 敵側</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#abb950c8845e7316497e46ca6bb191b81">  102</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_property" href="class_null_character_i_p.html#abb950c8845e7316497e46ca6bb191b81">IsArrive</a> { <span class="keyword">get</span>; } = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno"><a class="line" href="class_null_character_i_p.html#ad5ba8b449da3d8574fe66171245bceb9">  104</a></span>    <span class="keyword">public</span> Vector3 <a class="code hl_property" href="class_null_character_i_p.html#ad5ba8b449da3d8574fe66171245bceb9">Destination</a> { <span class="keyword">get</span>; } = Vector3.zero;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">// CameraInputProvider(略)CameraIP</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">// ---------------------------------------</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">// 本体</span></div>
+<div class="foldopen" id="foldopen00113" data-start="{" data-end="};">
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno"><a class="line" href="interface_i_camera_input_provider.html">  113</a></span><span class="keyword">public</span> <span class="keyword">interface </span><a class="code hl_interface" href="interface_i_camera_input_provider.html">ICameraInputProvider</a></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>{</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="comment">//カメラ移動</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno"><a class="line" href="interface_i_camera_input_provider.html#ad93d187f0d2d78dc4882c2d9fab2c014">  116</a></span>    <span class="keyword">public</span> Vector2 <a class="code hl_property" href="interface_i_camera_input_provider.html#ad93d187f0d2d78dc4882c2d9fab2c014">CameraXY</a> { <span class="keyword">get</span>; }</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>}</div>
+</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span> </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">// CameraIPの初期化用クラス</span></div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="};">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="class_null_camera_i_p.html">  120</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_null_camera_i_p.html">NullCameraIP</a> : <a class="code hl_interface" href="interface_i_camera_input_provider.html">ICameraInputProvider</a></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>{</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="class_null_camera_i_p.html#ad724f9b4f03cfeec98690c4b5b4e3fb7">  122</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code hl_class" href="class_null_camera_i_p.html">NullCameraIP</a> <a class="code hl_variable" href="class_null_camera_i_p.html#ad724f9b4f03cfeec98690c4b5b4e3fb7">NullInstance</a> = <span class="keyword">new</span>();</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno"><a class="line" href="class_null_camera_i_p.html#aa7f363e18401a13818ef5f48dcde6a91">  124</a></span>    <span class="keyword">public</span> Vector2 <a class="code hl_property" href="class_null_camera_i_p.html#aa7f363e18401a13818ef5f48dcde6a91">CameraXY</a> { <span class="keyword">get</span>; } = Vector2.zero;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>}</div>
+</div>
+<div class="ttc" id="aclass_null_camera_i_p_html"><div class="ttname"><a href="class_null_camera_i_p.html">NullCameraIP</a></div><div class="ttdef"><b>Definition</b> <a href="#l00120">IInputProvider.cs:121</a></div></div>
+<div class="ttc" id="aclass_null_camera_i_p_html_aa7f363e18401a13818ef5f48dcde6a91"><div class="ttname"><a href="class_null_camera_i_p.html#aa7f363e18401a13818ef5f48dcde6a91">NullCameraIP.CameraXY</a></div><div class="ttdeci">Vector2 CameraXY</div><div class="ttdef"><b>Definition</b> <a href="#l00124">IInputProvider.cs:124</a></div></div>
+<div class="ttc" id="aclass_null_camera_i_p_html_ad724f9b4f03cfeec98690c4b5b4e3fb7"><div class="ttname"><a href="class_null_camera_i_p.html#ad724f9b4f03cfeec98690c4b5b4e3fb7">NullCameraIP.NullInstance</a></div><div class="ttdeci">static NullCameraIP NullInstance</div><div class="ttdef"><b>Definition</b> <a href="#l00122">IInputProvider.cs:122</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html"><div class="ttname"><a href="class_null_character_i_p.html">NullCharacterIP</a></div><div class="ttdef"><b>Definition</b> <a href="#l00067">IInputProvider.cs:68</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a1304b5675c07c54a50c2c84dc68f200c"><div class="ttname"><a href="class_null_character_i_p.html#a1304b5675c07c54a50c2c84dc68f200c">NullCharacterIP.PutItem</a></div><div class="ttdeci">bool PutItem</div><div class="ttdef"><b>Definition</b> <a href="#l00095">IInputProvider.cs:95</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a2d9c99b8c9d916800f73f3606c223734"><div class="ttname"><a href="class_null_character_i_p.html#a2d9c99b8c9d916800f73f3606c223734">NullCharacterIP.ReadyThrowItem</a></div><div class="ttdeci">bool ReadyThrowItem</div><div class="ttdef"><b>Definition</b> <a href="#l00096">IInputProvider.cs:96</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a30451d313c280e111d3628f385a36648"><div class="ttname"><a href="class_null_character_i_p.html#a30451d313c280e111d3628f385a36648">NullCharacterIP.UseItem</a></div><div class="ttdeci">bool UseItem</div><div class="ttdef"><b>Definition</b> <a href="#l00092">IInputProvider.cs:92</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a341468d804481e4c3ad1664c01a8b807"><div class="ttname"><a href="class_null_character_i_p.html#a341468d804481e4c3ad1664c01a8b807">NullCharacterIP.MoveVector</a></div><div class="ttdeci">Vector3 MoveVector</div><div class="ttdef"><b>Definition</b> <a href="#l00072">IInputProvider.cs:72</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a562da70efe6ff019f179bd4db0505c31"><div class="ttname"><a href="class_null_character_i_p.html#a562da70efe6ff019f179bd4db0505c31">NullCharacterIP.UseStorySkill_2</a></div><div class="ttdeci">bool UseStorySkill_2</div><div class="ttdoc">追加（山本）</div><div class="ttdef"><b>Definition</b> <a href="#l00088">IInputProvider.cs:88</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a588a1ef957d7ead5371b14d47678a46e"><div class="ttname"><a href="class_null_character_i_p.html#a588a1ef957d7ead5371b14d47678a46e">NullCharacterIP.UseStorySkill_1</a></div><div class="ttdeci">bool UseStorySkill_1</div><div class="ttdef"><b>Definition</b> <a href="#l00084">IInputProvider.cs:84</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a5a7850e742417012719720206a4e3776"><div class="ttname"><a href="class_null_character_i_p.html#a5a7850e742417012719720206a4e3776">NullCharacterIP.LookVector</a></div><div class="ttdeci">Vector3 LookVector</div><div class="ttdef"><b>Definition</b> <a href="#l00071">IInputProvider.cs:71</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a6754f46559f5efe042007fe16484ade4"><div class="ttname"><a href="class_null_character_i_p.html#a6754f46559f5efe042007fe16484ade4">NullCharacterIP.DoDush</a></div><div class="ttdeci">bool DoDush</div><div class="ttdef"><b>Definition</b> <a href="#l00077">IInputProvider.cs:77</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a6bc0de86ac1b113b9d549b57a314988d"><div class="ttname"><a href="class_null_character_i_p.html#a6bc0de86ac1b113b9d549b57a314988d">NullCharacterIP.OnPressedDush</a></div><div class="ttdeci">bool OnPressedDush</div><div class="ttdef"><b>Definition</b> <a href="#l00078">IInputProvider.cs:78</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a8716652385d005e1313d3533529b2fd8"><div class="ttname"><a href="class_null_character_i_p.html#a8716652385d005e1313d3533529b2fd8">NullCharacterIP.NullInstance</a></div><div class="ttdeci">static NullCharacterIP NullInstance</div><div class="ttdef"><b>Definition</b> <a href="#l00069">IInputProvider.cs:69</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a94a482bdd16c48474e76e2bdf86624da"><div class="ttname"><a href="class_null_character_i_p.html#a94a482bdd16c48474e76e2bdf86624da">NullCharacterIP.ThrowAim</a></div><div class="ttdeci">Vector2 ThrowAim</div><div class="ttdef"><b>Definition</b> <a href="#l00098">IInputProvider.cs:98</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_a9a19895d7e65940d67882a82c8a4668f"><div class="ttname"><a href="class_null_character_i_p.html#a9a19895d7e65940d67882a82c8a4668f">NullCharacterIP.DoRolling</a></div><div class="ttdeci">bool DoRolling</div><div class="ttdef"><b>Definition</b> <a href="#l00082">IInputProvider.cs:82</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_ab129206c0a1c6967147bc78b9318cefd"><div class="ttname"><a href="class_null_character_i_p.html#ab129206c0a1c6967147bc78b9318cefd">NullCharacterIP.SelectLeftItem</a></div><div class="ttdeci">bool SelectLeftItem</div><div class="ttdef"><b>Definition</b> <a href="#l00090">IInputProvider.cs:90</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_abb950c8845e7316497e46ca6bb191b81"><div class="ttname"><a href="class_null_character_i_p.html#abb950c8845e7316497e46ca6bb191b81">NullCharacterIP.IsArrive</a></div><div class="ttdeci">bool IsArrive</div><div class="ttdef"><b>Definition</b> <a href="#l00102">IInputProvider.cs:102</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_ac05bc4a4a9de7b7be41fa1d1a1f29833"><div class="ttname"><a href="class_null_character_i_p.html#ac05bc4a4a9de7b7be41fa1d1a1f29833">NullCharacterIP.ThrowItem</a></div><div class="ttdeci">bool ThrowItem</div><div class="ttdef"><b>Definition</b> <a href="#l00097">IInputProvider.cs:97</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_ad54aef1f26d1f747a97e146504aea5cd"><div class="ttname"><a href="class_null_character_i_p.html#ad54aef1f26d1f747a97e146504aea5cd">NullCharacterIP.Eat</a></div><div class="ttdeci">bool Eat</div><div class="ttdef"><b>Definition</b> <a href="#l00100">IInputProvider.cs:100</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_ad5ba8b449da3d8574fe66171245bceb9"><div class="ttname"><a href="class_null_character_i_p.html#ad5ba8b449da3d8574fe66171245bceb9">NullCharacterIP.Destination</a></div><div class="ttdeci">Vector3 Destination</div><div class="ttdef"><b>Definition</b> <a href="#l00104">IInputProvider.cs:104</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_ada39397b3a78a922f1190327ea5fb17c"><div class="ttname"><a href="class_null_character_i_p.html#ada39397b3a78a922f1190327ea5fb17c">NullCharacterIP.OnReleasedDush</a></div><div class="ttdeci">bool OnReleasedDush</div><div class="ttdef"><b>Definition</b> <a href="#l00079">IInputProvider.cs:79</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_ae16412bc57bc2b92df88997671de73b8"><div class="ttname"><a href="class_null_character_i_p.html#ae16412bc57bc2b92df88997671de73b8">NullCharacterIP.AttackType</a></div><div class="ttdeci">int AttackType</div><div class="ttdef"><b>Definition</b> <a href="#l00075">IInputProvider.cs:75</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_aeeaf068d6a068ca355474c09cd414070"><div class="ttname"><a href="class_null_character_i_p.html#aeeaf068d6a068ca355474c09cd414070">NullCharacterIP.SelectRightItem</a></div><div class="ttdeci">bool SelectRightItem</div><div class="ttdef"><b>Definition</b> <a href="#l00091">IInputProvider.cs:91</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_afaf3cc12f92b082918d99dd8898b015b"><div class="ttname"><a href="class_null_character_i_p.html#afaf3cc12f92b082918d99dd8898b015b">NullCharacterIP.Gathering</a></div><div class="ttdeci">bool Gathering</div><div class="ttdef"><b>Definition</b> <a href="#l00094">IInputProvider.cs:94</a></div></div>
+<div class="ttc" id="aclass_null_character_i_p_html_aff26594a0cd0aac355e4d271271bb968"><div class="ttname"><a href="class_null_character_i_p.html#aff26594a0cd0aac355e4d271271bb968">NullCharacterIP.Cancel</a></div><div class="ttdeci">bool Cancel</div><div class="ttdef"><b>Definition</b> <a href="#l00099">IInputProvider.cs:99</a></div></div>
+<div class="ttc" id="ainterface_i_camera_input_provider_html"><div class="ttname"><a href="interface_i_camera_input_provider.html">ICameraInputProvider</a></div><div class="ttdef"><b>Definition</b> <a href="#l00113">IInputProvider.cs:114</a></div></div>
+<div class="ttc" id="ainterface_i_camera_input_provider_html_ad93d187f0d2d78dc4882c2d9fab2c014"><div class="ttname"><a href="interface_i_camera_input_provider.html#ad93d187f0d2d78dc4882c2d9fab2c014">ICameraInputProvider.CameraXY</a></div><div class="ttdeci">Vector2 CameraXY</div><div class="ttdef"><b>Definition</b> <a href="#l00116">IInputProvider.cs:116</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html"><div class="ttname"><a href="interface_i_input_provider.html">IInputProvider</a></div><div class="ttdef"><b>Definition</b> <a href="#l00011">IInputProvider.cs:12</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a00afde84b726947a42240136f43bdc38"><div class="ttname"><a href="interface_i_input_provider.html#a00afde84b726947a42240136f43bdc38">IInputProvider.AttackType</a></div><div class="ttdeci">int AttackType</div><div class="ttdef"><b>Definition</b> <a href="#l00019">IInputProvider.cs:19</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a01330fd5f19fb0c6530dc63145e0932d"><div class="ttname"><a href="interface_i_input_provider.html#a01330fd5f19fb0c6530dc63145e0932d">IInputProvider.DoDush</a></div><div class="ttdeci">bool DoDush</div><div class="ttdef"><b>Definition</b> <a href="#l00022">IInputProvider.cs:22</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a0894605e882b9a4dcfee39faf6e7cfee"><div class="ttname"><a href="interface_i_input_provider.html#a0894605e882b9a4dcfee39faf6e7cfee">IInputProvider.SelectRightItem</a></div><div class="ttdeci">bool SelectRightItem</div><div class="ttdef"><b>Definition</b> <a href="#l00030">IInputProvider.cs:30</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a1600def3d8631996b2caa54703e61c8c"><div class="ttname"><a href="interface_i_input_provider.html#a1600def3d8631996b2caa54703e61c8c">IInputProvider.IsArrive</a></div><div class="ttdeci">bool IsArrive</div><div class="ttdef"><b>Definition</b> <a href="#l00062">IInputProvider.cs:62</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a1d266581deb5c1629e8e4c0ae38f51c9"><div class="ttname"><a href="interface_i_input_provider.html#a1d266581deb5c1629e8e4c0ae38f51c9">IInputProvider.LookVector</a></div><div class="ttdeci">Vector3 LookVector</div><div class="ttdef"><b>Definition</b> <a href="#l00013">IInputProvider.cs:13</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a23cd59d426e50d46aacfce062f84a185"><div class="ttname"><a href="interface_i_input_provider.html#a23cd59d426e50d46aacfce062f84a185">IInputProvider.MoveVector</a></div><div class="ttdeci">Vector3 MoveVector</div><div class="ttdef"><b>Definition</b> <a href="#l00016">IInputProvider.cs:16</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a49a4741dda9a88e275707792ba05f64b"><div class="ttname"><a href="interface_i_input_provider.html#a49a4741dda9a88e275707792ba05f64b">IInputProvider.OnPressedDush</a></div><div class="ttdeci">bool OnPressedDush</div><div class="ttdef"><b>Definition</b> <a href="#l00023">IInputProvider.cs:23</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a580b1a0e93b83af9d118b8ac867a802c"><div class="ttname"><a href="interface_i_input_provider.html#a580b1a0e93b83af9d118b8ac867a802c">IInputProvider.PutItem</a></div><div class="ttdeci">bool PutItem</div><div class="ttdef"><b>Definition</b> <a href="#l00044">IInputProvider.cs:44</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a6cdde8be3f1d66d4cc7cdec0d5ab5731"><div class="ttname"><a href="interface_i_input_provider.html#a6cdde8be3f1d66d4cc7cdec0d5ab5731">IInputProvider.DoRolling</a></div><div class="ttdeci">bool DoRolling</div><div class="ttdef"><b>Definition</b> <a href="#l00027">IInputProvider.cs:27</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a82ecb43695634be4338cddde3ffced6c"><div class="ttname"><a href="interface_i_input_provider.html#a82ecb43695634be4338cddde3ffced6c">IInputProvider.Destination</a></div><div class="ttdeci">Vector3 Destination</div><div class="ttdef"><b>Definition</b> <a href="#l00064">IInputProvider.cs:64</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a894a6800d9a706de5a9bed2baaa37c71"><div class="ttname"><a href="interface_i_input_provider.html#a894a6800d9a706de5a9bed2baaa37c71">IInputProvider.UseStorySkill_2</a></div><div class="ttdeci">bool UseStorySkill_2</div><div class="ttdoc">童話スキル2発動トリガー（山本）</div><div class="ttdef"><b>Definition</b> <a href="#l00038">IInputProvider.cs:38</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_a99656bb260350bbf469e8c1a5cbbb735"><div class="ttname"><a href="interface_i_input_provider.html#a99656bb260350bbf469e8c1a5cbbb735">IInputProvider.OnReleasedDush</a></div><div class="ttdeci">bool OnReleasedDush</div><div class="ttdef"><b>Definition</b> <a href="#l00024">IInputProvider.cs:24</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_aa092089ed847aa4c3e8c869556d0e580"><div class="ttname"><a href="interface_i_input_provider.html#aa092089ed847aa4c3e8c869556d0e580">IInputProvider.Eat</a></div><div class="ttdeci">bool Eat</div><div class="ttdef"><b>Definition</b> <a href="#l00059">IInputProvider.cs:59</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_aa6228b4e9a99493cad454b83a9188c25"><div class="ttname"><a href="interface_i_input_provider.html#aa6228b4e9a99493cad454b83a9188c25">IInputProvider.UseStorySkill_1</a></div><div class="ttdeci">bool UseStorySkill_1</div><div class="ttdef"><b>Definition</b> <a href="#l00034">IInputProvider.cs:34</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_aa65c8cd4cdfdc3fd73ae4436284ed289"><div class="ttname"><a href="interface_i_input_provider.html#aa65c8cd4cdfdc3fd73ae4436284ed289">IInputProvider.UseItem</a></div><div class="ttdeci">bool UseItem</div><div class="ttdef"><b>Definition</b> <a href="#l00031">IInputProvider.cs:31</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_aac635ca151c17c91b43fcbda1bc11235"><div class="ttname"><a href="interface_i_input_provider.html#aac635ca151c17c91b43fcbda1bc11235">IInputProvider.ThrowItem</a></div><div class="ttdeci">bool ThrowItem</div><div class="ttdef"><b>Definition</b> <a href="#l00050">IInputProvider.cs:50</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_ab45128fa15d0d3f342c4c93e00a5b0d1"><div class="ttname"><a href="interface_i_input_provider.html#ab45128fa15d0d3f342c4c93e00a5b0d1">IInputProvider.Cancel</a></div><div class="ttdeci">bool Cancel</div><div class="ttdef"><b>Definition</b> <a href="#l00056">IInputProvider.cs:56</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_ab49ce18b112d31c0af01ba6d3c85a509"><div class="ttname"><a href="interface_i_input_provider.html#ab49ce18b112d31c0af01ba6d3c85a509">IInputProvider.ReadyThrowItem</a></div><div class="ttdeci">bool ReadyThrowItem</div><div class="ttdef"><b>Definition</b> <a href="#l00047">IInputProvider.cs:47</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_abf0208fdaacbdfb2f7c7890c9824a2f3"><div class="ttname"><a href="interface_i_input_provider.html#abf0208fdaacbdfb2f7c7890c9824a2f3">IInputProvider.SelectLeftItem</a></div><div class="ttdeci">bool SelectLeftItem</div><div class="ttdef"><b>Definition</b> <a href="#l00029">IInputProvider.cs:29</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_ac169693bb81631e0735912e56d46b35c"><div class="ttname"><a href="interface_i_input_provider.html#ac169693bb81631e0735912e56d46b35c">IInputProvider.ThrowAim</a></div><div class="ttdeci">Vector2 ThrowAim</div><div class="ttdef"><b>Definition</b> <a href="#l00053">IInputProvider.cs:53</a></div></div>
+<div class="ttc" id="ainterface_i_input_provider_html_ae4cb70aaf9ddb555fd917529e8cc3de4"><div class="ttname"><a href="interface_i_input_provider.html#ae4cb70aaf9ddb555fd917529e8cc3de4">IInputProvider.Gathering</a></div><div class="ttdeci">bool Gathering</div><div class="ttdef"><b>Definition</b> <a href="#l00041">IInputProvider.cs:41</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_3e4698778516f9b59e05cd8661478dec.html">001_Common</a></li><li class="navelem"><a class="el" href="dir_32092f515e3299d611f4d88bb32c8845.html">Scripts</a></li><li class="navelem"><a class="el" href="dir_aa964eb189d234c52b38b0fc9977e9f1.html">Input</a></li><li class="navelem"><a class="el" href="_i_input_provider_8cs.html">IInputProvider.cs</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

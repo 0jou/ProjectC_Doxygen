@@ -93,6 +93,12 @@ public class PlayerSkillsParameters : MonoBehaviour
     public GameObject OffsetEfffect { get { return m_offsetEffect; } set { m_offsetEffect = value; } }
 
 
+    // 追従用データ
+    [Header("追従キャラクターの追従速度")]
+    [SerializeField] private ChaseData m_ChaseData;
+    public ChaseData ChaseData { get { return m_ChaseData; } }
+
+
     [Header("追従キャラクターが走りに移行する距離")]
     [SerializeField] private float m_runDist = 10.0f;
     public float RunDist { get { return m_runDist; } }

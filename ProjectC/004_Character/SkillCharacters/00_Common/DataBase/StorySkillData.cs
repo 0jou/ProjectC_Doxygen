@@ -46,5 +46,16 @@ public class StorySkillData : ScriptableObject
     [SerializeField] private string m_storySkillDescriptionText = "None";
     public string StorySkillDescriptionText { get {  return m_storySkillDescriptionText; } }
 
+    [Header("攻撃の詳細情報")]
+    [SerializeField] private List<AttackDamageData> m_attackData;
+    public List<AttackDamageData> AttackDamageDatas { get { return m_attackData; } }
+
+    [Header("召喚時にSphereCast判定するレイヤーマスク")]
+    [SerializeField] private LayerMask m_layerMask;
+    public LayerMask LayerMask { get { return m_layerMask; } }
+
+    [Header("SphereCastで除外するオブジェクトのレイヤーマスク")]
+    [SerializeField] private LayerMask m_exclusionlayerMask;
+    public LayerMask ExclusionLayerMask { get { return m_exclusionlayerMask; } }
 
 }

@@ -17,7 +17,7 @@ public class TransitionTargetOrderFoodStateCustomer :BaseCustomerStateBehaviour
 	private class TransitionTargetOrderFood
 	{
 		[SerializeField]
-		public OrderFoodState State = OrderFoodState.FindStaff;
+		public OrderFoodState State = OrderFoodState.WaitChefStaff;
 
 		[SerializeField]
 		public StateLink StateLink = null;

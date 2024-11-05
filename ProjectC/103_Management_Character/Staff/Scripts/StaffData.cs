@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using StaffStateInfo;
+using StaffInfo;
 
-namespace StaffStateInfo
+namespace StaffInfo
 {
-    public enum StaffState
+    public enum HallStaffState
     {
         Default,        // 通常の状態
         MoveGetFood,    // 料理を取りに行く状態
@@ -15,17 +15,29 @@ namespace StaffStateInfo
         Stun,           // 攻撃されている状態
         Set,            // 料理をセットしている状態
     }
+
+    public enum ChefStaffState
+    {
+
+        Find = 0,       // 料理探す
+        Cooking = 1,    // 料理調理
+    }
+
+    public enum StaffType
+    {
+        Hall,
+        Chef,
+    }
 }
 
 
-
-public class StaffData : MonoBehaviour
+public partial class StaffData : MonoBehaviour
 {
     // 制作者　田内
 
-    //=========================================
-    // 料理を持つ位置
 
+    //================
+    // 料理を持つ位置
 
     [Header("料理を保持する位置")]
     [SerializeField]
@@ -33,31 +45,14 @@ public class StaffData : MonoBehaviour
 
     public GameObject HavePoint { get { return m_havePoint; } }
 
-
-    //===========================================
-    // スタッフのステート
-
-    private StaffState m_currentStaffState = StaffState.Default;
-
-    public StaffState CurrentStaffState
-    {
-        get { return m_currentStaffState; }
-        set { m_currentStaffState = value; }
-    }
-
-
-    //==========================================
-    // 待つ座標
-
+    //============
+    // 初期座標
 
     private Vector3 m_defaultPos = new();
-
     public Vector3 DefaultPos { get { return m_defaultPos; } }
 
-
-    //==========================================
+    //=================
     // ターゲットの料理
-
 
     private OrderFoodData m_targetOrderFoodData = null;
 
@@ -67,18 +62,17 @@ public class StaffData : MonoBehaviour
         set { m_targetOrderFoodData = value; }
     }
 
-
-    //====================================
+    //=========================================
     // ターゲットにしてきたオブジェクトのリスト
 
     private List<GameObject> m_beenTargetedObjectList = new();
 
     public List<GameObject> BeenTargetObjectList
     {
-        get 
+        get
         {
             m_beenTargetedObjectList.RemoveAll(_ => _ == null);
-            return  m_beenTargetedObjectList; 
+            return m_beenTargetedObjectList;
         }
         set { m_beenTargetedObjectList = value; }
     }
@@ -91,7 +85,7 @@ public class StaffData : MonoBehaviour
     private void Start()
     {
         // マネージャーに登録
-        StaffManager.instance.AddStaffrData(this);
+        StaffManager.instance.AddStaffData(this);
 
         SetInitializeData();
     }
@@ -102,7 +96,12 @@ public class StaffData : MonoBehaviour
         // 待つ座標をセット
         m_defaultPos = transform.position;
 
+        // ステータスを更新
+        SetStatus();
+
     }
+
+
 
     //====================================================================
     // 座標取得

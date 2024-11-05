@@ -4,6 +4,7 @@
 */
 using Arbor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 /**
 * @brief キャラクターのスタン状態処理
@@ -31,6 +32,7 @@ public class Stun : MonoBehaviour, ICondition
     public GameObject Owner { get; set; }
     private ArborFSM m_arbor;
     private Animator m_animator;
+    private InputActionMap m_inputMap = null;
 
     public bool IsEffective() { return m_stunTime > 0.0f; }
     public float DamageMulti(ConditionInfo.ResistanceID[] resistances)
@@ -69,6 +71,10 @@ public class Stun : MonoBehaviour, ICondition
             {
                 Debug.LogError("ArborFSMが見つかりませんでした");
                 m_stunTime = 0.0f;
+            }
+            else
+            {
+                m_inputMap = PlayerInputManager.instance.GetInputActionMap(InputActionMapTypes.Player);
             }
         }
     }
@@ -124,6 +130,17 @@ public class Stun : MonoBehaviour, ICondition
     private void Update()
     {
         m_stunTime -= Time.deltaTime;
+        if (m_inputMap != null)
+        {
+            foreach (InputAction action in m_inputMap.actions)
+            {
+                if (action.IsPressed())
+                {
+                    m_stunTime -= 1f * Time.deltaTime;
+                    return;
+                }
+            }
+        }
     }
 
     private void OnDestroy()

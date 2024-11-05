@@ -56,7 +56,7 @@ public class ThrowSleep : MonoBehaviour
                 m_hitConditionManagers[i].m_hitTime += Time.deltaTime;
                 if (m_hitConditionManagers[i].m_hitTime > m_sleepTime)
                 {
-                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_sleepPrefab);
+                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_sleepPrefab, false);
                     m_hitConditionManagers[i].m_hitTime = 0.0f;
                 }
             }

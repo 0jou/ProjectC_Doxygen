@@ -26,7 +26,7 @@ public class FindTargetStaffGangster : BaseGangsterStateBehaviour
         var data = GetGangsterData();
         if (data == null) return;
 
-        var randomList = StaffManager.instance.StaffDataList.RandomList();
+        var randomList = StaffManager.instance.GetStaffDataList(StaffInfo.StaffType.Hall).RandomList();
 
         StaffData staffData = null;
         foreach (var staff in randomList)

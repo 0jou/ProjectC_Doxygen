@@ -37,7 +37,7 @@ public class TestNotingEntryPoint : EntryPointBase
         if (CutSceneManager.instance != null)
         {
             //入場イベント再生
-            CutSceneManager.instance.PlayCutScene(CutSceneNumber.StartMovie);
+            //CutSceneManager.instance.PlayCutScene(CutSceneNumber.StartMovie);
         }
 
 

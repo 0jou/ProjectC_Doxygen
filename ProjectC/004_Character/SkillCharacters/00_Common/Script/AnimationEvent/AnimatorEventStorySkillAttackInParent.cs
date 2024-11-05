@@ -1,3 +1,4 @@
+using StorySkillInfo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,12 @@ public class AnimatorEventStorySkillAttackInParent : AnimatorEvents.EventNodeBas
     [Header("親オブジェクト(空ならAnimator直下)")]
     [SerializeField] private string m_parent;
 
+    [SerializeField]
+    private StorySkill_ID m_storySkillID;
+
+    [SerializeField, Tooltip("何番目の攻撃か")]
+    private int m_attackType;
+
     private GameObject m_createdInstance;
 
 
@@ -27,6 +34,10 @@ public class AnimatorEventStorySkillAttackInParent : AnimatorEvents.EventNodeBas
         var ownerInfo = m_createdInstance.AddComponent<OwnerInfoTag>();
         ownerInfo.GroupNo = charaCore.GroupNo;
         ownerInfo.Characore = charaCore;
+
+        var attackApplicant = m_createdInstance.AddComponent<AttackApplicant>();
+        attackApplicant.SetAttackData(StorySkillDataBaseManager.instance.GetStorySkillData(m_storySkillID).AttackDamageDatas[m_attackType - 1]);
+
     }
 
     public override void OnExit(Animator animator)

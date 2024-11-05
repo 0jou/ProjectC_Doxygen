@@ -49,7 +49,7 @@ public class ThrowParalysis : MonoBehaviour
                 m_hitConditionManagers[i].m_hitTime += Time.deltaTime;
                 if (m_hitConditionManagers[i].m_hitTime > m_paralysisTime)
                 {
-                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_paralysisPrefab);
+                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_paralysisPrefab, false);
                     m_hitConditionManagers[i].m_hitTime = m_paralysisTime - 1.0f;
                 }
             }

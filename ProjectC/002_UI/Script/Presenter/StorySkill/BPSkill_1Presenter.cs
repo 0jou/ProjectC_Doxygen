@@ -21,16 +21,17 @@ public class BPSkill_1Presenter : MonoBehaviour
             m_colorChanger = GetComponent<StorySkillUIChangeColor>();
         }
 
+        PlayerStatus status = m_characterCore.PlayerParameters.PlayerStatus;
         // HPの初期設定
-        BarSetting();
+        BarSetting(status);
 
         // 変わったら実行する処理を登録
-        m_characterCore.Status.m_bpSkill_1.Subscribe(x => BarUpdate());
+        status.m_bpSkill_1.Subscribe(x => BarUpdate(status));
     }
 
-    private void BarUpdate()
+    private void BarUpdate(PlayerStatus status)
     {
-        m_barController.SetValue(m_characterCore.Status.m_bpSkill_1.Value);
+        m_barController.SetValue(status.m_bpSkill_1.Value);
 
         if (m_colorChanger == null) return;
         // スキルが使えるかどうかで
@@ -54,15 +55,13 @@ public class BPSkill_1Presenter : MonoBehaviour
     }
 
     [ContextMenu("BarSetting")]
-    private void BarSetting()
+    private void BarSetting(PlayerStatus status)
     {
         // BPの初期値を設定
         m_barController.SetValue(
-            m_characterCore.Status.m_bpSkill_1.Value,
-            m_characterCore.Status.MaxBPSkill_1);
+            status.m_bpSkill_1.Value,
+            status.MaxBPSkill_1);
 
         m_colorChanger.ChangeUseColor();
-
     }
-
 }

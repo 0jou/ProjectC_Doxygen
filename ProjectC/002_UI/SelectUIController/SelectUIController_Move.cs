@@ -25,28 +25,28 @@ public partial class SelectUIController : MonoBehaviour
         bool flg = false;
 
         // 左に進む
-        if (PlayerInputManager.instance.IsInputActionWasPressed(InputActionMapTypes.UI, "Left"))
+        if (PlayerInputManager.instance.IsInputActionTrigger(InputActionMapTypes.UI, "Left"))
         {
             flg = Left();
         }
 
 
         // 右に進む
-        if (PlayerInputManager.instance.IsInputActionWasPressed(InputActionMapTypes.UI, "Right"))
+        if (PlayerInputManager.instance.IsInputActionTrigger(InputActionMapTypes.UI, "Right"))
         {
             flg = Right();
         }
 
 
         // 上に進む
-        if (PlayerInputManager.instance.IsInputActionWasPressed(InputActionMapTypes.UI, "Up"))
+        if (PlayerInputManager.instance.IsInputActionTrigger(InputActionMapTypes.UI, "Up"))
         {
             flg = Up();
         }
 
 
         // 下に進む
-        if (PlayerInputManager.instance.IsInputActionWasPressed(InputActionMapTypes.UI, "Down"))
+        if (PlayerInputManager.instance.IsInputActionTrigger(InputActionMapTypes.UI, "Down"))
         {
             flg = Down();
         }

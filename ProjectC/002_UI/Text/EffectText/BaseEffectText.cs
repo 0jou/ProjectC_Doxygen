@@ -36,7 +36,7 @@ public class BaseEffectText : MonoBehaviour
         Enable,
     }
 
-    [Header("EnablePlay")]
+    [Header("エフェクト再生タイプ")]
     [SerializeField]
     private PlayEffectType m_enableType = PlayEffectType.Enable;
 

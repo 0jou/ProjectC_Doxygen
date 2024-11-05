@@ -132,17 +132,20 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
         {
             m_lookVector.y = 0f;
             m_lookVector.Normalize();
-
             // Smoothly interpolate from current to target look direction
             Vector3 smoothedLookInputDirection = Vector3.Slerp(Motor.CharacterForward, m_lookVector, 1 - Mathf.Exp(-OrientationSharpness * deltaTime)).normalized;
 
             // Set the current rotation (which will be used by the KinematicCharacterMotor)
             currentRotation = Quaternion.LookRotation(smoothedLookInputDirection, Motor.CharacterUp);
+
+            if (Vector3.Angle(transform.forward, m_lookVector) < 1.0f)
+            {
+                m_lookVector = Vector3.zero;
+            }
         }
 
         // ルートモーション
-        currentRotation = currentRotation* _rootMotionRotationDelta;
-        m_lookVector = Vector3.zero;
+        currentRotation = currentRotation * _rootMotionRotationDelta;
     }
 
     /// <summary>
@@ -271,7 +274,7 @@ public class MyCharacterController : MonoBehaviour, ICharacterController
 
     public void AddNoHitTag(string _tagName)
     {
-        if(_tagName.Length==0)
+        if (_tagName.Length == 0)
         {
             return;
         }

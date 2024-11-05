@@ -1,0 +1,364 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>design_pattern_for_c: 011_Sound/SoundManager.cs ソースファイル</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">design_pattern_for_c<span id="projectnumber">&#160;for 1.0.0</span>
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','検索',true);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_sound_manager_8cs_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">読み取り中…</div>
+<div class="SRStatus" id="Searching">検索中…</div>
+<div class="SRStatus" id="NoMatches">一致する文字列を見つけられません</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">SoundManager.cs</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_sound_manager_8cs.html">[詳解]</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using </span>Arbor.Examples;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">using </span>CriWare;</div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">using </span>MagicaCloth2;</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">using </span>System;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">using </span>System.Collections.Generic;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">using </span>Unity.VisualScripting;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">using </span>UnityEngine;</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">using </span>static <a class="code hl_class" href="class_sound_manager.html">SoundManager</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="class_sound_manager.html">   23</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_sound_manager.html">SoundManager</a> : IDisposable</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">   25</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> <a class="code hl_class" href="class_sound_manager.html">SoundManager</a> <a class="code hl_property" href="class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">Instance</a> { <span class="keyword">get</span>; } = <span class="keyword">new</span> <a class="code hl_class" href="class_sound_manager.html">SoundManager</a>();</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a374df647ca05770bad1b1b57f21013ba">   27</a></span>    <span class="keyword">private</span> CriAtomExPlayer <a class="code hl_variable" href="class_sound_manager.html#a374df647ca05770bad1b1b57f21013ba">m_bgmPlayer</a>;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a3b830db702a83ee46a365f3e0655f6cf">   28</a></span>    <span class="keyword">public</span> CriAtomExPlayer <a class="code hl_property" href="class_sound_manager.html#a3b830db702a83ee46a365f3e0655f6cf">BGMPlayer</a> { <span class="keyword">get</span> =&gt; m_bgmPlayer; }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a11b09d717066e577af7fb5bb336ce864">   30</a></span>    <span class="keyword">private</span> CriAtomExPlayback <a class="code hl_variable" href="class_sound_manager.html#a11b09d717066e577af7fb5bb336ce864">m_currentBGM</a>;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a16d0253cb04d227a796341850afd2421">   32</a></span>    <span class="keyword">private</span> <span class="keywordtype">bool</span> <a class="code hl_variable" href="class_sound_manager.html#a16d0253cb04d227a796341850afd2421">m_disposedValue</a>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">//public static float CalcDspTime(float pitch) { return 1 / Mathf.Pow(2, pitch / 1200.0f); }</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">   43</a></span>    <span class="keyword">public</span> CriAtomExPlayback <a class="code hl_function" href="class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(<span class="keywordtype">string</span> cueName, <span class="keywordtype">float</span> vol = 1.0f, <span class="keywordtype">float</span> pitch = 0)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        var <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a> = <span class="keyword">new</span> CriAtomExPlayer(); <span class="comment">// 新しいプレイヤーを生成</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.SetCue(<span class="keyword">null</span>, cueName);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.SetVolume(vol);</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.SetPitch(pitch);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="comment">// player.SetDspTimeStretchRatio(CalcDspTime(pitch));</span></div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        CriAtomExPlayback pb = <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.Start(); <span class="comment">// 再生</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordflow">return</span> pb;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
+</div>
+<div class="foldopen" id="foldopen00059" data-start="{" data-end="}">
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a82975b49a6aded352d846b1f6129cf6a">   59</a></span>    <span class="keyword">public</span> CriAtomExPlayback <a class="code hl_function" href="class_sound_manager.html#a82975b49a6aded352d846b1f6129cf6a">StartPlayback</a>(<a class="code hl_class" href="class_sound_data.html">SoundData</a> data)</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    {</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(data.<a class="code hl_variable" href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">m_soundName</a>, data.<a class="code hl_variable" href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">m_volume</a>, data.<a class="code hl_variable" href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">m_pitch</a>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00073" data-start="{" data-end="}">
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">   73</a></span>    <span class="keyword">public</span> CriAtomExPlayback <a class="code hl_function" href="class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">Start3DPlayback</a>(<span class="keywordtype">string</span> cueName, UnityEngine.Vector3 pos, <span class="keywordtype">float</span> vol = 1.0f, <span class="keywordtype">float</span> pitch = 0)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        var obj = <span class="keyword">new</span> GameObject();</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        obj.transform.position = pos;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        var atom = obj.AddComponent&lt;CriAtomSource&gt;();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        atom.cueName = cueName;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        atom.cueSheet = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        atom.volume = vol;</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        atom.pitch = pitch;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        atom.use3dPositioning = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        CriAtomExPlayback pb = atom.Play(); <span class="comment">// 再生</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keywordflow">return</span> pb;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="comment">//var atom = obj.AddComponent&lt;CriAtomSource&gt;();</span></div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="comment">//atom.cueName = cueName;</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <span class="comment">//atom.cueSheet = null;</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="comment">//atom.volume = vol;</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="comment">//atom.pitch = pitch;</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="comment">//atom.use3dPositioning = true;</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        <span class="comment">//return atom.Play();</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    }</div>
+</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a7d7f8bb372e2897b45ae3983831f6a22">  102</a></span>    <span class="keyword">public</span> CriAtomExPlayback <a class="code hl_function" href="class_sound_manager.html#a7d7f8bb372e2897b45ae3983831f6a22">Start3DPlayback</a>(<a class="code hl_class" href="class_sound_data.html">SoundData</a> data, UnityEngine.Vector3 pos)</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    {</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">Start3DPlayback</a>(data.<a class="code hl_variable" href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">m_soundName</a>, pos, data.<a class="code hl_variable" href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">m_volume</a>, data.<a class="code hl_variable" href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">m_pitch</a>);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    }</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="foldopen" id="foldopen00115" data-start="{" data-end="}">
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a17584a1ca5681031c0b6273c2c20a848">  115</a></span>    <span class="keyword">public</span> CriAtomExPlayback <a class="code hl_function" href="class_sound_manager.html#a17584a1ca5681031c0b6273c2c20a848">Start3DPlayback</a>(<span class="keywordtype">string</span> cueName, GameObject obj, <span class="keywordtype">float</span> vol = 1.0f, <span class="keywordtype">float</span> pitch = 0)</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        var atom = obj.AddComponent&lt;CriAtomSource&gt;();</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        atom.cueName = cueName;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        atom.cueSheet = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        atom.volume = vol;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        atom.pitch = pitch;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        atom.use3dPositioning = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">return</span> atom.Play();</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    }</div>
+</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
+<div class="foldopen" id="foldopen00134" data-start="{" data-end="}">
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a27e50a87d73e5093250052bf0fbd6a14">  134</a></span>    <span class="keyword">public</span> CriAtomExPlayback <a class="code hl_function" href="class_sound_manager.html#a27e50a87d73e5093250052bf0fbd6a14">Start3DPlayback</a>(<a class="code hl_class" href="class_sound_data.html">SoundData</a> data, GameObject obj)</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    {</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">Start3DPlayback</a>(data.<a class="code hl_variable" href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">m_soundName</a>, obj, data.<a class="code hl_variable" href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">m_volume</a>, data.<a class="code hl_variable" href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">m_pitch</a>);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    }</div>
+</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
+<div class="foldopen" id="foldopen00145" data-start="{" data-end="}">
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a3af4898d444a764a272a2cb0050b2459">  145</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#a3af4898d444a764a272a2cb0050b2459">StartBGM</a>(<span class="keywordtype">string</span> cueName, <span class="keywordtype">float</span> vol = 1.0f, <span class="keywordtype">float</span> pitch = 0)</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        m_bgmPlayer.SetCue(<span class="keyword">null</span>, cueName);</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        m_bgmPlayer.SetVolume(vol);</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        m_bgmPlayer.SetPitch(pitch);</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>        <span class="comment">// m_bgmPlayer.SetDspTimeStretchRatio(CalcDspTime(pitch));</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        m_bgmPlayer.Loop(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="comment">//m_bgmPlayer.SetCuePriority(255);</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>        m_bgmPlayer.SetVoicePriority(255);</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        m_currentBGM = m_bgmPlayer.Start();</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>    }</div>
+</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span> </div>
+<div class="foldopen" id="foldopen00157" data-start="{" data-end="}">
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno"><a class="line" href="class_sound_manager.html#acdf86e764da4abe6a6e26571d05fff5c">  157</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#acdf86e764da4abe6a6e26571d05fff5c">StartBGM</a>(<a class="code hl_class" href="class_sound_data.html">SoundData</a> sound)</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    {</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        <a class="code hl_class" href="class_start_b_g_m.html">StartBGM</a>(sound.<a class="code hl_variable" href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">m_soundName</a>, sound.<a class="code hl_variable" href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">m_volume</a>, sound.<a class="code hl_variable" href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">m_pitch</a>);</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
+</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span> </div>
+<div class="foldopen" id="foldopen00163" data-start="{" data-end="}">
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a330ace02b66a87c140a389e63fa8f7ff">  163</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#a330ace02b66a87c140a389e63fa8f7ff">StopBGM</a>()</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        m_currentBGM.Stop();</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    }</div>
+</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="foldopen" id="foldopen00169" data-start="{" data-end="}">
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a9436221ac54eb9f54622702515dd1d1b">  169</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#a9436221ac54eb9f54622702515dd1d1b">PauseBGM</a>()</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    {</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        m_currentBGM.Pause();</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    }</div>
+</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="foldopen" id="foldopen00175" data-start="{" data-end="}">
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno"><a class="line" href="class_sound_manager.html#abd4b95524a734a50aee80ae2f672e255">  175</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#abd4b95524a734a50aee80ae2f672e255">ResumeBGM</a>()</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    {</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        m_bgmPlayer.Resume(CriAtomEx.ResumeMode.PausedPlayback);</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    }</div>
+</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span> </div>
+<div class="foldopen" id="foldopen00185" data-start="{" data-end="}">
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="class_sound_manager.html#ac3edddb38382d04bd1d1a25da335fd11">  185</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#ac3edddb38382d04bd1d1a25da335fd11">SetBGMVolumeAndPitch</a>(<span class="keywordtype">float</span> vol, <span class="keywordtype">float</span> pitch)</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        m_bgmPlayer.SetVolume(vol);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>        m_bgmPlayer.SetPitch(pitch);</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>        <span class="comment">// m_bgmPlayer.SetDspTimeStretchRatio(CalcDspTime(pitch));</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    }</div>
+</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
+<div class="foldopen" id="foldopen00193" data-start="{" data-end="}">
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno"><a class="line" href="class_sound_manager.html#afa0595406547ee4ce868022ff1852773">  193</a></span>    <span class="keyword">public</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_sound_manager.html#afa0595406547ee4ce868022ff1852773">IsBGMPaused</a>()</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    {</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">return</span> m_currentBGM.IsPaused();</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    }</div>
+</div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
+<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="class_sound_manager.html#ad8f22d4dec2d1fdfc00d0043e57e6d4b">  198</a></span>    <span class="keyword">private</span> <a class="code hl_function" href="class_sound_manager.html#ad8f22d4dec2d1fdfc00d0043e57e6d4b">SoundManager</a>()</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    {</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>        this.m_bgmPlayer = <span class="keyword">new</span> CriAtomExPlayer();</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>    }</div>
+</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
+<div class="foldopen" id="foldopen00204" data-start="{" data-end="}">
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a1f98b15f2532140dacc1edaed819df3e">  204</a></span>    <span class="keyword">private</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#a1f98b15f2532140dacc1edaed819df3e">Dispose</a>(<span class="keywordtype">bool</span> disposing)</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>    {</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <span class="keywordflow">if</span> (!m_disposedValue)</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>        {</div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>            m_bgmPlayer?.Dispose();</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>            m_bgmPlayer = <span class="keyword">null</span>;</div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>            m_disposedValue = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>        }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    }</div>
+</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span> </div>
+<div class="foldopen" id="foldopen00214" data-start="{" data-end="}">
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno"><a class="line" href="class_sound_manager.html#a32629a7f0b9e01292e2df977758c37fe">  214</a></span>    <a class="code hl_function" href="class_sound_manager.html#a32629a7f0b9e01292e2df977758c37fe">~SoundManager</a>()</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    {</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        <a class="code hl_function" href="class_sound_manager.html#a1f98b15f2532140dacc1edaed819df3e">Dispose</a>(disposing: <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>    }</div>
+</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="foldopen" id="foldopen00220" data-start="{" data-end="}">
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno"><a class="line" href="class_sound_manager.html#ab6390ead95d57d4f8b68a18d37a2ec8a">  220</a></span>    <span class="keyword">public</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_sound_manager.html#ab6390ead95d57d4f8b68a18d37a2ec8a">Dispose</a>()</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    {</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <a class="code hl_function" href="class_sound_manager.html#a1f98b15f2532140dacc1edaed819df3e">Dispose</a>(disposing: <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        GC.SuppressFinalize(<span class="keyword">this</span>);</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    }</div>
+</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>}</div>
+</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="foldopen" id="foldopen00230" data-start="{" data-end="};">
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno"><a class="line" href="class_extension_sound_manager.html">  230</a></span><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class </span><a class="code hl_class" href="class_extension_sound_manager.html">ExtensionSoundManager</a></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>{</div>
+<div class="foldopen" id="foldopen00241" data-start="{" data-end="}">
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="class_extension_sound_manager.html#af88402f395ff40b6e1eed5a4c292447a">  241</a></span>    <span class="keyword">public</span> <span class="keyword">static</span> CriAtomExPlayback <a class="code hl_function" href="class_extension_sound_manager.html#af88402f395ff40b6e1eed5a4c292447a">SetLoopPlayback</a>(<span class="keyword">this</span> <a class="code hl_class" href="class_sound_manager.html">SoundManager</a> manager, <span class="keywordtype">string</span> cueName, <span class="keywordtype">bool</span> isLoop, <span class="keywordtype">float</span> vol = 1.0f, <span class="keywordtype">float</span> pitch = 0)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>    {</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        var <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a> = <span class="keyword">new</span> CriAtomExPlayer(); <span class="comment">// 新しいプレイヤーを生成</span></div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.SetCue(<span class="keyword">null</span>, cueName);</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.SetVolume(vol);</div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.SetPitch(pitch);</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        <span class="comment">//  player.SetDspTimeStretchRatio(SoundManager.CalcDspTime(pitch));</span></div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        <a class="code hl_enumvalue" href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">player</a>.Loop(isLoop);</div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span> </div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>        var pb = manager.<a class="code hl_function" href="class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">StartPlayback</a>(cueName, vol, pitch);</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>        <span class="keywordflow">return</span> pb;</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>    }</div>
+</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>}</div>
+</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span> </div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>[Serializable]</div>
+<div class="foldopen" id="foldopen00260" data-start="{" data-end="};">
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno"><a class="line" href="class_sound_data.html">  260</a></span><span class="keyword">public</span> <span class="keyword">class </span><a class="code hl_class" href="class_sound_data.html">SoundData</a></div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>{</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno"><a class="line" href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">  262</a></span>    <span class="keyword">public</span> <span class="keywordtype">string</span> <a class="code hl_variable" href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">m_soundName</a>;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    [Range(0.0f, 1.0f)]</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno"><a class="line" href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">  264</a></span>    <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">m_volume</a> = 1.0f;</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    [Range(-2400, 2400)]</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno"><a class="line" href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">  266</a></span>    <span class="keyword">public</span> <span class="keywordtype">float</span> <a class="code hl_variable" href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">m_pitch</a> = 0.0f;</div>
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno">  267</span>}</div>
+</div>
+<div class="ttc" id="a_i_damageable_8cs_html_ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6"><div class="ttname"><a href="_i_damageable_8cs.html#ae72376123e0488a173f6626e9fc0ba47a912af0dff974604f1321254ca8ff38b6">CharacterGroupNumber.player</a></div><div class="ttdeci">@ player</div></div>
+<div class="ttc" id="aclass_extension_sound_manager_html"><div class="ttname"><a href="class_extension_sound_manager.html">ExtensionSoundManager</a></div><div class="ttdoc">SoundManagerの拡張クラス Loop指定での再生を行う</div><div class="ttdef"><b>Definition</b> <a href="#l00230">SoundManager.cs:231</a></div></div>
+<div class="ttc" id="aclass_extension_sound_manager_html_af88402f395ff40b6e1eed5a4c292447a"><div class="ttname"><a href="class_extension_sound_manager.html#af88402f395ff40b6e1eed5a4c292447a">ExtensionSoundManager.SetLoopPlayback</a></div><div class="ttdeci">static CriAtomExPlayback SetLoopPlayback(this SoundManager manager, string cueName, bool isLoop, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dループ再生を行う</div><div class="ttdef"><b>Definition</b> <a href="#l00241">SoundManager.cs:241</a></div></div>
+<div class="ttc" id="aclass_sound_data_html"><div class="ttname"><a href="class_sound_data.html">SoundData</a></div><div class="ttdoc">SoundData クラス @detail サウンドの再生に必要なデータを保有する</div><div class="ttdef"><b>Definition</b> <a href="#l00260">SoundManager.cs:261</a></div></div>
+<div class="ttc" id="aclass_sound_data_html_a6efc26dc332789ac6f320736aba3c964"><div class="ttname"><a href="class_sound_data.html#a6efc26dc332789ac6f320736aba3c964">SoundData.m_volume</a></div><div class="ttdeci">float m_volume</div><div class="ttdef"><b>Definition</b> <a href="#l00264">SoundManager.cs:264</a></div></div>
+<div class="ttc" id="aclass_sound_data_html_aabf7780bb383f18a609c6e0ace064dfb"><div class="ttname"><a href="class_sound_data.html#aabf7780bb383f18a609c6e0ace064dfb">SoundData.m_pitch</a></div><div class="ttdeci">float m_pitch</div><div class="ttdef"><b>Definition</b> <a href="#l00266">SoundManager.cs:266</a></div></div>
+<div class="ttc" id="aclass_sound_data_html_ab2997c66644365fca4de625db4ab8c1c"><div class="ttname"><a href="class_sound_data.html#ab2997c66644365fca4de625db4ab8c1c">SoundData.m_soundName</a></div><div class="ttdeci">string m_soundName</div><div class="ttdef"><b>Definition</b> <a href="#l00262">SoundManager.cs:262</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html"><div class="ttname"><a href="class_sound_manager.html">SoundManager</a></div><div class="ttdoc">SoundManager クラス サウンドの文字列からの再生を管理するクラス 2D,3Dの再生を管理する @detail 3D再生のみ CriAtomSourceを必須とする(マネージャー側で追加する)...</div><div class="ttdef"><b>Definition</b> <a href="#l00023">SoundManager.cs:24</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a10bc60ca27342f6574923712ef9028c5"><div class="ttname"><a href="class_sound_manager.html#a10bc60ca27342f6574923712ef9028c5">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> <a href="#l00043">SoundManager.cs:43</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a11b09d717066e577af7fb5bb336ce864"><div class="ttname"><a href="class_sound_manager.html#a11b09d717066e577af7fb5bb336ce864">SoundManager.m_currentBGM</a></div><div class="ttdeci">CriAtomExPlayback m_currentBGM</div><div class="ttdef"><b>Definition</b> <a href="#l00030">SoundManager.cs:30</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a16d0253cb04d227a796341850afd2421"><div class="ttname"><a href="class_sound_manager.html#a16d0253cb04d227a796341850afd2421">SoundManager.m_disposedValue</a></div><div class="ttdeci">bool m_disposedValue</div><div class="ttdef"><b>Definition</b> <a href="#l00032">SoundManager.cs:32</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a17584a1ca5681031c0b6273c2c20a848"><div class="ttname"><a href="class_sound_manager.html#a17584a1ca5681031c0b6273c2c20a848">SoundManager.Start3DPlayback</a></div><div class="ttdeci">CriAtomExPlayback Start3DPlayback(string cueName, GameObject obj, float vol=1.0f, float pitch=0)</div><div class="ttdoc">3D再生 指定されたオブジェクトに音源を設定し再生</div><div class="ttdef"><b>Definition</b> <a href="#l00115">SoundManager.cs:115</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a1f98b15f2532140dacc1edaed819df3e"><div class="ttname"><a href="class_sound_manager.html#a1f98b15f2532140dacc1edaed819df3e">SoundManager.Dispose</a></div><div class="ttdeci">void Dispose(bool disposing)</div><div class="ttdoc">破棄処理</div><div class="ttdef"><b>Definition</b> <a href="#l00204">SoundManager.cs:204</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a27e50a87d73e5093250052bf0fbd6a14"><div class="ttname"><a href="class_sound_manager.html#a27e50a87d73e5093250052bf0fbd6a14">SoundManager.Start3DPlayback</a></div><div class="ttdeci">CriAtomExPlayback Start3DPlayback(SoundData data, GameObject obj)</div><div class="ttdoc">3D再生 指定されたオブジェクトに音源を設定し再生</div><div class="ttdef"><b>Definition</b> <a href="#l00134">SoundManager.cs:134</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a32629a7f0b9e01292e2df977758c37fe"><div class="ttname"><a href="class_sound_manager.html#a32629a7f0b9e01292e2df977758c37fe">SoundManager.~SoundManager</a></div><div class="ttdeci">~SoundManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00214">SoundManager.cs:214</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a330ace02b66a87c140a389e63fa8f7ff"><div class="ttname"><a href="class_sound_manager.html#a330ace02b66a87c140a389e63fa8f7ff">SoundManager.StopBGM</a></div><div class="ttdeci">void StopBGM()</div><div class="ttdoc">BGM再生停止</div><div class="ttdef"><b>Definition</b> <a href="#l00163">SoundManager.cs:163</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a374df647ca05770bad1b1b57f21013ba"><div class="ttname"><a href="class_sound_manager.html#a374df647ca05770bad1b1b57f21013ba">SoundManager.m_bgmPlayer</a></div><div class="ttdeci">CriAtomExPlayer m_bgmPlayer</div><div class="ttdef"><b>Definition</b> <a href="#l00027">SoundManager.cs:27</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a3af4898d444a764a272a2cb0050b2459"><div class="ttname"><a href="class_sound_manager.html#a3af4898d444a764a272a2cb0050b2459">SoundManager.StartBGM</a></div><div class="ttdeci">void StartBGM(string cueName, float vol=1.0f, float pitch=0)</div><div class="ttdoc">BGM再生</div><div class="ttdef"><b>Definition</b> <a href="#l00145">SoundManager.cs:145</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a3b830db702a83ee46a365f3e0655f6cf"><div class="ttname"><a href="class_sound_manager.html#a3b830db702a83ee46a365f3e0655f6cf">SoundManager.BGMPlayer</a></div><div class="ttdeci">CriAtomExPlayer BGMPlayer</div><div class="ttdef"><b>Definition</b> <a href="#l00028">SoundManager.cs:28</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a4ceb176bb67059b35136a96fd9221824"><div class="ttname"><a href="class_sound_manager.html#a4ceb176bb67059b35136a96fd9221824">SoundManager.Instance</a></div><div class="ttdeci">static SoundManager Instance</div><div class="ttdef"><b>Definition</b> <a href="#l00025">SoundManager.cs:25</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a71bf6aeca5886488a7fdccd5890df00e"><div class="ttname"><a href="class_sound_manager.html#a71bf6aeca5886488a7fdccd5890df00e">SoundManager.Start3DPlayback</a></div><div class="ttdeci">CriAtomExPlayback Start3DPlayback(string cueName, UnityEngine.Vector3 pos, float vol=1.0f, float pitch=0)</div><div class="ttdoc">座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される</div><div class="ttdef"><b>Definition</b> <a href="#l00073">SoundManager.cs:73</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a7d7f8bb372e2897b45ae3983831f6a22"><div class="ttname"><a href="class_sound_manager.html#a7d7f8bb372e2897b45ae3983831f6a22">SoundManager.Start3DPlayback</a></div><div class="ttdeci">CriAtomExPlayback Start3DPlayback(SoundData data, UnityEngine.Vector3 pos)</div><div class="ttdoc">座標のみ指定での3D再生 指定された座標にオブジェクトを作成しCriAtomExPlayer,Instant3DSoundPlayerを紐づけ再生 再生終了時自動でオブジェクトが破棄される</div><div class="ttdef"><b>Definition</b> <a href="#l00102">SoundManager.cs:102</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a82975b49a6aded352d846b1f6129cf6a"><div class="ttname"><a href="class_sound_manager.html#a82975b49a6aded352d846b1f6129cf6a">SoundManager.StartPlayback</a></div><div class="ttdeci">CriAtomExPlayback StartPlayback(SoundData data)</div><div class="ttdoc">2Dでのサウンド再生</div><div class="ttdef"><b>Definition</b> <a href="#l00059">SoundManager.cs:59</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_a9436221ac54eb9f54622702515dd1d1b"><div class="ttname"><a href="class_sound_manager.html#a9436221ac54eb9f54622702515dd1d1b">SoundManager.PauseBGM</a></div><div class="ttdeci">void PauseBGM()</div><div class="ttdoc">BGM一時停止</div><div class="ttdef"><b>Definition</b> <a href="#l00169">SoundManager.cs:169</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_ab6390ead95d57d4f8b68a18d37a2ec8a"><div class="ttname"><a href="class_sound_manager.html#ab6390ead95d57d4f8b68a18d37a2ec8a">SoundManager.Dispose</a></div><div class="ttdeci">void Dispose()</div><div class="ttdoc">破棄処理</div><div class="ttdef"><b>Definition</b> <a href="#l00220">SoundManager.cs:220</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_abd4b95524a734a50aee80ae2f672e255"><div class="ttname"><a href="class_sound_manager.html#abd4b95524a734a50aee80ae2f672e255">SoundManager.ResumeBGM</a></div><div class="ttdeci">void ResumeBGM()</div><div class="ttdoc">BGM再開</div><div class="ttdef"><b>Definition</b> <a href="#l00175">SoundManager.cs:175</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_ac3edddb38382d04bd1d1a25da335fd11"><div class="ttname"><a href="class_sound_manager.html#ac3edddb38382d04bd1d1a25da335fd11">SoundManager.SetBGMVolumeAndPitch</a></div><div class="ttdeci">void SetBGMVolumeAndPitch(float vol, float pitch)</div><div class="ttdoc">BGMの音量とピッチを設定</div><div class="ttdef"><b>Definition</b> <a href="#l00185">SoundManager.cs:185</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_acdf86e764da4abe6a6e26571d05fff5c"><div class="ttname"><a href="class_sound_manager.html#acdf86e764da4abe6a6e26571d05fff5c">SoundManager.StartBGM</a></div><div class="ttdeci">void StartBGM(SoundData sound)</div><div class="ttdef"><b>Definition</b> <a href="#l00157">SoundManager.cs:157</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_ad8f22d4dec2d1fdfc00d0043e57e6d4b"><div class="ttname"><a href="class_sound_manager.html#ad8f22d4dec2d1fdfc00d0043e57e6d4b">SoundManager.SoundManager</a></div><div class="ttdeci">SoundManager()</div><div class="ttdef"><b>Definition</b> <a href="#l00198">SoundManager.cs:198</a></div></div>
+<div class="ttc" id="aclass_sound_manager_html_afa0595406547ee4ce868022ff1852773"><div class="ttname"><a href="class_sound_manager.html#afa0595406547ee4ce868022ff1852773">SoundManager.IsBGMPaused</a></div><div class="ttdeci">bool IsBGMPaused()</div><div class="ttdoc">BGM再生中かどうか</div><div class="ttdef"><b>Definition</b> <a href="#l00193">SoundManager.cs:193</a></div></div>
+<div class="ttc" id="aclass_start_b_g_m_html"><div class="ttname"><a href="class_start_b_g_m.html">StartBGM</a></div><div class="ttdef"><b>Definition</b> <a href="_start_b_g_m_8cs_source.html#l00005">StartBGM.cs:6</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_53bfa5174ff02fdb0b0ac578fc80ab76.html">011_Sound</a></li><li class="navelem"><a class="el" href="_sound_manager_8cs.html">SoundManager.cs</a></li>
+    <li class="footer">構築: <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0 </li>
+  </ul>
+</div>
+</body>
+</html>

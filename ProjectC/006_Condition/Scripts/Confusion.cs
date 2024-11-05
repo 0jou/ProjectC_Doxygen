@@ -29,7 +29,7 @@ public class Confusion : MonoBehaviour, ICondition
     public ConditionInfo.ConditionID ConditionID => m_conditionID;
 
     public GameObject Owner { get; set; }
-    private ArborFSM m_arbor;
+    private EnemyParameters m_enemyParameter;
 
     public bool IsEffective() { return m_confusionTime > 0.0f; }
     public float DamageMulti(ConditionInfo.ResistanceID[] resistances)
@@ -62,9 +62,9 @@ public class Confusion : MonoBehaviour, ICondition
             Debug.LogError("ConditionManagerが見つかりませんでした");
         }
 
-        if (!transform.root.TryGetComponent(out m_arbor))
+        if (!transform.root.TryGetComponent(out m_enemyParameter))
         {
-            if (!transform.root.CompareTag("Player")) Debug.LogError("ArborFSMが見つかりませんでした");
+            if (!transform.root.CompareTag("Player")) Debug.LogError("EnemyParameterが見つかりませんでした");
             m_confusionTime = 0.0f;
         }
 
@@ -106,17 +106,7 @@ public class Confusion : MonoBehaviour, ICondition
             m_effect = Instantiate(m_effectAssetPrefab, rootTrans);
         }
 
-
-        //m_effect = Instantiate(m_effectAssetPrefab, transform.root);
-        if (m_arbor.parameterContainer.TryGetVariable("Search Type", out SearchType type))
-        {
-            type.searchTargets |= SearchTargets.Enemy;
-        }
-        else
-        {
-            Debug.Log("ArborFSMに Search Type がありません");
-            m_confusionTime = 0.0f;
-        }
+        m_enemyParameter.SearchTargets |= SearchTargets.Enemy;
     }
 
 
@@ -130,20 +120,16 @@ public class Confusion : MonoBehaviour, ICondition
         if (m_effect) Destroy(m_effect);
 
         //Todoプレイヤーは混乱にかからないための暫定処置（山本）
-        if (m_arbor == null)
+        if (m_enemyParameter == null)
         {
             return;
         }
 
-        m_arbor.parameterContainer.SetTransform("Target", null);
+        m_enemyParameter.SearchTargets &= ~SearchTargets.Enemy;
+        m_enemyParameter.Target = null;
         if (transform.root.TryGetComponent(out CharacterCore core))
         {
             core.DoFriendlyFire = false;
-        }
-
-        if (m_arbor.parameterContainer.TryGetVariable("Search Type", out SearchType type))
-        {
-            type.searchTargets &= ~SearchTargets.Enemy;
         }
     }
 }

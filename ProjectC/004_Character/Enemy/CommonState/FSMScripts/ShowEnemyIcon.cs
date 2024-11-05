@@ -34,8 +34,10 @@ public class ShowEnemyIcon : StateBehaviour
     // Use this for enter state
     public override void OnStateBegin()
     {
-        if (!m_iconController) return;
-        m_iconController.ShowIcon(m_showIconType, m_iconFillTime.value);
+        if (m_iconController)
+        {
+            m_iconController.ShowIcon(m_showIconType, m_iconFillTime.value);
+        }
         //await UniTask.Delay(TimeSpan.FromSeconds(m_iconShowTime));
         //if (iconController)
         //{

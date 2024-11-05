@@ -149,7 +149,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                 rotVec = Core.transform.forward + rotVec * m_rateHoming;
                 Core.SetRotateToTarget(rotVec);
             }
-            Core.Move(Core.m_dushSpeed * m_magnificationSpeed);
+            Core.Move(Core.Status.DushSpeed * m_magnificationSpeed);
         }
 
         public override void OnExit()

@@ -74,7 +74,7 @@ public class ManagementStandbyWindow : BaseWindow
         #endregion
 
         var controller = Instantiate(m_tutorialWindowController);
-        await CreateToUpdateWindow<BaseWindow>(controller, false);
+        await controller.CreateWindow<BaseWindow>();
         if (controller != null) Destroy(controller.gameObject);
 
         await UniTask.CompletedTask;

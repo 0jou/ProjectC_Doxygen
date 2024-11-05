@@ -16,8 +16,6 @@ public class CheckPlayerPosition : Decorator
     private FlexibleFloat m_stoppingDistance = new FlexibleFloat();
     [SerializeField]
     private FlexibleFloat m_warpDistance = new FlexibleFloat();
-    [SerializeField]
-    private FlexibleChaseParameters m_chaseParameters = new FlexibleChaseParameters();
 
     private Transform m_myTransform;
     private Vector3 m_targetPos = new();
@@ -29,9 +27,9 @@ public class CheckPlayerPosition : Decorator
 
     }
 
-    protected override void OnStart()
-    {
-    }
+    //protected override void OnStart()
+    //{
+    //}
 
     protected override bool OnConditionCheck()
     {
@@ -62,7 +60,7 @@ public class CheckPlayerPosition : Decorator
         return _isWarpFlg;
     }
 
-    protected override void OnEnd()
-    {
-    }
+    //protected override void OnEnd()
+    //{
+    //}
 }

@@ -67,14 +67,27 @@ public class CounterPointData : MonoBehaviour
         CheckOrderFoodData();
     }
 
+
+    // ターゲットの料理を手放すか確認
     private void CheckOrderFoodData()
     {
         if (m_setOrderFoodData == null) return;
 
-        // カウンターから離れれば
-        if (m_setOrderFoodData.IsCounterFood() == false)
+        switch (m_setOrderFoodData.CurrentOrderFoodState)
         {
-            m_setOrderFoodData = null;
+            // カウンターで待機状態であれば
+            case OrderFoodState.WaitHallStaff:
+            case OrderFoodState.WaitCarry:
+                {
+                    break;
+                }
+
+                // それ以外であれば料理を手放す
+            default:
+                {
+                    m_setOrderFoodData = null;
+                    break;
+                }
         }
     }
 

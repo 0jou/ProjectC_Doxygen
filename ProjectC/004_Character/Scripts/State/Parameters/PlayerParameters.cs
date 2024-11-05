@@ -12,6 +12,11 @@ using UniRx;
 
 public class PlayerParameters : MonoBehaviour
 {
+
+    [Header("プレイヤー専用パラメータ")]
+    [SerializeField] private PlayerStatus m_playerStatus;
+    public PlayerStatus PlayerStatus { get { return m_playerStatus; } set { m_playerStatus = value; } }
+
     //敵をサーチする範囲（山本）
     [Header("敵の方向を向く際のサーチ範囲")]
     [SerializeField] private float m_serchEnemyDist = 0.0f;
@@ -66,6 +71,11 @@ public class PlayerParameters : MonoBehaviour
     [HideInInspector]
     public Vector3 m_throwPower = new Vector3(0, 0, 0);
 
+    // 投げるときの回転
+    [SerializeField]
+    [Tooltip("投げるときの回転")]
+    public Vector3 m_throwTorque = new Vector3(0.3f, 0, 0.3f);
+
     // マウスの位置に表示するプレハブ
     [SerializeField]
     public GameObject m_mouseThrowAim;
@@ -83,6 +93,8 @@ public class PlayerParameters : MonoBehaviour
     [SerializeField]
     public GameObject m_playerfollowCamera = null;
 
+    [SerializeField]
+    public Cinemachine.CinemachineBrain m_cinemachineBrain = null;
 
     //---------------------------------------------------------------------------------
     //========================
@@ -199,6 +211,10 @@ public class PlayerParameters : MonoBehaviour
         set { m_playerRestartForward = value; }
     }
 
+    private void Awake()
+    {
+        m_playerStatus.Init();
+    }
 
     public void StartVanishWeapon()
     {

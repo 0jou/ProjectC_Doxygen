@@ -31,11 +31,10 @@ public class BattleSceneBGM : MonoBehaviour
         }
         foreach (var boss in meta.BossList)
         {
-            if (!boss.TryGetComponent(out ArborFSM arbor)) return;
-            Transform target = arbor.parameterContainer.GetTransform("Target");
-            if (target == null) continue;
+            if (!boss.TryGetComponent(out EnemyParameters parameters)) return;
+            if (parameters.Target == null) continue;
 
-            if (target.GetInstanceID() == m_player.GetInstanceID())
+            if (parameters.Target.GetInstanceID() == m_player.GetInstanceID())
             {
                 findPlayer = true;
                 break;

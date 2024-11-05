@@ -19,20 +19,29 @@ public enum SearchTargets
 [AddBehaviourMenu("Enemy/EnemySearchTarget")]
 public class EnemySearchTarget : Decorator
 {
-    [SerializeField] private FlexibleSearchType m_searchFlags;
-    [SerializeField] private FlexibleTransform m_targetParameter;
-    [SerializeField] private FlexibleChaseParameters m_chaseParameters;
+    [SerializeField]
+    [SlotType(typeof(EnemyParameters))]
+    private FlexibleComponent m_enemyParameters;
 
     private Collider m_myCollider;
     private Vector3 m_startPos;
-    private VisualFieldJudgment m_judgment=new();
+    private VisualFieldJudgment m_judgment = new();
+    private EnemyParameters enemyParameters;
+    private ChaseData m_chaseData;
 
     protected override void OnAwake()
     {
         transform.root.TryGetComponent(out m_myCollider);
-        if(transform.root.TryGetComponent(out AgentController agent))
+        if (transform.root.TryGetComponent(out AgentController agent))
         {
             m_startPos = agent.StartPosition;
+        }
+
+        enemyParameters = m_enemyParameters.value as EnemyParameters;
+        m_chaseData = enemyParameters.GetChaseData();
+        if (m_chaseData == null)
+        {
+            Debug.Log("ChaseDataが取得できませんでした" + gameObject.name);
         }
     }
 
@@ -42,33 +51,33 @@ public class EnemySearchTarget : Decorator
 
     protected override bool OnConditionCheck()
     {
-        if (Vector3.Distance(transform.position, m_startPos) >= m_chaseParameters.value.DistAwayFromSpawnPos) return false;
-       
+        if (Vector3.Distance(transform.position, m_startPos) >= m_chaseData.DistAwayFromSpawnPos) return false;
+
         float nearestDist = float.MaxValue;
         bool isFind = false;
 
         // プレイヤーが範囲内にいるか調べる
         foreach (var chara in IMetaAI<CharacterCore>.Instance.ObjectList)
         {
-            if ((m_searchFlags.value.searchTargets & SearchTargets.Player) == SearchTargets.Player)
+            if ((enemyParameters.SearchTargets & SearchTargets.Player) == SearchTargets.Player)
             {
                 if (chara.GroupNo == CharacterGroupNumber.player)
                 {
-                    if (m_judgment.SearchTargetNearSpawn(chara.gameObject, m_chaseParameters.value, m_myCollider, m_startPos, ref nearestDist, m_chaseParameters.value.SearchCharacterDist))
+                    if (m_judgment.SearchTargetNearSpawn(chara.gameObject, m_chaseData, m_myCollider, m_startPos, ref nearestDist, m_chaseData.SearchCharacterDist))
                     {
-                        m_targetParameter.parameter.SetTransform(chara.transform);
+                        enemyParameters.Target = chara.transform;
                         isFind = true;
                         continue;
                     }
                 }
             }
-            if ((m_searchFlags.value.searchTargets & SearchTargets.Enemy) == SearchTargets.Enemy)
+            if ((enemyParameters.SearchTargets & SearchTargets.Enemy) == SearchTargets.Enemy)
             {
                 if (chara.GroupNo == CharacterGroupNumber.enemy)
                 {
-                    if (m_judgment.SearchTargetNearSpawn(chara.gameObject, m_chaseParameters.value, m_myCollider, m_startPos, ref nearestDist, m_chaseParameters.value.SearchCharacterDist))
+                    if (m_judgment.SearchTargetNearSpawn(chara.gameObject, m_chaseData, m_myCollider, m_startPos, ref nearestDist, m_chaseData.SearchCharacterDist))
                     {
-                        m_targetParameter.parameter.SetTransform(chara.transform);
+                        enemyParameters.Target = chara.transform;
                         isFind = true;
                         continue;
                     }
@@ -77,15 +86,15 @@ public class EnemySearchTarget : Decorator
         }
 
         // 罠ごはんが範囲内にあるか調べる　より正面にあればそちらを優先で使用
-        if ((m_searchFlags.value.searchTargets & SearchTargets.FoodItem) == SearchTargets.FoodItem)
+        if ((enemyParameters.SearchTargets & SearchTargets.FoodItem) == SearchTargets.FoodItem)
         {
             foreach (var item in IMetaAI<AssignItemID>.Instance.ObjectList)
             {
                 if (item.ItemTypeID != ItemInfo.ItemTypeID.Food) continue;
 
-                if (m_judgment.SearchTargetNearSpawn(item.gameObject, m_chaseParameters.value, m_myCollider, m_startPos, ref nearestDist, m_chaseParameters.value.SearchCharacterDist))
+                if (m_judgment.SearchTargetNearSpawn(item.gameObject, m_chaseData, m_myCollider, m_startPos, ref nearestDist, m_chaseData.SearchCharacterDist))
                 {
-                    m_targetParameter.parameter.SetTransform(item.transform);
+                    enemyParameters.Target = item.transform;
                     isFind = true;
                 }
             }

@@ -44,7 +44,7 @@ public class ThrowFire : MonoBehaviour
                 m_hitConditionManagers[i].m_hitTime += Time.deltaTime;
                 if (m_hitConditionManagers[i].m_hitTime > m_confusionTime)
                 {
-                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_confusionPrefab);
+                    m_hitConditionManagers[i].m_conditionManager.AddCondition(m_confusionPrefab, false);
                 }
                 return;
             }

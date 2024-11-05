@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using OrderFoodInfo;
-
 using ItemInfo;
 using FoodInfo;
-
-using NaughtyAttributes;
+using StaffInfo;
+using OrderFoodInfo;
 
 public class CounterManager : BaseManager<CounterManager>
 {
@@ -40,8 +38,8 @@ public class CounterManager : BaseManager<CounterManager>
 
     private void Update()
     {
-        // 注文された料理の処理
-        OnUpdateOrderFood();
+        // カウンターに作成済みの料理をセットする
+        SetFoodToCounterPoint();
 
         // 取り除き判定
         CheckRemove();
@@ -67,6 +65,7 @@ public class CounterManager : BaseManager<CounterManager>
 
     }
 
+
     /// <summary>
     /// 料理を注文できるかどうか
     /// </summary>
@@ -79,40 +78,14 @@ public class CounterManager : BaseManager<CounterManager>
 
 
     /// <summary>
-    /// 現在料理が注文されているか確認する
+    /// ホールスタッフを待っている料理を取得する
     /// </summary>
-    public bool IsOrdering()
-    {
-        if (m_orderFoodDataList.Count <= 0) return false;
-        else return true;
-    }
-
-
-    /// <summary>
-    /// 調理中(作成中)の料理があるかどうか
-    /// </summary>
-    public bool IsCooking()
-    {
-        foreach (var data in m_orderFoodDataList)
-        {
-            if (data == null) continue;
-            if (data.gameObject.activeSelf == false)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /// <summary>
-    /// 現在受け取り待ちの料理を取得する
-    /// </summary>
-    public OrderFoodData GetCounterFoodData()
+    public OrderFoodData GetWaitChefStaffOrderFood()
     {
         foreach (var foodData in m_orderFoodDataList)
         {
             if (foodData == null) continue;
-            if (foodData.IsFindStaff())
+            if (foodData.CurrentOrderFoodState == OrderFoodState.WaitChefStaff)
             {
                 return foodData;
             }
@@ -120,6 +93,25 @@ public class CounterManager : BaseManager<CounterManager>
 
         return null;
     }
+
+
+    /// <summary>
+    /// ホールスタッフを待っている料理を取得する
+    /// </summary>
+    public OrderFoodData GetWaitHallStaffOrderFood()
+    {
+        foreach (var foodData in m_orderFoodDataList)
+        {
+            if (foodData == null) continue;
+            if (foodData.CurrentOrderFoodState == OrderFoodState.WaitHallStaff)
+            {
+                return foodData;
+            }
+        }
+
+        return null;
+    }
+
 
     /// <summary>
     /// ランダムで空いているカウンターポイントを取得(空きがなければnull)
@@ -129,7 +121,7 @@ public class CounterManager : BaseManager<CounterManager>
         m_counterPointDataList.RandomList();
         foreach (var counterPoint in m_counterPointDataList)
         {
-            // 設置されていれば
+            // 設置されていなければ
             if (counterPoint.SetOrderFoodData == null)
             {
                 return counterPoint;
@@ -179,25 +171,30 @@ public class CounterManager : BaseManager<CounterManager>
         }
     }
 
+
+    /// <summary>
+    /// カウンターに作成済み料理をセットする
+    /// </summary>
+    private void SetFoodToCounterPoint()
+    {
+        foreach (var food in m_orderFoodDataList)
+        {
+            if (food == null) continue;
+            food.SetCounterPoint();
+        }
+    }
+
+
     // 用済みの注文料理データを削除
     private void CheckRemove()
     {
+        // 運び始めたら取り除く
         m_orderFoodDataList.RemoveAll(data =>
         {
             if (data == null) return true;
-            if (data.IsCounterFood() == false) return true;
-            else return false;
+            if (data.CurrentOrderFoodState<OrderFoodState.Carry) return false;
+            else return true;
         }
        );
-    }
-
-    // 作成した料理の処理
-    private void OnUpdateOrderFood()
-    {
-        foreach (var data in m_orderFoodDataList)
-        {
-            if (data == null) continue;
-            data.OnUpdate();
-        }
     }
 }

@@ -1,6 +1,8 @@
+using StorySkillInfo;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SaintsField;
 
 [System.Serializable]
 public class SkillAnimeEventAttck : AnimatorEvents.EventNodeBase
@@ -9,6 +11,12 @@ public class SkillAnimeEventAttck : AnimatorEvents.EventNodeBase
     // 発生させるプレハブ
     [Header("発生させるプレハブ")]
     [SerializeField] GameObject m_assetAttack;
+
+    [SerializeField]
+    private StorySkill_ID m_storySkillID;
+
+    [SerializeField, Tooltip("何番目の攻撃か")]
+    private int m_attackType;
 
 
     // 時間が来たときに実行
@@ -27,9 +35,12 @@ public class SkillAnimeEventAttck : AnimatorEvents.EventNodeBase
         var ownerInfo = newObj.AddComponent<OwnerInfoTag>();
         ownerInfo.GroupNo = charaCore.GroupNo;
         ownerInfo.Characore = charaCore;
+
+        var attackApplicant = newObj.AddComponent<AttackApplicant>();
+        attackApplicant.SetAttackData(StorySkillDataBaseManager.instance.GetStorySkillData(m_storySkillID).AttackDamageDatas[m_attackType - 1]);
     }
 
-    public override void OnExit(Animator animator)
-    {
-    }
+    //public override void OnExit(Animator animator)
+    //{
+    //}
 }

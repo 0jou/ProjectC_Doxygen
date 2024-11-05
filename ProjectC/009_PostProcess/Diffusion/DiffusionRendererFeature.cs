@@ -29,7 +29,7 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
 
         public DiffusionRenderePass(Shader shader)
         {
-            //ƒVƒF[ƒ_[‚©‚çƒ}ƒeƒŠƒAƒ‹‚Ìì¬
+            //ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼ã‹ã‚‰ãƒãƒ†ãƒªã‚¢ãƒ«ã®ä½œæˆ
             _material = CoreUtils.CreateEngineMaterial(shader);
             _material2 = CoreUtils.CreateEngineMaterial(shader);
         }
@@ -40,7 +40,7 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
         }
 
         /// <summary>
-        /// •`‰æÀs
+        /// æç”»å®Ÿè¡Œ
         /// </summary>
         /// <param name="context"></param>
         /// <param name="renderingData"></param>
@@ -48,40 +48,40 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
         {
             if (_material == null) return;
 
-            //Volume‚ğæ“¾
+            //Volumeã‚’å–å¾—
             var volumeStack = VolumeManager.instance.stack;
             var volum = volumeStack.GetComponent<DiffusionPostProcessVolume>();
 
             //if (volum.Strength.value <= 0.0f) return;
 
-            //ƒRƒ}ƒ“ƒhƒŠƒXƒgæ“¾(ƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğƒŒƒ“ƒ^ƒ‹‚·‚é)
+            //ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆå–å¾—(ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’ãƒ¬ãƒ³ã‚¿ãƒ«ã™ã‚‹)
             var cmd = CommandBufferPool.Get("Diffusion Post Prosess");
-            //’†gˆê‰ƒNƒŠƒA
+            //ä¸­èº«ä¸€å¿œã‚¯ãƒªã‚¢
             cmd.Clear();
 
             //----------------------------------------------------------------------
-            //ƒŒƒ“ƒ_[ƒ^[ƒQƒbƒgæ“¾
+            //ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚¿ãƒ¼ã‚²ãƒƒãƒˆå–å¾—
             //---------------------------------------------------------------------
 
-            //Œ»İ‚ÌRT‚Ìî•ñ‚ğæ“¾
+            //ç¾åœ¨ã®RTã®æƒ…å ±ã‚’å–å¾—
             var tempTargetDescriptor = renderingData.cameraData.cameraTargetDescriptor;
             tempTargetDescriptor.depthBufferBits = 0;
 
-            //ƒ\[ƒX‰æ‘œ
+            //ã‚½ãƒ¼ã‚¹ç”»åƒ
             int tempRTID = Shader.PropertyToID("_TempRT");
             cmd.GetTemporaryRT(tempRTID, tempTargetDescriptor);
 
-            //æZ—p‰æ‘œ
+            //ä¹—ç®—ç”¨ç”»åƒ
             int tempMultiplyRTID = Shader.PropertyToID("_TempMultiplyRT");
             cmd.GetTemporaryRT(tempMultiplyRTID, tempTargetDescriptor);
 
-            //”äŠr(–¾)‚µ‚½Œã‚ÌŒ‹‰Ê
+            //æ¯”è¼ƒ(æ˜)ã—ãŸå¾Œã®çµæœ
             int tempComparisonRTID = Shader.PropertyToID("_TempComporisonRT");
             cmd.GetTemporaryRT(tempComparisonRTID, tempTargetDescriptor);
 
-            //ƒuƒ‰[—p‰æ‘œ
-            int fullW = renderingData.cameraData.camera.scaledPixelWidth;//RT‚Ì•
-            int fullH = renderingData.cameraData.camera.scaledPixelHeight;//RT‚Ì‚‚³
+            //ãƒ–ãƒ©ãƒ¼ç”¨ç”»åƒ
+            int fullW = renderingData.cameraData.camera.scaledPixelWidth;//RTã®å¹…
+            int fullH = renderingData.cameraData.camera.scaledPixelHeight;//RTã®é«˜ã•
             int tempBlurXRTID = Shader.PropertyToID("_TempBlurXRT");
             int tempBlurYRTID = Shader.PropertyToID("_TempBlurYRT");
 
@@ -92,11 +92,11 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
 
 
             //============================================================================
-            //‡@Œ»İ‚Ì‰æ–Ê‚ğRT‚ÖƒRƒs[
+            //â‘ ç¾åœ¨ã®ç”»é¢ã‚’RTã¸ã‚³ãƒ”ãƒ¼
             //===========================================================================
 
 
-            //RT‚ÉƒJƒƒ‰‰æ‘œ‚ğƒRƒs[
+            //RTã«ã‚«ãƒ¡ãƒ©ç”»åƒã‚’ã‚³ãƒ”ãƒ¼
             cmd.Blit
                 (
                  renderingData.cameraData.renderer.cameraColorTargetHandle,
@@ -104,68 +104,68 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
 
 
             //======================================================================
-            //‡AæZ‰æ‘œì¬
+            //â‘¡ä¹—ç®—ç”»åƒä½œæˆ
             //======================================================================  
 
             //_material.SetInt("_SampleCount", volum.SampleCount.value);
             //_material.SetFloat("_Strength", volum.Strength.value);
 
 
-            //•`‰æ(æZ)
+            //æç”»(ä¹—ç®—)
             cmd.Blit
                 (
-                tempRTID,//•`‰æŒ³‰æ‘œ
-                tempMultiplyRTID,//•`‰ææ‰æ‘œ
-                                 //renderingData.cameraData.renderer.cameraColorTargetHandle,//•`‰ææ‰æ‘œ
-                _material, (int)Passes.SelfMultiply                                          //•`‰æ‚·‚éƒVƒF[ƒ_[(”Ô†)
+                tempRTID,//æç”»å…ƒç”»åƒ
+                tempMultiplyRTID,//æç”»å…ˆç”»åƒ
+                                 //renderingData.cameraData.renderer.cameraColorTargetHandle,//æç”»å…ˆç”»åƒ
+                _material, (int)Passes.SelfMultiply                                          //æç”»ã™ã‚‹ã‚·ã‚§ãƒ¼ãƒ€ãƒ¼(ç•ªå·)
                 );
 
 
             //=====================================================================
-            //‡BæZ‰æ‘œ‚Éƒuƒ‰[‚ğ‚©‚¯‚é
+            //â‘¢ä¹—ç®—ç”»åƒã«ãƒ–ãƒ©ãƒ¼ã‚’ã‹ã‘ã‚‹
             //====================================================================
-            //k¬ƒoƒbƒtƒ@‚ÖƒRƒs[
+            //ç¸®å°ãƒãƒƒãƒ•ã‚¡ã¸ã‚³ãƒ”ãƒ¼
             cmd.Blit(tempMultiplyRTID, tempBlurYRTID);
 
-            //Xƒuƒ‰[
+            //Xãƒ–ãƒ©ãƒ¼
             _material.SetFloat("_Dispersion", volum.GaussDispersion.value);
-            _material.SetInt("_SmaplingTexelAmount", volum.GaussSmaplingTexelAmount.value);//Šï”‚É‚·‚é
+            _material.SetInt("_SmaplingTexelAmount", volum.GaussSmaplingTexelAmount.value);//å¥‡æ•°ã«ã™ã‚‹
             _material.SetVector("_Direction", new Vector4(1.0f / (fullW / 2), 0, 0, 0));
             cmd.Blit(tempBlurYRTID, tempBlurXRTID, _material, (int)Passes.Blur);
 
-            //ƒRƒ}ƒ“ƒhƒoƒbƒtƒ@‚ğGPU‚É“]‘—
+            //ã‚³ãƒãƒ³ãƒ‰ãƒãƒƒãƒ•ã‚¡ã‚’GPUã«è»¢é€
             context.ExecuteCommandBuffer(cmd);
 
-            //Yƒuƒ‰[
+            //Yãƒ–ãƒ©ãƒ¼
             _material2.SetFloat("_Dispersion", volum.GaussDispersion.value);
-            _material2.SetInt("_SmaplingTexelAmount", volum.GaussSmaplingTexelAmount.value);//Šï”‚É‚·‚é
+            _material2.SetInt("_SmaplingTexelAmount", volum.GaussSmaplingTexelAmount.value);//å¥‡æ•°ã«ã™ã‚‹
             _material2.SetVector("_Direction", new Vector4(0.0f, 1.0f / (fullH / 2), 0, 0));
             cmd.Blit(tempBlurXRTID, tempBlurYRTID, _material2, (int)Passes.Blur);
 
-            ////ƒeƒXƒg
+            ////ãƒ†ã‚¹ãƒˆ
             //cmd.Blit(tempBlurYRTID,
             //    renderingData.cameraData.renderer.cameraColorTargetHandle
             //    );
 
 
             //=================================================================
-            //‡C”äŠr–¾
+            //â‘£æ¯”è¼ƒæ˜
             //=================================================================
-            //ƒeƒNƒXƒ`ƒƒ‚ğƒZƒbƒg
+            //ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ã‚»ãƒƒãƒˆ
             cmd.SetGlobalTexture("_BackTex", tempBlurYRTID);
             cmd.Blit(tempRTID, tempComparisonRTID, _material, (int)Passes.ComparisonBright);
 
-            //ƒeƒXƒg
+            //ãƒ†ã‚¹ãƒˆ
             //cmd.Blit(tempComparisonRTID,
             //    renderingData.cameraData.renderer.cameraColorTargetHandle
             //    );
 
             //=================================================================
-            //‡DƒXƒNƒŠ[ƒ“‡¬
+            //â‘¤ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åˆæˆ
             //================================================================
             _material.SetFloat("_Blend", volum.ScreenBlend.value);
 
-            //ƒeƒNƒXƒ`ƒƒ‚ğƒZƒbƒg
+            //ãƒ†ã‚¯ã‚¹ãƒãƒ£ã‚’ã‚»ãƒƒãƒˆ
             cmd.SetGlobalTexture("_BackTex", tempComparisonRTID);
             cmd.Blit(tempMultiplyRTID,
                 renderingData.cameraData.renderer.cameraColorTargetHandle
@@ -175,7 +175,7 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
 
 
 
-            //RT‰ğ•ú
+            //RTè§£æ”¾
             cmd.ReleaseTemporaryRT(tempRTID);
             cmd.ReleaseTemporaryRT(tempMultiplyRTID);
             cmd.ReleaseTemporaryRT(tempComparisonRTID);
@@ -183,9 +183,9 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
             cmd.ReleaseTemporaryRT(tempBlurYRTID);
 
 
-            //ƒRƒ}ƒ“ƒhƒoƒbƒtƒ@‚ğGPU‚É“]‘—
+            //ã‚³ãƒãƒ³ãƒ‰ãƒãƒƒãƒ•ã‚¡ã‚’GPUã«è»¢é€
             context.ExecuteCommandBuffer(cmd);
-            //•Ô‹p
+            //è¿”å´
             CommandBufferPool.Release(cmd);
 
         }
@@ -199,18 +199,18 @@ public class DiffusionRendererFeature : ScriptableRendererFeature
 
     public override void Create()
     {
-        //ì¬‚Í•K‚¸Create‚Éì‚é
+        //ä½œæˆã¯å¿…ãšCreateã«ä½œã‚‹
         _pass = new DiffusionRenderePass(_shader);
     }
 
     /// <summary>
-    /// ƒpƒX‚ğ’Ç‰Á‚³‚ê‚é•K—v‚ª‚ ‚é‚ÉÀs‚³‚ê‚é
+    /// ãƒ‘ã‚¹ã‚’è¿½åŠ ã•ã‚Œã‚‹å¿…è¦ãŒã‚ã‚‹æ™‚ã«å®Ÿè¡Œã•ã‚Œã‚‹
     /// </summary>
     /// <param name="renderer"></param>
     /// <param name="renderingData"></param>
     public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData)
     {
-        //•`‰æ‚Æ‚µ‚Ä“®‚©‚¹‚é‚æ‚¤‚É‚È‚Á‚½
+        //æç”»ã¨ã—ã¦å‹•ã‹ã›ã‚‹ã‚ˆã†ã«ãªã£ãŸ
         renderer.EnqueuePass(_pass);
     }
 

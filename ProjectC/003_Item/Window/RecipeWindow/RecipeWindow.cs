@@ -172,16 +172,16 @@ public class RecipeWindow : BaseWindow
             // 料理を作成できるか確認
             if (slotData.IsCreate == false) return;
 
+
             // 料理作成ウィンドウ
-            var createFoodController = Instantiate(m_createFoodWindowController);
+            var controller = Instantiate(m_createFoodWindowController);
+            await controller.CreateWindow<CreateFoodWindow>(false, async _ =>
+            {
+                _.SetFoodData(m_pocketType, (FoodID)slotData.ItemID);
+                await UniTask.CompletedTask;
+            });
+            if (controller != null) Destroy(controller.gameObject);
 
-            await CreateToUpdateWindow<CreateFoodWindow>(createFoodController, false, async _ =>
-               {
-                   _.SetFoodData(m_pocketType, (FoodID)slotData.ItemID);
-                   await UniTask.CompletedTask;
-               });
-
-            if (createFoodController != null) Destroy(createFoodController.gameObject);
 
             // レシピ情報を初期化
             InitializeRecipeData();

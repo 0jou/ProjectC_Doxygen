@@ -6,6 +6,7 @@ using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.VFX;
+using SaintsField;
 
 
 // キャラクターの基盤クラス
@@ -77,10 +78,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
 
     // 移動用変数
     // 移動速度
-    [SerializeField] private float m_walkSpeed = 2f;
-    [SerializeField] private float m_dushSpeed = 4f;
     [SerializeField] private VisualEffect m_dashEffect; // ダッシュ用エフェクト
-    [SerializeField, Range(0f, 1f)] private float m_speedChangeRate = 0.5f;
 
     private bool m_isRun = false;
     //ダッシュキー押しっぱなしを防ぐ用（山本）
@@ -91,47 +89,11 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
     bool m_isNoDamage = false;
     private bool m_isNoStamina = false; // スタミナなくて動けない状態
 
-    // ステータス変数
-    [Serializable]
-    public struct CharatcerStatus
-    {
-        public FloatReactiveProperty m_hp;  // 体力
-        private float m_maxHP;
-        public float MaxHP { get { return m_maxHP; } set { m_maxHP = value; } }
+    [ShowIf(nameof(m_groupNo) + "!=", CharacterGroupNumber.enemy)]
+    [SerializeField] private CharacterStatus m_characterStatus;
+    public CharacterStatus Status { get { return m_characterStatus; } }
 
-        public FloatReactiveProperty m_bp;  // バトルポイント
-        private float m_maxBP;
-        public float MaxBP { get { return m_maxBP; } set { m_maxBP = value; } }
-        //バトルポイント自然回復量
-        public float m_bpRecoverSpeed;
-
-        // 装備スキルごとのBP
-        public FloatReactiveProperty m_bpSkill_1;
-        private float m_maxBPSkill_1;
-        public float MaxBPSkill_1 { get { return m_maxBPSkill_1; } set { m_maxBPSkill_1 = value; } }
-
-        public FloatReactiveProperty m_bpSkill_2;
-        private float m_maxBPSkill_2;
-        public float MaxBPSkill_2 { get { return m_maxBPSkill_2; } set { m_maxBPSkill_2 = value; } }
-
-
-
-        public float m_attack;              // 攻撃力
-        public float m_knockBackDamage;      // ノックバックするダメージ
-
-        public FloatReactiveProperty m_stamina;     // スタミナ
-        private float m_maxStamina;
-        public float MaxStamina { get { return m_maxStamina; } set { m_maxStamina = value; } }
-
-        public float m_staminaSpeed;                // スタミナ回復速度
-
-        public float m_rollingStaminaCost;          // 回避 スタミナ消費量
-        public float m_dashStaminaCost;             // ダッシュ スタミナ消費量
-
-    }
-    [SerializeField] private CharatcerStatus m_characterStatus;
-    public CharatcerStatus Status { get { return m_characterStatus; } }
-
+    [Header("各キャラクター専用のパラメータ")]
     [Tooltip("プレイヤーだった場合のみ参照をいれる")]
     public PlayerParameters PlayerParameters;
 
@@ -170,7 +132,6 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
         SetStorySkillBP();
 
         m_characterStatus.MaxHP = m_characterStatus.m_hp.Value;
-        m_characterStatus.MaxStamina = m_characterStatus.m_stamina.Value;
 
         //キャラクターを正面へ回転(山本)
         SetRotateToTarget(transform.forward);
@@ -205,6 +166,10 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             m_dashEffect.Stop();
         }
 
+        if (m_groupNo == CharacterGroupNumber.enemy && EnemyParameters)
+        {
+            m_characterStatus = new(EnemyParameters.GetEnemyData().CharacterStatus);
+        }
         m_characterStatus.MaxHP = m_characterStatus.m_hp.Value;
 
         // アップデート処理
@@ -367,17 +332,17 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                                     arv.SendTrigger("Damage");
                                 }
                             }
+                        }
+                    }
 
-                            // 敵であれば索敵指示をだす
-                            if (gameObject.TryGetComponent(out ArborFSM arborFSM))
-                            {
-                                arborFSM.SendTrigger("Damage");
+                    // 敵であれば索敵指示をだす
+                    if (gameObject.TryGetComponent(out ArborFSM arborFSM))
+                    {
+                        arborFSM.SendTrigger("Damage");
 
-                                if (EnemyParameters)
-                                {
-                                    arborFSM.parameterContainer.SetVector3("AttackedVec", -m_knockBackVec);
-                                }
-                            }
+                        if (EnemyParameters)
+                        {
+                            EnemyParameters.AttackedVec = -m_knockBackVec;
                         }
                     }
                 }
@@ -422,8 +387,8 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             // 緩やか
             case MoveTypes.Loose:
                 {
-                    m_charaCtrl.MoveSpeed += (_targetSpeed - m_charaCtrl.MoveSpeed) * m_speedChangeRate;
-                    m_animator.SetFloat("Speed", m_charaCtrl.MoveSpeed / m_dushSpeed, 0.15f, Time.fixedDeltaTime);
+                    m_charaCtrl.MoveSpeed += (_targetSpeed - m_charaCtrl.MoveSpeed) * 0.5f;
+                    m_animator.SetFloat("Speed", m_charaCtrl.MoveSpeed / Status.DushSpeed, 0.15f, Time.fixedDeltaTime);
                     break;
                 }
 
@@ -431,7 +396,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             case MoveTypes.Sharp:
                 {
                     m_charaCtrl.MoveSpeed = _targetSpeed;
-                    m_animator.SetFloat("Speed", m_charaCtrl.MoveSpeed / m_dushSpeed, 0.15f, Time.fixedDeltaTime);
+                    m_animator.SetFloat("Speed", m_charaCtrl.MoveSpeed / Status.DushSpeed, 0.15f, Time.fixedDeltaTime);
                     break;
                 }
         }
@@ -452,20 +417,20 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
     public void SetStorySkillBP()
     {
         //格スキルIDから使用BPを取得する
-        if (gameObject.TryGetComponent(out PlayerParameters parameters))
+        if (PlayerParameters)
         {
+            PlayerStatus status = PlayerParameters.PlayerStatus;
 
-            var bp1 = StorySkillDataBaseManager.instance.GetStorySkillData(parameters.StorySkill1_ID);
-            m_characterStatus.m_bpSkill_1.Value = bp1.PayBP;
+            var bp1 = StorySkillDataBaseManager.instance.GetStorySkillData(PlayerParameters.StorySkill1_ID);
+            status.m_bpSkill_1.Value = bp1.PayBP;
 
 
-            var bp2 = StorySkillDataBaseManager.instance.GetStorySkillData(parameters.StorySkill2_ID);
-            m_characterStatus.m_bpSkill_2.Value = bp2.PayBP;
+            var bp2 = StorySkillDataBaseManager.instance.GetStorySkillData(PlayerParameters.StorySkill2_ID);
+            status.m_bpSkill_2.Value = bp2.PayBP;
 
             //最大値を代入する
-            m_characterStatus.MaxBPSkill_1 = m_characterStatus.m_bpSkill_1.Value;
-            m_characterStatus.MaxBPSkill_2 = m_characterStatus.m_bpSkill_2.Value;
-
+            status.MaxBPSkill_1 = status.m_bpSkill_1.Value;
+            status.MaxBPSkill_2 = status.m_bpSkill_2.Value;
         }
     }
 

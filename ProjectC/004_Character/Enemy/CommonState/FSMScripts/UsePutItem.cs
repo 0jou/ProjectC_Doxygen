@@ -13,7 +13,11 @@ using Arbor;
 public class UsePutItem : StateBehaviour
 {
     [SerializeField] private StateLink m_stateLink = new ();
-    [SerializeField] private FlexibleTransform m_targetTrans;
+
+    [SerializeField]
+    [SlotType(typeof(EnemyParameters))]
+    private FlexibleComponent m_enemyParameters = new FlexibleComponent();
+
 
     //// Use this for initialization
     //void Start()
@@ -29,14 +33,15 @@ public class UsePutItem : StateBehaviour
     // Use this for enter state
     public override void OnStateBegin()
     {
-        if (m_targetTrans.value == null)
+        EnemyParameters parameters=m_enemyParameters.value as EnemyParameters;
+        if (parameters == null && parameters.Target)
         {
             Transition(m_stateLink);
             return;
         }
 
-        CreateConditionObject();
-        Destroy(m_targetTrans.value.gameObject);
+        CreateConditionObject(parameters.Target);
+        Destroy(parameters.Target.gameObject);
         Transition(m_stateLink);
     }
 
@@ -55,10 +60,9 @@ public class UsePutItem : StateBehaviour
     //{
     //}
 
-    private void CreateConditionObject()
+    private void CreateConditionObject(Transform target)
     {
-        if (m_targetTrans.value == null) return;
-        if (!m_targetTrans.value.TryGetComponent(out AssignItemID itemID)) return;
+        if (!target.TryGetComponent(out AssignItemID itemID)) return;
 
         var data = ItemDataBaseManager.instance.GetItemData<FoodData>(itemID.ItemTypeID, itemID.ItemID);
         if (data == null) return;
@@ -70,7 +74,7 @@ public class UsePutItem : StateBehaviour
         Transform managerObj = transform.root.Find("ConditionManager");
         if (!managerObj.TryGetComponent(out ConditionManager manager)) return;
 
-        manager.AddCondition(conditionData.ConditionPrefab);
+        manager.AddCondition(conditionData.ConditionPrefab, false);
         return;
     }
 }

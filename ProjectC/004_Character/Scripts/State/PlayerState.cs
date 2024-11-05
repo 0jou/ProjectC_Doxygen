@@ -9,6 +9,7 @@ using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine.UIElements;
 using UnityEditor;
+using Cinemachine;
 
 
 // キャラクターの基盤クラス
@@ -27,7 +28,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             Core.m_animator.SetFloat("RollingSpeed", Core.PlayerParameters.m_rollingAnimeSpeed);
             Core.m_isNoDamage = true;
 
-            Core.m_characterStatus.m_stamina.Value -= Core.m_characterStatus.m_rollingStaminaCost;
+            Core.PlayerParameters.PlayerStatus.m_stamina.Value -= Core.PlayerParameters.PlayerStatus.m_rollingStaminaCost;
 
             // 回避SE 上甲
             SoundManager.Instance.StartPlayback("Rolling");
@@ -67,6 +68,8 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
     {
         [SerializeField] float m_playerDist = -3.0f;
         [SerializeField] float m_rayStartHeisght = 20.0f;
+        [Header("再起処理の限界回数")]
+        [SerializeField] int m_limitRecursiveTimes = 10;
 
         GameObject m_gameObject;
 
@@ -83,6 +86,9 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
         //童話スキルの設定キャストタイム（データベース上で設定したキャストタイムを保存する変数）
         private float m_maxCastTime = 0.0f;
 
+        //再起処理を何回を行っているかのカウント数
+        private int m_recursiveCount = 0;
+
         public override void OnEnter()
         {
             base.OnEnter();
@@ -98,6 +104,8 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
 
             //StorySkill初期化
             m_storySkillData = ScriptableObject.CreateInstance<StorySkillData>();
+
+            m_recursiveCount = 0;
 
             GameObject spellEffect = null;
 
@@ -137,7 +145,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             {
                 //詠唱エフェクト出現と記憶
                 m_gameObject = Instantiate(spellEffect, Core.transform);
-                if(m_gameObject.TryGetComponent(out EffectController effectController))
+                if (m_gameObject.TryGetComponent(out EffectController effectController))
                 {
                     effectController.EndEffectTime = m_storySkillData.CastTime;
                 }
@@ -153,7 +161,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             if (Core.m_inputProvider.DoRolling)
             {
                 // スタミナが消費できるか確認
-                if (Core.m_characterStatus.m_stamina.Value >= Core.m_characterStatus.m_rollingStaminaCost)
+                if (Core.PlayerParameters.PlayerStatus.m_stamina.Value >= Core.PlayerParameters.PlayerStatus.m_rollingStaminaCost)
                 {
                     Core.m_animator.SetTrigger("Rolling");
                     m_isCanserFlg = true;
@@ -203,7 +211,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                     + Core.transform.forward * m_storySkillData.Distance
                     + Vector3.up * m_rayStartHeisght;
 
-                if (RayHitPosition(rayStartPos, out RaycastHit hit))
+                if (RayHitPosition(rayStartPos, Core.transform.forward, m_storySkillData, out RaycastHit hit))
                 {
                     rayHitPos = hit.point;
                 }
@@ -213,7 +221,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                     return;
                 }
 
-               
+
 
                 //データに対応した童話スキルのプレハブ生成
                 var skill = Instantiate(m_storySkillData.StorySkillPrefab, rayHitPos, quo);
@@ -244,7 +252,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                     }
 
                     // StorySkill_1のBP消費
-                    Core.m_characterStatus.m_bpSkill_1.Value -= m_storySkillData.PayBP;
+                    Core.PlayerParameters.PlayerStatus.m_bpSkill_1.Value -= m_storySkillData.PayBP;
                 }
                 else if (Core.PlayerParameters.TriggerStorySkill_2)
                 {
@@ -254,7 +262,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                     }
 
                     // StorySkill_2のBP消費
-                    Core.m_characterStatus.m_bpSkill_2.Value -= m_storySkillData.PayBP;
+                    Core.PlayerParameters.PlayerStatus.m_bpSkill_2.Value -= m_storySkillData.PayBP;
                 }
 
                 //詠唱用のエフェクトの破壊
@@ -301,24 +309,101 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
         }
 
         //レイを飛ばして場所を童話スキルを設置する場所特定する
-        private bool RayHitPosition(Vector3 _startPos, out RaycastHit _hit)
+        private bool RayHitPosition
+            (
+            Vector3 _startPos,//レイ開始位置
+            Vector3 _stepVec, //レイ調整時にずらす方向
+            StorySkillData _data,   //召喚する童話スキルのデータ
+            out RaycastHit _hit
+            )
         {
-            // 方向
+
+            // 下方向にレイを飛ばす
             Vector3 dir = Vector3.down;
+
+            //レイの開始位置を引数から取得
+            Vector3 startPos = _startPos;
 
             // レイ作成
             var ray = new Ray(_startPos, dir);
 
-            int layermask = 1 << 32;
+            //　童話スキル召喚時にレイ判定するレイヤー
+            int layermask = _data.LayerMask;
 
+            //　童話スキルのサイズ
+
+
+            //再起処理の限界回数になると処理を抜けるようにする
+            if (m_recursiveCount >= m_limitRecursiveTimes)
+            {
+                Debug.Log("指定回数以上再起処理を行った");
+                Physics.Raycast(ray, out _hit, 100.0f, layermask);
+                return true;
+            }
+
+
+            //　SphereCastを行い何らかのオブジェクトに当たらなければ再起処理を行い位置を変更する
+            if (!Physics.SphereCast(startPos, 1.0f, dir, out _hit, 100.0f, layermask))
+            {
+                Debug.Log("失敗①" + _hit.collider.gameObject.name + "/"
+                    + LayerMask.LayerToName(_hit.collider.gameObject.layer));
+
+                //レイの開始位置をプレイヤーの方向へ0.1m前進
+                startPos -= _stepVec * 0.1f;
+
+                //カウントアップ
+                m_recursiveCount++;
+
+                //再起処理
+                return RayHitPosition(startPos, _stepVec, _data, out _hit);
+
+            }
+
+            Debug.Log("SphereCast成功" + _hit.collider.gameObject.name + "/"
+                     + LayerMask.LayerToName(_hit.collider.gameObject.layer));
+
+
+
+            //SphereCast指定レイヤーのオブジェクトに当たったら再起処理を行い位置を変更
+            if (Physics.SphereCast(startPos, 1.0f, dir, out _hit, 100.0f, _data.ExclusionLayerMask))
+            {
+                Debug.Log("失敗2" + _hit.collider.gameObject.name + "/"
+                    + LayerMask.LayerToName(_hit.collider.gameObject.layer));
+
+                //レイ開始位置をプレイヤーの方向へ0.1ｍ前進
+                startPos -= _stepVec * 0.1f;
+
+                //カウントアップ
+                m_recursiveCount++;
+
+                //再起処理
+                return RayHitPosition(startPos, _stepVec, _data, out _hit);
+
+            }
+
+
+            // レイを飛ばして最終的な設置場所を決める
             if (Physics.Raycast(ray, out _hit, 100.0f, layermask))
             {
+                Debug.Log("レイ成功" + _hit.collider.gameObject.name);
                 return true;
             }
             else
             {
-                return false;
+                Debug.Log("失敗②" + _hit.collider.gameObject.name + "/"
+                     + LayerMask.LayerToName(_hit.collider.gameObject.layer));
+
+                //レイの開始位置をプレイヤーの方向へ0.1m前進
+                startPos -= _stepVec * 0.1f;
+
+                //カウントアップ
+                m_recursiveCount++;
+
+                //再起処理
+                return RayHitPosition(startPos, _stepVec, _data, out _hit);
             }
+
+
         }
     }
 
@@ -457,7 +542,6 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                     new Vector3(data.ThrowRange, m_mousePosObj.transform.localScale.y, data.ThrowRange);
             }
 
-
             //カメラの切り替え
             SwitchCamera(true);
 
@@ -467,14 +551,32 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
                     Core.PlayerParameters.m_throwAimCamera.GetComponent<AimCameraController>();
             }
 
+
+            if (Core.PlayerParameters.m_cinemachineBrain == null)
+            {
+                Core.PlayerParameters.m_cinemachineBrain = m_mainCamera.GetComponent<CinemachineBrain>();
+            }
+
             // UIの表示
             Core.PlayerParameters.AddActionUIState(ActionUIController.ActionUIState.ReadyToThrow);
-            Core.PlayerParameters.AddAnyActionUIState(ActionUIController.ActionUIState.ReadyToThrow,0.0f);
+            Core.PlayerParameters.AddAnyActionUIState(ActionUIController.ActionUIState.ReadyToThrow, 0.0f);
 
         }
 
         public override void OnUpdate()
         {
+            if (Core.PlayerParameters.m_cinemachineBrain.ActiveBlend != null)
+            {
+                // カメラの切り替え中にボタン離されたらキャンセル
+                if (PlayerInputManager.instance.IsInputActionWasReleased(InputActionMapTypes.UI, "ThrowItem"))
+                {
+                    Core.m_animator.SetTrigger("CancelThrow");
+                    m_cancelFlg = true;
+                    return;
+                }
+                return;
+            }
+
             //投げ状態を解除（山本）
             if (Core.m_inputProvider.Cancel)
             {
@@ -633,6 +735,7 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             m_throwItemInstance.SetHandTrans(Core.PlayerParameters.m_handTrans);
             m_throwItemInstance.SetItemID(Core.PlayerParameters.m_putItemInfo.m_itemTypeID, Core.PlayerParameters.m_putItemInfo.m_itemID);
             m_throwItemInstance.ThrowPower = Core.PlayerParameters.m_throwPower;
+            m_throwItemInstance.ThrowTorque = Core.PlayerParameters.m_throwTorque;
 
             if (m_throwItemInstance != null)
             {
@@ -849,8 +952,8 @@ public partial class CharacterCore : MonoBehaviour, IDamageable
             // 移動速度の計算
             float speedByStick = input.magnitude;
             float finalSpeed;
-            if (Core.m_isRun) finalSpeed = Core.m_dushSpeed * speedByStick;
-            else finalSpeed = Core.m_walkSpeed * speedByStick;
+            if (Core.m_isRun) finalSpeed = Core.Status.DushSpeed * speedByStick;
+            else finalSpeed = Core.Status.WalkSpeed * speedByStick;
 
             Core.Move(finalSpeed);
 

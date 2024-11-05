@@ -16,17 +16,23 @@ public class ConditionManager : MonoBehaviour
     private GameObject m_owner;
     private Transform m_myTransform;
 
-    public void AddCondition(GameObject conditionPrefab)
+    public void AddCondition(GameObject conditionPrefab, bool _isAttackCondition)
     {
         if (!conditionPrefab.TryGetComponent(out ICondition newCondition)) return;
 
         ICondition condition;
 
+        // 攻撃でNormalの付与はしない（料理食べて太る処理になる）
+        if (_isAttackCondition)
+        {
+            if (newCondition.ConditionID == ConditionID.Normal) return;
+        }
+
         for (int i = 0; i < m_myTransform.childCount; i++)
         {
             condition = m_myTransform.GetChild(i).GetComponent<ICondition>();
             if (condition == null) continue;
-            if(condition.ConditionID== newCondition.ConditionID)
+            if (condition.ConditionID == newCondition.ConditionID)
             {
                 condition.ReplaceCondition(newCondition, m_resistances);
                 return;

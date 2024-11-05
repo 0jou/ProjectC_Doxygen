@@ -24,7 +24,8 @@ namespace Arbor.BehaviourTree.Actions
         private FlexibleFloat m_stoppingDistance = new();
 
         [SerializeField]
-        private FlexibleChaseParameters m_chaseParameters = new();
+        [SlotType(typeof(EnemyParameters))]
+        private FlexibleComponent m_enemyParameters;
 
         [SerializeField]
         private FlexibleFloat m_maxSearchInterval = new(0.5f);
@@ -40,6 +41,7 @@ namespace Arbor.BehaviourTree.Actions
         private bool m_isWatch;
         private float m_searchInterval;
         private readonly VisualFieldJudgment m_judgement = new();
+        private ChaseData m_chaseData;
 
         protected override void OnAwake()
         {
@@ -47,6 +49,13 @@ namespace Arbor.BehaviourTree.Actions
             if (!transform.root.TryGetComponent(out m_myCollider))
             {
                 Debug.LogError("コライダーを取得出来ませんでした" + gameObject.name, gameObject);
+            }
+
+            EnemyParameters parameters = m_enemyParameters.value as EnemyParameters;
+            m_chaseData = parameters.GetChaseData();
+            if (m_chaseData == null)
+            {
+                Debug.Log("ChaseDataが取得できませんでした" + gameObject.name);
             }
         }
 
@@ -70,7 +79,7 @@ namespace Arbor.BehaviourTree.Actions
 
             if (m_searchInterval <= 0f)
             {
-                if (m_judgement.ChaseTarget(m_targetTransform.value.gameObject, m_chaseParameters.value, m_myCollider))
+                if (m_judgement.ChaseTarget(m_targetTransform.value.gameObject, m_chaseData, m_myCollider))
                 {
                     WatchTarget();
                 }
@@ -81,7 +90,7 @@ namespace Arbor.BehaviourTree.Actions
 
                 // HACK:直値修正
                 // 遠くにいるなら低頻度で座標更新
-                if (Vector3.Distance(transform.position, m_targetTransform.value.position) <= m_chaseParameters.value.SearchCharacterDist)
+                if (Vector3.Distance(transform.position, m_targetTransform.value.position) <= m_chaseData.SearchCharacterDist)
                     m_searchInterval = m_maxSearchInterval.value;
                 else m_searchInterval = m_maxSearchInterval.value * 2f;
 
@@ -101,7 +110,7 @@ namespace Arbor.BehaviourTree.Actions
             if (!m_isWatch)
             {
                 m_isWatch = true;
-                m_chaseTime = m_chaseParameters.value.MaxChaseTime;
+                m_chaseTime = m_chaseData.MaxChaseTime;
             }
 
             m_targetPos = m_targetTransform.value.position;

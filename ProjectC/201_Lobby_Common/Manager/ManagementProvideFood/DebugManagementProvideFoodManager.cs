@@ -26,11 +26,6 @@ public class DebugManagementProvideFoodManager : MonoBehaviour
         {
             var data = ItemDataBaseManager.instance.GetItemData<FoodData>(ItemTypeID.Food, (uint)id);
 
-
-            ManagementProvideFoodManager.instance.AddProvideFoodList(id);
-
-            var manager = ManagementProvideFoodManager.instance.PocketType.GetPocketItemDataManager();
-
             for (int n = 0; n < m_num; ++n)
             {
                 foreach (var need in data.NeedIngredientObjectList)
@@ -38,10 +33,13 @@ public class DebugManagementProvideFoodManager : MonoBehaviour
                     if (need == null) continue;
                     for (int i = 0; i < need.Num; ++i)
                     {
-                        manager.AddItem(ItemTypeID.Ingredient, (uint)need.IngredientID);
+                        ManagementProvideFoodManager.instance.PocketType.GetPocketItemDataManager().AddItem(ItemTypeID.Ingredient, (uint)need.IngredientID);
                     }
                 }
             }
+
+            ManagementProvideFoodManager.instance.AddProvideFoodList(id);
+          
         }
     }
 }

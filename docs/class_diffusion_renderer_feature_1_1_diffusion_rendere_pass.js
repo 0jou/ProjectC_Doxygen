@@ -1,0 +1,38 @@
+var class_diffusion_renderer_feature_1_1_diffusion_rendere_pass =
+[
+    [ "Passes", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#acb2a65e5295990d91d3a9e007ac4d12e", [
+      [ "Blur", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#acb2a65e5295990d91d3a9e007ac4d12ea8b52de510bc5497ac43abfe566be48ab", null ],
+      [ "BlendScreen", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#acb2a65e5295990d91d3a9e007ac4d12eac4239a4acc1c014a273971d89291dcf5", null ],
+      [ "ComparisonBright", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#acb2a65e5295990d91d3a9e007ac4d12ea110c10d5c54174560b8baac001be3e45", null ],
+      [ "SelfMultiply", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#acb2a65e5295990d91d3a9e007ac4d12eadbfd9353d16fe7e7974401a0bab4f49a", null ]
+    ] ],
+    [ "DiffusionRenderePass", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a63a3552dcb60572b8cb24315ff895e3e", null ],
+    [ "Blit", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a17927c2c750f25516064133a82cdb77b", null ],
+    [ "Blit", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a9971734832251837fa7c6c3b251f0c86", null ],
+    [ "Blit", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a2acc19b7b0d30e37bb1d6066fa584066", null ],
+    [ "Blit", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a70bd1f82a112d940989ed2e2c24e4ffd", null ],
+    [ "Blit", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a9bceee8918a2cc32a98d9a4f1a43bb5e", null ],
+    [ "Blit", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a396fd56142d08723f98168c1ef81fc89", null ],
+    [ "ExecuteCommandBuffer", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ae22199567de77386360bbeaecc24ece4", null ],
+    [ "ExecuteCommandBuffer", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ae22199567de77386360bbeaecc24ece4", null ],
+    [ "Release", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a9f531e433d6c174636e8a38802837a08", null ],
+    [ "ReleaseTemporaryRT", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#acc4bcba1fb8d32c09cb6dc5a198e0f72", null ],
+    [ "ReleaseTemporaryRT", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a34977c28f3a907733fabfd92ca15fa1f", null ],
+    [ "ReleaseTemporaryRT", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ab1a898cc8ada79b2133a2ad2b1631c29", null ],
+    [ "ReleaseTemporaryRT", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a2ac8422e4af3143e0a7e3294ebf2f460", null ],
+    [ "ReleaseTemporaryRT", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ae35bdf7d10ca6c554f11f25a40dbaace", null ],
+    [ "SetFloat", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a3988fdb52ccaf73d4f9ce8ad1f0edfb1", null ],
+    [ "SetFloat", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a1c8aebf27c54101685828659defda01f", null ],
+    [ "SetFloat", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a0a850bd49be653b67c400200f3edcc45", null ],
+    [ "SetGlobalTexture", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ab6047256a9e4e1c5a6d93b4e1be2dff9", null ],
+    [ "SetGlobalTexture", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ad041554afa1610d539374a595fbbbe96", null ],
+    [ "SetInt", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a61ba35b66f47deeaa17e7869d6164aec", null ],
+    [ "SetInt", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a3b61321b8e426845f779dad236f859bf", null ],
+    [ "Setup", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a39c0274e3c133c2c56766104acaf547e", null ],
+    [ "SetVector", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a43fe550b4e786f08209fe8e45949419e", null ],
+    [ "SetVector", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#afe8244d475b2d68d6ae480e4239ca2e1", null ],
+    [ "_material", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a53711a3b415e6f2d83c00abe6e7818e5", null ],
+    [ "_material2", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ab3b5359e36d71dedb297b9c9e1a153ad", null ],
+    [ "_sampleCount", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#a8df4f0145bf8d0a293e4313c68ca96c1", null ],
+    [ "_strength", "class_diffusion_renderer_feature_1_1_diffusion_rendere_pass.html#ac6fa81e2597a85a8202a674bca5a5481", null ]
+];

@@ -38,6 +38,9 @@ public class ThrowItemInstance : MonoBehaviour
     private Vector3 m_throwPower = new Vector3(0, 10, 0);
     public Vector3 ThrowPower { set { m_throwPower = value; } }
 
+    private Vector3 m_throwTorque = new Vector3(0.3f, 0, 0.3f);
+    public Vector3 ThrowTorque { set { m_throwTorque = value; } }
+
     private Rigidbody m_rigidbody = null;
 
     private Collider m_collider = null;
@@ -130,6 +133,7 @@ public class ThrowItemInstance : MonoBehaviour
         m_rigidbody = objct.AddComponent<Rigidbody>();
         m_rigidbody.excludeLayers = LayerMask.GetMask("Player");
         m_rigidbody.AddForce(m_throwPower * m_rigidbody.mass, ForceMode.Impulse);
+        m_rigidbody.AddTorque(new Vector3(0.3f, 0, 0.3f), ForceMode.Impulse);
 
         // 追加　上甲 効果音
         SoundManager.Instance.Start3DPlayback("ThrowItem", m_rigidbody.gameObject);

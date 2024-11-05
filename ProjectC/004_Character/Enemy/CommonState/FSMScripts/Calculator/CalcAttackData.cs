@@ -17,21 +17,34 @@ using Arbor;
 public class CalcAttackData : Calculator
 {
     [SerializeField] private FlexibleInt m_attackType;
-    [SerializeField] private FlexibleAttackData m_attackData;
+    [SerializeField]
+    [SlotType(typeof(EnemyParameters))]
+    private FlexibleComponent m_enemyParameters;
 
     [SerializeField] private OutputSlotFloat m_outputAttackDist;
     [SerializeField] private OutputSlotFloat m_outputMaxApproachTime;
 
+    private EnemyParameters _enemyParameters;
+
     public override void OnCalculate()
     {
-        if (m_attackType.value <= m_attackData.value.LotteryData.value.Count && m_attackType.value > 0)
+        if (_enemyParameters == null)
+        {
+            _enemyParameters = m_enemyParameters.value as EnemyParameters;
+            if (!_enemyParameters)
+            {
+                Debug.LogError("EnemyParametersがセットされていません" + gameObject.name);
+                return;
+            }
+        }
+        if (m_attackType.value <= _enemyParameters.NowAttackData.LotteryData.Count && m_attackType.value > 0)
         {
             // 接近必須攻撃かどうか
-            if (m_attackData.value.LotteryData.value[m_attackType.value - 1].m_isApproachBeforeAttack.value)
+            if (_enemyParameters.NowAttackData.LotteryData[m_attackType.value - 1].m_isApproachBeforeAttack)
             {
                 // 指定距離or指定秒数追いかける
-                m_outputAttackDist.SetValue(m_attackData.value.LotteryData.value[m_attackType.value - 1].m_bestAttackDist.value);
-                m_outputMaxApproachTime.SetValue(m_attackData.value.MaxApproachTime.value);
+                m_outputAttackDist.SetValue(_enemyParameters.NowAttackData.LotteryData[m_attackType.value - 1].m_bestAttackDist);
+                m_outputMaxApproachTime.SetValue(_enemyParameters.NowAttackData.MaxApproachTime);
             }
             else
             {

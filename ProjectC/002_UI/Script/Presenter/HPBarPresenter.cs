@@ -5,6 +5,7 @@ using UnityEngine;
 /// HPBarのPresenter(吉田)
 /// 体力とHPBarを紐づける
 /// </summary>
+[DefaultExecutionOrder(100)]    // CharacterCoreのStartを待つために実行タイミングを遅くする
 public class HPBarPresenter : MonoBehaviour
 {
     [SerializeField] private CharacterCore characterCore;

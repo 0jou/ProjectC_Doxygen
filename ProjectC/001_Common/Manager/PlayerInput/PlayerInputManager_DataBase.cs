@@ -29,7 +29,7 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
     }
 
     //============================
-    //入力デバイスが変更された時
+    // 入力デバイスが変更された時
 
     ReactiveProperty<DeviceTypes> m_currenrDevice = new(DeviceTypes.None);
 
@@ -44,7 +44,7 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
     }
 
     //==================
-    //入力検知
+    // 入力検知
 
     InputAction m_detrctionKeyboard = new InputAction(
         type: InputActionType.PassThrough,

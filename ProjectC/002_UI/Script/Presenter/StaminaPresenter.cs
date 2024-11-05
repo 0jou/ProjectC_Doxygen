@@ -38,42 +38,43 @@ public class StaminaPresenter : MonoBehaviour
             }
         }
 
+        PlayerStatus status = m_characterCore.PlayerParameters.PlayerStatus;
         // 初期設定
-        BarSetting();
-
+        BarSetting(status);
+        
         // 変わったら実行する処理を登録
-        m_characterCore.Status.m_stamina.Subscribe(x =>
+        status.m_stamina.Subscribe(x =>
         {
-            BarUpdate();
+            BarUpdate(status);
 
-            if(m_characterCore.Status.m_stamina.Value < m_characterCore.Status.MaxStamina)
+            if(status.m_stamina.Value < status.MaxStamina)
             {
                 m_staminaController.OnShow();
             }
 
-            if(m_characterCore.Status.m_stamina.Value >= m_characterCore.Status.MaxStamina)
+            if(status.m_stamina.Value >= status.MaxStamina)
             {
                 m_staminaController.OnHide();
             }
         });
     }
 
-    private void BarUpdate()
+    private void BarUpdate(PlayerStatus status)
     {
-        if (m_staminaController == null |
-            m_characterCore == null) return;
+        //if (m_staminaController == null |
+        //    m_characterCore == null) return;
 
-        m_staminaController.SetValue(m_characterCore.Status.m_stamina.Value);
+        m_staminaController.SetValue(status.m_stamina.Value);
     }
 
     [ContextMenu("BarSetting")]
-    private void BarSetting()
+    private void BarSetting(PlayerStatus status)
     {
-        if (m_staminaController == null |
-            m_characterCore == null) return;
+        //if (m_staminaController == null |
+        //    m_characterCore == null) return;
         // HPの初期値を設定
         m_staminaController.SetValue(
-            m_characterCore.Status.m_stamina.Value,
-            m_characterCore.Status.MaxStamina);
+            status.m_stamina.Value,
+            status.MaxStamina);
     }
 }

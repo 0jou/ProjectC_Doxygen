@@ -19,9 +19,11 @@ public class DoChase : Decorator {
     [SerializeField]
     [SlotType(typeof(AgentController))]
     private FlexibleComponent _agent = new FlexibleComponent(FlexibleHierarchyType.RootGraph);
-    [SerializeField] private FlexibleTransform m_target;
-	[SerializeField] private FlexibleChaseParameters m_chaseParameter;
+	//[SerializeField] private FlexibleChaseParameters m_chaseParameter;
 
+    [SerializeField]
+    [SlotType(typeof(EnemyParameters))]
+    private FlexibleComponent m_enemyParameters;
 
 	//protected override void OnAwake() {
 	//}
@@ -32,13 +34,17 @@ public class DoChase : Decorator {
 
     // プレイヤーとの距離が遠くなりすぎた or プレイヤーが自身のスポーン地から遠くに行ったら諦める
 	protected override bool OnConditionCheck() {
-		Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
-        Vector2 targetPos = new Vector2(m_target.value.position.x, m_target.value.position.z);
+        if (m_enemyParameters == null || m_enemyParameters.value == null) return false;
+        EnemyParameters enemyParameter = m_enemyParameters.value as EnemyParameters;
+        ChaseData chaseParameters = enemyParameter.GetChaseData();
+
+        Vector2 myPos = new Vector2(transform.position.x, transform.position.z);
+        Vector2 targetPos = new Vector2(enemyParameter.Target.position.x, enemyParameter.Target.position.z);
 
         float distToTarget = Vector2.Distance(myPos, targetPos);
-        float distToSpawn = Vector3.Distance(m_target.value.position, (_agent.value as AgentController).StartPosition);
-        bool isChase = (distToTarget <= m_chaseParameter.value.ChaseDistFromTarget)
-            && (distToSpawn <= m_chaseParameter.value.DistAwayFromSpawnPos);
+        float distToSpawn = Vector3.Distance(enemyParameter.Target.position, (_agent.value as AgentController).StartPosition);
+        bool isChase = (distToTarget <= chaseParameters.ChaseDistFromTarget)
+            && (distToSpawn <= chaseParameters.DistAwayFromSpawnPos);
         return isChase;
     }
 

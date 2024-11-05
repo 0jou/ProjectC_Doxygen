@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using UnityEngine.SceneManagement;
+
 public enum InputActionMapTypes
 {
     Player,
@@ -17,24 +19,14 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
     // 制作者 田内(他)
     // PlayerInputを管理するマネージャー
 
-    
-
+    //=============
     // 入力感知
     PlayerInput m_playerInput = null;
-
 
     //=============
     // ActionMap
 
-    // プレイヤー
-    private InputActionMap m_playerInputActionMap = null;
-
-    // カメラ
-    private InputActionMap m_cameraInputActionMap = null;
-
-    //UI
-    private InputActionMap m_uiInputActionMap = null;
-
+    private Dictionary<InputActionMapTypes, InputActionMap> m_inputActionMapDictionary = new();
 
     //==============================================
     //              実行処理
@@ -48,10 +40,27 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
         // PlayerInputを取得
         gameObject.TryGetComponent(out m_playerInput);
 
+        // InputActionMapの動作を開始
+        {
+            m_inputActionMapDictionary[InputActionMapTypes.Player] = m_playerInput.actions.FindActionMap("Player");
+            m_inputActionMapDictionary[InputActionMapTypes.Player].Enable();
 
-        m_playerInputActionMap = m_playerInput.actions.FindActionMap("Player");
-        m_cameraInputActionMap = m_playerInput.actions.FindActionMap("Camera");
-        m_uiInputActionMap = m_playerInput.actions.FindActionMap("UI");
+            m_inputActionMapDictionary[InputActionMapTypes.Camera] = m_playerInput.actions.FindActionMap("Camera");
+            m_inputActionMapDictionary[InputActionMapTypes.Camera].Enable();
+
+            m_inputActionMapDictionary[InputActionMapTypes.UI] = m_playerInput.actions.FindActionMap("UI");
+            m_inputActionMapDictionary[InputActionMapTypes.UI].Enable();
+        }
+
+        // シーンが切り替わったら動作させる
+        void SceneInput(Scene scene,LoadSceneMode mode)
+        {
+            GetInputActionMap(InputActionMapTypes.Player).Enable();
+            GetInputActionMap(InputActionMapTypes.UI).Enable();
+            GetInputActionMap(InputActionMapTypes.Camera).Enable();
+        }
+        SceneManager.sceneLoaded += SceneInput;
+
     }
 
 
@@ -59,45 +68,33 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
     {
         // 入力デバイスの監視
         ObservationDevice();
+
+        // プレイヤーのActionMapの制御
+        SetActivePlayerActionMap();
     }
+
+
 
     /// <summary>
     /// 引数InputActionMapを取得
     /// </summary>
     public InputActionMap GetInputActionMap(InputActionMapTypes _type)
     {
-
-        InputActionMap inputActionMap = null;
-
-        switch (_type)
+        if (m_inputActionMapDictionary.TryGetValue(_type, out InputActionMap inputActionMap))
         {
-            case InputActionMapTypes.Player:
-                {
-                    inputActionMap = m_playerInputActionMap;
-                    break;
-                }
-            case InputActionMapTypes.Camera:
-                {
-                    inputActionMap = m_cameraInputActionMap;
-                    break;
-                }
-            case InputActionMapTypes.UI:
-                {
-                    inputActionMap = m_uiInputActionMap;
-                    break;
-                }
+            return inputActionMap;
         }
-
-        if (inputActionMap == null)
+        else
         {
             Debug.LogError(_type.ToString() + "にはInputActionMapが存在しません");
+            return null;
         }
-
-        inputActionMap.Enable();
-        return inputActionMap;
     }
 
 
+    /// <summary>
+    /// 引数InputActionMapのアクションを取得
+    /// </summary>
     public InputAction GetInputAction(InputActionMapTypes _type, string _action)
     {
         InputActionMap inputActionMap = GetInputActionMap(_type);
@@ -110,14 +107,13 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
             Debug.LogError(_type.ToString() + "Mapには" + _action + "というInputActionは存在しません");
         }
 
-        inputAction.Enable();
         return inputAction;
     }
 
 
     /// <summary>
     /// 引数InputActionのトリガー 
-    /// 押された1フレームのみtrueを返す
+    /// 連打等はこれで取得しなければならない
     /// </summary>
     public bool IsInputActionTrigger(InputActionMapTypes _type, string _action)
     {
@@ -129,9 +125,9 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
             return false;
         }
 
-        action.Enable();
         return action.triggered;
     }
+
 
     /// <summary>
     /// 引数InputActionが押されたか
@@ -148,8 +144,8 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
             return false;
         }
 
-        action.Enable();
         return action.WasPressedThisFrame();
+
     }
 
 
@@ -166,7 +162,6 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
             return false;
         }
 
-        action.Enable();
         return action.IsPressed();
     }
 
@@ -187,7 +182,6 @@ public partial class PlayerInputManager : BaseManager<PlayerInputManager>
             return false;
         }
 
-        action.Enable();
         return action.WasReleasedThisFrame();
     }
 

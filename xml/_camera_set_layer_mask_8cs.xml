@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_camera_set_layer_mask_8cs" kind="file" language="C#">
+    <compoundname>CameraSetLayerMask.cs</compoundname>
+    <innerclass refid="class_camera_set_layer_mask" prot="public">CameraSetLayerMask</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="3"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="4"><highlight class="normal"></highlight></codeline>
+<codeline lineno="5" refid="class_camera_set_layer_mask" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_camera_set_layer_mask" kindref="compound">CameraSetLayerMask</ref><sp/>:<sp/>MonoBehaviour</highlight></codeline>
+<codeline lineno="6"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//必ずレイヤーマスクを初回にセットする</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="9" refid="class_camera_set_layer_mask_1a5682c86ff4e715ccf155519e22ba5e8e" refkind="member"><highlight class="normal"><sp/><sp/><sp/>　private<sp/>LayerMask<sp/><ref refid="class_camera_set_layer_mask_1a5682c86ff4e715ccf155519e22ba5e8e" kindref="member">m_layerMask</ref>;</highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/>[Header(</highlight><highlight class="stringliteral">&quot;カメラで写す対象をまとめたリスト&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/><ref refid="class_serializable_dictionary" kindref="compound">SerializableDictionary&lt;string, LayerMask&gt;</ref></highlight></codeline>
+<codeline lineno="14" refid="class_camera_set_layer_mask_1a766722f3163164db9adb07d4c251eec1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_camera_set_layer_mask_1a766722f3163164db9adb07d4c251eec1" kindref="member">m_dictionaryCameraMasklList</ref>;</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+<codeline lineno="16" refid="class_camera_set_layer_mask_1a261d2d1c1c031055df5caae7b8e2dc12" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_camera_set_layer_mask_1a261d2d1c1c031055df5caae7b8e2dc12" kindref="member">Start</ref>()</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="class_camera_set_layer_mask_1a59dc6e8a2fa7fbc889f89ba4b2e39dd9" kindref="member">SetLayerMask</ref>(</highlight><highlight class="stringliteral">&quot;All&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight></codeline>
+<codeline lineno="22" refid="class_camera_set_layer_mask_1a59dc6e8a2fa7fbc889f89ba4b2e39dd9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_camera_set_layer_mask_1a59dc6e8a2fa7fbc889f89ba4b2e39dd9" kindref="member">SetLayerMask</ref>(</highlight><highlight class="keywordtype">string</highlight><highlight class="normal"><sp/>_name)</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal">(<ref refid="class_camera_set_layer_mask_1a766722f3163164db9adb07d4c251eec1" kindref="member">m_dictionaryCameraMasklList</ref>.TryGetValue(_name,<sp/>out<sp/>LayerMask<sp/>_layer))</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Camera.main.cullingMask<sp/>=<sp/>_layer;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="_player_input_manager_8cs_1acdce8ac9c9c49484e3c7c077687d43aca967d35e40f3f95b1f538bd248640bf3b" kindref="member">Camera</ref>.main.Render();</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="013_CutScene/Script/CameraSetLayerMask.cs"/>
+  </compounddef>
+</doxygen>

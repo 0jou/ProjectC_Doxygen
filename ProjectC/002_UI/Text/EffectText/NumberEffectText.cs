@@ -12,6 +12,20 @@ public class NumberEffectText : BaseEffectText
     [SerializeField]
     private string m_draftText = "0000";
 
+    private enum NumberEffectType
+    {
+        Ratio = 0,  // 割合
+        Fixed = 1,  // 固定
+    }
+
+    [Header("エフェクト種類")]
+    [SerializeField]
+    private NumberEffectType m_numberEffectType = NumberEffectType.Fixed;
+
+    [Header("割合(1/nで計算)")]
+    [SerializeField]
+    private int m_ratio = 1;
+
     [Header("減増値")]
     [SerializeField]
     private int m_value = 1;
@@ -50,35 +64,18 @@ public class NumberEffectText : BaseEffectText
             // 数字に変換
             if (int.TryParse(m_text.text, out int targetNum) == false) return;
 
-            // 増やす場合
-            if (m_initialNumber < targetNum)
+            switch (m_numberEffectType)
             {
-                for (int i= m_initialNumber;i < targetNum; i += m_value)
-                {
-                    // テキストを一文ずつ追加
-                    string text = i.ToString(m_draftText);
-                    m_initialNumber = i;
-
-                    m_text.text = text;
-
-                    // 待機
-                    await UniTask.DelayFrame(m_delay);
-                    m_cancellationToken.Token.ThrowIfCancellationRequested();
-                }
-            }
-            // 減らす場合
-            else
-            {
-                for (int i = m_initialNumber; targetNum < i; i -= m_value)
-                {
-                    // テキストを一文ずつ追加
-                    m_text.text = i.ToString(m_draftText);
-                    m_initialNumber = i;
-
-                    // 待機
-                    await UniTask.DelayFrame(m_delay);
-                    m_cancellationToken.Token.ThrowIfCancellationRequested();
-                }
+                case NumberEffectType.Ratio:
+                    {
+                        await Ratio(targetNum);
+                        break;
+                    }
+                case NumberEffectType.Fixed:
+                    {
+                        await Fixed(targetNum);
+                        break;
+                    }
             }
 
             // ターゲットの値をセット
@@ -94,5 +91,84 @@ public class NumberEffectText : BaseEffectText
 
     }
 
+
+    private async UniTask Ratio(int _targetNum)
+    {
+        float value = ((float)_targetNum - (float)m_initialNumber) / m_ratio;
+
+        // 増やす場合
+        if (m_initialNumber < _targetNum)
+        {
+            for (float i = m_initialNumber; i < _targetNum; i += value)
+            {
+                int currentValue = (int)i;
+
+                // テキストを一文ずつ追加
+                string text = currentValue.ToString(m_draftText);
+                m_initialNumber = currentValue;
+
+                m_text.text = text;
+
+                // 待機
+                await UniTask.DelayFrame(m_delay);
+                m_cancellationToken.Token.ThrowIfCancellationRequested();
+            }
+        }
+        // 減らす場合
+        else
+        {
+            for (float i = m_initialNumber; _targetNum < i; i -= value)
+            {
+                int currentValue = (int)i;
+
+                // テキストを一文ずつ追加
+                string text = currentValue.ToString(m_draftText);
+                m_initialNumber = currentValue;
+
+                m_text.text = text;
+
+                // 待機
+                await UniTask.DelayFrame(m_delay);
+                m_cancellationToken.Token.ThrowIfCancellationRequested();
+            }
+        }
+    }
+
+
+    private async UniTask Fixed(int _targetNum)
+    {
+        // 増やす場合
+        if (m_initialNumber < _targetNum)
+        {
+            for (int i = m_initialNumber; i < _targetNum; i += m_value)
+            {
+                // テキストを一文ずつ追加
+                string text = i.ToString(m_draftText);
+                m_initialNumber = i;
+
+                m_text.text = text;
+
+                // 待機
+                await UniTask.DelayFrame(m_delay);
+                m_cancellationToken.Token.ThrowIfCancellationRequested();
+            }
+        }
+        // 減らす場合
+        else
+        {
+            for (int i = m_initialNumber; _targetNum < i; i -= m_value)
+            {
+                // テキストを一文ずつ追加
+                string text = i.ToString(m_draftText);
+                m_initialNumber = i;
+
+                m_text.text = text;
+
+                // 待機
+                await UniTask.DelayFrame(m_delay);
+                m_cancellationToken.Token.ThrowIfCancellationRequested();
+            }
+        }
+    }
 
 }

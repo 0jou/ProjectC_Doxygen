@@ -4,26 +4,15 @@ using KinematicCharacterController;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Localization.Plugins.XLIFF.V12;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using static CharacterCore;
 
 public class EnemyParameters : MonoBehaviour
 {
-    [Header("ボス個体か(BGM変化等対応するか)")]
-    [SerializeField] private bool m_isBoss = false;
-    public bool IsBoss { get { return m_isBoss; } }
-
-    // =====================
-    // アイテムドロップ用（吉田）
-    // =====================
-    [Serializable]
-    public struct DropItemInfo
-    {
-        public IngredientInfo.IngredientID m_ingredientID;
-        public int m_weightLottery;
-    }
-    [SerializeField] public List<DropItemInfo> m_dropItemInfo;
+    [SerializeField] private EnemyID m_enemyID;
+    public bool IsBoss { get { return EnemyDataBaseManager.instance.GetEnemyData(m_enemyID).IsBoss; } }
 
     [Header("Weightをコントロールするリグ")]
     [SerializeField] public Rig m_rig = null;
@@ -31,9 +20,55 @@ public class EnemyParameters : MonoBehaviour
     private ArborFSM m_arborFSM;
     public ArborFSM Arbor { get { return m_arborFSM; } set { m_arborFSM = value; } }
 
-    public void Awake()
+    // =====================
+    // 敵の戦闘中パラメータ（伊波）
+    // =====================
+    public EnemyData GetEnemyData()
     {
-        transform.root.TryGetComponent(out m_arborFSM);
+        return EnemyDataBaseManager.instance.GetEnemyData(m_enemyID);
+    }
+    public ChaseData GetChaseData()
+    {
+        return EnemyDataBaseManager.instance.GetEnemyData(m_enemyID).EnemyChaseData;
+    }
+    private EnemyAttackData m_nowAttackData;
+    public EnemyAttackData NowAttackData { get { return m_nowAttackData; } set { m_nowAttackData = value; } }
+
+    public EnemyAttackData GetFirstAttackData()
+    {
+        return EnemyDataBaseManager.instance.GetEnemyData(m_enemyID).FirstAttackData;
+    }
+    public EnemyAttackData GetSecondAttackData()
+    {
+        return EnemyDataBaseManager.instance.GetEnemyData(m_enemyID).SecondAttackData;
+    }
+    private int m_nowAttackDataType = 1;
+    public int NowAttackDataType { get { return m_nowAttackDataType; } set { m_nowAttackDataType = value; } }
+    private bool m_validSecondAttack = false;
+    public bool ValidSecondAttack => m_validSecondAttack;
+
+
+    private Transform m_target;
+    public Transform Target { get { return m_target; } set { m_target = value; } }
+
+    private Vector3 m_attackedVec;
+    public Vector3 AttackedVec { get { return m_attackedVec; } set { m_attackedVec = value; } }
+
+    private SearchTargets m_searchTargets = SearchTargets.Player | SearchTargets.FoodItem;
+    public SearchTargets SearchTargets { get { return m_searchTargets; } set { if (m_searchTargets != value) { m_searchTargets = value; } } }
+
+    private int m_dropNum = 1;
+    public int DropNum { get { return m_dropNum; } set { m_dropNum = value; } }
+
+
+    public void Start()
+    {
+        transform.TryGetComponent(out m_arborFSM);
+        if (GetSecondAttackData().LotteryData.Count > 0)
+        {
+            m_validSecondAttack = true;
+        }
+        m_nowAttackData = GetFirstAttackData();
     }
 
     //＝======================================================================
@@ -48,24 +83,36 @@ public class EnemyParameters : MonoBehaviour
     public void DropItem()
     {
         int allWeight = 0;
-        foreach (DropItemInfo info in m_dropItemInfo)
+        List<DropItemInfo> dropItems = GetEnemyData().m_dropItemInfo;
+        foreach (DropItemInfo info in dropItems)
         {
             allWeight += info.m_weightLottery;
         }
 
-        int rand = UnityEngine.Random.Range(0, allWeight);
-        for (int i = 0; i < m_dropItemInfo.Count; ++i)
+        if (!TryGetComponent(out CapsuleCollider capsuleCollider))
         {
-            if (rand < m_dropItemInfo[i].m_weightLottery)
+            Debug.LogError("CapsuleColliderがみつかりませんでした。");
+        }
+        for (int dropNum = 0; dropNum < m_dropNum; ++dropNum)
+        {
+            int rand = UnityEngine.Random.Range(0, allWeight);
+            for (int i = 0; i < dropItems.Count; ++i)
             {
-                var itemData =
-                    ItemDataBaseManager.instance.GetItemData(ItemTypeID.Ingredient,
-                    (uint)m_dropItemInfo[i].m_ingredientID);
-                // アイテムドロップ
-                Instantiate(itemData.ItemPrefab, transform.root.position, Quaternion.identity);
-                break;
+                Quaternion randomRotation = Quaternion.identity;
+                randomRotation.y = UnityEngine.Random.Range(0, 359);
+                if (rand < dropItems[i].m_weightLottery)
+                {
+                    var itemData =
+                        ItemDataBaseManager.instance.GetItemData(ItemTypeID.Ingredient,
+                        (uint)dropItems[i].m_ingredientID);
+                    // アイテムドロップ
+                    float adjust = ((dropNum == 2) ? -1 : dropNum) * capsuleCollider.radius;
+                    GameObject obj = Instantiate(itemData.ItemPrefab, transform.position + new Vector3(adjust, 0, adjust), randomRotation);
+                    //obj.AddComponent<DroppingItemState>();
+                    break;
+                }
+                rand -= dropItems[i].m_weightLottery;
             }
-            rand -= m_dropItemInfo[i].m_weightLottery;
         }
     }
 

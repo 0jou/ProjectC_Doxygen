@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Arbor;
-using StaffStateInfo;
+
 
 [AddComponentMenu("")]
 public class SetBeenTargetObjectStaffGangster : BaseGangsterStateBehaviour

@@ -31,9 +31,9 @@ public class ThrowRock : MonoBehaviour
 
     void Start()
     {
-        if (transform.root.TryGetComponent(out ArborFSM arbor))
+        if (transform.root.TryGetComponent(out EnemyParameters parameters))
         {
-            m_target = arbor.parameterContainer.GetTransform("Target");
+            m_target = parameters.Target;
         }
         m_lunchObj = transform.parent;
 

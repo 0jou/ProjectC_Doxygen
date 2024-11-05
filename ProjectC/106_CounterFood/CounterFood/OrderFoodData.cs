@@ -9,13 +9,25 @@ using NaughtyAttributes;
 
 namespace OrderFoodInfo
 {
-
     public enum OrderFoodState
     {
-        FindStaff,    // スタッフに探され待ち状態
-        WaitCounter,  // 受け取り待ち状態
-        Carry,        // 運ばれている状態
-        Set,          // テーブルにセットされた状態
+        //==============================
+        // カウンターで管理する範囲
+        //==============================
+
+        WaitChefStaff = 1,      // シェフスタッフ待ち
+        Cooking = 2,            // 作成中
+        FindCounterPoint = 3,   // カウンターポイントを探す
+        WaitHallStaff = 4,      // ホールスタッフ待ち
+        WaitCarry = 5,          // 受け取り待ち状態
+
+
+        //==============================
+        // その他
+        //==============================
+
+        Carry = 11,            // 運ばれている状態
+        Set = 12,              // テーブルにセットされた状態
     }
 }
 
@@ -40,7 +52,7 @@ public partial class OrderFoodData : MonoBehaviour
     //===========
     // ステート
 
-    private OrderFoodState m_currentOrderFoodState = OrderFoodState.FindStaff;
+    private OrderFoodState m_currentOrderFoodState = OrderFoodState.WaitChefStaff;
 
     public OrderFoodState CurrentOrderFoodState
     {
@@ -87,14 +99,6 @@ public partial class OrderFoodData : MonoBehaviour
         get { return m_counterPointData; }
     }
 
-    // 作成されたかどうか
-    private bool m_isCreate = false;
-
-    public bool IsCreate
-    {
-        get { return m_isCreate; }
-    }
-
 
     // 作成にかかる時間
     private float m_createDelay = 999.0f;
@@ -102,83 +106,30 @@ public partial class OrderFoodData : MonoBehaviour
     // 現在の作成度合
     private float m_currentCreateDelayCount = 0.0f;
 
+
     //========================================
     //              実行処理
     //========================================
 
-    public void OnUpdate()
-    {
-        // 作成カウントを行う
-        CreatCount();
-
-        // カウンターポイントを探す
-        FindCounterPointData(); ;
-    }
-
 
     /// <summary>
     /// 作成時間をカウントする
+    /// 作成できたらステートを変更し、trueを返す
     /// </summary>
-    private void CreatCount()
+    public bool CreatCount(float _ratio)
     {
-        if (IsCounterFood() == false) return;
-        if (m_isCreate == true) return;
+        // ポイントを探す状態でなければ動作しない
+        if (m_currentOrderFoodState != OrderFoodState.Cooking) return false;
 
-        // 更新する
-        m_currentCreateDelayCount += Time.deltaTime;
+        // 作成カウントを更新する
+        m_currentCreateDelayCount += (Time.deltaTime * _ratio);
 
         // 作成中の料理を更新
         if (m_createDelay <= m_currentCreateDelayCount)
         {
-            m_isCreate = true;
-        }
-    }
+            // ホールスタッフを待つ状態に変更
+            m_currentOrderFoodState = OrderFoodState.FindCounterPoint;
 
-
-    private void FindCounterPointData()
-    {
-        if (IsCounterFood() == false) return;
-
-        if (m_isCreate == false) return;
-        if (m_counterPointData != null) return;
-
-        CounterPointData point = CounterManager.instance.GetRandomPoint();
-        if (point == null) return;
-
-        // ポイントをセット
-        m_counterPointData = point;
-        gameObject.transform.position = m_counterPointData.SetPoint.position;
-        gameObject.transform.rotation = m_counterPointData.SetPoint.rotation;
-
-        // ポイントに自身をセット
-        m_counterPointData.SetOrderFoodData = this;
-
-        // 動作開始
-        gameObject.SetActive(true);
-
-        // 音声を再生
-        if (m_seName != "")
-        {
-            SoundManager.Instance.StartPlayback(m_seName);
-        }
-
-        // エフェクトを作成
-        if (m_effectPrefab != null)
-        {
-            Instantiate(m_effectPrefab, point.SetPoint.position, point.SetPoint.rotation);
-        }
-
-    }
-
-
-    /// <summary>
-    /// 客を探している状態か
-    /// </summary>
-    public bool IsFindStaff()
-    {
-        if (gameObject.activeSelf &&
-                 m_currentOrderFoodState == OrderFoodState.FindStaff)
-        {
             return true;
         }
 
@@ -187,23 +138,36 @@ public partial class OrderFoodData : MonoBehaviour
 
 
     /// <summary>
-    /// カウンターに設置されている料理かどうか
+    /// カウンターを探す
     /// </summary>
-    public bool IsCounterFood()
+    public void SetCounterPoint()
     {
-        switch (m_currentOrderFoodState)
-        {
-            case OrderFoodState.FindStaff:
-            case OrderFoodState.WaitCounter:
-                {
-                    return true;
-                }
-            // カウンターから離れた場合手放す
-            default:
-                {
-                    return false;
-                }
-        }
+        // ポイントを探す状態でなければ動作しない
+        if (m_currentOrderFoodState != OrderFoodState.FindCounterPoint) return;
+
+        if (m_counterPointData != null) return;
+
+        // ポイントを取得
+        CounterPointData point = CounterManager.instance.GetRandomPoint();
+        if (point == null) return;
+
+        // ポイントをセット・ステート更新・座標更新・動作開始
+        m_counterPointData = point;
+        m_currentOrderFoodState = OrderFoodState.WaitHallStaff;
+
+        gameObject.transform.position = m_counterPointData.SetPoint.position;
+        gameObject.transform.rotation = m_counterPointData.SetPoint.rotation;
+        gameObject.SetActive(true);
+
+        // ポイントに自身のデータをセット
+        m_counterPointData.SetOrderFoodData = this;
+
+        // 音声・エフェクトを再生
+        if (0 < m_seName.Length) SoundManager.Instance.StartPlayback(m_seName);
+        if (m_effectPrefab != null) Instantiate(m_effectPrefab, point.SetPoint.position, point.SetPoint.rotation);
+
     }
+
+
 
 }

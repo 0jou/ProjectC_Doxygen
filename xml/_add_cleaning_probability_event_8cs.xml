@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.12.0" xml:lang="ja">
+  <compounddef id="_add_cleaning_probability_event_8cs" kind="file" language="C#">
+    <compoundname>AddCleaningProbabilityEvent.cs</compoundname>
+    <innerclass refid="class_add_cleaning_probability_event" prot="public">AddCleaningProbabilityEvent</innerclass>
+    <briefdescription>
+<para>Arborからクリーニングイベントを発生させる </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">System.Collections.Generic;</highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="keyword">using<sp/></highlight><highlight class="normal">UnityEngine;</highlight></codeline>
+<codeline lineno="13"><highlight class="normal">[AddComponentMenu(</highlight><highlight class="stringliteral">&quot;&quot;</highlight><highlight class="normal">)]</highlight></codeline>
+<codeline lineno="14" refid="class_add_cleaning_probability_event" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="class_add_cleaning_probability_event" kindref="compound">AddCleaningProbabilityEvent</ref><sp/>:<sp/><ref refid="class_add_probability_event" kindref="compound">AddProbabilityEvent</ref></highlight></codeline>
+<codeline lineno="15"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/>[SerializeField]</highlight></codeline>
+<codeline lineno="17" refid="class_add_cleaning_probability_event_1a0f6e4ad223ff00a61dcf4fb33e772b4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="class_add_cleaning_probability_event_1a0f6e4ad223ff00a61dcf4fb33e772b4d" kindref="member">m_randomRange</ref><sp/>=<sp/>0.3f;</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="class_add_cleaning_probability_event_1a2c1e6379d19e8b11fd893b8a84e31c3e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="class_add_cleaning_probability_event_1a2c1e6379d19e8b11fd893b8a84e31c3e" kindref="member">EventInitializeProcess</ref>()</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_add_probability_event_1aa2aaa9b271a4097d3fa5ffc0a8e9c58c" kindref="member">m_createManageentEvent</ref><sp/>==<sp/></highlight><highlight class="keyword">null</highlight><highlight class="normal">)<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="class_add_probability_event_1aa2aaa9b271a4097d3fa5ffc0a8e9c58c" kindref="member">m_createManageentEvent</ref><sp/>is<sp/>not<sp/><ref refid="class_generate_cleaning_event" kindref="compound">GenerateCleaningEvent</ref>)</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Debug.LogError(</highlight><highlight class="stringliteral">&quot;CleaningEventにキャストできません&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>var<sp/>castCleaningEvent<sp/>=<sp/><ref refid="class_add_probability_event_1aa2aaa9b271a4097d3fa5ffc0a8e9c58c" kindref="member">m_createManageentEvent</ref><sp/>as<sp/><ref refid="class_generate_cleaning_event" kindref="compound">GenerateCleaningEvent</ref>;</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>castCleaningEvent.<ref refid="class_generate_cleaning_event_1a39ac33feeb6ffc286554f2abec21d6f8" kindref="member">SetPosition</ref>(gameObject.transform.root.position);</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>castCleaningEvent.SetRandomRange(<ref refid="class_add_cleaning_probability_event_1a0f6e4ad223ff00a61dcf4fb33e772b4d" kindref="member">m_randomRange</ref>);</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="37"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="108_Management_Event/Event/CleaningEvent/script/AddCleaningProbabilityEvent.cs"/>
+  </compounddef>
+</doxygen>

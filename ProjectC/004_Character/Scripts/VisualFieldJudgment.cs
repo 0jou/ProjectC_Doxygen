@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class VisualFieldJudgment
 {
-    public bool SearchTarget(GameObject _target, ChaseParameters _chaseParameters, Collider _myCollider, ref float _nearestDist)
+    public bool SearchTarget(GameObject _target, ChaseData _chaseParameters, Collider _myCollider, ref float _nearestDist)
     {
         if (_myCollider.transform.root.name == _target.name) return false;
 
@@ -46,7 +46,7 @@ public class VisualFieldJudgment
         }
         return false;
     }
-    public bool ChaseTarget(GameObject _target, ChaseParameters _chaseParameters, Collider _myCollider)
+    public bool ChaseTarget(GameObject _target, ChaseData _chaseParameters, Collider _myCollider)
     {
         if (Vector3.Distance(_myCollider.transform.position, _target.transform.position) <= _chaseParameters.NoticeDist)
         {
@@ -77,7 +77,7 @@ public class VisualFieldJudgment
         return false;
     }
 
-    public bool SearchTargetNearSpawn(GameObject _target, ChaseParameters _chaseParameters, Collider _myCollider, Vector3 _startPos, ref float _nearestDist, float _searchDist)
+    public bool SearchTargetNearSpawn(GameObject _target, ChaseData _chaseParameters, Collider _myCollider, Vector3 _startPos, ref float _nearestDist, float _searchDist)
     {
         if (_myCollider.transform.root.name == _target.name) return false;
 

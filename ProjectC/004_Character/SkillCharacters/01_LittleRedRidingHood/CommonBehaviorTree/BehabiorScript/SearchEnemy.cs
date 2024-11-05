@@ -11,13 +11,17 @@ using Arbor.BehaviourTree;
 [AddComponentMenu("")]
 public class SearchEnemy : Decorator
 {
-    [SerializeField] private FlexibleSearchType m_searchFlags;
     [SerializeField] private FlexibleTransform m_targetParameter;
-    [SerializeField] private FlexibleChaseParameters m_chaseParameters;
     [SerializeField] private FlexibleComponent m_targetCore;
+
+
+    [SerializeField]
+    [SlotType(typeof(PlayerSkillsParameters))]
+    private FlexibleComponent m_skillsParameters;
 
     private Collider m_myCollider;
     private readonly VisualFieldJudgment m_judgment = new();
+    private ChaseData m_chaseData;
 
     protected override void OnStart()
     {
@@ -26,11 +30,18 @@ public class SearchEnemy : Decorator
         {
             Debug.LogError("Colliderが見つかりませんでした" + gameObject.name);
         }
+
+        PlayerSkillsParameters parameters = m_skillsParameters.value as PlayerSkillsParameters;
+        m_chaseData = parameters.ChaseData;
+        if (m_chaseData == null)
+        {
+            Debug.Log("ChaseDataが取得できませんでした" + gameObject.name);
+        }
     }
 
     protected override bool OnConditionCheck()
     {
-        float nearestDist = m_chaseParameters.value.SearchCharacterDist;
+        float nearestDist = m_chaseData.SearchCharacterDist;
         bool isFind = false;
 
         foreach (var chara in IMetaAI<CharacterCore>.Instance.ObjectList)
@@ -47,7 +58,7 @@ public class SearchEnemy : Decorator
                     continue;
                 }
 
-                if (m_judgment.SearchTarget(chara.gameObject, m_chaseParameters.value, m_myCollider, ref nearestDist))
+                if (m_judgment.SearchTarget(chara.gameObject, m_chaseData, m_myCollider, ref nearestDist))
                 {
                     m_targetParameter.parameter.SetTransform(chara.transform);
                     //敵のCharacterCoreを参照

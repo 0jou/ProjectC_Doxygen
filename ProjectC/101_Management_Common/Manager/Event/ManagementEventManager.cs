@@ -9,7 +9,7 @@ using UnityEngine;
 
 /// <summary>
 /// @brief 経営のイベントを管理するマネージャー
-/// BaseManagementEvent を継承したイベントを抽選し実行する
+/// BaseManagementEvent.cs を継承したイベントを抽選し実行する
 /// </summary>
 public class ManagementEventManager : BaseManager<ManagementEventManager>
 {
@@ -17,6 +17,10 @@ public class ManagementEventManager : BaseManager<ManagementEventManager>
     [Header("データベース")]
     [SerializeField]
     private ManagementEventDataBase m_managementEventDataBase = null;
+
+
+    [SerializeField]
+    private int m_eventMax = 10;
 
     public ManagementEventDataBase ManagementEventDataBase
     {
@@ -32,12 +36,17 @@ public class ManagementEventManager : BaseManager<ManagementEventManager>
         get { return m_eventList; }
     }
 
+    public bool IsEventMax()
+    {
+        return m_eventList.Count >= m_eventMax;
+    }
 
-    //==============================================
-    //                 実行処理
-    //==============================================
 
-    void Update()
+//==============================================
+//                 実行処理
+//==============================================
+
+void Update()
     {
         OnEventListUpdate();
     }
@@ -49,6 +58,8 @@ public class ManagementEventManager : BaseManager<ManagementEventManager>
     public void AddEventList(BaseManagementEvent _baseManagementEvent)
     {
         if (_baseManagementEvent == null) return;
+
+        if (m_eventList.Count >= m_eventMax) return;
 
         // リストに追加
         m_eventList.Add(_baseManagementEvent);
